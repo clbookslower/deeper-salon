@@ -1007,7 +1007,7 @@ async function submit() {
 
       const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'x-api-key': '여기에Anthropic키', },
+        headers: { 'x-api-key': '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', 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1000,
@@ -1058,7 +1058,7 @@ async function generateReport() {
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'x-api-key': '여기에Anthropic키', },
+      headers: { 'x-api-key': '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', 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
@@ -1189,7 +1189,7 @@ async function submitReport() {
   if (oneSentence) reportText += `\n━━ 한 문장 ━━\n${oneSentence.innerText}\n`;
 
   try {
-    // EmailJS 전송 — service_e0ztr5h, template_k8ym7cn 를 실제 값으로 교체하세요
+    // EmailJS 전송 — YOUR_SERVICE_ID, YOUR_TEMPLATE_ID 를 실제 값으로 교체하세요
     await emailjs.send('service_e0ztr5h', 'template_k8ym7cn', {
       from_name: name,
       from_email: email,
@@ -1220,7 +1220,7 @@ document.addEventListener('keydown', e => {
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // EmailJS 초기화 — 아래 YOUR_PUBLIC_KEY를 실제 키로 교체하세요
+  // EmailJS 초기화 — 아래 YOUR_PUBLIC_KEY 를 실제 키로 교체하세요
   emailjs.init('85eWmLUZtPn3nQX1w');
 </script>
 
