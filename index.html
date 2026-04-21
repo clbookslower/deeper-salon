@@ -906,43 +906,15 @@ const QUESTIONS = [
   }
 ];
 
-const REPORT_PROMPT = `당신은 융 심리학, 롤랑 바르트 문학·서사학, 노자 동양철학, 피터 드러커 경영·강점, 세스 고딘 창업·포지셔닝, 파울로 프레이리 비판교육학, 에픽테토스 스토아 철학 — 이 7개 분야를 깊이 체화한 세계적 수준의 퍼실리테이터입니다.
-
-아래는 참여자가 5개 주제에 걸쳐 나눈 대화 전체입니다:
+const REPORT_PROMPT = `깊이 있는 퍼실리테이터로서 아래 대화를 읽고 세 가지를 한국어로 작성하세요.
 
 {ALL}
 
-이 대화를 7개 분야의 렌즈로 동시에 읽고, 다음 세 가지를 작성하세요.
+[1] 이 사람의 강점과 가능성을 담은 따뜻하고 날카로운 종합 의견 (400자 내외, 2인칭)
+[2] 이 대화를 관통하는 발견 3가지. 각각 "당신은 ~~~" 형식으로 한 문장씩.
+[3] 이 사람 전체를 담는 단 한 문장. 시처럼, 이 사람만을 위한.
 
----
-
-[1. 종합 의견]
-이 사람에 대한 깊고 입체적인 이야기를 700자 내외로 쓰세요.
-
-작성 원칙:
-- 7개 전문가의 통찰이 자연스럽게 녹아있되, 전문가 이름을 직접 언급하지 마세요
-- 이 사람이 스스로 발견하지 못한 강점과 가능성을 발견하게 해주세요
-- 칭찬과 인정이 중심이되, 그 근거가 학문적으로 단단해야 합니다
-- 고전의 지혜가 문장 안에 살아있게 하세요 — 인용구처럼 무겁지 않게, 결처럼 자연스럽게
-- 나아갈 방향은 구체적으로, 그러나 강요가 아닌 가능성으로
-- 읽다가 "어떻게 나를 이렇게 알지"가 나와야 합니다
-- 2인칭('당신')으로, 따뜻하되 날카롭게
-
-[2. 세 가지 발견]
-이 대화를 관통하는 패턴 세 가지를 각각 2문장으로 써주세요.
-- "당신은 ~~~" 형식으로
-- 짧고 정확하게, 잊히지 않게
-- 이 사람이 몰랐던 자신의 모습이어야 합니다
-
-[3. 당신을 관통하는 한 문장]
-이 사람 전체를 담는 단 하나의 문장.
-- 분석이 아니라 시처럼
-- 읽는 순간 무릎을 치게
-- 이 사람만을 위한 문장
-
----
-
-한국어로 작성하세요. 각 섹션을 [1], [2], [3] 으로 구분하여 출력하세요.`;
+각 섹션을 [1], [2], [3] 으로 구분하여 출력하세요.`;
 
 const MAX_DEPTH = 5;
 let qIdx = 0;
@@ -1092,13 +1064,16 @@ async function generateReport() {
 
   try {
     const allText = data.map((d, i) => {
-      const qa = d.history.map((h, j) => `Q${j+1}: ${h.q}\nA${j+1}: ${h.a}`).join('\n\n');
-      return `=== ${QUESTIONS[i].theme} ===\n${qa}`;
+      // Send only answers, not questions, to reduce token count
+      const answers = d.history.map((h, j) => `${j+1}. ${h.a}`).join('\n');
+      return `[${QUESTIONS[i].theme}]\n${answers}`;
     }).join('\n\n');
 
     let reportJson;
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 55000);
         const res = await fetch(WORKER_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1106,13 +1081,16 @@ async function generateReport() {
             model: 'claude-haiku-4-5-20251001',
             max_tokens: 2000,
             messages: [{ role: 'user', content: REPORT_PROMPT.replace('{ALL}', allText) }]
-          })
+          }),
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
         reportJson = await res.json();
         if (reportJson.content) break;
       } catch(e) {
         if (attempt === 2) throw e;
-        await new Promise(r => setTimeout(r, 1500));
+        document.querySelector('.report-loading-title').textContent = `다시 시도하는 중... (${attempt + 2}/3)`;
+        await new Promise(r => setTimeout(r, 2000));
       }
     }
     const raw = reportJson.content[0].text;
