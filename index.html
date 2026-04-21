@@ -1007,16 +1007,25 @@ async function submit() {
         .replace('{HISTORY}', histText)
         .replace('{LAST}', answer);
 
-      const res = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 1000,
-          messages: [{ role: 'user', content: prompt }]
-        })
-      });
-      const json = await res.json();
+      let json;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              model: 'claude-haiku-4-5-20251001',
+              max_tokens: 1000,
+              messages: [{ role: 'user', content: prompt }]
+            })
+          });
+          json = await res.json();
+          if (json.content) break;
+        } catch(e) {
+          if (attempt === 2) throw e;
+          await new Promise(r => setTimeout(r, 1000));
+        }
+      }
       entry.nextQ = json.content[0].text.trim();
     } catch {
       entry.nextQ = '지금 떠오르는 것 중에 아직 말하지 못한 게 있다면요?';
