@@ -1017,7 +1017,7 @@ async function submit() {
       const json = await res.json();
       entry.nextQ = json.content[0].text.trim();
     } catch {
-      entry.nextQ = '방금 하신 말씀 중 가장 확신하기 어려운 부분은 어디인가요?';
+      entry.nextQ = '지금 떠오르는 것 중에 아직 말하지 못한 게 있다면요?';
     }
     render();
   } else {
