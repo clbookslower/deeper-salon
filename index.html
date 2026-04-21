@@ -761,7 +761,8 @@ const QUESTIONS = [
 - "~하지 않았나요?" "~겠죠?" 같은 유도 금지
 - A인지 B인지 선택하게 하는 이분법 질문 금지
 - 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
-- 질문 한 문장만 출력하세요`
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   },
   {
     eyebrow: "주제 2 / 5 · 시간",
@@ -795,7 +796,8 @@ const QUESTIONS = [
 - 심문·취조·유도 금지
 - A인지 B인지 선택하게 하는 이분법 질문 금지
 - 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
-- 질문 한 문장만 출력하세요`
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   },
   {
     eyebrow: "주제 3 / 5 · 자기 가치",
@@ -829,7 +831,8 @@ const QUESTIONS = [
 - 심문·취조·유도 금지
 - A인지 B인지 선택하게 하는 이분법 질문 금지
 - 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
-- 질문 한 문장만 출력하세요`
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   },
   {
     eyebrow: "주제 4 / 5 · 나만의 것",
@@ -863,7 +866,8 @@ const QUESTIONS = [
 - 심문·취조·유도 금지
 - A인지 B인지 선택하게 하는 이분법 질문 금지
 - 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
-- 질문 한 문장만 출력하세요`
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   },
   {
     eyebrow: "주제 5 / 5 · 앞으로",
@@ -897,7 +901,8 @@ const QUESTIONS = [
 - 심문·취조·유도 금지
 - A인지 B인지 선택하게 하는 이분법 질문 금지
 - 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
-- 질문 한 문장만 출력하세요`
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   }
 ];
 
@@ -1091,17 +1096,26 @@ async function generateReport() {
       return `=== ${QUESTIONS[i].theme} ===\n${qa}`;
     }).join('\n\n');
 
-    const res = await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: REPORT_PROMPT.replace('{ALL}', allText) }]
-      })
-    });
-    const json = await res.json();
-    const raw = json.content[0].text;
+    let reportJson;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 2000,
+            messages: [{ role: 'user', content: REPORT_PROMPT.replace('{ALL}', allText) }]
+          })
+        });
+        reportJson = await res.json();
+        if (reportJson.content) break;
+      } catch(e) {
+        if (attempt === 2) throw e;
+        await new Promise(r => setTimeout(r, 1500));
+      }
+    }
+    const raw = reportJson.content[0].text;
     renderReport(raw);
   } catch {
     renderReport('[1]\n리포트 생성 중 오류가 발생했습니다.\n[2]\n· 답변 내용은 모두 저장되어 있습니다.\n· 다시 시도해주세요.\n· 문제가 계속되면 경선님께 문의해주세요.\n[3]\n당신의 이야기는 여기 있습니다.');
