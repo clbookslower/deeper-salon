@@ -1222,7 +1222,14 @@ async function submitReport() {
 
   const synthesis = document.querySelector('.synthesis-body');
   const oneSentence = document.querySelector('.one-sentence-text');
+  const discoveryItems = document.querySelectorAll('.discovery-text');
   if (synthesis) reportText += `\n━━ 종합 의견 ━━\n${synthesis.innerText}\n`;
+  if (discoveryItems.length > 0) {
+    reportText += `\n━━ 세 가지 발견 ━━\n`;
+    discoveryItems.forEach((d, i) => {
+      reportText += `${i+1}. ${d.innerText}\n`;
+    });
+  }
   if (oneSentence) reportText += `\n━━ 한 문장 ━━\n${oneSentence.innerText}\n`;
 
   try {
