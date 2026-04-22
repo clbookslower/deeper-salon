@@ -1148,7 +1148,7 @@ function renderReport(raw) {
         <div class="section-title">종합 의견</div>
         <div class="section-line"></div>
       </div>
-      <div class="synthesis-body">${sec1.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>
+      <div class="synthesis-body">${sec1.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*/g, '')}</div>
     </div>
 
     <!-- 섹션 2 -->
@@ -1162,7 +1162,7 @@ function renderReport(raw) {
         ${discoveries.map((d, i) => `
           <div class="discovery-item">
             <div class="discovery-num">Discovery ${['One','Two','Three'][i] || i+1}</div>
-            <div class="discovery-text">${d}</div>
+            <div class="discovery-text">${d.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*/g, '')}</div>
           </div>
         `).join('')}
       </div>
@@ -1176,7 +1176,7 @@ function renderReport(raw) {
         <div class="section-line"></div>
       </div>
       <div class="one-sentence">
-        <div class="one-sentence-text">${sec3}</div>
+        <div class="one-sentence-text">${sec3.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*/g, '')}</div>
       </div>
     </div>
 
