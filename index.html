@@ -1234,11 +1234,19 @@ async function submitReport() {
   if (oneSentence) reportText += `\n━━ 한 문장 ━━\n${oneSentence.innerText}\n`;
 
   try {
+    // 경선님께 전송
     await emailjs.send('service_e0ztr5h', 'template_k8ym7cn', {
       from_name: name,
       from_email: email,
       report_content: reportText,
       to_email: 'clbook.slower@gmail.com'
+    });
+    // 참여자에게도 전송
+    await emailjs.send('service_e0ztr5h', 'template_k8ym7cn', {
+      from_name: name,
+      from_email: email,
+      report_content: reportText,
+      to_email: email
     });
 
     btn.textContent = '제출 완료 ✓';
