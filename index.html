@@ -990,6 +990,7 @@ function render() {
   document.getElementById('answer').focus();
   document.getElementById('btn-next').disabled = false;
   document.getElementById('loading').classList.remove('show');
+  saveProgress();
 }
 
 async function submit() {
@@ -1243,6 +1244,8 @@ async function submitReport() {
     btn.textContent = '제출 완료 ✓';
     notice.textContent = '리포트가 전달됐습니다. 오리엔테이션에서 만나요.';
     notice.style.color = '#2a8a5a';
+    localStorage.removeItem('deeper_data');
+    localStorage.removeItem('deeper_state');
   } catch (e) {
     btn.disabled = false;
     btn.textContent = '제출하기';
@@ -1250,6 +1253,51 @@ async function submitReport() {
     notice.style.color = '#e05a5a';
   }
 }
+
+// 뒤로가기/이탈 경고
+window.addEventListener('beforeunload', e => {
+  if (qIdx > 0 || depth > 0) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+// localStorage 자동저장
+function saveProgress() {
+  try {
+    localStorage.setItem('deeper_data', JSON.stringify(data));
+    localStorage.setItem('deeper_state', JSON.stringify({qIdx, depth, userName, userEmail}));
+  } catch(e) {}
+}
+
+function loadProgress() {
+  try {
+    const savedData = localStorage.getItem('deeper_data');
+    const savedState = localStorage.getItem('deeper_state');
+    if (savedData && savedState) {
+      const state = JSON.parse(savedState);
+      if (state.qIdx > 0 || state.depth > 0) {
+        if (confirm('이전에 작성하던 내용이 있어요. 이어서 하시겠어요?')) {
+          data = JSON.parse(savedData);
+          qIdx = state.qIdx;
+          depth = state.depth;
+          userName = state.userName;
+          userEmail = state.userEmail;
+          document.getElementById('screen-intro').style.display = 'none';
+          document.getElementById('screen-question').style.display = 'block';
+          render();
+          return true;
+        }
+      }
+    }
+  } catch(e) {}
+  return false;
+}
+
+// 페이지 로드 시 복구 시도
+window.addEventListener('load', () => {
+  loadProgress();
+});
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey &&
