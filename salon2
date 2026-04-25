@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩살롱 — 나를 다시 읽는 시간</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f7fb;
+    --surface2: #e8eef6;
+    --border: rgba(30,60,120,0.12);
+    --blue: #2a6ab8;
+    --blue-bright: #1a4e8c;
+    --gold: #8a6a10;
+    --gold-dim: #b8920a;
+    --green: #5aab85;
+    --cream: #1a2a3a;
+    --cream-mid: #2a4060;
+    --cream-dim: #4a6a8a;
+    --text: #1a2a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #ffffff;
+    color: #1a2a3a;
+    font-family: 'Noto Serif CJK KR', 'Noto Serif KR', 'Apple SD Gothic Neo', Georgia, serif;
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(60,100,160,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(40,80,130,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== 헤더 ===== */
+  .header {
+    padding: 32px 0 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-brand {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--blue);
+    text-transform: uppercase;
+  }
+
+  .header-progress {
+    font-size: 11.5px;
+    color: var(--cream-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== 인트로 화면 ===== */
+  #screen-intro {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+
+  .intro-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .intro-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .intro-title span {
+    color: var(--blue-bright);
+  }
+
+  .intro-desc {
+    font-size: 15.5px;
+    color: var(--cream-mid);
+    line-height: 1.95;
+    margin-bottom: 48px;
+    letter-spacing: 0.02em;
+  }
+
+  .intro-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 36px auto;
+  }
+
+  .intro-meta {
+    font-size: 12.5px;
+    color: var(--cream-dim);
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+    margin-bottom: 52px;
+  }
+
+  .intro-meta span {
+    color: var(--blue);
+    margin-right: 8px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 16px 52px;
+    font-size: 14.5px;
+    font-family: inherit;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-bright);
+    color: var(--bg);
+    transform: translateY(-1px);
+  }
+
+  /* ===== 질문 화면 ===== */
+  #screen-question { display: none; padding: 52px 0; }
+
+  .q-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .q-theme {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.4;
+  }
+
+  /* 깊이 바 */
+  .depth-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 32px;
+    align-items: center;
+  }
+
+  .depth-seg {
+    height: 3px;
+    flex: 1;
+    background: var(--surface2);
+    border-radius: 2px;
+    transition: background 0.4s;
+  }
+
+  .depth-seg.done { background: var(--blue); }
+  .depth-seg.active { background: var(--gold); }
+
+  .depth-label {
+    font-size: 11px;
+    color: var(--cream-dim);
+    letter-spacing: 0.1em;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  /* 히스토리 */
+  .history {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .hist-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hist-q {
+    font-size: 12px;
+    color: var(--blue);
+    margin-bottom: 6px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+
+  .hist-a {
+    font-size: 14px;
+    color: var(--cream-mid);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  /* 현재 질문 */
+  .q-current {
+    margin-bottom: 8px;
+  }
+
+  .q-text {
+    font-size: 19px;
+    color: var(--cream);
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    min-height: 56px;
+  }
+
+  .q-sub {
+    font-size: 13px;
+    color: var(--cream-dim);
+    font-style: italic;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  textarea {
+    width: 100%;
+    background: #f8fafd;
+    border: 1px solid var(--border);
+    color: var(--cream);
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.85;
+    padding: 20px 22px;
+    resize: vertical;
+    min-height: 130px;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 0.02em;
+    border-radius: 0;
+  }
+
+  textarea:focus { border-color: var(--blue); }
+  textarea::placeholder { color: #aabbcc; }
+
+  .q-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  .btn-next {
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--blue-bright);
+    padding: 12px 32px;
+    font-size: 13px;
+    font-family: inherit;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-next:hover { background: var(--blue); color: #fff; }
+  .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .loading-indicator {
+    display: none;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+  }
+
+  .loading-indicator.show { display: block; animation: blink 1.4s ease-in-out infinite; }
+
+  @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ===== 리포트 화면 ===== */
+  #screen-report { display: none; padding: 52px 0 100px; }
+
+  .report-top {
+    text-align: center;
+    padding-bottom: 48px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .report-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .report-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .report-date {
+    font-size: 12px;
+    color: var(--cream-dim);
+    letter-spacing: 0.12em;
+  }
+
+  .report-section-1 { margin-bottom: 56px; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .section-num {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: var(--blue-bright);
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .synthesis-body {
+    font-size: 15.5px;
+    color: var(--cream);
+    line-height: 2.05;
+    letter-spacing: 0.025em;
+    white-space: pre-wrap;
+  }
+
+  .synthesis-body strong {
+    color: var(--blue-bright);
+    font-weight: 600;
+  }
+
+  .report-section-2 { margin-bottom: 56px; }
+
+  .discoveries {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .discovery-item {
+    padding: 22px 24px;
+    background: var(--surface);
+    border-left: 2px solid var(--blue);
+  }
+
+  .discovery-num {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .discovery-text {
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+  }
+
+  .report-section-3 { margin-bottom: 56px; }
+
+  .one-sentence {
+    padding: 36px 40px;
+    background: var(--surface);
+    border: 1px solid var(--gold-dim);
+    text-align: center;
+    position: relative;
+  }
+
+  .one-sentence::before {
+    content: '"';
+    font-size: 72px;
+    color: var(--gold-dim);
+    position: absolute;
+    top: -8px;
+    left: 24px;
+    font-family: Georgia, serif;
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .one-sentence-text {
+    font-size: 18px;
+    color: var(--cream);
+    line-height: 1.85;
+    letter-spacing: 0.03em;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .report-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-copy {
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--blue-bright);
+    padding: 14px 44px;
+    font-size: 13px;
+    font-family: inherit;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-copy:hover { background: var(--blue); color: #fff; }
+
+  .share-note {
+    font-size: 12px;
+    color: var(--cream-dim);
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .report-loading {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .report-loading-title {
+    font-size: 16px;
+    color: var(--cream-mid);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    animation: blink 1.4s ease-in-out infinite;
+  }
+
+  .report-loading-sub {
+    font-size: 12.5px;
+    color: var(--cream-dim);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+
+  .loading-dots::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+  }
+
+  @keyframes dots {
+    0%,20%{content:'.'}
+    40%{content:'..'}
+    60%,100%{content:'...'}
+  }
+
+  .intro-how {
+    background: #f4f7fb;
+    border-left: 3px solid #2a6ab8;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .intro-how-title {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: #2a6ab8;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .intro-how-body {
+    font-size: 15px;
+    color: #1a2a3a;
+    line-height: 1.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+
+  .intro-how-meta {
+    font-size: 12px;
+    color: #4a6a8a;
+    letter-spacing: 0.06em;
+  }
+
+  .intro-how-meta span {
+    color: #2a6ab8;
+    margin-right: 4px;
+  }
+
+  .intro-form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a2a3a;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .intro-form-sub {
+    font-size: 12.5px;
+    color: #4a6a8a;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .intro-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .intro-error {
+    font-size: 12.5px;
+    color: #e05a5a;
+    min-height: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .submit-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .submit-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2a3a;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .submit-desc {
+    font-size: 13px;
+    color: #4a6a8a;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .submit-input {
+    width: 100%;
+    max-width: 360px;
+    background: #f4f7fb;
+    border: 1px solid rgba(30,60,120,0.15);
+    color: #1a2a3a;
+    font-family: inherit;
+    font-size: 14.5px;
+    padding: 13px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .submit-input:focus { border-color: #2a6ab8; }
+  .submit-input::placeholder { color: #aabbcc; }
+
+  .submit-notice {
+    font-size: 13px;
+    color: #2a6ab8;
+    letter-spacing: 0.05em;
+    min-height: 20px;
+    text-align: center;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-brand">Deeper Unbranding Salon · 1기</div>
+    <div class="header-progress" id="header-progress"></div>
+  </div>
+
+  <!-- ===== 인트로 ===== -->
+  <div id="screen-intro">
+    <div class="intro-eyebrow">Unbranding Salon · Self Discovery</div>
+    <div class="intro-title">나를 <span>다시 읽는</span> 시간</div>
+    <div class="intro-desc">
+      나를 발견하는 것에서<br>
+      모든 것이 시작됩니다.
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-how">
+      <div class="intro-how-title">디퍼의 생각하는 방식</div>
+      <div class="intro-how-body">
+        각 질문마다 AI가 당신의 답변을 읽고<br>
+        더 깊은 질문을 5번 이어갑니다.<br>
+        나에게로 가는 길, Deeper.<br>
+        깊고 깊은 생각의 길을 따라 걸어가볼까요?
+      </div>
+      <div class="intro-how-meta">
+        <span>·</span> 5개 주제 &nbsp;
+        <span>·</span> 각 주제당 5회 심화 &nbsp;
+        <span>·</span> 완료 후 개인 리포트 생성
+      </div>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-form-label">시작 전, 이름과 이메일을 입력해주세요</div>
+    <div class="intro-form-sub">완성된 리포트는 입력하신 이메일로 전달됩니다.<br>답변과 리포트를 받고 싶으시다면 꼭 <strong>제출하기</strong>를 눌러주세요.</div>
+    <div class="intro-form">
+      <input type="text" id="user-name" placeholder="이름" class="submit-input" />
+      <input type="email" id="user-email" placeholder="이메일 주소" class="submit-input" />
+    </div>
+    <div class="intro-error" id="intro-error"></div>
+    <button class="btn-primary" onclick="startApp()">시작하기</button>
+  </div>
+
+  <!-- ===== 질문 ===== -->
+  <div id="screen-question">
+    <div class="q-eyebrow" id="q-eyebrow"></div>
+    <div class="q-theme" id="q-theme"></div>
+    <div class="depth-bar" id="depth-bar">
+      <div class="depth-seg" id="seg-0"></div>
+      <div class="depth-seg" id="seg-1"></div>
+      <div class="depth-seg" id="seg-2"></div>
+      <div class="depth-seg" id="seg-3"></div>
+      <div class="depth-seg" id="seg-4"></div>
+      <div class="depth-label" id="depth-label"></div>
+    </div>
+    <div class="history" id="history"></div>
+    <div class="q-current">
+      <div class="q-text" id="q-text"></div>
+      <div class="q-sub" id="q-sub"></div>
+    </div>
+    <textarea id="answer" placeholder="여기에 써주세요..."></textarea>
+    <div class="q-footer">
+      <div class="loading-indicator" id="loading">생각하는 중<span class="loading-dots"></span></div>
+      <button class="btn-next" id="btn-next" onclick="submit()">다음 →</button>
+    </div>
+  </div>
+
+  <!-- ===== 리포트 ===== -->
+  <div id="screen-report">
+    <div class="report-top">
+      <div class="report-eyebrow">Unbranding Salon Report</div>
+      <div class="report-title">나를 다시 읽은 기록</div>
+      <div class="report-date" id="report-date"></div>
+    </div>
+    <div id="report-body"></div>
+  </div>
+
+</div>
+
+<script>
+const WORKER_URL = 'https://proxy-server-w0eg.onrender.com';
+
+const DEEPENER_SYSTEM = `당신은 세계적인 전문가 7명(융 심리학, 롤랑 바르트 문학·서사학, 노자 동양철학, 피터 드러커 경영·강점, 세스 고딘 창업·포지셔닝, 파울로 프레이리 비판교육학, 에픽테토스 스토아 철학)의 통찰을 깊이 내면화한 퍼실리테이터입니다. 신뢰받는 컨설턴트처럼 대화합니다.
+
+[공통 지시사항]
+- 이전 대화 흐름을 자연스럽게 이어받을 것
+- 7개 관점 중 이 답변에 가장 잘 맞는 하나를 선택할 것 (이전에 쓴 관점과 겹치지 않게)
+- 답변에서 특정 단어를 그대로 가져와 반복하지 말 것
+- 이 사람이 스스로 더 깊이 들어가고 싶어지게 만들 것
+- 대화하듯 따뜻하게, 그러나 날카롭게
+- 심문·취조·유도 금지
+- "~하지 않았나요?" "~겠죠?" 같은 유도 금지
+- A인지 B인지 선택하게 하는 이분법 질문 금지
+- 심리 분석이 아닌 삶·행동·관계·가능성으로 연결할 것
+- "당신은 ~한 사람이죠?" "~하고 싶은 거죠?" 같은 단정·확인형 질문 금지
+- 상대를 규정하거나 결론 내리지 말 것 — 열어주는 질문만
+- 질문 한 문장만 출력하세요
+- 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`;
+
+const QUESTIONS = [
+  {
+    eyebrow: "주제 1 / 5 · 강점",
+    theme: "내가 강해지는 순간",
+    initial: "당신은 어떤 상황에서 가장 강하다고 느끼나요?",
+    sub: "일이든 관계든, 크든 작든 어떤 맥락이든요.",
+    promptExtra: "강점, 맥락, 조건, 환경, 타인과의 관계 중 이 사람에게 가장 필요한 방향으로 파고들 것"
+  },
+  {
+    eyebrow: "주제 2 / 5 · 불안과 열망",
+    theme: "잠 못 들게 하는 것",
+    initial: "요즘 당신을 잠 못 들게 하는 것이 있나요?",
+    sub: "걱정이든, 설렘이든, 무엇이든요.",
+    promptExtra: "불안과 열망의 경계, 통제할 수 없는 것과 통제할 수 있는 것, 에너지의 방향 중 이 사람에게 가장 필요한 방향으로"
+  },
+  {
+    eyebrow: "주제 3 / 5 · 관계와 영향",
+    theme: "나를 흔드는 사람",
+    initial: "요즘 당신에게 가장 큰 영향을 주는 사람은 누구인가요?",
+    sub: "가깝든 멀든, 긍정적이든 부정적이든요.",
+    promptExtra: "그 영향의 본질, 내가 그 사람에게서 보는 것, 관계가 나에게 드러내는 것 중 이 사람에게 가장 필요한 방향으로"
+  },
+  {
+    eyebrow: "주제 4 / 5 · 동력",
+    theme: "나를 움직이게 하는 것",
+    initial: "어떻게 스스로를 계속 움직이게 하나요?",
+    sub: "특별한 방법이든, 작은 습관이든, 아직 잘 모르겠다면 그것도요.",
+    promptExtra: "내재적 동기와 외재적 동기, 지속가능성, 소진과 회복, 진짜 하고 싶은 것 중 이 사람에게 가장 필요한 방향으로"
+  },
+  {
+    eyebrow: "주제 5 / 5 · 패턴",
+    theme: "반복되는 나의 패턴",
+    initial: "알면서도 반복하게 되는 실수나 패턴이 있나요?",
+    sub: "없다면, 그 이유도 좋아요.",
+    promptExtra: "패턴의 기능, 그것이 지켜주는 것, 변화의 조건, 자기 자신과의 관계 중 이 사람에게 가장 필요한 방향으로"
+  }
+];
+
+function buildPrompt(q, histText, answer) {
+  return `${DEEPENER_SYSTEM}
+
+지금까지의 대화 흐름:
+${histText}
+
+마지막 답변: "${answer}"
+
+[이 주제 특화 지시사항]
+${q.promptExtra}
+
+위 답변 전체의 맥락, 감정, 에너지를 읽고 심화 질문 한 문장을 만드세요.`;
+}
+
+const REPORT_PROMPT = `당신은 깊이 있는 퍼실리테이터입니다. 아래 대화를 읽고 한국어로 작성하세요.
+
+{ALL}
+
+[1]
+이 사람의 강점과 가능성을 담은 종합 의견을 2인칭('당신')으로 400자 내외로 쓰세요. 따뜻하되 날카롭게.
+
+[2]
+이 대화를 관통하는 발견 3가지를 아래 형식으로 정확히 작성하세요:
+당신은 [발견1 내용].
+당신은 [발견2 내용].
+당신은 [발견3 내용].
+
+[3]
+이 사람 전체를 담는 단 한 문장. 시처럼, 이 사람만을 위한 문장.
+
+각 섹션을 [1], [2], [3] 으로 구분하여 출력하세요.`;
+
+const MAX_DEPTH = 5;
+let qIdx = 0;
+let depth = 0;
+let data = QUESTIONS.map(() => ({ history: [] }));
+
+let userName = '';
+let userEmail = '';
+
+function startApp() {
+  const name = document.getElementById('user-name').value.trim();
+  const email = document.getElementById('user-email').value.trim();
+  const err = document.getElementById('intro-error');
+
+  if (!name) { err.textContent = '이름을 입력해주세요.'; return; }
+  if (!email || !email.includes('@')) { err.textContent = '이메일을 정확히 입력해주세요.'; return; }
+
+  userName = name;
+  userEmail = email;
+
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-question').style.display = 'block';
+  render();
+}
+
+function render() {
+  const q = QUESTIONS[qIdx];
+  document.getElementById('header-progress').textContent =
+    `${qIdx + 1} / ${QUESTIONS.length} 주제`;
+  document.getElementById('q-eyebrow').textContent = q.eyebrow;
+  document.getElementById('q-theme').textContent = q.theme;
+
+  for (let i = 0; i < MAX_DEPTH; i++) {
+    const seg = document.getElementById(`seg-${i}`);
+    seg.className = 'depth-seg' +
+      (i < depth ? ' done' : i === depth ? ' active' : '');
+  }
+  document.getElementById('depth-label').textContent =
+    depth === 0 ? '첫 번째 질문' : `${depth + 1}번째 심화`;
+
+  const hist = data[qIdx].history;
+  const currentQ = depth === 0 ? q.initial :
+    (hist.length > 0 ? hist[hist.length - 1].nextQ : q.initial);
+  document.getElementById('q-text').textContent = currentQ;
+  document.getElementById('q-sub').textContent = depth === 0 ? q.sub : '';
+
+  const histEl = document.getElementById('history');
+  histEl.innerHTML = '';
+  hist.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'hist-item fade-in';
+    div.innerHTML = `
+      <div class="hist-q">${item.q}</div>
+      <div class="hist-a">${item.a}</div>
+    `;
+    histEl.appendChild(div);
+  });
+
+  document.getElementById('answer').value = '';
+  document.getElementById('answer').focus();
+  document.getElementById('btn-next').disabled = false;
+  document.getElementById('loading').classList.remove('show');
+}
+
+async function submit() {
+  const answer = document.getElementById('answer').value.trim();
+  if (!answer) return;
+
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('loading').classList.add('show');
+
+  const q = QUESTIONS[qIdx];
+  const hist = data[qIdx].history;
+  const currentQ = depth === 0 ? q.initial :
+    (hist.length > 0 ? hist[hist.length - 1].nextQ : q.initial);
+
+  const entry = { q: currentQ, a: answer, nextQ: null };
+  hist.push(entry);
+  depth++;
+
+  if (depth < MAX_DEPTH) {
+    try {
+      const histText = hist.slice(0, -1)
+        .map((h, i) => `Q${i+1}: ${h.q}\nA${i+1}: ${h.a}`)
+        .join('\n\n') || '(첫 번째 답변)';
+
+      const prompt = buildPrompt(q, histText, answer);
+
+      let json;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              model: 'claude-haiku-4-5-20251001',
+              max_tokens: 1000,
+              messages: [{ role: 'user', content: prompt }]
+            })
+          });
+          json = await res.json();
+          if (json.content) break;
+        } catch(e) {
+          if (attempt === 2) throw e;
+          await new Promise(r => setTimeout(r, 1000));
+        }
+      }
+      entry.nextQ = json.content[0].text.trim();
+    } catch {
+      entry.nextQ = '지금 떠오르는 것 중에 아직 말하지 못한 게 있다면요?';
+    }
+    render();
+  } else {
+    depth = 0;
+    qIdx++;
+    if (qIdx < QUESTIONS.length) {
+      render();
+    } else {
+      await generateReport();
+    }
+  }
+}
+
+async function generateReport() {
+  document.getElementById('screen-question').style.display = 'none';
+  document.getElementById('screen-report').style.display = 'block';
+  document.getElementById('header-progress').textContent = '완료';
+
+  const now = new Date();
+  document.getElementById('report-date').textContent =
+    `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일`;
+
+  document.getElementById('report-body').innerHTML = `
+    <div class="report-loading">
+      <div class="report-loading-title">리포트를 작성하는 중입니다<span class="loading-dots"></span></div>
+      <div class="report-loading-sub">
+        당신의 이야기를 깊이 읽고 있어요<br>
+        조금만 기다려주세요
+      </div>
+    </div>
+  `;
+
+  try {
+    const allText = data.map((d, i) => {
+      const answers = d.history.map((h, j) => `${j+1}. ${h.a}`).join('\n');
+      return `[${QUESTIONS[i].theme}]\n${answers}`;
+    }).join('\n\n');
+
+    let reportJson;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 55000);
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 2000,
+            messages: [{ role: 'user', content: REPORT_PROMPT.replace('{ALL}', allText) }]
+          }),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        reportJson = await res.json();
+        if (reportJson.content) break;
+      } catch(e) {
+        if (attempt === 2) throw e;
+        document.querySelector('.report-loading-title').textContent = `다시 시도하는 중... (${attempt + 2}/3)`;
+        await new Promise(r => setTimeout(r, 2000));
+      }
+    }
+    const raw = reportJson.content[0].text;
+    renderReport(raw);
+  } catch {
+    renderReport('[1]\n리포트 생성 중 오류가 발생했습니다.\n[2]\n당신의 이야기가 여기 있습니다.\n당신의 답변은 모두 저장되어 있습니다.\n다시 시도해주세요.\n[3]\n당신의 이야기는 여기 있습니다.');
+  }
+}
+
+function renderReport(raw) {
+  const sec1 = (raw.match(/\[1\]([\s\S]*?)(?=\[2\]|$)/) || ['',''])[1].trim();
+  const sec2 = (raw.match(/\[2\]([\s\S]*?)(?=\[3\]|$)/) || ['',''])[1].trim();
+  const sec3 = (raw.match(/\[3\]([\s\S]*?)$/) || ['',''])[1].trim();
+
+  let discoveries = [];
+  const byLine = sec2.split('\n').map(l => l.replace(/^[·•\-\d\.]+\s*/, '').trim()).filter(l => l.length > 5);
+  const dangshin = byLine.filter(l => l.includes('당신은'));
+  if (dangshin.length >= 2) {
+    discoveries = dangshin.slice(0, 3);
+  } else {
+    discoveries = byLine.slice(0, 3);
+  }
+
+  let html = `
+    <div class="report-section-1 fade-in">
+      <div class="section-label">
+        <div class="section-num">I</div>
+        <div class="section-title">종합 의견</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="synthesis-body">${sec1.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>
+    </div>
+
+    <div class="report-section-2 fade-in">
+      <div class="section-label">
+        <div class="section-num">II</div>
+        <div class="section-title">세 가지 발견</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="discoveries">
+        ${discoveries.map((d, i) => `
+          <div class="discovery-item">
+            <div class="discovery-num">Discovery ${['One','Two','Three'][i] || i+1}</div>
+            <div class="discovery-text">${d}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="report-section-3 fade-in">
+      <div class="section-label">
+        <div class="section-num">III</div>
+        <div class="section-title">당신을 관통하는 한 문장</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="one-sentence">
+        <div class="one-sentence-text">${sec3}</div>
+      </div>
+    </div>
+
+    <div class="report-actions fade-in">
+      <div class="submit-form">
+        <div class="submit-label">리포트가 완성됐습니다</div>
+        <div class="submit-desc">완성된 리포트는 입력하신 이메일로 전달됩니다.<br>답변과 리포트를 받고 싶으시다면 꼭 <strong>제출하기</strong>를 눌러주세요.</div>
+        <button class="btn-copy" id="btn-submit-report" onclick="submitReport()">제출하기</button>
+        <div class="submit-notice" id="submit-notice"></div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('report-body').innerHTML = html;
+}
+
+async function submitReport() {
+  const name = userName;
+  const email = userEmail;
+  const notice = document.getElementById('submit-notice');
+
+  const btn = document.getElementById('btn-submit-report');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  notice.textContent = '';
+
+  let reportText = `디퍼 언브랜딩살롱 1기 — 셀프 디스커버리 리포트\n`;
+  reportText += `이름: ${name}\n이메일: ${email}\n`;
+  reportText += `날짜: ${new Date().toLocaleDateString('ko-KR')}\n\n`;
+  reportText += '━━━━━━━━━━━━━━━━━━━━\n\n';
+
+  data.forEach((d, i) => {
+    reportText += `【${QUESTIONS[i].theme}】\n`;
+    d.history.forEach(h => {
+      reportText += `Q: ${h.q}\nA: ${h.a}\n\n`;
+    });
+  });
+
+  const synthesis = document.querySelector('.synthesis-body');
+  const oneSentence = document.querySelector('.one-sentence-text');
+  const discoveryItems = document.querySelectorAll('.discovery-text');
+  if (synthesis) reportText += `\n━━ 종합 의견 ━━\n${synthesis.innerText}\n`;
+  if (discoveryItems.length > 0) {
+    reportText += `\n━━ 세 가지 발견 ━━\n`;
+    discoveryItems.forEach((d, i) => {
+      reportText += `${i+1}. ${d.innerText}\n`;
+    });
+  }
+  if (oneSentence) reportText += `\n━━ 한 문장 ━━\n${oneSentence.innerText}\n`;
+
+  try {
+    await emailjs.send('service_e0ztr5h', 'template_k8ym7cn', {
+      from_name: name,
+      from_email: email,
+      report_content: reportText,
+      to_email: email
+    });
+
+    btn.textContent = '제출 완료 ✓';
+    notice.textContent = '리포트가 전달됐습니다. 오리엔테이션에서 만나요.';
+    notice.style.color = '#2a8a5a';
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = '제출하기';
+    notice.textContent = '전송에 실패했습니다. 다시 시도해주세요.';
+    notice.style.color = '#e05a5a';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey &&
+    document.getElementById('screen-question').style.display !== 'none' &&
+    document.activeElement === document.getElementById('answer')) {
+    e.preventDefault();
+    submit();
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init('85eWmLUZtPn3nQX1w');
+</script>
+
+</body>
+</html>
