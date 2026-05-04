@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이경선 — 디퍼 살롱 리더 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #100f18;
+    --surface: #1a1826;
+    --surf2: #221f32;
+    --gold: #c9a96e;
+    --gold-dim: rgba(201,169,110,0.18);
+    --gold-faint: rgba(201,169,110,0.07);
+    --copper: #b87a5a;
+    --copper-dim: rgba(184,122,90,0.2);
+    --copper-faint: rgba(184,122,90,0.08);
+    --green: #4d6e7a;
+    --green-bright: #7ab4c9;
+    --text: #f0ebe0;
+    --muted: rgba(240,235,224,0.42);
+    --warn: #e8a060;
+    --info: #7ab4c9;
+    --info-dim: rgba(122,180,201,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Serif KR', serif; font-weight: 300; line-height: 1.9; font-size: 15px; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+
+  /* 커버 */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 24px; background: radial-gradient(ellipse at 50% 35%, #2a1f3a 0%, var(--bg) 65%); position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 75% 25%, rgba(184,122,90,0.05) 0%, transparent 50%); }
+  .cover-badge { display: inline-block; background: var(--copper-faint); border: 1px solid var(--copper-dim); border-radius: 24px; padding: 6px 18px; font-size: 11px; letter-spacing: 3px; color: var(--copper); text-transform: uppercase; margin-bottom: 24px; }
+  .cover h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 5vw, 46px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 12px; }
+  .cover h1 em { font-style: italic; color: var(--gold); }
+  .cover-sub { font-size: 12px; color: var(--muted); letter-spacing: 2px; margin-bottom: 36px; }
+  .cover-desc { max-width: 500px; font-size: 14.5px; color: rgba(240,235,224,0.6); line-height: 2.1; margin-bottom: 44px; font-style: italic; }
+  .cover-nav { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+  .cover-nav a { padding: 9px 20px; border: 1px solid var(--copper-dim); border-radius: 24px; font-size: 12px; letter-spacing: 1px; color: var(--copper); background: var(--copper-faint); transition: all 0.2s; text-decoration: none; border-bottom: 1px solid var(--copper-dim); }
+  .cover-nav a:hover { background: rgba(184,122,90,0.15); border-color: var(--copper); }
+
+  /* 레이아웃 */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 68px 0 56px; border-bottom: 1px solid rgba(184,122,90,0.08); }
+  section:last-of-type { border-bottom: none; }
+
+  /* 타이포 */
+  .sec-label { font-size: 9px; letter-spacing: 4px; color: var(--copper); text-transform: uppercase; opacity: 0.7; margin-bottom: 10px; font-family: 'Noto Sans KR', sans-serif; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(20px, 3.5vw, 30px); font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 8px; }
+  .sec-intro { font-size: 13.5px; color: var(--muted); font-style: italic; margin-bottom: 32px; border-left: 2px solid var(--copper-dim); padding-left: 16px; line-height: 1.9; }
+  h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 17px; font-weight: 600; color: var(--gold); margin: 32px 0 14px; }
+  h4 { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-weight: 400; margin: 24px 0 10px; font-family: 'Noto Sans KR', sans-serif; }
+  p { margin-bottom: 14px; color: rgba(240,235,224,0.78); line-height: 1.9; }
+
+  /* 콜아웃 */
+  .callout { border-radius: 10px; padding: 15px 18px; margin: 18px 0; font-size: 13.5px; line-height: 1.85; }
+  .callout.gold { background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.2); border-left: 3px solid var(--gold); color: rgba(240,235,224,0.75); }
+  .callout.copper { background: var(--copper-faint); border: 1px solid var(--copper-dim); border-left: 3px solid var(--copper); color: rgba(240,235,224,0.75); }
+  .callout.warn { background: rgba(232,160,96,0.07); border: 1px solid rgba(232,160,96,0.2); border-left: 3px solid var(--warn); color: rgba(240,235,224,0.75); }
+  .callout.info { background: var(--info-dim); border: 1px solid rgba(122,180,201,0.2); border-left: 3px solid var(--info); color: rgba(240,235,224,0.75); }
+  .callout strong { color: var(--gold); }
+  .callout.copper strong { color: var(--copper); }
+  .callout.info strong { color: var(--info); }
+
+  /* 스텝 */
+  .steps { list-style: none; counter-reset: step; }
+  .steps > li { counter-increment: step; display: grid; grid-template-columns: 38px 1fr; gap: 0 15px; margin-bottom: 26px; align-items: start; }
+  .steps > li::before { content: counter(step); width: 34px; height: 34px; background: var(--copper-faint); border: 1px solid var(--copper-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', Georgia, serif; font-size: 13px; color: var(--copper); flex-shrink: 0; margin-top: 3px; }
+  .step-body strong { display: block; font-weight: 600; color: var(--text); margin-bottom: 6px; font-size: 15px; }
+  .step-body p { font-size: 13.5px; color: var(--muted); line-height: 1.85; margin-bottom: 8px; }
+  .why { font-size: 12px; color: rgba(122,180,201,0.75); font-style: italic; margin: 6px 0; background: var(--info-dim); padding: 6px 11px; border-radius: 6px; }
+
+  /* 코드 */
+  .code-block { background: rgba(0,0,0,0.45); border: 1px solid rgba(184,122,90,0.12); border-radius: 8px; padding: 14px 16px; font-family: 'Courier New', monospace; font-size: 12.5px; color: var(--green-bright); margin: 10px 0; white-space: pre; overflow-x: auto; line-height: 1.8; }
+  .code-block .comment { color: rgba(201,169,110,0.3); }
+  .code-block .dir { color: var(--gold); }
+  .code-block .hl { color: #f0d090; }
+  code { font-family: 'Courier New', monospace; background: rgba(0,0,0,0.3); padding: 2px 7px; border-radius: 4px; font-size: 12px; color: var(--green-bright); }
+
+  /* 카드 */
+  .card { background: var(--surface); border: 1px solid var(--copper-dim); border-radius: 14px; padding: 20px 22px; margin-bottom: 12px; }
+  .card-title { font-family: 'Playfair Display', Georgia, serif; font-size: 15.5px; color: var(--text); margin-bottom: 6px; }
+  .card-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+
+  /* 체크리스트 */
+  .checklist { list-style: none; }
+  .checklist li { padding: 9px 0 9px 22px; border-bottom: 1px solid rgba(240,235,224,0.05); font-size: 13.5px; color: rgba(240,235,224,0.72); position: relative; line-height: 1.75; }
+  .checklist li::before { content: '◇'; position: absolute; left: 0; color: var(--copper); font-size: 10px; top: 12px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li .note { font-size: 11.5px; color: var(--muted); font-style: italic; display: block; margin-top: 3px; }
+
+  /* 그리드 */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* 역할 배지 */
+  .role-tag { display: inline-block; border-radius: 20px; padding: 3px 11px; font-size: 11px; margin: 2px; }
+  .role-tag.leader { background: var(--copper-faint); border: 1px solid var(--copper-dim); color: var(--copper); }
+  .role-tag.both { background: rgba(201,169,110,0.07); border: 1px solid var(--gold-dim); color: var(--gold); }
+  .role-tag.system { background: var(--info-dim); border: 1px solid rgba(122,180,201,0.2); color: var(--info); }
+
+  /* 프롬프트 */
+  .prompt-block { background: rgba(0,0,0,0.35); border: 1px solid rgba(122,180,201,0.2); border-left: 3px solid var(--info); border-radius: 10px; padding: 15px 17px; margin: 12px 0; font-size: 13px; color: rgba(240,235,224,0.8); line-height: 1.85; white-space: pre-wrap; font-family: 'Noto Serif KR', serif; }
+  .prompt-label { font-size: 10px; letter-spacing: 2px; color: var(--info); text-transform: uppercase; margin-bottom: 7px; font-family: 'Noto Sans KR', sans-serif; }
+
+  /* 주간 일정 */
+  .week-row { display: grid; grid-template-columns: 80px 1fr; gap: 0 18px; margin-bottom: 20px; align-items: start; }
+  .week-day { font-size: 12px; color: var(--copper); text-align: right; padding-top: 3px; font-family: 'Playfair Display', Georgia, serif; opacity: 0.8; }
+  .week-body { border-left: 1px solid var(--copper-dim); padding-left: 18px; }
+  .week-title { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; color: var(--text); margin-bottom: 5px; }
+  .week-desc { font-size: 12.5px; color: var(--muted); line-height: 1.75; }
+
+  /* 멤버 그리드 */
+  .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin: 16px 0; }
+  .member-card { background: var(--surface); border: 1px solid var(--copper-dim); border-radius: 10px; padding: 12px 8px; text-align: center; }
+  .member-name { font-family: 'Playfair Display', Georgia, serif; font-size: 13px; color: var(--gold); margin-bottom: 4px; }
+  .member-note { font-size: 10px; color: var(--muted); line-height: 1.5; }
+
+  hr.divider { border: none; border-top: 1px solid rgba(184,122,90,0.1); margin: 36px 0; }
+  [id] { scroll-margin-top: 24px; }
+
+  footer { text-align: center; padding: 44px 24px; font-size: 11px; letter-spacing: 2px; color: var(--muted); border-top: 1px solid rgba(184,122,90,0.1); }
+</style>
+</head>
+<body>
+
+<!-- 커버 -->
+<div class="cover">
+  <div class="cover-badge">Leader Edition · Private</div>
+  <h1>이경선의<br><em>디퍼 살롱 운영 가이드</em></h1>
+  <div class="cover-sub">허브이자 실천자 · 2026 Spring–Summer</div>
+  <p class="cover-desc">
+    멤버 가이드를 쓴 사람이<br>
+    아직 아무것도 세팅 안 한 상태.<br>
+    지금 바로 시작합니다.
+  </p>
+  <div class="cover-nav">
+    <a href="#difference">나는 뭐가 다른가</a>
+    <a href="#today">지금 당장</a>
+    <a href="#vault">내 Vault 구조</a>
+    <a href="#claude-pro">Claude Pro 설정</a>
+    <a href="#session-prep">세션 준비 루틴</a>
+    <a href="#member-system">멤버 관찰 시스템</a>
+    <a href="#daily">나의 매일 실천</a>
+    <a href="#macmini">맥미니 전환 계획</a>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  0. 나는 뭐가 다른가                       -->
+<!-- ══════════════════════════════════════════ -->
+<section id="difference">
+  <div class="container">
+    <div class="sec-label">Your Role</div>
+    <h2>멤버 가이드와<br>무엇이 다른가</h2>
+    <p class="sec-intro">멤버들은 자신을 해체하고 쌓는 것이 전부입니다. 경선 씨는 그것과 동시에 7명의 흐름을 보고, 세션을 만들고, 살롱 전체를 하나의 시스템으로 작동시켜야 합니다.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">멤버의 역할</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>매일 질문 탐구</li>
+          <li>Obsidian에 원천 데이터 축적</li>
+          <li>세션 참여 + 인사이트 공유회</li>
+          <li>원천 텍스트 완성</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--copper-dim);">
+        <div class="card-title" style="color:var(--copper);">리더의 역할 (추가)</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>동일한 일간 실천 — 나도 쓴다</li>
+          <li>7명의 흐름 관찰 + 패턴 파악</li>
+          <li>세션 준비 + 인사이트 공유회 진행</li>
+          <li>살롱 시스템 유지·보수</li>
+          <li>살롱에서 나오는 것 → 내 콘텐츠로</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout copper">
+      <strong>핵심 원칙:</strong> 경선 씨가 실천하지 않으면 세션에서 말할 것이 없습니다. 리더의 가장 중요한 준비는 멤버와 같은 질문을 먼저 깊이 파고드는 것입니다. 시스템 관리는 그 다음입니다.
+    </div>
+
+    <h3>멤버 가이드와 다른 점 요약</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:10px 14px;font-size:10px;letter-spacing:2px;color:var(--copper);text-transform:uppercase;border-bottom:1px solid var(--copper-dim);font-weight:400;">항목</th>
+          <th style="text-align:left;padding:10px 14px;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--copper-dim);font-weight:400;">멤버</th>
+          <th style="text-align:left;padding:10px 14px;font-size:10px;letter-spacing:2px;color:var(--copper);text-transform:uppercase;border-bottom:1px solid var(--copper-dim);font-weight:400;">경선 씨</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">Claude 플랜</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:var(--muted);">무료</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">Pro → 필요시 Max 전환</td></tr>
+        <tr><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">나 소개 카드</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:var(--muted);">매번 붙여넣기</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">Projects 설정 → 자동 기억</td></tr>
+        <tr><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">Vault 구조</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:var(--muted);">개인 실천 폴더</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">개인 실천 + SALON 운영 폴더</td></tr>
+        <tr><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">Obsidian 용도</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:var(--muted);">자기 탐구만</td><td style="padding:11px 14px;border-bottom:1px solid rgba(240,235,224,0.05);color:rgba(240,235,224,0.72);">탐구 + 멤버 관찰 + 세션 준비</td></tr>
+        <tr><td style="padding:11px 14px;color:rgba(240,235,224,0.72);">기기</td><td style="padding:11px 14px;color:var(--muted);">PC 중심</td><td style="padding:11px 14px;color:rgba(240,235,224,0.72);">윈도우 → 맥미니 전환 계획</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  1. 지금 당장                              -->
+<!-- ══════════════════════════════════════════ -->
+<section id="today">
+  <div class="container">
+    <div class="sec-label">Right Now</div>
+    <h2>지금 당장 할 것</h2>
+    <p class="sec-intro">윈도우 노트북에서 시작합니다. 순서대로 하면 오늘 안에 완료됩니다.</p>
+
+    <div class="callout warn">
+      <strong>멤버 가이드와 겹치는 부분은 빠르게:</strong> Obsidian 설치, OneDrive 폴더 생성, 폴더 구조 만들기 — 방법은 멤버 가이드와 동일합니다. 여기서는 경선 씨에게만 다른 부분을 상세히 설명합니다.
+    </div>
+
+    <h3>STEP 1 — Obsidian 설치 + OneDrive 연결</h3>
+    <p>멤버 가이드 STEP 0~2와 동일합니다. 다만 폴더 이름을 아래처럼 잡으세요.</p>
+    <div class="code-block">OneDrive/
+└── <span class="dir">Deeper Salon Leader/</span>    <span class="comment">← 이 이름으로 만들기 (멤버와 구분)</span>
+    └── <span class="dir">deeper-leader/</span>       <span class="comment">← Vault 이름</span></div>
+
+    <div class="callout info">
+      <strong>왜 멤버 Vault와 분리하는가:</strong> 나중에 멤버들이 Vault를 공유하거나 비교할 일이 생길 수 있습니다. 리더의 멤버 관찰 노트와 개인 탐구 노트가 뒤섞이지 않도록 처음부터 분리합니다.
+    </div>
+
+    <h3>STEP 2 — 리더 전용 폴더 구조 만들기</h3>
+    <p>멤버 구조 위에 <strong>SALON</strong> 폴더를 추가합니다.</p>
+    <div class="code-block"><span class="dir">deeper-leader/</span>
+│
+├── <span class="dir">00-Daily/</span>                <span class="comment">← 나의 일간 노트 (멤버와 동일)</span>
+├── <span class="dir">01-Grammar/</span>               <span class="comment">← 나의 5월 해체 데이터</span>
+│   ├── <span class="dir">Questions/</span>
+│   ├── <span class="dir">Raw-Text/</span>
+│   └── <span class="dir">Insights/</span>
+├── <span class="dir">02-Logic/</span>                 <span class="comment">← 나의 6월 구조 설계</span>
+├── <span class="dir">03-Rhetoric/</span>              <span class="comment">← 나의 7월 발화</span>
+├── <span class="dir">Templates/</span>               <span class="comment">← 템플릿 보관</span>
+│
+├── <span class="dir">SALON/</span>                    <span class="comment">← 리더 전용 운영 폴더</span>
+│   ├── <span class="dir">Sessions/</span>            <span class="comment">← 세션별 준비·진행·후기</span>
+│   ├── <span class="dir">Members/</span>             <span class="comment">← 멤버 7명 관찰 노트</span>
+│   ├── <span class="dir">Group-Insights/</span>      <span class="comment">← 그룹 전체에서 보이는 패턴</span>
+│   └── <span class="dir">Curriculum/</span>          <span class="comment">← 커리큘럼 업데이트·메모</span>
+│
+└── <span class="dir">CONTENT/</span>                  <span class="comment">← 살롱에서 나온 것 → 내 콘텐츠로</span>
+    └── <span class="dir">Ideas/</span></div>
+
+    <h3>STEP 3 — 플러그인 설치</h3>
+    <p>멤버 가이드와 동일하게 Templater + Daily Notes + Dataview 3개 설치. 설치 방법은 멤버 가이드 STEP 4 참조.</p>
+    <p>추가로 하나 더:</p>
+    <div class="card">
+      <div class="card-title">+ Calendar 플러그인</div>
+      <div class="card-sub">리더에게 권장 추가 플러그인</div>
+      <ul class="checklist" style="margin-top:10px;">
+        <li>Community plugins → "Calendar" 검색 → 설치 → 활성화
+          <span class="note">왼쪽 사이드바에 달력이 생깁니다. 날짜를 클릭하면 그날 Daily Note로 바로 이동합니다. 세션 날짜 전후를 빠르게 오갈 때 유용합니다.</span>
+        </li>
+      </ul>
+    </div>
+
+    <h3>STEP 4 — Daily Note 템플릿 만들기</h3>
+    <p>Templates 폴더에 <code>Daily-Template.md</code> 파일 생성 후 아래 내용을 붙여넣기. 멤버 템플릿에 리더 섹션이 추가됩니다.</p>
+    <div class="code-block">---
+date: <span class="hl">&lt;% tp.date.now("YYYY-MM-DD") %&gt;</span>
+week: <span class="hl">&lt;% tp.date.now("W") %&gt;</span>
+type: daily
+role: leader
+---
+
+# <span class="hl">&lt;% tp.date.now("MM월 DD일 (ddd)") %&gt;</span>
+
+## 오늘의 질문
+&gt; 
+
+## 모닝페이지 메모
+
+## 오늘의 키씬
+- [ ] 
+
+## Claude와 탐구한 것
+
+## 오늘 발견한 것
+
+## 감사 + 비전
+- 감사:
+- 비전:
+
+---
+## 리더 시선 (선택)
+(멤버들에게서 보이는 것, 세션 준비 메모, 살롱에서 떠오른 것)</div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Daily Notes 설정 → Template file location에 <code>Templates/Daily-Template</code> 입력. Templater 설정 → Template folder location에 <code>Templates</code> 입력.</p>
+
+    <h3>STEP 5 — 멤버 관찰 노트 파일 7개 만들기</h3>
+    <p><code>SALON/Members/</code> 폴더 안에 멤버 닉네임으로 파일 7개를 만듭니다.</p>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-name">솔담.md</div></div>
+      <div class="member-card"><div class="member-name">햇살.md</div></div>
+      <div class="member-card"><div class="member-name">스윗워러.md</div></div>
+      <div class="member-card"><div class="member-name">야간비행.md</div></div>
+      <div class="member-card"><div class="member-name">헤더.md</div></div>
+      <div class="member-card"><div class="member-name">단무지.md</div></div>
+      <div class="member-card"><div class="member-name">퍼핀.md</div></div>
+    </div>
+    <p>각 파일에 아래 템플릿 붙여넣기:</p>
+    <div class="code-block">---
+name: [닉네임]
+type: member-note
+---
+
+## 첫인상 + 참여 이유
+
+## 주요 키워드 (쌓이는 순서대로)
+
+## 세션에서 말한 것 중 기억에 남는 것
+
+## 아직 꺼내지 못한 것 같은 것
+
+## 내 관찰</div>
+
+    <h3>STEP 6 — 오늘 밤: 나의 첫 질문</h3>
+    <div class="callout gold">
+      Daily Note를 열고 오늘 질문을 씁니다. 멤버들과 같은 질문입니다.
+      <br><br>
+      <strong style="font-size:16px;">"내가 가장 가슴 뛰었던 일은 무엇이고, 그 이유는?"</strong>
+      <br><br>
+      <span style="font-size:12.5px;opacity:0.75;">경선 씨가 이 질문을 먼저, 그리고 깊이 파고들수록 5/7 세션이 달라집니다.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  2. Claude Pro Projects 설정               -->
+<!-- ══════════════════════════════════════════ -->
+<section id="claude-pro">
+  <div class="container">
+    <div class="sec-label">Claude Pro</div>
+    <h2>Claude Pro로 하는<br>리더 세팅</h2>
+    <p class="sec-intro">멤버들은 새 대화마다 나 소개 카드를 붙여넣습니다. 경선 씨는 Projects를 써서 이 과정을 건너뜁니다. 그리고 리더 전용 프로젝트 2개를 만듭니다.</p>
+
+    <h3>Projects 만들기</h3>
+    <div class="callout info">
+      <strong>Projects 경로:</strong> claude.ai 왼쪽 사이드바 → "Projects" → "+ New project"
+    </div>
+
+    <div class="card">
+      <div class="card-title">프로젝트 ① — 나의 탐구</div>
+      <div class="card-sub">내 일간 질문 탐구, 원천 텍스트 발굴 전용</div>
+      <p style="font-size:13px;color:var(--muted);">프로젝트 이름: <code>디퍼 - 나의 탐구</code></p>
+      <p style="font-size:13px;color:var(--muted);">Project instructions에 아래를 붙여넣기:</p>
+      <div class="prompt-block">나는 이경선이야. '디퍼 언브랜딩살롱'을 운영하는 리더이자, 동시에 같은 여정을 걷는 실천자야.
+Trivium(문법→논리→수사) × AI를 통해 나만의 원천 텍스트를 발굴하고,
+지속 가능한 콘텐츠 비즈니스 구조를 만드는 3개월이 목표야.
+
+지금은 5월 — Grammar 단계. 매일 질문 하나를 깊이 탐구하는 중이야.
+내 탐구를 도울 때는: 정답보다 더 깊은 질문으로 이끌어줘.
+내 글을 분석할 때는: 나만의 언어 패턴, 반복되는 주제를 찾아줘.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">프로젝트 ② — 살롱 운영</div>
+      <div class="card-sub">세션 준비, 커리큘럼, 멤버 파악, 운영 전반</div>
+      <p style="font-size:13px;color:var(--muted);">프로젝트 이름: <code>디퍼 - 살롱 운영</code></p>
+      <p style="font-size:13px;color:var(--muted);">Project instructions에 아래를 붙여넣기:</p>
+      <div class="prompt-block">나는 '디퍼 언브랜딩살롱 1기'를 운영하는 이경선이야.
+참여자 7명: 솔담, 햇살, 스윗워러, 야간비행, 헤더, 단무지, 퍼핀.
+세션: 매주 목요일 밤 10시 줌. 각 세션 안에 인사이트 공유회 포함.
+커리큘럼: Trivium — 5월(문법/해체), 6월(논리/구조), 7월(수사/발화).
+
+살롱 운영 관련 도움을 요청할 때는:
+- 세션 준비, 인사이트 공유회 진행, 멤버 파악 등에 집중해줘.
+- 살롱 전체에서 보이는 패턴이나 방향을 짚어줄 때 솔직하게 말해줘.</div>
+    </div>
+
+    <h3>Max 플랜, 언제 올라갈까</h3>
+    <p>지금 Pro로 충분합니다. 아래 신호가 오면 Max 전환을 고려하세요.</p>
+    <ul class="checklist">
+      <li>세션 준비와 나의 탐구를 같은 날 집중적으로 쓰는데 메시지 한도에 걸릴 때</li>
+      <li>6월 이후 — Claude에게 멤버 노트 여러 개를 한번에 분석 요청하는 작업이 늘어날 때</li>
+      <li>콘텐츠 생산 루틴이 잡혀서 Claude를 하루 10회 이상 집중적으로 쓰게 될 때</li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--muted);">Max = Pro보다 5배 많은 메시지 한도 + 더 긴 컨텍스트. 월 $100. 지금 당장은 Pro로 충분합니다.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  3. 세션 준비 루틴                          -->
+<!-- ══════════════════════════════════════════ -->
+<section id="session-prep">
+  <div class="container">
+    <div class="sec-label">Session</div>
+    <h2>매주 목요일<br>세션 준비 루틴</h2>
+    <p class="sec-intro">세션은 즉흥으로 잘 되지 않습니다. 수요일 1시간이 목요일 2시간을 만듭니다.</p>
+
+    <h3>수요일 저녁 — 세션 준비 (1시간)</h3>
+    <div class="code-block"><span class="dir">SALON/Sessions/</span> 안에 새 파일 생성
+파일명 예시: 2026-05-07_SESSION01.md</div>
+
+    <p>아래 내용으로 채웁니다:</p>
+    <div class="code-block">---
+session: 01
+date: 2026-05-07
+theme: 원천 텍스트
+---
+
+## 이번 세션 핵심 질문
+(내가 멤버들에게 던질 가장 중요한 질문 하나)
+
+## 내가 이번 주 탐구에서 발견한 것
+(경선 씨 본인 실천 결과 — 이것이 세션을 살립니다)
+
+## 인사이트 공유회 진행 구조
+- 시작: 
+- 공유 순서: 
+- 마무리 질문: 
+
+## 예상되는 막힘/어려움
+
+## 준비물·링크</div>
+
+    <h3>세션 준비에 Claude 쓰는 법</h3>
+    <p>"살롱 운영" 프로젝트에서:</p>
+    <div class="prompt-label">세션 준비 프롬프트</div>
+    <div class="prompt-block">다음 주 목요일 SESSION 01 주제는 '원천 텍스트'야.
+커리큘럼: [내용 붙여넣기]
+
+이번 주 내가 탐구에서 발견한 것: [내 Daily Note에서 주요 발견 붙여넣기]
+
+인사이트 공유회에서 멤버들이 각자 꺼낼 수 있도록 돕는
+가장 좋은 시작 질문 3개를 제안해줘.
+단, 정답이 있는 질문이 아니라 각자의 이야기를 끌어낼 수 있는 것으로.</div>
+
+    <h3>목요일 밤 — 세션 진행 중</h3>
+    <ul class="checklist">
+      <li>Obsidian 세션 노트 파일 열어두기</li>
+      <li>각 멤버가 공유하는 내용 중 기억에 남는 것 한 줄씩 메모
+        <span class="note">나중에 멤버 관찰 노트에 옮깁니다</span>
+      </li>
+      <li>그룹 전체에서 반복되는 키워드 체크</li>
+      <li>다음 세션 힌트가 될 만한 것 메모</li>
+    </ul>
+
+    <h3>세션 후 48시간 안에</h3>
+    <ul class="checklist">
+      <li>각 멤버 관찰 노트에 이번 세션 내용 추가</li>
+      <li>Group-Insights 파일에 이번 세션 그룹 패턴 한 단락</li>
+      <li>나 자신의 세션 후기 Daily Note에 기록</li>
+      <li>다음 세션 파일 미리 생성 (제목만)</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  4. 멤버 관찰 시스템                        -->
+<!-- ══════════════════════════════════════════ -->
+<section id="member-system">
+  <div class="container">
+    <div class="sec-label">Member System</div>
+    <h2>7명을 보는 법</h2>
+    <p class="sec-intro">멤버를 관리하는 것이 아니라 관찰합니다. 각자의 패턴이 보이기 시작할 때 리더로서의 질문이 달라집니다.</p>
+
+    <h3>매주 주말 — 멤버 관찰 리뷰 (20분)</h3>
+    <p>7명의 파일을 순서대로 열어 아래 질문을 스스로에게 던집니다. Claude에게 물어봐도 됩니다.</p>
+    <ul class="checklist">
+      <li>이번 주 세션에서 이 멤버가 말한 것 중 가장 기억에 남는 것은?</li>
+      <li>이 멤버가 아직 꺼내지 못하고 있는 것이 보이는가?</li>
+      <li>이 멤버의 강점이 서서히 드러나고 있다면, 그것은 무엇인가?</li>
+    </ul>
+
+    <div class="callout info">
+      <strong>Claude에게 멤버 파악 요청하는 법:</strong> "살롱 운영" 프로젝트에서 특정 멤버의 세션 발언들을 붙여넣고 "이 사람이 아직 말하지 못하고 있는 것, 그리고 강점으로 보이는 것을 짚어줘" 라고 요청합니다.
+    </div>
+
+    <h3>그룹 패턴 — 월 1회 통합 리뷰</h3>
+    <p>매월 마지막 주말, Group-Insights 파일을 열어 한 달치 패턴을 정리합니다.</p>
+    <div class="prompt-label">그룹 패턴 분석 프롬프트</div>
+    <div class="prompt-block">이번 달 디퍼살롱 세션 4회 동안 멤버들의 주요 발언과 인사이트야:
+
+[SESSION 01 주요 발언들]
+[SESSION 02 주요 발언들]
+
+전체 그룹에서:
+1. 반복적으로 등장하는 주제나 키워드
+2. 아직 아무도 건드리지 않은 영역
+3. 다음 달 세션에서 다루면 좋을 방향
+을 짚어줘.</div>
+
+    <h3>디퍼 트래커 앱 관리</h3>
+    <p>트래커 앱은 이미 Supabase에 연결돼 있습니다. 별도 조작 없이 멤버들이 자율적으로 씁니다. 경선 씨가 할 것은:</p>
+    <ul class="checklist">
+      <li>주 1회 Supabase 대시보드에서 전체 XP 현황 확인 (weekly_rankings 테이블)</li>
+      <li>특정 멤버가 며칠째 기록이 없다면 세션에서 자연스럽게 체크인</li>
+      <li>트래커 오류 발생 시 — 대화창에서 알려주시면 바로 수정합니다</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  5. 나의 매일 실천                          -->
+<!-- ══════════════════════════════════════════ -->
+<section id="daily">
+  <div class="container">
+    <div class="sec-label">Your Practice</div>
+    <h2>경선 씨의 매일</h2>
+    <p class="sec-intro">살롱을 운영하면서 자신의 실천이 흐려지기 쉽습니다. 멤버와 같은 질문을 먼저 파고드는 것이 가장 중요한 준비입니다.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">아침 · 15-20분</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>모닝페이지 1-3p</li>
+          <li>오늘의 질문 → Daily Note에 적기</li>
+          <li>오늘의 키씬 선언</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">낮 · 10-15분</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>"나의 탐구" 프로젝트에서 질문 탐구</li>
+          <li>아이디어·막힘 Claude와 풀기</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">저녁 · 10분</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>Claude 탐구 인사이트 Obsidian 저장</li>
+          <li>오늘 발견한 것 한 줄</li>
+          <li>감사 + 비전 기록</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--copper-dim);">
+        <div class="card-title" style="color:var(--copper);">수요일 저녁 · 1시간</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>이번 주 Daily Note 복기</li>
+          <li>세션 준비 파일 완성</li>
+          <li>인사이트 공유회 구조 잡기</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3>5월 질문 — 경선 씨도 동일하게</h3>
+    <p>멤버들과 같은 질문을 씁니다. 단, 리더 시선이 자연스럽게 얹힙니다.</p>
+    <div class="callout copper">
+      <strong>리더가 먼저 쓰면:</strong> 세션에서 "저는 이 질문에서 이런 게 걸렸어요"라고 먼저 말할 수 있습니다. 이 한 마디가 멤버들이 입을 여는 가장 빠른 방법입니다.
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);">5월 질문 전체 목록은 <a href="https://clbookslower.github.io/deeper-salon/deeper_operation_guide.html#daily" target="_blank">멤버 가이드 매일 루틴 섹션</a>에 있습니다. 동일하게 따라갑니다.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  6. 아이패드·아이폰 활용                    -->
+<!-- ══════════════════════════════════════════ -->
+<section id="mobile">
+  <div class="container">
+    <div class="sec-label">Mobile</div>
+    <h2>아이패드·아이폰<br>어떻게 쓰는가</h2>
+    <p class="sec-intro">이동 중에는 Claude 앱이 주력입니다. Obsidian은 보조 역할로.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">아이패드</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>Claude 앱 — Projects 접근 가능. 세션 중 메모, 탐구에 씀</li>
+          <li>Obsidian 앱 — iCloud 기반. 노트 열람·가벼운 메모용
+            <span class="note">세션 중 멤버 발언 메모 → 저녁에 PC Obsidian으로 옮기기</span>
+          </li>
+          <li>세션 당일: 아이패드로 Zoom 참여하면서 메모도 가능</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">아이폰</div>
+        <ul class="checklist" style="margin-top:10px;">
+          <li>Claude 앱 — 이동 중 짧은 탐구, 아이디어 메모</li>
+          <li>기본 메모 앱 — 즉각적인 메모 → PC에서 Obsidian으로 옮기기</li>
+          <li>트래커 앱 — 멤버들 현황 빠르게 확인</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <strong>이동 중 탐구가 깊어질 때:</strong> 아이폰 메모 앱에 빠르게 적고 제목을 "Obsidian-이전대기"로 저장합니다. 저녁에 PC에서 정리하면서 하루가 완성됩니다.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  7. 맥미니 전환 계획                        -->
+<!-- ══════════════════════════════════════════ -->
+<section id="macmini">
+  <div class="container">
+    <div class="sec-label">Mac Mini Plan</div>
+    <h2>맥미니 구입 후<br>전환 계획</h2>
+    <p class="sec-intro">지금 OneDrive에 쌓은 것은 맥미니로 그대로 이어집니다. 전환 자체는 1시간이면 됩니다.</p>
+
+    <h3>맥미니 도착 당일 할 것</h3>
+    <ul class="steps">
+      <li>
+        <div class="step-body">
+          <strong>OneDrive 데스크탑 앱 설치 + 로그인</strong>
+          <p>지금 윈도우에서 쌓은 모든 Obsidian 파일이 자동으로 동기화됩니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>obsidian.md에서 Mac 버전 다운로드 + 설치</strong>
+          <p>Obsidian 열기 → "Open folder as vault" → OneDrive/Deeper Salon Leader/deeper-leader 폴더 선택. 모든 노트와 설정이 그대로 열립니다.</p>
+          <div class="why">✅ 플러그인 설정(.obsidian 폴더)도 OneDrive에 저장돼 있어서 재설정 불필요.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <strong>Claude 앱 Mac 버전 설치</strong>
+          <p>claude.ai → 다운로드 또는 App Store. Pro 계정으로 로그인하면 Projects가 그대로 이어집니다.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout info">
+      <strong>맥미니 전환 시 추가 고려사항:</strong><br>
+      Claude Code를 쓰게 되면 Mac 환경이 훨씬 수월합니다. 터미널이 기본 탑재돼 있고, Homebrew로 개발 도구 설치가 간단합니다. Level 4 확장을 계획하고 있다면 맥미니가 맞는 선택입니다.
+    </div>
+
+    <h3>맥미니로 열리는 것</h3>
+    <ul class="checklist">
+      <li>Claude Code — Vault 전체를 터미널에서 분석·편집 가능</li>
+      <li>더 쾌적한 Obsidian 환경 (Mac Obsidian이 윈도우보다 빠름)</li>
+      <li>아이패드와 Handoff — 아이패드에서 시작한 메모를 맥에서 이어받기</li>
+      <li>iCloud 통합 — 맥미니 + 아이패드 + 아이폰 3기기 자연스럽게 연결</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8. 빠른 참조 카드                          -->
+<!-- ══════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="sec-label">Quick Reference</div>
+    <h2>빠른 참조</h2>
+
+    <h3>매주 반복 사이클</h3>
+
+    <div class="week-row">
+      <div class="week-day">월 ~ 수</div>
+      <div class="week-body">
+        <div class="week-title">나의 탐구 + 멤버 관찰</div>
+        <div class="week-desc">Daily Note 작성, 질문 탐구 ("나의 탐구" 프로젝트), 주중 생각 메모</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day" style="color:var(--copper);">수요일</div>
+      <div class="week-body" style="border-color:var(--copper-dim);">
+        <div class="week-title">세션 준비 (1시간)</div>
+        <div class="week-desc">세션 파일 완성, 인사이트 공유회 구조 잡기, 내 탐구 결과 정리</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day" style="color:var(--gold);">목요일</div>
+      <div class="week-body" style="border-color:var(--gold-dim);">
+        <div class="week-title">세션 밤 10시 + 인사이트 공유회</div>
+        <div class="week-desc">세션 노트 실시간 기록, 멤버 발언 메모, 마음에 남는 것 체크</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">금 ~ 토</div>
+      <div class="week-body">
+        <div class="week-title">세션 후 정리</div>
+        <div class="week-desc">멤버 관찰 노트 업데이트, Group-Insights 추가, 다음 주 세션 파일 생성</div>
+      </div>
+    </div>
+    <div class="week-row">
+      <div class="week-day">주말</div>
+      <div class="week-body">
+        <div class="week-title">복기 + 충전</div>
+        <div class="week-desc">이번 주 Daily Note 훑기, 살롱에서 나온 것 → 내 콘텐츠 아이디어로</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3>자주 쓰는 Claude 프로젝트 용도</h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">나의 탐구</div>
+        <ul class="checklist" style="margin-top:8px;">
+          <li>오늘 질문 탐구</li>
+          <li>내 글 패턴 분석</li>
+          <li>원천 텍스트 초안 작업</li>
+          <li>막히는 것 풀기</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">살롱 운영</div>
+        <ul class="checklist" style="margin-top:8px;">
+          <li>세션 준비 질문 설계</li>
+          <li>멤버 발언 패턴 분석</li>
+          <li>그룹 인사이트 정리</li>
+          <li>운영 고민 상담</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3>참고 링크</h3>
+    <ul class="checklist">
+      <li><a href="https://clbookslower.github.io/deeper-salon/deeper_operation_guide.html" target="_blank">멤버 가이드</a> — 멤버들이 보는 것</li>
+      <li><a href="https://clbookslower.github.io/deeper-salon/obsidian_claude_complete_guide.html" target="_blank">Obsidian + Claude 완전 가이드</a></li>
+      <li><a href="https://geekus.kr/slowerdeeper" target="_blank">긱어스 플랫폼</a> — 살롱 공식 채널</li>
+    </ul>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--copper);margin-bottom:10px;font-style:italic;">
+      "리더의 가장 중요한 준비는 멤버와 같은 질문을 먼저, 깊이 파고드는 것입니다."
+    </div>
+    디퍼 언브랜딩살롱 1기 · 이경선 리더 가이드 · 2026
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
