@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩살롱 1기 — 역할 로테이션</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Noto+Serif+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f4ef;
+    --surface: #ffffff;
+    --faint: #faf8f4;
+    --border: #e2d9cc;
+    --gold: #9a7a45;
+    --gold-light: #f0e8d8;
+    --accent: #c9a96e;
+    --text: #2a2520;
+    --muted: #7a6e63;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  /* HERO */
+  .hero { padding: 52px 0 40px; border-bottom: 1px solid var(--border); }
+  .salon-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.16em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 400; line-height: 1.25;
+    color: var(--text); margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-copy { font-size: 14px; line-height: 2.1; color: var(--muted); }
+
+  /* SECTION */
+  .section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  .sec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+
+  /* 이번 당번 */
+  .round-header {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 22px;
+  }
+  .round-badge {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    background: var(--text); color: var(--bg); padding: 5px 14px; border-radius: 20px;
+  }
+  .date-range { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+  .phase-pill { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 10px; border-radius: 20px; }
+  .p-gram  { background: #eef0f8; color: #5468a0; }
+  .p-logic { background: #eaf4ef; color: #2a7a5a; }
+  .p-rhet  { background: #faf0e8; color: #8a4a1a; }
+
+  .member-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  @media (min-width: 520px) { .member-cards { grid-template-columns: repeat(3, 1fr); } }
+
+  .member-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 16px 14px;
+  }
+  .member-name {
+    font-family: 'Playfair Display', serif; font-size: 16px;
+    font-weight: 400; color: var(--text); margin-bottom: 8px;
+  }
+  .member-role {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--gold); background: var(--gold-light);
+    padding: 3px 8px; border-radius: 20px; display: inline-block; letter-spacing: 0.04em;
+  }
+
+  /* 역할 안내 */
+  .role-list { display: flex; flex-direction: column; gap: 2px; }
+  .role-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .role-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); margin-top: 8px; flex-shrink: 0;
+  }
+  .role-name {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--gold); letter-spacing: 0.05em; margin-bottom: 5px;
+  }
+  .role-desc { font-size: 13px; line-height: 1.85; color: var(--muted); }
+
+  /* 로테이션 */
+  .rotation-list { display: flex; flex-direction: column; gap: 10px; }
+  .rot-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+  .rot-card.current { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .rot-head {
+    padding: 12px 18px; background: var(--faint); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  .rot-card.current .rot-head { background: var(--gold-light); border-bottom-color: #d4b980; }
+  .rot-head-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .rot-week { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text); }
+  .rot-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+  .now-badge {
+    font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; background: var(--text); color: var(--bg); padding: 2px 8px; border-radius: 20px;
+  }
+  .rot-body { display: grid; grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 480px) { .rot-body { grid-template-columns: repeat(3, 1fr); } }
+  .rot-cell {
+    padding: 11px 16px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .rot-cell:nth-child(2n) { border-right: none; }
+  @media (min-width: 480px) {
+    .rot-cell:nth-child(2n) { border-right: 1px solid var(--border); }
+    .rot-cell:nth-child(3n) { border-right: none; }
+    .rot-cell:nth-child(4), .rot-cell:nth-child(5), .rot-cell:nth-child(6) { border-bottom: none; }
+  }
+  .rot-cell:nth-child(5), .rot-cell:nth-child(6) { border-bottom: none; }
+  .rot-cell-name { font-size: 13px; font-weight: 400; color: var(--text); margin-bottom: 3px; }
+  .rot-cell-role { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); }
+
+  .footer {
+    padding: 24px 0 40px; font-family: 'DM Mono', monospace;
+    font-size: 10px; color: #c8bfb0; letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="salon-tag">디퍼 언브랜딩살롱 1기 · 2026</div>
+    <h1>함께 만들어가는<br><em>디퍼</em></h1>
+    <div class="hero-copy">
+      누가 시키지 않아도 질문을 올리고, 기록하고, 목격하고, 먼저 말을 건다.<br>
+      그 작은 움직임들이 쌓여 살롱이 된다.<br>
+      <span style="color:#b0a898; font-size:13px;">역할은 2주마다 돌아간다. 12주 동안 여섯 자리를 모두 통과한다.</span>
+    </div>
+  </div>
+
+  <!-- 이번 당번 -->
+  <div class="section">
+    <div class="sec-label">이번 당번</div>
+    <div class="round-header">
+      <span class="round-badge">1–2주차</span>
+      <span class="date-range">5/15 – 5/28</span>
+      <span class="phase-pill p-gram">문법</span>
+    </div>
+    <div class="member-cards">
+      <div class="member-card"><div class="member-name">솔담</div><div class="member-role">질문 큐레이터</div></div>
+      <div class="member-card"><div class="member-name">햇살</div><div class="member-role">독서 앵커</div></div>
+      <div class="member-card"><div class="member-name">스윗워러</div><div class="member-role">언브랜딩 쉐르파</div></div>
+      <div class="member-card"><div class="member-name">야간비행</div><div class="member-role">스몰토크 스타터</div></div>
+      <div class="member-card"><div class="member-name">헤더</div><div class="member-role">인사이트 콜렉터</div></div>
+      <div class="member-card"><div class="member-name">단무지</div><div class="member-role">모닝페이지 트래커</div></div>
+    </div>
+  </div>
+
+  <!-- 역할 안내 -->
+  <div class="section">
+    <div class="sec-label">역할 안내</div>
+    <div class="role-list">
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">질문 큐레이터</div>
+          <div class="role-desc">옵시디언 매일 질문 리스트에서 그날의 질문이나 함께 탐구하고 싶은 질문을 하나씩 올려주세요.</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">독서 앵커</div>
+          <div class="role-desc">세미나 토론 책을 함께 잘 읽어나갈 수 있게 응원해주세요.</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">언브랜딩 쉐르파</div>
+          <div class="role-desc">한 주 미션 과제를 함께 할 수 있도록 독려해주세요.</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">모닝페이지 트래커</div>
+          <div class="role-desc">모닝페이지를 꾸준히 실천하고 기록할 수 있게 독려해주세요.</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">인사이트 콜렉터</div>
+          <div class="role-desc">아티스트 데이트를 독려하고 인사이트 공유회 준비를 도와주세요.</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-dot"></div>
+        <div>
+          <div class="role-name">스몰토크 스타터</div>
+          <div class="role-desc">주중 카톡방에 가볍게 말할 수 있는 공간을 열어주세요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 전체 로테이션 -->
+  <div class="section">
+    <div class="sec-label">전체 로테이션 — 12주</div>
+    <div class="rotation-list">
+
+      <!-- R1 -->
+      <div class="rot-card current">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">1–2주차</span>
+            <span class="rot-date">5/15 – 5/28</span>
+            <span class="phase-pill p-gram">문법</span>
+          </div>
+          <span class="now-badge">now</span>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">질문 큐레이터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">독서 앵커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+        </div>
+      </div>
+
+      <!-- R2 -->
+      <div class="rot-card">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">3–4주차</span>
+            <span class="rot-date">5/29 – 6/11</span>
+            <span class="phase-pill p-gram">문법</span>
+          </div>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">독서 앵커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">질문 큐레이터</div></div>
+        </div>
+      </div>
+
+      <!-- R3 -->
+      <div class="rot-card">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">5–6주차</span>
+            <span class="rot-date">6/12 – 6/25</span>
+            <span class="phase-pill p-logic">논리</span>
+          </div>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">질문 큐레이터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">독서 앵커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+        </div>
+      </div>
+
+      <!-- R4 -->
+      <div class="rot-card">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">7–8주차</span>
+            <span class="rot-date">6/26 – 7/9</span>
+            <span class="phase-pill p-logic">논리</span>
+          </div>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">질문 큐레이터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">독서 앵커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+        </div>
+      </div>
+
+      <!-- R5 -->
+      <div class="rot-card">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">9–10주차</span>
+            <span class="rot-date">7/10 – 7/23</span>
+            <span class="phase-pill p-rhet">수사</span>
+          </div>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">질문 큐레이터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">독서 앵커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+        </div>
+      </div>
+
+      <!-- R6 -->
+      <div class="rot-card">
+        <div class="rot-head">
+          <div class="rot-head-left">
+            <span class="rot-week">11–12주차</span>
+            <span class="rot-date">7/24 – 8/6</span>
+            <span class="phase-pill p-rhet">수사</span>
+          </div>
+        </div>
+        <div class="rot-body">
+          <div class="rot-cell"><div class="rot-cell-name">솔담</div><div class="rot-cell-role">언브랜딩 쉐르파</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">햇살</div><div class="rot-cell-role">스몰토크 스타터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">스윗워러</div><div class="rot-cell-role">인사이트 콜렉터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">야간비행</div><div class="rot-cell-role">모닝페이지 트래커</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">헤더</div><div class="rot-cell-role">질문 큐레이터</div></div>
+          <div class="rot-cell"><div class="rot-cell-name">단무지</div><div class="rot-cell-role">독서 앵커</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">디퍼 언브랜딩살롱 1기 · 2026.05–08 · geekus.kr/slowerdeeper</div>
+
+</div>
+</body>
+</html>
