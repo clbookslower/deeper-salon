@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자가포식 — 새로운 나를 만들다 | 디퍼 언브랜딩 살롱</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #111; font-size: 16px; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+.page { max-width: 720px; margin: 0 auto; padding: 72px 24px 100px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #aaa; margin-bottom: 48px; }
+.breadcrumb a { color: #aaa; text-decoration: none; }
+.breadcrumb .sep { opacity: 0.4; }
+.article-header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid #f0f0f0; }
+.meta { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.badge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.06em; }
+.badge-salon { background: #EAF3DE; color: #3B6D11; }
+.dot { color: #ddd; font-size: 12px; }
+.meta-text { font-size: 12px; color: #999; font-family: 'DM Mono', monospace; }
+h1 { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 400; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 14px; }
+.subtitle { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; color: #777; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 12px; padding: 3px 12px; border-radius: 100px; background: #f5f5f5; color: #888; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.step { display: flex; gap: 24px; margin-bottom: 52px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: #2C3B2D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 6px; }
+.step-body { flex: 1; }
+.step-title { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 400; margin-bottom: 16px; line-height: 1.4; letter-spacing: -0.01em; }
+.step-body p { color: #444; margin-bottom: 14px; font-size: 15px; line-height: 1.95; }
+.callout { background: #f9f9f9; border-left: 2.5px solid #111; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+.callout-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+.callout p { font-size: 14px; color: #333; line-height: 1.8; margin: 0; }
+blockquote { margin: 28px 0; padding: 0 0 0 24px; border-left: 1.5px solid #ddd; }
+blockquote p { font-family: 'Noto Serif KR', serif; font-size: 17px; font-style: italic; color: #333; line-height: 1.8; margin-bottom: 8px; }
+blockquote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; font-style: normal; letter-spacing: 0.06em; }
+.concept { display: flex; border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; margin: 24px 0; }
+.concept-term { background: #111; color: #fff; padding: 20px 22px; display: flex; align-items: center; justify-content: center; min-width: 120px; }
+.concept-term span { font-family: 'Noto Serif KR', serif; font-size: 16px; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+.concept-def { padding: 20px 22px; flex: 1; }
+.concept-def .term-en { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+.concept-def p { font-size: 14px; color: #444; line-height: 1.8; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.col-card { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 20px 22px; }
+.col-card h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+.col-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.col-card ul li { font-size: 14px; color: #444; padding-left: 16px; position: relative; line-height: 1.6; }
+.col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.voice-card { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 20px 22px; }
+.voice-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #2C3B2D; margin-bottom: 10px; }
+.voice-card p { font-size: 13.5px; color: #555; line-height: 1.75; margin: 0; }
+.cta-box { background: #2C3B2D; border-radius: 16px; padding: 40px; text-align: center; margin-top: 64px; }
+.cta-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #7a9c7b; margin-bottom: 16px; }
+.cta-text { font-family: 'Noto Serif KR', serif; color: #f0ece4; font-size: 20px; font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+.cta-sub { font-size: 13px; color: #7a9c7b; line-height: 1.85; }
+.footnote { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.06em; margin-top: 64px; padding-top: 24px; border-top: 1px solid #f5f5f5; line-height: 1.9; }
+p { color: #444; margin-bottom: 16px; }
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+  .two-col, .voice-grid { grid-template-columns: 1fr; }
+  .concept { flex-direction: column; }
+  .concept-term { writing-mode: horizontal-tb; min-width: auto; }
+  .concept-term span { writing-mode: horizontal-tb; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="breadcrumb">
+    <a href="#">디퍼 언브랜딩 살롱</a>
+    <span class="sep">/</span>
+    <span>문법 단계</span>
+    <span class="sep">/</span>
+    <span>5주차</span>
+  </div>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-salon">Salon</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.05.22 금 · 99분 16초 · 진행 퍼핀</span>
+    </div>
+    <h1>자가포식 —<br>새로운 나를 만들다</h1>
+    <p class="subtitle">젠슨 황의 학습법에서 오토파지까지 — 낡은 세포를 먹어치워야 새 에너지가 생산된다. 셀프 오거나이징 시스템으로 브랜드를 재건하는 12주 문법 단계의 핵심 강의.</p>
+    <div class="tags">
+      <span class="tag">젠슨황</span>
+      <span class="tag">오토파지</span>
+      <span class="tag">셀프오거나이징</span>
+      <span class="tag">학습구조</span>
+      <span class="tag">AI에이전트</span>
+      <span class="tag">브랜드씨앗</span>
+    </div>
+  </header>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <h2 class="step-title">젠슨 황 — 책 소감 나누기</h2>
+
+      <p>NVIDIA CEO 젠슨 황의 자서전을 읽은 여섯 명은 같은 책에서 전혀 다른 것을 보았다. 독점 욕구에 대한 불편함, 버블 논란에 대한 비판, 시대를 만들어낸 이상주의자에 대한 공감, 그리고 자신의 브랜드와 겹치는 리더십에 대한 발견이 나란히 놓였다.</p>
+
+      <div class="voice-grid">
+        <div class="voice-card">
+          <div class="voice-name">솔담</div>
+          <p>그래픽 카드 칩을 만들던 회사가 1~2년 만에 주가 20~30배를 기록한 것은 시대 흐름을 잘 탄 덕분이다. NVIDIA는 한때 '엔그리디아(AngryNVIDIA)'라 불렸고 실적 발표마다 최고치를 찍기 위한 퍼포먼스 경영으로 유명했다. 그 이면이 너무 꾸며진 것 아닌가 하는 의문이 남았고, 주식을 중간에 팔아버린 아쉬움이 독서 내내 따라붙었다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">야간비행</div>
+          <p>이 사람이 가진 것은 미친 듯한 몰입력이다. 시대를 타고난 것이 아니라 시대를 직접 만들고 있다고 봐야 한다. 모든 AI 플랫폼이 이 사람을 거쳐야 하는 막대한 영향력은 단순히 운이 아니다. 고객은 무엇이 가능한지조차 모른다 — 그렇기 때문에 범인이 꿈꾸지 않는 것을 먼저 꿈꾼 사람이 시대를 설계할 수 있다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">스윗워러</div>
+          <p>젠슨 황이라는 이름을 처음 들었다. 게임도 해본 적 없어 책의 배경이 낯설었지만, 읽으면서 살롱에서 왜 이 세계를 다루어야 하는지 조금씩 이해됐다. 이상주의자라는 말이 화두로 떠올랐다 — 이상은 방향이고, 결국 그것을 현실로 만드는 실천이 강점이 된다는 것을 자신의 이력에서 확인했다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">단무지</div>
+          <p>반도체 ETF 2배 레버리지를 통해 NVIDIA를 일찌감치 접했다. 미디어에서 보던 젠틀맨 같은 이미지와 달리 책을 읽으니 상당히 괴짜스럽고 카리스마 있는 인물이었다. 지금도 여윳돈이 생기면 NVIDIA 주식을 살 타이밍을 고민하지만, 세계 최고 부자 랭킹에 T형(Thinking) 성향이 몰려 있는 걸 보며 INFP인 자신에게도 AI 시대가 기회를 열어주지 않을까 기대가 생겼다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">햇살</div>
+          <p>지난 책보다 이번에 훨씬 몰입이 잘 됐다. 젠슨 황이 브랜드를 구축하고 원하는 것을 위해 행동하는 방식을 보면서 포근나루와 겹치는 지점을 찾을 수 있었다. 혼자서 여러 사람 몫을 해내고 있는 지금, 어떻게 하면 더 구조적이고 효율적으로 해낼 수 있을까 — 내가 잘하는 것이 무엇인지, 브랜드 정체성이 무엇인지 생각하게 만든 책이었다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">헤더</div>
+          <p>책을 늦게 시켜 제대로 읽지 못했다. 대신 지난주 받은 씨앗 문장을 가지고 한 주를 보내면서, 2시간 운전 중에 생각의 결이 생겼다. 청소년과 청년들에게 늘 할 말이 있었던 자신을 돌아보며, 릴케의 서간문 형식으로 책의 초고 방향이 잡혔다. 다음 주에는 제대로 읽어오겠다고 다짐했다.</p>
+        </div>
+      </div>
+
+      <p>여섯 명이 공통으로 걸린 키워드는 "이상주의자"였다. 솔담은 허풍황이라고 불렸던 젠슨 황의 과장된 언어가 실은 경쟁자를 없애는 고도의 전략이었다고 분석했고, 야간비행은 그 이상이 실천으로 현실화되었을 때 독보적 위치가 만들어진다고 덧붙였다.</p>
+
+      <div class="callout">
+        <div class="callout-label">이 책에서 건진 학습 인사이트</div>
+        <p>NVIDIA의 채용 면접은 소크라테스식 문답법을 사용한다. 면접관이 집요하게 질문하고 지원자가 결론에 이르면, 그 사고 경로를 거슬러 올라가 새로운 해답을 찾아내는 사람을 선발한다. 기원전 5세기 아테네의 방법론이 첨단 반도체 기업의 인재 기준이 된 것이다. 고전의 방법론은 시대를 타지 않는다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <h2 class="step-title">기계의 학습, 인간의 학습</h2>
+
+      <p>책의 1부를 읽고 나눈 학습 키워드 토론에서 각자가 다른 장면을 주목했다. 솔담은 동서양을 막론한 일벌백계(一罰百戒) 원리 — 한 사람의 실패를 전체가 함께 공유하며 반복하지 않는 문화 — 가 인상적이었다고 했다. 그리고 이를 Claude 활용에 바로 연결했다. "Claude를 욕하지 말자. 저퀄리티로 학습을 시켰으니 저퀄리티가 나오는 것이다. 그것은 내 탓이다."</p>
+
+      <p>야간비행은 젠슨 황의 학습 방식에서 일관된 패턴을 짚었다. 원리를 완벽하게 이해할 때까지 진입하지 않는다는 것 — 탁구든 경영학이든 회계든, 전문가 수준까지 원리를 장악한 사람은 다른 분야에 진입할 때도 두려움 없이 접근한다. NVIDIA가 3dfx Interactive 인수(2000년) 과정에서 법적 분쟁까지 감수한 것도, 그 기술의 원리를 이해한 상태에서 내린 결정이었다. 비효율적인 코드를 반복 실행하고 개선하는 방식 — 이것이 NVIDIA의 학습 구조였다.</p>
+
+      <p>햇살은 실패를 공유하는 문화에서 배웠다. 젠슨 황은 직원이 실수하면 그 과정 전체를 공개적으로 말하게 했다. 수치심을 주기 위해서가 아니라, 같은 실수를 반복하지 않기 위한 집단 학습의 구조였다. 혼자서도 책을 내려놓지 않고 자기 분야가 아닌 경영학 서적을 계속 읽으며 CEO의 자리를 스스로 만들어갔다는 것도 눈에 들어왔다.</p>
+
+      <blockquote>
+        <p>이 사람은 나한테 없는 것을 가졌다. 미친 듯한 몰입력. 시대를 잘 타고난 게 아니라 시대를 만들고 있다. 이상이라는 게 결국 방향이고, 저는 그걸 실천으로 현실화하는 거라고 생각합니다.</p>
+        <cite>— 야간비행</cite>
+      </blockquote>
+
+      <p>이 맥락에서 진행자 퍼핀이 오늘의 핵심 명제를 꺼냈다. 생각(Thinking)은 기계에게 위임하고, 인간은 언더스탠딩(Understanding)의 영역으로 이동해야 한다는 것.</p>
+
+      <div class="two-col">
+        <div class="col-card">
+          <h3>기계가 하는 일 — Thinking</h3>
+          <ul>
+            <li>반복 연산과 패턴 인식</li>
+            <li>콘텐츠 스케줄링과 초고 생성</li>
+            <li>피드백을 통한 점진적 전문화</li>
+            <li>MD 파일로 심화 학습 이식 가능</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h3>인간이 해야 할 일 — Understanding</h3>
+          <ul>
+            <li>자기 일을 깊이 파악하고 장악하기</li>
+            <li>판단·선택·명령의 설계자가 되기</li>
+            <li>지혜와 통찰 축적, 연결 고리 생성</li>
+            <li>새로운 사고 모형을 타인에게 전달</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>AI를 어떻게 활용할지는 결국 자기 일을 얼마나 이해하고 장악하느냐에 달려 있다. 학습이 심화될수록 기계는 더 전문화되고, 인간에게는 지혜와 통찰이 쌓인다. 이 구조를 이해하는 사람이 AI를 더 잘 쓰게 되고, 시대를 주도하게 된다.</p>
+
+      <div class="callout">
+        <div class="callout-label">AI 육아 — 살롱 현장 실습</div>
+        <p>단무지는 Claude를 로컬 컴퓨터에 연결해 자신의 콘텐츠를 학습시키고 있다. 처음엔 "못합니다"로 시작하는 Claude에게 방향을 제시하면서 점차 능력치가 올라가는 것을 육아에 비유했다. 스윗워러님은 문학 수업 학생 17명의 독서감상문 피드백 아티팩트, 캄보디아 선교 PPT를 Claude로 10분 만에 완성했다. 이틀 사흘 걸릴 작업을 10분에 — 단, 발표할 때의 설명은 자신의 언어로 하는 것이 자신의 정체성이라고 짚었다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-num">03</div>
+    <div class="step-body">
+      <h2 class="step-title">셀프 오거나이징 — 나에서 시작해 다시 나에게로</h2>
+
+      <p>오늘 강의의 핵심 개념은 셀프 오거나이징 시스템이다. 답은 외부에 있지 않다. 자꾸 원점으로 돌아오는 것처럼 보이지만, 그것은 제자리가 아니라 더 깊어진 나를 만나는 나선형 구조다.</p>
+
+      <div class="concept">
+        <div class="concept-term"><span>오토파지</span></div>
+        <div class="concept-def">
+          <span class="term-en">Autophagy — 2016 Nobel Prize in Physiology or Medicine</span>
+          <p>세포가 굶는 상황에서 낡거나 손상된 단백질과 소기관을 스스로 분해해 에너지원으로 재활용하는 생물학적 메커니즘. 오스미 요시노리(大隅良典)가 규명해 2016년 노벨생리의학상을 수상했다. 창작과 학습에 적용하면 — 낡은 신념, 반복된 실패, 굳어진 패턴을 직접 소화해 새로운 언어와 에너지를 생산하는 과정. 먹어치운 것은 사라지지 않고, 한 번 경험한 사람만 쓸 수 있는 체화된 언어가 된다. 이 언어는 '지식인의 저주'를 넘어 독자에게 쉽게 전달된다.</p>
+        </div>
+      </div>
+
+      <div class="concept">
+        <div class="concept-term"><span>오토포이에시스</span></div>
+        <div class="concept-def">
+          <span class="term-en">Autopoiesis — Maturana &amp; Varela, 1972</span>
+          <p>칠레 생물학자 마투라나와 바렐라가 제안한 개념. 생명체가 외부에서 재료를 받지 않고 스스로를 생산·유지하는 자기 조직화 특성. 우로보로스(꼬리를 무는 뱀)로 상징된다 — 내가 먹어치운 것이 다시 내 재료가 되고, 그 재료로 새로운 콘텐츠와 비즈니스 시스템을 만드는 순환. 개방된 자기 생산 시스템끼리 연결될 때 엄청난 시너지가 발생한다.</p>
+        </div>
+      </div>
+
+      <p>언브랜딩 살롱 12주 전체의 컨셉이 이 오토파지 사이클이다. 지금 문법 단계 5주는 낡은 세포를 전부 먹어치우는 시간이다. 불안하고 절박하지만, 결핍의 순간이야말로 그냥 뒀으면 암이 될 세포를 먹어치울 수 있는 때다. 굶어서 힘들지만, 그 굶음을 통과한 세포에서 질서가 생긴다.</p>
+
+      <blockquote>
+        <p>학습의 방식을 바꿔보세요. 세상을 바꿀 수 있습니다. 자가포식을 하면서 자기생산을 해보는거죠. thinking-doing의 원을 계속 돌되, 점점 깊어져요. 전체를 연결하고, 분석한 지식들을 지혜로 전환하면서요.</p>
+        <cite>— 퍼핀 (진행자)</cite>
+      </blockquote>
+
+      <p>오토파지를 거치고 나오는 언어는 다르다. 한 번 경험했기 때문에 비유를 들 수 있고, 쉽게 말할 수 있고, 독자가 원하는 언어로 낮춰 전달할 수 있다. 이 언어에서 새 기둥 3개를 세우면 24편의 글 재료가 생기고, 매일 포스팅할 한 달 치 콘텐츠가 만들어진다. 하나의 세포가 분열하면서 숲을 이루는 구조다.</p>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-num">04</div>
+    <div class="step-body">
+      <h2 class="step-title">각자의 씨앗 — 브랜드 탐구 현황</h2>
+
+      <p>씨앗 문장 탐구 결과를 나누는 자리에서 여섯 명의 목소리는 서로 다른 방향을 가리켰다. 하지만 끝에서 만나는 지점은 하나였다 — 원점으로 돌아오는 것 같지만, 그것이 갇힌 것이 아니라 집이라는 것.</p>
+
+      <div class="voice-grid">
+        <div class="voice-card">
+          <div class="voice-name">스윗워러</div>
+          <p>"나는 왜 길치일까"를 Claude에게 물었더니 "길치는 비즈니스에서도 길치"라는 답이 왔다. 날카로웠지만 공감했다. 결론은 느리게·좁게·깊게다. 다채널 확장 대신 사진 에세이 한 채널을 고집 있게 밀고 나가는 것이 자신에게 맞는 방식이라는 것을 받아들였다. 불안이 원동력이 된다 — 젠슨 황도 그랬다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">단무지</div>
+          <p>작년 우울증이 심해져 일을 모두 멈추고 거의 1년을 쉬었다. 그때 권위자의 말을 인용하던 습관을 끊고 그냥 쉬다 보니 내 안에서 생각들이 정리됐다. 다른 사람의 말이 아닌, 내가 깨달은 나만의 언어가 나오기 시작한 것 — 그것이 오토파지였다. 이번 살롱에서도 그걸 다시 해봐야겠다고 생각했다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">솔담</div>
+          <p>자기 탐구가 아직 더 필요하다고 느낀다. 그럼에도 씨앗 문장을 꾸렸다 — 나처럼 나에 대한 고민이 많은 사람들이 자기 이해로 비롯된 삶을 살도록 돕는 것. 동시에 투 트랙으로 가기로 했다: 자기 탐구는 탐구대로, 한국어 인스타 계정(팔로워 5천)은 계정대로. 가르치는 게 목적이 아니라, 세계 곳곳에 친구를 심어두고 나중에 여행에서 만나겠다는 가벼운 시작이었다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">야간비행</div>
+          <p>타인의 고통에 마음이 머무르는 기질이 오지랖처럼 보이지만, 돌아보면 그게 좋은 사람 인프라를 만들어온 원인이었다. 갈등을 피하지 않으면서도 결국 내가 원하는 방향으로 이끌어가는 경험이 쌓였다. 좋게 좋게 넘어가는 것이 아니라, 더 큰 자유를 얻기 위해 통제권을 일시 양보하는 전략이었다. 이제는 그것을 시스템으로 구조화할 때다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">햇살</div>
+          <p>몸이 너무 아파 유튜브 제작이 중단됐다. 그런데도 모닝 페이지만은 손에서 놓지 않았다 — 누가 시킨 것도 아닌데 타이핑으로라도 썼다. 거기서 발견한 것: 함께 글 쓰는 행위 자체가 나에게 연대의 힘이다. 젠슨 황이 마지막 자금으로 에뮬레이터에 투자해 시간을 단축했듯이, AI라는 도구를 에뮬레이터처럼 활용하면 혼자서도 해낼 수 있다. 지금은 돈보다 포근나루의 세계관 확립이 먼저다.</p>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">헤더</div>
+          <p>릴케의 "젊은 시인에게 보내는 편지"를 버스에서 읽다가 울면서 다시 책을 읽기 시작했던 기억이 있다. 그 서간문 형식을 빌려, 내가 만난 청소년들에게 왜 이 책을 같이 읽고 싶었는지 설명하며 격려하는 책을 쓸 수 있겠다는 생각이 어젯밤 운전 중에 왔다. 아직 초고를 썼다는 것이 아니라, 그 방향이 선명해졌다는 것이다.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">공통 패턴 — 원점은 퇴보가 아니다</div>
+        <p>여러 명이 Claude와 대화하면서, 혹은 모닝 페이지를 쓰면서 "자꾸 같은 결론으로 돌아온다"고 말했다. 이것은 갇힌 것이 아니다. 수많은 경험을 거쳐 같은 말을 하고 있지만 깊이가 달라진 원점이며, 돌아갈 집이 있다는 뜻이다. 오토파지가 진행 중이라는 신호다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-label">이번 주 미션 — 자가포식</div>
+    <p class="cta-text">한 번 제대로 굶어보자.<br>지금이 아니면 할 수 없는 오토파지가 있다.</p>
+    <p class="cta-sub">
+      ① 모닝 페이지에서 낡은 것들을 먹어치운다 — 염증이 될 세포를 남기지 않는다<br>
+      ② 비워진 다음에 보이는 것을 쓴다 — 떠오른 생각을 Claude에게 주어 질서를 잡게 한다<br>
+      ③ 재건의 새 기둥 3개 × 에피소드 8개 = 24편의 글 재료를 발굴한다<br>
+      ④ 기둥 하나로 500자 글을 한 편 써본다 — Claude 버전과 내 버전을 비교한다<br><br>
+      지금만 할 수 있는 오토파지를 하라. 다음 아이템 개발이 시작되면 이 시간은 다시 오지 않는다.
+    </p>
+  </div>
+
+  <div class="footnote">
+    <p>디퍼 언브랜딩 살롱 · 문법 단계 5주차 · 2026.05.22 금 오전 1:37 · 99분 16초 · 진행 퍼핀</p>
+    <p style="margin-top:6px;">참가 — 솔담 · 야간비행 · 스윗워러 · 헤더 · 단무지 · 햇살</p>
+    <p style="margin-top:10px;">참고 문헌 및 개념 출처</p>
+    <p>오토파지(Autophagy) — 오스미 요시노리, 2016 노벨생리의학상 · 오토포이에시스(Autopoiesis) — H. Maturana &amp; F. Varela, 1972 · 소크라테스식 문답법(Socratic Method) — NVIDIA 채용 면접 방식으로 언급 · NVIDIA 3dfx Interactive 인수 — 2000년, 법적 분쟁 후 자산 인수 완료 · 젠슨 황 자서전 (2024)</p>
+  </div>
+
+</div>
+</body>
+</html>
