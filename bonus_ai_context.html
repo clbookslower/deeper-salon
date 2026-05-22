@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>언브랜딩 — 나에게서 다시 나에게로 | DEEPER</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --teal: #1a6a5a;
+  --teal-bg: #e6f5f0;
+  --slate: #2a3a5a;
+  --slate-bg: #eef1f8;
+  --red: #7a1a1a;
+  --red-bg: #fdf2f2;
+  --bonus: #5a3472;
+  --bonus-bg: #f3eef8;
+  --bonus-light: #a882c8;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 60px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-grammar { background: var(--gold-bg); color: #854F0B; }
+.badge-bonus { background: var(--bonus-bg); color: var(--bonus); }
+.badge-session { background: var(--blue-bg); color: var(--blue); }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ── 목차 ── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+}
+.toc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: #444;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── 섹션 ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 32px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+blockquote {
+  margin: 32px 0;
+  padding: 0 0 0 28px;
+  border-left: 2px solid var(--ink);
+}
+blockquote p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+blockquote cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 10px 10px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; margin-bottom: 8px; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--ink); }
+.callout-speaker .callout-label { color: var(--muted); }
+.callout-speaker p { color: #333; }
+.callout-ref { background: var(--gold-bg); border-left: 2.5px solid var(--gold); }
+.callout-ref .callout-label { color: #854F0B; }
+.callout-ref p { color: #5a3800; }
+.callout-teal { background: var(--teal-bg); border-left: 2.5px solid var(--teal); }
+.callout-teal .callout-label { color: var(--teal); }
+.callout-teal p { color: #1a3a30; }
+.callout-bonus { background: var(--bonus-bg); border-left: 2.5px solid var(--bonus); }
+.callout-bonus .callout-label { color: var(--bonus); }
+.callout-bonus p { color: #3a1a52; }
+
+/* ── 링크 카드 ── */
+.link-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 32px 0;
+}
+.link-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.link-card:hover {
+  border-color: #bbb;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+.link-card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #1a1a1a;
+}
+.link-card-thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link-card-thumb-placeholder span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--forest-light);
+  text-transform: uppercase;
+}
+.link-card-body { padding: 16px 18px; }
+.link-card-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.link-card-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.link-card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── 개념 카드 ── */
+.concept {
+  display: flex;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.concept-term {
+  background: var(--forest);
+  color: #fff;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+.concept-term span {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+}
+.concept-def { padding: 22px 24px; flex: 1; }
+.concept-def .term-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.concept-def p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; margin-bottom: 8px; }
+.concept-def p:last-child { margin-bottom: 0; }
+
+/* ── 용어 카드 ── */
+.term-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.term-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.term-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.term-badge.red { background: var(--red-bg); color: var(--red); }
+.term-badge.slate { background: var(--slate-bg); color: var(--slate); }
+.term-badge.teal { background: var(--teal-bg); color: var(--teal); }
+.term-card-header .term-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+.term-card-header .term-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: auto;
+  letter-spacing: 0.06em;
+}
+.term-card-body { padding: 20px 22px; }
+.term-card-body p { font-size: 14px; color: #444; line-height: 1.85; margin-bottom: 10px; }
+.term-card-body p:last-child { margin-bottom: 0; }
+.term-source {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+}
+
+/* ── 인문학 체인 ── */
+.philo-chain {
+  margin: 40px 0;
+  position: relative;
+}
+.philo-node {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 0;
+  position: relative;
+}
+.philo-node:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: -1px;
+  width: 1px;
+  background: var(--border);
+}
+.philo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  z-index: 1;
+}
+.philo-icon span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0;
+}
+.philo-content {
+  padding-bottom: 32px;
+  flex: 1;
+}
+.philo-node:last-child .philo-content { padding-bottom: 0; }
+.philo-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.philo-title .philo-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-left: 10px;
+  font-style: normal;
+  vertical-align: middle;
+}
+.philo-content p { font-size: 14px; color: #555; line-height: 1.85; margin-bottom: 0; }
+.philo-node.active .philo-icon { background: var(--bonus); }
+.philo-node.active .philo-title { color: var(--bonus); }
+
+/* ── 대비 테이블 ── */
+.contrast-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.contrast-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.contrast-table th:first-child { background: var(--surface); color: var(--muted); }
+.contrast-table th.th-assisted { background: var(--gold-bg); color: #854F0B; }
+.contrast-table th.th-native { background: var(--forest); color: var(--forest-light); }
+.contrast-table td {
+  padding: 13px 20px;
+  font-size: 13px;
+  vertical-align: top;
+  line-height: 1.7;
+  border-bottom: 1px solid var(--border);
+}
+.contrast-table tr:last-child td { border-bottom: none; }
+.contrast-table td:first-child { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em; background: var(--surface); }
+.contrast-table td.td-assisted { color: #5a3800; background: #fffdf5; }
+.contrast-table td.td-native { color: #1a3a20; background: #f5faf5; }
+
+/* ── 공식 박스 ── */
+.formula-box {
+  background: var(--forest);
+  border-radius: 14px;
+  padding: 32px 36px;
+  margin: 32px 0;
+  text-align: center;
+}
+.formula-box .formula-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 18px;
+}
+.formula {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  color: #f0ece4;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.formula .op { color: var(--forest-light); margin: 0 10px; }
+.formula-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+/* ── 풀쿼트 ── */
+.pull-quote {
+  margin: 44px 0;
+  padding: 36px 40px;
+  background: var(--forest);
+  border-radius: 16px;
+  text-align: center;
+}
+.pull-quote p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #f0ece4;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.pull-quote cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  font-style: normal;
+}
+
+/* ── 3컬럼 ── */
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+.col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px;
+  background: var(--surface);
+}
+.col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.col-card .col-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.col-card .col-sub { font-size: 13px; color: #666; line-height: 1.75; }
+.col-card.highlight { background: var(--forest); border-color: var(--forest); }
+.col-card.highlight h3 { color: var(--forest-light); }
+.col-card.highlight .col-main { color: #f0ece4; }
+.col-card.highlight .col-sub { color: #a8c5a0; }
+
+/* ── 2컬럼 ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+.two-col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.two-col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.two-col-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.two-col-card ul li {
+  font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.65;
+}
+.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.two-col-card.dark { background: var(--forest); border-color: var(--forest); }
+.two-col-card.dark h3 { color: var(--forest-light); }
+.two-col-card.dark ul li { color: #d4e8d4; }
+.two-col-card.dark ul li::before { color: var(--forest-light); }
+
+/* ── 레퍼런스 ── */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 13px;
+}
+.ref-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.ref-table td {
+  padding: 10px 14px;
+  color: #555;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.65;
+  vertical-align: top;
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+
+/* ── 트리비움 클로징 ── */
+.close-trivium {
+  margin: 32px 0 24px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.close-trivium-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 20px;
+}
+.close-trivium-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+.close-trivium-step {
+  flex: 1;
+  text-align: center;
+  padding: 0 8px;
+}
+.cts-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--forest-light);
+  margin-bottom: 8px;
+}
+.cts-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  color: #f0ece4;
+  font-weight: 400;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.cts-concept {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: #d4a830;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.cts-desc {
+  font-size: 12px;
+  color: #7a9c7b;
+  line-height: 1.75;
+}
+.close-trivium-arrow {
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.2);
+  font-size: 14px;
+  padding: 0 4px;
+  margin-top: 28px;
+  flex-shrink: 0;
+}
+
+/* ── 클로징 ── */
+.close-box {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  margin-top: 72px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: #f0ece4;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+/* ── AI 단계 흐름 ── */
+.stage-flow {
+  margin: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.stage-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  background: var(--surface);
+}
+.stage-item-highlight {
+  background: var(--forest);
+  border-color: var(--forest);
+}
+.stage-item-highlight .stage-num { color: var(--forest-light); }
+.stage-item-highlight .stage-title { color: #f0ece4; }
+.stage-item-highlight .stage-desc { color: #a8c5a0; }
+.stage-num {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.stage-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.stage-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+}
+.stage-arrow {
+  text-align: center;
+  padding: 6px 0;
+  color: #ccc;
+  font-family: "DM Mono", monospace;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+  .three-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .link-cards { grid-template-columns: 1fr; }
+  .pull-quote { padding: 28px 24px; }
+  .pull-quote p { font-size: 17px; }
+  .formula { font-size: 17px; }
+  .term-card-header .term-en { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · 1기</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>번외편</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-bonus">BONUS</span>
+      <span class="dot">·</span>
+      <span class="badge badge-grammar">GRAMMAR</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.05.22</span>
+    </div>
+    <h1>언브랜딩 — 나에게서 다시 나에게로</h1>
+    <p class="subtitle">AI 시대의 맥락 읽기 — 나만의 특이점을 적극적으로 찾아나서는 사람들의 이야기</p>
+    <div class="tags">
+      <span class="tag">AI맥락</span>
+      <span class="tag">오토파지</span>
+      <span class="tag">비타노바</span>
+      <span class="tag">나만의관점</span>
+      <span class="tag">언브랜딩</span>
+      <span class="tag">문법단계</span>
+    </div>
+  </header>
+
+  <!-- 목차 -->
+  <div class="toc">
+    <div class="toc-label">Outline</div>
+    <div class="toc-item"><span class="toc-num">01</span>OPENING — 같이 들어보고 싶었어요</div>
+    <div class="toc-item"><span class="toc-num">02</span>CONTEXT — 지금 무슨 일이 일어나고 있나</div>
+    <div class="toc-item"><span class="toc-num">03</span>TERMS — 핵심 용어: AI Psychosis · 바이오 토큰 · 도파민 슬롯머신</div>
+    <div class="toc-item"><span class="toc-num">04</span>FRAME — AI를 깊이 탐구한 사람들이 도착한 결론</div>
+    <div class="toc-item"><span class="toc-num">05</span>DEEPER — only one, 다시 나에게로</div>
+    <div class="toc-item"><span class="toc-num">06</span>CONNECT — 우리가 하고 있는 작업</div>
+    <div class="toc-item"><span class="toc-num">07</span>REFS — 참고 출처</div>
+  </div>
+
+
+  <!-- ═══ 01 OPENING ═══ -->
+  <div class="section-divider">
+    <span class="section-num">01 · OPENING</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">같이 들어보고 싶었어요</div>
+
+  <p class="lead">좋은 대화를 발견했습니다. 같이 생각을 나눠보고 싶어서 꺼냅니다.</p>
+
+  <p>AI가 빠르게 세상을 바꾸고 있습니다. 두 달간 그 흐름에 몰입했습니다. 새로운 도구, 달라지는 일의 방식, 하루가 다르게 쏟아지는 개념들. 뭔가를 놓치고 있다는 감각 — 다들 비슷하게 느끼고 있을 것입니다. 정리가 됐다 싶으면 또 달라져 있었습니다. 그러다 어느 순간, 이 변화의 속도 자체가 전할 내용이라는 걸 알았습니다.</p>
+
+  <p>AI Frontier EP97. 노정석·최승준의 대화입니다. AI를 깊이 탐구하는 사람들이 지금 무엇을 보고 있는지, 이 빠른 흐름을 어떻게 읽고 있는지. 영상과 전사 텍스트를 함께 두었습니다.</p>
+
+  <div class="link-cards">
+    <a class="link-card" href="https://www.youtube.com/watch?v=cUc8iK6LG0k" target="_blank" rel="noopener">
+      <div class="link-card-thumb-placeholder">
+        <span>▶ YouTube</span>
+      </div>
+      <div class="link-card-body">
+        <div class="link-card-source">AI Frontier · YouTube</div>
+        <div class="link-card-title">EP 97: AI Psychosis 시대의 사람들</div>
+        <div class="link-card-desc">노정석 · 최승준 · 1:17:03</div>
+      </div>
+    </a>
+    <a class="link-card" href="https://aifrontier.kr/ko/episodes/ep97/" target="_blank" rel="noopener">
+      <div class="link-card-thumb-placeholder">
+        <span>전사 텍스트</span>
+      </div>
+      <div class="link-card-body">
+        <div class="link-card-source">AI Frontier · 전체 텍스트</div>
+        <div class="link-card-title">EP 97 전사 페이지</div>
+        <div class="link-card-desc">챕터별 타임스탬프 포함</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">이 자료를 읽기 전에</div>
+    <p>전부 이해하지 않아도 됩니다. 용어가 낯설면 낯선 채로 두어도 됩니다. 이 대화가 어디서 시작해서 어디에 닿는지 — 그 흐름 하나를 가지고 가면 충분합니다.</p>
+  </div>
+
+
+  <!-- ═══ 02 CONTEXT ═══ -->
+  <div class="section-divider">
+    <span class="section-num">02 · CONTEXT</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">지금 무슨 일이 일어나고 있나</div>
+
+  <p class="lead">2026년 상반기, AI 코딩 도구가 엔지니어 계층을 넘어 모든 지식 노동자에게 확산되고 있습니다. 모델 성능은 수개월 단위로 빠르게 업데이트되고 있습니다. EP97은 프론티어 모델의 활동 주기가 약 두 달이라고 추산합니다.</p>
+
+  <p>처음에는 엔지니어들만의 영역이었던 것이 지금은 작가, 기획자, 마케터, 크리에이터 — 모든 지식 노동자의 워크플로우로 스며들고 있습니다. 이 흐름 안에서 집중적으로 탐구해온 사람들이, 자신들이 마주치는 현상들을 언어로 정리하고 이름을 붙이기 시작했습니다.</p>
+
+  <p>이 변화가 어떤 단계로 진행되고 있는지, 아래 흐름으로 보면 조금 더 선명합니다.</p>
+
+<div class="stage-flow">
+    <div class="stage-item">
+      <div class="stage-num">1단계 · 지금 대부분의 시작점</div>
+      <div class="stage-title">언어모델 대화 — 프롬프팅</div>
+      <div class="stage-desc">ChatGPT, Claude, Gemini 같은 대화창에 질문을 쓰고 답을 받습니다. 이 AI들의 핵심은 LLM(Large Language Model, 대형 언어 모델) — 방대한 텍스트를 학습해 언어를 이해하고 생성하는 모델입니다. 사용자가 쓰는 질문이나 지시문을 <strong>프롬프트(prompt)</strong>라고 부릅니다. 같은 도구여도 어떻게 묻느냐에 따라 결과가 완전히 달라지는 이유가 여기 있습니다.</div>
+    </div>
+    <div class="stage-arrow">↓</div>
+    <div class="stage-item">
+      <div class="stage-num">2단계 · 현재 대부분의 직장인·창작자</div>
+      <div class="stage-title">AI Assisted — AI가 내 일을 돕는다</div>
+      <div class="stage-desc">기존 업무 방식은 그대로 유지하면서 일부 반복 작업에 AI를 투입합니다. 초고 작성, 자료 요약, 번역, 이미지 생성 등. 일의 주체는 여전히 사람이고 AI는 보조자입니다. EP97은 이 단계의 한계를 짚습니다. "사람들이 하던 업무 100 중에 노가다 몇 개를 바꿔주는 것" — 생산성은 올라가지만, 일의 구조 자체는 바뀌지 않습니다.</div>
+    </div>
+    <div class="stage-arrow">↓</div>
+    <div class="stage-item">
+      <div class="stage-num">3단계 · 지금 빠르게 확산 중</div>
+      <div class="stage-title">AI 에이전트 / 하네스 — AI가 스스로 행동한다</div>
+      <div class="stage-desc"><strong>에이전트(agent)</strong>는 단순히 답하는 AI가 아닙니다. 웹을 검색하고, 코드를 짜서 실행하고, 파일을 만들고, 오류를 스스로 수정하며 목표를 향해 여러 단계의 행동을 취합니다. <strong>하네스(harness)</strong>는 이 에이전트를 감싸는 구조물 — 모델에게 도구·기억·맥락을 부여해 자율적으로 작동하게 만드는 시스템입니다. Claude Code, Codex가 대표적입니다. EP97 표현으로 "Ralph loop" — AI가 태스크 완료까지 스스로 루프를 돌리는 구조. 이 단계부터 인간의 개입 없이 수십 개의 작업이 자동 처리됩니다.</div>
+    </div>
+    <div class="stage-arrow">↓</div>
+    <div class="stage-item stage-item-highlight">
+      <div class="stage-num">4단계 · 지금 설계되고 있는 미래</div>
+      <div class="stage-title">AI Native 워크플로 — 의도만 주면 끝까지</div>
+      <div class="stage-desc">업무 자체를 처음부터 AI 중심으로 설계합니다. 사용자는 <strong style="color:#f0d080;">의도(intent)</strong>만 제공하고, AI가 실행 전체를 담당합니다. EP97의 표현으로 "사업자가 팔아야 되는 건 툴이 아니라 문제의 해결, task completion 자체"가 되는 단계. 도구를 쓰는 것이 아니라 결과를 구매하는 것입니다. OpenAI가 Codex를 '슈퍼 앱'이라 부르는 이유가 여기 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-bonus">
+    <div class="callout-label">지금 나는 어느 단계?</div>
+    <p>대부분의 사람들은 1–2단계 사이에 있습니다. 그리고 그것으로 충분히 시작할 수 있습니다. 중요한 것은 단계가 아니라 방향입니다. 어느 단계에 있든, 내가 풀어야 할 문제가 무엇인지 아는 사람이 도구를 의미 있게 씁니다.</p>
+  </div>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">참고 · AI Frontier EP 97</div>
+    <p>노정석·최승준의 팟캐스트. 2026년 5월 21일 녹음. 1시간 17분 동안 AI 생태계의 현재와 인재상, 번아웃과 AI psychosis를 다룸. 이 번외편의 주요 출처입니다.</p>
+  </div>
+
+
+  <!-- ═══ 03 TERMS ═══ -->
+  <div class="section-divider">
+    <span class="section-num">03 · TERMS</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">핵심 용어 세 가지</div>
+
+  <p class="lead">AI를 집중적으로 탐구하는 사람들이 요즘 마주치는 여러 문제들과 현상들을 바라보며 붙인 이름들입니다.</p>
+
+  <div class="term-card">
+    <div class="term-card-header">
+      <span class="term-badge red">경고 신호</span>
+      <span class="term-name">AI Psychosis</span>
+      <span class="term-en">AI 사이코시스</span>
+    </div>
+    <div class="term-card-body">
+      <p>Andrej Karpathy(전 Tesla AI 디렉터, OpenAI 공동창업자)가 언급한 개념. 에이전트에게 일을 위임하고 결과가 나올 때마다 도파민이 터지는 과몰입 상태.</p>
+      <p>일은 되고 있는데 자신이 어디 있는지 모르는 감각. "이 상태를 알면서도 빠져나오기 어렵다"고 했습니다. 집중적으로 쓴 사람들이 먼저 이 상태를 보고했습니다.</p>
+      <div class="term-source">출처: Karpathy 본인 언급 → EP97 인용</div>
+    </div>
+  </div>
+
+  <div class="term-card">
+    <div class="term-card-header">
+      <span class="term-badge slate">분석 개념</span>
+      <span class="term-name">바이오 토큰</span>
+      <span class="term-en">Bio Token · T_brain</span>
+    </div>
+    <div class="term-card-body">
+      <p>EP97에서 최승준이 제안한 개념. T_compute(컴퓨터 연산), T_mem(메모리)에 대응하는 인간의 인지 자원. 하루에 쓸 수 있는 사고의 총량.</p>
+      <p>이것이 소진되면 일은 계속되지만 판단력과 방향 감각이 흐릿해집니다. 창작자에게 이 소진은 특히 위험합니다. 판단과 감각이 곧 작업의 본체이기 때문입니다.</p>
+      <div class="term-source">출처: AI Frontier EP97 · 최승준 제안</div>
+    </div>
+  </div>
+
+  <div class="term-card">
+    <div class="term-card-header">
+      <span class="term-badge teal">구조 설명</span>
+      <span class="term-name">도파민 슬롯머신</span>
+      <span class="term-en">Dopamine Slot Machine</span>
+    </div>
+    <div class="term-card-body">
+      <p>대화창에 말을 넣으면 기계가 답을 내놓습니다. 때로는 예상을 벗어나는 방향으로. 그 순간의 작은 불꽃이 계속 다음 시도를 부릅니다.</p>
+      <p>슬롯머신처럼 확률적으로 터지는 보상 구조가 과몰입을 만듭니다. 이 감각 자체는 진짜이고, 문제가 아닙니다. 그 불꽃이 내 언어와 연결될 때 비로소 방향이 생깁니다.</p>
+      <div class="term-source">출처: EP97 · 배휘동 포스팅 인용</div>
+    </div>
+  </div>
+
+
+  <!-- ═══ 04 FRAME ═══ -->
+  <div class="section-divider">
+    <span class="section-num">04 · FRAME</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">AI를 깊이 탐구한 사람들이 도착한 결론</div>
+
+  <p>도구를 잘 쓰는 것만으로는 부족합니다. AI를 깊이 쓰는 것은 이제 필요조건이지 충분조건이 아닙니다.</p>
+
+  <table class="contrast-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="th-assisted">AI Assisted</th>
+        <th class="th-native">AI Native</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>정의</td>
+        <td class="td-assisted">기존 업무에 AI를 보조로 투입</td>
+        <td class="td-native">처음부터 AI가 워크플로우의 본체</td>
+      </tr>
+      <tr>
+        <td>특징</td>
+        <td class="td-assisted">사람의 역할 구조는 그대로</td>
+        <td class="td-native">사람은 의도와 방향만 제공</td>
+      </tr>
+      <tr>
+        <td>조건</td>
+        <td class="td-assisted">없음</td>
+        <td class="td-native">풀어야 할 문제를 알고 있는 사람</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    <p>"어떤 목표로 가야 된다고 명확하게 어떤 필드에 대한 knowledge를 가지고 그걸 찍을 수 있는 사람이 AI를 견인하는 형태가 있고요."</p>
+    <cite>— 노정석, AI Frontier EP97</cite>
+  </blockquote>
+
+  <div class="formula-box">
+    <div class="formula-label">EP97의 차별화 공식</div>
+    <div class="formula">
+      도메인 지식 <span class="op">×</span> AI 역량 <span class="op">=</span> 진짜 차별화
+    </div>
+    <div class="formula-sub">AI를 아무리 잘 써도, 풀어야 할 문제를 모르면 아무 데도 못 간다.<br>그 문제를 오래, 자기 것으로 안고 살아온 사람이 도구를 쥐었을 때 어딘가로 간다.</div>
+  </div>
+
+  <p>Benedict Evans(a16z 소속 분석가)는 이것을 역사적 패턴으로 설명합니다. 지난 20년이 Oracle 하나면 되는 세상을 수천 개의 앱으로 쪼갠 시간이었다면 — AI 시대도 ChatGPT를 쪼개는 시간이 될 것이라고. 거대한 도구가 등장할수록 <strong>자기 영역을 깊이 아는 버티컬</strong>이 오히려 강해집니다.</p>
+
+
+  <!-- ═══ 05 DEEPER ═══ -->
+  <div class="section-divider">
+    <span class="section-num">05 · DEEPER</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">only one — 다시 나에게로</div>
+
+  <p>생물학에 오토파지(autophagy)라는 개념이 있습니다. 세포가 자기 자신의 낡은 구성 요소를 스스로 분해해서 에너지와 새 재료로 재활용하는 과정입니다. 2016년 노벨 생리학상을 받은 개념입니다. 세포는 살아남기 위해 자신의 일부를 먹습니다. 파괴가 아닙니다. 갱신입니다.</p>
+
+  <p>AI와 두 달을 보내면서 그 감각이 있었습니다. 익숙하던 작업 방식이 분해됐습니다. 내가 잘한다고 생각했던 것들이 다시 물음표가 됐습니다. 불편했지만 그것이 소멸이 아니라는 것을 — 어느 시점부터 새로운 방식으로 학습하고 있습니다.</p>
+
+  <div class="philo-chain">
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>01</span></div>
+      <div class="philo-content">
+        <div class="philo-title">오토파지<span class="philo-en">AUTOPHAGY</span></div>
+        <p>세포는 낡은 자신을 스스로 분해해 새로운 자신을 만듭니다. 익숙한 방식이 해체될 때, 그것은 끝이 아니라 갱신의 시작입니다. 파괴처럼 보이는 것이 사실은 준비입니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>02</span></div>
+      <div class="philo-content">
+        <div class="philo-title">테세우스의 배<span class="philo-en">SHIP OF THESEUS</span></div>
+        <p>배의 모든 판자를 하나씩 교체했을 때, 그것은 여전히 같은 배일까요. 도구가 바뀌고, 워크플로우가 바뀌고, 사고 방식이 바뀌었을 때 — 나는 여전히 나일까요. 그리고 그 질문의 답이 사실은 중요하지 않다는 것을 깨닫는 순간이 옵니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>03</span></div>
+      <div class="philo-content">
+        <div class="philo-title">특이점<span class="philo-en">SINGULARITY · 이전으로 돌아갈 수 없는 나</span></div>
+        <p>기술적 특이점이 아닌 개인의 특이점. 한 번 보고 나면 보지 않은 상태로 돌아갈 수 없는 것. 두 달간의 몰입이 그 경계를 지났습니다. 이전의 나로 돌아가는 것은 이제 불가능합니다. 그리고 그것은 상실이 아닙니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>04</span></div>
+      <div class="philo-content">
+        <div class="philo-title">비타 노바<span class="philo-en">VITA NOVA · 새로운 삶</span></div>
+        <p>단테는 베아트리체를 만난 뒤 자신의 삶이 '이전'과 '이후'로 나뉜다고 했습니다. 비타 노바 — 새로운 삶. 단절이 아니라 심화입니다. 과거의 내가 기반이 되어 새로운 내가 시작되는 것. 이 두 달이 그런 시간이었습니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>05</span></div>
+      <div class="philo-content">
+        <div class="philo-title">증강된 나<span class="philo-en">AUGMENTED SELF</span></div>
+        <p>대체된 것이 아닙니다. 확장된 것입니다. 내가 여전히 중심에 있고, 도구가 내 손과 눈의 반경을 넓혀줍니다. 그러나 어디로 향할지는 여전히 내가 압니다. 아는 사람만이 확장의 방향을 정할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node">
+      <div class="philo-icon"><span>06</span></div>
+      <div class="philo-content">
+        <div class="philo-title">돌고 돌아 온 나만의 자리<span class="philo-en">THE ONLY PLACE THAT WAS ALWAYS MINE</span></div>
+        <p>마르코 폴로는 칸에게 수백 개의 도시를 묘사했습니다. 칸은 어느 날 깨달았습니다. 모든 도시는 사실 하나의 도시였다고. 폴로가 태어난 베네치아. 폴로는 한 번도 베네치아를 직접 말하지 않았지만 — 모든 도시 안에 베네치아가 있었습니다. 우리가 어떤 도구를 쓰고, 어떤 흐름을 따라가도, 결국 모든 것 안에는 나라는 사람이 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="philo-node active">
+      <div class="philo-icon"><span>→</span></div>
+      <div class="philo-content">
+        <div class="philo-title">지금, 오늘, 여기<span class="philo-en">NOW · TODAY · HERE</span></div>
+        <p>모든 순환이 도착하는 곳입니다. 오토파지를 거치고, 테세우스의 배를 건너고, 특이점을 지나고, 비타 노바를 살고, 증강된 채로 — 여기 있습니다. 내가 오래 있었던 자리. 나만이 있을 수 있는 자리. 그 자리가 출발점이었고, 지금도 그 자리입니다.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pull-quote">
+    <p>도구가 정교해질수록<br>질문이 더 중요해집니다.<br>무엇을 만들 것인가가 아니라<br>왜, 누구를 위해, 나만의 방식으로.</p>
+    <cite>— DEEPER UNBRANDING SALON</cite>
+  </div>
+
+  <p>창작자의 가장 깊은 도메인은 외부에 있지 않습니다. 오래 살아온 감각, 반복해서 돌아오는 질문, 다른 사람과는 다른 각도로만 볼 수 있는 풍경. 그것이 AI가 대체할 수 없는 것의 본체입니다. 지도가 아무리 정교해도, 가야 할 곳을 아는 사람이 지도를 의미 있게 만듭니다.</p>
+
+
+  <!-- ═══ 06 CONNECT ═══ -->
+  <div class="section-divider">
+    <span class="section-num">06 · CONNECT</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">우리가 하고 있는 작업</div>
+
+  <p class="lead">그렇다면 지금 문법 단계에서 하고 있는 것이 다시 보입니다.</p>
+
+  <p>자기 문장을 읽는 것. 자기 논리가 어디서 끊기는지 보는 것. 내 목소리가 어느 지점에서 가장 선명한지 찾는 것. 문법이라고 부르기로 했지만 — <strong>자기 도메인을 발굴하는 작업</strong>입니다.</p>
+
+  <p>이 눈이 생기면 도구가 달라집니다. 묻는 것도 달라지고, 나오는 것도 달라집니다. EP97 같은 대화를 들었을 때도 달라집니다. 전부 이해하지 않아도 — 이 흐름이 내 작업의 어느 지점과 닿는지 감각하게 됩니다. 그 감각이 맥락을 읽는 힘입니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>맥락 읽기의 연습</h3>
+      <ul>
+        <li>이 대화가 어디서 시작해서 어디에 닿는가</li>
+        <li>저 사람이 말하는 '도메인'이 나에게는 무엇인가</li>
+        <li>이 흐름이 내 작업과 어떻게 연결되는가</li>
+        <li>나는 이 변화 안에서 어디에 있는가</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>문법 단계가 키우는 것</h3>
+      <ul>
+        <li>내 언어가 어디서 가장 나다운지 아는 것</li>
+        <li>내 논리의 구조를 볼 수 있는 것</li>
+        <li>내 독자가 어디서 멈추는지 감각하는 것</li>
+        <li>이 모든 것을 도구와 연결하는 것</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-teal">
+    <div class="callout-label">Cat Wu · Anthropic</div>
+    <p>"혼돈을 즐길 수 있는 사람." 어제의 기준이 오늘 달라지는 변화 속에서 판단하고 움직일 수 있는 사람.</p>
+    <p>창작자에게 이것은 이렇게 번역됩니다. 흐름이 바뀌어도 자기 목소리를 잃지 않는 사람. 도구가 달라져도 왜 쓰는지를 아는 사람.</p>
+  </div>
+
+
+  <!-- ═══ CLOSE ═══ -->
+  <div class="close-box">
+    <div class="close-label">지금, 오늘, 여기</div>
+    <p class="close-text">
+      오토파지를 거쳐<br>
+      특이점을 지나<br>
+      증강된 채로 돌아온 자리.<br><br>
+      그 자리가 처음부터<br>
+      나만의 것이었습니다.
+    </p>
+    <div class="close-trivium">
+      <div class="close-trivium-label">Trivium × AI — 언브랜딩의 세 단계</div>
+      <div class="close-trivium-steps">
+        <div class="close-trivium-step">
+          <div class="cts-num">I · GRAMMAR</div>
+          <div class="cts-name">문법</div>
+          <div class="cts-concept">해체</div>
+          <div class="cts-desc">덧씌워진 것을 걷어내고<br>원래의 목소리를 읽는 것</div>
+        </div>
+        <div class="close-trivium-arrow">→</div>
+        <div class="close-trivium-step">
+          <div class="cts-num">II · LOGIC</div>
+          <div class="cts-name">논리</div>
+          <div class="cts-concept">재건</div>
+          <div class="cts-desc">나만의 사고 구조로<br>다시 세우는 것</div>
+        </div>
+        <div class="close-trivium-arrow">→</div>
+        <div class="close-trivium-step">
+          <div class="cts-num">III · RHETORIC</div>
+          <div class="cts-name">수사</div>
+          <div class="cts-concept">창조</div>
+          <div class="cts-desc">나만의 언어로<br>새로운 세계를 여는 것</div>
+        </div>
+      </div>
+    </div>
+    <p class="close-sub">
+      DEEPER UNBRANDING SALON 1기 · 번외편<br>
+      2026년 5월 · 이경선
+    </p>
+  </div>
+
+  <!-- ═══ 07 REFS ═══ -->
+  <div class="section-divider" style="margin-top:52px;">
+    <span class="section-num">07 · REFS</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">참고 출처</div>
+
+  <table class="ref-table">
+    <thead>
+      <tr>
+        <th>출처</th>
+        <th>내용</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>AI Frontier EP97</td>
+        <td>노정석·최승준 대화 전문 (2026.05.21). AI psychosis, 바이오 토큰, 인재상, 버티컬 차별화 전반.</td>
+      </tr>
+      <tr>
+        <td>Andrej Karpathy</td>
+        <td>AI psychosis 개념 최초 언급. 전 Tesla AI 디렉터, OpenAI 공동창업자.</td>
+      </tr>
+      <tr>
+        <td>Benedict Evans (a16z)</td>
+        <td>Unbundling Oracle → Unbundling ChatGPT 프레임.</td>
+      </tr>
+      <tr>
+        <td>배휘동 (Corca)</td>
+        <td>120x 생산성 보고. AI 과몰입과 번아웃의 역설 기록.</td>
+      </tr>
+      <tr>
+        <td>Cat Wu (Anthropic)</td>
+        <td>혼돈을 즐길 수 있는 인재상. Lenny 인터뷰 인용.</td>
+      </tr>
+      <tr>
+        <td>오스미 요시노리</td>
+        <td>오토파지 연구. 2016 노벨 생리의학상.</td>
+      </tr>
+      <tr>
+        <td>단테 알리기에리</td>
+        <td>비타 노바 — 새로운 삶의 시작으로서의 전환.</td>
+      </tr>
+      <tr>
+        <td>이탈로 칼비노</td>
+        <td>보이지 않는 도시들 — 마르코 폴로와 베네치아의 비유.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
