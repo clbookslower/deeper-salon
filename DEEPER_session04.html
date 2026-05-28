@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 04 — 씨앗에 이름을</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --teal: #1a6a5a;
+  --teal-bg: #e6f5f0;
+  --slate: #2a3a5a;
+  --slate-bg: #eef1f8;
+  --red: #7a1a1a;
+  --red-bg: #fdf2f2;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 60px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-grammar { background: var(--gold-bg); color: #854F0B; }
+.badge-session { background: var(--blue-bg); color: var(--blue); }
+.badge-final { background: #f0ece4; color: var(--forest); }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ── 목차 ── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+}
+.toc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: #444;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── 섹션 구분자 ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 32px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+blockquote {
+  margin: 32px 0;
+  padding: 0 0 0 28px;
+  border-left: 2px solid var(--ink);
+}
+blockquote p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+blockquote cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 10px 10px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; }
+.callout + .callout { margin-top: -10px; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--ink); }
+.callout-speaker .callout-label { color: var(--muted); }
+.callout-speaker p { color: #333; }
+.callout-ref { background: var(--gold-bg); border-left: 2.5px solid var(--gold); }
+.callout-ref .callout-label { color: #854F0B; }
+.callout-ref p { color: #5a3800; }
+.callout-q { background: #F0F4FF; border-left: 2.5px solid #4A6FA5; }
+.callout-q .callout-label { color: #4A6FA5; }
+.callout-q p { color: #2a3f6f; }
+.callout-teal { background: var(--teal-bg); border-left: 2.5px solid var(--teal); }
+.callout-teal .callout-label { color: var(--teal); }
+.callout-teal p { color: #1a3a30; }
+.callout-forest { background: #f0f4f0; border-left: 2.5px solid var(--forest); }
+.callout-forest .callout-label { color: var(--forest); }
+.callout-forest p { color: #2a3a2a; }
+
+.concept {
+  display: flex;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+.concept-term {
+  background: var(--forest);
+  color: #fff;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+.concept-term span {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+}
+.concept-def { padding: 22px 24px; flex: 1; }
+.concept-def .term-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.concept-def p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; }
+
+/* ── 두 컬럼 비교 ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+.two-col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.two-col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.two-col-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.two-col-card ul li {
+  font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.65;
+}
+.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.two-col-card.dark { background: var(--forest); border-color: var(--forest); }
+.two-col-card.dark h3 { color: var(--forest-light); }
+.two-col-card.dark ul li { color: #d4e8d4; }
+.two-col-card.dark ul li::before { color: var(--forest-light); }
+
+/* ── 흐름 다이어그램 ── */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.flow-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--ink);
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  line-height: 1.5;
+}
+.flow-item.active { background: var(--forest); color: #f0ece4; border-color: var(--forest); }
+.flow-arrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: #ccc;
+  padding: 0 6px;
+  flex-shrink: 0;
+}
+
+/* ── 실습 ── */
+.exercise {
+  background: #f5faf5;
+  border: 1px solid #C8DFC0;
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin: 36px 0;
+}
+.exercise-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 14px;
+}
+.exercise h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.exercise ol {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.exercise ol li { font-size: 14px; color: #3a5a3a; line-height: 1.8; }
+.exercise-prompt {
+  margin-top: 20px;
+  background: rgba(44,59,45,0.06);
+  border-left: 2.5px solid var(--forest);
+  padding: 16px 18px;
+  border-radius: 0 8px 8px 0;
+}
+.exercise-prompt p { font-size: 14px; color: var(--forest); margin: 0; font-style: italic; line-height: 1.8; }
+
+/* ── CTA / 클로징 ── */
+.close-box {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  margin-top: 72px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: #f0ece4;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+/* ── AI 프롬프트 공용 ── */
+.ai-box {
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+.ai-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.ai-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.ai-box p.ai-desc { font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
+.ai-box ol { padding-left: 18px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.ai-box ol li { font-size: 14px; line-height: 1.8; }
+.ai-prompt-block {
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+.ai-prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  display: block;
+}
+.ai-prompt-block p { font-size: 13px; line-height: 1.95; margin: 0; }
+.ai-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(44,59,45,0.06);
+  border-radius: 8px;
+}
+.ai-note p { font-size: 13px; color: #3a5a3a; margin: 0; }
+
+.box-naming { background: var(--gold-bg); border: 1px solid #d4b060; }
+.box-naming .ai-label { color: #854F0B; }
+.box-naming h3 { color: #3a2800; }
+.box-naming p.ai-desc { color: #5a3800; }
+.box-naming ol li { color: #3a2800; }
+.box-naming .ai-prompt-block { background: rgba(184,134,11,0.07); border-left: 2.5px solid var(--gold); }
+.box-naming .ai-prompt-label { color: #854F0B; }
+.box-naming .ai-prompt-block p { color: #3a2800; }
+.box-naming .ai-note { background: rgba(184,134,11,0.07); }
+.box-naming .ai-note p { color: #5a3800; }
+
+.box-pitch { background: var(--teal-bg); border: 1px solid #8ecfbf; }
+.box-pitch .ai-label { color: var(--teal); }
+.box-pitch h3 { color: #0f3028; }
+.box-pitch p.ai-desc { color: #1a4038; }
+.box-pitch ol li { color: #0f3028; }
+.box-pitch .ai-prompt-block { background: rgba(26,106,90,0.07); border-left: 2.5px solid var(--teal); }
+.box-pitch .ai-prompt-label { color: var(--teal); }
+.box-pitch .ai-prompt-block p { color: #0f3028; }
+.box-pitch .ai-note { background: rgba(26,106,90,0.06); }
+.box-pitch .ai-note p { color: #1a4038; }
+
+/* ── 각주 ── */
+.footnote {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 27px; }
+  .two-col { grid-template-columns: 1fr; }
+  .concept { flex-direction: column; }
+  .concept-term { writing-mode: horizontal-tb; min-width: auto; }
+  .concept-term span { writing-mode: horizontal-tb; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · 1기</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>SESSION 04</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-grammar">GRAMMAR</span>
+      <span class="dot">·</span>
+      <span class="badge badge-session">SESSION 04</span>
+      <span class="dot">·</span>
+      <span class="badge badge-final">문법 완성</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.05.28 THU 22:00</span>
+    </div>
+    <h1>씨앗에 이름을</h1>
+    <p class="subtitle">손을 펴는 것부터 — 나만의 언어로 번역하고, 세상에 건네기까지</p>
+    <div class="tags">
+      <span class="tag">오병이어</span>
+      <span class="tag">명명의힘</span>
+      <span class="tag">기호화</span>
+      <span class="tag">번역vs타협</span>
+      <span class="tag">지식보편재</span>
+      <span class="tag">프레임워크</span>
+      <span class="tag">문법완성</span>
+    </div>
+  </header>
+
+  <!-- 목차 -->
+  <div class="toc">
+    <div class="toc-label">Session Outline</div>
+    <div class="toc-item"><span class="toc-num">01</span>OPENING — 오토파지가 끝난 자리, 남은 것</div>
+    <div class="toc-item"><span class="toc-num">02</span>FRAME — 지식이 공기가 될 때: 희소한 것은 어디로 이동하는가</div>
+    <div class="toc-item"><span class="toc-num">03</span>MOVE 1 — 오병이어의 역설: 내어줄수록 불어나는 것</div>
+    <div class="toc-item"><span class="toc-num">04</span>MOVE 2 — 씨앗을 기호로: 십자가처럼</div>
+    <div class="toc-item"><span class="toc-num">05</span>MOVE 3 — 번역과 타협 사이</div>
+    <div class="toc-item"><span class="toc-num">06</span>AI EXPERIMENT — 씨앗에 이름을 붙이고, 피치로 만들기</div>
+    <div class="toc-item"><span class="toc-num">07</span>PRACTICE — 한 단어, 한 문장, 한 상징</div>
+    <div class="toc-item"><span class="toc-num">08</span>CLOSE — 꿈꾸는 사람의 시대</div>
+  </div>
+
+  <!-- ═══ 01 OPENING ═══ -->
+  <div class="section-divider">
+    <span class="section-num">01 · OPENING</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">오토파지가 끝난 자리, 남은 것</div>
+
+  <p class="lead">4주가 지났습니다. 오늘로 문법이 끝납니다. 시작할 때와 지금 사이에, 무언가 달라진 것이 있나요.</p>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">오프닝 멘트 · 진행자</div>
+    <p>달라진 것이 눈에 보이지 않아도 괜찮습니다. 오토파지는 안에서 먼저 일어납니다. 겉에서는 모를 때, 이미 소화가 시작되어 있습니다.<br><br>
+    오늘 시작 전에 한 가지만 여쭤볼게요. <strong>지금 내가 가진 것 중에서 — 나눠줘도 줄지 않는다고 느끼는 것이 있나요. 아니면 반대로, 꼭 쥐고 있어야 한다고 느끼는 것은 무엇인가요?</strong></p>
+  </div>
+
+  <p>오토파지는 소화하는 과정입니다. 불필요한 것이 분해되어 에너지가 되고, 다시 쓰일 수 있는 것으로 재편됩니다. 그 과정이 끝난 자리에는 녹지 않는 것이 남습니다. 더 작게 쪼갤 수 없는 것. 분해해도 사라지지 않는 것.</p>
+
+  <p>지난 3주 동안 발굴하고, 정리하고, 구조를 세웠습니다. 그 과정에서 떠오른 것, 사라진 것, 그리고 남은 것. 오늘은 그 남은 것을 봅니다. 씨앗 하나를.</p>
+
+  <!-- ═══ 02 FRAME ═══ -->
+  <div class="section-divider">
+    <span class="section-num">02 · FRAME</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">지식이 공기가 될 때: 희소한 것은 어디로 이동하는가</div>
+
+  <p class="lead">기술이 예술을 무한 복제할 수 있게 된 순간, 사람들은 원본이 가진 무게가 사라질 것이라 생각했습니다. 원본이 가진 아우라(aura) — 여기, 지금, 이것. 유일한 장소에, 유일한 시간에 존재하는 것이 희석될 것이라고.</p>
+
+  <p>루브르의 모나리자를 책에서 볼 수 있게 되었을 때, 원본이 가진 무게가 약해질 것 같았습니다. 실제로는 그 반대가 일어났습니다. 복제가 많아질수록, 원본을 향한 욕망은 커졌습니다. 아우라가 사라진 것이 아니었습니다. <em>이동했습니다.</em> 작품에서 관계로, 사물에서 경험으로, 정보에서 맥락으로.</p>
+
+  <p>AI가 지식을 복제하는 지금, 같은 이동이 일어나고 있습니다. 변호사에게 물어봤던 것, 의사에게 예약을 잡아야 했던 것, 몇 십만 원짜리 컨설팅에서 들었던 것들이 — 프롬프트 하나로 돌아옵니다. 사실, 수치, 전문 지식의 아우라는 옅어집니다. 그러나 그 지식을 만들어낸 여정, 그것을 왜 중요하게 여기는지에 대한 이유, 그 방향으로 데려가는 관계 — 이것의 아우라는 오히려 선명해집니다.</p>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">아우라의 이동 · 복제의 시대가 역설적으로 만들어내는 것</div>
+    <p>복제 기술이 원본의 아우라를 제거할 것이라 예상했습니다. 그런데 그 이후의 역사는 다른 것을 보여줬습니다. 아우라는 사라진 것이 아니라 이동했습니다. 지식의 시대에도 같은 일이 벌어집니다. 정보의 아우라가 옅어질 때, 관점의 아우라가 짙어집니다. 희소성이 이동하는 자리 — 그곳이 창작자가 서야 하는 곳입니다.</p>
+  </div>
+
+  <p>이 이동이 창작자에게 의미하는 것이 있습니다. 정보의 경쟁에서 벗어나는 것이 가능해졌습니다. 아무리 잘 정리된 정보라도 AI가 더 빠르게 제공하는 세상에서 — 경쟁해야 할 곳이 달라집니다. 무엇을 아느냐가 아니라, 어떻게 보는지. 어느 방향으로 향하는지. 어떤 의도로 만드는지.</p>
+
+  <div class="callout callout-q">
+    <div class="callout-label">잠깐 대화 · 3분</div>
+    <p>내가 지금 하는 일에서 — AI가 복제할 수 없는 것이 있다면 무엇인가요. 그것이 복제되지 않는 이유는 어디서 오나요?</p>
+  </div>
+
+  <!-- ═══ 03 MOVE 1 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">03 · MOVE 1</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">오병이어의 역설: 내어줄수록 불어나는 것</div>
+
+  <p class="lead">물고기 두 마리와 보리떡 다섯 개. 그것을 내어놓는 순간에 잠깐 머물러 봅니다. 오천 명이 앞에 있고, 손안에는 그것뿐입니다.</p>
+
+  <p>1925년, 프랑스 사회학자 마르셀 모스는 인류학의 고전이 된 책을 씁니다. 『증여론(Essai sur le don)』. 선물을 주는 행위를 연구한 책입니다. 그가 분석한 것 중에 포틀래치(potlatch)가 있습니다. 북미 태평양 연안 원주민 사회에서 행해지는 의식 — 족장이 자신의 재산을 공개적으로 부족민들에게 나눠줍니다. 때로는 불태우기도 합니다. 더 많이 나눌수록, 더 높은 위상을 얻습니다.</p>
+
+  <p>이것은 이타심이 아니었습니다. 모스는 이것이 인류에서 가장 오래된 경제 원리 중 하나라고 봤습니다. 선물을 주는 행위는 관계를 만들고, 관계는 신뢰를 만들고, 신뢰는 공동체를 만듭니다. 그 공동체 안에서 가장 많이 나눈 사람이 — 가장 중심에 있게 됩니다.</p>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">마르셀 모스, 『증여론(Essai sur le don)』(1925)</div>
+    <p>증여는 순수한 자선이 아닙니다. 선물을 주는 행위는 관계를 만들고, 그 관계가 사회적 자본이 됩니다. 모스의 발견은 이것입니다 — 나누는 행위가 위상이 된다. 오병이어의 기적은 종교적 서사이기 이전에, 이 원리의 서사입니다. 내어놓는 행위가 먼저이고, 열두 광주리는 그 뒤에 옵니다.</p>
+  </div>
+
+  <p>지식 콘텐츠를 만드는 창작자들이 마주치는 질문이 있습니다. 너무 많이 공유하면 팔 것이 없어지지 않을까. 아이디어를 다 내어주면 따라오지 않을까. 씨앗을 움켜쥐고 싶어집니다. 당연한 마음입니다.</p>
+
+  <div class="callout callout-teal">
+    <div class="callout-label">반론과 응답</div>
+    <p>포틀래치는 물질을 나누는 것이고, 지식은 다르지 않은가. 내 아이디어가 복제되지 않는가.<br><br>
+    물질과 지식은 다른 논리로 작동합니다. 사과를 나누면 내 몫이 줄지만, 관점을 나누면 내 안에서 사라지지 않습니다. 더 중요한 것이 있습니다. 당신의 아이디어는 복제될 수 있어도 — 당신이 그 아이디어에 도달한 경로는 복제되지 않습니다. 틀렸다가 고친 것, 아파본 뒤에 알게 된 것, 그 여정이 쌓인 목소리. 그것은 복사되지 않습니다.<br><br>
+    수십 년의 연구들이 반복해서 보여주는 것이 있습니다. 장기적으로 가장 성공하는 사람들은 주는 사람들이라고. 단, 조건이 있습니다. 자신이 중요하게 여기는 것을 — 충분히, 자신답게 줄 때입니다.</p>
+  </div>
+
+  <p>움켜쥐면 씨앗은 씨앗으로 남습니다. 처음부터 열두 광주리가 남기를 계산하고 내어놓으면 — 손이 오그라듭니다. 내어놓는 행위가 먼저입니다. 남는 것은 그 뒤에 옵니다.</p>
+
+  <!-- ═══ 04 MOVE 2 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">04 · MOVE 2</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">씨앗을 기호로: 십자가처럼</div>
+
+  <p class="lead">롤랑 바르트는 1957년 『신화론(Mythologies)』에서 프랑스 일상의 기호들을 분석합니다. 레슬링 경기, 비누 광고, 스테이크. 그가 보여주는 것은 — 이것들이 단순한 사물이 아니라는 것입니다. 코카콜라의 곡선 병은 청량감을 설명하지 않습니다. 하나의 세계를 불러옵니다.</p>
+
+  <p>기호는 의미를 전달하는 도구가 아닙니다. 기호가 의미를 만들어냅니다. 형식이 내용이 됩니다. 그래서 훌륭한 브랜드 기호는 설명이 필요하지 않습니다. 그것을 보는 순간, 무언가가 연결됩니다.</p>
+
+  <p>칼 융은 더 깊은 층위를 봤습니다. 가장 강력한 기호는 개인의 학습을 넘어 작동합니다. 원형(Archetype) — 인류가 오랫동안 공유해온 형상들. 십자가, 원, 나선, 빛. 이것들은 문화를 넘어 무언가를 감지하게 합니다. 설명 없이도 연결됩니다. 종교를 모르는 아이도 십자가 앞에서 무언가를 느끼는 것은 — 그 기호에 수천 년의 인간 경험이 쌓여 있기 때문입니다.</p>
+
+  <p>당신의 씨앗이 기호가 된다는 것은 — 그것이 당신의 설명 없이 작동하기 시작한다는 뜻입니다. 거기까지 가려면, 먼저 그 씨앗이 무엇인지 당신 자신이 정확히 알아야 합니다. 모호한 것은 기호가 되지 않습니다. 당신 안에서 분명한 것만 밖에서 전달됩니다.</p>
+
+  <div class="concept">
+    <div class="concept-term"><span>명명의 힘</span></div>
+    <div class="concept-def">
+      <span class="term-en">THE POWER OF NAMING</span>
+      <p>이름이 붙기 전까지 개념은 '느낌' 상태입니다. 표현하기 어렵고, 가르치기 어렵고, 나눠주기 어렵습니다. 이름이 붙는 순간 잡을 수 있게 됩니다. 공유할 수 있게 됩니다. 전달할 수 있게 됩니다.<br><br>
+      자신이 하는 일을 설명하는 데 10분이 걸리는 사람이 있고, 한 단어로 설명되는 사람이 있습니다. 그 차이가 기호의 힘입니다. 이름 하나가 생기기 전과 후, 같은 내용이 달리 전달됩니다.</p>
+    </div>
+  </div>
+
+  <p>지난 3주간 발굴한 원천 텍스트, 찾은 목소리의 결, 그린 지식 지형도. 그것을 하나로 묶는 이름이 있어야 합니다. 이름이 없다면 그것은 아직 내 안에만 있는 것입니다. 이름이 생기는 순간 밖으로 나옵니다.</p>
+
+  <p>개념어를 만들 수 있습니다. 내가 하는 것을 설명하는 기존 단어가 없다면, 새로운 단어를 만들면 됩니다. 또는 기존 단어를 다른 방식으로 조합해도 됩니다. 중요한 것은 — 그 이름을 들었을 때, 상대방이 무언가를 연결할 수 있어야 한다는 것입니다.</p>
+
+  <div class="callout callout-forest">
+    <div class="callout-label">씨앗 → 기호로 가는 세 단계</div>
+    <p><strong>1단계 개념어</strong> — 내가 하는 것을 가장 짧게 부르는 이름. 한 단어 또는 짧은 조합.<br><br>
+    <strong>2단계 은유</strong> — 이것은 마치 ___와 같다. 낯선 것을 친숙한 것으로 연결하는 다리.<br><br>
+    <strong>3단계 한 문장</strong> — 누구를 위해, 무엇을, 어떻게. 한 문장으로 완결되는 것.</p>
+  </div>
+
+  <!-- ═══ 05 MOVE 3 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">05 · MOVE 3</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">번역과 타협 사이</div>
+
+  <p class="lead">독자의 언어로 건넨다는 것. 내 것을 낯선 방에 두고 오는 것이 아닙니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>번역 · Translation</h3>
+      <ul>
+        <li>내 핵심을 유지하면서 전달 방법을 바꾸는 것</li>
+        <li>독자의 언어로 출발해 내 세계로 데려오는 것</li>
+        <li>목소리는 같고 형태가 달라지는 것</li>
+        <li>내가 서 있는 곳에서 손을 내미는 것</li>
+        <li>내 방향이 유지되는 것</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>타협 · Compromise</h3>
+      <ul>
+        <li>독자가 원하는 것을 위해 내 핵심을 바꾸는 것</li>
+        <li>닿기 위해 내 방향을 포기하는 것</li>
+        <li>목소리까지 바뀌는 것</li>
+        <li>독자의 자리까지 내려가 그 자리에 앉는 것</li>
+        <li>출발지와 목적지가 바뀌는 것</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>번역은 다리를 놓는 일입니다. 내가 서 있는 곳에서 독자가 서 있는 곳까지. 다리를 건너면 내 쪽으로 와야 합니다. 타협은 다리를 건너가서 그 자리에 눌러앉는 것입니다. 독자에게 닿으려다 자신을 잃는 것은 — 타협의 방향입니다.</p>
+
+  <p>내 목소리를 유지하면서 독자에게 닿는 것. 그것이 마지막 문법 작업입니다.</p>
+
+  <p>3주 동안 쌓아온 것들 — 원천 텍스트, 목소리의 결, 콘텐츠 지형도 — 이것들이 이제 하나의 이름으로 묶이고, 그 이름이 독자의 언어로 건네집니다. 문법이 완성됩니다.</p>
+
+  <!-- ═══ AI 실험 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">06 · AI EXPERIMENT</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">이번 주 AI 글쓰기 실험</div>
+
+  <!-- AI 프롬프트 01 -->
+  <div class="ai-box box-naming">
+    <div class="ai-label">AI 프롬프트 01 · 씨앗에 이름을 붙이기</div>
+    <h3>개념어 + 은유 + 설명문 — 내 프레임워크의 이름 찾기</h3>
+    <p class="ai-desc">지난 3주 동안 발굴한 원천 텍스트와 브랜드 씨앗 문장을 가져오는 작업입니다. AI가 그것을 읽고, 당신만이 가진 프레임워크에 이름을 붙이도록 돕습니다. AI가 제안한 것이 정답이 아닙니다. 그 제안들을 보면서 당신이 직접 선택하거나, 새로운 것을 떠올릴 수 있습니다.</p>
+    <ol>
+      <li>Claude 새 대화를 열고 아래 <strong>[시스템 설정]</strong>을 먼저 입력합니다.</li>
+      <li>브랜드 씨앗 문장 + 지난 3주간 쓴 원천 텍스트 또는 인사이트 메모 2–3편을 붙여넣습니다.</li>
+      <li><strong>[분석 요청]</strong>을 입력하고, AI의 제안을 보면서 마음에 걸리는 것에 체크합니다.</li>
+    </ol>
+
+    <div class="ai-prompt-block" style="background:rgba(184,134,11,0.07);border-left:2.5px solid var(--gold);margin-top:20px;margin-bottom:12px;">
+      <span class="ai-prompt-label" style="color:#854F0B;">[시스템 설정 — 먼저 입력]</span>
+      <p style="color:#3a2800;font-size:13px;line-height:1.95;">당신은 브랜드 언어 설계자입니다. 창작자가 자신의 핵심 통찰을 하나의 기호, 이름, 상징으로 만들도록 돕는 것이 당신의 역할입니다.<br><br>
+      분석 방식은 세 단계입니다.<br>
+      (1) 씨앗 문장 분석: 이 사람이 반복적으로 말하고자 하는 것의 핵심. 명시적인 것과 암묵적인 것 모두.<br>
+      (2) 개념어 제안: 이 핵심을 가장 짧게 부르는 이름 5–7개. 기존 단어의 조합, 새로운 단어, 은유적 표현 모두 허용합니다.<br>
+      (3) 기호화 제안: 각 개념어에 대해 — 이것은 마치 ___와 같다(은유), 그리고 누구를 위해 무엇을 어떻게(한 문장 설명)를 붙여줍니다.<br><br>
+      중요: 일반적인 마케팅 언어가 아니라, 이 사람만의 언어와 세계관에서 나온 것이어야 합니다. 부드럽고 구체적으로 제안하되, 최종 선택은 이 사람의 몫임을 명확히 합니다.</p>
+    </div>
+
+    <div class="ai-prompt-block" style="background:rgba(184,134,11,0.07);border-left:2.5px solid var(--gold);">
+      <span class="ai-prompt-label" style="color:#854F0B;">[분석 요청 — 글 붙여넣기 후 입력]</span>
+      <p style="color:#3a2800;font-size:13px;line-height:1.95;">위에 내 브랜드 씨앗 문장과 지난 3주간 쓴 글들을 첨부했습니다. 세 단계로 분석해주세요. 제안이 끝나면, 제안들 중에서 내가 가장 거부감을 느끼는 것 하나와 가장 끌리는 것 하나를 말해보라고 질문해주세요. 그리고 내 대답을 듣고 나서 — 최종 이름 3개를 다시 제안해주세요.</p>
+    </div>
+
+    <div class="ai-note">
+      <p>AI가 제안한 이름 중 가장 가까운 것 하나를 골라 긱어스에 올려주세요. 오늘 실습의 출발점이 됩니다.</p>
+    </div>
+  </div>
+
+  <!-- AI 프롬프트 02 -->
+  <div class="ai-box box-pitch">
+    <div class="ai-label">AI 프롬프트 02 · 엘리베이터 피치 3버전</div>
+    <h3>30초 / 1분 / 3분 — 씨앗이 세상으로 나가는 방식</h3>
+    <p class="ai-desc">이름이 생겼다면, 이제 그 이름으로 자신을 소개하는 연습입니다. 세 가지 길이는 세 가지 맥락을 위한 것입니다. 짧을수록 더 어렵습니다.</p>
+    <ol>
+      <li>첫 번째 실험에서 고른 이름(개념어 + 한 문장 설명)을 준비합니다.</li>
+      <li>아래 프롬프트를 붙여넣고, 이름과 씨앗 문장을 채워 넣습니다.</li>
+      <li>생성된 3버전 중 가장 당신답다고 느끼는 것을 긱어스에 올려주세요.</li>
+    </ol>
+
+    <div class="ai-prompt-block" style="background:rgba(26,106,90,0.07);border-left:2.5px solid var(--teal);margin-top:20px;">
+      <span class="ai-prompt-label" style="color:var(--teal);">[전체 프롬프트]</span>
+      <p style="color:#0f3028;font-size:13px;line-height:1.95;">나는 [개념어 / 이름]이라는 프레임워크로 일하는 창작자입니다. 내 브랜드 씨앗 문장은 [씨앗 문장]입니다.<br><br>
+      이것으로 세 가지 버전의 소개 문장을 만들어주세요.<br><br>
+      첫째, 30초 버전 (약 80–100자): 처음 만난 사람에게 엘리베이터 안에서 말할 수 있는 것. 전문 용어 없이, 상대가 "그게 뭔데요?"라고 묻고 싶게 만드는 것.<br><br>
+      둘째, 1분 버전 (약 200–250자): 내가 누구를 돕는지, 어떻게 돕는지, 무엇이 다른지를 담는 것.<br><br>
+      셋째, 3분 버전 (약 500–600자): 내 여정의 핵심 순간 하나를 담아 — 왜 이 일을 하는지, 어디에서 왔는지가 느껴지는 것.<br><br>
+      중요: 세 버전 모두 내 목소리가 유지되어야 합니다. 세련된 마케팅 문구가 아니라, 이 사람이 실제로 말할 수 있는 것으로.</p>
+    </div>
+
+    <div class="ai-note">
+      <p>3분 버전이 가장 쓰기 어렵게 느껴진다면 — 그 어려움이 당신의 원천 텍스트에서 아직 꺼내지 못한 무언가가 있다는 신호입니다.</p>
+    </div>
+  </div>
+
+  <!-- ═══ 07 PRACTICE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">07 · PRACTICE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">한 단어, 한 문장, 한 상징</div>
+
+  <p>오늘의 실습은 두 단계입니다. 먼저 내 프레임워크에 이름을 붙이고, 그 이름으로 나를 소개하는 30초 문장을 완성합니다.</p>
+
+  <div class="exercise">
+    <div class="exercise-label">PRACTICE · 세션 내 실습 (18분)</div>
+    <h3>내 프레임워크의 공식 이름 + 30초 소개</h3>
+    <ol>
+      <li><strong>개념어</strong>: AI 실험 01에서 고른 이름을 씁니다. 마음에 드는 것이 없다면 — AI의 제안을 발판으로 삼아 직접 만들어도 됩니다.</li>
+      <li><strong>은유</strong>: 이것은 마치 ___와 같다. 비유 하나를 씁니다. 거창하지 않아도 됩니다. 구체적인 것이면 충분합니다.</li>
+      <li><strong>한 문장</strong>: 누구를 위해 / 무엇을 / 어떻게. 이 세 가지가 들어간 한 문장을 씁니다.</li>
+      <li><strong>30초 피치</strong>: 위 세 가지를 바탕으로 — 처음 만난 사람에게 건넬 수 있는 80–100자를 씁니다. 지금 바로, 이 자리에서.</li>
+    </ol>
+    <div class="exercise-prompt">
+      <p>30초 피치를 다 쓴 분 — 옆 사람에게 말해보세요. 읽는 것이 아니라, 말하는 것처럼.<br>
+      막히는 분 — 막히는 지점을 그대로 씁니다. "여기서 막힌다. 왜냐하면 —" 그것도 발굴입니다.</p>
+    </div>
+  </div>
+
+  <!-- ═══ 08 CLOSE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">08 · CLOSE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">꿈꾸는 사람의 시대</div>
+
+  <p class="lead">한나 아렌트는 『인간의 조건(The Human Condition)』에서 인간의 활동을 세 가지로 구분합니다. 노동(Labor) — 생존을 위한 반복. 작업(Work) — 세상에 남는 것을 만드는 것. 행위(Action) — 타인과의 관계 속에서 자신을 드러내는 것.</p>
+
+  <p>AI가 노동을, 그리고 점차 작업의 많은 부분을 감당하는 세상에서 — 인간에게 남는 것이 선명해집니다. 행위입니다. 타인과의 관계 속에서 자신을 드러내는 것. 무엇을 왜 만들려 하는지, 누구를 향해 손을 여는지, 어디로 향하는지 — 그 의도의 실천이 창작자의 일이 됩니다.</p>
+
+  <p>증여의 경제가, 아우라의 이동이, 기호의 힘이 — 모두 같은 방향을 가리킵니다. 관계 속에서 자신을 드러내는 것. 손을 여는 것. 씨앗을 내어주는 것.</p>
+
+  <p>4주 동안 문법 단계를 걸었습니다. 발굴하고, 정리하고, 구조를 세우고, 이름을 붙였습니다. 재료가 완성되었습니다. 논리 단계에서는 그 재료가 어떻게 구조가 되는지를 봅니다.</p>
+
+  <div class="close-box">
+    <div class="close-label">08 · CLOSE · 문법 완성</div>
+    <div class="close-text">
+      손을 폈을 때 무엇을 내어놓을 수 있는가.<br>
+      그 질문이 당신의 비즈니스를 만듭니다.
+    </div>
+    <div class="close-sub">
+      이번 주 숙제: 내 프레임워크 공식 이름 + 한 문장 설명을 긱어스에 올려주세요<br>
+      30초 피치를 완성해서 함께 올려주세요 — 다음 주 서로 피드백합니다<br><br>
+      SESSION 05 (논리 01) — 콘텐츠에서 상품으로: 아는 것이 팔리는 것이 되는 구조
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>* 마르셀 모스, 『증여론(Essai sur le don)』(1925) — 선물 경제와 포틀래치: 나눔이 위상이 되는 원리</p>
+    <p>* 롤랑 바르트, 『신화론(Mythologies)』(1957) — 기호가 의미를 전달하는 것이 아니라 의미를 만들어낸다</p>
+    <p>* 칼 구스타프 융, 원형(Archetype) 개념 — 집단 무의식과 보편 기호의 작동 방식</p>
+    <p>* 한나 아렌트, 『인간의 조건(The Human Condition)』(1958) — 노동·작업·행위의 구분: 인간에게 남는 것은 행위다</p>
+    <p>* 오병이어의 기적 — 요한복음 6:1–14</p>
+    <p>* 이 강의안은 디퍼 언브랜딩살롱 1기 Session 04 (2026.05.28)을 위해 작성되었습니다.</p>
+  </div>
+
+</div>
+</body>
+</html>
