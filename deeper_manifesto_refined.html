@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>deeper manifesto refined</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #0F0F0F;
+    --ink-soft: #3A3A3A;
+    --ink-mid: #555;
+    --ink-muted: #888;
+    --rule: #E2DED8;
+    --accent: #1A4A35;
+    --accent-mid: #2D6B4F;
+    --accent-pale: #E8F2EC;
+    --accent-light: #A8CBBA;
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --hi: #F0F5F2;
+    --warm: #F7F4EE;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    line-height: 2.05;
+    -webkit-font-smoothing: antialiased;
+}
+.wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:70px 28px 120px;
+}
+.hero{
+    background: linear-gradient(160deg, #0D2B1E 0%, #1A4A35 55%, #2D6B4F 100%);
+    color:#fff;
+    padding:110px 70px;
+    border-radius:34px;
+    margin-bottom:50px;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.04) 0%, transparent 65%);
+    pointer-events: none;
+}
+.hero h1{
+    font-family: 'Noto Serif KR', serif;
+    font-size:72px;
+    margin:0;
+    letter-spacing:-3px;
+    position: relative;
+}
+.hero .sub{
+    margin-top:28px;
+    font-size:24px;
+    opacity:.85;
+    color: var(--accent-light);
+    position: relative;
+}
+.section{
+    background: var(--surface);
+    border-radius:28px;
+    padding:54px;
+    margin-bottom:28px;
+    box-shadow:0 10px 32px rgba(0,0,0,.05);
+    border: 1px solid var(--rule);
+}
+h2{
+    font-family: 'Noto Serif KR', serif;
+    font-size:34px;
+    margin-top:0;
+    margin-bottom:32px;
+    letter-spacing:-1px;
+    color: var(--ink);
+}
+p{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:18px;
+    color: var(--ink-soft);
+    line-height: 2.05;
+}
+blockquote{
+    margin:36px 0;
+    padding:24px 30px;
+    background: var(--hi);
+    border-left:4px solid var(--accent);
+    font-family: 'Noto Serif KR', serif;
+    font-size:22px;
+    color: var(--ink-mid);
+}
+ul{
+    padding-left:24px;
+}
+li{
+    margin-bottom:14px;
+    font-size:18px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink-soft);
+}
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+.card{
+    background: var(--accent-pale);
+    padding:28px;
+    border-radius:22px;
+    border: 1px solid var(--accent-light);
+}
+.card h3{
+    margin-top:0;
+    font-size:24px;
+    font-family: 'Noto Serif KR', serif;
+    color: var(--accent);
+}
+.card p {
+    font-size: 16px;
+    color: var(--ink-soft);
+}
+.footer{
+    text-align:center;
+    color: var(--ink-muted);
+    padding-top:40px;
+    font-size:14px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+}
+@media (max-width:700px){
+    .hero{
+        padding:70px 36px;
+    }
+    .hero h1{
+        font-size:52px;
+    }
+    .grid{
+        grid-template-columns:1fr;
+    }
+    .section{
+        padding:36px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+    <h1>deeper</h1>
+    <div class="sub">
+        AI 시대를 함께 건너가는 사람들을 위한<br>
+        인문학적 창작 공동체
+    </div>
+</div>
+
+<div class="section">
+    <h2>왜 deeper인가</h2>
+
+    <blockquote>
+        "춤추는 별을 낳으려면 자기 안에 혼돈을 품고 있어야 한다."
+        — 프리드리히 니체
+    </blockquote>
+
+    <p>
+        deeper라는 이름에는 오래 버텨온 시간의 결이 담겨 있다.
+    </p>
+
+    <p>
+        우리는 각자의 자리에서 오래 혼자였다.
+        어떤 날은 글을 썼고,
+        어떤 날은 무너진 일을 수습했다.
+        사람들에게는 보이지 않았지만,
+        각자의 방식으로 긴 시간을 견디며 살아왔다.
+    </p>
+
+    <p>
+        그러는 사이 세상은 빠르게 변했고,
+        AI라는 거대한 흐름이 삶의 한가운데로 들어왔다.
+        사람들은 기술을 배우기 시작했지만,
+        한편으로는 자기 언어와 감각을 잃어가는 두려움도 함께 느끼고 있었다.
+    </p>
+
+    <p>
+        deeper는 그 지점에서 시작되었다.
+        기술을 잘 사용하는 사람을 만드는 데서 멈추지 않고,
+        자기 삶의 문장을 잃지 않는 사람들을 연결하고 싶었다.
+    </p>
+
+    <p>
+        읽고,
+        쓰고,
+        배우고,
+        가르치고,
+        함께 살아남는 일.
+        deeper는 그 과정을 천천히 오래 이어가기 위해 만들어진 이름이다.
+    </p>
+</div>
+
+<div class="section">
+    <h2>우리가 만들고 싶은 장면</h2>
+
+    <p>
+        우리는 빠르게 소비되고 사라지는 플랫폼보다,
+        오래 머물 수 있는 공동체를 꿈꾼다.
+    </p>
+
+    <p>
+        누군가는 이곳에서 처음 자기 이야기를 쓰게 될 것이고,
+        누군가는 책을 내고,
+        누군가는 작은 모임을 열고,
+        누군가는 다시 삶을 시작하게 될지도 모른다.
+    </p>
+
+    <blockquote>
+        "AI 시대에도 인간의 언어와 감각,
+        자기 삶의 서사를 잃지 않도록 돕는다."
+    </blockquote>
+
+    <p>
+        deeper는 인문학과 AI,
+        출판과 커뮤니티,
+        창작과 학습을 한 흐름 안에서 연결하려 한다.
+        기술은 도구로 머물고,
+        사람은 중심에 남는다.
+    </p>
+</div>
+
+<div class="section">
+    <h2>deeper의 구조</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Origin Layer</h3>
+            <p>
+                트리비움, 언브랜딩 살롱,
+                클래식북스, 생각학교ASK,
+                슬로어, 폴라리스, TWI 등
+                오랜 시간 쌓여온 철학과 교육 구조,
+                창작의 기반이 되는 세계관.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>AI & Publishing Layer</h3>
+            <p>
+                AI 기반 출판,
+                Book-to-Brand 프로젝트,
+                AI 전문강사 공동 출간,
+                창작자 생태계를 위한 실질적 구조와 실행.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Facilitator Layer</h3>
+            <p>
+                각자의 지역과 삶 안에서
+                작은 살롱과 학습 공동체를 열 수 있도록 돕는다.
+                수익은 실제 운영자에게 돌아가고,
+                공동체는 서로의 성장을 연결한다.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Community Layer</h3>
+            <p>
+                저자와 강사,
+                창작자와 독자가
+                소비자가 아니라 동료로 연결되는 구조.
+                함께 배우고 오래 관계 맺는 공동체.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div class="section">
+    <h2>언브랜딩 살롱과 퍼실리테이터</h2>
+
+    <p>
+        deeper의 중심에는 '디퍼 언브랜딩 살롱'이 있다.
+    </p>
+
+    <p>
+        이곳에서는 자기 삶을 다시 읽고,
+        자기 언어를 천천히 회복한다.
+        누군가의 속도를 따라가기보다,
+        자기 호흡으로 살아가는 방법을 배운다.
+    </p>
+
+    <p>
+        앞으로 퍼실리테이터들은 작은 공동체를 직접 운영하게 된다.
+        다섯 사람의 작은 모임이어도 충분하다.
+        중요한 것은 규모보다 관계이고,
+        경쟁보다 지속 가능성이다.
+    </p>
+
+    <p>
+        수익은 중앙으로 모으기보다
+        실제 운영자에게 돌아가도록 설계한다.
+        사람의 재능과 노동이 소모되지 않도록 하기 위해서다.
+    </p>
+
+    <blockquote>
+        "각자의 이름과 삶을 지키면서도,
+        서로 연결될 수 있는 공동체."
+    </blockquote>
+
+    <p>
+        deeper는 그런 구조를 오래 실험해보려 한다.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Book-to-Brand</h2>
+
+    <p>
+        deeper는 책 한 권이 삶의 방향을 바꿀 수 있다고 믿는다.
+    </p>
+
+    <p>
+        한 권의 책은 강의가 되고,
+        브랜드가 되고,
+        새로운 공동체의 시작이 되기도 한다.
+    </p>
+
+    <p>
+        현재 준비 중인 AI 전문강사 공동 출간 프로젝트 역시
+        단지 결과물을 만드는 일로 끝나지 않기를 바라고 있다.
+        저자들이 서로 연결되고,
+        각자의 가능성을 확장하며,
+        함께 다음 장면을 만들어갈 수 있기를 바란다.
+    </p>
+
+    <p>
+        책은 끝이 아니라 시작이라고 믿기 때문이다.
+    </p>
+</div>
+
+<div class="section">
+    <h2>함께 만든다는 것</h2>
+
+    <p>
+        deeper는 아직 완성된 형태가 아니다.
+        꿈꾸는 사람들과 함께 조금씩 그 모양을 갖추어 나간다.
+    </p>
+
+    <p>
+        누군가는 철학과 언어를 만들고,
+        누군가는 구조를 만들고,
+        누군가는 사람들을 연결한다.
+        각자의 역할은 다르지만,
+        더 오래 가기 위해 함께 방향을 맞춰간다.
+    </p>
+
+    <p>
+        이 공동체 안에서는
+        한 사람이 모든 짐을 혼자 지지 않았으면 한다.
+        동시에 누구의 세계도 사라지지 않았으면 한다.
+    </p>
+
+    <p>
+        서로의 가능성을 보호하면서,
+        더 멀리 갈 수 있는 구조.
+        deeper는 그 균형을 배워가는 중이다.
+    </p>
+</div>
+
+<div class="section">
+    <h2>deeper의 비전</h2>
+
+    <blockquote>
+        "AI와 새로운 관계를 맺으며,
+        인간이 더 깊어질 수 있도록 돕는 생태계를 만든다."
+    </blockquote>
+
+    <p>
+        우리는 자유롭고 온건한 삶을 택하며
+        다음 시대의 학습 문화와 창작 방식,
+        그리고 인간적인 연결의 감각을 다시 세우고 싶다.
+    </p>
+
+    <p>
+        혼자 버티는 사람들에게
+        함께 갈 수 있다는 감각을 건네는 일.
+        deeper는 그 일을 오래 해보고 싶다.
+    </p>
+</div>
+
+<div class="footer">
+    deeper manifesto · 2026
+</div>
+
+</div>
+</body>
+</html>
