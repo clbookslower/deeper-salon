@@ -33,7 +33,6 @@
     line-height: 1.7;
   }
 
-  /* 배경 그라디언트 */
   body::before {
     content: '';
     position: fixed;
@@ -53,7 +52,6 @@
     padding: 0 24px;
   }
 
-  /* ===== 헤더 ===== */
   .header {
     padding: 32px 0 28px;
     border-bottom: 1px solid var(--border);
@@ -75,7 +73,6 @@
     letter-spacing: 0.08em;
   }
 
-  /* ===== 인트로 화면 ===== */
   #screen-intro {
     padding: 80px 0 60px;
     text-align: center;
@@ -149,7 +146,6 @@
     transform: translateY(-1px);
   }
 
-  /* ===== 질문 화면 ===== */
   #screen-question { display: none; padding: 52px 0; }
 
   .q-eyebrow {
@@ -171,7 +167,6 @@
     line-height: 1.4;
   }
 
-  /* 깊이 바 */
   .depth-bar {
     display: flex;
     gap: 5px;
@@ -198,7 +193,6 @@
     white-space: nowrap;
   }
 
-  /* 히스토리 */
   .history {
     display: flex;
     flex-direction: column;
@@ -226,7 +220,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* 현재 질문 */
   .q-current {
     margin-bottom: 8px;
   }
@@ -303,7 +296,6 @@
 
   @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-  /* ===== 리포트 화면 ===== */
   #screen-report { display: none; padding: 52px 0 100px; }
 
   .report-top {
@@ -336,7 +328,6 @@
     letter-spacing: 0.12em;
   }
 
-  /* 섹션 1 — 종합 의견 */
   .report-section-1 {
     margin-bottom: 56px;
   }
@@ -382,7 +373,6 @@
     font-weight: 600;
   }
 
-  /* 섹션 2 — 세 가지 발견 */
   .report-section-2 {
     margin-bottom: 56px;
   }
@@ -414,7 +404,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* 섹션 3 — 한 문장 */
   .report-section-3 {
     margin-bottom: 56px;
   }
@@ -449,7 +438,6 @@
     z-index: 1;
   }
 
-  /* 공유 버튼 */
   .report-actions {
     display: flex;
     flex-direction: column;
@@ -482,7 +470,6 @@
     line-height: 1.8;
   }
 
-  /* 로딩 오버레이 */
   .report-loading {
     text-align: center;
     padding: 80px 20px;
@@ -514,7 +501,6 @@
     60%,100%{content:'...'}
   }
 
-  /* 인트로 설명 박스 */
   .intro-how {
     background: #f4f7fb;
     border-left: 3px solid #2a6ab8;
@@ -583,7 +569,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* 제출 폼 */
   .submit-form {
     width: 100%;
     display: flex;
@@ -634,7 +619,6 @@
     text-align: center;
   }
 
-  /* 페이드인 */
   .fade-in {
     animation: fadeIn 0.5s ease forwards;
   }
@@ -654,7 +638,6 @@
     <div class="header-progress" id="header-progress"></div>
   </div>
 
-  <!-- ===== 인트로 ===== -->
   <div id="screen-intro">
     <div class="intro-eyebrow">Pre-Orientation · Trivium Reflection</div>
     <div class="intro-title">나를 <span>다시 읽는</span> 시간 #1</div>
@@ -693,7 +676,6 @@
     <button class="btn-primary" onclick="startApp()">시작하기</button>
   </div>
 
-  <!-- ===== 질문 ===== -->
   <div id="screen-question">
     <div class="q-eyebrow" id="q-eyebrow"></div>
     <div class="q-theme" id="q-theme"></div>
@@ -717,7 +699,6 @@
     </div>
   </div>
 
-  <!-- ===== 리포트 ===== -->
   <div id="screen-report">
     <div class="report-top">
       <div class="report-eyebrow">Trivium Reflection Report</div>
@@ -777,6 +758,8 @@ const QUESTIONS = [
 - 질문 한 문장만 출력하세요
 - 문장은 자연스럽고 문법에 맞는 완결된 한국어로 쓰세요`
   },
+  {
+    eyebrow: "주제 2 / 5 · 정체성",
     theme: "가장 나다운 시간",
     initial: "하루 중 가장 나다운 시간은 언제예요?",
     sub: "특정 순간, 장소, 상황 — 어떤 것이든요.",
@@ -1009,7 +992,6 @@ function render() {
   document.getElementById('q-eyebrow').textContent = q.eyebrow;
   document.getElementById('q-theme').textContent = q.theme;
 
-  // 깊이 바
   for (let i = 0; i < MAX_DEPTH; i++) {
     const seg = document.getElementById(`seg-${i}`);
     seg.className = 'depth-seg' +
@@ -1018,14 +1000,12 @@ function render() {
   document.getElementById('depth-label').textContent =
     depth === 0 ? '첫 번째 질문' : `${depth + 1}번째 심화`;
 
-  // 현재 질문
   const hist = data[qIdx].history;
   const currentQ = depth === 0 ? q.initial :
     (hist.length > 0 ? hist[hist.length - 1].nextQ : q.initial);
   document.getElementById('q-text').textContent = currentQ;
   document.getElementById('q-sub').textContent = depth === 0 ? q.sub : '';
 
-  // 히스토리
   const histEl = document.getElementById('history');
   histEl.innerHTML = '';
   hist.forEach(item => {
@@ -1126,7 +1106,6 @@ async function generateReport() {
 
   try {
     const allText = data.map((d, i) => {
-      // Send only answers, not questions, to reduce token count
       const answers = d.history.map((h, j) => `${j+1}. ${h.a}`).join('\n');
       return `[${QUESTIONS[i].theme}]\n${answers}`;
     }).join('\n\n');
@@ -1167,7 +1146,6 @@ function renderReport(raw) {
   const sec2 = (raw.match(/\[2\]([\s\S]*?)(?=\[3\]|$)/) || ['',''])[1].trim();
   const sec3 = (raw.match(/\[3\]([\s\S]*?)$/) || ['',''])[1].trim();
 
-  // 세 가지 발견 파싱 — "당신은" 문장 추출
   let discoveries = [];
   const byLine = sec2.split('\n').map(l => l.replace(/^[·•\-\d\.]+\s*/, '').trim()).filter(l => l.length > 5);
   const dangshin = byLine.filter(l => l.includes('당신은'));
@@ -1178,7 +1156,6 @@ function renderReport(raw) {
   }
 
   let html = `
-    <!-- 섹션 1 -->
     <div class="report-section-1 fade-in">
       <div class="section-label">
         <div class="section-num">I</div>
@@ -1188,7 +1165,6 @@ function renderReport(raw) {
       <div class="synthesis-body">${sec1.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>
     </div>
 
-    <!-- 섹션 2 -->
     <div class="report-section-2 fade-in">
       <div class="section-label">
         <div class="section-num">II</div>
@@ -1205,7 +1181,6 @@ function renderReport(raw) {
       </div>
     </div>
 
-    <!-- 섹션 3 -->
     <div class="report-section-3 fade-in">
       <div class="section-label">
         <div class="section-num">III</div>
@@ -1217,7 +1192,6 @@ function renderReport(raw) {
       </div>
     </div>
 
-    <!-- 액션 -->
     <div class="report-actions fade-in">
       <div class="submit-form">
         <div class="submit-label">리포트가 완성됐습니다</div>
@@ -1229,25 +1203,6 @@ function renderReport(raw) {
   `;
 
   document.getElementById('report-body').innerHTML = html;
-}
-
-function copyReport() {
-  let text = '디퍼 언브랜딩살롱 1기 — 오리엔테이션 리포트\n';
-  text += new Date().toLocaleDateString('ko-KR') + '\n\n';
-  text += '━━━━━━━━━━━━━━━━━━━━\n\n';
-
-  data.forEach((d, i) => {
-    text += `【${QUESTIONS[i].theme}】\n`;
-    d.history.forEach(h => {
-      text += `Q: ${h.q}\nA: ${h.a}\n\n`;
-    });
-  });
-
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.btn-copy');
-    btn.textContent = '복사됐어요 ✓';
-    setTimeout(() => btn.textContent = '리포트 복사하기', 2500);
-  });
 }
 
 async function submitReport() {
