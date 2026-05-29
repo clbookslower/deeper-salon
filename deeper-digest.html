@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩살롱 · 단톡방 아카이브</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--iv:#f5f0e8;--ivd:#ede6d6;--ivdd:#e0d8c8;--g:#c8a96e;--gl:#d4bc8a;--br:#3d2b1f;--bm:#6b4c38;--bl:#9a7260;--tx:#2a1f16;--mu:#a08060;--bd:rgba(61,43,31,.13);--bg:rgba(200,169,110,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--iv);color:var(--tx);font-family:'Noto Serif KR',serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+.hdr{background:var(--br);color:var(--iv);padding:14px 20px 12px;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--g)}
+.hdr-brand{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.3em;color:var(--gl);text-transform:uppercase;margin-bottom:2px}
+.hdr-title{font-size:17px;font-weight:600}
+.date-bar{background:var(--ivd);border-bottom:1px solid var(--bg);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:63px;z-index:90}
+.nav-btn{background:none;border:none;color:var(--bm);font-size:18px;cursor:pointer;padding:2px 8px;line-height:1}
+.nav-btn:disabled{opacity:.25;cursor:default}
+.date-center{display:flex;align-items:center;gap:8px;cursor:pointer}
+.date-disp{font-size:18px;font-weight:700;color:var(--br)}
+.date-cnt{font-size:12px;color:var(--mu);display:flex;align-items:center;gap:3px}
+.cnt-n{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--br);font-weight:600}
+.ddp{display:none;background:var(--iv);border-bottom:1px solid var(--bg);padding:10px 20px;flex-wrap:wrap;gap:6px;max-height:160px;overflow-y:auto}
+.ddp.open{display:flex}
+.date-chip{padding:4px 10px;border-radius:14px;border:1px solid var(--bg);font-size:11.5px;cursor:pointer;color:var(--bm);transition:all .13s;white-space:nowrap}
+.date-chip.active,.date-chip:hover{background:var(--br);color:var(--iv);border-color:var(--br)}
+.sw{background:var(--ivd);padding:0 20px 10px;border-bottom:1px solid var(--bd)}
+.si{position:relative}
+.sk{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--mu);font-size:13px;pointer-events:none}
+.sb2{width:100%;background:var(--iv);border:1px solid var(--bg);border-radius:6px;padding:8px 14px 8px 34px;font-family:'Noto Serif KR',serif;font-size:12.5px;color:var(--tx);outline:none;transition:border-color .2s}
+.sb2::placeholder{color:var(--mu)}
+.sb2:focus{border-color:var(--g)}
+.fs{padding:10px 20px 9px;background:var(--iv);border-bottom:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between}
+.ftags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{padding:3px 10px;border-radius:16px;font-size:11px;font-weight:500;cursor:pointer;border:1.5px solid transparent;transition:all .13s;white-space:nowrap}
+.tag.active{background:var(--br);color:var(--iv);border-color:var(--br)}
+.tag.t-all{border-color:var(--br);color:var(--br)}
+.tag.t-ai{border-color:#5a7a4a;color:#5a7a4a}
+.tag.t-member{border-color:#8a5a3a;color:#8a5a3a}
+.tag.t-salon{border-color:#7a6a3a;color:#7a6a3a}
+.tag.t-daily{border-color:#6a5a7a;color:#6a5a7a}
+.tag:not(.active):hover{opacity:.7}
+.exp-btn{font-size:11px;color:var(--mu);cursor:pointer;background:none;border:none;font-family:'Noto Serif KR',serif;text-decoration:underline;text-decoration-color:var(--bg);white-space:nowrap}
+.sec-hdr{padding:16px 20px 13px;position:relative;overflow:hidden}
+.sec-hdr.main{background:var(--br);color:var(--iv)}
+.sec-hdr.sub{background:var(--g);color:var(--br)}
+.sec-lbl{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.35em;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.sec-title{font-size:20px;font-weight:700}
+.sec-cnt{position:absolute;right:14px;bottom:6px;font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;line-height:1;opacity:.2}
+.sec-unit{font-family:'Noto Serif KR',serif;font-size:11px;vertical-align:super;margin-left:1px}
+.sec-div{height:5px;background:var(--ivdd)}
+.card{border-bottom:1px solid var(--bd)}
+.card-hdr{padding:13px 20px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:background .12s}
+.card-hdr:hover{background:rgba(200,169,110,.07)}
+.card-num{width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;flex-shrink:0;margin-top:1px}
+.card-num.mn{background:var(--br);color:var(--iv)}
+.card-num.sb{background:var(--g);color:var(--br)}
+.card-meta{flex:1;min-width:0}
+.card-cat{font-size:10px;color:var(--mu);margin-bottom:3px;display:flex;justify-content:space-between}
+.card-exp{font-size:10px;color:var(--g);font-weight:600}
+.card-title{font-size:14px;font-weight:600;line-height:1.55}
+.card-body{display:none;background:var(--ivd);border-top:1px solid var(--bg);padding:0 20px 16px}
+.card-body.open{display:block;animation:fi .17s ease}
+@keyframes fi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+.meta-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd);font-size:11.5px;color:var(--bm)}
+.meta-row:last-of-type{border-bottom:none;margin-bottom:2px}
+.meta-lbl{font-weight:500}
+.meta-val{color:var(--br);font-weight:600}
+.meta-link{color:var(--g);cursor:pointer;font-weight:600;font-size:11px}
+.summary{font-size:12.5px;line-height:1.9;color:var(--tx);padding:10px 0 4px}
+.msg-card{background:var(--iv);border-left:3px solid var(--g);border-radius:0 4px 4px 0;padding:9px 12px;margin-bottom:6px}
+.msg-auth{font-size:11px;font-weight:700;color:var(--br);margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.msg-time{font-size:10px;color:var(--mu);font-weight:400;font-family:'Cormorant Garamond',serif}
+.msg-text{font-size:12px;line-height:1.7}
+.term-card{background:var(--iv);border-left:3px solid var(--br);border-radius:0 4px 4px 0;padding:9px 12px;margin-bottom:6px}
+.term-title{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--br);margin-bottom:3px}
+.term-desc{font-size:12px;line-height:1.7}
+.link-chip{display:inline-block;background:rgba(200,169,110,.15);border:1px solid var(--bg);border-radius:3px;padding:4px 9px;font-size:11px;color:var(--bm);margin:2px 2px 0 0;word-break:break-all;text-decoration:none}
+.hidden{display:none!important}
+.ftr{text-align:center;padding:24px 20px;font-size:10px;color:var(--mu);letter-spacing:.08em;border-top:1px solid var(--bg);font-family:'Cormorant Garamond',serif;line-height:1.8}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-brand">Deeper Unbrandings Salon 1st · Daily Archive</div>
+  <div class="hdr-title">디퍼 언브랜딩살롱 · 단톡방 아카이브</div>
+</header>
+<div class="date-bar">
+  <button class="nav-btn" id="prev" onclick="chgDay(-1)">‹</button>
+  <div class="date-center" onclick="togDD()">
+    <span class="date-disp" id="ddLabel">5/29 금요일</span>
+    <span style="font-size:13px;color:var(--mu)">▾</span>
+  </div>
+  <div class="date-cnt"><span class="cnt-n" id="dc">0</span>건</div>
+  <button class="nav-btn" id="next" onclick="chgDay(1)">›</button>
+</div>
+<div class="ddp" id="ddpanel"><div class="date-chip" onclick="selDate(0,this)">5/29 금요일</div><div class="date-chip" onclick="selDate(1,this)">5/28 목요일</div><div class="date-chip" onclick="selDate(2,this)">5/27 수요일</div><div class="date-chip" onclick="selDate(3,this)">5/26 화요일</div><div class="date-chip" onclick="selDate(4,this)">5/25 월요일</div><div class="date-chip" onclick="selDate(5,this)">5/24 일요일</div><div class="date-chip" onclick="selDate(6,this)">5/23 토요일</div><div class="date-chip" onclick="selDate(7,this)">5/22 금요일</div><div class="date-chip" onclick="selDate(8,this)">5/21 목요일</div><div class="date-chip" onclick="selDate(9,this)">5/20 수요일</div><div class="date-chip" onclick="selDate(10,this)">5/19 화요일</div><div class="date-chip" onclick="selDate(11,this)">5/18 월요일</div><div class="date-chip" onclick="selDate(12,this)">5/17 일요일</div><div class="date-chip" onclick="selDate(13,this)">5/16 토요일</div><div class="date-chip" onclick="selDate(14,this)">5/15 금요일</div><div class="date-chip" onclick="selDate(15,this)">5/14 목요일</div><div class="date-chip" onclick="selDate(16,this)">5/13 수요일</div><div class="date-chip" onclick="selDate(17,this)">5/12 화요일</div><div class="date-chip" onclick="selDate(18,this)">5/11 월요일</div><div class="date-chip" onclick="selDate(19,this)">5/10 일요일</div><div class="date-chip" onclick="selDate(20,this)">5/9 토요일</div><div class="date-chip" onclick="selDate(21,this)">5/8 금요일</div><div class="date-chip" onclick="selDate(22,this)">5/7 목요일</div><div class="date-chip" onclick="selDate(23,this)">5/6 수요일</div><div class="date-chip" onclick="selDate(24,this)">5/5 화요일</div><div class="date-chip" onclick="selDate(25,this)">5/4 월요일</div><div class="date-chip" onclick="selDate(26,this)">5/3 일요일</div><div class="date-chip" onclick="selDate(27,this)">5/2 토요일</div><div class="date-chip" onclick="selDate(28,this)">5/1 금요일</div><div class="date-chip" onclick="selDate(29,this)">4/30 목요일</div><div class="date-chip" onclick="selDate(30,this)">4/29 수요일</div><div class="date-chip" onclick="selDate(31,this)">4/28 화요일</div><div class="date-chip" onclick="selDate(32,this)">4/27 월요일</div><div class="date-chip" onclick="selDate(33,this)">4/26 일요일</div></div>
+<div class="sw">
+  <div class="si">
+    <span class="sk">🔍</span>
+    <input class="sb2" type="text" placeholder="해당 날짜의 궁금한 키워드 검색" oninput="doSearch(this.value)">
+  </div>
+</div>
+<div class="fs">
+  <div class="ftags">
+    <span class="tag t-all active" onclick="flt('all',this)">전체</span>
+    <span class="tag t-ai" onclick="flt('ai',this)">AI 탐구</span>
+    <span class="tag t-member" onclick="flt('member',this)">멤버 활동</span>
+    <span class="tag t-salon" onclick="flt('salon',this)">살롱 운영</span>
+    <span class="tag t-daily" onclick="flt('daily',this)">일상·단상</span>
+  </div>
+  <button class="exp-btn" id="expBtn" onclick="togAll()">카드 전체 펼치기</button>
+</div>
+<div class="day-panel" id="day0" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">4<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">4회차 수료 직후 새벽 소감—'agent가 가장 필요한 도구'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">00:08~01:38</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d0mainl1')">보기 ›</a></div>
+    <p class="summary">세션 직후 자정을 넘겨 멤버들이 자발적으로 남아 소감을 나눴어요. 스윗워러님은 에이전트 강의를 듣고 경이로움에 잠을 못 이뤘다고 했고, 야간비행님은 시를 남겼어요.</p>
+    <div id="d0mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">00:08</span></div><div class="msg-text">새로운 세계를 열어주시고, 또 매번 이끌어주시는 퍼핀님께 표현이 부족할 만큼 감사합니다.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">00:17</span></div><div class="msg-text">agent의 역할이 저같이 정리를 제대로 못하는 사람에겐 너무나 필요한 도구라 느꼈어요.</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">03:42</span></div><div class="msg-text">뜨겁게 비상하기 전에 오롯한 이 공백의 시간이 아이러니하게도 막강한 추진력이 됨을</div></div></div>
+    <div id="d0maint1" style="display:none;margin-top:8px"></div>
+    <div id="d0mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/DEEPER_session04.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/DEEPER</a></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 유튜브 채널 '솔담' 당일 개설·첫 영상 업로드</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:01~12:46</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d0mainl2')">보기 ›</a></div>
+    <p class="summary">4회차 세션에서 필을 받은 솔담님이 아침에 유튜브 채널을 열고 모닝페이지를 주제로 첫 영상을 올렸어요. 브랜드 씨앗: '솔직하고 담백하게 살아온 이야기를 건네는 사람'. 멤버 전원이 구독했어요.</p>
+    <div id="d0mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">09:01</span></div><div class="msg-text">어제 뭔가 필을 받아서, 유튜브 채널을 시작했어요.</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">10:01</span></div><div class="msg-text">'자기계발을 멈추고 자기이해를 시작한 사람' 오메.. 멋짐</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">12:30</span></div><div class="msg-text">솔직담백한 이야기~ 넘 감동입니다. 솔담님 음성이 부드럽고 좋아요. 첫 영상 아니신거 같어요.</div></div></div>
+    <div id="d0maint2" style="display:none;margin-top:8px"></div>
+    <div id="d0mainl2" style="display:none;margin-top:8px"><a class="link-chip" href="https://youtube.com/@solddam" target="_blank">🔗 https://youtube.com/@solddam</a><a class="link-chip" href="https://youtu.be/yUuiqjSb7TE" target="_blank">🔗 https://youtu.be/yUuiqjSb7TE</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 뉴스레터 기획+야간비행님 ChatGPT 이미지 프롬프트 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:10~09:57</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">세션 후 잠 못 이룬 스윗워러님이 뉴스레터를 구상했어요. 야간비행님이 ChatGPT 빈티지 매거진 카드뉴스 프롬프트를 공유하며 '예시가 있을 때 가장 강력하다'는 팁을 전했어요.</p>
+    <div id="d0mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:10</span></div><div class="msg-text">어제 강의 듣고 경이로움과 설레임 속에 잠을 못 이루고 말았네요. 그래서 제 뉴스레터를 기획해 봤어요.</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">09:37</span></div><div class="msg-text">이 프롬프트없이도 예시가 있으면 이 인물사진을 첨부한 카드뉴스에 담아서 만들어줘 해도 금방 되요. 예시가 있을때 가장 강력하고 확실하게 만들어줘요.</div></div></div>
+    <div id="d0maint3" style="display:none;margin-top:8px"></div>
+    <div id="d0mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">4</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 러닝 인사이트—'너무 천천히 달리는 것도 아프다'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:24~10:31</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0mainm4')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 러닝 중 얻은 인사이트를 나눴어요. '나의 속도를 찾는 것'이 핵심 메시지였고, 야간비행님이 '미국 도로에서 너무 느린 속도도 위반'이라는 추억을 연결했어요.</p>
+    <div id="d0mainm4" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">10:25</span></div><div class="msg-text">인생도 분명 쉼과 느리게 걷는 시간이 필요하지만, 결국에는 나의 속도를 찾는게 필요하다는 생각이</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">10:31</span></div><div class="msg-text">미국도로에서는 너무 느린속도로 운전해도 흐름을 방해한다고 딱지를 떼더랍니다.</div></div></div>
+    <div id="d0maint4" style="display:none;margin-top:8px"></div>
+    <div id="d0mainl4" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">5</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 제주돌문화공원 데이지 사진</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">16:25~16:55</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0subm5')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 제주돌문화공원의 샤스타 데이지와 때죽나무 사진 15장과 영상을 공유했어요. 경선님이 '오늘 비행기 탈 뻔요'라고 했어요.</p>
+    <div id="d0subm5" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">16:25</span></div><div class="msg-text">샤스타 데이지와 때죽나무가 곱게 핀 '제주돌문화공원'이랍니다.</div></div></div>
+    <div id="d0subt5" style="display:none;margin-top:8px"></div>
+    <div id="d0subl5" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">6</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">'Claude가 하트 날리며 푹 쉬라고 해요'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">20:44~22:27</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d0subm6')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 클로드가 하트까지 날리며 푹 쉬라고 했다는 스크린샷을 공유했어요. '다른 클로드들도 하트를 쓰나요?'라는 질문에 경선님이 '솔담님의 클로드 닥터가 스윗한걸요'라고 마무리했어요.</p>
+    <div id="d0subm6" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">20:44</span></div><div class="msg-text">클로드가 자꾸 저보고 푹쉬라고해요 하트까지 날리면서. 다른 클로드들도 하트를 쓰나요?</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">22:27</span></div><div class="msg-text">솔담님의 클로드 닥터가 ㅎㅎ 스윗한걸요~~^^</div></div></div>
+    <div id="d0subt6" style="display:none;margin-top:8px"></div>
+    <div id="d0subl6" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day1" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">4회차 세션+문법(Grammar) 수료식—'언브랜딩 한달 여정'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:10~23:58</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d1mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d1maint1')">보기 ›</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d1mainl1')">보기 ›</a></div>
+    <p class="summary">솔담님 생일과 함께 디퍼 트리비움 문법 단계 수료식이 진행됐어요. 경선님이 '한달밖에 안됐어요?'라고 할 만큼 밀도 있는 시간이었어요. 다음 단계인 변증학으로 전환됩니다.</p>
+    <div id="d1mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">19:10</span></div><div class="msg-text">문법Grammar 수료 축하드려요~~~</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">19:14</span></div><div class="msg-text">한달간의 여정... (한달밖에 안됐어요 저희?? ㅎㅎ) 동행해주신 덕분에, 진짜 넘 행복했어요</div></div></div>
+    <div id="d1maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">트리비움 문법(Grammar) 단계</div><div class="term-desc">트리비움의 첫 번째 단계. 정보를 수집하고 기초를 쌓는 과정. 디퍼에서는 AI 도구 습득과 자기 언어 발견의 한달.</div></div></div>
+    <div id="d1mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/deeper_manifesto_refined.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/deeper</a></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 생일—혼자 카페 아티스트데이트</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:56~14:06</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d1mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 생일에 혼자 대전 초코케이크 맛집에 아티스트데이트를 갔어요. '혼자임이 나쁘지 않고 오히려 반갑다, 참된 어른이 됐나봐요'라는 소감이 인상적이었어요.</p>
+    <div id="d1mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">13:56</span></div><div class="msg-text">생일에 혼자데이트를 나왔는데 혼자여도 즐길수있는 이 편안함이 너무 좋네요. 행복합니다!</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">14:00</span></div><div class="msg-text">이 세상 조금 더 숨쉬고 살만하다 싶어요. 대충 행복하다 ~</div></div></div>
+    <div id="d1maint2" style="display:none;margin-top:8px"></div>
+    <div id="d1mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 구글 NotebookLM 교육자료 생성 소개</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">14:39~15:27</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d1mainm3')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d1maint3')">보기 ›</a></div>
+    <p class="summary">야간비행님이 구글 NotebookLM으로 교육자료(슬라이드·퀴즈·플래시카드)를 생성하는 방법을 스윗워러님에게 안내했어요. 스윗워러님이 '지루한 수업을 활기찬 수업으로 만들 수 있을 것 같다'고 반응했어요.</p>
+    <div id="d1mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">14:48</span></div><div class="msg-text">구글 NotebookLM에서 생성한건데 요것도 도움이 많이 되실거라 활용법을 공유하겠습니다. 이외에 퀴즈, 플래시카드 마인드맵 등등 많아용</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">15:07</span></div><div class="msg-text">지루한 수업을 활기찬 수업으로 만들 수 있을듯 하네요.</div></div></div>
+    <div id="d1maint3" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">Google NotebookLM</div><div class="term-desc">자료를 업로드하면 AI가 요약·Q&amp;A·팟캐스트까지 만들어주는 구글의 AI 노트 도구.</div></div></div>
+    <div id="d1mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day2" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 절대자·인간 테마 일러스트 작업</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">00:12~00:20</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d2mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드에게 뼈 맞고 생각이 깊어지는 밤에 절대자와 인간을 주제로 한 일러스트를 그렸어요. 경선님이 '감성 가득'이라고 반응했어요.</p>
+    <div id="d2mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">00:12</span></div><div class="msg-text">품 적게 들이고 만들라고 끄적여보다가…</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">00:15</span></div><div class="msg-text">오와...... 감성 가득~~~ 넘 좋은데요~~</div></div></div>
+    <div id="d2maint1" style="display:none;margin-top:8px"></div>
+    <div id="d2mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 '생각하는 기계' AI 기업·인물 정리 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">18:50~18:51</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d2mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d2mainl2')">보기 ›</a></div>
+    <p class="summary">솔담님이 생각하는 기계에 등장하는 AI 서비스 모델·회사·핵심 인물을 정리해 긱어스에 공유했어요. '엔비디아가 뭐하는 회사인지도 댓글에 구조적으로 설명해뒀다'고 했어요.</p>
+    <div id="d2mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">18:51</span></div><div class="msg-text">생각하는 기계 읽으면서, AI서비스 모델, 회사들, 핵심인물 등이 많이 등장해 보기 좋게 정리해 봤습니다.</div></div></div>
+    <div id="d2maint2" style="display:none;margin-top:8px"></div>
+    <div id="d2mainl2" style="display:none;margin-top:8px"><a class="link-chip" href="https://geekus.kr/slowerdeeper/post/7503" target="_blank">🔗 https://geekus.kr/slowerdeeper/post/7503</a></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 레모네이드 제작 중 콘텐츠 아이디어</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:26~19:41</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d2mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 레모네이드를 만들다가 귀여운 콘텐츠 아이디어가 떠올라 즉시 만들어 공유했어요. 솔담님이 '실사진 포인트가 있어서 좋다'고 했어요.</p>
+    <div id="d2mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">19:26</span></div><div class="msg-text">오늘 후식으로 레모네이드 만들다가 귀여운 콘텐츠가 생각나서 만들었어요</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">21:03</span></div><div class="msg-text">전 이런 콘티도 좋은데요? 특히 실사진있는거 이게 포인트 인거 같아요!</div></div></div>
+    <div id="d2maint3" style="display:none;margin-top:8px"></div>
+    <div id="d2mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day3" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 AI로 독서감상문 피드백 실전 적용</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:33~10:13</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d3mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 학생 17명의 독서감상문에 클로드 아티팩트를 적용해 피드백을 주고 있다고 공유했어요. '이전에는 허겁지겁 하던 일들을 AI로 산뜻하게 처리하니 심리적 부담이 없다'고 했어요. 한국어 대회 대상 학생의 글도 공유해 멤버들이 감동했어요.</p>
+    <div id="d3mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:33</span></div><div class="msg-text">이전에는 몰랐던 신세계예요. 이전에는 허겁지겁 하던 일들을 ai의 도움으로 산뜻하게 처리할 수 있으니 심리적 부담감이 없어서 꾸준히, 성실히 할 수 있게 해주는 것 같아요.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:48</span></div><div class="msg-text">캄보디아 한국어 대회에서 대상 받은 학생 글이예요. 10월에 한국에 가서 세계 대회에 참석하는데 글을 잘 쓰죠?</div></div></div>
+    <div id="d3maint1" style="display:none;margin-top:8px"></div>
+    <div id="d3mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 Claude에게 한소리+'뼈 때리는 AI' 화제</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">16:07~22:34</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d3mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드에게 한소리를 했다고 스크린샷을 공유했어요. '뼈를 너무 잘 때린다'며 이번 주 해체해야 할 부분을 찾았다고 했어요. 경선님이 '실행까지 도와주는 멋진 친구 클로드'라고 반응했어요.</p>
+    <div id="d3mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">16:07</span></div><div class="msg-text">오늘 클로드한테 한소리 했습니다 ㅋㅋㅋㅋ</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">22:34</span></div><div class="msg-text">저친구 뼈 너무 잘때려서 놀라워요. 덕분에 이번주 해체해야 할 부분도 찾게 되옸습니다</div></div></div>
+    <div id="d3maint2" style="display:none;margin-top:8px"></div>
+    <div id="d3mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">목요일 세션 1시간 일찍 시작 투표+9시 확정</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">18:59~19:14</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d3mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">경선님의 제안으로 이번 주 목요일 세션을 9시(1시간 일찍)로 당기는 투표가 진행됐어요. 모두 동의해 9:00~11:10으로 확정됐어요.</p>
+    <div id="d3mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">18:59</span></div><div class="msg-text">그럼 저희 이번주 목요일 살롱은 9:00-11:10으로 뵐게요! 모두모두 시간 흔쾌히 내어주셔서 고맙습니다~~~</div></div></div>
+    <div id="d3maint3" style="display:none;margin-top:8px"></div>
+    <div id="d3mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day4" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">경선님 클로드 프로 구독 권장+Claude Code 소개</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:06~19:14</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d4mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d4maint1')">보기 ›</a></div>
+    <p class="summary">경선님이 이제 때가 됐다며 클로드 프로 구독을 권장했어요. 클로드코드 업데이트로 비개발자에게도 친절해졌고, 에이전트 작업을 훨씬 잘한다고 설명했어요.</p>
+    <div id="d4mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">19:06</span></div><div class="msg-text">이제 때가 되었어요 ㅎㅎ 모두 클로드 프로 구독을 슬슬 준비해주세요. 클로드코드 업뎃이 진짜 말도못하게 비개발자에게 친절합니다.</div></div></div>
+    <div id="d4maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">Claude Code</div><div class="term-desc">터미널/VS Code에서 자연어로 코드·파일 작업을 지시하는 Anthropic의 에이전트 도구. 2026년 비개발자 접근성이 대폭 향상됨.</div></div></div>
+    <div id="d4mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 한달치 모닝페이지 클로드 분석—뼈 맞음</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:33~22:34</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d4mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 한달치 모닝페이지를 정리해 클로드에게 분석시켰어요. '뼈 맞았다'는 반응에 솔담님이 '약간 단비님이 그렇게 길들이신 거 같은데요?'라고 했어요.</p>
+    <div id="d4mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">21:33</span></div><div class="msg-text">오늘 이제서야 한달치 모닝페이지를 정리해서 클로드에게 분석해달라고 했어요</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">22:34</span></div><div class="msg-text">저친구 뼈 너무 잘때려서 놀라워요. 덕분에 이번주 해체해야 할 부분도 찾게 됐습니다</div></div></div>
+    <div id="d4maint2" style="display:none;margin-top:8px"></div>
+    <div id="d4mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 한국어 수업+수노로 교육 노래 제작</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">23:19~23:44</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d4mainm3')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d4mainl3')">보기 ›</a></div>
+    <p class="summary">스윗워러님이 캄보디아 고등학생들에게 가르친 '있어요? 없어요?' 표현을 수노로 노래로 만들었어요. '어쿠스틱 장르 심플한 가사에 엄청 고퀄로 나왔다'고 했어요.</p>
+    <div id="d4mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">23:20</span></div><div class="msg-text">캄보디아 청년들 기초 한국어 수업에서 있어요? 없어요? 표현 배운거 야간비행님 보내주신 사이트에서 노래로 만들었는데 멜로디가 중독성 있어요.</div></div></div>
+    <div id="d4maint3" style="display:none;margin-top:8px"></div>
+    <div id="d4mainl3" style="display:none;margin-top:8px"><a class="link-chip" href="https://suno.com/s/KUFTm7PBwMl0LPDi" target="_blank">🔗 https://suno.com/s/KUFTm7PBwMl0LPDi</a></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day5" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 한강 러닝 4일차+솔담님 메타세콰이어 숲</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">06:30~14:46</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d5mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 잃어버린 양말을 찾고 기쁜 마음으로 한강 러닝을 이어갔어요. 솔담님은 가족과 '한국 최대의 메타세콰이어 숲'에 가서 힐링했다며 사진을 공유했어요.</p>
+    <div id="d5mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">06:30</span></div><div class="msg-text">잃어버린줄 알았던 러닝 양말을 찾았어요 ㅋㅋㅋ 기쁜 마음으로 오늘도 한강 찍습니다!</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">14:29</span></div><div class="msg-text">가족들이랑 근교의 산림욕장왔는데 너무 힐링이네요. 한국최대의 메티세콰이어 숲이래요</div></div></div>
+    <div id="d5maint1" style="display:none;margin-top:8px"></div>
+    <div id="d5mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">1월 캄보디아 오프 모임 즉석 계획</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:09~09:17</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d5mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 1월에 캄보디아 여행 계획을 제안하자 스윗워러님이 씨엠립 앙코르와트 코스를 즉시 추천했어요.</p>
+    <div id="d5mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:12</span></div><div class="msg-text">1월쯤에 오시면 날씨도 그중 젤 시원한 계절이예요. 앙코르왓트가 있는 씨엠립에 머물면서</div></div></div>
+    <div id="d5maint2" style="display:none;margin-top:8px"></div>
+    <div id="d5mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day6" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">ChatGPT 고양이 캐릭터 대화+AI 유머감각 탐구</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:44~13:50</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d6mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 지피티와 고양이 캐릭터로 대화하다 유머감각이 장난 아니라고 공유했어요. 야간비행님도 지피티에게 자신을 묘사해달라고 하니 '잘생긴 사람 이미지'로 나왔다며 스크린샷을 공유했어요.</p>
+    <div id="d6mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">10:44</span></div><div class="msg-text">여러분 지피티 유머감각이 장난 아니네요 ㅋㅋㅋㅋ 저는 고양이랑 대화하고 있었어요</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">12:59</span></div><div class="msg-text">함께하면서 이렇게 영역이 확장되네요..</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">13:25</span></div><div class="msg-text">와아 잘생김에 이미지 퀄까지~ 지피티랑 대화 절로 되실듯요</div></div></div>
+    <div id="d6maint1" style="display:none;margin-top:8px"></div>
+    <div id="d6mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 출판 원고 클로드 피드백+솔담·단무지 캄보디아 여행 약속</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:38~21:44</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d6mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 '퇴사가 적성입니다' 원고를 클로드에게 출판 피드백 받은 결과를 공유했어요. '과한 칭찬 없이 객관적으로 필요한 부분을 잘 짚는다'고 했어요. 솔담님과 캄보디아 겨울 여행 계획도 즉석에서 잡혔어요.</p>
+    <div id="d6mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">21:39</span></div><div class="msg-text">딱히 아직 뭘 학습시키지 않은 상태에서 출판 프로젝트 생성하고 피드백 받고 있는중인데, 꽤나 객관적이고 필요한 부분을 잘 짚어요. 과한 칭찬도 안하구요</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">21:35</span></div><div class="msg-text">네 전 진심이에요 한번가시죠! 이번겨울에 가시죠!</div></div></div>
+    <div id="d6maint2" style="display:none;margin-top:8px"></div>
+    <div id="d6mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 AI 3대장 비교 자료 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">05:55~07:31</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d6subm3')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 AI 3대장(Claude·ChatGPT·Gemini) 비교 정리 자료를 공유했어요. 각자 활용에 맞게 유연하게 쓰라는 조언도 함께.</p>
+    <div id="d6subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">05:55</span></div><div class="msg-text">AI 3대장도 잘 비교해보세요. 내 활동에 액기스를 뽑을수 있게 유연하게 잘 쓰시면 될것 같아요.</div></div></div>
+    <div id="d6subt3" style="display:none;margin-top:8px"></div>
+    <div id="d6subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day7" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 인스타툰 첫 업로드—자존감 시리즈 시작</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:48~22:45</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d7mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 팔로워들이 바라던 자존감 주제 툰을 첫 번째로 올렸어요. 솔담님이 '드디어!!'라며 반겼고, 이어서 단무지님이 작업 공간에 영양제 진열까지 추가하는 모습을 공유했어요.</p>
+    <div id="d7mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">21:48</span></div><div class="msg-text">저는 인스타툰 하나 올리고 왔습니다. 팔로워분들이 궁금해하는 주제여서 자존감을 스타트로 툰 시작했어요!</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">22:01</span></div><div class="msg-text">드디어!! 얼마나 기다렸는지요.</div></div></div>
+    <div id="d7maint1" style="display:none;margin-top:8px"></div>
+    <div id="d7mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">햇살님 딸 수노(Suno)로 첫사랑 실연 노래 제작</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">20:38~21:18</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d7mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d7maint2')">보기 ›</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d7mainl2')">보기 ›</a></div>
+    <p class="summary">야간비행님이 소개한 수노 AI 음악 앱으로 햇살님 딸이 직접 노래를 만들었어요. 첫사랑에 차인 내용의 가사로 '5세대 아이돌 같다'는 반응이 나왔어요.</p>
+    <div id="d7mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">20:39</span></div><div class="msg-text">딸내미가 가사 써둔 게 있는데 피아노 안 배운 아이라 작곡 어떻게 해야할지 모르겠다더니 아이 능력을 웃도는 결과물이 나왔어요</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">21:08</span></div><div class="msg-text">요즘 청량한 5세대 아이돌같아요 ㅋㅋㅋㅋ</div></div></div>
+    <div id="d7maint2" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">수노(Suno)</div><div class="term-desc">텍스트 프롬프트로 노래를 생성하는 AI 음악 서비스. 제목·가사를 넣으면 멜로디·편곡·보컬까지 완성.</div></div></div>
+    <div id="d7mainl2" style="display:none;margin-top:8px"><a class="link-chip" href="https://suno.com/s/fdABGetwc6Q99J7f" target="_blank">🔗 https://suno.com/s/fdABGetwc6Q99J7f</a></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">아티스트데이트 제2탄—솔담님 돈까스트 데이트</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">13:34~13:55</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d7mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 좋은 날씨에 아티스트데이트를 가려 했다가 돈까스를 사서 집에 온 것을 '진정한 아티스트데이트'라고 합리화했어요. 헤더님이 '돈까티스트데이트'라는 신조어를 만들었어요.</p>
+    <div id="d7mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">13:35</span></div><div class="msg-text">돈까스사서 집에왔습니다! 이것이야말로 진정한 아티스트 데이트가 아닐까 합리화해봅니다</div></div><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">13:36</span></div><div class="msg-text">돈까티스트 데이트</div></div></div>
+    <div id="d7maint3" style="display:none;margin-top:8px"></div>
+    <div id="d7mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day8" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">3회차 세션—'300년쯤 만나뵌 것 같은 내적친밀감'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:47~23:59</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d8mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d8maint1')">보기 ›</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d8mainl1')">보기 ›</a></div>
+    <p class="summary">3회차 세션이 진행됐어요. 오토파지가 주제로 등장했고, 경선님이 '300년쯤 만나뵌 것 같은 내적친밀감인데 현실은 3회차 살롱'이라고 했어요.</p>
+    <div id="d8mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">23:51</span></div><div class="msg-text">300년쯤 만나뵌것 같은 내적친밀감... 현실은 3회차 살롱입니다 ㅎㅎ</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">23:59</span></div><div class="msg-text">일상에도 계속 소통을 해서 그런가 ㅎㅎ 벌써 3달은 된 것 같은 느낌!</div></div></div>
+    <div id="d8maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">오토파지(Autophagy)</div><div class="term-desc">세포가 노폐물을 스스로 분해하는 자기정화 과정. 디퍼에서 자기 언브랜딩의 은유로 사용됨.</div></div></div>
+    <div id="d8mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/session03_final.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/sessio</a></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 캄보디아 이온몰 츠타야 서점 아티스트데이트</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:59~15:10</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d8mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 캄보디아 이온몰 내 츠타야 서점으로 아티스트데이트를 했어요. 한국 책이 영어 번역본으로 진열된 것을 발견했고, 아시아 작가 특별전에서 한강 작가 책도 찾았어요.</p>
+    <div id="d8mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">11:59</span></div><div class="msg-text">이온몰 내부에 위치한 츠타야 서점에 아티스트 데이트 즐기러 왔어요.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">14:46</span></div><div class="msg-text">입구에 아시아 작가 특별전 하고 있네요. 한강 작가님 책 있어요.</div></div></div>
+    <div id="d8maint2" style="display:none;margin-top:8px"></div>
+    <div id="d8mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 클로드 영상 분석 불가 발견</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:15~12:16</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d8subm3')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 클로드가 영상을 직접 분석하지 못하는 것을 발견했어요. '영상에는 제미나이와 그록이 강하다'는 비교 결과를 공유했어요.</p>
+    <div id="d8subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">12:15</span></div><div class="msg-text">오늘 아침에 영상으로 AI랑 놀다가 발견한건데, 클로드가 영상에 약하네요. 영상에는 제미나이 그리고 그록이 강한거 같습니다!</div></div></div>
+    <div id="d8subt3" style="display:none;margin-top:8px"></div>
+    <div id="d8subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day9" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 클로드로 광고툰 콘티 제작+Claude Cowork 실전 활용</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">06:58~13:31</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d9mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드를 로컬 컴퓨터에 연결해 단무지툰 스타일을 학습시키고, 광고툰 콘티를 클로드에게 맡긴 후 운동하러 나갔어요. '에너지 소모가 덜하고 스토리 짤 때 머리 지끈 고통이 없다'는 실감 후기를 전했어요.</p>
+    <div id="d9mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">06:58</span></div><div class="msg-text">지금 클로드에게 글 콘티 제작 가이드 주면서 일 시키고 아침 걷기하러 나갑니다 ㅋㅋㅋㅋㅋ</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">13:01</span></div><div class="msg-text">어제 클로드를 로컬 컴퓨터에 연결해서 단무지툰 학습시키고, 오늘 이렇게 지시하고 운동하러 나갔어요!</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">13:31</span></div><div class="msg-text">확실히 에너지소모는 덜해서 좋네요! 스토리 짤때 머리가 지끈하는 고통이 없어서</div></div></div>
+    <div id="d9maint1" style="display:none;margin-top:8px"></div>
+    <div id="d9mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">모닝페이지 손글씨 디지털 변환 꿀팁—제미나이 최강</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:44~12:47</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d9mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 모닝페이지 손글씨를 텍스트로 변환하는 4가지 방법 비교 후 제미나이가 가장 좋다고 공유했어요. 헤더님도 제미나이 사용을 확인했고, 글씨 크기를 크게 쓰면 인식률이 올라간다는 팁이 추가됐어요.</p>
+    <div id="d9mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">11:44</span></div><div class="msg-text">가장 좋았던건 제미나이 였어요!</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">12:35</span></div><div class="msg-text">글씨 크기를 조금 크게 쓰니 제미나이가 드디어 잘 읽어주기 시작했습니다.</div></div></div>
+    <div id="d9maint2" style="display:none;margin-top:8px"></div>
+    <div id="d9mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 캐릭터 3D 애니메이팅+인스타 릴스 파일럿</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">23:02~23:24</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d9mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 이전 콘텐츠로 캐릭터 3D화 및 애니메이팅을 해서 릴스 파일럿으로 실험 중이라고 공유했어요. 인스타그램 마케팅 인사이트 데이터도 함께 공유됐어요.</p>
+    <div id="d9mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">23:02</span></div><div class="msg-text">예전에 올렸던 콘텐츠로 캐릭터 3d화 시키고, 약간의 애니메이팅 넣어서 릴스화시켜봤어요!</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">23:20</span></div><div class="msg-text">넘넘 귀여워서 죽을것 같아요. 10만이 아니라 100만을 향해서!</div></div></div>
+    <div id="d9maint3" style="display:none;margin-top:8px"></div>
+    <div id="d9mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day10" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 캄보디아 학생들의 어린왕자 독후감—유튜브 콘텐츠 아이디어</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:45~10:17</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d10mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 가르치는 캄보디아 고등학생들의 어린왕자 독후감과 자기 행성 그림을 공유했어요. '혼자 보기 아깝다'며 유튜브 콘텐츠 아이디어를 멤버들과 논의했어요. 단무지님이 '스윗워러님의 서사를 먼저 풀고 이 시리즈로'라는 구체적 방향을 제안했어요.</p>
+    <div id="d10mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:46</span></div><div class="msg-text">지난주에 과제로 자기 행성에 대해 그림을 그리고 에세이를 써오라고 했어요. 이걸 유튜브 콘텐츠로 하면 어떨가요?</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">09:59</span></div><div class="msg-text">스윗워러님의 서사를 먼저 풀어주고 그 다음에 이 콘텐츠들 시리즈로 하셔도 좋을 거 같다는 생각이!</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:04</span></div><div class="msg-text">이 학교에 이전에 문학 수업이 없었다는것. 제가 첫 문학선생님이라니 기적 같아요.</div></div></div>
+    <div id="d10maint1" style="display:none;margin-top:8px"></div>
+    <div id="d10mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">경선님·솔담님·단무지님 용산 오프 6시간 회동</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:30~19:47</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d10mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">경선님, 솔담님, 단무지님이 용산에서 만나 무려 6시간 수다를 떨었어요. 솔담님이 '한달치 수다 다 떨었고 입이 아프다'고 했어요.</p>
+    <div id="d10mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">19:47</span></div><div class="msg-text">오늘 퍼핀님이랑 단무지님 만나서 한달치 수다 다 떨었습니다. 무려 1시~거의 7시까지, 6시간을!!!</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">20:14</span></div><div class="msg-text">제가 제일 많이 떠든거같어요 ㅎㅎ 한주동안 인사이트 실행해서 모임때 보고드리겠습니다!</div></div></div>
+    <div id="d10maint2" style="display:none;margin-top:8px"></div>
+    <div id="d10mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 학교에 소 침입 영상</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">15:18~15:21</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d10mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님의 학교 교실 문을 열어두면 동네 소가 들어와 풀을 뜯는다는 에피소드가 영상으로 공유됐어요. '캄보디아에선 소가 동네 강아지처럼'이라는 반응이 나왔어요.</p>
+    <div id="d10mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">15:18</span></div><div class="msg-text">문 닫는걸 잊으면 동네 소들이 들어와서 풀 뜯어 먹어요</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">20:15</span></div><div class="msg-text">소가 거의 동네 강아지처럼 ㅋㅋㅋㅋ 문화충격!</div></div></div>
+    <div id="d10maint3" style="display:none;margin-top:8px"></div>
+    <div id="d10mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day11" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">특이점 번외 토론 벙개—에너지 넘치는 2시간 만남</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:58~12:18</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d11mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d11mainl1')">보기 ›</a></div>
+    <p class="summary">월요일 오전 특이점 번외 토론이 진행됐어요. 경선님이 '심도 깊은 대화로 두 시간을 꽉 채워주셨다'고 했고, 스윗워러님이 '전체를 아우르는 적확한 질문들로 생각을 끌어내줘서 시원했다'고 소감을 전했어요.</p>
+    <div id="d11mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">12:18</span></div><div class="msg-text">심도 깊은 대화로 두 시간 꽉 채워주신 디퍼님들 넘 감사드립니다~</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">12:24</span></div><div class="msg-text">퍼핀님, 전체를 아우르는 적확한 질문들로 생각을 끌어내 주셔서 너무 시원했어요.</div></div></div>
+    <div id="d11maint1" style="display:none;margin-top:8px"></div>
+    <div id="d11mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-reading/deeper-singularity.html" target="_blank">🔗 https://clbookslower.github.io/deeper-reading/deep</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">햇살님 유튜브 제작 워크플로우—Claude+캔바+브루</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:29~12:32</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d11mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님의 질문으로 햇살님의 유튜브 제작 워크플로우가 공개됐어요. 스크립트는 클로드 초안→직접 수정, 이미지는 캔바, 영상+녹음 합치기는 브루 웹앱을 활용.</p>
+    <div id="d11mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">12:30</span></div><div class="msg-text">스크립트는 클로드가 초안 만들면 제가 수정을 하고, 영상에 쓰일 이미지는 캔바로 만드는 방법 알려달라고 해서</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">12:32</span></div><div class="msg-text">영상과 녹음파일 합치는 것도 클로드 제안에 따라 브루라는 웹앱으로 붙여넣었어요~</div></div></div>
+    <div id="d11maint2" style="display:none;margin-top:8px"></div>
+    <div id="d11mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 캄보디아 우기 빗속 오토바이 영상</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">16:22~17:08</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d11mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 캄보디아 우기의 빗속 오토바이 영상을 공유했어요. '우산 드는 사람 없이 그냥 시원하게 맞으며 다닌다', '침수되면 애들이 수영한다'는 생활 문화가 소개됐어요.</p>
+    <div id="d11mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">17:08</span></div><div class="msg-text">이곳에서 우산 들고 다니는 사람 아무도 없어요. 그냥 시원하게 맞으면서 다들 다녀요. 오토바이 탄 채로요.</div></div></div>
+    <div id="d11maint3" style="display:none;margin-top:8px"></div>
+    <div id="d11mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day12" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 아침 러닝 작심 1일차</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">06:16~06:54</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d12mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 저항감을 이기고 첫 아침 러닝을 시작했어요. 야간비행님이 '제주 해변에서 쫄쫄이 입고 원격접선 하겠다'며 응원했어요.</p>
+    <div id="d12mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">06:16</span></div><div class="msg-text">아침 러닝 작심 1일차입니다! 저항감에 한시간 뒹굴다가 나왔어요!</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">06:52</span></div><div class="msg-text">쫄쫄이 입고 제주해변을 뛸건데 새벽에 원격접선도 좋겠네요..</div></div></div>
+    <div id="d12maint1" style="display:none;margin-top:8px"></div>
+    <div id="d12mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">경선님 싱귤래리티 선언—디퍼님들이 촉발한 변화</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:55~09:55</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d12mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">경선님이 '오늘 아침이 디퍼님들이 불어넣어준 열정 덕분에 내 싱귤래리티가 아닐까 해요'라고 전했어요.</p>
+    <div id="d12mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">09:55</span></div><div class="msg-text">디퍼님들이 톡방과 긱어스에 불어넣어주신 열정 덕분에, 아마도 오늘 아침이 제게도 그 싱귤레러티가 아닐까 해요.</div></div></div>
+    <div id="d12maint2" style="display:none;margin-top:8px"></div>
+    <div id="d12mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day13" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">다중지능 프롬프트 열풍—AI 3대장 비교 체험</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:53~10:57</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d13mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d13maint1')">보기 ›</a></div>
+    <p class="summary">단무지님이 '그동안 나눈 대화 기반으로 하워드 가드너 다중지능 분석해줘' 프롬프트를 공유했어요. 스윗워러님·솔담님·햇살님이 각각 ChatGPT·Gemini·Claude에서 해보며 결과를 비교했어요. 햇살님이 '클로드가 가장 보수적, 제미나이가 가장 후한 분석'이라고 정리했어요.</p>
+    <div id="d13mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">10:29</span></div><div class="msg-text">그동안 나눈 대화 기반으로 하워드 가드너의 다중지능 이론 여덟 가지 영역별 상위 몇 %인지 분석해줘. 과장 없이 냉정하게</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">14:29</span></div><div class="msg-text">클로드, 제미나이, 챗지피티 한테 넣어보니 클로드가 가장 보수적이고 제미나이가 가장 후한 분석 결과를 보이네요</div></div></div>
+    <div id="d13maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">다중지능 이론(Multiple Intelligences)</div><div class="term-desc">하워드 가드너가 제안한 이론으로 언어·논리수학·음악·신체운동·공간·자연·대인관계·자기이해 등 8가지 지능을 분류.</div></div></div>
+    <div id="d13mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 브랜드 씨앗 문장 공개+햇살님 '함께 쓰고 읽는 시간'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">17:52~18:27</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d13mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 '솔직하고 담백하게 살아온 이야기를 건네는 사람'이라는 브랜드 씨앗 문장을, 햇살님이 '함께 쓰고 함께 읽는 시간'을 공유했어요.</p>
+    <div id="d13mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">17:52</span></div><div class="msg-text">나는 이런걸 찾아 여기까지 왔다 하는 마음으로 나를 위한 브랜드 씨앗 문장을 심어봤습니다!</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">18:09</span></div><div class="msg-text">저의 씨앗 문장은 '함께 쓰고, 함께 읽는 시간'입니다^^</div></div></div>
+    <div id="d13maint2" style="display:none;margin-top:8px"></div>
+    <div id="d13mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 경선님 김포 첫 만남 오프</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">13:43~13:55</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d13mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님과 경선님이 김포에서 처음 오프라인으로 만났어요. 사진을 공유하며 '야간비행님께 반했어요'라는 반응이 나왔어요.</p>
+    <div id="d13mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">13:47</span></div><div class="msg-text">야간비행님과 데이트~ 💕</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">13:49</span></div><div class="msg-text">퍼핀님께 반했어요~~</div></div></div>
+    <div id="d13maint3" style="display:none;margin-top:8px"></div>
+    <div id="d13mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day14" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님이 관찰한 멤버별 캐릭터 분석 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">00:04~00:06</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d14mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 몇 주간 소통하면서 느낀 멤버 한 명 한 명의 캐릭터를 직접 글로 써서 공유했어요. 멤버들이 감동받고 서로 칭찬을 주고받는 훈훈한 시간이 됐어요.</p>
+    <div id="d14mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">00:04</span></div><div class="msg-text">퍼핀 - 뛰어난 통찰력과 분석력. 따뜻한 T로 균형잡힌 리더. 야간비행, 햇살 - 엄청난 추진력과 행동력. 스윗워러 - 자유로운 영혼</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:00</span></div><div class="msg-text">섬세한 감성의 소유자. 여리고 잘 상처받는 분이 아닐까? 그런데 그 약함을 감추려 하지 않고 주저없이 드러내는 용기와 솔직함에 깜짝 놀랍니다.</div></div></div>
+    <div id="d14maint1" style="display:none;margin-top:8px"></div>
+    <div id="d14mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 유튜브 촬영 공간+책상 정리 완성</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:58~13:15</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d14mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 연초에 사둔 가구를 조립하고 다이소 커튼을 달아 드디어 유튜브 촬영 공간을 완성했어요. '진주까지 단무지님이 쏘아올린 작은 공'이라며 멤버들이 환호했어요.</p>
+    <div id="d14mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">12:58</span></div><div class="msg-text">집에 드디어 작업 공간을 마련했습니다! 유튜브를 여기서 찍으려고 해가지구… 햇살님 버프 받아 이제야 행동에 옮겨봅니다</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">13:33</span></div><div class="msg-text">와아~ 유튜브 기대됩니다~</div></div></div>
+    <div id="d14maint2" style="display:none;margin-top:8px"></div>
+    <div id="d14mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">'마침내 특이점' 번외 토론 벙개 일정 논의</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">00:18~00:53</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d14mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">세션 후 번외 토론 모임 일정을 정하는 논의가 이어졌어요. 야간비행님이 평일 주중은 참여 어려운 상황이라 월요일 오전으로 결정됐어요.</p>
+    <div id="d14mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">00:18</span></div><div class="msg-text">마침내 특이점이 시작된다. 번외 토론편 벙개 모임 설문 드려요</div></div><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">00:25</span></div><div class="msg-text">오히려 월요일 오전이 더 좋습니다!</div></div></div>
+    <div id="d14maint3" style="display:none;margin-top:8px"></div>
+    <div id="d14mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">4</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">경선님 디퍼 추천 도서 12권 목록 공개</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:38~12:40</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d14subm4')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d14subl4')">보기 ›</a></div>
+    <p class="summary">솔담님 요청으로 경선님이 디퍼 12주 커리큘럼 배경 독서 목록을 공유했어요.</p>
+    <div id="d14subm4" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">12:38</span></div><div class="msg-text">함께 하시는 여정에 비타민같은 책이 되지 않을까 해서 지난번 뽑아놨던 목록 올려드릴게요</div></div></div>
+    <div id="d14subt4" style="display:none;margin-top:8px"></div>
+    <div id="d14subl4" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/deeper_booklist.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/deeper</a></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day15" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">2회차 세션—역할 로테이션 제도 도입 + 다음 책 선정</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:49~23:59</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d15mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">2회차 세션이 진행됐어요. 솔담님이 '역할 로테이션(모닝페이지 키퍼 등)' 제도에 동의했고, 햇살님이 다음 책으로 젠슨 황의 '생각하는 기계'를 바로 검색해 공유했어요.</p>
+    <div id="d15mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">00:23</span></div><div class="msg-text">다음책은 엔비디아 젠슨 황, 생각하는 기계 입니다~ 모두 다음 독서 준비해주세요♡</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">00:24</span></div><div class="msg-text">역시 행동력이 엄청나신 햇살님!</div></div></div>
+    <div id="d15maint1" style="display:none;margin-top:8px"></div>
+    <div id="d15mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 캄보디아 결혼식 생중계—7번 환복</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:38~21:07</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d15mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 툭툭 타고 1시간 거리 결혼식장에 가서 캄보디아 결혼식 사진을 실시간 공유했어요. 신랑신부가 옷을 7번 갈아입는 화려한 문화가 소개됐어요.</p>
+    <div id="d15mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:38</span></div><div class="msg-text">아침부터 하루 종일 해요. 신랑 신부 옷을 7번 정도 갈아입고 정말 화려합니다.</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">11:45</span></div><div class="msg-text">동남아 참 좋아하는 1인으로써 동영상부터 사진까지 너무 흥미롭습니다. 1분 일상탈출이네요!</div></div></div>
+    <div id="d15maint2" style="display:none;margin-top:8px"></div>
+    <div id="d15mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="member">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>멤버 활동</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 AI로 아들 응원가 제작</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:43~11:56</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d15mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 고등학교 모의고사 0점 프로젝트를 한 아들을 위해 AI로 응원 노래를 직접 만들어 공유했어요. 솔담님이 '실제 가수 같다'고 했을 만큼 퀄리티가 높았어요.</p>
+    <div id="d15mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">11:48</span></div><div class="msg-text">입술 꽉 깨물고 아이 응원송을 만들어 보았습니다. 글을 쓰거나 노래할때 쒼나는 제모습을 발견하기도 하고요</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">11:53</span></div><div class="msg-text">어떻게 만드신건지~~ 목소리도 엄청 좋네요! 실제가수같아요.</div></div></div>
+    <div id="d15maint3" style="display:none;margin-top:8px"></div>
+    <div id="d15mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day16" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">클로드 '칭찬 금지' 프롬프트 팁—냉정한 피드백 받는 법</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">20:39~20:56</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d16mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드가 너무 칭찬을 많이 한다며 더 날카로운 피드백 받는 법을 물었어요. 경선님이 '칭찬 금지 공감 없이 분석만', '이 아이디어 실패할 가능성 5가지 말해봐', '안전하게 말한 부분을 다 깨보라' 같은 프롬프트를 알려줬어요.</p>
+    <div id="d16mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">20:39</span></div><div class="msg-text">좀더 객관적이고 날카로운 피드백을 받으려면 어떻게 하면 좋을지요...!</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">20:48</span></div><div class="msg-text">칭찬 금지 공감 위로 없이 분석만 하라든지, 반대편 입장을 강제해주는거, 이 아이디어가 실패할 가능성 5가지 말해봐</div></div></div>
+    <div id="d16maint1" style="display:none;margin-top:8px"></div>
+    <div id="d16mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 빅터프랭클 세 질문 AI 탐구 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">17:04~17:07</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d16mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d16mainl2')">보기 ›</a></div>
+    <p class="summary">솔담님이 빅터프랭클의 세 질문을 중심으로 AI와 자기탐구한 내용을 긱어스에 공유했어요. '클로드가 아침에 혼자 운동하며 막연히 생각한 부분을 짚어줬다'는 반응이 인상적이었어요.</p>
+    <div id="d16mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">17:07</span></div><div class="msg-text">저는 저런 사람이었나 봅니다 신기하네요. 특히 제가 아침에 혼자 운동하며 막연히 생각한 부분이 있는데 그걸 짚었어요.</div></div></div>
+    <div id="d16maint2" style="display:none;margin-top:8px"></div>
+    <div id="d16mainl2" style="display:none;margin-top:8px"><a class="link-chip" href="https://geekus.kr/slowerdeeper/post/6863" target="_blank">🔗 https://geekus.kr/slowerdeeper/post/6863</a></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 '절대 쓰지 않을 표현'—쌍욕 탐구</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:39~12:40</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d16subm3')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 오늘의 질문 '절대 쓰지 않을 표현이나 단어'를 올리며 쌍욕이 떠올라 클로드와 탐구했다고 했어요.</p>
+    <div id="d16subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">12:40</span></div><div class="msg-text">저는 쌍욕이 떠올라서 그걸로 클로드랑 탐구했습니다 ^^</div></div></div>
+    <div id="d16subt3" style="display:none;margin-top:8px"></div>
+    <div id="d16subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day17" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 Claude+Obsidian 연결 완료+개념 정리 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">17:52~19:09</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d17mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d17maint1')">보기 ›</a></div>
+    <p class="summary">솔담님이 클로드-옵시디언 연결 구조를 직접 정리해 단톡방에 공유했어요. '옵시디언=지식창고, 클로드데스크탑=접근AI, 클로드코워크=함께일하는동료' 개념도가 멤버들의 이해를 크게 도왔어요.</p>
+    <div id="d17mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">17:52</span></div><div class="msg-text">Claude Cowork: AI 비서 = 같이 일하는 동료/비서의 개념. 옵시디언에 자료 저장→클로드 데스크탑과 연결→클로드가 이전 작업자료 기억, 같이 작업 가능</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">18:11</span></div><div class="msg-text">정리 감사합니다!!!! 이해하는데 도움이 되었어요 ㅎㅎ</div></div></div>
+    <div id="d17maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">Claude Cowork</div><div class="term-desc">클로드가 특정 폴더나 파일에 직접 접근해 작업을 수행하는 기능. 옵시디언 볼트와 연결하면 기존 자료를 기억하며 협업.</div></div></div>
+    <div id="d17mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 AI 활용 재선언—'5월 반이 지났지만 지금부터'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">14:10~14:12</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d17mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 5월 미션의 핵심인 AI 활용 자기탐구를 내버려뒀다며 오늘부터 다시 해체를 시작하겠다고 선언했어요.</p>
+    <div id="d17mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">14:12</span></div><div class="msg-text">5월의 미션은 나를 해체하는 것이었는데, 그 도구로 AI를 활용하는 것이었는데 어느새 요점은 잃어버리고 살아가고 있었던것 같습니다. 5월 반이나 지나가고 있지만 다시 해체를 시작해 보겠습니다!!</div></div></div>
+    <div id="d17maint2" style="display:none;margin-top:8px"></div>
+    <div id="d17mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 옵시디언+클로드 첫 연결 성공</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:46~19:49</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d17subm3')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 Node.js 오류로 애먹다가 클로드가 파이썬 기반 uv 설치로 수정 안내해줘서 성공했다고 했어요.</p>
+    <div id="d17subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">19:48</span></div><div class="msg-text">클로드가 시키는대로 해서 어찌저찌 성공했습니다 ㅋㅋㅋㅋ</div></div></div>
+    <div id="d17subt3" style="display:none;margin-top:8px"></div>
+    <div id="d17subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day18" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 우울감 고백+스윗워러님 밤길 운전의 감성</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:49~14:04</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d18mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 지난 주부터 심한 우울감과 공허함을 겪고 있다고 털어놨어요. 햇살님이 '닥친 우울이 곧 내면 활력을 꺼내 올 것'이라며 위로했고, 스윗워러님도 밤길 운전 중 옛 감성에 울었다는 이야기를 나눴어요.</p>
+    <div id="d18mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">12:49</span></div><div class="msg-text">살짝 심한 우울감, 침체감, 혼란스러움을 겪고 있어서 무기력하고 공허하게 지내고 있었는데 마음이 안 좋으니 결국 감기까지</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">13:26</span></div><div class="msg-text">닥친 우울이 곧 내면에 활력을 꺼내 올거란 말 큰 위로가 되는 말이네요</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">13:58</span></div><div class="msg-text">밤길을 옛날 노래 친구삼아 혼자 운전해 오는데 완전 샌치해져서 찔찔 울기도 하고</div></div></div>
+    <div id="d18maint1" style="display:none;margin-top:8px"></div>
+    <div id="d18mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">Claude 무료 vs 유료—객관식 질문 차이 체험</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:48~12:38</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d18mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">헤더님이 클로드가 선택지를 주는 객관식 방식으로 답한다고 공유했어요. 경선님은 무료/유료 버전 차이일 수 있다고 했고, 솔담님은 클로드 데스크탑 활용에 대해 물었어요.</p>
+    <div id="d18mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">11:48</span></div><div class="msg-text">클로드로 나 소개 + 오늘의 질문 실험하실때, 이런식으로 객관식으로 질문해주는데 다른 분들도 그런가요?</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">12:30</span></div><div class="msg-text">무료/유료 버전 차이도 있나봐요. 저는 이런 선택지없이 주관식으로 질문을 해줘서 대화하는 느낌으로 했는데요</div></div></div>
+    <div id="d18maint2" style="display:none;margin-top:8px"></div>
+    <div id="d18mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day19" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 카페 강아지를 그림으로 그린 모닝페이지</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:20~16:15</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d19mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 오늘은 카페 강아지가 너무 사랑스러워서 모닝페이지를 글이 아닌 그림으로 그렸어요. 야간비행님이 'AI 장착이 더해지면 날개 달 창작자 재능'이라고 칭찬했어요.</p>
+    <div id="d19mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">10:20</span></div><div class="msg-text">오늘 모닝페이지는 그림으로 그려봤어요 ㅋㅋㅋㅋㅋ</div></div><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">10:30</span></div><div class="msg-text">AI장착이 더해지면 젤루젤루 날개를 달 창작자의 재능.. 진짜 넘 부럽습니다2222</div></div></div>
+    <div id="d19maint1" style="display:none;margin-top:8px"></div>
+    <div id="d19mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day20" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 캄보디아 깜폿 1박 아티스트데이트—두리안 농장</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:58~20:56</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d20mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 프놈펜에서 3시간 거리 깜폿으로 1박 여행을 떠났어요. 오토바이를 타고 두리안 농장을 방문해 6개를 구입, 교회 사람들과 나눴어요. '아티스트데이트'가 이렇게 큰 모험이 될 줄 몰랐다는 반응과 함께 멤버 전원이 설레며 사진을 감상했어요.</p>
+    <div id="d20mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">12:05</span></div><div class="msg-text">이번 여행이 저의 아티스트 데이트가 될 것 같아요. 길의 시작점을 내딛는 설레임이</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">19:23</span></div><div class="msg-text">두리안 농장 가는 길 부서져가는 나무 나리위를 오토바이 뒤에 타고 갑니다. 스릴 만점이지 말입니다~</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">19:32</span></div><div class="msg-text">큰것 6개 사니 작은 것 하나 끼워주네요. 총 110달러, 우리 돈으로 대략 16만원 정도네요</div></div></div>
+    <div id="d20maint1" style="display:none;margin-top:8px"></div>
+    <div id="d20mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 용산 스탠다드번 카페 모닝페이지</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:36~10:09</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d20mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 용산 스탠다드번 카페에서 모닝페이지를 쓰는 사진을 공유했어요. '세상을 다 가진 기분'이라고 표현했고, 야간비행님이 카페 이름을 물어볼 정도로 분위기가 예뻤어요.</p>
+    <div id="d20mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">09:36</span></div><div class="msg-text">주말 아침 집 근처 예쁜 카페에 나와 모닝페이지를 쓰니 세상을 다 가진 기분이 듭니다…!</div></div></div>
+    <div id="d20maint2" style="display:none;margin-top:8px"></div>
+    <div id="d20mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day21" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 1회차 불참 사과+단무지님 릴케 구절 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">06:06~11:36</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d21mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 어제 회식으로 세션에 불참했다고 사과했고, 단무지님이 라이너 마리아 릴케의 '젊은 시인에게 보내는 편지'에서 마음에 닿은 구절을 공유했어요.</p>
+    <div id="d21mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">06:06</span></div><div class="msg-text">중요한 일끝에 오랫만의 회식인지라 과했나봅니다. 이탈하곤 복귀를 못했습니다. 더 열심히 하겠습니다.</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">11:36</span></div><div class="msg-text">당신이 이룬 위대한 것이 반드시 승리는 아닙니다.</div></div></div>
+    <div id="d21maint1" style="display:none;margin-top:8px"></div>
+    <div id="d21mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day22" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">3<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">정규 1회차 세션—특이점 토론, 언브랜딩 강의</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:57~23:54</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d22mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d22mainl1')">보기 ›</a></div>
+    <p class="summary">디퍼 정규 1회차 세션이 진행됐어요. 멤버들이 '1.5시간이 부족하다'고 할 만큼 뜨거웠어요. 솔담님은 '출발지 설정의 중요성'이 핵심 문장이었다며 후기를 바로 긱어스에 올렸어요.</p>
+    <div id="d22mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">23:47</span></div><div class="msg-text">오늘 세션 중 한 문장은 출발지 설정의 중요성. 퍼핀님 준비해오신 강의가 너무 소중했습니다.</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">23:54</span></div><div class="msg-text">살롱 전체에 나눠주시는 따스함 덕분에 앞으로 지치거나 넘어지거나 앉아쉬고싶을때도 다시 일어날 수 있을 것 같아요.</div></div></div>
+    <div id="d22maint1" style="display:none;margin-top:8px"></div>
+    <div id="d22mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/session01_authentic.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/sessio</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">옵시디언 볼트 세팅 방식 A/B 확정</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">13:07~13:47</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d22mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">옵시디언 볼트 세팅 방식을 놓고 혼선이 있었어요. 경선님이 방식 A(볼트 하나+폴더 구분)와 방식 B(개인볼트+공유볼트 두 개)를 정리해서 안내했어요.</p>
+    <div id="d22mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">13:47</span></div><div class="msg-text">방식 A — 볼트 하나 안에 폴더로 구분. 공유는 디퍼유레카 링크 활용. 방식 B — 볼트 두 개 (내-디퍼 개인용 + 원드라이브 공유용)</div></div></div>
+    <div id="d22maint2" style="display:none;margin-top:8px"></div>
+    <div id="d22mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">클로드가 도발?—'비슷한 거 같다고 뿌듯해하는' 반응</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:48~21:56</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d22mainm3')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드와 작업 중 '비슷한게 나온 거 같다고 뿌듯해하는데 은근 킹받네요'라고 하자 솔담님도 '이 부분이 특히 얄밉네요'라며 공감. 클로드의 자기 칭찬 성향에 대한 유쾌한 공감 대화가 이어졌어요.</p>
+    <div id="d22mainm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">21:49</span></div><div class="msg-text">은근 킹받네요 ㅋㅋㅋㅋ</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">21:56</span></div><div class="msg-text">ㅋㅋㅋㅋ 진짜 킹받네요 클로드 ㅎㅎ</div></div></div>
+    <div id="d22maint3" style="display:none;margin-top:8px"></div>
+    <div id="d22mainl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day23" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">AI 음악 vs 바흐—체감의 차이, 스윗워러님 뜨개질</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:40~15:26</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d23mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 AI 음악은 세 곡 듣고 싫증났지만 바흐는 그렇지 않았다고 했어요. 경선님은 조바심 나는 하루를 스윗워러님의 뜨개질 사진과 '오늘의 한 코가 내일의 옷이 될 때까지'라는 말에 눈물이 났다고 전했어요.</p>
+    <div id="d23mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:40</span></div><div class="msg-text">AI가 만든 거였어요. 그래서 바흐의 소곡들 들으면서 책 읽었는데 넘 좋았어요.</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">15:19</span></div><div class="msg-text">오늘따라 왜 그렇게 조바심이 났는지 몰라요. '오늘의 한 코가 내일의 옷이 될때까지 끝까지 하기.' 이 말씀에 눈물이 왈칵</div></div></div>
+    <div id="d23maint1" style="display:none;margin-top:8px"></div>
+    <div id="d23mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">1회차 세션 예고—책 토론+언브랜딩 미니강의</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:27~19:38</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d23mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">내일 10:05 시작 1회차 세션 안내가 공지됐어요. 셀프회고+특이점 토론+언브랜딩 강의 순서로 진행 예정.</p>
+    <div id="d23mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">19:27</span></div><div class="msg-text">1. 한주 셀프회고+인사이트 공유회 2. 마침내 특이점 책 토론 3. 언브랜딩 미니강의, 이렇게 진행하려 합니다.</div></div></div>
+    <div id="d23maint2" style="display:none;margin-top:8px"></div>
+    <div id="d23mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day24" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">악뮤 '벌레를 내고' 공유+AI 창작물 감성 논쟁</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:46~20:30</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d24mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">경선님이 공유한 강아지 영상과 악뮤 신곡 이야기로 시작해, 솔담님이 'AI가 만든 예술창작물은 인간의 고유 영역이었으면 한다'는 의견을 내놨어요.</p>
+    <div id="d24mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">20:30</span></div><div class="msg-text">왠지 AI가 만들었다고 하면 살짝 서운할 거 같아요. 예술적인 창작물은 인간의 고유한 것이었으면 하는 욕심이 괜히 있어요.</div></div></div>
+    <div id="d24maint1" style="display:none;margin-top:8px"></div>
+    <div id="d24mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day25" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 옵시디언→클로드 첫 실전 활용—'배움의 기쁨 회복'</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:15~10:44</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d25mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d25mainl1')">보기 ›</a></div>
+    <p class="summary">스윗워러님이 설교를 옵시디언에 타이핑한 후 클로드로 구조화하는 첫 실전 활용에 성공했어요. '내 파트너가 될 AI는 내가 길들인다'는 깨달음과 함께, '올해 가장 멋진 선택이 디퍼 살롱이었다'는 소감을 전했어요.</p>
+    <div id="d25mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:15</span></div><div class="msg-text">오늘 아침설교 들으면서 퍼핀님 알려주신 대로 옵시디언에 타이핑 한 후 claude에 올려 구조화 시켰더니 이런 놀라운 결과물이 나왔어요.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:41</span></div><div class="msg-text">결국 AI에도 나의 개성이 드러나기 마련이구나. 내 파트너가 될 AI는 내가 길들인다.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:43</span></div><div class="msg-text">올해 가장 멋진 선택이 바로 디퍼 브랜딩 살롱에 함께 한 거예요.</div></div></div>
+    <div id="d25maint1" style="display:none;margin-top:8px"></div>
+    <div id="d25mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/deeper_operation_guide.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/deeper</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">클로드의 할루시네이션 체험—'모른다 하지 않는' 클로드</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">10:37~10:41</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d25mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d25maint2')">보기 ›</a></div>
+    <p class="summary">스윗워러님이 클로드에게 캄보디아어 어린이 방송 단어 정리를 시켰다가 거짓말을 많이 해서 당황했다는 경험을 나눴어요. 경선님은 '잘 길들이는 방식에 따라 아웃풋 수준이 달라진다'고 설명했어요.</p>
+    <div id="d25mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">10:37</span></div><div class="msg-text">클로드의 똑똑함을 믿고 짧은 어린이 교육방송 단어들을 정리해 달라 했더니 얼마나 거짓말을 치는지. 모른다 하지 않더라고요.</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">10:39</span></div><div class="msg-text">잘 길들이는 방식에 따라 AI 아웃풋 수준이 달라지니, 결국 내 AI가 대체불가능한 자산이 되는건가요..</div></div></div>
+    <div id="d25maint2" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">할루시네이션(Hallucination)</div><div class="term-desc">AI가 사실이 아닌 내용을 그럴듯하게 지어내 답하는 현상. 클로드·ChatGPT 등 모든 LLM에서 발생할 수 있어요.</div></div></div>
+    <div id="d25mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 제주 문어 보양식 사진</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:15~12:23</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d25subm3')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 제주에서 문어 보양식 점심 사진을 공유했어요. '제주의 문어는 약문어'라는 설명에 스윗워러님이 '그림의 문어'라며 캄보디아 현실을 유머러스하게 표현했어요.</p>
+    <div id="d25subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">12:16</span></div><div class="msg-text">네.. 제주의 문어는 약문어라 해요. 계절식</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">12:23</span></div><div class="msg-text">우와~ 저에겐 '그림의 문어'네요. 캄보디아에선 구경할 수조차 없는 것.</div></div></div>
+    <div id="d25subt3" style="display:none;margin-top:8px"></div>
+    <div id="d25subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">4</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">클로드+어도비 연동 소식+셋로그 앱 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">16:40~16:45</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d25subm4')">요약 보기 ‹</a></div>
+    <p class="summary">단무지님이 클로드와 어도비 연동 소식을 전하며 유튜브 편집·기획에 활용하겠다고 했고, 젠지 세대 사이 유행 앱 '셋로그'도 소개했어요.</p>
+    <div id="d25subm4" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">16:40</span></div><div class="msg-text">클로드랑 어도비도 이제 연동되네요. 이제 클로드한테 편집이랑 기획 시켜봐야겠어요</div></div><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">16:44</span></div><div class="msg-text">요즘 젠지 세대 사이에서 유행하는 셋로그 라는 앱이 있는데 그것도 참 재밌더라구요</div></div></div>
+    <div id="d25subt4" style="display:none;margin-top:8px"></div>
+    <div id="d25subl4" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day26" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">Obsidian+Claude 연결 원리—Andrej Karpathy 방식</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">19:37~19:52</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d26mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d26maint1')">보기 ›</a></div>
+    <p class="summary">경선님이 Andrej Karpathy가 소개한 Obsidian+Claude 활용법을 공유했어요. '옵시디언에 생각을 쓴다→클로드에 넣는다→구조화 요청'의 3단계 흐름이 핵심이에요.</p>
+    <div id="d26mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">19:37</span></div><div class="msg-text">👉 Obsidian + Claude: 1) 옵시디언에 생각을 그냥 쓴다 2) 그걸 클로드에 넣는다 3) 이걸 구조화</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">19:52</span></div><div class="msg-text">하나씩 하나씩~ 잘하지는 못해도 열심히는 따라가겠습니다.</div></div></div>
+    <div id="d26maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">세컨드 브레인</div><div class="term-desc">개인의 생각·자료를 외부 시스템에 체계적으로 저장해 필요할 때 꺼내 쓰는 방식. 옵시디언이 대표적 도구.</div></div></div>
+    <div id="d26mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">기기 환경 파악—원드라이브 공유 폴더 방식으로 정리</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:47~19:27</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d26mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">경선님이 각자의 기기 환경(윈도우·맥·아이패드·iCloud 등)을 파악하고 공유 방식을 원드라이브 링크로 단순화하기로 했어요. 헤더님의 iCloud 전용 환경이 제약 요인으로 확인됐어요.</p>
+    <div id="d26mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">09:47</span></div><div class="msg-text">제가 작업환경을 좀더 면밀히 살펴서 설계를 했어야 했네요 ㅜㅜ</div></div><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">07:05</span></div><div class="msg-text">저는 폰과 컴 모두 icloud로 연동했습니다</div></div></div>
+    <div id="d26maint2" style="display:none;margin-top:8px"></div>
+    <div id="d26mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 쾌차 후 모닝페이지 복귀</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:38~09:38</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d26subm3')">요약 보기 ‹</a></div>
+    <p class="summary">감기로 며칠 쉬었던 단무지님이 예배 전 카페에서 모닝페이지를 쓰며 복귀했어요.</p>
+    <div id="d26subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">09:38</span></div><div class="msg-text">오늘 예배 장소 근처에 일찍 와서 모닝페이지를 썼습니다!</div></div></div>
+    <div id="d26subt3" style="display:none;margin-top:8px"></div>
+    <div id="d26subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day27" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">헤더님 옵시디언 설치 완료 (야간 인증)</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">00:17~00:17</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d27mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">헤더님이 늦은 밤 옵시디언 설치를 완료하고 원드라이브는 컴퓨터 업데이트 후 내일 진행하기로 했어요.</p>
+    <div id="d27mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">00:17</span></div><div class="msg-text">옵시디언 앱 깔았습니다~ 원드라이브와 이후 가이드는 컴퓨터 업데이트를 해야 가능해서 내일 하는걸로 ㅎㅎ</div></div></div>
+    <div id="d27maint1" style="display:none;margin-top:8px"></div>
+    <div id="d27mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day28" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">5/1~5/3 미션: 옵시디언·원드라이브·깃허브 설치</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:28~16:03</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d28mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d28maint1')">보기 ›</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d28mainl1')">보기 ›</a></div>
+    <p class="summary">경선님이 디지털 작업 환경 구축 3일 미션을 공개했어요. 스윗워러님이 1시간 만에 옵시디언 설치 완료, 햇살님은 세 가지 모두 그날 완료했어요. 열정 넘치는 시작이었어요.</p>
+    <div id="d28mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">09:28</span></div><div class="msg-text">5/1 미션 한 가지: 옵시디언 앱 깔기^^</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">11:08</span></div><div class="msg-text">오늘 미션 옵시디언 앱 깔기 완료! 가이드 보면서 따라해 보겠습니다. 헉헉~ 숨차다!</div></div><div class="msg-card"><div class="msg-auth">햇살 <span class="msg-time">16:03</span></div><div class="msg-text">1. 옵시디언 완료 2. 원드라이브 완료 3. 깃허브 완료 이상 무!</div></div></div>
+    <div id="d28maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">옵시디언(Obsidian)</div><div class="term-desc">로컬 저장 기반의 노트 앱. 마크다운 파일로 지식을 관리하고 Claude와 연결해 '세컨드 브레인'으로 활용.</div></div></div>
+    <div id="d28mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/obsidian_claude_complete_guide.html" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/obsidi</a></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day29" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">프리세션 첫 줌 모임—트래커 vs 긱어스 일원화 논의</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">21:55~23:57</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d29mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d29mainl1')">보기 ›</a></div>
+    <p class="summary">프리세션이 열렸어요. 솔담님 의견으로 트래커와 긱어스 포스팅을 이중으로 하는 불편함이 제기됐고, 경선님이 긱어스 단일화를 제안했어요. 데일리 미션 체계가 정비됐어요.</p>
+    <div id="d29mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">23:50</span></div><div class="msg-text">오히려 트래커를 버리고(언브랜딩) 긱어스 게시판 포스팅 하나만 하시는건 어떠신가 하는 제안드려봤었어요</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">23:51</span></div><div class="msg-text">서로 응원을 북돋아주실 수 있는 쪽이 저는 더 좋다고 여겨져서요</div></div></div>
+    <div id="d29maint1" style="display:none;margin-top:8px"></div>
+    <div id="d29mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-tracker/" target="_blank">🔗 https://clbookslower.github.io/deeper-tracker/</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">커츠와일 특이점 1-4장 트리비움 분석 링크 공개</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:21~12:23</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d29mainm2')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d29mainl2')">보기 ›</a></div>
+    <p class="summary">경선님이 '마침내 특이점이 시작된다' 1~4장을 트리비움 관점으로 분석한 페이지를 공유했어요.</p>
+    <div id="d29mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">12:22</span></div><div class="msg-text">1-4장 톺아보시도록 링크 드립니다. 긱어스에도 올려두었어요.</div></div></div>
+    <div id="d29maint2" style="display:none;margin-top:8px"></div>
+    <div id="d29mainl2" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-reading/kurzweil_ch1_final.html" target="_blank">🔗 https://clbookslower.github.io/deeper-reading/kurz</a></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 일본에서 모닝 인사</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">08:38~09:01</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d29subm3')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 일본에서도 단톡방에 아침 인사를 전해 경선님이 '일본에서 모닝인사'라며 감동했어요.</p>
+    <div id="d29subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">08:38</span></div><div class="msg-text">오늘은 모닝페이지 없이 인사드립니다~!</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">09:01</span></div><div class="msg-text">솔담님 일본에서 모닝인사🫶 넘 좋아요 감사해요!</div></div></div>
+    <div id="d29subt3" style="display:none;margin-top:8px"></div>
+    <div id="d29subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day30" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">솔담님 일본 가족여행 출발+글로벌 디퍼 연대</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:05~20:46</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d30mainm1')">요약 보기 ‹</a></div>
+    <p class="summary">솔담님이 일본으로 가족여행을 떠났어요. 스윗워러님(캄보디아)과 국제적 연대가 이루어지며 각자의 삶의 방식을 나눴어요. 경선님은 감기로 고생 중에도 살롱 준비를 이어갔어요.</p>
+    <div id="d30mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">12:14</span></div><div class="msg-text">제 꿈이 세계여행을 살아보듯이 하는 겁니다. 기약없이 떠나는 세계여행.</div></div><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">12:15</span></div><div class="msg-text">이젠 여행지가 아니라 생존의 장으로~ 그래도 좋아요~ 캄보디아 사람들과 캐미가 더 맞는것 같아요.</div></div></div>
+    <div id="d30maint1" style="display:none;margin-top:8px"></div>
+    <div id="d30mainl1" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day31" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">디퍼 트래커 사용 피드백—지난 날짜 기록 추가</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:44~15:22</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d31mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">용어 쏙쏙</span><a class="meta-link" onclick="tog('d31maint1')">보기 ›</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d31mainl1')">보기 ›</a></div>
+    <p class="summary">스윗워러님이 트래커 첫 사용 후 피드백을 줬고, 솔담님이 지난 날짜 소급 기록 기능을 요청해 경선님이 즉시 수정했어요. 키씬(Key Scene) 개념도 설명됐어요.</p>
+    <div id="d31mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">10:58</span></div><div class="msg-text">퍼핀님 혹시 지난 날도 기록할 수 있게 해주실 수 있나요?</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">11:54</span></div><div class="msg-text">아침에 일어나며 키씬 컨셉을 잡고 하루를 시작하시면 실행-보람으로 연결되시지 않을까 해요.</div></div></div>
+    <div id="d31maint1" style="display:none;margin-top:8px"><div class="term-card"><div class="term-title">키씬(Key Scene)</div><div class="term-desc">하루의 핵심 장면을 미리 설정하는 개념. 모닝페이지와 함께 디퍼 트래커의 일일 루틴 중 하나.</div></div></div>
+    <div id="d31mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-tracker/" target="_blank">🔗 https://clbookslower.github.io/deeper-tracker/</a></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day32" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">단무지님 김미경 '1인 상업시대' 릴스 공유</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">20:48~20:54</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d32mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d32mainl1')">보기 ›</a></div>
+    <p class="summary">단무지님이 김미경 선생님의 1인 상업시대 관련 릴스를 공유하며 공감을 얻었어요.</p>
+    <div id="d32mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">단무지 <span class="msg-time">20:49</span></div><div class="msg-text">1인 상업시대라는 단어가 와닿아서 공유드려보아요!</div></div></div>
+    <div id="d32maint1" style="display:none;margin-top:8px"></div>
+    <div id="d32mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://www.instagram.com/reel/DWD2vESEz8I/" target="_blank">🔗 https://www.instagram.com/reel/DWD2vESEz8I/</a></div>
+  </div>
+</div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러 시간대 차이+AI 활용 모닝페이지 루틴</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">12:20~13:47</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d32mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 캄보디아와 한국의 2시간 시차로 모닝페이지 업로드가 늦어진다고 공유했어요. 헤더님도 비로소 3페이지를 완수했다는 뿌듯함을 나눴어요.</p>
+    <div id="d32mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">12:20</span></div><div class="msg-text">여긴 10시 20분이랍니다. 딱 2시간 늦어요. 제 모닝페이지가 늦게 올라가는 이유입니다.</div></div><div class="msg-card"><div class="msg-auth">헤더 <span class="msg-time">13:47</span></div><div class="msg-text">오랜만에 세페이지 완수한 기분은 정말 뿌듯하네요!!</div></div></div>
+    <div id="d32maint2" style="display:none;margin-top:8px"></div>
+    <div id="d32mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+<div class="day-panel" id="day33" style="display:none"><div class="sec-hdr main"><div class="sec-lbl">Main</div><div class="sec-title">주요 주제</div><div class="sec-cnt">2<span class="sec-unit">건</span></div></div><div class="card" data-cat="salon">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">1</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>살롱 운영</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 공식 합류 + 12주 커리큘럼 초안 공개</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">11:41~22:28</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d33mainm1')">요약 보기 ‹</a></div><div class="meta-row"><span class="meta-lbl">공유 링크</span><a class="meta-link" onclick="tog('d33mainl1')">보기 ›</a></div>
+    <p class="summary">야간비행님이 단톡방에 합류했어요. 경선님은 12주 디퍼 여정 안내와 디퍼 트래커를 공유했어요. 데일리 미션(모닝페이지→긱어스 포스팅)과 주차별 미션(인사이트 공유회)이 제안됐어요.</p>
+    <div id="d33mainm1" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">13:15</span></div><div class="msg-text">방갑습니다. 잘부탁드림다!!</div></div><div class="msg-card"><div class="msg-auth">경선 <span class="msg-time">22:18</span></div><div class="msg-text">이번 3개월의 deeper 여정에 함께해주셔서 감사합니다. 든든한 한 팀이 되어, 나를 해체하고, 가장 좋아하는 일로 지속가능한 삶을 만들어가요.</div></div></div>
+    <div id="d33maint1" style="display:none;margin-top:8px"></div>
+    <div id="d33mainl1" style="display:none;margin-top:8px"><a class="link-chip" href="https://clbookslower.github.io/deeper-tracker/" target="_blank">🔗 https://clbookslower.github.io/deeper-tracker/</a><a class="link-chip" href="https://clbookslower.github.io/deeper-salon/" target="_blank">🔗 https://clbookslower.github.io/deeper-salon/</a></div>
+  </div>
+</div><div class="card" data-cat="daily">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num mn">2</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>일상·단상</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">스윗워러님 모닝페이지 2일차+솔담님 독서 시작</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">09:30~22:17</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d33mainm2')">요약 보기 ‹</a></div>
+    <p class="summary">스윗워러님이 2일 연속 모닝페이지를 긱어스에 올리고, 솔담님도 '특이점이 온다'를 읽기 시작했어요. 솔담님은 '이해가 어렵지만 넘 흥미롭다'고 했어요.</p>
+    <div id="d33mainm2" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">스윗워러 <span class="msg-time">09:30</span></div><div class="msg-text">모닝 페이지 둘째날도 행복한 마음으로 완료!</div></div><div class="msg-card"><div class="msg-auth">솔담 <span class="msg-time">22:02</span></div><div class="msg-text">굉장히 흥미로운 책임은 분명하나 과학적 기본 상식이 부족해서 세세히 이해하기보단 관망하듯 읽어야 겨우 진도가 나가네요</div></div></div>
+    <div id="d33maint2" style="display:none;margin-top:8px"></div>
+    <div id="d33mainl2" style="display:none;margin-top:8px"></div>
+  </div>
+</div><div class="sec-div"></div><div class="sec-hdr sub"><div class="sec-lbl">Sub</div><div class="sec-title">미니 주제</div><div class="sec-cnt">1<span class="sec-unit">건</span></div></div><div class="card" data-cat="ai">
+  <div class="card-hdr" onclick="toggleCard(this)">
+    <div class="card-num sb">3</div>
+    <div class="card-meta">
+      <div class="card-cat"><span>AI 탐구</span><span class="card-exp">펼치기 ›</span></div>
+      <div class="card-title">야간비행님 ChatGPT 잡지형 자기소개 이미지 시연</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="meta-row"><span class="meta-lbl">대화 시간</span><span class="meta-val">18:13~20:01</span></div><div class="meta-row"><span class="meta-lbl">대화 내역</span><a class="meta-link" onclick="tog('d33subm3')">요약 보기 ‹</a></div>
+    <p class="summary">야간비행님이 ChatGPT로 함께 나눈 대화 기반 잡지 레이아웃 자기소개 이미지를 만들어 공유했어요.</p>
+    <div id="d33subm3" style="display:none;margin-top:8px"><div class="msg-card"><div class="msg-auth">야간비행 <span class="msg-time">18:13</span></div><div class="msg-text">이제까지 우리가 동행했던 날들을 토대로 그대가 나를 어떤사람으로 생각하는지 이미지와 텍스트로 표현해줘.</div></div></div>
+    <div id="d33subt3" style="display:none;margin-top:8px"></div>
+    <div id="d33subl3" style="display:none;margin-top:8px"></div>
+  </div>
+</div></div>
+
+<footer class="ftr">
+  DEEPER UNBRANDINGS SALON 1st · 2026.04–05<br>
+  도서출판 클북 · clbook.slower@gmail.com
+</footer>
+<script>
+const DATES=["5/29 금요일", "5/28 목요일", "5/27 수요일", "5/26 화요일", "5/25 월요일", "5/24 일요일", "5/23 토요일", "5/22 금요일", "5/21 목요일", "5/20 수요일", "5/19 화요일", "5/18 월요일", "5/17 일요일", "5/16 토요일", "5/15 금요일", "5/14 목요일", "5/13 수요일", "5/12 화요일", "5/11 월요일", "5/10 일요일", "5/9 토요일", "5/8 금요일", "5/7 목요일", "5/6 수요일", "5/5 화요일", "5/4 월요일", "5/3 일요일", "5/2 토요일", "5/1 금요일", "4/30 목요일", "4/29 수요일", "4/28 화요일", "4/27 월요일", "4/26 일요일"];
+const COUNTS={"0": 6, "1": 3, "2": 3, "3": 3, "4": 3, "5": 2, "6": 3, "7": 3, "8": 3, "9": 3, "10": 3, "11": 3, "12": 2, "13": 3, "14": 4, "15": 3, "16": 3, "17": 3, "18": 2, "19": 1, "20": 2, "21": 1, "22": 3, "23": 2, "24": 1, "25": 4, "26": 3, "27": 1, "28": 1, "29": 3, "30": 1, "31": 1, "32": 2, "33": 3};
+let cur=0, allExp=false;
+
+function init(){
+  selDate(0, document.querySelectorAll('.date-chip')[0]);
+}
+
+function selDate(i, el){
+  cur=i;
+  document.querySelectorAll('.date-chip').forEach((c,j)=>c.classList.toggle('active',j===i));
+  document.getElementById('ddLabel').textContent=DATES[i];
+  document.getElementById('dc').textContent=COUNTS[i]||0;
+  document.getElementById('prev').disabled=i===0;
+  document.getElementById('next').disabled=i===DATES.length-1;
+  document.querySelectorAll('.day-panel').forEach((p,j)=>p.style.display=j===i?'block':'none');
+  document.getElementById('ddpanel').classList.remove('open');
+  document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+  document.querySelector('.tag.t-all').classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('hidden'));
+  document.querySelector('.sb2').value='';
+  allExp=false;
+  document.getElementById('expBtn').textContent='카드 전체 펼치기';
+}
+
+function chgDay(d){
+  const n=Math.max(0,Math.min(DATES.length-1,cur+d));
+  selDate(n,document.querySelectorAll('.date-chip')[n]);
+}
+
+function togDD(){document.getElementById('ddpanel').classList.toggle('open');}
+
+function toggleCard(hdr){
+  const b=hdr.nextElementSibling, btn=hdr.querySelector('.card-exp');
+  const o=b.classList.contains('open');
+  b.classList.toggle('open',!o);
+  btn.textContent=o?'펼치기 ›':'접기 ‹';
+}
+
+function tog(id){
+  const el=document.getElementById(id);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
+}
+
+function togAll(){
+  allExp=!allExp;
+  const panel=document.getElementById('day'+cur);
+  if(!panel) return;
+  panel.querySelectorAll('.card-body').forEach(b=>b.classList.toggle('open',allExp));
+  panel.querySelectorAll('.card-exp').forEach(b=>b.textContent=allExp?'접기 ‹':'펼치기 ›');
+  document.getElementById('expBtn').textContent=allExp?'카드 전체 접기':'카드 전체 펼치기';
+}
+
+function flt(cat,el){
+  document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const panel=document.getElementById('day'+cur);
+  if(!panel) return;
+  panel.querySelectorAll('.card').forEach(c=>{
+    c.classList.toggle('hidden', cat!=='all' && c.dataset.cat!==cat);
+  });
+}
+
+function doSearch(q){
+  q=q.trim().toLowerCase();
+  const panel=document.getElementById('day'+cur);
+  if(!panel) return;
+  panel.querySelectorAll('.card').forEach(card=>{
+    const txt=(card.querySelector('.card-title')?.textContent||'')+(card.querySelector('.summary')?.textContent||'');
+    card.classList.toggle('hidden', q.length>0 && !txt.toLowerCase().includes(q));
+  });
+}
+
+init();
+</script>
+</body>
+</html>
