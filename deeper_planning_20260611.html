@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>우리, 이렇게 함께 날아가요 — 프로젝트 B-612 · DEEPER</title>
+<!-- Open Graph — 카카오톡/SNS 공유 카드 (배포 후 작동, og:url·og:image는 실제 주소로) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="우리, 이렇게 함께 날아가요 — 디퍼 별 세계관">
+<meta property="og:description" content="함께 걷는 사막길. 1기 별지기 디퍼님들과 Founder 야간비행님께 드리는 프로젝트 B-612 기획.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/b612-2nd.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/b612_og.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --paper:#F6EFDD; --paper-soft:#FBF6EA; --surface:#FFFCF4; --rule:#E7DDC4;
+    --ink:#3B3328; --ink-soft:#5E5440; --ink-mid:#766B54; --muted:#A89878;
+    --gold:#C49A3F; --gold-deep:#9C7A2C; --gold-pale:#F2E6C8;
+    --sky:#8FB0C4; --green:#7E9A7F; --star:#D9B65A;
+  }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Noto Serif KR',serif; line-height:2.0; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:740px; margin:0 auto; padding:0 26px 110px; }
+
+  .hero{ text-align:center; padding:104px 30px 76px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 45% at 28% 22%, rgba(217,182,90,0.14) 0%, transparent 62%),
+      radial-gradient(ellipse 55% 55% at 78% 78%, rgba(143,176,196,0.13) 0%, transparent 62%),
+      var(--paper-soft);
+    border-bottom:1px solid var(--rule);
+  }
+  .hero .stars{ position:absolute; inset:0; pointer-events:none; }
+  .hero .stars i{ position:absolute; color:var(--star); font-size:11px; opacity:.7; }
+  .hero-logo{ height:26px; width:auto; margin:0 auto 34px; display:block; opacity:.85; }
+  .hero-logo-fallback{ font-family:'DM Mono',monospace; letter-spacing:.4em; font-size:12px; color:var(--gold-deep); margin-bottom:34px; }
+  .hero-eyebrow{ font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:26px; position:relative; }
+  .hero h1{ font-size:clamp(34px,6vw,56px); font-weight:300; letter-spacing:-.02em; line-height:1.25; color:var(--ink); position:relative; }
+  .hero h1 strong{ font-weight:600; color:var(--gold-deep); }
+  .hero .sub{ margin-top:26px; font-size:clamp(15px,2vw,18px); font-weight:300; color:var(--ink-mid); line-height:1.9; position:relative; }
+  .hero .epi{ margin-top:44px; font-style:italic; font-size:14.5px; color:var(--ink-mid); position:relative; }
+  .hero .epi cite{ display:block; margin-top:10px; font-family:'DM Mono',monospace; font-style:normal; font-size:10px; letter-spacing:.12em; color:var(--muted); }
+
+  .section{ padding:64px 0 8px; border-bottom:1px solid var(--rule); }
+  .section:last-of-type{ border-bottom:none; }
+  .label{ font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; display:block; }
+  h2{ font-size:clamp(24px,3.6vw,31px); font-weight:500; letter-spacing:-.01em; line-height:1.4; color:var(--ink); margin-bottom:26px; }
+  p{ font-family:'Noto Serif KR',serif; font-size:17px; color:var(--ink-soft); line-height:2.05; margin-bottom:18px; }
+  .lead{ font-size:19px; color:var(--ink); line-height:1.95; margin-bottom:24px; }
+  strong{ font-weight:600; color:var(--ink); }
+  em{ font-style:italic; color:var(--gold-deep); }
+
+  blockquote{ margin:32px 0; padding:24px 30px; background:var(--paper); border-left:3px solid var(--gold); border-radius:0 14px 14px 0; }
+  blockquote p{ font-size:18px; font-style:italic; color:var(--ink); margin:0; line-height:1.9; }
+  blockquote cite{ display:block; margin-top:12px; font-family:'DM Mono',monospace; font-style:normal; font-size:10.5px; letter-spacing:.08em; color:var(--gold-deep); }
+
+  .facts{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0 8px; }
+  .fact{ background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:20px 22px; }
+  .fact .k{ font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:8px; }
+  .fact .v{ font-size:17px; color:var(--ink); line-height:1.5; }
+  .fact .v small{ display:block; font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-mid); margin-top:4px; font-weight:400; }
+
+  .path{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:34px 0 8px; }
+  .step{ background:var(--surface); border:1px solid var(--rule); border-radius:16px; padding:24px 20px; text-align:center; position:relative; }
+  .step.now{ border-color:var(--gold); box-shadow:0 4px 18px rgba(196,154,63,0.14); }
+  .step.first{ border-color:var(--sky); box-shadow:0 4px 18px rgba(143,176,196,0.16); }
+  .step .badge{ position:absolute; top:-10px; left:50%; transform:translateX(-50%); font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; background:var(--gold); color:#fff; padding:3px 10px; border-radius:100px; white-space:nowrap; }
+  .step .st{ font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .step h3{ font-size:20px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+  .step p{ font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-mid); line-height:1.6; margin:0; }
+
+  .deserts{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:28px 0 8px; }
+  .desert{ background:var(--surface); border:1px solid var(--rule); border-radius:16px; padding:24px 20px; text-align:center; }
+  .desert .g{ color:var(--gold); font-size:16px; }
+  .desert h3{ font-size:20px; font-weight:600; color:var(--ink); margin:8px 0 6px; }
+  .desert p{ font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-mid); line-height:1.7; margin:0; }
+
+  .rhythm{ margin:24px 0 8px; }
+  .ritem{ display:flex; gap:18px; padding:18px 0; border-bottom:1px solid var(--rule); align-items:flex-start; }
+  .ritem:last-child{ border-bottom:none; }
+  .ritem .ic{ font-family:'DM Mono',monospace; font-size:11px; color:var(--gold-deep); letter-spacing:.06em; flex-shrink:0; width:84px; padding-top:3px; }
+  .ritem .rb{ flex:1; }
+  .ritem .rb strong{ display:block; font-size:16.5px; color:var(--ink); margin-bottom:4px; font-weight:600; }
+  .ritem .rb p{ font-family:'Noto Sans KR',sans-serif; font-size:14px; margin:0; color:var(--ink-mid); line-height:1.8; }
+
+  .tl{ margin:24px 0 8px; }
+  .tlrow{ display:flex; gap:18px; padding:16px 0; border-bottom:1px solid var(--rule); align-items:flex-start; }
+  .tlrow:last-child{ border-bottom:none; }
+  .tlrow .when{ font-family:'DM Mono',monospace; font-size:12px; color:var(--gold-deep); flex-shrink:0; width:118px; padding-top:2px; line-height:1.5; }
+  .tlrow .what{ flex:1; font-size:16px; color:var(--ink-soft); line-height:1.85; }
+  .tlrow .what b{ color:var(--ink); font-weight:600; }
+
+  .closing{ background:var(--paper-soft); border:1px solid var(--rule); border-radius:22px; padding:56px 40px; margin-top:54px; text-align:center; }
+  .closing .label{ color:var(--gold-deep); }
+  .closing .well{ font-size:clamp(19px,2.6vw,24px); font-style:italic; color:var(--ink); line-height:1.8; margin:24px 0; }
+  .closing p{ color:var(--ink-mid); }
+  .closing .sign{ margin-top:26px; font-style:italic; color:var(--gold-deep); font-size:17px; }
+
+  .footer{ text-align:center; padding-top:48px; color:var(--muted); font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.1em; line-height:2; }
+  .footer img{ height:20px; opacity:.5; margin-bottom:14px; }
+
+  @media (max-width:620px){
+    .facts{ grid-template-columns:1fr; }
+    .path,.deserts{ grid-template-columns:1fr; }
+    .step.now .badge, .step.first .badge{ position:static; transform:none; display:inline-block; margin-bottom:10px; }
+    .ritem .ic, .tlrow .when{ width:84px; }
+    .closing{ padding:42px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="stars"><i style="top:20%;left:14%">✦</i><i style="top:32%;left:80%">✦</i><i style="top:60%;left:24%">✦</i><i style="top:24%;left:54%">✧</i><i style="top:70%;left:70%">✦</i><i style="top:46%;left:88%">✧</i></div>
+  <img class="hero-logo" src="../../99_meta/brand/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none';document.getElementById('lf').style.display='block'">
+  <div class="hero-logo-fallback" id="lf" style="display:none">DEEPER</div>
+  <div class="hero-eyebrow">Project B-612 · RHETORIC · 디퍼 별 세계관</div>
+  <h1>우리, 이렇게<br><strong>함께 날아가요</strong></h1>
+  <div class="sub">먼저 빛을 켠 1기 별지기 디퍼님들과<br>Founder 야간비행님께 드리는 프로젝트 B-612 기획</div>
+  <div class="epi">
+    “사랑은 서로를 마주 보는 것이 아니라, 둘이서 같은 방향을 함께 바라보는 것이다.”
+    <cite>앙투안 드 생텍쥐페리 · 인간의 대지</cite>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 여는 말 · 초대 -->
+  <div class="section">
+    <span class="label">여는 말 · 초대</span>
+    <h2>1기의 여정이, 너무 빛났다</h2>
+    <p class="lead">그래서 그 빛을 다음 사람에게 건네어, 별자리를 함께 잇고 싶습니다.</p>
+    <p>
+      1기 디퍼님들과의 동행. 어둔 밤을 함께 건넌 시간이었습니다.
+      자정을 넘겨서도 소감을 나누고, 다음 날 아침 채널을 열고,
+      서로의 별을 응원하던 밤들. 우리는 이미, 함께 빛나는 법을 압니다.
+    </p>
+    <p>
+      어둔 밤에는 길을 비춰 줄 별 하나가 필요합니다.
+      사막에서 길을 잃은 이에게는, 당장 목을 축일 물 한 모금을 건네는 손이 필요합니다.
+      지금 누군가에게는 — 그 별이, 그 손이 필요합니다.
+    </p>
+    <p>
+      AI의 특이점이 다가오는 시대.
+      우리가 진정으로 해야 할 일은 무엇일까요. 가장 인간적인 삶의 목적과 방향은, 어디에 있을까요.
+      그 답은 혼자서는 찾아지지 않습니다. 함께 걸을 때, 비로소 길이 됩니다.
+    </p>
+    <p>
+      그래서 — 먼저 빛을 켠 당신을, <strong>2기의 별지기</strong>로 모십니다.
+      이제 당신이 누군가의 밤을 밝힐 차례입니다.
+      함께 손잡고, 별과 별 사이를 날아오르지 않으실래요.
+    </p>
+  </div>
+
+  <!-- 길 -->
+  <div class="section">
+    <span class="label">길</span>
+    <h2>함께 걷는 사막길</h2>
+    <p>
+      트리비움의 세 걸음 — 씨앗을 찾고, 구조를 세우고, 꽃을 피운다.
+      길은 처음부터 끝까지 보인다.
+      그러나 우리는 한 번에 한 과정만 걷는다.
+    </p>
+    <div class="path">
+      <div class="step now"><span class="badge">2기 · 지금 여는 걸음 (금)</span><div class="st">Grammar</div><h3>문법</h3><p>씨앗 — 당신만의 한 문장</p></div>
+      <div class="step first"><span class="badge" style="background:var(--sky)">1기 · 지금 여기 (목)</span><div class="st">Logic</div><h3>논리</h3><p>구조 — 지속가능한 시스템 구축</p></div>
+      <div class="step"><div class="st">Rhetoric</div><h3>수사</h3><p>꽃 — 책 한 권, 퍼스널 브랜딩의 완성</p></div>
+    </div>
+    <p style="margin-top:14px; font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-mid); font-style:italic;">
+      잠정 — 2기는 <strong>금요일 밤</strong> 살롱으로 엽니다. 1기 디퍼 살롱은 <strong>목요일 밤</strong>으로 이어갑니다. (목요일 밤으로 일원화도 협의 가능합니다.)
+    </p>
+    <p>
+      한 과정을 마치면, 스스로 다음을 택해 다시 등록한다.
+      아무도 떠밀지 않는다. 누군가의 속도가 아니라, 자기 호흡으로 걷는다.
+      그렇게 끝까지 걸은 사람의 손에는 — 책 한 권과, 퍼스널 브랜딩의 완성이 남는다.
+    </p>
+  </div>
+
+  <!-- 지금, 문법 -->
+  <div class="section">
+    <span class="label">지금 여는 걸음 · 문법</span>
+    <h2>프로젝트 B-612의 첫 걸음</h2>
+    <div class="facts">
+      <div class="fact"><div class="k">무엇을</div><div class="v">2기 문법(Grammar) 4주<small>1기에서 함께 검증한 그 여정</small></div></div>
+      <div class="fact"><div class="k">언제</div><div class="v">7/3 ~ 7/31 · 금요일<small>OT(7/3) + 매주 한 번</small></div></div>
+      <div class="fact"><div class="k">누구와</div><div class="v">새로운 12명<small>세 개의 사막으로 나뉜다</small></div></div>
+      <div class="fact"><div class="k">어떻게 모이나</div><div class="v">다 같이, 그리고 각각의 작은 사막으로<small>전체로 모였다가 작게 나눔</small></div></div>
+    </div>
+  </div>
+
+  <!-- 세 개의 사막 -->
+  <div class="section">
+    <span class="label">세 개의 사막</span>
+    <h2>익숙함 대신, 낯섦으로</h2>
+    <p>
+      열두 사람을 일부러 섞는다. 아는 사람끼리 묶지 않는다.
+      낯선 별들이 만나야, 더 마음을 열고 더 깊이 서로를 알아본다.
+      세 개의 사막, 사막마다 별지기 둘이 곁을 지킨다.
+    </p>
+    <div class="deserts">
+      <div class="desert"><div class="g">✦</div><h3>사하라</h3><p>어린왕자가 내려앉은 사막</p></div>
+      <div class="desert"><div class="g">✦</div><h3>우유니</h3><p>하늘과 별이 비치는 거울</p></div>
+      <div class="desert"><div class="g">✦</div><h3>고비</h3><p>바람이 노래하는 사막</p></div>
+    </div>
+    <blockquote>
+      <p>사하라·우유니·고비는 잠시 빌린 이름이다. 곧 그 사막의 식구들이 자기 이름을 함께 짓는다. 이름을 짓는 그 순간이, 흩어진 별들이 한 식구가 되는 첫 의식이다.</p>
+    </blockquote>
+  </div>
+
+  <!-- 우리의 리듬 -->
+  <div class="section">
+    <span class="label">우리의 리듬</span>
+    <h2>매일의 오아시스, 금요일의 모임</h2>
+    <div class="rhythm">
+      <div class="ritem"><div class="ic">매일 아침</div><div class="rb"><strong>오아시스</strong><p>자기 우물에서 물을 긷는 시간 — 모닝페이지와 오토파지 질문들. 짧아도 좋다. 매일 들르는 것이 중요하다.</p></div></div>
+      <div class="ritem"><div class="ic">매주 금요일</div><div class="rb"><strong>언브랜딩 살롱 — 다 같이, 그리고 각자의 사막에서</strong><p>먼저 열둘이 한자리에 모이고, 그다음 각자의 사막으로 흩어져 깊이 나눈다.</p></div></div>
+      <div class="ritem"><div class="ic">긱어스</div><div class="rb"><strong>디퍼 아카이브 — 강의실 · 과제 · 서로의 글</strong><p>수업을 다시 보고, 과제를 올리고, 서로의 글을 읽는다. 우리가 쌓이는 자리.</p></div></div>
+      <div class="ritem"><div class="ic">카톡</div><div class="rb"><strong>전체 방 하나, 사막 방 셋</strong><p>전체 방에선 다 같이, 사막 방에선 우리끼리. 일상의 온기가 흐르는 자리.</p></div></div>
+    </div>
+  </div>
+
+  <!-- 최초의 별지기 -->
+  <div class="section">
+    <span class="label">최초의 별지기 · 1기</span>
+    <h2>디퍼의 첫 리더</h2>
+    <p>
+      새로운 걸음이 열릴 때마다, 1기는 가장 먼저 빛을 켠 사람으로서 곁을 지킨다.
+      가르치며 다시 배우고, 자기 별을 가꾸며 다른 이의 별을 밝힌다.
+      그 자리는, 1기의 것이다.
+    </p>
+    <p>
+      지금 1기는 논리의 절반을 지난다. 낮에는 온라인으로 마음을 맞대고, 목요일 밤이면 다시 화면 앞에 모여 —
+      저마다 자기 일의 구조를 세우는 중이다. 남은 논리 과정을 지나 2기를 함께 알린다.
+      누군가를 초대하는 그 말이, 곧 자기 브랜딩의 구조 연습이 된다. 두 일이 서로를 밝힌다.
+    </p>
+    <p>
+      그리고 수사에 이르면 — 2기의 별지기로 곁을 지키며, 우리들의 이야기를 서너 꼭지씩 글로 엮는다.
+      그 글들이 모여 한 권의 책이 되고, 퍼스널 브랜딩의 꽃이 핀다.
+      그렇게 1기의 석 달이, 꽉 차게 돈다.
+    </p>
+    <p>수사가 시작되는 7월 3일까지, 거꾸로 세어 본다. 어렵지 않다. 한 걸음씩.</p>
+    <div class="tl">
+      <div class="tlrow"><div class="when">이번 주</div><div class="what"><b>“네”</b> 한마디. 어느 사막에서 누구와 짝이 될지, 본부와 함께 정한다.</div></div>
+      <div class="tlrow"><div class="when">곧</div><div class="what"><b>별지기 모임 한 번.</b> 사막에서 무엇을 하고 무엇을 두는지 가볍게 나눈다.</div></div>
+      <div class="tlrow"><div class="when">모집 주간</div><div class="what"><b>지난 한 달의 이야기를 인스타에 한 조각.</b> 그것이 가장 깊은 초대다.</div></div>
+      <div class="tlrow"><div class="when">시작 직전</div><div class="what">사막 방을 열고, <b>먼저 환영한다.</b></div></div>
+      <div class="tlrow"><div class="when">7/3 (금)</div><div class="what"><b>다 같이, 첫 만남.</b> 먼저 빛을 켠 선배 별로서, 그 자리에 있어 주는 것으로 충분하다.</div></div>
+      <div class="tlrow"><div class="when">매주 금</div><div class="what">전체로 모였다가 사막으로. 그 사이엔 각자의 오아시스.</div></div>
+      <div class="tlrow"><div class="when">7/31</div><div class="what"><b>수료.</b> 그리고 다음 걸음은, 각자의 선택으로 다시 열린다. <b>우리들의 수료도, 우리들의 책 출간도 함께.</b></div></div>
+    </div>
+  </div>
+
+  <!-- 작은 실무 -->
+  <div class="section">
+    <span class="label">작은 실무</span>
+    <h2>운영은 단순하게</h2>
+    <div class="facts">
+      <div class="fact"><div class="k">모집</div><div class="v">인스타그램 피드</div></div>
+      <div class="fact"><div class="k">신청</div><div class="v">구글폼</div></div>
+      <div class="fact"><div class="k">수강료</div><div class="v">계좌 이체</div></div>
+      <div class="fact"><div class="k">선발 후</div><div class="v">긱어스 · 카톡방 초대</div></div>
+    </div>
+    <p style="margin-top:16px; font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-mid); font-style:italic;">
+      함께 디퍼 별을 살펴주시는 마음에 감사합니다. 별지기에게는 소정의 강사비를 책정하여 드립니다.
+    </p>
+  </div>
+
+  <!-- 닫는 말 -->
+  <div class="closing">
+    <span class="label">닫는 말</span>
+    <p class="well">“사막이 아름다운 건,<br>어딘가에 우물을 숨기고 있기 때문이야.”</p>
+    <p>
+      별 하나는 작지만, 별이 별을 부르고 서로를 비추면 —<br>
+      사막은, 아름다워진다.
+    </p>
+    <div class="sign">함께 가요. 이 하늘 아래에서. ✦</div>
+  </div>
+
+  <div class="footer">
+    <img src="../../99_meta/brand/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none'"><br>
+    DEEPER · Project B-612 · 2026<br>
+    AI 시대를 함께 건너가는 사람들을 위한 인문학적 창작 공동체
+  </div>
+
+</div>
+</body>
+</html>
