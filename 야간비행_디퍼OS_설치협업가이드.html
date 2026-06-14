@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 OS 설치 + 함께 일하기 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --green:#003D2C; --green-deep:#002E22; --green-mid:#025D3C;
+    --clay:#C67E58; --clay-soft:#E7D3C4;
+    --paper:#F4F1E8; --paper-card:#FBF9F3; --ink:#1A1916; --ink-soft:#4A463E;
+    --hair:#D9D1BF;
+    --serif:'Noto Serif KR',serif;
+    --sans:'Pretendard','Pretendard Variable',-apple-system,sans-serif;
+    --mono:'DM Mono','D2Coding',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 22px 96px;}
+
+  /* header */
+  header.hero{background:var(--green);color:#F4F1E8;margin-bottom:40px;
+    border-bottom:4px solid var(--clay);}
+  .hero-inner{max-width:840px;margin:0 auto;padding:40px 22px 36px;}
+  .hero img{height:46px;width:auto;display:block;margin-bottom:26px;}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:34px;line-height:1.3;
+    margin:0 0 14px;color:#fff;letter-spacing:-.01em;}
+  .hero .meta{font-size:14.5px;line-height:1.9;color:#CFE0D5;font-family:var(--mono);}
+  .hero .meta b{color:#fff;font-weight:500;}
+
+  h1.part{font-family:var(--serif);font-weight:700;font-size:25px;color:var(--green);
+    margin:54px 0 8px;padding:14px 0 12px;border-top:2px solid var(--green);
+    border-bottom:1px solid var(--hair);letter-spacing:-.01em;}
+  h2{font-family:var(--serif);font-weight:600;font-size:21px;color:var(--green-deep);
+    margin:40px 0 12px;letter-spacing:-.01em;}
+  h3{font-weight:700;font-size:16.5px;color:var(--clay);margin:26px 0 8px;
+    letter-spacing:.01em;}
+  p{margin:12px 0;}
+  a{color:var(--green-mid);text-decoration:underline;text-underline-offset:2px;}
+  strong{font-weight:700;color:var(--green-deep);}
+  hr{border:none;border-top:1px solid var(--hair);margin:34px 0;}
+
+  /* lead quote */
+  .lead{background:var(--paper-card);border:1px solid var(--hair);border-left:4px solid var(--clay);
+    border-radius:12px;padding:18px 22px;margin:22px 0;font-size:16px;color:var(--ink-soft);}
+  .lead b{color:var(--green-deep);}
+
+  /* callouts */
+  blockquote{margin:18px 0;padding:14px 20px;background:var(--paper-card);
+    border-left:4px solid var(--clay);border-radius:10px;color:var(--ink-soft);font-size:15.5px;}
+  blockquote p{margin:6px 0;}
+  .warn{background:#FBEEE6;border-left:4px solid var(--clay);}
+  .ok{background:#E9F0EA;border-left:4px solid var(--green-mid);}
+
+  /* lists */
+  ol,ul{margin:12px 0;padding-left:24px;}
+  li{margin:7px 0;}
+  ol{counter-reset:item;}
+
+  /* checklist */
+  .check{list-style:none;padding-left:4px;margin:14px 0;}
+  .check li{position:relative;padding-left:30px;margin:9px 0;}
+  .check li::before{content:"";position:absolute;left:0;top:4px;width:17px;height:17px;
+    border:2px solid var(--clay);border-radius:5px;background:#fff;}
+  .check li.done::before{content:"✓";background:var(--green-mid);border-color:var(--green-mid);
+    color:#fff;font-size:12px;font-weight:700;text-align:center;line-height:15px;}
+
+  /* code */
+  pre{background:var(--green-deep);color:#E8EFE9;border-radius:12px;padding:18px 20px;
+    overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.7;margin:14px 0;
+    border:1px solid #013826;}
+  pre .c{color:#8FB3A2;}            /* comment */
+  pre .cmd{color:#F0C9A8;}          /* slash/command accent */
+  code{font-family:var(--mono);font-size:.9em;background:#EDE6D6;color:var(--green-deep);
+    padding:2px 6px;border-radius:5px;}
+  pre code{background:none;color:inherit;padding:0;}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;
+    background:var(--paper-card);border-radius:10px;overflow:hidden;border:1px solid var(--hair);}
+  th{background:var(--green);color:#fff;text-align:left;padding:11px 14px;font-weight:600;font-size:14px;}
+  td{padding:10px 14px;border-top:1px solid var(--hair);vertical-align:top;}
+  tr:nth-child(even) td{background:rgba(255,255,255,.4);}
+
+  /* layer / flow diagrams */
+  .layers{margin:18px 0;display:grid;gap:10px;}
+  .layer{display:flex;gap:14px;align-items:flex-start;background:var(--paper-card);
+    border:1px solid var(--hair);border-radius:12px;padding:14px 18px;}
+  .layer .num{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--green);
+    color:#fff;font-family:var(--serif);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .layer .body b{display:block;color:var(--green-deep);font-size:15.5px;margin-bottom:2px;}
+  .layer .body span{font-size:14.5px;color:var(--ink-soft);}
+  .layer .tag{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--clay);white-space:nowrap;}
+
+  .flow{margin:20px 0;}
+  .flow .node{background:var(--paper-card);border:1px solid var(--hair);border-radius:12px;
+    padding:14px 18px;}
+  .flow .node b{color:var(--green-deep);}
+  .flow .node .sub{font-size:14px;color:var(--ink-soft);}
+  .flow .arrow{text-align:center;color:var(--clay);font-size:13px;font-family:var(--mono);
+    padding:7px 0;line-height:1.4;}
+
+  .footer{margin-top:50px;padding-top:22px;border-top:2px solid var(--green);
+    text-align:center;color:var(--ink-soft);font-size:14px;}
+  .footer .leaf{font-size:22px;}
+  .copy{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:#9a9484;letter-spacing:.03em;}
+  .kbd{font-family:var(--mono);font-size:.85em;background:#fff;border:1px solid var(--hair);
+    border-bottom-width:2px;border-radius:5px;padding:1px 7px;color:var(--green-deep);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <img src="data:image/png;base64,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" alt="DEEPER">
+    <h1>디퍼 OS 설치 + 함께 일하기 가이드</h1>
+    <div class="meta">
+      <b>대상</b> &nbsp;야간비행 대표님(고영실) 컴퓨터 · 윈도우 · 처음부터<br>
+      <b>진행</b> &nbsp;경선님이 옆에서 이 문서를 위→아래로 따라가며 세팅<br>
+      <b>날짜</b> &nbsp;2026-06-13 작성 / 내일 설치
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="lead">
+    이 가이드는 <b>두 부분</b>입니다.<br>
+    <b>PART 1~2 = 설치</b>(내일 한 번, 따라만 하면 끝) · <b>PART 3 = 함께 일하는 법</b>(설치 후 계속 쓰는 약속).<br>
+    막히면 PART 4(막힐 때)를 보세요. 맨 끝에 명령어 한 장 요약이 있습니다.
+  </div>
+
+  <h2>0. 오늘 세팅, 큰 그림 한 장</h2>
+  <p>야간비행님 컴퓨터에 만들 것은 <strong>세 겹</strong>입니다.</p>
+  <div class="layers">
+    <div class="layer"><div class="num">1</div><div class="body"><b>도구</b><span>Node.js → 클로드 코드 → deeper-os 플러그인</span></div><div class="tag">PART 1</div></div>
+    <div class="layer"><div class="num">2</div><div class="body"><b>개인 볼트</b><span>야간비행님만의 세컨브레인 (본인 글·브랜드·생각)</span></div><div class="tag">PART 2-A</div></div>
+    <div class="layer"><div class="num">3</div><div class="body"><b>공유 볼트</b><span>DEEPER 공동운영 (경선님과 같이 보는 폴더)</span></div><div class="tag">PART 2-B</div></div>
+  </div>
+  <ul>
+    <li><strong>개인 볼트</strong>는 야간비행님 컴퓨터에만 삽니다. 본인의 사유 자산(글·목소리·브랜드).</li>
+    <li><strong>공유 볼트</strong>는 OneDrive로 두 컴퓨터에 <strong>자동 동기화</strong>됩니다. DEEPER 8권·허브 사이트·살롱·디자인·소통이 여기서 함께 굴러갑니다.</li>
+    <li>두 볼트 모두 <strong>같은 에이전트 팀</strong>(주디스·메이·앤·제프·세스)을 부를 수 있습니다.</li>
+  </ul>
+
+  <h3>오늘 체크리스트 (이대로 따라가면 됩니다)</h3>
+  <ul class="check">
+    <li>1-1 Node.js 설치</li>
+    <li>1-2 클로드 코드 설치 + 로그인</li>
+    <li>1-3 deeper-os 플러그인 설치</li>
+    <li>1-4 (선택) 옵시디언 설치</li>
+    <li>2-A 개인 세컨브레인 볼트 만들고 <code>/deeper-os:setup</code></li>
+    <li>2-B 공유 폴더(DEEPER 공동운영) 받고 열기</li>
+    <li>3 함께 일하는 약속 같이 읽기</li>
+  </ul>
+  <blockquote>⏱️ 다운로드 속도에 따라 대략 40~60분. 서두르지 말고 한 줄씩.</blockquote>
+
+  <h1 class="part">PART 1 — 도구 설치 (윈도우, 처음부터)</h1>
+
+  <h2>1-1. Node.js 설치 <span style="font-weight:500;font-size:16px;color:var(--ink-soft)">(클로드 코드의 토대)</span></h2>
+  <p>클로드 코드는 Node.js 위에서 돕니다. 먼저 이것부터.</p>
+  <ol>
+    <li>웹브라우저에서 <strong>https://nodejs.org</strong> 접속</li>
+    <li>큰 버튼 두 개 중 <strong>"LTS"</strong>(권장, 왼쪽) 버튼 클릭 → 설치 파일(.msi) 다운로드</li>
+    <li>받은 파일 더블클릭 → <strong>Next만 계속 눌러</strong> 설치 (기본값 그대로, 체크 건드리지 않음)</li>
+    <li>설치 끝나면 잘 깔렸는지 확인:
+      <ul>
+        <li>시작 메뉴에서 <strong>PowerShell</strong> 검색 → 열기</li>
+        <li>까만 창에 아래를 입력하고 <span class="kbd">Enter</span>:</li>
+      </ul>
+      <pre><code>node --version</code></pre>
+      <span style="font-size:15px;color:var(--ink-soft)"><code>v20.x.x</code> 같은 숫자가 나오면 성공. (숫자가 나오면 버전은 무엇이든 괜찮습니다)</span>
+    </li>
+  </ol>
+  <blockquote class="warn">❗ 숫자가 안 나오고 빨간 글씨가 나오면: PowerShell 창을 <strong>완전히 닫고 다시 열어서</strong> 한 번 더. 그래도 안 되면 PART 4-①.</blockquote>
+
+  <h2>1-2. 클로드 코드 설치 + 로그인</h2>
+  <p>PowerShell 창에서(방금 그 까만 창) 아래를 입력:</p>
+  <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+  <ul>
+    <li>글자가 주르륵 흐르다 멈추면 설치 완료.</li>
+    <li>확인: <code>claude --version</code> 입력 → 숫자가 나오면 OK.</li>
+  </ul>
+  <p>이제 클로드 코드를 처음 실행합니다.</p>
+  <ol>
+    <li>PowerShell에 입력: <code>claude</code></li>
+    <li>처음이면 <strong>로그인</strong> 안내가 뜹니다. 화면 안내대로 진행:
+      <ul>
+        <li>브라우저가 열리며 로그인 화면 → <strong>야간비행님 계정(또는 DEEPER 계정)으로 로그인</strong></li>
+        <li>"권한 허용" 누르면 창에 "로그인됨" 표시</li>
+      </ul>
+    </li>
+    <li>로그인되면 클로드 코드 대화창이 뜹니다. 일단 <code>exit</code> 입력하거나 <span class="kbd">Ctrl</span>+<span class="kbd">C</span> 두 번으로 빠져나옵니다. (다음 단계에서 다시 켭니다)</li>
+  </ol>
+  <blockquote>💡 어느 계정으로 로그인할지: DEEPER 업무 전용으로 쓸 계정 하나를 정해두면 깔끔합니다. (경선님과 상의)</blockquote>
+
+  <h2>1-3. deeper-os 플러그인 설치 &nbsp;⭐ <span style="font-weight:500;font-size:15px;color:var(--clay)">가장 중요 — 순서·형식 그대로</span></h2>
+  <blockquote class="warn">여기가 사람들이 가장 많이 막히는 곳입니다. <strong>주소 형식</strong>을 정확히 지키면 한 번에 됩니다.</blockquote>
+  <p>PowerShell에서 <code>claude</code> 입력해 클로드 코드를 켠 뒤, 대화창에 <strong>아래 세 줄을 한 줄씩 차례로</strong> 입력합니다. (한 줄 넣고 <span class="kbd">Enter</span>, 끝나면 다음 줄)</p>
+  <pre><code><span class="cmd">/plugin marketplace add</span> https://github.com/clbookslower/deeper-os.git
+<span class="cmd">/plugin install</span> deeper-os@deeper-os
+<span class="cmd">/reload-plugins</span></code></pre>
+  <h3>꼭 지킬 점 (맥가이버 메모)</h3>
+  <ul>
+    <li><strong>첫 줄은 반드시 <code>https://...git</code> 전체 주소로.</strong> <code>clbookslower/deeper-os</code> 같은 짧은 형식으로 넣으면 클로드가 다른 방식으로 내려받으려다 <strong>실패</strong>합니다. (참여자 대부분이 여기서 걸림)</li>
+    <li>두 번째 줄(<code>install</code>)이 조용히 아무 말 없이("(no content)") 끝나 보이면, <strong>메뉴로 설치</strong>하세요: <code>/plugin</code> 입력 → 메뉴에서 <strong>Marketplaces → deeper-os → Install for you</strong> 선택</li>
+    <li>설치되면 <code>/deeper-os:setup</code> 같은 명령이 쓸 수 있게 됩니다.</li>
+  </ul>
+  <blockquote class="ok">✅ 확인: 대화창에 <code>/</code> 만 쳤을 때 목록에 <code>deeper-os:setup</code>, <code>deeper-os:meaning</code> 등이 보이면 성공.</blockquote>
+
+  <h2>1-4. (선택) 옵시디언 설치 <span style="font-weight:500;font-size:16px;color:var(--ink-soft)">— 눈으로 보기 좋게</span></h2>
+  <p>볼트는 사실 <strong>그냥 폴더</strong>라서 옵시디언 없이도 클로드 코드만으로 다 됩니다. 다만 노트를 <strong>예쁘게 보고 연결망(그래프)으로 한눈에 보고</strong> 싶다면 옵시디언이 잘 맞습니다.</p>
+  <ol>
+    <li><strong>https://obsidian.md</strong> → Download → 윈도우용 설치</li>
+    <li>설치 후 볼트는 PART 2에서 만든 폴더를 "기존 폴더 열기(Open folder as vault)"로 가리키면 됩니다.</li>
+  </ol>
+  <blockquote>옵시디언은 보기 도구일 뿐, <strong>세팅·작업은 클로드 코드가</strong> 합니다. 부담 없이 나중에 깔아도 됩니다.</blockquote>
+
+  <h1 class="part">PART 2 — 두 개의 볼트 만들기</h1>
+
+  <h2>2-A. 개인 세컨브레인 <span style="font-weight:500;font-size:16px;color:var(--ink-soft)">(야간비행님만의 것)</span></h2>
+  <p>본인의 글·목소리·브랜드를 쌓는 사유 자산입니다. 야간비행님은 DEEPER 파운더이자 저자(『밤에 날아야 보이는 것들』)라, 이 개인 볼트가 본인 IP·브랜드의 뿌리가 됩니다.</p>
+  <ol>
+    <li><strong>폴더 하나 만들기</strong> — 예: <code>문서</code> 안에 <code>야간비행_세컨브레인</code> 폴더 생성.
+      <blockquote class="warn">⚠️ 이 폴더는 <strong>OneDrive 동기화 폴더 바깥</strong>에 두는 걸 권합니다(개인 자산이라 공유 불필요). <code>C:\야간비행_세컨브레인</code> 처럼.</blockquote>
+    </li>
+    <li>PowerShell에서 그 폴더로 이동 후 클로드 코드 실행:
+      <pre><code>cd C:\야간비행_세컨브레인
+claude</code></pre>
+    </li>
+    <li>클로드 코드 대화창에서: <pre><code><span class="cmd">/deeper-os:setup</span></code></pre></li>
+    <li>대화로 <strong>CLAUDE.md · 폴더 구조(문법/논리/수사) · 의미의 축</strong>을 만들어 줍니다. 질문에 편하게 답하면 됩니다.
+      <ul><li>이미 만든 노트가 있으면 <strong>건드리지 않고</strong> 없는 것만 추가합니다(안전장치 내장).</li></ul>
+    </li>
+  </ol>
+  <h3>첫 사용 추천 흐름 (천천히, 며칠에 걸쳐도 됨)</h3>
+  <ul>
+    <li>먼저 <strong>"의미"</strong> — <code>meaning</code>: 왜 이 일을 하는지 의미의 축을 길어 올림 (<code>"내 일의 의미를 찾고 싶어"</code>)</li>
+    <li>그다음 <strong>목소리</strong> — <code>voice</code>: 본인 글을 읽혀 언어 지문 분석 (<code>"내 문체 분석해줘"</code>)</li>
+    <li><strong>지형도</strong> — <code>topography</code>: 뭘 써야 할지 추천 (<code>"뭐부터 쓸까?"</code>)</li>
+    <li><strong>브랜딩</strong> — <code>branding</code>: 이상적 독자·IP 확장·오퍼 설계</li>
+  </ul>
+  <blockquote>스킬은 말로 부르면 알아서 옵니다. 명령어를 외울 필요 없어요.</blockquote>
+
+  <h2>2-B. DEEPER 공동운영 &nbsp;⭐ <span style="font-weight:500;font-size:15px;color:var(--clay)">경선님과 함께 보는 폴더</span></h2>
+  <p>이게 <strong>두 분이 출판·커뮤니티를 함께 추진하는 핵심 채널</strong>입니다. 경선님이 미리 만들어 둔 <code>DEEPER_공동운영</code> 폴더를 OneDrive로 공유하고, 야간비행님 컴퓨터에서 받습니다.</p>
+  <h3>경선님이 먼저 (이미 준비됨)</h3>
+  <ol>
+    <li>✅ 폴더는 이미 OneDrive에 있습니다: <strong><code>C:\Users\clboo\OneDrive\DEEPER_공동운영</code></strong></li>
+    <li>파일 탐색기에서 그 폴더 <strong>우클릭 → 공유</strong> → 야간비행님 이메일로 <strong>편집 가능</strong>으로 공유. (이 한 단계만 남음)</li>
+  </ol>
+  <h3>야간비행님 컴퓨터에서</h3>
+  <ol>
+    <li>받은 공유 알림(메일/OneDrive)에서 <strong>"내 OneDrive에 추가"</strong> 또는 <strong>"바로 가기 추가"</strong>를 누릅니다.</li>
+    <li>잠시 뒤 야간비행님 OneDrive 안에 <code>DEEPER_공동운영</code> 폴더가 동기화됩니다.</li>
+    <li>PowerShell에서 그 폴더로 가서 클로드 코드 실행:
+      <pre><code>cd "$env:USERPROFILE\OneDrive\DEEPER_공동운영"
+claude</code></pre>
+      <span style="font-size:14.5px;color:var(--ink-soft)">(폴더 위치가 다르면 실제 경로로. 탐색기에서 폴더 주소창을 복사해 <code>cd "붙여넣기"</code> 하면 정확합니다)</span>
+    </li>
+    <li>클로드에게 인사처럼 물어보세요:
+      <pre><code>여기가 어떤 작업공간이야?</code></pre>
+      <span style="font-size:14.5px;color:var(--ink-soft)">클로드가 <code>.claude/CLAUDE.md</code>를 읽고 <strong>우리 팀·규칙·맥락을 이해한 상태로</strong> 답하면 성공입니다.</span>
+    </li>
+  </ol>
+  <blockquote class="ok">📂 이 폴더 안에는 이미 다 차려져 있습니다:<br>
+    <code>_시작하기.md</code>(여기부터) · <code>_대시보드.md</code>(현황 한 장) · <code>_협업규칙.md</code>(약속) · 폴더 5개(허브사이트·8권진행·살롱·디자인·레터) · 에이전트 팀 5명.</blockquote>
+
+  <h1 class="part">PART 3 — 함께 일하는 법 (설치 후 계속)</h1>
+  <div class="lead">
+    도구를 깔았으니, 이제 <b>출판과 커뮤니티를 어떻게 같이 굴릴지</b>입니다.<br>
+    핵심 한 문장: <b>"같은 폴더를 보고, 같은 팀을 부르고, 한 파일은 한 사람이 만진다."</b>
+  </div>
+
+  <h2>3-1. 동기화는 어떻게 되나 (원리)</h2>
+  <ul>
+    <li><code>DEEPER_공동운영</code> 폴더는 OneDrive가 <strong>두 컴퓨터를 자동으로 맞춰</strong> 줍니다.</li>
+    <li>경선님이 저장 → 잠시 뒤 야간비행님 화면에도 똑같이. 반대도 같음.</li>
+    <li>그래서 <strong>이메일로 파일 주고받기, 카톡으로 최신본 찾기</strong>가 사라집니다. 항상 같은 한 벌.</li>
+  </ul>
+
+  <h2>3-2. 단 하나의 약속 — "한 파일은 한 사람이"</h2>
+  <p>동기화의 유일한 주의점은, <strong>같은 파일을 동시에</strong> 두 사람이 고칠 때입니다(충돌 사본이 생김).</p>
+  <ul>
+    <li>어떤 파일을 한동안 만질 거면 → <code>_협업규칙.md</code>의 <strong>'지금 만지는 중'</strong> 표에 한 줄 적기. 끝나면 지우기.</li>
+    <li>빠른 한마디는 카톡, <strong>남길 결정·요청은 글로</strong>(<code>04_레터_소통/</code> 또는 <code>_대시보드.md</code>).</li>
+  </ul>
+
+  <h2>3-3. 같은 에이전트 팀을 둘이 함께</h2>
+  <p>공유 폴더에서 클로드 코드를 열면 두 분 다 같은 팀을 부릅니다:</p>
+  <table>
+    <thead><tr><th>부를 때</th><th>누구</th><th>이럴 때</th></tr></thead>
+    <tbody>
+      <tr><td><code>/judith</code></td><td>주디스</td><td>"오늘 DEEPER에서 뭐부터 볼까?" — 큰 그림·우선순위</td></tr>
+      <tr><td><code>/may</code></td><td>메이</td><td>경선님께 보낼 글·요청 초안 / <code>_대시보드.md</code> 갱신 / DEEPER 레터</td></tr>
+      <tr><td><code>/anne</code></td><td>앤</td><td>살롱·커뮤니티 설계와 진단</td></tr>
+      <tr><td><code>/jeff</code></td><td>제프</td><td>8권 진행 검토·저자 자료·페이지 문안</td></tr>
+      <tr><td><code>/seth</code></td><td>세스</td><td>마케팅·보도자료·SNS·프리런칭</td></tr>
+    </tbody>
+  </table>
+  <blockquote>예: 야간비행님이 <code>/may 경선님께 허브사이트 표지 무드 정해졌다고 전하는 글 써줘</code> → 메이가 초안을 <code>04_레터_소통/</code>에 만들어 둠 → 경선님이 동기화로 바로 봄.</blockquote>
+
+  <h2>3-4. 출판을 함께 추진하는 동선</h2>
+  <div class="flow">
+    <div class="node"><b>경선님 마스터 볼트</b><div class="sub">무거운 편집(제프) → 원고 정본·계약·로그는 여기에만</div></div>
+    <div class="arrow">▼ &nbsp;요약·결정 대기·필요 자료만 추려서</div>
+    <div class="node"><b>DEEPER_공동운영 (공유)</b><div class="sub">두 사람이 같이 보는 현황·결정·자료·소통</div></div>
+    <div class="arrow">▼ &nbsp;방향 결정·저자자료·회신</div>
+    <div class="node"><b>야간비행님 (파운더)</b><div class="sub">DEEPER 큰 방향·파운더 결정 / 본인 저자 자료 / 단무지 디자인 승인</div></div>
+  </div>
+  <ul>
+    <li><strong>경선·제프</strong>: 원고 정본 편집은 마스터 볼트에서. 진행 요약과 "결정 대기 항목"을 공유 폴더 <code>01_8권진행/</code>·<code>_대시보드.md</code>에 올림.</li>
+    <li><strong>야간비행(파운더)</strong>: 공유 폴더에서 현황 확인 → DEEPER 전체 방향·파운더 결정 회신 + 본인 책/허브 저자 자료 + 디자인 방향 승인.</li>
+    <li><strong>단무지</strong>: 디자인 실무(표지·시리즈·웹 한 가족 결). 책↔웹이 한 가족으로 보이는 일관성이 핵심 — 발행인·야간비행이 방향을 주고 단무지가 구현.</li>
+    <li><strong>허브 사이트</strong>: 저자 8인 자료를 <code>00_허브사이트/</code>에 모음 → 클코가 정적 사이트로 구축·배포.</li>
+  </ul>
+
+  <h2>3-5. 커뮤니티(살롱 B-612)를 함께</h2>
+  <ul>
+    <li><strong>앤</strong>이 기준을 잡습니다(본체=멤버 구독·리텐션=소속·1,000 true fans·초대의 언어).</li>
+    <li>8월 출간 파도(예판 8/15~)와 살롱 모객을 <strong>한 흐름</strong>으로. 책↔살롱 순환이 디퍼 엔진.</li>
+    <li>자료는 <code>02_살롱_B612/</code>. 부를 때 <code>/anne 설계 …</code>.</li>
+  </ul>
+
+  <h2>3-6. 주간 리듬 (가볍게, 무리 없이)</h2>
+  <ul>
+    <li><strong>주 1회 같이 보기</strong>: <code>_대시보드.md</code> 한 장을 함께 훑고 "이번 주 한 걸음" 정하기. (통화·줌·카톡 어느 쪽이든)</li>
+    <li><strong>그날그날</strong>: 결정·요청이 생기면 글로 한 줄. 매끈하게 안 써도 됩니다.</li>
+    <li>한 달 뒤쯤, 잘 된 것·불편한 것 한 번 점검해 규칙을 다듬습니다.</li>
+  </ul>
+
+  <h2>3-7. 우리의 약속 <span style="font-weight:500;font-size:16px;color:var(--ink-soft)">(제안서에서 가져온 일하는 방식)</span></h2>
+  <blockquote class="ok">매 단계 상의 · 반복과 완결 · 문서 기반 소통 · 유연한 일정.<br>
+    완벽보다 한 걸음. 한 권의 책이 강의가 되고 브랜드가 되고 공동체가 됩니다(Book-to-Brand).</blockquote>
+
+  <h1 class="part">PART 4 — 막힐 때 (트러블슈팅)</h1>
+  <table>
+    <tbody>
+      <tr><td><strong>① <code>node</code>/<code>claude</code> 명령이 빨간 글씨로 안 됨</strong></td>
+          <td>PowerShell을 완전히 닫고 다시 열기. 그래도면 컴퓨터 재시작 후 1-1부터. (설치 후 창이 옛 상태라 그런 경우가 대부분)</td></tr>
+      <tr><td><strong>② 플러그인 설치가 조용히 안 됨 / 목록에 안 보임</strong></td>
+          <td><code>/plugin</code> 메뉴 → Marketplaces → deeper-os → <strong>Install for you (user scope)</strong>. 그래도면 첫 줄 주소가 <code>https://...git</code> 전체였는지 확인.</td></tr>
+      <tr><td><strong>③ "host key" / SSH 오류</strong></td>
+          <td>짧은 주소로 넣은 경우입니다. 마켓플레이스를 지우고 <code>https://github.com/clbookslower/deeper-os.git</code> 전체 주소로 다시.</td></tr>
+      <tr><td><strong>④ OneDrive 초록 체크가 안 됨 / 안 보임</strong></td>
+          <td>작업표시줄 OneDrive 아이콘 클릭 → 동기화 상태 확인. 로그인 계정이 공유받은 계정인지 확인. 파란 화살표면 올리는 중이니 잠깐 기다림.</td></tr>
+      <tr><td><strong>⑤ <code>... (충돌본)</code> 파일이 생김</strong></td>
+          <td>같은 파일을 둘이 동시에 고쳐서 생긴 것. 당황 금지. 둘이 한 번 보고 최신 내용을 한쪽으로 합친 뒤 충돌본 삭제. (앞으로 '지금 만지는 중' 표 쓰면 거의 안 생김)</td></tr>
+      <tr><td><strong>⑥ 그 외 무엇이든</strong></td>
+          <td>맥가이버를 부르세요. 공유 폴더에서 클로드 코드를 켜고: <code>맥가이버, OneDrive가 초록불이 안 떠요</code> 처럼. 원인과 해결을 같이 알려줍니다.</td></tr>
+    </tbody>
+  </table>
+
+  <h1 class="part">부록 A — 명령어 한 장 요약</h1>
+  <pre><code><span class="c"># 설치 (PowerShell)</span>
+node --version                                   <span class="c"># 토대 확인</span>
+npm install -g @anthropic-ai/claude-code         <span class="c"># 클로드 코드 설치</span>
+claude                                           <span class="c"># 실행(+로그인)</span>
+
+<span class="c"># 플러그인 (클로드 코드 대화창, 한 줄씩)</span>
+<span class="cmd">/plugin marketplace add</span> https://github.com/clbookslower/deeper-os.git
+<span class="cmd">/plugin install</span> deeper-os@deeper-os
+<span class="cmd">/reload-plugins</span>
+
+<span class="c"># 개인 볼트 세팅</span>
+cd C:\야간비행_세컨브레인
+claude
+<span class="cmd">/deeper-os:setup</span>
+
+<span class="c"># 공유 볼트 열기</span>
+cd "$env:USERPROFILE\OneDrive\DEEPER_공동운영"
+claude
+여기가 어떤 작업공간이야?      <span class="c"># 인사 겸 확인</span>
+
+<span class="c"># 자주 쓰는 에이전트</span>
+<span class="cmd">/judith</span>   큰 그림·우선순위
+<span class="cmd">/may</span>      소통 글·대시보드·레터
+<span class="cmd">/anne</span>     커뮤니티·살롱
+<span class="cmd">/jeff</span>     8권·실용서 검토
+<span class="cmd">/seth</span>     마케팅·SNS</code></pre>
+
+  <h1 class="part">부록 B — 경선님 사전 준비물 (내일 전에)</h1>
+  <ul class="check">
+    <li class="done"><code>DEEPER_공동운영</code> 폴더를 OneDrive 안으로 이동 (완료: <code>C:\Users\clboo\OneDrive\DEEPER_공동운영</code>)</li>
+    <li>그 폴더를 야간비행님께 <strong>편집 권한으로 공유</strong> (탐색기 우클릭 → 공유)</li>
+    <li>야간비행님이 로그인할 <strong>클로드 코드 계정</strong> 정하기</li>
+    <li>(선택) <code>_대시보드.md</code>에 8권·허브·살롱 현재 상태 한 줄씩 미리 채워두기</li>
+    <li>(선택) <code>01_8권진행/</code>에 야간비행님 결정이 필요한 항목 미리 적어두기</li>
+  </ul>
+
+  <div class="footer">
+    <div class="leaf">🌿</div>
+    천천히, 한 줄씩. 도구는 한 번 깔면 끝이고,<br>그다음부터는 <strong>같은 폴더에서 같은 팀과 함께</strong> 일하면 됩니다.
+    <div class="copy">© 2026 deeper. All Rights Reserved.</div>
+  </div>
+
+</div>
+</body>
+</html>
