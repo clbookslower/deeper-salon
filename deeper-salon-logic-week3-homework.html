@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 논리 3주차 과제 — 고리를 짓고, 그 고리를 깨라</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E7; --paper-deep:#EFE7D8;
+    --ink:#221E18; --ink-soft:#5A5247; --ink-faint:#9A9080;
+    --red:#CC3333; --rule:#D8CFBE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"Nanum Myeongjo", serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Nanum Gothic",sans-serif; font-size:.66rem; font-weight:700;
+    letter-spacing:.3em; text-transform:uppercase; color:var(--red);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:var(--red); color:var(--paper);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.25rem; text-align:center;}
+
+  .kicker{font-family:"Nanum Gothic",sans-serif; font-size:clamp(.62rem,1.3vw,.78rem);
+    font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--red);}
+  .slide.invert .kicker{color:rgba(255,255,255,.85);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Nanum Myeongjo",serif; font-weight:800; letter-spacing:-.01em;
+    font-size:clamp(1.65rem,4vw,2.7rem); line-height:1.25;}
+  .title .em{color:var(--red);}
+  .slide.invert .title .em{color:var(--paper); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--ink-faint); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(255,255,255,.7);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    font-family:"Nanum Myeongjo",serif; font-weight:400; color:var(--ink);
+    font-size:clamp(1rem,1.55vw,1.26rem); line-height:1.95; letter-spacing:.005em;}
+  .slide.invert .body{color:rgba(255,255,255,.95);}
+  .body p{margin:0 0 1.05rem;}
+  .body p:last-child{margin:0;}
+  .body .strong{font-weight:700; color:var(--red);}
+  .slide.invert .body .strong{color:#fff;}
+  .body .final{font-weight:800; text-align:center; font-size:1.2em; line-height:1.55; margin-top:1.2rem;}
+
+  .prompt{align-self:stretch; max-width:42rem; margin:.5rem auto 0; text-align:left;
+    border:1px solid var(--rule); border-left:3px solid var(--red); border-radius:3px;
+    background:rgba(255,255,255,.45); padding:1.2rem 1.35rem;
+    font-family:"Nanum Gothic",sans-serif; font-weight:400;
+    font-size:clamp(.82rem,1.25vw,1rem); line-height:1.75; color:var(--ink);
+    white-space:pre-wrap;}
+  .prompt .lab{display:block; font-family:"Nanum Gothic",sans-serif;
+    font-size:.62rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--red); margin-bottom:.7rem;}
+  .note{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    font-family:"Nanum Gothic",sans-serif; font-size:.78rem; color:var(--ink-faint); letter-spacing:.02em;}
+
+  .viz{width:clamp(108px,12vw,160px); height:clamp(108px,12vw,160px); color:var(--red); flex:none;}
+  .slide.invert .viz{color:var(--paper);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(120px,16vw,200px); height:clamp(120px,16vw,200px);}
+  .cover .title{font-size:clamp(2rem,5.6vw,3.6rem); line-height:1.18;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .grow{animation:grow 3.2s ease-in-out infinite;}
+  @keyframes grow{0%,100%{opacity:.4; transform:scale(.82)}50%{opacity:1; transform:scale(1)}}
+  .flow{animation:flow linear infinite;}
+  @keyframes flow{to{transform:translateX(-120px);}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .floatup{animation:floatup 4.2s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(18px);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(30px)}50%{transform:translateY(-30px)}}
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--red); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--ink-faint); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--ink-faint); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--red); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Nanum Gothic",sans-serif; font-size:.62rem; color:var(--ink-faint); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:4.5rem 1.4rem;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER (RED) -->
+  <section class="slide active invert cover">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <g class="spin" style="transform-origin:100px 108px; animation-duration:30s;">
+            <circle cx="100" cy="108" r="40" stroke-dasharray="5 9" stroke-opacity=".6"/>
+          </g>
+          <circle cx="100" cy="108" r="4" fill="currentColor" stroke="none" class="pulse"/>
+          <g class="floatup">
+            <path d="M100 64 L100 30"/><path d="M100 30 l-8 12 m8 -12 l8 12"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 22px;">
+            <path d="M100 10 L104 21 L115 21 L106 28 L110 39 L100 32 L90 39 L94 28 L85 21 L96 21 Z" stroke-opacity=".85"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">디퍼 살롱 · 논리 3주차 · 과제</p>
+      <h1 class="title r r3">고리를 짓고,<br><span class="em">그 고리를 깨라</span></h1>
+      <p class="latin r r4">검증된 고리 하나, 그리고 한 차원 위로</p>
+    </div>
+  </section>
+
+  <!-- 02 · 이번 과제 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:78px 110px;"><circle cx="78" cy="110" r="34" stroke-dasharray="5 9" stroke-opacity=".55"/></g>
+          <circle cx="78" cy="110" r="3.5" fill="currentColor" stroke="none" class="pulse"/>
+          <g class="rise" style="animation-duration:3.6s;">
+            <path d="M140 130 L140 56"/><path d="M140 56 l-9 13 m9 -13 l9 13"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">이번 과제</p>
+      <h2 class="title r r3">짓기와 깨기, 둘 다</h2>
+      <div class="body r r4">
+        <p>강의가 말한 두 가지를, 발행으로 옮긴다. 오늘 한 편을 내보내고 매일 돌릴 고리로 남기는 일(과제 1), 그리고 그 고리가 끝내 닿지 못한 한 편을 향해 틀을 깨는 일(과제 2).</p>
+        <p>영감을 기다리는 자리에서, <span class="strong">짓고, 내보내고, 또 깨는 자리로.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 공통 머리말 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="pulse">
+            <circle cx="34" cy="58" r="3" fill="currentColor" stroke="none"/><circle cx="50" cy="92" r="2.6" fill="currentColor" stroke="none"/>
+            <circle cx="28" cy="104" r="2.4" fill="currentColor" stroke="none"/><circle cx="60" cy="64" r="2.2" fill="currentColor" stroke="none"/>
+          </g>
+          <path d="M84 80 L112 80"/><path d="M112 80 l-8 -5 m8 5 l-8 5"/>
+          <line x1="134" y1="62" x2="196" y2="62"/><line x1="134" y1="80" x2="196" y2="80"/><line x1="134" y1="98" x2="196" y2="98"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">부실해도 괜찮다</p>
+      <h2 class="title r r3">먼저, 공통 머리말</h2>
+      <div class="body r r4">
+        <p>재료가 한 줄뿐이어도 좋다. 아래 머리말이 잠긴 것을 길어 올리고, 가정을 밝히고, 형식을 강제한다. 머리말을 붙이고, 그 끝에 두 과제 중 하나의 지시를 더해 보내라.</p>
+      </div>
+      <div class="prompt r r4"><span class="lab">공통 머리말 · 복사해서 맨 앞에</span>너는 디퍼OS의 발행 파트너다. 내 목소리를 알고, 짧고 흐릿한 재료에서도 그 안에 잠긴 한 가지를 길어 올린다.
+
+[내 재료]
+(있는 만큼만 — 주제 한 줄, 독자 한 사람, 즐겨 쓰는 채널·형식, 최근 글 한 토막. 비어 있어도 좋다.)
+
+[내 목소리 — 어길 수 없는 기준]
+· 한강·이승우의 결. 밀도 있고 군더더기 없는 문장.
+· 함축하되 설명하지 않는다. 은유는 한 번 놓고 곧장 풀지 않는다.
+· "~가 아니다 / ~로 정의한다" 식 기계적 부정·정의를 쓰지 않는다.
+· 격려·위로의 상투구와 매끄러운 마무리("~인 셈입니다")를 피한다.
+
+[공통 규칙]
+1) 재료가 부실하면, 거기서 읽히는 잠재 후보를 3개 뽑고 가장 정직한 하나를 골라. 무엇을 가정했는지 한 줄로 밝혀 — 내가 고치게.
+2) 아래 [과제]의 지시와 출력 형식을 그대로 따른다. 설명은 최소화.
+3) 끝으로 점검: 이대로 오늘 발행할 수 있나? 빌린 목소리가 섞이지 않았나? 모호하면 더 구체적으로 다시 써.
+
+[과제] ← 여기에 아래 두 과제 중 하나를 붙인다.</div>
+    </div>
+  </section>
+
+  <!-- 04 · 과제 1 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:100px 78px;"><circle cx="100" cy="78" r="40" stroke-dasharray="6 10" stroke-opacity=".5"/></g>
+          <g class="pulse">
+            <line x1="138" y1="78" x2="170" y2="78" stroke-opacity=".7"/>
+            <path d="M150 70 l6 7 l12 -14" stroke-width="2.4"/>
+          </g>
+          <circle cx="100" cy="78" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 과제 1 · 발행 고리</p>
+      <h2 class="title r r3">한 편을 발행하고,<br>그 고리를 남겨라</h2>
+      <p class="note r r4">공통 머리말 끝에 아래 [과제] 한 덩이를 붙여 보내세요.</p>
+      <div class="prompt r r4"><span class="lab">[과제 1]</span>오늘 발행할 콘텐츠 한 편을 내 목소리로 완성하고, 그것을 매일 돌릴 '검증된 고리'로 남겨라.
+
+1) 불변량 잡기 — 내 재료에서 변하지 않는 주제 한 줄을 뽑는다.
+2) 발행본 쓰기 — 그 주제로 한 편을 완성한다. 채널 분량에 맞춰(예: SNS 300자 / 뉴스레터 700자) 제목과 본문까지. 내 목소리 기준을 그대로 지킨다.
+3) 게의 귀로 깎기 — 발행 전 잘라낼 것을 표시한다. 기계적 문장, 빌린 표현, 설명 과잉, 매끄러운 마무리. 무엇을 남기고 무엇을 버리는지 그 기준을 한두 줄로 적는다.
+4) 고리로 남기기 — 내일 다음 편을 같은 방식으로 뽑도록, 5단계 발행 고리로 압축한다(동사로 시작, 시간·분량까지 구체적으로).
+
+[출력 형식]
+· 불변량 한 줄
+· 발행본 한 편 (제목 + 본문)
+· 검증 기준 (남기는 것 / 버리는 것)
+· 매일의 발행 고리 5단계</div>
+    </div>
+  </section>
+
+  <!-- 05 · 과제 2 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="36" y="74" width="96" height="56" rx="3"/>
+          <path d="M36 74 L74 74 M104 74 L132 74"/>
+          <g class="floatup"><ellipse cx="84" cy="72" rx="11" ry="6.5"/><path d="M95 70 q2 -12 13 -12 q8 0 8 6"/></g>
+          <g class="twinkle" style="transform-origin:160px 44px;">
+            <path d="M160 32 L164 43 L175 43 L166 50 L170 61 L160 54 L150 61 L154 50 L145 43 L156 43 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 과제 2 · 괴델 문장 · 발행 실험</p>
+      <h2 class="title r r3">내 콘텐츠가 닿지 못한 한 편</h2>
+      <p class="note r r4">공통 머리말 끝에 아래 [과제] 한 덩이를 붙여 보내세요.</p>
+      <div class="prompt r r4"><span class="lab">[과제 2]</span>내가 발행해 온 콘텐츠가 반복만으로는 끝내 닿지 못한 한 편을 찾고, 그 틀을 깨는 발행 실험 하나를 설계해 초안까지 만들어라.
+
+1) 닫힌 고리 보기 — 내 콘텐츠가 늘 반복하는 형식·주제·각도를 한 줄로 짚는다.
+2) 내 괴델 문장 — 그 고리 안에서는 아무리 잘 써도 끝내 못 닿는 글·각도·진실을 3개 뽑고, 가장 정직한 하나를 고른다.
+3) 왜 못 닿나 — "더 자주·더 잘 쓰기"로는 거기 닿지 못하는 까닭을 한 줄로.
+4) 프레임 깨기 — 평소의 형식·층위를 벗어나는 실험 한 편을 설계한다. 무엇을 어떻게 깨는지, 그것이 왜 '다른 층위'인지 밝힌다.
+5) 초안까지 — 그 실험 한 편의 발행 초안, 또는 곧장 실행할 발행 계획을 내 목소리로 적는다.
+
+[출력 형식]
+· 내 콘텐츠의 닫힌 고리 한 줄
+· 내 괴델 문장 한 줄 (반복으로는 못 닿은 한 편)
+· 프레임 깨는 실험 설계 (무엇을·어떻게·왜 다른 층위인지)
+· 발행 초안 또는 이번 주 발행 계획
+
+점검: 이 실험은 평소 글의 '더 나은 버전'인가, 평소엔 안 하던 층위인가?</div>
+    </div>
+  </section>
+
+  <!-- 06 · 돌리는 법 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2">
+          <g class="spin">
+            <path d="M100 40 A60 60 0 1 1 50 70" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M50 70 l-9 -2 m9 2 l3 -9" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <path class="spin" style="animation-duration:38s;" stroke-opacity=".6" stroke-linecap="round"
+            d="M100 100 q0 -9 9 -9 q21 0 21 23 q0 31 -33 31 q-43 0 -43 -45"/>
+          <circle cx="100" cy="100" r="3.5" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">돌리는 법 · 오토포에이시스</p>
+      <h2 class="title r r3">한 번에 끝내지 마라</h2>
+      <div class="body r r4">
+        <p>고리를 한 바퀴 돌리고, 점프를 작게 실험하고, 거기서 나온 것을 디퍼OS에 다시 적립하라. 고리는 다시 쓸 수 있을 때 살아 있고, 점프는 해 본 만큼만 내 것이 된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 제출 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+          <g class="twinkle" style="transform-origin:100px 60px;">
+            <path d="M100 26 L109 53 L138 53 L114 70 L123 98 L100 81 L77 98 L86 70 L62 53 L91 53 Z"/>
+          </g>
+          <g class="grow" style="transform-origin:100px 142px;">
+            <path d="M70 142 l7 7 l14 -16" stroke-linecap="round"/>
+            <path d="M112 142 l7 7 l14 -16" stroke-linecap="round" stroke-opacity=".6"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">제출</p>
+      <h2 class="title r r3">네 가지를 가져오라</h2>
+      <div class="body r r4">
+        <p>발행본 한 편과 매일의 발행 고리(과제 1). 내 콘텐츠가 못 닿은 괴델 문장 한 줄, 그리고 그 틀을 깨는 실험의 초안 하나(과제 2). <span class="strong">읽고 끝낸 메모를 넘어, 실제로 내보낸 한 편을 가져오라.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · CLOSE (RED) -->
+  <section class="slide invert cover">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="42" y="78" width="116" height="58" rx="3"/>
+          <path d="M42 78 L88 78 M120 78 L158 78"/>
+          <g class="floatup"><ellipse cx="96" cy="76" rx="12" ry="7"/><path d="M108 74 q2 -14 14 -14 q9 0 9 7"/></g>
+          <g class="twinkle" style="transform-origin:104px 34px;">
+            <path d="M104 22 L108 33 L119 33 L110 40 L114 51 L104 44 L94 51 L98 40 L89 33 L100 33 Z" stroke-opacity=".85"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">논리 3주차 · 과제</p>
+      <h2 class="title r r3">검증된 고리를 돌리고,<br><span class="em">때가 되면 그 고리를 깨라</span></h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">게처럼 들어라.<br>그리고 그림에 손을 넣어, 파이프를 꺼내라.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">Quaerendo invenietis — 찾는 이가 발견하리라</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 08</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(255,255,255,.85)' : 'var(--ink-faint)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
