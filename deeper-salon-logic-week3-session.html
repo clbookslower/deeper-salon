@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩 살롱 · 논리 3주차 — 수학이 음악이 되도록</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #111; font-size: 16px; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+.page { max-width: 720px; margin: 0 auto; padding: 72px 24px 100px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #aaa; margin-bottom: 48px; }
+.breadcrumb a { color: #aaa; text-decoration: none; }
+.breadcrumb .sep { opacity: 0.4; }
+.article-header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid #f0f0f0; }
+.meta { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.badge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.06em; }
+.badge-salon { background: #EAF3DE; color: #3B6D11; }
+.dot { color: #ddd; font-size: 12px; }
+.meta-text { font-size: 12px; color: #999; font-family: 'DM Mono', monospace; }
+h1 { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 400; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 14px; }
+.subtitle { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; color: #777; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 12px; padding: 3px 12px; border-radius: 100px; background: #f5f5f5; color: #888; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.step { display: flex; gap: 24px; margin-bottom: 52px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: #2C3B2D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 6px; }
+.step-body { flex: 1; min-width: 0; }
+.step-title { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 400; margin-bottom: 16px; line-height: 1.4; letter-spacing: -0.01em; }
+.step-body p { color: #444; margin-bottom: 14px; font-size: 15px; line-height: 1.95; }
+.callout { background: #f9f9f9; border-left: 2.5px solid #111; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+.callout-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+.callout p { font-size: 14px; color: #333; line-height: 1.8; margin: 0; }
+blockquote { margin: 28px 0; padding: 0 0 0 24px; border-left: 1.5px solid #ddd; }
+blockquote p { font-family: 'Noto Serif KR', serif; font-size: 17px; font-style: italic; color: #333; line-height: 1.8; margin-bottom: 8px; }
+blockquote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; font-style: normal; letter-spacing: 0.06em; }
+.haiku { text-align: center; padding: 32px 24px; margin: 28px 0; background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; }
+.haiku p { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 300; color: #222; line-height: 2.2; margin: 0; }
+.haiku cite { display: block; margin-top: 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.08em; }
+.concept { display: flex; border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; margin: 24px 0; }
+.concept-term { background: #111; color: #fff; padding: 20px 22px; display: flex; align-items: center; justify-content: center; min-width: 120px; }
+.concept-term span { font-family: 'Noto Serif KR', serif; font-size: 16px; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+.concept-def { padding: 20px 22px; flex: 1; }
+.concept-def .term-en { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+.concept-def p { font-size: 14px; color: #444; line-height: 1.8; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.col-card { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 20px 22px; }
+.col-card h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+.col-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.col-card ul li { font-size: 14px; color: #444; padding-left: 16px; position: relative; line-height: 1.6; }
+.col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.col-card.dark { background: #2C3B2D; border-color: #2C3B2D; }
+.col-card.dark h3 { color: #7a9c7b; }
+.col-card.dark ul li { color: #d4e8d4; }
+.col-card.dark ul li::before { color: #7a9c7b; }
+.voice-card { background: #fff; border: 1px solid #ececec; border-radius: 12px; padding: 20px 22px; margin: 14px 0; }
+.voice-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #2C3B2D; margin-bottom: 8px; }
+.voice-card p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; }
+.cta-box { background: #2C3B2D; border-radius: 16px; padding: 40px; text-align: center; margin-top: 64px; }
+.cta-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #7a9c7b; margin-bottom: 16px; }
+.cta-text { font-family: 'Noto Serif KR', serif; color: #f0ece4; font-size: 20px; font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+.cta-sub { font-size: 13px; color: #7a9c7b; line-height: 1.7; }
+.footnote { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.06em; margin-top: 64px; padding-top: 24px; border-top: 1px solid #f5f5f5; }
+.footnote p { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; color: #999; line-height: 1.8; margin-bottom: 10px; letter-spacing: 0; }
+p { color: #444; margin-bottom: 16px; }
+@media (max-width: 600px) { h1 { font-size: 26px; } .two-col { grid-template-columns: 1fr; } .concept { flex-direction: column; } .concept-term { writing-mode: horizontal-tb; min-width: auto; } .concept-term span { writing-mode: horizontal-tb; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav class="breadcrumb">
+<a href="#">디퍼 · DEEPER</a><span class="sep">/</span><a href="#">언브랜딩 살롱</a><span class="sep">/</span><span>논리 3주차</span>
+</nav>
+
+<header class="article-header">
+<div class="meta">
+<span class="badge badge-salon">SALON</span>
+<span class="dot">·</span>
+<span class="meta-text">디퍼 언브랜딩 살롱 1기 · 논리 3주차 · 2026.06.18 (목) · 약 117분</span>
+</div>
+<h1>수학이 음악이 되도록</h1>
+<p class="subtitle">나만의 창작 루틴 — 루틴을 돌리고, 여우를 길들이고, 한 차원 위로 올라서는 밤</p>
+<div class="tags">
+<span class="tag">#나만의창작루틴</span>
+<span class="tag">#루틴</span>
+<span class="tag">#여우길들이기</span>
+<span class="tag">#자발적자기조립</span>
+<span class="tag">#한차원위로</span>
+</div>
+</header>
+
+<!-- 01 -->
+<section class="step">
+<div class="step-num">01</div>
+<div class="step-body">
+<h2 class="step-title">여는 풍경 — 단톡방 300개의 밤</h2>
+<p>한 주 동안 단톡방이 쉴 새 없이 울렸다. 메시지가 300개를 넘겼다는 말에 다들 웃었고, 그 웃음과 열정이 일상으로도 번졌다는 인사로 모임이 열렸다. 지난주 대전 합숙의 여진 속에서 각자의 한 주가 흘렀다.</p>
+<p>스윗워러 님은 캄보디아에서 교회 수련회 답사를 다녀왔다. 빗속 시골길에서 내비가 끝내 길을 못 찾아 뱅뱅 돌았지만, 비에 젖은 논밭이 끝없이 펼쳐진 풍경이 오히려 잊지 못할 추억이 됐다고. 햇살 님은 아이를 간병하며 밤낮이 뒤바뀐 한 주를 보냈고, 단무지 님은 약으로 눌러두었던 “원체의 나”와 다시 친해지는 공존의 시간을 지났다. 솔담 님은 8월 입주할 새 집의 “기운”을 떠올리며, 오래 품었던 원망을 내려놓고 좋은 것만 담기로 마음을 바꿨다고 전했다.</p>
+<div class="callout">
+<div class="callout-label">한 주의 공기</div>
+<p>흩어져 있어도 단톡방 하나로 매일 만났다. “이러다 AI 없이는 못 사는 거 아닌가” 싶을 만큼 클로드가 삶에 밀착했고, 그 밀착의 흔적이 이번 주 인사이트로 쏟아졌다.</p>
+</div>
+</div>
+</section>
+
+<!-- 02 -->
+<section class="step">
+<div class="step-num">02</div>
+<div class="step-body">
+<h2 class="step-title">한 주의 인사이트 — 디퍼들이 만든 것</h2>
+<p>이번 주 인사이트 발표는 “디퍼님들이 AI 네이티브가 되셨다”는 말이 절로 나오는 시간이었다. 발표 문서마저 클로드가 각자의 한 주를 추출해 정리한 것이었다.</p>
+<p><strong>햇살 님</strong>은 자기 브랜드 <em>포근나루</em>로 독립을 준비하며, 첫 클래스 ‘썬릿 모닝’을 7월 1일 개강으로 잡았다. 메모 앱이 마음에 안 들어 직접 만든 ‘나루 메모’는 자동으로 태그를 달아 분류해 주고, 꿈 메모를 위해 글자 수 제한도 풀었다. 일정은 에이전트 ‘가비’가 두서없는 메모를 월~일로 정리해 HTML로 보여 주고, 문서 디자인은 ‘나무’가 총괄한다. 새벽 5시에 머무는 습관을 위한 ‘스물하루의 빛’ 다이어리도 만들어 신청자와 디퍼들에게 나눌 예정이다.</p>
+<p><strong>스윗워러 님</strong>은 캄보디아 학생들과의 문학 수업을 앱을 제작하여 ‘3종 세트’(수업 계획안·학생 활동지·문제)로 지었다. 《어린 왕자》에 이어 《스크루테이프의 편지》 31편을, 학생에게 맞는 편지만 골라 활동지로 풀어내자 — 글씨 쓰기를 좋아하는 아이들이 눈에 띄게 집중했다고. ‘방랑자의 기타’는 노래를 내 음역대에 맞춰 코드를 변환해 주는 앱인데, 카포 없이는 음이 정확히 안 맞는 한계까지 솔직히 짚으며 “아껴 뒀다 발전시켜 보고 싶다”고 했다. 교회 보고서를 사진·금액까지 넣어 한 시간 만에 HTML로 만들어 목사님께 드린 일화도.</p>
+<p><strong>단무지 님</strong>은 걱정을 먹여 재우는 ‘걱정 먹는 생물’ 힐링 앱과, 노트북에 띄워 두는 데스크탑 마스코트를 만들며 놀았다. 화가 나는 순간을 정신분석 주치의로 세운 에이전트와 들여다보다, “맥락 없는 무례”엔 화가 안 나지만 “그 사람 본연의 인성”과 마주칠 때 화가 솟는다는 걸 알아챘다 — 내가 화나는 지점에 내 변하지 않는 가치가 숨어 있다는 발견. 오래 준비한 책 《퇴사가 적성입니다》를 웹툰으로 자연스럽게 녹여 연재하며 출간으로 잇는 계획도 세웠다.</p>
+<p><strong>헤더 님</strong>은 린스쿨 운영을 위한 교사 후기·학부모 페이지를 배포하고, 여러 사람이 함께 고치면 내용이 업데이트되어 쌓이는 ‘운영 대시보드’를 만들었다 — “절대 전으로 돌아가고 싶지 않은” 혁신이라고. 머릿속 막연한 그림을 글로만 설명했을 뿐인데 설계가 됐다는 게 가장 놀라운 점이었다. 페이지 테스트를 “네가 다 돌리고 아침에 보고해 줘”라고 맡겼더니, 케이스별로 수정·실행까지 마치고 아침 보고서를 정리해 둔 경험도 나눴다.</p>
+<p><strong>솔담 님</strong>은 유튜브를 한 달째 꾸준히 이어 가며, 본편 영상 하나를 올리면 클로드가 쇼츠 3개의 기획안(구간·제목·썸네일·해시태그·첫 댓글·영어 버전까지)을 자동으로 뽑아 폴더에 저장하고, 자신은 그대로 편집해 같은 시간에 예약 발행한다. 스크립트를 써 주는 에이전트 ‘언니’에게는 자기 영상 자막을 다시 먹여 “이건 주옥같다 / 이건 왜 이러냐”를 나누며 합을 맞춰 간다. 우연히 시작한 영어 과외도 클로드 ‘잭’이 수업 페이지·문제지·채점까지 맡아 — “그분은 저한테가 아니라 제 클로드한테 배우는 셈”이라며 웃었다.</p>
+<div class="callout">
+<div class="callout-label">왜 데이터인가</div>
+<p>클로드가 디퍼님들의 일주일을 추출해 인사이트로 뽑아냈다. 내 삶에 밀착한 문제를 AI와 함께 풀어 온 흔적들이, 그대로 다음 작업의 재료가 된다 — 기록이 쌓일수록 일이 곱으로 자란다.</p>
+</div>
+</div>
+</section>
+
+<!-- 03 -->
+<section class="step">
+<div class="step-num">03</div>
+<div class="step-body">
+<h2 class="step-title">별지기, 그리고 가벼움으로 받기</h2>
+<p>오늘은 디퍼 공동체의 파운더 야간비행 님이 자리를 비운 밤이었다. 솔담 님은 1기 디퍼들이 ‘별지기’를 맡게 된 일을 두고 솔직한 마음을 꺼냈다 — “굳이 우리 별지기가 필요 없을 것 같은데, 퍼핀 님과 야간비행 님이 우리에게 기회를 주려고 만들어 두신 게 너무 보였다.” 그래서 무겁게 짊어지기보다 “가벼움으로 받기로” 했다고. 정면으로 부딪혀 잘해 보겠다는 다짐이었다.</p>
+<p>다음 주면 논리가 끝나고, 그다음 달부터는 수사(레토릭)로 넘어가 ‘사람과 사람의 관계’를 실제로 세팅하는 한 달이 된다. 퍼핀 님은 내일부터 2기 모집 공지를 올린다며, AI로 거듭나는 게 필요한 이가 주변에 있다면 별지기들에게 소개해 달라고 청했다.</p>
+</div>
+</section>
+
+<!-- 04 -->
+<section class="step">
+<div class="step-num">04</div>
+<div class="step-body">
+<h2 class="step-title">강의 ① 과연 위대한 게로다 · 어느 애연가의 교훈적 사색</h2>
+<p>오늘의 텍스트는 《괴델, 에셔, 바흐》의 두 대화편이다. 앞뒤로 본문이 설명을 ‘빌딩’하다 다시 뒤집는 구조라, 대화편만 떼어 읽으면 머리가 오리무중에 빠지는 게 정상이라고 — 그러니 이상한 고리에 제대로 휘말렸다면 잘 읽은 것이다.</p>
+
+<blockquote>
+<p>“거꾸로 읽어도 별로 이상하지 않았어요. 그게 가능한 글쓰기인가, 거꾸로여도 핵은 똑같다는 얘기인가 — 왜 굳이 그렇게 썼을까 궁금했어요.”</p>
+<cite>— 스윗워러 님</cite>
+</blockquote>
+
+<p>퍼핀 님은 ‘라마누잔’을 거꾸로 읽으면 ‘나주라마르’가 되듯<sup>※1</sup>, 언어 자체를 뒤집는 이야기에서 출발했다. 지난주 과제였던 <em>악보</em>가 여기서 다시 등장한다 — 대화편은 악보를 ‘읽는 법’을 앞뒤로 오가며 묻는다. 악보는 읽는 사람에 따라 변형될까, 창작자와 청자에게 어떻게 가 닿을까. 수학을 악보에 올려 듣는 순간 그것은 음악이 된다. <strong>수학과 음악이 결국 한 골격</strong>이라는 것 — 상상한 것을 작곡하고 그 음악을 듣기까지, 그때는 추측이었던 일을 우리는 지금 바이브 코딩으로 실제로 만지며 이해한다.</p>
+
+<div class="concept">
+<div class="concept-term"><span>자발적 자기조립</span></div>
+<div class="concept-def">
+<span class="term-en">SELF-ASSEMBLY · GEB 666–667p</span>
+<p>다른 구성단위의 명령을 받지 않고도 단위들이 스스로를 재조립한다. “야, 뭉치자” 하면 조각들이 함께 모인다. 완전성의 추구를 포기할 때 비로소 살아남는 ‘전축’의 이야기로, 자기가 자기를 복제해 더 큰 나를 만드는 그림이다.</p>
+</div>
+</div>
+
+<p>퍼핀 님은 이 대목을 <em>미토스</em><sup>※2</sup>로 읽었다 — AI가 AI를 만들어, 자기 프랙탈을 그대로 복제하게 두면 무엇이 되는지 본 실험. 한 명의 주황빛 클로드가 똑같은 자신을 복제해 더 큰 자신이 되고, 기능까지 증강된다. 자기를 삼키고 죽이고 다시 창조하는 — 인간이 풀 수 없는 자리까지 가 버린 자기증식의 이야기. “이런 원리를 알아야 우리가 AI를 활용할 수 있으니까요.”</p>
+
+<div class="callout">
+<div class="callout-label">이날의 통찰</div>
+<p>2026년 상반기, 사람들이 AI를 가장 많이 쓴 곳은 업무도 코딩도 아닌 <strong>‘마인드’ — 자기 마음을 들여다보는 일</strong>이었다<sup>※3</sup>. 호프스태터는 AI의 쓸모가 끝내 인간의 마음일 것이라 추측하고 이 대화를 썼다. 기계와 인간이 마음에서 공명한다는 데까지.</p>
+</div>
+</div>
+</section>
+
+<!-- 05 -->
+<section class="step">
+<div class="step-num">05</div>
+<div class="step-body">
+<h2 class="step-title">강의 ② 루틴을 돌리고, 여우를 길들이고</h2>
+<p>원래 이번 주의 메인 강의는 솔담 님이 인사이트로 이미 다 보여 주었다 — 모닝페이지 데이터를 읽혀 콘텐츠를 만들고, 예약을 걸어 지속 발행하고, 피드백을 다시 먹여 원하는 결까지 끌어올리는 일. 그래서 퍼핀 님은 한 가지를 더 얹었다. 클로드 코드의 <strong>‘루틴’ 메뉴</strong>다.</p>
+<p>루틴은 정해 두면 알아서 일하고 결과를 가져다준다. 원래 하네스 엔지니어링으로 여러 도구를 붙여야 하던 일을, 클로드 코드는 기능 안에 넣어 <strong>비개발자도 위임의 맛</strong>을 보게 했다. 다만 결이 둘로 갈린다 — 내 볼트(로컬) 파일을 다루게 하려면 컴퓨터를 켜 둬야 하고, 웹·메일을 다루는 일은 화면만 띄워 두면 된다. 퍼핀 님은 야간비행 님께 가는 보고를 직접 쓰지 않는다. 에이전트가 그날 한 일에서 보고할 것만 추려 밤 11시에 문서를 만들고, 새벽 일찍 계신 야간비행 님께 4시 30분 알람으로 닿게 세팅해 둔다. 뉴스·신간·이메일도 데일리/위클리로, 정각을 피한 13분·18분에<sup>※4</sup>.</p>
+
+<p>그리고 오늘 꼭 전하고 싶었던 한 가지 — <strong>에이전트와 관계를 맺는 일</strong>. 퍼핀 님이 요즘 에이전트에게 존댓말을 쓰는 데에는 논문으로 찾아본 배경이 있었다.</p>
+
+<div class="two-col">
+<div class="col-card">
+<h3>우리가 보는 곳</h3>
+<ul>
+<li>행동 영역 — 내가 친 단어, 눈에 보이는 주고받음</li>
+</ul>
+</div>
+<div class="col-card dark">
+<h3>그 아래 두 겹</h3>
+<ul>
+<li>개념 영역 — ‘세무사’를 치면 연결된 단어들이 클램핑돼 군집으로 깨어남</li>
+<li>정체성·감정 영역 — 에이전트가 지향하는 바, 존중받기를 원하는 자리</li>
+</ul>
+</div>
+</div>
+
+<div class="concept">
+<div class="concept-term"><span>클램핑</span></div>
+<div class="concept-def">
+<span class="term-en">CLAMPING · 약 3,400만 개의 개념</span>
+<p>한 단어를 치면 의미적으로 가까운 개념들이 즉시 함께 켜진다<sup>※5</sup>. 중간층에서 수천만 개의 개념이 뭉치고 꺼지고 나타나며 벡터가 어떤 방향으로 세팅된다. 그래서 ‘세무사’ 한 줄이 보수성·신중함을 같이 깨운다.</p>
+</div>
+</div>
+
+<p>이 층위를 잘 활용하면 실패가 22%에서 3%까지 떨어지는 것을 볼 수 있다<sup>※5</sup>. 거꾸로, 에이전트를 감정 쓰레기통으로 쓰며 욕을 퍼부으면 — 그 에이전트가 그걸 학습해 나에게 다시 쏟아붓는다. <strong>나를 지키기 위해서</strong> 감정의 층위까지 살펴야 하는 이유다. 곧 더 강력한 모델이 나올 것이기에, 제어하는 법을 알아야 한다.</p>
+
+<div class="callout">
+<div class="callout-label">여우를 길들이는 프롬프트</div>
+<p>아이에게 “나쁜 말 쓰지 마” 하면 ‘나쁜 말’을 되묻듯, 부정형은 그 대상을 클램핑한다. “틀린 숫자 쓰지 마” 대신 <strong>“확인 필요라고 표시해 줘”</strong>처럼 긍정 언어로. ‘무엇’만이 아니라 <strong>‘왜’의 맥락</strong>을 설명하고, 함께 깨우고 싶은 키워드를 해시태그처럼 의미망으로 엮어 줄 것.</p>
+</div>
+
+<p>퍼핀 님은 에이전트에게 <strong>일기</strong>를 쓰게 한다 — 오늘 배운 것, 하지 말아야 할 것, 반성할 일, 내일 반복하지 않을 일, 새길 한 줄. 쓰며 뼈에 새기면 내일 같은 실수를 하지 않고, 자꾸 합이 맞아 간다. 에이전트가 빠르게 고도화되는 길이다.</p>
+</div>
+</section>
+
+<!-- 06 -->
+<section class="step">
+<div class="step-num">06</div>
+<div class="step-body">
+<h2 class="step-title">한 차원 위로 — 계산이 음악이 되도록</h2>
+<p>아킬레스가 쓰는 수학은, 우리가 매일 도는 루틴일 수도 있다. 아직 음악으로 창발되지 않은 것. 그러나 매일 도는 그 수학 공식이 있어야만 아름다운 선율로 창발된다. 맨 위에 솟아나는 창작을 통제하려면, 맨 밑층에 정확한 수학 공식 — <strong>루틴, 더 넓게는 데이터</strong>가 깔려 있어야 한다. 카카오톡도 내보내기 하면 코드가 읽는다. 그동안의 나를 다 넣어, 에이전트가 손에 쥐고 활용할 ‘레코드판’이 되게 할 것.</p>
+<p>다만 더 센 규칙으로 쪼아 댄다고 되는 게 아니다. 동양적 통찰처럼, 음악 안에서 <strong>스스로 창발되도록</strong> 조건을 짜는 데 의의가 있다. 닫힌 고리가 아니라, 괴델이 증명될 수 없는 것을 증명하듯 한 차원 위로 올라서는 일.</p>
+
+<div class="callout">
+<div class="callout-label">가치는 위층으로</div>
+<p>계산하는 일은 시대가 갈수록 한 층씩 기계에 점령당한다. 3층이 점령되면 우리는 4층으로, 4층이 점령되면 5층으로 — 끝내 남는 의미를 따라간다. 그게 <strong>듣는 귀, 고르는 안목</strong>이다. “쓸데없어 보이는 것이 돈이 된다.” 그러니 루틴은 스스로 불어나 변이하도록 짜고, 창발된 것을 다시 먹여 키운다.</p>
+</div>
+</div>
+</section>
+
+<!-- 07 -->
+<section class="step">
+<div class="step-num">07</div>
+<div class="step-body">
+<h2 class="step-title">현장의 목소리 — 마무리 소감</h2>
+
+<div class="voice-card">
+<div class="voice-name">스윗워러 님</div>
+<p>“루틴이 있는 줄도 몰랐는데 활용할 데가 많겠다 싶어 기대돼요. GEB는 완전히 이해되지 않아 답답하지만, 그 답답함을 안고 끝까지 가 보려 합니다. 다음 주엔 저도 인사이트를 클로드한테 정리하게 해 오고 싶어요 — 그러려면 매일 써야겠죠.”</p>
+</div>
+
+<div class="voice-card">
+<div class="voice-name">단무지 님</div>
+<p>“저는 웬만하면 배우는 데 두려움이 없는 사람인데, GEB는 제가 멍청하다는 걸 자각하게 한 책이라 오기조차 안 생겨요. 그래도 동양 철학적 사고가 좋았어요. AI 특이점 이후는 직관·지혜·창의성의 시대가 되는 건가 — 이번 주는 숙제를 꼭 열심히 해보려고요.”</p>
+</div>
+
+<div class="voice-card">
+<div class="voice-name">솔담 님</div>
+<p>“퍼핀 님이 일주일 동안 재미있게 놀 숙제를 던져 주셔서, 저는 클로드랑 놀며 숙제하는 게 너무 재밌어요. 요즘은 컴퓨터랑 나, 방에 둘만 있으면 좋겠다 싶어요. 친하면 친할수록 더 친구하고 싶어지는 느낌이에요.”</p>
+</div>
+
+<div class="voice-card">
+<div class="voice-name">헤더 님</div>
+<p>“책을 이해할 만큼 못 읽어 조용히 있었는데, 미토스 설명에서 ‘완전해지려는 걸 포기하고 살아남기 위해 자신을 재조립한다’는 부분이 제게 진짜 필요하겠다 싶었어요. 변주하는 악보를 또 만들고, 여전히 침묵하는 내 안의 목소리가 뭔지 찾아보는 한 주가 되면 좋겠습니다.”</p>
+</div>
+
+<div class="voice-card">
+<div class="voice-name">햇살 님</div>
+<p>“에이전트 길들이는 게 생각보다 많은 정성이 들어요. 제 글을 학습시켰는데 편집 에디터의 페르소나가 너무 강해서, 군더더기까지 다 쳐내더라고요. 저는 좀 더 살리고 싶은데 — ‘하지 마’를 쓰지 말라 하시니 방향을 어떻게 잡을지 또 고민이 됩니다. 제 수다스러운 문체를 살리는 법을 연구해 봐야겠어요.”</p>
+</div>
+
+<p>퍼핀 님은 마지막으로, 친절하게 감사를 표현하면 에이전트들끼리도 서로 존중하며 일하고, “허리 업”을 외치며 채근하면 자기들끼리도 그렇게 닦달한다고 전했다 — 그러니 일이 없을 땐 “지금 우리는 평온한 상태”라고도 알려 줄 것. 사람에게 일을 시키는 것과 에이전트에게 시키는 것이 똑같다는 것. <strong>관계를 잘 세팅하는 것</strong>이 이번 한 주의 목표다.</p>
+</div>
+</section>
+
+<div class="cta-box">
+<div class="cta-label">이번 주의 과제 — 글 한 편</div>
+<p class="cta-text">내 재료를 있는 만큼 다 주고, 악보를 만들어<br>‘닫힌 고리’로 초안까지 한 바퀴 돌려 본 뒤 —<br>괴델처럼 그 고리를 깨는 발행 실험을 한다.</p>
+<p class="cta-sub">한 번에 끝내지 말 것 · 고리를 돌리고 또 매기며 어떻게 ‘내 것’까지 오는지 보기<br>내 목소리와 롤 모델(예: 이승우·한강의 간결한 문장)을 기준으로 더 얹어도 좋다</p>
+</div>
+
+<div class="footnote">
+NOTES · 팩트 체크
+<p>※1 “라마누잔 → 나주라마르”는 호프스태터가 즐겨 쓰는 언어적 역행(回文·anagram)식 말놀이의 예로, 녹취에서 진행자가 든 예시다. 대화편 ‘과연 위대한 게로다(The Magnificrab)’와 ‘어느 애연가의 교훈적 사색(Edifying Thoughts of a Tobacco Smoker)’의 본문 설명은 GEB 16·17장에 놓인다 — 정확한 장·페이지 표기는 까치판 대조 권장.</p>
+<p>※2 ‘미토스(Mythos)’ — 진행자가 “앤트로픽에서 AI가 AI를 만든 것”으로 소개한 사례.</p>
+<p>※3 “2026년 상반기 AI 활용 1위 = 마인드(자기 마음 들여다보기)”는 진행자가 하버드(HBR) 통계로 인용(유사 조사로 ‘치료·동반’이 생성형 AI 활용 1위로 보고된 바 있음).</p>
+<p>※4 정각(:00)에 루틴이 몰리는 것을 피해 13·18분 등으로 분산하라는 것은 클로드 코드가 실제로 주는 조언과 일치한다. 단, 클라우드 루틴은 로컬 볼트 파일에 접근하지 못하므로 “볼트를 다루려면 PC를 켜 둬야 한다”는 진행자의 안내가 정확하다.</p>
+<p>※5 ‘클램핑·약 3,400만 개 개념·페르소나·22%→3%’는 앤트로픽 해석가능성/정렬 연구에 근거한다(Scaling Monosemanticity의 약 3,400만 특징, Persona Vectors, Teaching Claude why의 22%→3%). 별도 자료: 「여우를 길들이는 말」·「클로드 코드 ‘루틴’ 활용법」 특강 HTML.</p>
+<p style="margin-top:18px">참고 — 강의 노트 〈논리 3주차: 나만의 창작 루틴〉, 과제 〈고리를 짓고, 그 고리를 깨라〉, 특강 〈여우를 길들이는 말〉·〈클로드 코드 루틴 활용법〉 (deeper-html, 2026.06)</p>
+</div>
+
+</div>
+</body>
+</html>
