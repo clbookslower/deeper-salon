@@ -171,11 +171,11 @@
         </svg>
       </div>
       <p class="kicker r r2">열기</p>
-      <h2 class="title r r3">"왜 이렇게 느리죠?"</h2>
+      <h2 class="title r r3">채팅창 너머에서</h2>
       <div class="body r r4">
-        <p>한 별지기가 물었다. 서브에이전트 '칼'과 이야기하는데 너무 느리다고. 들여다보니, 메인 에이전트가 자꾸 사이에 끼어 말을 전하고 받아 오고 있었다.</p>
-        <p>당신은 AI와 <em>대화</em>한다고 믿었다. 그런데 화면 뒤에서 벌어지던 건 대화가 아니라 — 에이전트가 에이전트에게 말을 건네는 <em>고리</em>였다.</p>
-        <p class="strong">우리는 줄곧 고리 안에 서 있었다. 그걸 몰랐을 뿐.</p>
+        <p>우리는 AI에게 한 줄을 적고, 답을 받는다. 한 마디씩 주고받는 이 일을 우리는 <em>대화</em>라 부른다. 자연스럽고, 익숙하다.</p>
+        <p>그런데 화면 뒤에서는, 우리가 건넨 한 마디가 여러 손을 거친다. 에이전트가 또 다른 에이전트에게 프롬프트를 건네고, 결과가 돌아온다 — 보이지 않는 <em>고리</em>가 돌고 있다.</p>
+        <p class="strong">우리는 줄곧 그 고리 안에 서 있었다. 오늘은 그 고리를 들여다본다.</p>
       </div>
     </div>
   </section>
@@ -230,8 +230,8 @@
       <h2 class="title r r2">고리를 이루는 네 층</h2>
       <div class="layers r r3">
         <div class="ly"><span class="nm">프롬프트<span class="h">PROMPT</span></span><span class="ds">건네는 말 한마디. 사람만 하는 게 아니라, 에이전트가 에이전트에게 건넨다.</span></div>
-        <div class="ly"><span class="nm">컨텍스트<span class="h">CONTEXT</span></span><span class="ds">그 말이 딛고 서는 기억과 맥락. 무엇을 들고 있느냐가 답을 정한다.</span></div>
-        <div class="ly"><span class="nm">하네스<span class="h">HARNESS</span></span><span class="ds">고리를 돌리는 틀. 우리가 함께 쓰는 클로드 코드가 바로 이 틀이다.</span></div>
+        <div class="ly"><span class="nm">컨텍스트<span class="h">CONTEXT</span></span><span class="ds">그 말이 딛고 서는 맥락 전부 — 지시·기록·자료·기억. 창(窓)에 무엇이 담기느냐가 답을 정한다.</span></div>
+        <div class="ly"><span class="nm">하네스<span class="h">HARNESS</span></span><span class="ds">모델 둘레에서 고리를 돌리는 틀 — 도구를 쥐여 주고, 멈출 자리를 정한다. 우리에겐 클로드 코드.</span></div>
         <div class="ly"><span class="nm">루프<span class="h">LOOP</span></span><span class="ds">도는 고리 그 자체. 그리고 사람은 이 고리의 '어디에' 설지 정한다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
@@ -255,7 +255,7 @@
       <h2 class="title r r3">말은 사람만 건네지 않는다</h2>
       <div class="body r r4">
         <p>지금까지 프롬프트는 '내가 AI에게 하는 말'이었다. 이제 한 겹 넓혀야 한다 — 프롬프트는 <em>에이전트가 에이전트에게도 건네는 말</em>이다.</p>
-        <p>메인이 칼에게 일을 건네고, 칼이 결과를 메인에게 돌려준다. 당신이 본 그 '느린 중계'가 사실은 프롬프트가 고리를 도는 모습이었다.</p>
+        <p>메인 에이전트가 서브에이전트에게 일을 건네고, 서브에이전트는 자기 작업은 감춘 채 <em>결과만</em> 메인에게 돌려준다. '느린 중계'처럼 보이던 것이, 사실은 프롬프트가 고리를 도는 모습이다.</p>
         <p class="strong">그러니 한 마디를 잘 짓는 일에서, 말이 도는 길을 짜는 일로.</p>
       </div>
     </div>
@@ -275,9 +275,30 @@
       <p class="kicker r r2"><span class="num">②</span> 컨텍스트 · 기억</p>
       <h2 class="title r r3">매번 처음부터 깨어난다면</h2>
       <div class="body r r4">
-        <p>칼은 부를 때마다 기억을 잃고 새로 깨어난다(콜드 스타트). 그래서 그동안의 맥락을 통째로 다시 넘겨받아야 한다 — 길어질수록 느려지는 까닭이다.</p>
+        <p>서브에이전트는 호출될 때마다 빈 맥락으로 새로 깨어난다(콜드 스타트). 필요한 맥락을 매번 다시 받아야 하고, 대화가 길수록 그 양이 불어난다 — 느려지는 까닭이다.</p>
         <p>고치는 길은 둘. 한 번에 <em>완결된 맥락</em>을 담아 보내거나, 에이전트가 제 <em>일지</em>를 읽고 스스로 맥락을 회복하게 하거나.</p>
         <p class="strong">무엇을 들고 깨어나느냐가, 무엇을 해낼 수 있는지를 정한다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07b · 컨텍스트 창의 한계 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="54" y="34" width="92" height="96" rx="6"/>
+          <g stroke-opacity=".6"><line x1="70" y1="112" x2="130" y2="112"/><line x1="70" y1="98" x2="130" y2="98"/><line x1="70" y1="84" x2="130" y2="84"/></g>
+          <line x1="70" y1="56" x2="116" y2="56" stroke-opacity=".3"/>
+          <path class="floatup" d="M158 74 q9 9 0 18" stroke-opacity=".42"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">②</span> 컨텍스트 · 창의 한계</p>
+      <h2 class="title r r3">창은 무한하지 않다</h2>
+      <div class="body r r4">
+        <p>맥락이 담기는 창에는 정해진 크기가 있다 — 한 번에 담을 수 있는 양이 '토큰'이라는 단위로 한계 지어져 있다. 넘치면 오래된 것부터 흐려지고, 요약되고, 끝내 잊힌다. 긴 대화가 점점 헛도는 까닭이다.</p>
+        <p>그래서 둘을 함께 쓴다. 한 작업이 끝나면 창을 비우고 새로 시작하고, 늘 지켜야 할 것은 <em>CLAUDE.md 같은 정본 파일</em>에 박아 매번 다시 불러오게 한다.</p>
+        <p class="strong">창은 작업대, 정본은 서랍. 작업대는 비우고, 서랍은 남긴다.</p>
       </div>
     </div>
   </section>
@@ -298,7 +319,7 @@
       <h2 class="title r r3">우리가 이미 그 틀 안에 있다</h2>
       <div class="body r r4">
         <p>하네스는 고리를 돌리는 장치다. 에이전트를 깨우고, 도구를 쥐여 주고, 멈출 자리를 정하는 — 보이지 않는 골격.</p>
-        <p>우리는 다같이 <em>클로드 코드</em>를 쓴다. 그게 바로 우리의 하네스다. "칼을 직접 부르면 왜 메인을 거치나" 같은 물음은, 이 틀의 생김새를 묻는 일이었다.</p>
+        <p>우리는 다같이 <em>클로드 코드</em>를 쓴다. 그게 바로 우리의 하네스다. "서브에이전트를 직접 부르면 왜 메인을 거치나" 같은 물음은, 이 틀의 생김새를 묻는 일이다.</p>
         <p class="strong">틀을 알면, 고리를 내 뜻대로 돌릴 수 있다.</p>
       </div>
     </div>
@@ -317,9 +338,29 @@
       <p class="kicker r r2"><span class="num">④</span> 루프 · 도는 고리</p>
       <h2 class="title r r3">고리는 스스로 돈다</h2>
       <div class="body r r4">
-        <p>네 층이 맞물리면 고리가 돈다. 프롬프트가 건네지고, 맥락 위에서 답이 나오고, 그 답이 다시 다음 프롬프트가 된다. 사람이 한 마디 할 때마다 멈출 필요가 없다.</p>
-        <p>그렇다면 질문은 하나로 좁혀진다. 고리가 스스로 도는 동안 — <em>사람은 어디에 서 있을 것인가.</em></p>
-        <p class="strong">이것이 논리 모듈이 당도한 마지막 물음이다.</p>
+        <p>네 층이 맞물리면 고리가 돈다. 프롬프트가 건네지고, 맥락 위에서 답이 나오고, 그 답이 다음 행동을 부른다. 사람이 한 마디 거들 때마다 멈출 필요가 없다.</p>
+        <p>다만 고리는 끝없이 돌지 않는다. 일이 끝나거나, 막히거나, 권한이 필요하거나, 사람이 멈출 때 — <em>멈출 자리가 정해져 있다.</em></p>
+        <p class="strong">그러니 물음은 하나로 좁혀진다. 고리가 도는 동안, 사람은 어디에 설 것인가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09b · 좋은 고리 · 검증과 드리프트 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="80" r="46" stroke-width="2.4"/>
+          <path d="M141 62 l8 -3 l-2 9" stroke-width="2.4"/>
+          <path class="pulse" d="M80 80 l13 13 l26 -28" stroke-width="2.8"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">④</span> 루프 · 좋은 고리</p>
+      <h2 class="title r r3">도는 고리와, 좋은 고리</h2>
+      <div class="body r r4">
+        <p>도는 고리가 곧 좋은 고리는 아니다. 검증이 없는 고리는 한 바퀴마다 조금씩 풀어져, 모델의 매끈한 기본값으로 미끄러진다 — '드리프트'라 부르는 것이다.</p>
+        <p>좋은 고리는 제 결과를 되읽는다. 시킨 대로 됐는지 확인하고(테스트·대조·기준 통과), 어긋나면 한 바퀴 더 돈다. 사람이 매번 보지 않아도, <em>고리 안에 눈이 하나</em> 있어야 한다.</p>
+        <p class="strong">고리에 검증을 넣어라. 없으면, 빨라질수록 더 빨리 어긋난다.</p>
       </div>
     </div>
   </section>
@@ -373,6 +414,7 @@
         </div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p>한 걸음 더 가면 '고리 밖'(완전 자동)도 있다. 다만 그건 충분히 검증된 고리에만 내준다.</p>
         <p class="strong">둘 다 옳다. 일의 무게가 어느 자리에 설지를 정한다.</p>
       </div>
     </div>
@@ -409,8 +451,8 @@
         <div class="c"><div class="nm">플랜 모드 <span class="h">PLAN</span></div><div class="ro">고리 안 · 실행 전 검토</div><div class="wy">먼저 계획을 보여주고, 내가 승인한 뒤에야 손대게 한다. 큰일 앞의 안전핀.</div></div>
         <div class="c"><div class="nm">권한 프롬프트 <span class="h">PERMISSION</span></div><div class="ro">고리 안 · 매 도구 승인</div><div class="wy">도구 실행마다 승인·거부를 묻는다. 고리 안에 서는 가장 기본 자세.</div></div>
         <div class="c"><div class="nm">중단 <span class="h">ESC</span></div><div class="ro">고리 위 · 내려오는 손잡이</div><div class="wy">엉뚱하게 가면 즉시 멈추고 다시 지시. 감독하다 끼어드는 한 동작.</div></div>
-        <div class="c"><div class="nm">서브에이전트 <span class="h">AGENT</span></div><div class="ro">고리 · 일을 위임</div><div class="wy">한 덩어리 일을 다른 칼에게 통째로 맡긴다. 에이전트가 에이전트에게 건네는 고리.</div></div>
-        <div class="c"><div class="nm">확인 게이트 <span class="h">GATE</span></div><div class="ro">고리 안 · 돌이킬 수 없는 일</div><div class="wy">발행·발송처럼 되돌릴 수 없는 일은 반드시 먼저 묻게 막아 둔다.</div></div>
+        <div class="c"><div class="nm">서브에이전트 <span class="h">AGENT</span></div><div class="ro">고리 · 일을 위임</div><div class="wy">한 덩어리 일을 다른 에이전트에게 통째로 맡기고, 결과만 돌려받는다. 메인 맥락을 깨끗이 지키는 길.</div></div>
+        <div class="c"><div class="nm">훅 · 확인 게이트 <span class="h">HOOK</span></div><div class="ro">고리 안 · 돌이킬 수 없는 일</div><div class="wy">훅(hook)이나 권한 규칙으로, 발행·발송처럼 되돌릴 수 없는 일은 반드시 먼저 확인하게 막아 둔다.</div></div>
         <div class="c"><div class="nm">루틴 · 예약 <span class="h">LOOP</span></div><div class="ro">고리 위 · 스스로 돌게</div><div class="wy">정해진 때에 고리가 알아서 돌고, 사람은 위에서 결과만 받아 본다.</div></div>
       </div>
     </div>
@@ -431,9 +473,50 @@
       <p class="kicker r r2"><span class="num">IV</span> · 설계</p>
       <h2 class="title r r3">주거니받거니를 멈추면</h2>
       <div class="body r r4">
-        <p>칼과 한 마디씩 채팅하면, 매 마디 고리가 처음부터 다시 돈다. 깨우고, 맥락을 다시 넘기고, 중계하고 — 그래서 느렸다.</p>
+        <p>서브에이전트와 한 마디씩 채팅하면, 매 마디 고리가 처음부터 다시 돈다. 깨우고, 맥락을 다시 넘기고, 결과를 중계하고 — 그래서 느리다.</p>
         <p>대신 한 번의 <em>완결된 위임</em>으로 보내라. 읽을 것, 할 일, 내놓을 모양까지 한 번에. 그러면 고리는 한 바퀴로 끝난다.</p>
         <p class="strong">대화를 줄이고, 설계를 늘려라.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14a · 트리거 · 고리의 시작 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="124" cy="80" r="38" stroke-width="2.4"/>
+          <path d="M154 60 l8 -3 l-2 9" stroke-width="2.4"/>
+          <g class="marchl" stroke-opacity=".75"><path d="M26 50 h52"/><path d="M26 80 h44"/><path d="M26 110 h52"/></g>
+          <g><circle cx="22" cy="50" r="4" fill="currentColor" stroke="none"/><circle cx="22" cy="80" r="4" fill="currentColor" stroke="none"/><circle cx="22" cy="110" r="4" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">V</span> · 고리의 시작</p>
+      <h2 class="title r r3">고리는 어떻게 시작되나</h2>
+      <div class="layers r r4">
+        <div class="ly"><span class="nm">손으로<span class="h">MANUAL</span></span><span class="ds">사람이 한 줄을 적거나 명령을 내려 고리를 연다. 가장 흔하고, 통제가 가장 강하다.</span></div>
+        <div class="ly"><span class="nm">정해진 때에<span class="h">SCHEDULE</span></span><span class="ds">매일 아침처럼 정한 시각에 고리가 스스로 깨어 돈다. 클로드 코드의 루틴·예약.</span></div>
+        <div class="ly"><span class="nm">사건이 생기면<span class="h">HOOK</span></span><span class="ds">파일이 바뀌거나 무슨 일이 일어나면 훅(hook)이 고리를 건다. 사람 없이 반응한다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.2rem;">
+        <p class="strong">시작을 정하는 일은, 사람이 얼마나 손을 떼도 되는지를 정하는 일이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14b · 고리를 짜는 네 걸음 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">VI</span> · 직접 짜보기</p>
+      <h2 class="title r r2">고리를 짜는 네 걸음</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">끝을 그린다<span class="h">DONE</span></span><span class="ds">"다 됐다"가 무엇인지 한 문장으로 먼저 정한다. 끝이 없으면 고리는 멈추지 않는다.</span></div>
+        <div class="ly"><span class="nm">한 바퀴<span class="h">CYCLE</span></span><span class="ds">무엇을 건네고(프롬프트) → 무엇을 시키고(도구) → 무엇을 돌려받나(결과). 한 사이클의 모양을 정한다.</span></div>
+        <div class="ly"><span class="nm">검증을 끼운다<span class="h">CHECK</span></span><span class="ds">매 바퀴 '맞게 갔나'를 무엇으로 확인할지 정한다. 테스트·대조·기준 통과 — 고리 속의 눈.</span></div>
+        <div class="ly"><span class="nm">자리와 멈춤<span class="h">GUARD</span></span><span class="ds">나는 고리 안인가 위인가. 막히면 어떻게 하나(재시도·사람 호출), 어디서 멈추나(완료·한계)를 미리 정해 둔다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">이 네 걸음이면, '대화'가 '설계'가 된다.</p>
       </div>
     </div>
   </section>
@@ -461,7 +544,7 @@
 
 </div>
 
-<div class="counter" id="counter">01 / 15</div>
+<div class="counter" id="counter">01 / 19</div>
 <button class="nav prev" id="prev" aria-label="이전">‹</button>
 <button class="nav next" id="next" aria-label="다음">›</button>
 <div class="hint">← → · 스페이스 이동</div>
