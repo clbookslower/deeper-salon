@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 수사 가이드 — 읽기를 편집하여 내 책 한 권으로</title>
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 수사 가이드 — 읽기를 편집하여 내 책 한 권으로" />
+<meta property="og:description" content="리딩 가이드(에디톨로지 함께 읽기) + 라이팅 가이드(모닝페이지에서 Book-to-Brand까지) — 수사(修辭) 전 과정 안내" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 수사 가이드 — 읽기를 편집하여 내 책 한 권으로" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFE9DB;        /* 따뜻한 오프화이트 */
+    --paper2:#F4F0E5;
+    --ink:#1E1A12;          /* 따뜻한 근접 흑 */
+    --ink-soft:#544E40;
+    --ink-faint:#938A76;
+    --blue:#1C2A47;         /* 수사 — 깊은 밤하늘 네이비 */
+    --blue-deep:#141E33;
+    --red:#BE4332;          /* 논리에서 잇는 작은 점 — 절제 */
+    --gold:#C2943A;         /* 별빛 골드 — 가라앉힌 */
+    --line:#CBC1AD;         /* 부드러운 웜 그레이 괘선 */
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans KR", sans-serif; line-height:1.7;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+
+  .wrap{max-width:60rem; margin:0 auto; background:var(--paper);
+    border-left:1px solid rgba(23,21,15,.12); border-right:1px solid rgba(23,21,15,.12);
+    min-height:100vh;}
+  .pad{padding:0 clamp(1.2rem,5vw,3.4rem);}
+
+  /* ── 상단 바 ── */
+  .topbar{display:flex; align-items:center; justify-content:space-between;
+    border-bottom:3px solid var(--line); padding:.9rem clamp(1.2rem,5vw,3.4rem);}
+  .mark{display:flex; align-items:center; gap:.5rem;}
+  .mark .sq{width:13px; height:13px; background:var(--red);}
+  .mark .ci{width:13px; height:13px; border-radius:50%; background:var(--blue);}
+  .mark .tr{width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:13px solid var(--gold);}
+  .mark .nm{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.72rem; letter-spacing:.32em; margin-left:.4rem;}
+  .topbar .ph{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.66rem; letter-spacing:.34em; color:var(--ink-soft); text-transform:uppercase;}
+
+  /* ── 히어로 ── */
+  .hero{position:relative; border-bottom:3px solid var(--line); overflow:hidden;}
+  .hero .grid{display:grid; grid-template-columns:1.15fr .85fr; min-height:clamp(20rem,46vw,27rem);}
+  .hero .left{padding:clamp(2rem,5vw,3.4rem) clamp(1.2rem,5vw,3.4rem); display:flex; flex-direction:column; justify-content:center; border-right:3px solid var(--line);}
+  .hero .right{background:var(--blue); position:relative;}
+  .hero .eyebrow{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:clamp(.62rem,1.4vw,.74rem); letter-spacing:.3em; text-transform:uppercase; color:var(--red); margin-bottom:1.1rem;}
+  .hero h1{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.85rem,5.2vw,3.1rem); line-height:1.18; letter-spacing:-.015em;}
+  .hero h1 .blue{color:var(--blue);}
+  .hero .han{font-family:"Black Han Sans",sans-serif; font-weight:400;}
+  .hero .latin{font-family:"Space Grotesk",sans-serif; font-weight:400; font-size:clamp(.84rem,1.8vw,1.05rem); letter-spacing:.04em; color:var(--ink-soft); margin-top:1.2rem;}
+  .hero .guides{display:flex; gap:.5rem; margin-top:1.2rem; flex-wrap:wrap;}
+  .hero .guides span{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; padding:.32rem .65rem; border:2px solid var(--line);}
+  .hero .guides .r{background:var(--blue); color:#fff; border-color:var(--blue);}
+  .hero .guides .w{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+  .hero .book{font-size:clamp(.78rem,1.6vw,.92rem); color:var(--ink-soft); margin-top:1.6rem; line-height:1.6; padding-top:1rem; border-top:1px solid rgba(23,21,15,.18);}
+  .hero .book b{color:var(--ink); font-weight:600;}
+
+  /* 우측 바우하우스 컴포지션 */
+  .compose{position:absolute; inset:0;}
+  .compose .bigcircle{position:absolute; width:62%; aspect-ratio:1; border-radius:50%; background:var(--gold); right:-12%; top:14%;}
+  .compose .bar{position:absolute; left:0; bottom:22%; width:70%; height:14%; background:var(--red);}
+  .compose .tri{position:absolute; left:18%; top:6%; width:0; height:0; border-left:34px solid transparent; border-right:34px solid transparent; border-bottom:60px solid var(--paper); opacity:.92;}
+  .compose .star{position:absolute; right:20%; bottom:14%; width:46px; height:46px; color:var(--paper);}
+  .compose .star svg{width:100%; height:100%;}
+  .compose .ring{position:absolute; left:8%; bottom:8%; width:56px; height:56px; border:3px solid var(--paper); border-radius:50%; opacity:.85;}
+
+  /* ── 섹션 라벨 ── */
+  .band{display:flex; align-items:stretch; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:transparent;}
+  .band .tab{background:transparent; color:var(--blue); font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; padding:.7rem clamp(1.2rem,5vw,3.4rem); display:flex; align-items:center; border-right:1px solid var(--line);}
+  .band .ko{padding:.7rem 1.4rem; font-weight:600; font-size:.86rem; letter-spacing:.06em; display:flex; align-items:center; color:var(--ink);}
+
+  /* ── 여는 글 ── */
+  .lede{padding:clamp(2rem,4.5vw,3rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line); display:grid; grid-template-columns:1fr; gap:1rem;}
+  .lede p{font-size:clamp(.96rem,1.7vw,1.12rem); line-height:1.85; color:var(--ink); max-width:42rem;}
+  .lede em{font-style:normal; color:var(--blue); font-weight:600;}
+  .pull{margin:.6rem 0; background:var(--blue); color:var(--paper);
+    padding:clamp(1.3rem,3.5vw,2rem) clamp(1.4rem,4vw,2.4rem); position:relative;}
+  .pull .q{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.3rem,3.4vw,2rem); line-height:1.3; letter-spacing:-.01em; color:var(--paper);}
+  .pull .who{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-top:.9rem;}
+  .pull .dot{position:absolute; top:1.3rem; right:1.4rem; width:18px; height:18px; border-radius:50%; background:var(--gold);}
+
+  /* ── 주차 ── */
+  .weeks{border-bottom:3px solid var(--line);}
+  .wk{display:grid; grid-template-columns:clamp(7rem,20vw,11rem) 1fr; border-bottom:1px solid rgba(23,21,15,.18);}
+  .wk:last-child{border-bottom:none;}
+  .wk .numcol{background:transparent; color:var(--blue); border-right:1px solid var(--line);
+    display:flex; flex-direction:column; justify-content:space-between; padding:clamp(1.3rem,3vw,1.9rem) clamp(.9rem,2.5vw,1.4rem); position:relative; overflow:hidden;}
+  .wk .numcol .wkno{font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(2.8rem,8vw,4.6rem); line-height:.9; letter-spacing:-.04em; color:var(--blue);}
+  .wk .numcol .wlab{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-faint);}
+  .wk .numcol .shape{position:absolute; right:-12px; bottom:-12px; width:46px; height:46px; border-radius:50%; border:1.5px solid rgba(28,42,71,.16);}
+  .wk:nth-child(2) .numcol .shape{border-radius:0;}
+  .wk:nth-child(3) .numcol .shape{border-radius:0; transform:rotate(45deg);}
+
+  .wk .info{padding:clamp(1.2rem,3vw,1.7rem) clamp(1.2rem,3.4vw,2rem);}
+  .wk .part{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.1rem,2.5vw,1.4rem); color:var(--ink); line-height:1.25; letter-spacing:-.01em;}
+  .wk .range{font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:.74rem; letter-spacing:.03em; color:var(--blue); margin:.55rem 0 1rem; display:inline-block; border-bottom:2px solid var(--gold); padding-bottom:.2rem;}
+  .wk .range .pg{color:var(--ink-faint); font-weight:400; border:none;}
+  .wk .read{font-size:clamp(.85rem,1.5vw,.98rem); color:var(--ink-soft); margin:.6rem 0 1rem; line-height:1.55;}
+  .wk .read .rt{display:inline-block; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.56rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:var(--blue); padding:.14rem .5rem; margin-right:.5rem; vertical-align:.14em;}
+  .wk .read b{color:var(--ink); font-weight:700;}
+  .wk .read .rg{color:var(--ink-faint);}
+  .wk .chips{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.05rem;}
+  .wk .chip{font-size:.82rem; line-height:1.4; color:var(--ink-soft); background:var(--paper2); border:1px solid rgba(23,21,15,.16); padding:.28rem .6rem; border-radius:1px;}
+  .wk .chip b{color:var(--blue); font-weight:700; font-family:"Archivo",sans-serif; margin-right:.25rem;}
+  .wk .why{font-size:clamp(.9rem,1.5vw,1.0rem); line-height:1.7; color:var(--ink); padding-top:.9rem; border-top:1px solid rgba(23,21,15,.14);}
+  .wk .why .tag{display:inline-block; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); background:transparent; border-left:2px solid var(--gold); padding:.04rem 0 .04rem .5rem; margin-right:.55rem; vertical-align:.06em;}
+
+  /* 수료식 */
+  .wk.fin{grid-template-columns:1fr;}
+  .wk.fin .full{background:var(--blue-deep); color:var(--paper); padding:clamp(2rem,5vw,3.2rem) clamp(1.4rem,5vw,3rem); text-align:center; position:relative; overflow:hidden;}
+  .wk.fin .full .wkno{font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(2.4rem,7vw,3.6rem); line-height:1; letter-spacing:-.03em;}
+  .wk.fin .full .part{color:#fff; font-size:clamp(1.4rem,4vw,2rem); margin-top:.2rem;}
+  .wk.fin .full .body{max-width:34rem; margin:1.1rem auto 0; font-size:clamp(.96rem,1.7vw,1.12rem); line-height:1.8; color:rgba(255,255,255,.94);}
+  .wk.fin .full .body em{font-style:normal; font-weight:700; color:var(--gold);}
+  .wk.fin .full .fstar{width:40px; height:40px; color:var(--gold); margin:0 auto 1rem;}
+  .wk.fin .full .fstar svg{width:100%; height:100%;}
+  .wk.fin .full .gdot{position:absolute; width:120px; height:120px; border-radius:50%; border:2px solid rgba(229,165,38,.4); right:-40px; top:-40px;}
+  .wk.fin .full .rsq{position:absolute; width:60px; height:60px; background:rgba(212,58,43,.5); left:-20px; bottom:-20px;}
+
+  /* ── 읽는 법 ── */
+  .how{padding:clamp(2rem,4.5vw,3rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line);}
+  .how h3{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.2rem,2.6vw,1.5rem); letter-spacing:-.01em;}
+  .how h3 .en{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.6em; letter-spacing:.2em; color:var(--ink-faint); text-transform:uppercase; margin-left:.6rem;}
+  .how .sub{color:var(--ink-soft); font-size:.92rem; margin:.35rem 0 1.6rem;}
+  .how ol{list-style:none; counter-reset:h; display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 2rem;}
+  .how li{counter-increment:h; position:relative; padding-left:2.6rem; font-size:clamp(.9rem,1.5vw,1.0rem); line-height:1.6; color:var(--ink-soft);}
+  .how li::before{content:counter(h,decimal-leading-zero); position:absolute; left:0; top:0;
+    font-family:"Archivo",sans-serif; font-weight:900; font-size:1.4rem; color:var(--blue); line-height:1;}
+  .how li b{color:var(--ink); font-weight:700;}
+
+  /* ── 푸터 ── */
+  .foot{padding:clamp(2.2rem,5vw,3.4rem) clamp(1.2rem,5vw,3.4rem); text-align:center; position:relative;}
+  .foot .ep{font-family:"IBM Plex Sans KR",sans-serif; font-style:italic; color:var(--ink-soft); font-size:clamp(.92rem,1.7vw,1.08rem); line-height:1.6; max-width:34rem; margin:0 auto 1.4rem;}
+  .foot .final{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.25rem,3vw,1.7rem); line-height:1.35; letter-spacing:-.01em;}
+  .foot .final .blue{color:var(--blue);}
+  .foot .trio{display:flex; gap:.6rem; justify-content:center; margin:1.8rem 0 1.2rem;}
+  .foot .trio span{width:16px; height:16px;}
+  .foot .trio .a{background:var(--red);}
+  .foot .trio .b{background:var(--blue); border-radius:50%;}
+  .foot .trio .c{width:0;height:0;background:none;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid var(--gold);}
+  .foot .sign{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.64rem; letter-spacing:.3em; text-transform:uppercase; color:var(--blue);}
+  .foot .src{font-family:"Space Grotesk",sans-serif; font-size:.6rem; color:var(--ink-faint); letter-spacing:.02em; margin-top:1rem; line-height:1.7;}
+
+  /* ── 분더카머 ── */
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .turn{transform-origin:center; animation:spin 38s linear infinite;}
+  .konzept{padding:clamp(2.2rem,5vw,3.4rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line);
+    display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(1.6rem,4vw,3rem); align-items:center;}
+  .konzept .txt h3{font-family:"IBM Plex Sans KR",sans-serif; font-weight:700; font-size:clamp(1.45rem,3.4vw,2.1rem); line-height:1.18; letter-spacing:-.015em;}
+  .konzept .txt h3 .en{display:block; font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.4em; letter-spacing:.24em; text-transform:uppercase; color:var(--red); margin-bottom:.55rem;}
+  .konzept .txt p{font-size:clamp(.94rem,1.6vw,1.08rem); line-height:1.82; color:var(--ink); margin-top:.95rem; max-width:34rem;}
+  .konzept .txt em{font-style:normal; color:var(--blue); font-weight:600;}
+  .konzept .txt .hl{background:linear-gradient(transparent 58%, rgba(229,165,38,.5) 58%); font-weight:600;}
+  .cabinet{aspect-ratio:1/1; width:100%; max-width:25rem; margin:0 auto; border:3px solid var(--line); background:var(--paper2);
+    display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr);}
+  .cabinet .cell{border-right:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:16%;}
+  .cabinet .cell:nth-child(3n){border-right:none;}
+  .cabinet .cell:nth-child(n+7){border-bottom:none;}
+  .cabinet .cell svg{width:100%; height:100%; overflow:visible;}
+
+  /* ── 라이팅 가이드 ── */
+  .write{padding:clamp(2rem,4.5vw,3rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line);}
+  .write .wintro{font-size:clamp(.96rem,1.7vw,1.12rem); line-height:1.8; color:var(--ink); max-width:42rem; margin-bottom:clamp(1.4rem,3vw,2rem);}
+  .write .wintro em{font-style:normal; color:var(--blue); font-weight:700;}
+  .flow{display:flex; flex-direction:column; align-items:stretch; gap:0;}
+  .fstep{display:grid; grid-template-columns:clamp(3.4rem,9vw,4.8rem) 1fr; border:1px solid var(--line); background:transparent;}
+  .fstep .num{background:transparent; color:var(--blue); border-right:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(1.3rem,3.4vw,1.9rem);}
+  .fstep .ct{padding:clamp(.85rem,2.2vw,1.2rem) clamp(1rem,2.6vw,1.5rem);}
+  .fstep .t{font-weight:700; font-size:clamp(1rem,1.9vw,1.18rem); color:var(--ink); line-height:1.3;}
+  .fstep .t .en{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.56em; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-left:.45rem;}
+  .fstep .s{font-size:clamp(.86rem,1.5vw,.96rem); color:var(--ink-soft); line-height:1.6; margin-top:.3rem;}
+  .farrow{align-self:center; width:0; height:0; border-left:10px solid transparent; border-right:10px solid transparent; border-top:13px solid var(--blue); margin:.55rem 0;}
+  .fstep.brand{background:var(--blue); border-color:var(--blue);}
+  .fstep.brand .num{background:var(--gold); color:var(--ink);}
+  .fstep.brand .t,.fstep.brand .s{color:#fff;}
+  .fstep.brand .t .en{color:rgba(255,255,255,.7);}
+
+  /* ── 메타언어 / 창조적 시선 ── */
+  .meta{padding:clamp(2.2rem,5vw,3.4rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line);}
+  .eq{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:.7rem; align-items:stretch; margin-bottom:clamp(1.6rem,3.5vw,2.4rem);}
+  .eq .term{border:2px solid var(--line); background:var(--paper2); padding:clamp(.9rem,2.4vw,1.3rem) .8rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:.45rem;}
+  .eq .term .ic{width:clamp(26px,5vw,34px); height:clamp(26px,5vw,34px);}
+  .eq .term .ic svg{width:100%; height:100%; overflow:visible;}
+  .eq .term b{font-weight:700; font-size:clamp(.95rem,1.8vw,1.15rem); color:var(--ink); line-height:1.2;}
+  .eq .term .en{font-family:"Space Grotesk",sans-serif; font-weight:500; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint);}
+  .eq .term.hot{background:var(--blue); border-color:var(--blue);}
+  .eq .term.hot b{color:#fff;}
+  .eq .term.hot .en{color:rgba(255,255,255,.72);}
+  .eq .op{display:flex; align-items:center; justify-content:center; font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(1.4rem,3.5vw,2rem); color:var(--red);}
+  .meta .mtxt p{font-size:clamp(.96rem,1.7vw,1.1rem); line-height:1.85; color:var(--ink); max-width:42rem; margin:0 0 1rem;}
+  .meta .mtxt p:last-child{margin:0;}
+  .meta .mtxt em{font-style:normal; color:var(--blue); font-weight:700;}
+  .meta .mtxt .bh{background:linear-gradient(transparent 58%, rgba(229,165,38,.5) 58%); font-weight:600; color:var(--ink);}
+
+  /* ── 레퍼런스 ── */
+  .refs{padding:clamp(2rem,4.5vw,3rem) clamp(1.2rem,5vw,3.4rem); border-bottom:3px solid var(--line);}
+  .refs .rintro{font-size:clamp(.92rem,1.6vw,1.05rem); line-height:1.75; color:var(--ink-soft); max-width:40rem; margin-bottom:clamp(1.2rem,3vw,1.8rem);}
+  .refgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem;}
+  .bk{border:2px solid var(--line); background:var(--paper2); padding:clamp(.9rem,2.2vw,1.15rem) clamp(.9rem,2.4vw,1.2rem);}
+  .bk .bn{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);}
+  .bk .bt{font-weight:700; font-size:clamp(.95rem,1.7vw,1.08rem); color:var(--ink); line-height:1.3; margin-top:.45rem;}
+  .bk .ba{font-size:.85rem; color:var(--ink-soft); margin-top:.25rem;}
+  .bk .bo{font-family:"Space Grotesk",sans-serif; font-style:italic; font-size:.66rem; letter-spacing:.02em; color:var(--ink-faint); margin-top:.35rem;}
+  .bk.main{background:var(--blue); border-color:var(--blue);}
+  .bk.main .bn{color:var(--gold);}
+  .bk.main .bt,.bk.main .ba{color:#fff;}
+  .bk.main .bo{color:rgba(255,255,255,.6);}
+
+  /* ── 라이팅 시기 구분 ── */
+  .fphase{border-left:4px solid var(--blue); background:var(--paper2); padding:.55rem .85rem; margin-bottom:.55rem; display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap;}
+  .fphase.late{border-left-color:var(--gold);}
+  .fphase .mon{font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(1rem,2.6vw,1.45rem); color:var(--blue); letter-spacing:-.02em;}
+  .fphase.late .mon{color:#B07A12;}
+  .fphase .lab{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);}
+
+  @media(max-width:680px){
+    .hero .grid{grid-template-columns:1fr;}
+    .hero .left{border-right:none; border-bottom:3px solid var(--line);}
+    .hero .right{min-height:11rem;}
+    .how ol{grid-template-columns:1fr;}
+    .wk{grid-template-columns:5.4rem 1fr;}
+    .konzept{grid-template-columns:1fr;}
+    .eq{grid-template-columns:1fr; gap:.4rem;}
+    .refgrid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 상단 바 -->
+  <div class="topbar">
+    <div class="mark"><span class="sq"></span><span class="ci"></span><span class="tr"></span><span class="nm">DEEPER</span></div>
+    <span class="ph">修辭 Rhetoric · Reading &amp; Writing</span>
+  </div>
+
+  <!-- 히어로 -->
+  <header class="hero">
+    <div class="grid">
+      <div class="left">
+        <p class="eyebrow">디퍼 언브랜딩 살롱 · 修辭 수사 가이드</p>
+        <h1>경이를 편집하여,<br><span class="blue">나의 별을 낳다</span></h1>
+        <div class="guides"><span class="r">리딩 가이드</span><span class="w">라이팅 가이드</span></div>
+        <p class="latin">Editology — 창조는 편집이다</p>
+        <p class="book">메인 텍스트 · 김정운, <b>『에디톨로지: 창조는 편집이다』</b> (21세기북스)<br>프롤로그 · 1–3부 · 에필로그</p>
+      </div>
+      <div class="right">
+        <div class="compose">
+          <div class="bigcircle"></div>
+          <div class="tri"></div>
+          <div class="bar"></div>
+          <div class="ring"></div>
+          <div class="star">
+            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 6 L60 40 L94 50 L60 60 L50 94 L40 60 L6 50 L40 40 Z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 여는 글 -->
+  <section class="lede">
+    <p>문법에서 나만의 언어를 길어 올렸고, 논리에서 그 언어가 스스로 도는 구조를 지었습니다. 이제 <em>수사</em>예요. 안에서 빚은 것을 밖으로 꺼내, 오직 나만의 목소리로 들려주는 일.</p>
+    <div class="pull">
+      <span class="dot"></span>
+      <p class="q">“춤추는 별을 낳으려면,<br>그대 안에 혼돈을 지녀야 한다.”</p>
+      <p class="who">— 프리드리히 니체</p>
+    </div>
+    <p>그동안 모아 온 흩어진 경이들 — 메모와 문장과 새벽의 일기, <em>분더카머</em>에 쌓인 조각들. 그 혼돈을 편집할 때 비로소 나의 별이 솟습니다. 세상의 모든 창조는 이미 있는 것들의 또 다른 편집이라고, 함께 읽을 책이 말해요. 그러니 이 책으로 <em>편집의 눈</em>을 빌립니다.</p>
+    <p>책은 끝까지 읽는 게 아니에요. 그래도 함께 읽기에, 길을 잃지 않게 <em>주차마다 한 부씩</em> 범위를 정합니다. 완독에 애쓰지 마세요 — 마음에 걸리는 한 장에 오래 머무는 편이, 별 하나를 낳기엔 낫습니다.</p>
+  </section>
+
+  <!-- 분더카머 -->
+  <div class="band">
+    <span class="tab">Wunderkammer</span>
+    <span class="ko">경이의 방 — 왜 전체를 편집하는가</span>
+  </div>
+
+  <section class="konzept">
+    <div class="txt">
+      <h3><span class="en">Wunderkammer · 16세기</span>분더카머, 경이의 방</h3>
+      <p>박물관이 생기기 전, 수집가들은 한 방에 세상을 모았습니다. 산호와 해골, 천문 기구와 머나먼 땅의 진기한 것들 — <em>분더카머</em>, 경이의 방이라 불렀지요.</p>
+      <p>이 방의 비밀은 사물에 있지 않습니다. 분류표가 아니라 <span class="hl">수집가 자신의 연상으로 배열한 자리</span>, 사물과 사물 <em>사이</em>에서 경이가 솟았습니다. 그래서 한 칸을 옮기면 방 전체의 의미가 달라집니다 — 부분이 아니라 <em>전체를 편집</em>해야 하는 까닭이에요.</p>
+      <p>수사는 당신만의 분더카머를 짓는 일입니다. 에디톨로지로 길어 올린 것들을 방에 들이고, 나만의 자리에 놓고, 빙글 돌립니다. 그 방은 멈추지 않고 돌며 매번 새 경이를 선물하고, 끝내 <em>당신의 책 한 권</em>이 됩니다.</p>
+    </div>
+    <div class="cabinet">
+      <div class="cell" style="color:var(--blue)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="20" cy="20" r="15"/></svg></div>
+      <div class="cell" style="color:var(--red)"><svg viewBox="0 0 40 40" fill="currentColor"><path d="M20 5 L35 33 L5 33 Z"/></svg></div>
+      <div class="cell" style="color:var(--ink)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="7.5"/></svg></div>
+      <div class="cell" style="color:var(--gold)"><svg viewBox="0 0 40 40" fill="currentColor"><rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)"/></svg></div>
+      <div class="cell" style="color:var(--gold)"><svg class="turn" viewBox="0 0 40 40" fill="currentColor"><path d="M20 3 L24 16 L37 20 L24 24 L20 37 L16 24 L3 20 L16 16 Z"/></svg></div>
+      <div class="cell" style="color:var(--blue)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 24 q5 -11 10 0 t10 0 t10 0"/></svg></div>
+      <div class="cell" style="color:var(--red)"><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 26 a14 14 0 0 1 28 0 Z"/></svg></div>
+      <div class="cell" style="color:var(--ink)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M20 7 V33 M7 20 H33"/></svg></div>
+      <div class="cell" style="color:var(--blue)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="7" y="7" width="26" height="26"/><circle cx="20" cy="20" r="3" fill="currentColor" stroke="none"/></svg></div>
+    </div>
+  </section>
+
+  <!-- 창조적 시선 / 메타언어 -->
+  <div class="band">
+    <span class="tab">Meta-Language</span>
+    <span class="ko">창조적 시선 — AI로 메타언어를 짓다</span>
+  </div>
+
+  <section class="meta">
+    <div class="eq">
+      <div class="term">
+        <span class="ic" style="color:var(--blue)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3"><circle cx="20" cy="20" r="14"/></svg></span>
+        <b>편집의 단위</b><span class="en">unit</span>
+      </div>
+      <div class="op">×</div>
+      <div class="term">
+        <span class="ic" style="color:var(--red)"><svg viewBox="0 0 40 40" fill="currentColor"><path d="M20 5 L35 33 L5 33 Z"/></svg></span>
+        <b>편집의 차원</b><span class="en">level</span>
+      </div>
+      <div class="op">=</div>
+      <div class="term hot">
+        <span class="ic" style="color:var(--gold)"><svg viewBox="0 0 40 40" fill="currentColor"><path d="M20 3 L24 16 L37 20 L24 24 L20 37 L16 24 L3 20 L16 16 Z"/></svg></span>
+        <b>메타언어</b><span class="en">meta-language</span>
+      </div>
+    </div>
+    <div class="mtxt">
+      <p>에디톨로지의 본질은 한 문장으로 모입니다. 창조란, <em>편집의 단위</em>가 <em>편집의 차원</em>에 따라 전혀 새롭게 얽혀드는 일. 같은 재료라도 차원이 한 칸 높아지면 그전엔 없던 것이 솟습니다. 그 솟아오른 결과물이 <em>메타언어</em> — 세상을 한 단계 위에서 묶어 보는, 나만의 상위 언어예요.</p>
+      <p>김정운은 『에디톨로지』 10년 뒤 『창조적 시선』에서 그 비밀을 <span class="bh">바우하우스</span>에서 찾았습니다. 추상화의 탄생과 편집의 차원이 만난 자리에서 ‘창조성’이 태어났다고. (이 가이드가 바우하우스의 옷을 입은 까닭이에요.)</p>
+      <p>그는 1,028쪽 한 권을 통째로 ‘메타언어를 짓는 새로운 글쓰기 실험’으로 썼습니다. 우리는 거기에 한 손을 더합니다 — <em>AI</em>. AI를 편집의 새 도구이자 대화 상대로 삼아, 편집의 차원을 끌어올리고 나만의 메타언어를 짓는 일. 그것이 이번 수사예요.</p>
+    </div>
+  </section>
+
+  <!-- 섹션 라벨 -->
+  <div class="band">
+    <span class="tab">Curriculum</span>
+    <span class="ko">주차별 커리큘럼 &amp; 읽을 범위</span>
+  </div>
+
+  <!-- 주차 -->
+  <div class="weeks">
+
+    <!-- 1주차 -->
+    <article class="wk">
+      <div class="numcol"><span class="wkno">01</span><span class="wlab">수사 · 1</span><span class="shape"></span></div>
+      <div class="info">
+        <h2 class="part">내가 서 있을 자리</h2>
+        <p class="read"><span class="rt">읽기</span><b>에디톨로지 1부</b> 지식과 문화의 에디톨로지 <span class="rg">— 프롤로그 + 01–10장</span></p>
+        <div class="chips">
+          <span class="chip"><b>02</b>창조의 본질은 낯설게 하기다</span>
+          <span class="chip"><b>04</b>누구나 천재가 될 수 있다, 쥐(마우스) 때문이다</span>
+          <span class="chip"><b>06</b>노트와 카드의 차이는 엄청나다</span>
+          <span class="chip"><b>08</b>예능은 자막으로 완성된다</span>
+        </div>
+        <p class="why"><span class="tag">자리 잡기</span>지식 권력은 더 이상 대학에 있지 않습니다. 마우스를 쥔 누구나 편집하고 창조하는 시대 — 그러니 내가 설 자리는 주어지는 게 아니라 편집해 만드는 것입니다. 낯설게 놓는 손이 그 자리를 짓습니다.</p>
+      </div>
+    </article>
+
+    <!-- 2주차 -->
+    <article class="wk">
+      <div class="numcol"><span class="wkno">02</span><span class="wlab">수사 · 2</span><span class="shape"></span></div>
+      <div class="info">
+        <h2 class="part">지속 가능한 나</h2>
+        <p class="read"><span class="rt">읽기</span><b>에디톨로지 2부</b> 관점과 장소의 에디톨로지 <span class="rg">— 01–10장</span></p>
+        <div class="chips">
+          <span class="chip"><b>01</b>관점의 발견과 서구 합리성의 신화</span>
+          <span class="chip"><b>03</b>원근법은 통제 강박이다</span>
+          <span class="chip"><b>06</b>공간 편집에 따라 심리는 달라진다</span>
+          <span class="chip"><b>10</b>백화점과 편집숍</span>
+        </div>
+        <p class="why"><span class="tag">오래 가기</span>같은 세상도 어디에서 보느냐로 달라집니다. 원근법은 하나의 시점을 고른 편집이었어요. 흔들리지 않고 오래 갈 나 — 그 지속 가능함은 나만의 관점, 내가 선택해 선 자리에서 옵니다.</p>
+      </div>
+    </article>
+
+    <!-- 3주차 -->
+    <article class="wk">
+      <div class="numcol"><span class="wkno">03</span><span class="wlab">수사 · 3</span><span class="shape"></span></div>
+      <div class="info">
+        <h2 class="part">나다운 언어로 단단하게</h2>
+        <p class="read"><span class="rt">읽기</span><b>에디톨로지 3부</b> 마음과 심리학의 에디톨로지 <span class="rg">— 01–10장 + 에필로그</span></p>
+        <div class="chips">
+          <span class="chip"><b>01</b>개인은 편집된 개념이다</span>
+          <span class="chip"><b>02</b>‘나’는 내 기억이 편집된 결과다</span>
+          <span class="chip"><b>04</b>천재는 편집될 뿐이다</span>
+          <span class="chip"><b>10</b>책은 끝까지 읽는 것이 아니다</span>
+        </div>
+        <p class="why"><span class="tag">단단하게</span>‘나’조차 편집된 서사입니다. 그러니 나다운 언어도 발견이 아니라 편집 — 발췌하고 연결해 단단하게 굳히는 일이에요. 마지막 장이 말합니다, 책은 끝까지 읽는 게 아니라고. 내 것으로 다시 짜는 손에서 나의 언어가 섭니다.</p>
+      </div>
+    </article>
+
+    <!-- 4주차 · 수료식 -->
+    <article class="wk fin">
+      <div class="full">
+        <div class="gdot"></div><div class="rsq"></div>
+        <div class="fstar"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M50 6 L60 40 L94 50 L60 60 L50 94 L40 60 L6 50 L40 40 Z"/></svg></div>
+        <div class="wkno">04</div>
+        <h2 class="part">수료식</h2>
+        <p class="body">문법·논리·수사 — 트리비움 한 바퀴를 함께 돈 우리가, 오프라인에서 얼굴을 마주합니다. <em>책을 덮고, 서로를 펼치는 날.</em> 가장 나다운 노래 한 소절씩, 들려주는 자리예요.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- 읽는 법 -->
+  <section class="how">
+    <h3>에디톨로지식으로 읽는 법 <span class="en">How to read</span></h3>
+    <p class="sub">완독이 목표가 아닙니다 — 편집이 목표입니다.</p>
+    <ol>
+      <li><b>한 부씩 가볍게 훑되</b>, 마음에 걸리는 한두 장은 천천히. 진도에 쫓기지 마세요.</li>
+      <li><b>밑줄과 발췌.</b> 좋은 문장은 옮겨 적습니다. 노트가 아니라 <b>카드</b>처럼 — 떼었다 붙일 수 있게.</li>
+      <li><b>내 씨앗과 잇기.</b> 읽은 한 줄을 내 일·내 원천 텍스트와 연결합니다. “이건 나의 무엇과 닿나?”</li>
+      <li><b>AI에게 건네기.</b> 발췌한 카드를 에이전트에게 건네 대화해 보세요. 편집의 손이 하나 더 생깁니다.</li>
+      <li><b>사막에서 나누기.</b> 한 주에 한 장면씩, 사막 안에서 짧게. 길게 요약하지 않아도 됩니다.</li>
+    </ol>
+  </section>
+
+  <!-- 레퍼런스 -->
+  <div class="band">
+    <span class="tab">References</span>
+    <span class="ko">함께 읽으면 좋은 책 — 수사</span>
+  </div>
+
+  <section class="refs">
+    <p class="rintro">메인 텍스트 곁에 두면 좋은 책들이에요. 다 읽지 않아도 됩니다 — 분더카머에 한 권씩 들이세요. (디퍼 1기 커리큘럼 도서 목록에서.)</p>
+    <div class="refgrid">
+      <div class="bk main"><span class="bn">메인 텍스트</span><p class="bt">에디톨로지</p><p class="ba">김정운</p><p class="bo">Editology · 창조는 편집이다</p></div>
+      <div class="bk"><span class="bn">01</span><p class="bt">창조적 시선</p><p class="ba">김정운</p><p class="bo">바우하우스 · 메타언어</p></div>
+      <div class="bk"><span class="bn">02</span><p class="bt">담론과 진실</p><p class="ba">미셸 푸코</p><p class="bo">Discourse &amp; Truth</p></div>
+      <div class="bk"><span class="bn">03</span><p class="bt">기술복제시대의 예술작품</p><p class="ba">발터 벤야민</p><p class="bo">Das Kunstwerk</p></div>
+      <div class="bk"><span class="bn">04</span><p class="bt">어떻게 더불어 살 것인가</p><p class="ba">롤랑 바르트</p><p class="bo">Comment vivre ensemble</p></div>
+      <div class="bk"><span class="bn">05</span><p class="bt">1984</p><p class="ba">조지 오웰</p><p class="bo">Nineteen Eighty-Four</p></div>
+    </div>
+  </section>
+
+  <!-- 라이팅 가이드 -->
+  <div class="band">
+    <span class="tab">Writing Guide</span>
+    <span class="ko">수사 라이팅 가이드 — 내 책 한 권으로</span>
+  </div>
+
+  <section class="write">
+    <p class="wintro">창조적 시선으로 분더카머를 채웠다면, 라이팅은 그것으로 한 권을 짓는 일입니다. <em>수사의 끝은 쓰기</em> — 당신의 책 한 권이에요.</p>
+    <div class="flow">
+      <div class="fphase"><span class="mon">7월</span><span class="lab">여기까지 — 초고 모으기</span></div>
+      <div class="fstep">
+        <div class="num">01</div>
+        <div class="ct"><p class="t">모닝 페이지 + 별지기 저널 <span class="en">Daily Pages</span></p><p class="s">매일 손으로 길어 올린 씨앗과 재료. 분더카머에 들일 것들이 여기서 모입니다.</p></div>
+      </div>
+      <div class="farrow"></div>
+      <div class="fstep">
+        <div class="num">02</div>
+        <div class="ct"><p class="t">초고 · 나의 분더카머 <span class="en">First Draft</span></p><p class="s">분더카머의 글들을 엮으면, 그게 곧 첫 원고예요. 완성이 아니라 — 일단 전체를 한 번 통과시킵니다. <b>7월은 여기까지.</b></p></div>
+      </div>
+      <div class="fphase late"><span class="mon">8월~</span><span class="lab">단행본 기획 · Book-to-Brand</span></div>
+      <div class="fstep">
+        <div class="num">03</div>
+        <div class="ct"><p class="t">단행본 기획 · 제목 · 목차 <span class="en">Structure</span></p><p class="s">흩어진 초고에 뼈대를 세웁니다. 제목, 목차 — 한 권의 설계도.</p></div>
+      </div>
+      <div class="farrow"></div>
+      <div class="fstep">
+        <div class="num">04</div>
+        <div class="ct"><p class="t">퇴고 <span class="en">Revision</span></p><p class="s">덜어내고 다듬습니다. 가장 나다운 문장만 남을 때까지.</p></div>
+      </div>
+      <div class="farrow"></div>
+      <div class="fstep brand">
+        <div class="num">05</div>
+        <div class="ct"><p class="t">Book-to-Brand <span class="en">Book to Brand</span></p><p class="s">책 한 권이 곧 나의 브랜드가 됩니다. 이름이 세상에 섭니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="foot">
+    <p class="ep">“누구나 살면서 한 번쯤은, 아주 격하게 외로워야 한다.” — 에필로그</p>
+    <p class="final">창조를 편집하세요.<br><span class="blue">당신의 분더카머가 빙글 돌며,<br>매번 경이를 선물할 거예요.</span></p>
+    <div class="trio"><span class="a"></span><span class="b"></span><span class="c"></span></div>
+    <p class="sign">디퍼 언브랜딩 살롱</p>
+    <p class="src">출처 · 김정운 『에디톨로지: 창조는 편집이다』 (21세기북스) 차례 — book21.com / 교보문고</p>
+  </footer>
+
+</div>
+</body>
+</html>
