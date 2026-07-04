@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수사 3주차 과제 — 내 방이 목차가 되는 주</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r3_assignment.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="디퍼 살롱">
+<meta property="og:title" content="수사 3주차 과제 — 내 방이 목차가 되는 주">
+<meta property="og:description" content="에디톨로지 3부 읽기 · 분더카머 방 정돈과 차원 돌리기 · '이 정도면 됐다'의 선 · 초고 v0">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="수사 3주차 과제 — 내 방이 목차가 되는 주">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --navy: #1C2A47;
+  --navy-bg: #E9EDF5;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 680px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--navy-bg); color: var(--navy); }
+.badge-hw { background: var(--gold-bg); color: #854F0B; }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 52px 0 24px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 8px; }
+.chip {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+  background: var(--surface);
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 5px 12px;
+}
+.chip b { color: var(--navy); font-weight: 500; font-family: 'DM Mono', monospace; font-size: 11px; margin-right: 6px; }
+
+.task {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 26px;
+  margin: 24px 0;
+}
+.task-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 12px;
+}
+.task h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.task ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.task ul li {
+  font-size: 14px; color: #444; padding-left: 26px; position: relative; line-height: 1.8;
+}
+.task ul li::before {
+  content: '';
+  position: absolute; left: 0; top: 7px;
+  width: 13px; height: 13px;
+  border: 1.5px solid var(--forest-light);
+  border-radius: 4px;
+}
+.task .hint {
+  margin-top: 14px;
+  background: rgba(44,59,45,0.05);
+  border-left: 2.5px solid var(--forest);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+}
+.task .hint p { font-size: 13px; color: var(--forest); margin: 0; font-style: italic; line-height: 1.8; }
+
+.card-sample {
+  background: var(--gold-bg);
+  border-left: 2.5px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 16px 0 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #5a3800;
+  overflow-x: auto;
+}
+
+.rhythm {
+  margin-top: 52px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.rhythm p { font-size: 13.5px; color: #666; margin: 0; line-height: 2; }
+.rhythm strong { color: var(--ink); }
+
+.close-box {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  margin-top: 56px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: #f0ece4;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+@media (max-width: 600px) { h1 { font-size: 25px; } }
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT 03</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-hw">ASSIGNMENT 03</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사의 달 · 3주차 과제</span>
+    </div>
+    <h1>내 방이 목차가 되는 주</h1>
+    <p class="subtitle">읽기 3부 · 방 정돈과 차원 돌리기 · "이 정도면 됐다"의 선 · 초고 v0</p>
+  </header>
+
+  <p class="lead">이번 주는 새로 쓰는 주와 결이 다릅니다. 이미 쓴 것을 다시 놓는 주 — 방을 정돈하고, 순서를 정하고, 주말에는 초고 v0가 조립됩니다. 네 가지, 가볍게.</p>
+
+  <!-- 1 -->
+  <div class="section-divider">
+    <span class="section-num">01 · READ</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">에디톨로지 3부 + 에필로그 읽기</div>
+
+  <div class="task">
+    <div class="task-label">Reading</div>
+    <h3>마음과 심리학의 에디톨로지 — 01~10장 + 에필로그</h3>
+    <ul>
+      <li>한 부를 가볍게 훑되, 마음에 걸리는 한두 장은 천천히. 완독에 쫓기지 마세요 — 마지막 장의 제목이 이미 허락입니다. <em>책은 끝까지 읽는 것이 아니다.</em></li>
+      <li>좋은 문장은 카드로 발췌합니다 — 떼었다 붙일 수 있게. 여우에게 "정리"라고 하면 씨앗이 되고, 분더카머의 방에도 걸립니다.</li>
+      <li>읽으며 한 번쯤 스스로에게: "'나'도 편집이라면, 내 서사에서 다시 배열하고 싶은 조각은 무엇인가."</li>
+    </ul>
+    <div class="chips">
+      <span class="chip"><b>01</b>개인은 편집된 개념이다</span>
+      <span class="chip"><b>02</b>'나'는 내 기억이 편집된 결과다</span>
+      <span class="chip"><b>04</b>천재는 편집될 뿐이다</span>
+      <span class="chip"><b>10</b>책은 끝까지 읽는 것이 아니다</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="section-divider">
+    <span class="section-num">02 · TURN</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">방 정돈 · 차원 바꿔 돌리기</div>
+
+  <div class="task">
+    <div class="task-label">Wunderkammer</div>
+    <h3>여우에게 "분더카머" — 크게 한 바퀴, 그리고 다른 차원으로</h3>
+    <ul>
+      <li>여우에게 <strong>"분더카머"</strong> — 두 주 동안 자란 방을 크게 한 바퀴 돌리고, 방(주제의 결)을 정돈합니다. 카드는 방을 옮겨 다닐 수 있어요. 한 칸을 옮기면 방 전체의 의미가 달라집니다 — 배열의 최종 손은 디퍼님.</li>
+      <li>다른 날, <strong>"분더카머 돌려줘"</strong> — 이번엔 차원을 바꿔 돌립니다. 시간의 결 → 주제의 결 → 감정의 결 → 독자의 문제 순 → 뜻밖의 짝.</li>
+      <li>여우가 짚어주는 <strong>사이의 경이</strong> — "이 두 카드가 나란히 놓이니…" — 가 마음에 오면 <strong>"정리"</strong>. 종합 씨앗으로 수장고에 심깁니다.</li>
+    </ul>
+    <div class="card-sample">- "문장." — 날짜 · 출처(문법 Day n / 샘 n / 씨앗) · [[키워드]]</div>
+    <div class="hint">
+      <p>수장고(01-Grammar/Insights)는 그대로, 배열은 전시실(03-Rhetoric/분더카머.md)에서 — 배열이 편집이고, 편집이 창조입니다.</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="section-divider">
+    <span class="section-num">03 · LINE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">"이 정도면 됐다"의 선</div>
+
+  <div class="task">
+    <div class="task-label">One Line</div>
+    <h3>완벽 말고, 내보낼 수 있는 선을 한 줄로</h3>
+    <ul>
+      <li>나만의 기준 한 문장을 적어 여정기록에 남깁니다 — 여우가 이번 주에 같은 질문을 건넬 거예요(Day 21).</li>
+      <li>헷갈리면 게 카논으로 판정하세요: 어디를 펼쳐 읽어도 내 목소리가 유지되면, 내보낼 수 있습니다.</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="section-divider">
+    <span class="section-num">04 · DRAFT</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">초고 v0 — 완성 소식을 사막에</div>
+
+  <div class="task">
+    <div class="task-label">First Draft v0</div>
+    <h3>여우와 함께 조립하고, 소식 한 줄 나누기</h3>
+    <ul>
+      <li>주 후반, 여우가 목차와 배치 계획을 먼저 보여줍니다 — <strong>승인은 디퍼님이.</strong> 승인 후 분더카머의 조각들이 목차 순서로 엮여 <strong>03-Rhetoric/초고_v0.md</strong>가 됩니다.</li>
+      <li>기억할 것 셋: 여우는 <strong>새 문장을 쓰지 않고 엮기만</strong> 합니다 · 재료 없는 장은 <strong>[비어 있는 방]</strong> · 목적은 완성이 아니라 조립.</li>
+      <li>완성되면 <strong>사막(단톡방)에 소식을 나눠주세요</strong> — 가제 한 줄, 또는 목차 한 컷. 백 일의 걸음이 초고가 되는 순간입니다.</li>
+    </ul>
+    <div class="hint">
+      <p>[비어 있는 방]은 부끄러운 자리와 거리가 멉니다 — 다음에 쓸 글의 지도예요. "더 살고 싶은 방은 어디인가"만 눈여겨봐 주세요.</p>
+    </div>
+  </div>
+
+  <!-- 리듬 -->
+  <div class="rhythm">
+    <p><strong>이번 주 리듬</strong> — 아침 모닝페이지는 <strong>"냠냠"</strong> · 매일 한 걸음은 <strong>"안녕"</strong>(Day 17–23) · 마음에 남는 문장은 <strong>"정리"</strong> · 한 주의 끝엔 <strong>"밤하늘"</strong> 한 장, 사막에 나눠주세요.</p>
+  </div>
+
+  <div class="close-box">
+    <p class="close-text">
+      새로 쓰지 않아도 됩니다.<br>
+      이미 쓴 것을 다시 놓으세요 —<br>
+      그 배열이 디퍼님의 메타언어가 됩니다.
+    </p>
+    <p class="close-sub">다음 세션 — 하모니 · 매니페스토: 함께 부르기</p>
+  </div>
+
+</div>
+</body>
+</html>

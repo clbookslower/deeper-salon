@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEPER 논리의 달 — GEB 커리큘럼</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="DEEPER 논리의 달 — GEB 커리큘럼">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/logic_geb_curriculum.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #0F0F0F;
+    --ink-soft: #3A3A3A;
+    --ink-mid: #555;
+    --ink-muted: #888;
+    --rule: #E2DED8;
+    --accent: #1A4A35;
+    --accent-mid: #2D6B4F;
+    --accent-pale: #E8F2EC;
+    --accent-light: #A8CBBA;
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --hi: #F0F5F2;
+    --warm: #F7F4EE;
+    --gold: #B8860B;
+    --gold-pale: #FBF5E6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    line-height: 2.05;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 70px 28px 140px;
+}
+
+/* ── HERO ── */
+.hero {
+    background: linear-gradient(160deg, #0D2B1E 0%, #1A4A35 55%, #2D6B4F 100%);
+    color: #fff;
+    padding: 90px 70px 80px;
+    border-radius: 34px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.04) 0%, transparent 65%);
+    pointer-events: none;
+}
+.hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    opacity: .8;
+    margin-bottom: 24px;
+    position: relative;
+}
+.hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -2px;
+    position: relative;
+    margin-bottom: 12px;
+}
+.hero h1 em {
+    font-style: italic;
+    color: var(--accent-light);
+}
+.hero .sub {
+    margin-top: 20px;
+    font-size: 16px;
+    opacity: .75;
+    color: #c8ddd3;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    position: relative;
+    line-height: 1.8;
+}
+.hero-meta {
+    margin-top: 36px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+}
+.hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #d4e8de;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* ── TRIVIUM BRIDGE ── */
+.trivium-bridge {
+    background: var(--surface);
+    border-radius: 28px;
+    padding: 48px 54px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 32px rgba(0,0,0,.05);
+    border: 1px solid var(--rule);
+}
+.trivium-flow {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr 40px 1fr;
+    align-items: center;
+    gap: 0;
+    margin: 32px 0 0;
+}
+.trivium-node {
+    background: var(--hi);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-align: center;
+    border: 1px solid var(--rule);
+    position: relative;
+}
+.trivium-node.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+.trivium-node.active .t-label { color: var(--accent-light); }
+.trivium-node.active .t-sub { color: rgba(255,255,255,0.7); }
+.trivium-node.active .t-concept { color: #fff; }
+.t-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+}
+.t-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+.t-sub {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+}
+.t-concept {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.7;
+}
+.trivium-arrow {
+    text-align: center;
+    font-size: 20px;
+    color: var(--accent-light);
+    opacity: 0.6;
+}
+
+/* ── SECTION BASE ── */
+.section {
+    background: var(--surface);
+    border-radius: 28px;
+    padding: 54px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 32px rgba(0,0,0,.05);
+    border: 1px solid var(--rule);
+}
+
+/* ── WEEK CARD ── */
+.week-card {
+    border-radius: 24px;
+    padding: 44px 48px;
+    margin-bottom: 24px;
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+}
+.week-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--accent);
+    border-radius: 5px 0 0 5px;
+}
+.week-card-1::before { background: linear-gradient(180deg, #1A4A35, #2D6B4F); }
+.week-card-2::before { background: linear-gradient(180deg, #2D6B4F, #3D8B67); }
+.week-card-3::before { background: linear-gradient(180deg, #3D8B67, #B8860B); }
+.week-card-4::before { background: linear-gradient(180deg, #B8860B, #8B6508); }
+
+.week-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.week-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.week-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--ink);
+    line-height: 1.3;
+}
+.week-concept {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: var(--accent-pale);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 6px;
+}
+
+/* ── READING BLOCK ── */
+.reading-block {
+    background: var(--warm);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 20px 0;
+    border: 1px solid #EDE8DF;
+}
+.reading-block-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+.reading-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #E8E3D9;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+.reading-item:last-child { border-bottom: none; }
+.reading-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    background: var(--gold-pale);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.reading-must {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    background: #FFF0E6;
+    color: #B85C00;
+    padding: 2px 7px;
+    border-radius: 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* ── SESSION TABLE ── */
+.session-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+}
+.session-table th {
+    background: var(--hi);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+}
+.session-table th:first-child { border-radius: 10px 0 0 10px; width: 90px; }
+.session-table th:last-child { border-radius: 0 10px 10px 0; }
+.session-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.7;
+    color: var(--ink-soft);
+}
+.session-table tr:last-child td { border-bottom: none; }
+.time-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-pale);
+    padding: 3px 8px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+/* ── QUESTIONS ── */
+.questions {
+    margin: 20px 0;
+}
+.question-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+}
+.question-item:last-child { border-bottom: none; }
+.q-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+.q-text {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+}
+
+/* ── HOMEWORK ── */
+.homework {
+    background: var(--accent-pale);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+}
+.homework-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+/* ── CONNECTION BOX ── */
+.connection-box {
+    background: linear-gradient(135deg, #0D2B1E 0%, #1A4A35 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin: 24px 0;
+}
+.connection-box .cb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 14px;
+}
+.connection-box p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.85);
+}
+.connection-box strong {
+    color: var(--accent-light);
+}
+
+/* ── AGENT TAG ── */
+.agent-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+}
+.agent-martha { background: #E8F2EC; color: #1A4A35; border: 1px solid #A8CBBA; }
+.agent-seth { background: #FBF5E6; color: #8B6508; border: 1px solid #D4B86A; }
+.agent-july { background: #EEF2F8; color: #2D4A7A; border: 1px solid #A0B4D4; }
+.agent-judith { background: #F2EEF8; color: #4A2D7A; border: 1px solid #B4A0D4; }
+
+/* ── SECTION HEADERS ── */
+h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+.section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+.section-desc {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.85;
+    margin-top: 10px;
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 28px 0 12px;
+    letter-spacing: -0.5px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 32px 0;
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+    background: var(--warm);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 20px 0;
+}
+.checklist-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+.check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 8px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed #E8E3D9;
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #C8C0B0;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+.check-must .check-box { border-color: var(--gold); }
+.check-label-must {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    background: var(--gold-pale);
+    color: var(--gold);
+    padding: 1px 6px;
+    border-radius: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+    border-left: 3px solid var(--accent-light);
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: var(--hi);
+    border-radius: 0 12px 12px 0;
+}
+.quote-block p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+.quote-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+}
+
+/* ── WEEK TAG ── */
+.week-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+.week-tag-2 { background: #2D6B4F; }
+.week-tag-3 { background: #3D7A5F; }
+.week-tag-4 { background: var(--gold); }
+
+/* ── REF LIST ── */
+.ref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+@media (max-width: 600px) { .ref-grid { grid-template-columns: 1fr; } }
+.ref-card {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 20px 22px;
+}
+.ref-book {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+.ref-author {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+}
+.ref-when {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: var(--accent-pale);
+    padding: 2px 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+.ref-why {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ── FOOTER ── */
+.footer {
+    text-align: center;
+    padding: 40px 0 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--ink-muted);
+}
+.footer-logo {
+    font-size: 18px;
+    font-family: 'Noto Serif KR', serif;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .hero { padding: 60px 36px 50px; }
+    .hero h1 { font-size: 36px; }
+    .section, .week-card { padding: 36px 28px; }
+    .trivium-flow { grid-template-columns: 1fr; gap: 8px; }
+    .trivium-arrow { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-eyebrow">DEEPER UNBRANDING SALON · PROJECT B-612 · 논리의 달</div>
+    <h1>패턴, 구조,<br>그리고 <em>의미는</em><br><em>어디서 오는가</em></h1>
+    <div class="sub">
+        『괴델, 에셔, 바흐』(까치) 기반 · 논리의 달 4주 커리큘럼<br>
+        GEB를 통해 내 브랜드의 형식 체계를 발견하는 시간<br>
+        길들임의 달 — 이미 곁에 있는 사막여우를 내 일의 도구로 벼립니다
+    </div>
+    <div class="hero-meta">
+        <span class="hero-tag">TRIVIUM · LOGIC</span>
+        <span class="hero-tag">GEB / 호프스태더</span>
+        <span class="hero-tag">주 1회 90분 × 4주</span>
+        <span class="hero-tag">AI + 브랜드 연결</span>
+    </div>
+</div>
+
+<!-- TRIVIUM BRIDGE -->
+<div class="trivium-bridge">
+    <div class="section-eyebrow">TRIVIUM STRUCTURE</div>
+    <h2>문법에서 논리로, 논리에서 수사로</h2>
+    <div class="section-desc">이 커리큘럼은 트리비움의 두 번째 관문입니다. 문법의 달에 발견한 씨앗을 체계로 키우는 시간.</div>
+
+    <div class="trivium-flow">
+        <div class="trivium-node">
+            <div class="t-label">01 · 문법</div>
+            <div class="t-title">문법</div>
+            <div class="t-sub">나는 무엇을 가지고 있는가</div>
+            <div class="t-concept">원천텍스트<br>암묵지 외부화<br>브랜드 씨앗 문장</div>
+        </div>
+        <div class="trivium-arrow">→</div>
+        <div class="trivium-node active">
+            <div class="t-label">02 · 논리 ← 지금 여기</div>
+            <div class="t-title">논리</div>
+            <div class="t-sub">그것이 어떻게 의미를 갖는가</div>
+            <div class="t-concept">이소모피즘<br>형식 체계<br>이상한 고리</div>
+        </div>
+        <div class="trivium-arrow">→</div>
+        <div class="trivium-node">
+            <div class="t-label">03 · 수사</div>
+            <div class="t-title">수사</div>
+            <div class="t-sub">누구를 향해 어떻게 말하는가</div>
+            <div class="t-concept">에디톨로지<br>편집·선택·배열<br>발화</div>
+        </div>
+    </div>
+
+    <div class="connection-box" style="margin-top: 28px;">
+        <div class="cb-label">핵심 연결 논리</div>
+        <p>
+            문법이 <strong>재료(나만의 것)</strong>를 찾는 작업이라면,<br>
+            논리(GEB)는 <strong>재료들이 어떻게 구조적으로 연결되어 의미를 갖는가</strong>를 묻습니다.<br>
+            그리고 수사(에디톨로지)는 그 구조를 <strong>타인을 향해 편집·발화하는 기술</strong>입니다.<br><br>
+            GEB의 핵심 개념 <em>이소모피즘</em>은 에디톨로지의 핵심인 <em>편집</em>과 같은 말입니다.<br>
+            두 도메인 사이의 구조적 대응을 발견하고 가시화하는 것 — 그것이 편집이고 이소모피즘입니다.
+        </p>
+    </div>
+</div>
+
+<!-- WEEK 1 -->
+<div class="section">
+    <div class="week-tag">WEEK 1</div>
+    <h2>규칙이 있어야 게임이 된다</h2>
+    <div class="section-desc">
+        형식 체계란 무엇인가. MU-퍼즐을 통해 공리, 변환 규칙, 그리고 체계의 한계를 체험한다.<br>
+        <span class="agent-tag agent-martha">진행</span>
+        <span class="agent-tag agent-seth">진행</span>
+    </div>
+
+    <div class="reading-block">
+        <div class="reading-block-title">📖 읽기 자료 — 까치 한국어판</div>
+        <div class="reading-item">
+            <div class="reading-num">서</div>
+            <div><strong>서문 (이미 읽음)</strong> — 호프스태더가 직접 밝히는 GEB의 핵심 메시지. 기준점.</div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">①</div>
+            <div>
+                <strong>서론 앞 대화: 「투성부 인벤션」</strong> <span class="reading-must">필수</span><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">약 4-5페이지. 아킬레스와 거북이 첫 등장. 살롱에서 낭독용. 난이도 낮고 충격 큼. 반드시 사진 찍어오기.</span>
+            </div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">②</div>
+            <div>
+                <strong>1장: MU-퍼즐 전체</strong> <span class="reading-must">핵심</span><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">약 18-20페이지. MIU 체계 소개 → 변환 규칙 4가지 → "체계 밖에서의 조망" 절까지. 이게 없으면 1주차 토론 불가.</span>
+            </div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">③</div>
+            <div>
+                <strong>서론 중 첫 절</strong> — "MU를 제공하다"<br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">약 4-5페이지. MU 퍼즐의 맥락 잡기. 서론 제목부터 첫 소제목까지만.</span>
+            </div>
+        </div>
+    </div>
+
+    <h3>세션 구조 (90분)</h3>
+    <table class="session-table">
+        <thead>
+            <tr><th>시간</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><span class="time-badge">0–15분</span></td><td>체크인 — 지난주 모닝페이지에서 건진 문장 하나씩 소리내어 읽기</td></tr>
+            <tr><td><span class="time-badge">15–25분</span></td><td>「투성부 인벤션」낭독 — 두 명이 아킬레스/거북이 역할 분담. 소리로 먼저 만나기.</td></tr>
+            <tr><td><span class="time-badge">25–45분</span></td><td>진행자 해설 — MU 퍼즐이란 무엇인가. MIU 체계의 공리·규칙·증명 불가능성. 칠판(또는 종이)에 직접 시도.</td></tr>
+            <tr><td><span class="time-badge">45–70분</span></td><td>소그룹 토론 (2-3인) → 전체 공유</td></tr>
+            <tr><td><span class="time-badge">70–85분</span></td><td>AI 연결 실습 — Claude에게 "내 브랜드의 변환 규칙 3가지를 정의해줘" 요청, 결과 함께 보기. 요청 끝에 한 줄을 붙인다 — "[분석의 규율] 규칙마다 내가 실제로 쓴 문장을 최소 하나 그대로 인용해 근거로 삼고, 근거가 없는 것은 지어내지 말 것."</td></tr>
+            <tr><td><span class="time-badge">85–90분</span></td><td>과제 안내 + 다음 주 예고</td></tr>
+        </tbody>
+    </table>
+
+    <h3>핵심 질문</h3>
+    <div class="questions">
+        <div class="question-item">
+            <div class="q-num">Q1</div>
+            <div class="q-text">MIU 체계의 공리는 <strong>MI 하나</strong>다. 디퍼님 브랜드의 첫 공리, 가장 기본 전제는 무엇인가? 문법의 달에 만든 씨앗 문장을 꺼내보자. 그것이 공리다.</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q2</div>
+            <div class="q-text"><strong>MU는 MIU 체계 안에서 증명 불가능하다.</strong> 디퍼님의 전문 영역에서 아무리 열심히 해도 그 방법론 안에서는 절대 안 보이는 것이 있다면? 그걸 보려면 어떤 체계 밖으로 나가야 하는가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q3</div>
+            <div class="q-text">규칙이 없으면 자유로운가, 아니면 <strong>의미가 없는</strong> 것인가? AI는 엄청난 규칙의 집합이다 — 그것이 AI를 창의적으로 만드는가, 제한적으로 만드는가?</div>
+        </div>
+    </div>
+
+    <div class="homework">
+        <div class="homework-label">과제</div>
+        AI(Claude)에게 <strong>"내 브랜드의 공리 1개와 변환 규칙 3가지를 정의해줘"</strong>라고 요청한 결과를 다음 세션에 가져온다. 동의하는 것, 동의하지 않는 것 각각 표시해서.<br><br>
+        요청 끝에 이 한 줄을 함께 붙인다 — <strong>"[분석의 규율] 모든 항목마다 내 글·답의 실제 문장을 최소 하나 그대로 인용해 근거로 삼으세요. 근거가 없는 것은 지어내지 말고 '자료가 더 필요하다'고 적으세요. 감탄·칭찬 상투구 대신 발견을."</strong> 공리 문장에는 내가 실제로 쓴 단어가 하나 이상 그대로 들어가야 한다 — 요약이 아니라 발견으로.<br>
+        냠냠·밤하늘은 계속됩니다 — 마음에 남는 문장은 사막여우에게 "정리".
+    </div>
+</div>
+
+<!-- WEEK 2 -->
+<div class="section">
+    <div class="week-tag week-tag-2">WEEK 2</div>
+    <h2>의미는 대응에서 온다</h2>
+    <div class="section-desc">
+        이소모피즘 — 서로 다른 두 구조가 대응할 때 의미가 출현한다. 이것이 에디톨로지의 근거이기도 하다.<br>
+        <span class="agent-tag agent-martha">진행</span>
+        <span class="agent-tag agent-seth">진행</span>
+    </div>
+
+    <div class="reading-block">
+        <div class="reading-block-title">📖 읽기 자료</div>
+        <div class="reading-item">
+            <div class="reading-num">①</div>
+            <div>
+                <strong>5장 앞 대화: 「세 성부 인벤션」</strong> <span class="reading-must">필수</span><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">짧은 대화. 이소모피즘의 첫 직관적 소개. 낭독 가능.</span>
+            </div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">②</div>
+            <div>
+                <strong>6장: 의미의 소재</strong> <span class="reading-must">핵심</span><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">"이소모피즘이 의미를 만든다" 절 + "메시지와 의미" 절. 이 두 절만 읽어도 충분. 사진 우선순위 2위.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="connection-box">
+        <div class="cb-label">수사(에디톨로지) 연결 포인트</div>
+        <p>
+            GEB: <strong>"의미는 텍스트 안에 없다. 텍스트와 해석자 사이의 구조적 대응에서 출현한다."</strong><br><br>
+            에디톨로지: 편집이란 재료와 독자 사이의 구조적 대응을 발견하고 가시화하는 행위다.<br>
+            → 2주차가 끝나면 참여자들은 에디톨로지를 처음 만날 때 <em>"아, 이소모피즘의 실천이구나"</em>라고 바로 연결된다.
+        </p>
+    </div>
+
+    <h3>핵심 질문</h3>
+    <div class="questions">
+        <div class="question-item">
+            <div class="q-num">Q1</div>
+            <div class="q-text">디퍼님의 책(또는 강의)이 독자와 만나는 지점의 구조는 무엇인가? 디퍼님의 경험 도메인 ↔ 독자의 문제 도메인 — 어떤 구조적 대응이 거기 있는가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q2</div>
+            <div class="q-text">에셔의 《그림 그리는 손》 — 손이 손을 그린다. 디퍼님의 콘텐츠에서 <strong>강의가 수강생을 강사로 만드는 순간</strong>은 언제인가? 그 구조를 의도적으로 설계할 수 있는가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q3</div>
+            <div class="q-text">AI가 언어를 처리할 때 하는 것이 이소모피즘 탐색이다. 그렇다면 AI가 <em>"당신을 이해한다"</em>고 할 때, 어떤 구조를 디퍼님 안에서 찾고 있는 것인가?</div>
+        </div>
+    </div>
+
+    <h3>실습: 나의 이소모피즘 지도 (A4 한 장)</h3>
+    <div style="background:var(--hi); border-radius:14px; padding:22px 26px; font-family:'Noto Sans KR',sans-serif; font-size:14px; line-height:1.8; color:var(--ink-soft);">
+        왼쪽: <strong>나의 경험 도메인</strong> (내가 살아낸 것들)<br>
+        오른쪽: <strong>클라이언트/독자의 문제 도메인</strong><br>
+        가운데 화살표: 두 도메인 사이의 구조적 대응 그리기<br>
+        <br>
+        <em style="font-size:13px; color:var(--ink-muted);">이것이 Book-to-Brand의 실제 구조입니다. 디퍼님의 책은 이 지도의 산문화(散文化)입니다.</em>
+    </div>
+
+    <div class="homework">
+        <div class="homework-label">과제</div>
+        자신의 원천텍스트 하나를 골라, AI에게 <strong>"이 텍스트의 구조적 패턴을 3가지로 추출하고, 그것이 독자의 어떤 문제와 대응하는지 분석해줘"</strong>라고 요청. 결과 가져오기.<br><br>
+        요청 끝에 이 한 줄을 함께 붙인다 — <strong>"[분석의 규율] 모든 항목마다 내 글·답의 실제 문장을 최소 하나 그대로 인용해 근거로 삼으세요. 근거가 없는 것은 지어내지 말고 '자료가 더 필요하다'고 적으세요. 감탄·칭찬 상투구 대신 발견을."</strong><br>
+        냠냠·밤하늘은 계속됩니다 — 마음에 남는 문장은 사막여우에게 "정리".
+    </div>
+</div>
+
+<!-- WEEK 3 -->
+<div class="section">
+    <div class="week-tag week-tag-3">WEEK 3</div>
+    <h2>자기를 가리키는 것들</h2>
+    <div class="section-desc">
+        자기 지시와 이상한 고리 — 체계가 자기 자신을 가리킬 때 무슨 일이 일어나는가. 오토파지의 논리적 근거.<br>
+        <span class="agent-tag agent-martha">진행</span>
+        <span class="agent-tag agent-july">진행</span>
+    </div>
+
+    <div class="reading-block">
+        <div class="reading-block-title">📖 읽기 자료</div>
+        <div class="reading-item">
+            <div class="reading-num">①</div>
+            <div>
+                <strong>8장 앞 대화: 「게 캐논」</strong> <span class="reading-must">최우선</span><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">약 6-8페이지. 이 대화 자체가 앞으로 읽어도 뒤로 읽어도 같은 구조. <strong>사진 찍기 1순위.</strong> 세션에서 실제로 거꾸로 읽어보는 활동 필수.</span>
+            </div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">②</div>
+            <div>
+                <strong>9장: 무몬과 괴델</strong> — "이상한 고리와 얽힌 위계" 절<br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">괴델 불완전성 정리의 핵심 직관만 담긴 절. 수식 없음.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-block">
+        <p>괴델의 발견: 충분히 강력한 모든 형식 체계는, 자기 자신의 언어로 표현할 수 있지만<br>자기 체계 안에서 증명도 반증도 할 수 없는 명제를 포함한다.</p>
+        <div class="quote-source">— Douglas Hofstadter, GEB Chapter 9</div>
+    </div>
+
+    <h3>핵심 질문</h3>
+    <div class="questions">
+        <div class="question-item">
+            <div class="q-num">Q1</div>
+            <div class="q-text">문법의 달에 <strong>오토파지(자가포식)</strong>를 했다. 오토파지가 바로 이상한 고리다 — 자기가 자기를 먹는 구조. 디퍼님의 브랜드에서 자기 자신을 가리키는 순간은 언제인가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q2</div>
+            <div class="q-text">괴델은 수학이 스스로를 완전히 증명할 수 없음을 보였다. 디퍼님의 전문 영역에서 <strong>"이 체계로는 설명 안 되는 것"</strong>이 있다면? 그 구멍이 디퍼님의 다음 책 주제일 수 있다.</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q3</div>
+            <div class="q-text">AI는 자기 지시가 가능한가? AI가 "나는 AI다"라고 말할 때, 그것은 수행(performance)인가 의미(meaning)인가? 디퍼님이 "나는 AI 전문가다"라고 말할 때와 무엇이 다른가?</div>
+        </div>
+    </div>
+
+    <h3>실습: 나의 이상한 고리 찾기</h3>
+    <div style="background:var(--hi); border-radius:14px; padding:22px 26px; font-family:'Noto Sans KR',sans-serif; font-size:14px; line-height:1.8; color:var(--ink-soft);">
+        자신의 브랜드에서 이상한 고리를 찾아 도식화.<br>
+        예: 내 강의 → 수강생이 강사가 된다 → 그 강사가 내 방법론으로 가르친다 → 내 강의가 퍼진다<br>
+        <br>
+        <em style="font-size:13px; color:var(--ink-muted);">이 구조가 의도적으로 설계될 수 있다면, 그것이 Book-to-Brand의 완성입니다.</em>
+    </div>
+
+    <div class="homework">
+        <div class="homework-label">과제</div>
+        <strong>「게 캐논」을 혼자 한 번 더 읽기</strong> — 이번엔 뒤에서 앞으로. 무엇이 달라 보이는지 모닝페이지에 쓰기.<br>
+        냠냠·밤하늘은 계속됩니다 — 그 아침의 페이지도 사진 찍어 사막여우에게 "냠냠".
+    </div>
+</div>
+
+<!-- WEEK 4 -->
+<div class="section">
+    <div class="week-tag week-tag-4">WEEK 4</div>
+    <h2>체계 밖으로 뛰어오르기</h2>
+    <div class="section-desc">
+        창조성이란 무엇인가. AI 시대에 인간의 창의성은 어디서 오는가. 4주의 수렴.<br>
+        <span class="agent-tag agent-martha">진행</span>
+        <span class="agent-tag agent-seth">진행</span>
+        <span class="agent-tag agent-judith">진행</span>
+    </div>
+
+    <div class="reading-block">
+        <div class="reading-block-title">📖 읽기 자료</div>
+        <div class="reading-item">
+            <div class="reading-num">①</div>
+            <div>
+                <strong>15장: 체계 밖으로 뛰어오르기</strong> — "체계 안에 갇히는 것" 절 + "점프" 절<br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">GEB 전체에서 가장 직접적으로 창조성을 다루는 장. 사진 우선순위 3위.</span>
+            </div>
+        </div>
+        <div class="reading-item">
+            <div class="reading-num">②</div>
+            <div>
+                <strong>에필로그 마지막 2-3페이지</strong><br>
+                <span style="font-family:'Noto Sans KR',sans-serif; font-size:13px; color:var(--ink-muted);">호프스태더가 GEB 전체를 한 문장으로 수렴시키는 대목. 낭독으로 세션 마무리.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-block">
+        <p>창조성이란 체계 안에 있는 규칙으로 만들어낸 결과물이<br>그 규칙을 초월하는 것처럼 느껴질 때 출현한다.</p>
+        <div class="quote-source">— Hofstadter, GEB Chapter 15</div>
+    </div>
+
+    <h3>핵심 질문</h3>
+    <div class="questions">
+        <div class="question-item">
+            <div class="q-num">Q1</div>
+            <div class="q-text">디퍼님이 AI를 쓸 때, <strong>결과물이 디퍼님의 규칙을 초월한 것처럼 느껴진 순간</strong>이 있었는가? 그 순간 무슨 일이 있었나? 그게 창조성인가, 환상인가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q2</div>
+            <div class="q-text">체계 밖으로 뛰어오른다는 것이 브랜딩에서는 무엇인가? 카테고리를 만드는 것? 장르를 해체하는 것? 디퍼님이 지금 속해 있는 체계는 무엇이고, 그 밖은 어디인가?</div>
+        </div>
+        <div class="question-item">
+            <div class="q-num">Q3</div>
+            <div class="q-text">4주가 지난 지금, <strong>문법의 달에 만든 씨앗 문장</strong>을 다시 꺼내보자. 그것이 논리의 달을 거쳐 달라졌는가? 더 단단해졌는가, 아니면 더 복잡해졌는가?</div>
+        </div>
+    </div>
+
+    <h3>최종 실습: 내 브랜드 형식 체계 한 장</h3>
+    <div style="background:var(--hi); border-radius:14px; padding:22px 26px; font-family:'Noto Sans KR',sans-serif; font-size:14px; line-height:1.9; color:var(--ink-soft);">
+        <strong>공리 (Axioms)</strong> — 내가 절대 타협하지 않는 것 3가지<br>
+        <strong>변환 규칙 (Rules)</strong> — 내 콘텐츠/강의/책의 작동 패턴 3가지<br>
+        <strong>이소모피즘 (Mapping)</strong> — 내 것이 독자·클라이언트에 닿는 구조<br>
+        <strong>이상한 고리 (Strange Loop)</strong> — 내 브랜드의 자기 지시 순간<br>
+        <br>
+        <em style="font-size:13px; color:var(--ink-muted);">기준 — 네 항목 모두 내가 실제로 쓴 단어를 하나 이상 그대로 품을 것. 요약이 아니라 발견일 것.</em><br>
+        <em style="font-size:13px; color:var(--accent);">→ 이 한 장이 수사(에디톨로지)의 달 OT의 첫 자료가 됩니다. "이 체계로 무엇을 편집할 것인가?"</em>
+    </div>
+
+    <div class="connection-box" style="margin-top:24px;">
+        <div class="cb-label">→ 수사의 달로의 연결</div>
+        <p>
+            GEB 4주차 결과물: <strong>"내 브랜드 형식 체계"</strong><br>
+            에디톨로지 OT 첫 질문: <strong>"이 체계로 무엇을 편집할 것인가?"</strong><br><br>
+            논리가 구조를 발견했다면, 수사는 그 구조를 <em>타인을 향해 발화하는 기술</em>입니다.<br>
+            이소모피즘을 알면 편집이 보이고, 이상한 고리를 알면 브랜드가 보입니다.<br><br>수사의 달은 살롱에서 열쇠말과 함께 열립니다.
+        </p>
+    </div>
+</div>
+
+<!-- READING CHECKLIST -->
+<div class="section">
+    <div class="section-eyebrow">READING GUIDE</div>
+    <h2>사진 찍기 우선순위 체크리스트</h2>
+    <div class="section-desc">까치 한국어판 기준. 챕터명으로 찾아서 해당 구간 사진 찍어 사막(단톡방)에 공유.</div>
+
+    <div class="checklist">
+        <div class="checklist-title">📷 촬영 우선순위 (높은 것부터)</div>
+        <div class="check-item check-must">
+            <div class="check-box"></div>
+            <div><strong>1장: MU-퍼즐 전체</strong> (약 18-20p) <span class="check-label-must">1순위</span><br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">1주차 세션의 핵심 텍스트. 없으면 토론 불가.</span></div>
+        </div>
+        <div class="check-item check-must">
+            <div class="check-box"></div>
+            <div><strong>8장 앞 대화: 「게 캐논」전체</strong> (약 6-8p) <span class="check-label-must">1순위</span><br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">3주차 낭독 텍스트. 실제로 거꾸로 읽기 활동 핵심 자료.</span></div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div><strong>서론 앞 대화: 「투성부 인벤션」</strong> (약 4-5p)<br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">1주차 세션 오프닝 낭독용.</span></div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div><strong>6장 중 "이소모피즘이 의미를 만든다" + "메시지와 의미" 절</strong><br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">2주차 핵심. 이소모피즘 직접 설명 구간.</span></div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div><strong>15장 "점프" 절</strong> + <strong>에필로그 마지막 2-3p</strong><br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">4주차 마무리 낭독용.</span></div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div><strong>서론 중 첫 절</strong> ("MU를 제공하다")<br><span style="font-size:12px; color:var(--ink-muted); font-family:'Noto Sans KR',sans-serif;">선택적. 있으면 1주차 맥락 더 풍부.</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- REFERENCES -->
+<div class="section">
+    <div class="section-eyebrow">RESEARCH</div>
+    <h2>참고 자료</h2>
+    <div class="section-desc">GEB와 함께 읽으면 시너지 나는 자료들.</div>
+
+    <div class="ref-grid">
+        <div class="ref-card">
+            <div class="ref-when">전체 병행</div>
+            <div class="ref-book">나는 이상한 고리다</div>
+            <div class="ref-author">더글러스 호프스태더 · 까치</div>
+            <div class="ref-why">GEB가 너무 두껍다면 이 책을 병행. 같은 논지를 더 직접적으로.</div>
+        </div>
+        <div class="ref-card">
+            <div class="ref-when">2주차 심화</div>
+            <div class="ref-book">에디톨로지</div>
+            <div class="ref-author">김정운 · 21세기북스</div>
+            <div class="ref-why">수사의 달 예고편. 이소모피즘과 편집의 연결을 한국어로 읽는다.</div>
+        </div>
+        <div class="ref-card">
+            <div class="ref-when">4주차</div>
+            <div class="ref-book">생명이 자본이다</div>
+            <div class="ref-author">이어령</div>
+            <div class="ref-why">한국어로 된 이소모피즘적 사고의 전범. GEB의 직관을 한국적 언어로.</div>
+        </div>
+        <div class="ref-card">
+            <div class="ref-when">AI 연결</div>
+            <div class="ref-book">마음의 사회</div>
+            <div class="ref-author">마빈 민스키</div>
+            <div class="ref-why">AI와 마음의 구조. 4주차 "AI의 창조성" 토론 보강 자료.</div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-logo">deeper</div>
+    UNBRANDING SALON · PROJECT B-612 · 논리의 달 커리큘럼<br>
+    DEEPER · 2026
+</div>
+
+</div>
+</body>
+</html>

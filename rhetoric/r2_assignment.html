@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 02 — 변주 · 작게, 한 번 소리내기</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r2_assignment.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="디퍼 언브랜딩 살롱">
+<meta property="og:title" content="수사 2주차 과제 · 변주 — 작게, 한 번 소리내기">
+<meta property="og:description" content="에디톨로지 2부 읽기 · 분더카머 돌려줘 한 바퀴 · 가장 작은 발행 단위로 한 번 소리내기">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--blue-bg); color: var(--blue); }
+.badge-assign { background: var(--gold-bg); color: #854F0B; }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+/* ── 과제 카드 ── */
+.task {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 26px 22px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+.task-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.task-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--forest-light);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.task h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.task p { font-size: 14px; line-height: 1.9; margin-bottom: 10px; }
+.task p:last-child { margin-bottom: 0; }
+.task ul { list-style: none; margin: 6px 0 10px; display: flex; flex-direction: column; gap: 7px; }
+.task ul li { font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.75; }
+.task ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.task .cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 8px;
+  color: var(--forest);
+  white-space: nowrap;
+}
+.task-note {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-left: 2.5px solid var(--forest-light);
+  border-radius: 0 8px 8px 0;
+}
+.task-note p { font-size: 13px; color: #555; margin: 0; line-height: 1.85; }
+.task.core { border-color: #C8DFC0; background: #F5F8F2; }
+.task.core .task-note { background: rgba(44,59,45,0.05); }
+
+/* ── 리듬 박스 ── */
+.rhythm {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-top: 48px;
+  text-align: center;
+}
+.rhythm-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 16px;
+}
+.rhythm p { color: #d4e8d4; font-size: 13.5px; line-height: 1.95; margin-bottom: 8px; }
+.rhythm p:last-child { margin-bottom: 0; }
+.rhythm strong { color: #f0ece4; font-weight: 500; }
+
+.footnote {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 25px; }
+}
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT 02</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-assign">ASSIGNMENT 02</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사 2주차 · 변주 — 채널</span>
+    </div>
+    <h1>작게, 한 번 소리내기</h1>
+    <p class="subtitle">읽고 · 돌리고 · 내보내고 · 마음을 나누는 한 주</p>
+  </header>
+
+  <p class="lead">이번 주 과제는 네 가지입니다. 다 못 해도 괜찮습니다 — 순서도 자유입니다. 다만 세 번째 하나만은, 아주 작게라도 해보시길 권합니다.</p>
+
+  <!-- 1 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">01</span>
+      <h2>읽기 — 에디톨로지 2부</h2>
+    </div>
+    <p><strong>관점과 장소의 에디톨로지</strong>, 01–10장. 완독이 목표가 아니라 편집이 목표입니다. 가볍게 훑되, 마음에 걸리는 장은 천천히.</p>
+    <ul>
+      <li>03 원근법은 통제 강박이다 — 자명해 보이는 시선도 선택된 편집이었다는 것</li>
+      <li>06 공간 편집에 따라 심리는 달라진다 — 자리가 마음을 만든다는 것</li>
+      <li>10 백화점과 편집숍 — 남의 매대와 나의 안목</li>
+    </ul>
+    <div class="task-note">
+      <p>좋은 문장은 카드처럼 발췌해두세요 — 떼었다 붙일 수 있게. "이건 나의 무엇과 닿나?" 하나만 붙여서.</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">02</span>
+      <h2>분더카머 돌려줘 — 한 바퀴</h2>
+    </div>
+    <p>사막여우에게 <span class="cmd">분더카머 돌려줘</span>라고 해보세요. 수사의 어느 날이든 됩니다. 여우가 그동안 쌓인 카드들을 다른 차원으로 재배열해 보여줍니다 — 시간의 결로, 주제의 결로, 감정의 결로, 독자의 문제 순으로, 마지막엔 뜻밖의 짝(가장 먼 두 카드를 나란히).</p>
+    <p>돌 때마다 여우가 <strong>사이의 경이</strong> 하나를 짚어줍니다 — "이 두 카드가 나란히 놓이니, 이런 문장이 태어나는데요." 마음에 받으시면 종합 씨앗으로 수장고에 심어드립니다.</p>
+    <div class="task-note">
+      <p>이번 주 발행할 글감이 마땅치 않으면, 여기서 주우세요. 조각과 조각 사이에서 새 씨앗이 태어납니다.</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="task core">
+    <div class="task-head">
+      <span class="task-num">03</span>
+      <h2>작게, 한 번 소리내기</h2>
+    </div>
+    <p>세션에서 정한 <strong>가장 작은 발행 단위</strong>로, 이번 주 한 번 바깥에 내보냅니다. 한 문단, 사진 한 장에 세 줄, 5분 음성 — 무엇이든 됩니다. 완성이 아니라 발행이 목적입니다.</p>
+    <ul>
+      <li>AI 실험에서 빚은 첫 콘텐츠의 제목·첫 문장을 재료로 써도 좋습니다 — 내보내기 전에 한 번 소리 내어 읽어보세요</li>
+      <li>발행했다면 사막여우에게 말해주세요 — "발행" 흐름으로 03-Rhetoric/Published에 담아줍니다</li>
+    </ul>
+    <div class="task-note">
+      <p>이번 주에 안 되면 다음 주로 — 재촉하지 않습니다. 못 내보낸 사정도 이번 주의 재료입니다.</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">04</span>
+      <h2>내보낸 뒤의 마음 — 사막에 한 줄</h2>
+    </div>
+    <p>내보내고 난 뒤의 마음을 사막(단톡방)에 한 줄로 나눠주세요. 후련함이든 부끄러움이든, 그대로.</p>
+    <p>끝내 못 내보냈다면 그 막힘을 적어주세요 — <em>"나는 여기서 막혔다, 왜냐하면—"</em>. 막힘도 재료입니다. 길게 쓰지 않으셔도 됩니다.</p>
+  </div>
+
+  <!-- 리듬 -->
+  <div class="rhythm">
+    <div class="rhythm-label">그리고, 늘 하던 리듬</div>
+    <p><strong>아침</strong> — 모닝페이지 사진 찍어 <strong>"냠냠"</strong>, 이어서 <strong>"안녕"</strong> 한 걸음 · <strong>주말 밤</strong> — <strong>"밤하늘"</strong> 한 장, 사막에 나눔.</p>
+  </div>
+
+  <div class="footnote">
+    <p>* 읽기 — 김정운, 『에디톨로지: 창조는 편집이다』(21세기북스) 2부 관점과 장소의 에디톨로지</p>
+    <p>* 분더카머 — 수장고(01-Grammar/Insights) · 전시실(03-Rhetoric/분더카머.md) · 명령 "분더카머" / "분더카머 돌려줘"</p>
+    <p>* 이 과제는 디퍼 언브랜딩 살롱 · 수사 2주차 세션과 짝을 이룹니다.</p>
+  </div>
+
+</div>
+</body>
+</html>
