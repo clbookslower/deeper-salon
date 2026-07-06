@@ -140,16 +140,18 @@ footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spaci
   <p class="para">이 문서는 그 시스템의 구조를 다룬다. 커맨드 이름의 뜻·배경(안녕·오아시스·밤하늘 등 명명의 이유)은 <b>문서 3(디퍼의 언어)</b>에 있고, 여기서는 각 커맨드가 <b>기술적으로 무엇을 실행하는지</b>만 본다.</p>
 
   <div class="sechead"><span class="bar"></span><h2>엔지니어링 계층</h2></div>
-  <p class="para">LLM을 다루는 방식은 세 계층으로 나뉜다. 각 계층은 <b>무엇을 엔지니어링하는가</b>가 다르다.</p>
+  <p class="para">LLM을 다루는 방식은 네 계층으로 나뉜다. 각 계층은 <b>무엇을 엔지니어링하는가</b>가 다르다.</p>
   <div class="ladder">
     <div class="rung"><div class="tier">프롬프트 엔지니어링</div><div class="unit">단위 · 단일 입력</div>
-      <div class="desc">한 번의 입력을 다듬어 출력을 최적화한다. 무상태(stateless). 도구·영속성 없음.</div></div>
+      <div class="desc">한 번의 입력을 다듬어 출력을 최적화한다. 무상태(stateless).</div></div>
     <div class="rung"><div class="tier">컨텍스트 엔지니어링</div><div class="unit">단위 · 컨텍스트 윈도</div>
       <div class="desc">모델이 참조하는 컨텍스트를 구성한다 — 문서·기억·검색 결과·시스템 지시의 조립. 무엇을 넣느냐가 대상.</div></div>
-    <div class="rung ours"><div class="tier">에이전틱 엔지니어링</div><div class="unit">단위 · 도구 사용 루프 + 상태</div>
-      <div class="desc">에이전트가 도구(파일 read/write·셸·git)를 써서 <b>관찰 → 계획 → 행위 → 관찰</b> 루프를 자율로 돈다. 영속 상태·오케스트레이션(스킬)까지 설계 대상. <b>디퍼 OS가 서 있는 계층.</b></div></div>
+    <div class="rung"><div class="tier">루프 엔지니어링</div><div class="unit">단위 · 정해진 다단계 흐름</div>
+      <div class="desc"><b>워크플로.</b> 여러 호출을 <b>개발자가 미리 짠 경로</b>로 엮는다 — 체이닝·라우팅·병렬화·평가-개선. 제어 흐름이 코드에 고정.</div></div>
+    <div class="rung ours"><div class="tier">에이전틱 엔지니어링</div><div class="unit">단위 · 모델이 여는 루프 + 상태</div>
+      <div class="desc"><b>에이전트.</b> 모델이 스스로 도구(파일 read/write·셸·git)와 다음 행위·종료를 결정한다 — 관찰 → 계획 → 행위 → 관찰. 흐름이 코드가 아니라 모델에서 나온다. 영속 상태·오케스트레이션까지 설계 대상. <b>디퍼 OS가 서 있는 계층.</b></div></div>
   </div>
-  <p class="para">디퍼 OS는 세 번째 계층의 <b>제품화된 시스템</b>이다. Claude Code의 에이전트 런타임 위에, 방법론을 스킬로 인코딩하고 영속 상태(볼트)·버전관리(git)·자연어 인터페이스를 얹었다.</p>
+  <p class="para">셋째와 넷째의 차이는 <b>누가 흐름을 정하느냐</b>다 — 루프(워크플로)는 개발자가, 에이전틱(에이전트)은 모델이 정한다. 디퍼 OS는 <b>네 번째 계층</b>의 제품화된 시스템이다. Claude Code의 에이전트 런타임 위에, 방법론을 스킬로 인코딩하고 영속 상태(볼트)·버전관리(git)·자연어 인터페이스를 얹었다.</p>
 
   <div class="sechead"><span class="bar"></span><h2>아키텍처 — 세 계층</h2></div>
   <div class="arch">
@@ -199,6 +201,13 @@ footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spaci
     </tbody>
   </table>
   <p class="para">전체가 <b>로컬 우선(local-first)</b>이고 <b>평문</b>이라, 감사(audit)·이식·외부 도구 연동이 가능하다. 특정 SaaS에 잠기지 않는다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>언어모델 위키 — 인덱싱과 검증</h2></div>
+  <p class="para">이 데이터 모델의 다른 이름이 <b>언어모델 위키(WikiLLM)</b>다. Obsidian이 <b>기능</b>(마크다운·<code>[[wikilink]]</code> 그래프·백링크·로컬 저장)을 제공하고, 디퍼 OS가 그 위에 <b>방법론</b>(스킬·의미 발견 절차)을 얹는다. 결과는 LLM이 직접 읽고 쓰고 색인하는 개인 위키다.</p>
+  <p class="para"><b>인덱싱.</b> <code>[[wikilink]]</code> 그래프는 손으로 쌓는 지식 그래프 인덱스다. 여기에 씨앗(날짜·태그 메타를 가진 원자 노트)·폴더 규약, 그리고 중심 앵커인 <b>의미의 축</b>이 더해진다. 에이전트는 코퍼스를 매번 재처리하지 않고 <b>이 구조 자체를 인덱스로 순회</b>해 필요한 컨텍스트를 찾는다 — 임베딩 재색인 없이 grep·백링크·경로 탐색으로. 인덱스가 커져도 조회 비용은 구조적으로 낮게 유지되고, 축적된 지식의 가치는 복리로 는다.</p>
+  <p class="para"><b>검증.</b> 각 씨앗은 자족적인 한 문장이라 <b>독립적으로 검증</b>된다. git 커밋 그래프는 모든 변경을 <b>감사·롤백</b> 가능하게 하고(이력 검증), 무엇을 남길지는 사람이 승인한다(무손실·원문 그대로 = 내용 검증). 그래서 쌓이는 것이 소음이 아니라 <b>검증된 자산</b>이 된다.</p>
+  <div class="flow"><b>원천</b>(원문·기록) → <b>씨앗</b>(원자화 · 인덱싱) → <b>의미의 축</b>(정렬 기준) → <b>콘텐츠</b>(발행)</div>
+  <p class="para">각 단계가 다음 단계를 싸게 만든다 — 인덱싱된 씨앗 위에서 의미를 발견하고, 정렬된 의미 위에서 콘텐츠를 짓는다. 매 세션 자기를 다시 설명해야 하는 무상태 챗봇과 비교하면, 이 파이프라인의 이득은 <b>선형 입력 · 복리 출력</b>이다.</p>
 
   <div class="sechead"><span class="bar"></span><h2>시스템 제약 (가드레일)</h2></div>
   <div class="guards">
