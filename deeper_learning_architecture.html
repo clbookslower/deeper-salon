@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배움의 세 걸음 — 받아들이고, 따져 묻고, 나의 말이 되기까지</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="왜 우리는 이렇게 배우는가 — 받아들이고, 따져 묻고, 나의 말로">
+<meta property="og:description" content="배움의 세 걸음, 트리비움. 무엇을 배우든 무엇을 짓든 우리는 같은 순서로 자기 것을 만든다.">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/og.png">
+<style>
+:root{
+  --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22;
+  --green-mid:#025D3C; --green-soft:#7DA890;
+  --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF; --rule-strong:#C4BCA9;
+  --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+  --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+  --serif:"Noto Serif KR","Nanum Myeongjo","바탕",Batang,serif;
+  --sans:"Noto Sans KR","맑은 고딕","Malgun Gothic",sans-serif;
+  --mono:"JetBrains Mono","D2Coding","Consolas","Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.9;font-size:17px;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+.topbar{max-width:720px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
+.topbar .logo{height:22px;opacity:.9}
+.topbar .doclabel{font-size:12.5px;letter-spacing:.05em;color:var(--ink-mute);text-transform:uppercase}
+
+.hero{position:relative;background:radial-gradient(120% 140% at 50% 0%,var(--green-deepest) 0%,var(--green-deep) 44%,var(--green) 74%,var(--paper) 100%);padding:64px 22px 80px;text-align:center;overflow:hidden}
+.hero .motif{position:absolute;top:36px;left:50%;transform:translateX(-50%);width:300px;max-width:66%;height:80px;pointer-events:none;opacity:.5}
+.hero-inner{position:relative;max-width:600px;margin:0 auto}
+.hero .logo-w{height:26px;margin-bottom:28px;opacity:.95}
+.hero .eyebrow{color:var(--green-soft);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:700;color:#F7F4EC;font-size:32px;line-height:1.4;letter-spacing:.01em;margin-bottom:18px}
+.hero p{color:rgba(244,241,232,.84);font-size:15.5px;line-height:1.8;max-width:440px;margin:0 auto}
+.clayline{height:1px;background:var(--clay);opacity:.7;max-width:720px;margin:0 auto}
+
+main{padding:58px 0 40px}
+.para{color:var(--ink-soft);margin:20px 0}
+.lead{font-family:var(--serif);font-size:21px;line-height:1.72;color:var(--ink);margin:0 0 24px}
+.big{font-family:var(--serif);font-size:19px;line-height:1.7;color:var(--green-deep);margin:26px 0}
+b,strong{color:var(--ink);font-weight:700}
+code{font-family:var(--mono);font-size:.86em;background:var(--surface);padding:1px 6px;border-radius:4px;color:var(--green-deep)}
+
+.sechead{display:flex;align-items:baseline;gap:12px;border-top:1px solid var(--rule-strong);padding-top:20px;margin:58px 0 22px}
+.sechead .bar{width:30px;height:4px;background:var(--clay);border-radius:4px;flex:none;position:relative;top:-4px}
+.sechead h2{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);line-height:1.34}
+
+.steps3{margin:26px 0 8px}
+.stepline{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--rule)}
+.stepline:first-child{border-top:none}
+.stepline .name{flex:none;width:130px}
+.stepline .name .ko{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--clay-deep)}
+.stepline .name .en{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-top:4px;letter-spacing:.02em}
+.stepline .txt{color:var(--ink-soft);font-size:16px}
+.stepline .txt b{color:var(--ink)}
+
+/* 다이어그램 — 같은 걸음, 여러 이름 */
+.diagram{margin:30px 0 10px;display:flex;gap:14px;align-items:stretch}
+.axis{flex:none;width:30px;display:flex;align-items:center;justify-content:center;position:relative}
+.axis .arrow{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.12em;color:var(--clay-deep);text-transform:uppercase;font-weight:700}
+.axis .line{position:absolute;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--clay-soft),var(--clay-deep))}
+.axis .tip{position:absolute;top:2px;left:50%;transform:translateX(-50%);color:var(--clay-deep);font-size:11px}
+.layers{flex:1;display:flex;flex-direction:column;gap:12px}
+.layer{border:1px solid var(--rule-strong);border-radius:12px;overflow:hidden;background:#fff}
+.layer .grid{display:grid;grid-template-columns:1fr 1.25fr 1.1fr}
+.layer .cell{padding:15px 16px}
+.layer .cell.step{border-right:1px solid var(--rule)}
+.layer .cell.mid{border-right:1px solid var(--rule);background:#FCFAF4}
+.layer .lbl{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.layer .stepname{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--clay-deep);line-height:1.2}
+.layer .stepname .en{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);font-weight:400;margin-top:3px}
+.layer .human{font-size:15px;color:var(--ink);font-weight:700}
+.layer .human span{display:block;font-weight:400;color:var(--ink-soft);font-size:13.5px;margin-top:3px;line-height:1.55}
+.layer .build{font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.layer .build .mono{font-family:var(--mono);font-size:11px;color:var(--green-deep);margin-top:5px;display:block}
+.layer.top{border-color:var(--clay-soft)}
+.diagcap{font-size:14px;color:var(--ink-mute);text-align:center;margin:16px 8px 0;line-height:1.75}
+.diagcap b{color:var(--clay-deep)}
+
+.callout{background:var(--green-deepest);color:#EAF0EB;border-radius:14px;padding:30px 26px;margin:46px 0}
+.callout p{color:rgba(234,240,235,.9);font-size:16.5px;line-height:1.9;margin:14px 0}
+.callout p:first-child{margin-top:0}
+.callout p:last-child{margin-bottom:0}
+.callout b{color:#F7F4EC}
+
+.toolnote{background:#FAF6EE;border:1px solid var(--rule);border-radius:12px;padding:22px 24px;margin:28px 0}
+.toolnote .k{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px}
+.toolnote p{color:var(--ink-soft);font-size:15px;line-height:1.75;margin:8px 0}
+.toolnote code{font-size:12.5px}
+
+.closing{font-family:var(--serif);font-size:19px;line-height:1.8;color:var(--green-deep);margin:16px 0 0;text-align:center;max-width:540px;margin-left:auto;margin-right:auto}
+
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:30px 22px 48px;text-align:center}
+footer .fmark{font-family:var(--serif);font-size:14px;color:var(--ink-mute);letter-spacing:.04em}
+footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spacing:.05em}
+
+@media(max-width:560px){
+  body{font-size:16px}.hero h1{font-size:26px}.sechead h2{font-size:19px}
+  .stepline{flex-direction:column;gap:6px}.stepline .name{width:auto}
+  .layer .grid{grid-template-columns:1fr}
+  .layer .cell.step,.layer .cell.mid{border-right:none;border-bottom:1px solid var(--rule)}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="logo" src="data:image/png;base64,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" alt="DEEPER">
+  <span class="doclabel">배움의 세 걸음 · 문서 0</span>
+</div>
+
+<header class="hero">
+  <svg class="motif" viewBox="0 0 300 80" aria-hidden="true">
+    <rect x="70" y="8"  width="160" height="14" rx="3" fill="rgba(244,241,232,.5)"/>
+    <rect x="45" y="33" width="210" height="14" rx="3" fill="rgba(244,241,232,.38)"/>
+    <rect x="20" y="58" width="260" height="14" rx="3" fill="rgba(244,241,232,.26)"/>
+  </svg>
+  <div class="hero-inner">
+    <img class="logo-w" src="data:image/png;base64,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" alt="DEEPER">
+    <div class="eyebrow">프로젝트 B-612</div>
+    <h1>배움의 세 걸음</h1>
+    <p>무엇을 얼마나 알든, 새로운 것 앞에서 우리는 다시 처음이 됩니다. 그 처음을 걷는 오래된 길이 있습니다.</p>
+  </div>
+</header>
+<div class="clayline"></div>
+
+<main>
+<div class="wrap">
+
+  <p class="lead">우리는 모두, 다시 배우는 사람입니다.</p>
+  <p class="para">오래 걸어온 사람도 새로운 것 앞에서는 처음이 됩니다. 지금 이 자리에도 여러 개의 처음이 있습니다. 어떤 이에게는 도구가 낯설고, 어떤 이에게는 낱말이 낯설고, 어떤 이에게는 왜 여기 있는지조차 아직 낯섭니다. 오래 함께한 이도, 오늘 처음 온 이도, 각자의 문턱 앞에 서 있습니다.</p>
+  <p class="big">그 낯섦은 뒤처짐이 아닙니다. 배움이 시작되는 자리입니다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>오래된 지도 하나</h2></div>
+  <p class="para">이 처음을 걷는 데는 오래된 지도가 있습니다. <b>트리비움.</b> 2천 년 동안 사람이 자기 생각을 세워 온 세 걸음입니다. 학교라는 말이 생기기 전부터, 사람은 이 순서로 무언가를 자기 것으로 만들어 왔습니다.</p>
+  <div class="steps3">
+    <div class="stepline"><div class="name"><span class="ko">문법</span><span class="en">Grammar</span></div>
+      <div class="txt"><b>받아들이는 일.</b> 한 세계의 말과 결을 먼저 안으로 들입니다. 판단을 잠시 내려놓고, 그것의 언어로 듣습니다.</div></div>
+    <div class="stepline"><div class="name"><span class="ko">논리</span><span class="en">Dialectic</span></div>
+      <div class="txt"><b>따져 묻는 일.</b> 들인 것을 서로 견주고, 의심하고, 내 것으로 시험합니다. 여기서 정신이 스스로 섭니다.</div></div>
+    <div class="stepline"><div class="name"><span class="ko">수사</span><span class="en">Rhetoric</span></div>
+      <div class="txt"><b>나의 말이 되는 일.</b> 시험을 통과한 것을 마침내 내 목소리로 냅니다. 받은 것이 비로소 나에게서 나옵니다.</div></div>
+  </div>
+  <p class="para">받아들이고, 따져 묻고, 나의 말이 되기까지. 이것은 특별한 사람의 방법이 아니라, 무언가를 진짜로 배운 모든 사람이 걸어온 길입니다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>받아들임은 굴복이 아니다</h2></div>
+  <p class="para">가장 오해받는 걸음은 첫 번째입니다. 우리는 받아들이는 일을 약함으로 여기기 쉽습니다. 그러나 받아들임은 판단을 버리는 일이 아니라, 판단이 훗날 일할 재료를 모으는 일입니다.</p>
+  <p class="para">의심과 받아들임은 서로 맞서지 않습니다. 서로를 필요로 합니다. 받아들였기에 의심할 무언가가 생기고, 의심했기에 받아들인 것이 비로소 내 것이 됩니다. 빈손으로는 의심할 수 없습니다. 그래서 우리는 먼저 손에 무언가를 쥡니다. 이것은 규율이기 이전에, 배움이 실제로 일어나는 방식입니다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>같은 걸음, 여러 이름</h2></div>
+  <p class="para">신기한 일이 있습니다. 이 세 걸음은 사람이 배우는 방식이자, 사람이 무언가를 <b>짓는</b> 방식이기도 합니다. 아래에서 위로 읽어 봅니다.</p>
+
+  <div class="diagram">
+    <div class="axis">
+      <div class="line"></div><div class="tip">▲</div>
+      <div class="arrow">쌓이는 순서</div>
+    </div>
+    <div class="layers">
+      <div class="layer top">
+        <div class="grid">
+          <div class="cell step"><div class="lbl">배움의 걸음</div><div class="stepname">수사<span class="en">Rhetoric</span></div></div>
+          <div class="cell mid"><div class="lbl">우리가 하는 일</div><div class="human">나의 말로 낸다<span>안에서 빚은 것을 밖으로</span></div></div>
+          <div class="cell build"><div class="lbl">무엇을 짓든</div>내보내는 자리<span class="mono">interface · frontend</span></div>
+        </div>
+      </div>
+      <div class="layer mid-l">
+        <div class="grid">
+          <div class="cell step"><div class="lbl">배움의 걸음</div><div class="stepname">논리<span class="en">Dialectic</span></div></div>
+          <div class="cell mid"><div class="lbl">우리가 하는 일</div><div class="human">따져 묻는다<span>잇고, 의심하고, 시험한다</span></div></div>
+          <div class="cell build"><div class="lbl">무엇을 짓든</div>재료를 다루는 자리<span class="mono">logic · processing</span></div>
+        </div>
+      </div>
+      <div class="layer bot">
+        <div class="grid">
+          <div class="cell step"><div class="lbl">배움의 걸음</div><div class="stepname">문법<span class="en">Grammar</span></div></div>
+          <div class="cell mid"><div class="lbl">우리가 하는 일</div><div class="human">받아들인다<span>말과 사실을 안으로 들인다</span></div></div>
+          <div class="cell build"><div class="lbl">무엇을 짓든</div>재료가 쌓이는 자리<span class="mono">data · backend</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="diagcap">이름이 여럿일 뿐, 걸음은 하나입니다.<br><b>무엇을 배우든, 무엇을 짓든, 우리는 이 순서로 자기 것을 만듭니다.</b></p>
+
+  <p class="para">집을 짓는 사람은 땅을 먼저 다지고, 글을 쓰는 사람은 읽기를 먼저 하고, 연주하는 사람은 음계를 먼저 익힙니다. 채워지지 않은 자리에는 아무것도 얹을 수 없습니다. 그러니 지금 첫 걸음에서 머무는 일은, 뒤처지는 게 아니라 모든 지음이 시작되는 바로 그 자리에 서 있다는 뜻입니다.</p>
+
+  <div class="callout">
+    <p>그래서 이 여정에는 <b>믿으라는 요구가 없습니다.</b> 다만 먼저 받아들여 보자는 초대가 있을 뿐입니다. 손에 쥔 것이 생기면, 그다음 마음껏 따져 물으면 됩니다.</p>
+    <p>우리는 누구의 의심도 거두려 하지 않습니다. 오히려 <b>의심할 무언가를 먼저 손에 쥐여 드리려는</b> 것입니다. 빈자리를 향한 의심은 힘이 없으니까요.</p>
+  </div>
+
+  <div class="sechead"><span class="bar"></span><h2>그리고 마지막 걸음의 기쁨</h2></div>
+  <p class="para">세 걸음의 끝에는 작은 기적이 기다립니다. 받아들인 것이, 따져 물은 것이, 어느 날 나의 목소리가 되어 흘러나오는 순간입니다. 그때 우리는 도구 하나를 익힌 것이 아니라, 조금 더 자기 자신이 됩니다. 배움이 우리를 우리 자신에게로 데려가는 것입니다.</p>
+  <p class="para">그리고 우리는 이 길을 혼자 걷지 않습니다. 먼저 걸은 이가 뒤에 오는 이의 곁이 되고, 오늘 처음인 이가 내일 누군가의 곁이 됩니다. 함께 걷는 사람이 있다는 것 — 그것이 이 배움을 견딜 만하게, 때로는 아름답게 만듭니다.</p>
+
+  <div class="toolnote">
+    <div class="k">이 여정이 손에 쥐는 것</div>
+    <p>우리가 함께 쓰는 도구의 이름은 세컨브레인입니다. 내가 매일 적은 글이 내 컴퓨터 안에 텍스트로 쌓이고(<code>.md</code> 파일), 그 위에서 AI가 나를 기억하며 함께 일합니다. 매일의 기록은 버전으로 안전하게 남습니다.</p>
+    <p>낯선 이름들과 매끄러운 명령들은, 이 단순한 일 하나를 돕기 위한 손잡이일 뿐입니다. 손잡이가 낯설어도 괜찮습니다. 손잡이보다 중요한 것은, 오늘 내가 한 줄을 남겼다는 사실입니다.</p>
+  </div>
+
+  <p class="closing">천천히 가도 좋은 길입니다. 지금 어느 걸음에 서 있든, 그 걸음이 배움의 자리입니다. 우리는 함께, 처음부터 걷습니다.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="fmark">DEEPER · 프로젝트 B-612</div>
+  <div class="fnum">배움의 세 걸음 · 문서 0</div>
+</footer>
+
+</body>
+</html>

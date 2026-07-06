@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 OS 세팅 가이드</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="디퍼 OS 세팅 가이드">
+<meta property="og:description" content="세컨브레인 사막여우 길들이기 · 디퍼 언브랜딩 살롱">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-os/og-card.png">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-os/setup-guide.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="디퍼 OS 세팅 가이드">
+<meta name="twitter:description" content="세컨브레인 사막여우 길들이기">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-os/og-card.png">
+<style>
+:root{--green:#1A4A35;--green-deep:#003D2C;--green-soft:#7DA890;--paper:#F4F1E8;--surface:#FBF8F0;--card:#EFEADD;--rule:#E0D9C8;--rule2:#C9C0AC;--ink:#1A1916;--ink-soft:#46443D;--mute:#6E6A60;--clay:#C67E58;--clay-soft:#E7D9C0;
+--serif:"Noto Serif KR","Nanum Myeongjo",Batang,"바탕",serif;--sans:"Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px 90px}
+.hero{margin:0 -22px 0;background:radial-gradient(125% 95% at 50% -12%, #235a42 0%, var(--green) 46%, var(--green-deep) 100%);color:#F4F1E8;text-align:center;padding:66px 28px 58px;position:relative;overflow:hidden}
+.hero .logo{height:30px;margin-bottom:26px;opacity:.96}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:2.15rem;line-height:1.32}
+.hero .sub{font-family:var(--serif);color:rgba(244,241,232,.8);margin-top:13px;font-size:1.05rem}
+.hero .st{position:absolute;color:rgba(244,241,232,.5)}.s1{top:48px;left:14%;font-size:12px}.s2{top:92px;right:17%;font-size:9px;opacity:.7}.s3{top:150px;left:26%;font-size:9px;opacity:.7}
+.intro{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin:22px 0;color:var(--ink-soft);font-size:.97rem}
+.intro p{margin:0}
+.toc{margin:22px 0 6px;border:1px solid var(--rule2);border-radius:14px;overflow:hidden}
+.toc .th{background:var(--green);color:#f2efe4;font-family:var(--serif);font-weight:700;padding:11px 18px;font-size:.95rem;letter-spacing:.04em}
+.toc a{display:block;padding:12px 18px;color:var(--ink);text-decoration:none;border-top:1px solid var(--rule);font-family:var(--serif);font-size:1.02rem;transition:.15s}
+.toc a:first-of-type{border-top:none}
+.toc a:hover{background:var(--card);color:var(--green);padding-left:24px}
+h1.part{font-family:var(--serif);font-weight:800;font-size:1.85rem;color:var(--green);margin:54px 0 18px;padding:18px 0 0;border-top:2px solid var(--rule2);line-height:1.3;scroll-margin-top:14px;position:relative}
+h1.part .pbar{display:inline-block;width:30px;height:4px;background:var(--clay);border-radius:3px;vertical-align:middle;margin-right:12px}
+h2{font-family:var(--serif);font-weight:700;font-size:1.32rem;color:var(--green-deep);margin:34px 0 12px;line-height:1.35}
+h3{font-weight:700;font-size:1.06rem;color:var(--ink);margin:22px 0 8px}
+p{margin:12px 0}
+a{color:var(--clay);text-decoration:none;border-bottom:1px solid rgba(198,126,88,.4)}a:hover{border-bottom-color:var(--clay)}
+strong{font-weight:700;color:#13241c}em{font-style:normal;color:var(--clay);font-weight:600}
+hr{border:0;border-top:1px solid var(--rule);margin:26px 0}
+code{font-family:Consolas,monospace;background:#ece8dc;color:#234;padding:.1em .42em;border-radius:5px;font-size:.88em}
+pre{background:var(--green-deep);color:#e9f1ea;border-radius:12px;padding:15px 18px;overflow:auto;margin:13px 0}
+pre code{background:none;color:#dff0e4;padding:0;font-size:.9em;line-height:1.7}
+ul,ol{margin:12px 0;padding-left:1.4em}li{margin:6px 0}
+blockquote{background:var(--surface);border-left:4px solid var(--green-soft);border-radius:0 12px 12px 0;padding:13px 18px;margin:16px 0;color:#33413a}
+blockquote p{margin:7px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.94rem;background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+th{background:var(--green);color:#f2efe4;text-align:left;padding:11px 13px;font-family:var(--serif);font-weight:700}
+td{padding:10px 13px;border-top:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:rgba(0,0,0,.012)}
+.foot{text-align:center;color:var(--mute);font-family:var(--serif);margin-top:44px;padding-top:24px;border-top:1px solid var(--rule);font-size:.95rem;line-height:2}
+@media print{a{border:none}body{background:#fff}}
+@media(max-width:540px){.hero h1{font-size:1.62rem}h1.part{font-size:1.45rem}h2{font-size:1.18rem}}
+</style></head><body><div class="wrap">
+<div class="hero">
+<span class="st s1">✦</span><span class="st s2">✦</span><span class="st s3">✦</span>
+<img class="logo" src="data:image/png;base64,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" alt="DEEPER">
+<h1>디퍼 OS 세팅 가이드</h1>
+<div class="sub">디퍼 언브랜딩 살롱 · 세컨브레인 사막여우 길들이기</div>
+</div>
+<div class="toc"><div class="th">목차</div><a href="#part-1">1부 · 먼저, 무엇을 만드는지 이해하기</a><a href="#part-2">2부 · 설치하기 (순서대로 따라가기)</a><a href="#part-3">3부 · 매일 이렇게 쓰기 (천천히 — 한꺼번에 X)</a><a href="#part-4">4부 · 막힐 때 (문제 해결)</a><a href="#part-5">부록</a></div>
+<div class="intro"><p>컴퓨터를 잘 몰라도 괜찮습니다. 이 가이드는 <strong>개념을 먼저 이해하고 → 순서대로 설치하고 → 매일 쓰는 법</strong>까지 한 흐름으로 갑니다.<br><strong>1부 이해하기 · 2부 설치하기 · 3부 매일 쓰기 · 4부 막힐 때.</strong> 설치가 막히면 4부만 펴보면 돼요. 전체 30분쯤. ☕</p></div>
+<hr>
+<h1 id="part-1" class="part"><span class="pbar"></span>1부 · 먼저, 무엇을 만드는지 이해하기</h1>
+<h2>우리가 만드는 것 — 내 노트를 아는 세컨브레인, '사막여우'</h2>
+<p>이번에 우리는 <strong>내 노트를 직접 읽고 쓰는 세컨브레인</strong>을 만듭니다(그 세컨브레인을 함께 길들이는 여우가 '사막여우'예요). 보통 챗봇과 무엇이 다른지부터 보면 쉬워요.</p>
+<ul><li><strong>보통 챗봇</strong> — 매번 새 대화. 나를 기억 못 해, "나는 누구고 뭘 한다"를 늘 다시 설명해야 해요.</li><li><strong>사막여우</strong> — 내 노트 폴더를 직접 봐요. 그래서 <strong>나를 기억하고</strong>, 내가 쌓은 글을 읽고, 새 노트를 만들어 저장해요. 복붙이 없어요.</li></ul>
+<blockquote><p>🦊 <strong>사막여우는 우리 모두의 공통 동반자예요.</strong> 디퍼 문법 커리큘럼을 함께 걷는 <em>여우 한 마리</em> — 이름은 다 같이 '사막여우'로 키워요. (문법을 함께한 수료의 표식 같은 거예요.)</p></blockquote>
+<h2>도구는 세 가지</h2>
+<table><thead><tr><th>도구</th><th>한 줄 정의</th><th>맡는 일</th></tr></thead><tbody><tr><td><strong>옵시디언</strong></td><td>무료 노트 앱</td><td>내 생각이 <strong>텍스트 파일</strong>로 쌓이는 곳</td></tr><tr><td><strong>클로드 데스크탑 앱 (Code 탭)</strong></td><td>내 폴더에서 일하는 AI</td><td>사막여우가 작동하는 자리</td></tr><tr><td><strong>디퍼 OS</strong></td><td>그 AI에 방법론을 더하는 플러그인</td><td>사막여우의 인격·매일 루틴·30일 여정을 설치</td></tr></tbody></table>
+<p>세 가지는 <strong>옵시디언(노트가 쌓이는 바닥) → 클로드 Code 탭(노트를 다루는 AI) → 디퍼 OS(AI에게 일하는 법)</strong> 순서로 얹혀요. 설치 순서도 이대로예요.</p>
+<h2>미리 알아두면 쉬운 말 (개념 미리보기)</h2>
+<ul><li><strong>볼트(Vault)</strong> — 옵시디언에서 <em>내 노트들이 담긴 폴더 하나</em>. 앞으로 "볼트"=내 노트 폴더.</li><li><strong>입력창 vs 터미널</strong> — <code>의미</code>·<code>안녕</code> 같은 건 <strong>채팅 입력창</strong>에, <code>git</code>·<code>gh</code> 같은 영어 명령은 <strong>터미널</strong>에. (대부분 입력창만 써요.)</li><li><strong>플러그인 / 스킬</strong> — 기능 묶음(=디퍼 OS) / 그 안의 방법론(의미·목소리·지형도·여정).</li><li><strong>씨앗</strong> — 혼자 읽어도 이해되는 <em>주장 한 문장</em>. 디퍼 OS의 기본 단위. 매일 쌓여 자산이 돼요.</li><li><strong>Git / GitHub</strong> — 파일 변화를 기록하는 도구 / 그 기록을 인터넷 비공개 금고에 백업하는 곳. <em>내가 직접 안 써요 — 사막여우가 대신.</em></li></ul>
+<h2>오늘의 약속</h2>
+<blockquote><p>💡 어려운 명령어는 <strong>사막여우가 대신</strong> 하고, 나는 <strong>내용 보고 승인(Accept)</strong>만 해요. 무슨 일이 일어나는지는 이 가이드로 함께 이해하고요. 그리고 사막여우는 <strong>내 말 그대로</strong> 남기고, <em>무엇을 남길지는 늘 내가</em> 골라요.</p><p>🦊 <strong>사막여우는 이 볼트에서만 살아요.</strong> 나중에 클로드로 <em>다른 일</em>을 할 땐 <strong>다른 폴더를 열면</strong> 돼요 — 폴더가 다르면 안 섞여요(열 때마다 곧장 사막여우예요). 이 볼트는 <strong>나만의 것</strong>이라 회사·공유 드라이브에 두지 않고, <strong>비공개로 백업</strong>해요(6단계). → 열면 바로 사막여우 · 나만의 볼트 · 비공개 백업, 셋 다.</p></blockquote>
+<hr>
+<h1 id="part-2" class="part"><span class="pbar"></span>2부 · 설치하기 (순서대로 따라가기)</h1>
+<blockquote><p>위에서부터 한 단계씩. <strong>막히면 그 단계 이름으로 [4부]를 펴보세요.</strong></p></blockquote>
+<h2>0단계 · 준비물 (5분)</h2>
+<ul><li><strong>클로드 유료 구독(Pro 이상)</strong> — Code 탭은 유료에서 열려요. <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>에서 플랜 확인.</li><li><strong>옵시디언</strong> — 무료 노트 앱(1단계에서 설치). <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a></li><li><strong>PC</strong> — 🍎 맥(macOS 13 이상) 또는 🪟 윈도우(Windows 10 이상). 아이패드·폰은 안 돼요. 인터넷 연결.</li></ul>
+<h2>0.5단계 · Git 설치 (5분)</h2>
+<p><strong>Git</strong> = 파일 변화를 기록·백업하게 해주는 작은 도구. 직접 쓸 일은 없고 사막여우가 뒤에서 써요. 한 번만 깔면 됩니다.<br><strong>꼭 먼저 깔아두세요</strong> — 나중에 깃허브 백업을 인증할 때(일회용 <em>번호</em> 받기, 6단계) 이게 깔려 있어야 돼요.</p>
+<ul><li>🪟 <strong>윈도우(꼭)</strong> — <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">git-scm.com/downloads/win</a> → 받은 파일 더블클릭 → 화면이 여러 장 이어져도 <strong>전부 기본값 그대로 <code>Next</code></strong> → <code>Install</code> → <code>Finish</code>. (설치하면 'Git Bash'도 같이 깔려요 — 같은 거예요.)</li><li>🍎 <strong>맥(확인만)</strong> — 보통 이미 있어요. 없으면 <strong>4부 '폴더를 선택해도 작동이 안 돼요(Git 문제)'</strong>에서 사막여우가 알려줘요(그때 "설치" 한 번).</li></ul>
+<h2>1단계 · 옵시디언 설치하고 '볼트' 만들기 (7분)</h2>
+<blockquote><p>옵시디언이 처음이셔도 괜찮아요. 여기서 차근차근 같이 해요.</p></blockquote>
+<h3>옵시디언이 뭐예요?</h3>
+<p>글·생각을 적는 <strong>무료 노트 앱</strong>이에요. 특별한 점 하나 — 모든 노트가 <strong>내 컴퓨터 안의 '폴더 + 텍스트 파일'</strong>로 저장돼요. 남의 서버에 갇히지 않아요. 그래서 나중에 <strong>사막여우가 그 파일을 직접 읽고 써요.</strong> (메모장과 비슷한데, 노트를 예쁘게 모아 관리해주는 도구라고 보시면 돼요.)</p>
+<blockquote><p>📌 <strong>볼트(Vault) = 내 노트가 담기는 폴더 하나.</strong> 옵시디언은 '볼트' 단위로 노트를 모아요. 우리는 디퍼OS용 볼트 하나를 만들 거예요.<br><em>이미 옵시디언을 쓰는 분 → 쓰던 볼트(또는 새 폴더) 하나면 돼요. 2단계로 가셔도 됩니다.</em></p></blockquote>
+<h3>① 설치</h3>
+<ol><li>브라우저에서 <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a> → 가운데 <strong>Download</strong> 클릭.</li><li>🍎 <strong>맥</strong>: 받은 <code>.dmg</code>를 열고 옵시디언 아이콘을 <code>응용 프로그램(Applications)</code>으로 끌어다 놓기.</li></ol>
+<p>   🪟 <strong>윈도우</strong>: 받은 설치 파일을 더블클릭 → '다음'만 누르면 끝.</p>
+<ol><li>옵시디언을 실행해요.</li></ol>
+<h3>② 볼트(보관소) 만들기</h3>
+<ol><li>처음 켜면 나오는 화면에서 <strong><code>Create new vault</code>(새 보관소 만들기)</strong> 클릭. (화면이 영어로 떠도 당황 마세요.)</li><li><strong>Vault name</strong>에 이름을 적어요 — 예) <code>나의 디퍼OS</code>.</li><li><strong><code>Browse</code></strong>(위치 선택)를 눌러 저장 위치를 골라요 → 나중에 찾기 쉽게 <strong>'문서(Documents)' 폴더</strong> 안을 추천해요.</li><li><strong><code>Create</code></strong> → 끝! 텅 빈 볼트가 열려요.</li></ol>
+<h3>③ 화면 둘러보기 (1분만)</h3>
+<ul><li><strong>왼쪽</strong> = 내 노트 목록(파일 탐색기). 지금은 비어 있어요.</li><li><strong>가운데</strong> = 노트를 쓰는 공간.</li><li><strong>새 노트 만들기</strong> = 왼쪽 위 <em>새 노트</em> 아이콘, 또는 <code>Ctrl</code>(맥은 <code>Cmd</code>)+<code>N</code>. 제목 적고 본문을 쓰면 돼요.</li><li><strong>저장은 자동이에요</strong> — 따로 누를 필요 없어요. 노트 하나가 작은 텍스트 파일(<code>.md</code>) 하나예요.</li><li>한 번 만들어보세요. <em>틀려도 괜찮아요</em> — 익숙해지는 게 목적이에요.</li></ul>
+<h3>④ 핵심 — 옵시디언과 사막여우는 '같은 폴더'를 봐요</h3>
+<p>이 볼트 폴더를 곧 <strong>3단계에서 사막여우(Code 탭)에게도 가리켜</strong> 줄 거예요. 그러면 둘이 <strong>같은 폴더를 함께</strong> 보게 돼요 — 내가 옵시디언에서 쓴 글을 사막여우가 읽고, 사막여우가 만든 노트를 내가 옵시디언에서 봐요. <strong>따로 옮기거나 복사할 필요가 없어요.</strong> (긴 글은 옵시디언에서, 사막여우와의 대화는 Code 탭에서 — 같은 노트로 이어져요.)</p>
+<blockquote><p>🔒 기존 노트가 많은 분 — 세팅은 <em>없는 것만</em> 더하지만, 안심하시도록 시작 전 <strong>볼트 폴더를 통째로 한 번 복사</strong>해 두세요.</p></blockquote>
+<h2>2단계 · 클로드 데스크탑 앱 + Code 탭 (5분)</h2>
+<p><strong>Code 탭</strong> = 사막여우가 작동하는 자리예요(코딩하는 곳 아님 — 내 노트를 다루는 AI를 켜는 곳).</p>
+<ol><li><a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> → 설치 → <strong>로그인(Pro 이상)</strong>.</li><li>위쪽 탭에서 <strong><code>Code</code></strong> 누르기.</li></ol>
+<blockquote><p>💡 <strong>품질 팁 — 모델은 <code>Opus 4.8 이상</code>으로.</strong> 사막여우의 답·<em>의미 선물 문장</em>의 깊이는 <strong>모델 성능</strong>이 좌우해요. Code 탭 <strong>모델 설정에서 <code>Opus 4.8</code> 이상</strong>으로 두세요 — 같은 질문에도 훨씬 깊은 한 줄이 나와요. (요금제에 Opus가 없으면, 있는 것 중 제일 좋은 모델로.)</p></blockquote>
+<h2>3단계 · 내 볼트 연결하기 (3분)</h2>
+<p>사막여우가 내 노트를 보려면 <strong>"이 폴더에서 일해"</strong>라고 가리켜줘야 해요(=연결).</p>
+<ol><li>Code 탭 환경을 <strong><code>Local</code></strong>로.</li><li><strong><code>Select folder</code></strong> → <strong>1단계에서 옵시디언으로 만든 바로 그 폴더</strong> 선택.</li><li>잘 됐는지 입력창에: <code>여기 어떤 폴더야? 안에 뭐가 있어?</code> → 내 노트를 읽어주면 OK.</li></ol>
+<blockquote><p>🔗 <strong>이게 '옵시디언 ↔ 클로드 코드 연결'이에요.</strong> 1단계에서 <em>옵시디언으로 만든</em> 그 폴더를 여기서 고르면, <strong>둘이 같은 폴더를 함께</strong> 봐요 — 따로 연결 작업이 없어요(볼트가 옵시디언에서 태어났으니 옵시디언은 이미 이어져 있어요).<br>💡 혹시 <strong>볼트를 옵시디언이 아닌 방법으로 만들었다면</strong>(예: 폴더만 따로 생성), 옵시디언에서 한 번만 열어주세요: 옵시디언 좌측 끝 <strong>볼트 아이콘</strong>(또는 좌하단 볼트 이름) 클릭 → <strong>'다른 보관소 열기' → '폴더를 보관소로 열기(Open folder as vault)'</strong> → 그 폴더 선택.</p></blockquote>
+<blockquote><p>💡 <strong><code>Code</code> 탭에서 시작해요(본진).</strong> <code>Cowork</code>도 같은 폴더를 읽고 로컬에 저장하지만, 설치·세팅은 Code 탭이 가장 매끄러워요.<br>💡 사막여우는 만들거나 실행하기 <strong>전에 "이렇게 할까요?"</strong> 물어요 → 내용 보고 <strong>Accept</strong>.</p></blockquote>
+<h2>4단계 · 디퍼 OS 설치 (앱 안 터미널로)</h2>
+<blockquote><p>천천히, <strong>한 줄씩</strong>. 우리가 칠 건 몇 줄뿐이에요.</p></blockquote>
+<blockquote><p>🖥️ <strong>'터미널'이 처음이세요? (1분만 읽어요)</strong><br>터미널은 <em>글로 명령을 시키는 칸</em>이에요. 무섭지 않아요 — 한 줄 치고 <strong>Enter</strong>가 전부예요.<br>- 🪟 윈도우는 <strong>PowerShell</strong>(<code>PS C:\…&gt;</code> 로 시작) · 🍎 맥은 <strong>터미널</strong>(<code>…%</code> 로 시작). 색은 테마 따라 흰색일 수도, 어두울 수도 있어요.<br>- <strong>붙여넣기</strong>(이 가이드의 명령을 복사해 붙일 때): 🪟 마우스 <strong>오른쪽 클릭</strong> 또는 <code>Ctrl</code>+<code>V</code> · 🍎 <code>Cmd</code>+<code>V</code>.<br>- 비밀번호처럼 <strong>글자가 안 보여도 정상</strong>이에요. 그냥 치고 Enter.<br>- 틀려도 괜찮아요. 다시 치면 돼요.</p></blockquote>
+<h3>4-1. 터미널 열기 (앱 안에서 — 두 가지 방법, 아무거나)</h3>
+<ul><li><strong>방법 ① 버튼</strong> — Code 탭 화면 <strong>오른쪽 위 <code>&gt;_</code> 아이콘</strong>(터미널 모양)을 눌러요.</li><li><strong>방법 ② 단축키</strong> — <code>Ctrl</code> + <code>&#96;</code> (백틱: 키보드 <strong>맨 왼쪽 위, <code>Esc</code> 아래·숫자 <code>1</code> 왼쪽</strong> 키 — 물결 <code>~</code>과 같은 키예요). 🍎 맥도 똑같이 <code>Ctrl</code>+<code>&#96;</code>. (다시 누르면 닫혀요.)</li><li>→ 둘 다 <strong>같은 터미널 칸</strong>이 열려요(화면 아래쪽 또는 오른쪽). 위에 "터미널"이라고 적혀 있어요. (🪟 윈도우는 <em>PowerShell</em> <code>PS C:\…&gt;</code> · 🍎 맥은 <em>zsh</em> <code>…%</code> — 색은 테마 따라.)</li><li>⚠️ 이건 윈도우 <em>PowerShell</em>·맥 <em>'터미널'</em> 같은 <strong>별도 프로그램이 아니라, 클로드 앱 <u>안</u>에 있는 터미널</strong>이에요(맥·윈도우 똑같아요).</li></ul>
+<h3>4-2. 터미널을 '내 볼트' 폴더로 맞추기 — <code>cd</code> 한 번만 배우기</h3>
+<p>터미널 맨 앞에 <strong>지금 폴더</strong>가 보여요: <code>PS C:\...&gt;</code> (🍎 맥은 <code>…%</code>).</p>
+<ul><li>그 경로가 <strong>내 볼트</strong>면 → 그대로 4-3으로.</li><li>아니면 <code>cd</code>로 옮겨요. <strong><code>cd</code>는 "이 폴더로 가자"</strong>는 뜻이고, 딱 둘만 알면 돼요:</li><li><strong><code>cd ..</code></strong> — <strong>한 칸 위로</strong> 나가기. (<code>..</code> 점 두 개 = "한 단계 위 폴더")</li></ul>
+<p>    예: <code>C:\Users\나\볼트\00-Daily</code> 에서 <code>cd ..</code> → <code>C:\Users\나\볼트</code></p>
+<ul><li><strong><code>cd 폴더이름</code></strong> — 그 폴더 <strong>안으로</strong> 들어가기.</li></ul>
+<p>    예: <code>C:\Users\나</code> 에서 <code>cd 볼트</code> → <code>C:\Users\나\볼트</code></p>
+<ul><li><strong>한 번에 가기</strong>: <code>cd </code> (cd + 스페이스) 친 뒤, <strong>볼트 폴더를 터미널 칸으로 드래그</strong>해서 떨어뜨리면 경로가 자동으로 붙어요.</li><li>칠 때마다 끝에 <strong>Enter</strong>. 맨 앞 경로가 <strong>내 볼트</strong>로 바뀌면 성공이에요.</li><li>헷갈리면: <strong><code>cd ..</code>를 한두 번</strong> 쳐서 위로 나간 뒤, 보이는 폴더로 <strong><code>cd 폴더이름</code></strong> 하며 한 칸씩 들어가요.</li></ul>
+<h3>4-3. 클로드 실행 (없으면 한 번만 설치)</h3>
+<p>방금 연 <strong>터미널 칸에는 <code>claude</code> 딱 한 단어만</strong> 쳐요(아직 슬래시 명령 아니에요).</p>
+<ul><li><code>claude</code> → Enter. 설정 화면이 뜨면 4-4로.</li><li>"claude 인식 안 됨 / not recognized"가 뜨면 한 번만 설치: <code>npm install -g @anthropic-ai/claude-code</code> → Enter → 끝나면 다시 <code>claude</code> → Enter.</li></ul>
+<h3>4-4. 첫 실행 화면 넘기기 (거의 Enter, 한 번 로그인)</h3>
+<ol><li><strong>테마(색)</strong> → 고르고 Enter.</li><li><strong>로그인(유료 인증)</strong> → "Log in" → <strong>브라우저 열림</strong> → <strong>유료(Pro) 계정 로그인</strong> → "Authorize/허용" → 터미널로 돌아오기.</li><li><strong>깃허브 연결</strong> 화면이 나오면 → 지금은 <strong>Skip/나중에</strong> (백업은 6단계).</li><li><strong>보안 안내</strong> → Enter.</li><li><strong>"이 폴더를 신뢰?"</strong> → <strong>Yes/Enter.</strong></li></ol>
+<p>→ 화면이 바뀌고 아래에 <code>&gt;</code> 입력 표시가 뜨면, <strong>이제 여기가 '클로드 안'</strong>이에요(터미널이 클로드로 바뀐 거예요). 🦊</p>
+<h3>4-5. 디퍼 OS 설치 (세 줄, 한 줄씩 Enter)</h3>
+<blockquote><p>📍 <strong>여기가 제일 헷갈리는 곳! 칠 자리를 구분해요 — 세 칸이 달라요.</strong><br>① <strong>Code 탭 채팅창</strong> — 여기선 <code>/plugin</code>이 <em>안 돼요</em>("isn't available in this environment"). ❌<br>② <strong>터미널 칸</strong>(4-1에서 연 것) — 여기엔 <code>claude</code>만 쳤어요.<br>③ <strong>그 터미널 안에서 실행된 '클로드'</strong>(<code>&gt;</code> 입력 표시) — <strong>아래 <code>/plugin</code> 명령은 꼭 ③ 여기</strong>에 쳐요. ✅<br>👉 <strong>한 줄 요약: 터미널 열기(버튼/<code>Ctrl</code>+<code>&#96;</code>) → <code>claude</code> 실행 → <u>실행된 클로드 안</u>에 <code>/plugin…</code></strong></p></blockquote>
+<p><strong>③ 클로드 안</strong>(<code>&gt;</code> 표시 보이죠?)에서 한 줄씩 치고 Enter:</p>
+<pre><code>/plugin marketplace add https://github.com/clbookslower/deeper-os.git</code></pre>
+<pre><code>/plugin install deeper-os@deeper-os</code></pre>
+<pre><code>/reload-plugins</code></pre>
+<ul><li>중간에 "추가/설치할까요?" 물으면 <strong>Yes/Enter.</strong></li></ul>
+<h3>4-6. 확인</h3>
+<ul><li><code>/deeper-os:setup</code> 쳐서 반응하면 성공 → <strong>5단계로.</strong></li></ul>
+<blockquote><p>🔄 <strong>이미 디퍼 OS를 쓰던 분(또는 1기)</strong> — 다시 설치 말고, 클로드 안에서 <code>/plugin marketplace update deeper-os</code> → <code>/reload-plugins</code>로 <strong>업데이트</strong>만. 기존 노트는 그대로예요.</p></blockquote>
+<h2>5단계 · 사막여우 깨우기</h2>
+<pre><code>/deeper-os:setup</code></pre>
+<ul><li><strong>맨 먼저 "제가 뭐라고 불러드릴까요?"</strong> 하고 호칭을 물어요 — 그 호칭으로 계속 불러줘요(그냥 '디퍼님'도, 이름도, 좋아하는 호칭도 OK). 이어서 직업·역할 정도를 <strong>대화하듯 따뜻하게</strong>(딱딱한 양식 아님). 사막여우 이름은 <strong>자동</strong>.</li><li>기존 노트는 안 건드리고, 매 단계 <strong>"만들까요?"</strong> 물어요 → 네.</li><li>폴더(<code>00-Daily</code>·<code>01-Grammar</code> 등)·데일리 템플릿·질문이 생기고 —</li><li><strong>끝나는 순간 사막여우가 다정하게 인사하며 첫 질문</strong>을 건네요. 🦊 (그게 시작이에요. 한 줄 답하면 첫 씨앗이 쌓여요.)</li></ul>
+<h2>6단계 · GitHub 백업 연결 (7분)</h2>
+<p>OneDrive 대신 <strong>GitHub 비공개 금고</strong>가 백업이자 '되돌리기'예요. 어려운 명령은 사막여우가 대신 하고, 나는 <strong>딱 둘</strong>만:</p>
+<ol><li><strong>(한 번) GitHub 계정</strong> — <a href="https://github.com" target="_blank" rel="noopener">github.com</a> → <code>Sign up</code> → 가입(무료) → 이메일 인증.</li><li><strong>(한 번) 연결 맡기기</strong> — <em>(Git이 깔려 있어야 돼요 → 0.5단계.)</em> 입력창에 <code>백업 연결</code> → 사막여우가 도구 설치·저장소 생성·첫 백업까지 해줘요. 진행 중 내가 할 일:</li></ol>
+<ul><li>🔑 <strong>일회용 번호(코드)로 GitHub 인증</strong> — 터미널(또는 사막여우)이 <strong>번호(코드)</strong>를 보여주고 브라우저를 열어요. → 그 <strong>번호를 복사</strong> → 브라우저에 <strong>붙여넣기</strong>(🪟 우클릭 또는 <code>Ctrl</code>+<code>V</code> · 🍎 <code>Cmd</code>+<code>V</code>) → <strong>GitHub 로그인</strong> → <strong>Authorize(승인)</strong> → 터미널로 돌아오면 자동으로 이어져요. <em>평생 한 번.</em></li><li>🍎 (맥) 중간에 비밀번호 창이 뜨면 맥 로그인 비번 입력(<strong>글자 안 보이는 게 정상</strong>) + Enter.</li></ul>
+<ol><li><strong>(이후 매일)</strong> <code>백업</code> 한마디 → 사막여우가 비공개 금고에 저장.</li></ol>
+<blockquote><p>⚠️ <strong>백업은 건너뛰지 마세요.</strong> OneDrive를 안 쓰니 이게 <em>유일한</em> 안전장치예요. 저장소가 <strong>비공개(Private)</strong>인지 한 번만 확인하면 끝 — 나만 봐요.</p></blockquote>
+<p>✅ <strong>여기까지 오면 설치 끝!</strong> 이제 3부로.</p>
+<hr>
+<h1 id="part-3" class="part"><span class="pbar"></span>3부 · 매일 이렇게 쓰기 (천천히 — 한꺼번에 X)</h1>
+<blockquote><p>⚠️ 스킬이 여러 개지만 <strong>한 번에 다 안 써요.</strong> 처음엔 딱 <code>안녕</code>·<code>오아시스</code> 두 개면 충분.</p></blockquote>
+<h2>첫날 (세팅 직후)</h2>
+<ol><li>사막여우의 <strong>첫 질문에 한 줄</strong> 답. ("모르겠다"도 괜찮아요.)</li><li><em>"씨앗으로 남길까요?"</em> → <strong>네</strong> → <code>01-Grammar/Insights</code>에 <strong>첫 씨앗</strong> 🌱 (발견일도 함께 저장돼요.)</li><li>오늘은 여기까지! 🦊</li></ol>
+<h2>매일 (5~15분) — 네 개면 돼요</h2>
+<p>외울 건 없어요. <strong>짧은 한마디</strong>면 사막여우가 알아들어요. 부르는 방법은 딱 <strong>두 가지</strong>예요.</p>
+<ul>
+<li><strong>① 이름과 함께 한 번에</strong> — <code>사막여우 안녕</code>처럼요. <strong>어느 폴더에서 Code를 열었든</strong> 사막여우가 깨어나, <em>내 볼트를 스스로 찾아가</em> 그 일을 해줘요. 폴더를 찾아 들어갈 필요가 없어요 — 가장 든든한 방법.</li>
+<li><strong>② 그냥 짧게 한마디</strong> — 그냥 <code>안녕</code>처럼요. <strong>볼트 폴더 안에서 열었거나, 이미 사막여우와 이야기하던 중</strong>이면 바로 통해요. <code>오아시스</code> 하다가 <code>안녕</code>으로, 대화하다가 <code>오아시스</code>로 <strong>자유롭게 오가도</strong> 돼요.</li>
+</ul>
+<table><thead><tr><th>이렇게 말하면</th><th>이런 일이 일어나요</th><th>어디서든(이름 붙여)</th></tr></thead><tbody>
+<tr><td><code>안녕</code></td><td><strong>30일 문법 여정</strong>의 오늘 한 걸음 — 오늘 노트 + 그날의 질문 하나</td><td><code>사막여우 안녕</code></td></tr>
+<tr><td><code>안녕 시작</code></td><td>여정을 <strong>처음 여는 날</strong> (Day 1부터 시작)</td><td><code>사막여우 안녕 시작</code></td></tr>
+<tr><td><code>오아시스</code></td><td><strong>해체질문</strong> 하나 — 빌려 입은 생각·남의 기준을 벗는 '비우기'(오토파지)</td><td><code>사막여우 오아시스</code></td></tr>
+<tr><td><code>정리</code></td><td>오늘 쓴 것에서 <strong>씨앗</strong>을 골라 저장 🌱</td><td><code>사막여우 정리</code></td></tr>
+<tr><td><code>백업</code></td><td>내 볼트를 <strong>비공개 금고(GitHub)</strong>에 안전하게 보관</td><td><code>사막여우 백업</code></td></tr>
+</tbody></table>
+<blockquote><p>🦊 <strong>처음엔 딱 둘이면 충분해요 — <code>안녕</code>과 <code>오아시스</code>.</strong> <code>정리</code>·<code>백업</code>은 익숙해지면 하나씩 더하면 돼요. 외우려 말고, 떠오르는 대로 말 걸어요.</p></blockquote>
+<p><strong>하루 리듬(권장)</strong><br>아침 <code>오아시스</code>(비우기)로 머리를 맑게 → <code>안녕</code>(오늘 여정 한 걸음)으로 나를 모으기 → 저녁 <code>정리</code>(씨앗 저장) → 마무리 <code>백업</code>.<br><em>비움이 먼저 오면, 나를 캐는 일이 한결 맑아져요. 안녕(모으기)과 오아시스(비우기)는 짝이에요.</em></p>
+<blockquote><p>💬 <strong>답은 어디에 적나요? — 둘 다 OK</strong><br>1. <strong>그냥 채팅에 말하기</strong> — 답만 적으면 사막여우가 <em>오늘 노트의 알맞은 칸</em>에 <strong>대신 옮겨 적어요. 파일 직접 안 열어도 돼요.</strong><br>2. <strong>옵시디언에서 직접</strong> — 길게 쓸 땐 그 노트를 열고 타이핑(같은 폴더라 그대로 반영).<br>🦊 사막여우는 <em>내 말 그대로</em> 남기고, <strong>무엇을 남길지는 내가 골라요.</strong> 멋대로 요약·변경 안 해요.</p></blockquote>
+<h2>익숙해지면 (2주차쯤) — 하나씩만</h2>
+<p>궁금할 때 한 번에 하나씩: <code>문체</code>(언어 지문) · <code>지형도</code>(쌓인 씨앗의 그림). <code>의미</code>(의미의 축)는 30일 여정 <strong>마지막 날</strong> 사막여우와 함께, <code>독자</code>는 <strong>둘째 달 논리</strong>에서 본격.</p>
+<h2>무엇을 저장하고, 무엇을 나눌까</h2>
+<ul><li><strong>내 것(비공개)</strong> — 씨앗·노트는 다 내 볼트에. <code>백업</code>으로 비공개 금고. <em>남에게 공개 안 돼요.</em></li><li><strong>나눌 것(내가 고른 것만)</strong> — 살롱에 보여줄 글은 <strong>그 노트만 골라</strong> 사막방·긱어스에 직접. (자동 공유 아님.)</li><li><strong>발행할 것</strong> — 바깥으로 낼 글은 <code>발행</code>으로 <code>03-Rhetoric/Published</code>에 따로.</li></ul>
+<h2>30일 문법 여정은 이렇게 흘러요</h2>
+<table><thead><tr><th>주차</th><th>무엇을</th></tr></thead><tbody><tr><td>도입(2일)</td><td>첫 문장 · 오늘의 나 (이 첫 문장은 Day 30에 다시 만나요)</td></tr><tr><td>1주 · 원천</td><td>나만의 재료 발굴(로고테라피)</td></tr><tr><td>2주 · 목소리의 결</td><td>내 언어의 지문</td></tr><tr><td>3주 · 독점적 관점</td><td>나만 설 수 있는 자리</td></tr><tr><td>4주 · 오토파지</td><td>빌려온 것 비우고 핵 남기기</td></tr><tr><td>주말마다 ★</td><td>한 주 글에서 <em>내가 못 본 한 문장</em>을 선물처럼</td></tr></tbody></table>
+<blockquote><p>🫶 가끔 마음이 힘든 주제(바꿀 수 없던 일, 넘어진 경험)가 나와요. <strong>말할 수 있는 만큼만.</strong> 내 노트는 비공개 백업에만 올라가요.</p></blockquote>
+<hr>
+<h1 id="part-4" class="part"><span class="pbar"></span>4부 · 막힐 때 (문제 해결)</h1>
+<h2>디퍼 OS가 안 깔려요 (<code>/plugin</code>이 "isn't available in this environment")</h2>
+<p>Code 탭 <em>채팅</em>에서 <code>/plugin</code>이 막히는 환경이 있어요. 그럼 <strong>Code 탭 안의 통합 터미널에서 <code>claude</code>를 거쳐</strong> 설치하면 확실해요. (윈도우 PowerShell이나 맥 '터미널' 앱 같은 <em>별도 프로그램</em> 말고, <strong>클로드 앱 안에 있는 터미널</strong>이에요 — 맥·윈도우 똑같아요.)</p>
+<ol><li><strong>통합 터미널 열기</strong> — <code>Ctrl</code> + 백틱 키(키보드 숫자 <code>1</code> 왼쪽, 작은따옴표 비슷하게 생긴 키)를 누르면 아래에 까만 칸이 열려요. <strong>🍎 맥도 같은 키예요 — <code>Cmd</code>가 아니라 <code>Ctrl</code> + 백틱.</strong> 이 터미널은 지금 연 볼트 폴더에서 바로 열려요 — <code>cd</code> 안 해도 돼요.</li><li><strong><code>claude</code></strong> 입력. ("claude 못 찾음"이면 앱/클로드 코드 업데이트.)</li><li><strong>맨 처음 한 번은 '첫 설정'</strong>이 떠요(다음부턴 안 떠요). 거의 <code>Enter</code>로 통과:</li></ol>
+<ul><li>테마(색) → <code>Enter</code> / <strong>로그인=유료계정 확인</strong>(구독 계정 로그인) / 보안 안내 → <code>Enter</code> / Git 확인 / <strong>"이 폴더 신뢰?"</strong> → <code>Enter</code></li></ul>
+<ol><li>그 안에서 4단계 세 줄 → <code>/deeper-os:setup</code>.</li></ol>
+<blockquote><p>💡 <strong>더 쉬운 자동 길</strong> — 볼트에 <code>.claude/settings.json</code> 파일을 만들고 아래를 넣으면, <code>claude</code> 열 때 <strong>신뢰 한 번으로 자동 설치</strong>돼요(아래 박스만 그대로 복사):</p>
+<pre><code>{ "extraKnownMarketplaces": { "deeper-os": { "source": { "source": "git", "url": "https://github.com/clbookslower/deeper-os.git" } } },
+  "enabledPlugins": { "deeper-os@deeper-os": true } }</code></pre></blockquote>
+<h2>업데이트했는데 옛 버전 그대로예요</h2>
+<ul><li>채팅 <code>/plugin</code>이 막히면 → 위처럼 <strong>통합 터미널 <code>claude</code></strong>에서 <code>marketplace update</code> → <code>install</code> → <code>/reload-plugins</code>.</li><li>그래도면 <code>＋ → Plugins</code>에서 <code>deeper-os</code> <strong>삭제 후 재설치</strong>. (노트·볼트 CLAUDE.md는 그대로 — 플러그인만 다시 깔려요.)</li><li><strong>내 버전 확인</strong> — 클로드 안에서 <code>/plugin</code> 목록의 <code>deeper-os</code> 버전이 최신인지 보거나, 사막여우에게 <em>"지금 디퍼 OS 버전 알려줘"</em>. (세팅을 다시 안 돌려도 돼요 — '이름 묻는지'로 구별하던 옛 방법은 이미 설치한 분껜 안 맞아요.)</li><li>🔄 <strong>1기(이미 쓰던 분) 한 가지 더</strong> — 업데이트 뒤 사막여우에게 <em>"내 CLAUDE.md 명령어 설명을 지금 플러그인 기준으로 맞춰줘"</em> 한마디. 옛 명령 뜻(특히 <code>오아시스</code>)만 현행으로 바꾸고 <strong>내 소개·씨앗·노트는 절대 안 건드려요.</strong></li></ul>
+<h2>세팅이 "볼트 폴더 경로를 알려달라"고 물어봐요</h2>
+<p>claude가 <em>볼트가 아닌 곳</em>(예: <code>C:\</code> 최상위)에서 열린 거예요. 경로 외울 필요 없어요 — <strong>Code 탭에서 '내 볼트 폴더'를 다시 열고</strong>(Select folder) <code>/deeper-os:setup</code>을 다시 부르면 안 물어요. (터미널이면 <code>cd</code>로 위로 가지 말고 볼트에서 그대로 <code>claude</code>.)</p>
+<h2>폴더를 선택해도 작동이 안 돼요 (Git 문제)</h2>
+<ul><li>🪟 <strong>윈도우</strong> — <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">Git for Windows</a>가 깔려 있어야 해요(0.5단계). 설치 후 앱 다시 켜기.</li><li>🍎 <strong>맥</strong> — git이 없을 수 있어요. 통합 터미널에서 <code>claude</code>를 한 번 띄우면, 없을 때 <strong>"명령어 도구(Command Line Tools) 설치"</strong> 창이 떠요 → <strong>설치</strong> 누르고(몇 분) 끝나면 다시 시도.</li></ul>
+<h2><code>gh auth login</code>을 직접 입력하게 될 때 (선택지)</h2>
+<p>위에서부터 차례로: <strong>GitHub.com</strong> → <strong>HTTPS</strong> → <strong>Yes</strong> → <strong>Login with a web browser</strong> → 일회용 코드 복사·<code>Enter</code> → 브라우저에서 코드 붙여넣고 <strong>Authorize</strong>.</p>
+<h2>자주 묻는 것</h2>
+<ul><li><strong>Code 탭이 "업그레이드하라"</strong> → 유료 구독(Pro 이상) 필요.</li><li><strong><code>/deeper-os:setup</code>을 못 알아들어요</strong> → <code>/reload-plugins</code> 한 번 더.</li><li><strong>기존 노트가 사라질까 봐</strong> → 세팅은 <em>없는 것만</em> 추가, 기존 파일 안 건드려요. 불안하면 볼트 폴더 복사.</li><li><strong>매일 직접 노트를 만들어야?</strong> → 아니요, <code>안녕</code> 한마디면 사막여우가.</li><li><strong>GitHub에 올리면 남이 보나요?</strong> → 아니요, <strong>비공개(private)</strong> — 나만 봐요.</li><li><strong>(옵시디언) 사막여우가 만든 노트가 안 보여요</strong> → 보통 자동으로 떠요. 안 보이면 왼쪽 목록에서 그 노트를 다시 클릭하거나, 옵시디언을 닫았다 다시 열어보세요(같은 폴더라 곧 나타나요).</li><li><strong>(옵시디언) 영어 메뉴라 어려워요</strong> → 거의 안 건드려요. <em>새 노트 만들기</em>와 <em>적기</em>만 하면 돼요. 나머지 정리·저장은 사막여우가 해줘요.</li><li><strong>(옵시디언) 노트는 어디에 써요?</strong> → 짧은 답은 채팅(사막여우)에, 긴 글은 옵시디언에서. 같은 노트로 이어져요(3부 💬 참고).</li></ul>
+<hr>
+<h1 id="part-5" class="part"><span class="pbar"></span>부록</h1>
+<h2>Code · Cowork · Chat 같이 쓰기</h2>
+<ul><li><strong>Code</strong>(본진) — 내 볼트를 읽고 쓰고, 나를 기억함. <strong>남길 작업 전부 여기.</strong></li><li><strong>Chat</strong> — 파일 없이 빠른 대화. 좋은 답 나오면 Code로 가져오기.</li><li><strong>Cowork</strong> — 오래 걸리는 일(리서치 등)을 맡기는 도우미. <strong>폴더를 읽고 로컬에 저장도 돼요.</strong> 길게 돌릴 일은 여기서.</li></ul>
+<blockquote><p>탭끼리는 기억을 공유 안 해요 → 좋은 결과는 <strong>복사해 Code 사막여우에게</strong> 붙여넣고 "정리해줘". 최종 자산은 늘 Code에 남겨요.</p></blockquote>
+<h2>용어 한 줄 사전</h2>
+<ul><li><strong>옵시디언 / 볼트</strong> — 노트를 텍스트로 쌓는 앱 / 그 노트 폴더 하나.</li><li><strong>Code 탭 / Local / Cowork</strong> — 사막여우가 작동하는 자리 / 내 컴퓨터(로컬) / 오래 일하는 도우미(폴더 읽고 로컬 저장).</li><li><strong>사막여우</strong> — 나를 기억하고 노트를 다루는 나의 세컨브레인(우리 모두의 공통 동반자, 여우).</li><li><strong>플러그인 / 스킬 / <code>/명령</code></strong> — 기능 묶음(디퍼 OS) / 방법론 / 내가 부르는 기능.</li><li><strong>씨앗 / 의미의 축</strong> — 주장 한 문장 / 모든 작업의 기준이 되는 한 축.</li><li><strong>Git / GitHub / 커밋</strong> — 변화 기록 도구 / 인터넷 비공개 금고 / 저장 시점 묶기.</li></ul>
+<hr>
+<p><em>천천히 와도 괜찮습니다. 하나씩 이해하며 왔다면, 디퍼님은 이미 잘 하고 있어요.</em> 🦊<br><em>© 2026 deeper unbranding salon</em></p>
+<div class="foot">🦊 천천히 와도 괜찮습니다. 하나씩 이해하며 왔다면, 디퍼님은 이미 잘 하고 있어요.<br>© 2026 deeper unbranding salon</div>
+</div></body></html>
