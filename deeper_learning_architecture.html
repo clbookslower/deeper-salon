@@ -58,10 +58,10 @@ code{font-family:var(--mono);font-size:.86em;background:var(--surface);padding:1
 
 /* 다이어그램 — 같은 걸음, 여러 이름 */
 .diagram{margin:30px 0 10px;display:flex;gap:14px;align-items:stretch}
-.axis{flex:none;width:30px;display:flex;align-items:center;justify-content:center;position:relative}
-.axis .arrow{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.12em;color:var(--clay-deep);text-transform:uppercase;font-weight:700}
-.axis .line{position:absolute;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--clay-soft),var(--clay-deep))}
-.axis .tip{position:absolute;top:2px;left:50%;transform:translateX(-50%);color:var(--clay-deep);font-size:11px}
+.axis{flex:none;width:48px;display:flex;align-items:center;justify-content:flex-start;position:relative}
+.axis .arrow{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;letter-spacing:.1em;color:var(--clay-deep);text-transform:uppercase;font-weight:700;position:relative;z-index:1}
+.axis .line{position:absolute;right:7px;top:12px;bottom:12px;width:2px;background:linear-gradient(var(--clay-soft),var(--clay-deep))}
+.axis .tip{position:absolute;right:3px;top:2px;color:var(--clay-deep);font-size:11px;line-height:1}
 .layers{flex:1;display:flex;flex-direction:column;gap:12px}
 .layer{border:1px solid var(--rule-strong);border-radius:12px;overflow:hidden;background:#fff}
 .layer .grid{display:grid;grid-template-columns:1fr 1.25fr 1.1fr}
