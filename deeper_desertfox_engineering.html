@@ -210,17 +210,26 @@ footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spaci
   <p class="para">각 단계가 다음 단계를 싸게 만든다 — 인덱싱된 씨앗 위에서 의미를 발견하고, 정렬된 의미 위에서 콘텐츠를 짓는다. 매 세션 자기를 다시 설명해야 하는 무상태 챗봇과 비교하면, 이 파이프라인의 이득은 <b>선형 입력 · 복리 출력</b>이다.</p>
 
   <div class="sechead"><span class="bar"></span><h2>시스템 제약 (가드레일)</h2></div>
+  <p class="para">에이전틱 시스템은 자율로 파일을 쓰고 명령을 실행한다. 그래서 제약이 성능만큼 중요하다. 디퍼 OS의 가드레일은 기술 제약이자 값에 접지된 원칙이다.</p>
   <div class="guards">
-    <div class="guard"><div class="g">출력 제약</div><div class="d">시스템 지시로 과약속·보장 화법을 억제한다(정확성 우선).</div></div>
-    <div class="guard"><div class="g">데이터 거버넌스</div><div class="d">볼트는 로컬·private remote 전용. 자동 외부 공유 없음.</div></div>
-    <div class="guard"><div class="g">무결성</div><div class="d">원문 무손실 기록. 요약·변형은 사용자 승인 후에만 반영.</div></div>
+    <div class="guard"><div class="g">인간 통제 (HITL)</div><div class="d">파일 생성·수정·삭제·git 등 되돌리기 어려운 행위는 실행 전 사용자 승인(Accept)을 거친다. 자율 루프이되 사람의 통제 아래 돈다.</div></div>
+    <div class="guard"><div class="g">되돌림 가능성</div><div class="d">모든 변경이 git 커밋으로 남아 임의 시점 롤백이 가능하다. 정본은 보존하고 사본만 정리 — 데이터 손실 0을 최우선으로 둔다.</div></div>
+    <div class="guard"><div class="g">범위 격리</div><div class="d">에이전트는 지정된 볼트(작업 디렉터리) 안에서만 읽고 쓴다. 볼트 밖 파일·시스템은 건드리지 않는다.</div></div>
+    <div class="guard"><div class="g">데이터 거버넌스</div><div class="d">볼트는 로컬·private remote 전용. 밖으로 나가는 것은 사용자가 ‘발행’으로 명시한 것뿐이고, 자동 공유는 없다.</div></div>
+    <div class="guard"><div class="g">내용 무결성</div><div class="d">사용자의 말을 무손실로 기록하고, 요약·변형은 승인 후에만 반영한다. <code>git diff</code>로 원문 대조 검증이 가능하다.</div></div>
+    <div class="guard"><div class="g">출력 정직성</div><div class="d">시스템 지시가 보장 화법·출처 없는 수치·환각을 억제한다. 불확실하면 불확실하다고 말한다.</div></div>
   </div>
 
   <div class="sechead"><span class="bar"></span><h2>구축 비용 — 왜 플러그인으로 배포하는가</h2></div>
   <p class="para">이 시스템을 직접 구현하려면 다음이 필요하다: 일관된 스킬 프롬프트 설계·검증, 컨텍스트 규약(파일 구조·<code>CLAUDE.md</code>·노트 포맷) 확립, git 백업·인증 흐름 자동화, 세션 간 상태 관리, 원클릭 설치 패키징. 에이전트·프롬프트·지식관리에 걸친 통합으로, 수 주에서 수개월 규모다.</p>
   <p class="para">디퍼 OS는 이를 <code>/plugin install</code> 한 줄로 배포한다. 그리고 <b>평문 마크다운 · 공개 git 저장소 · 표준 Claude Code 플러그인 포맷</b>이라 블랙박스가 아니다 — 스킬 명세를 열어 보고, fork 하고, 확장할 수 있다.</p>
 
-  <p class="closing">표면의 커맨드 이름은 인터페이스일 뿐이고, 실체는 <b>로컬 우선 마크다운 스토어 위에서 도구를 쓰는 에이전트 시스템</b>이다. 무상태 프롬프팅과의 차이는 그 아래 두 계층 — 영속 상태와 오케스트레이션 — 의 유무다.</p>
+  <div class="sechead"><span class="bar"></span><h2>결론 — 무엇을 위한 시스템인가</h2></div>
+  <p class="para">지금까지의 것 — 네 계층의 에이전틱 시스템, 인덱싱·검증되는 언어모델 위키 — 은 하나의 <b>세컨브레인</b>을 이룬다. 나를 기억하고, 내가 쌓은 것을 구조로 다루는 두 번째 뇌다.</p>
+  <p class="para">그러나 세컨브레인 자체는 빈 그릇이다. 디퍼 OS는 그 위에 <b>방법론(철학)을 얹는다</b> — 트리비움으로 원천을 발굴하고, 의미의 축을 세우고, 오직 나만의 목소리를 벼린다. 그 방법론이 인덱싱·검증된 지식을 한 방향으로 정렬한다.</p>
+  <div class="defbox">
+    <p>그래서 디퍼 OS는 단순한 세컨브레인이 아니라, <b>디퍼 철학을 얹어 퍼스널 브랜딩이 가능한 세컨브레인 시스템</b>이다. 자기 원천에서 나온, 검증된, 복리로 쌓이는 지식이 곧 남과 구별되는 자기 브랜드가 된다 — 원천 → 씨앗 → 의미의 축 → 콘텐츠, 그 파이프라인의 끝에서.</p>
+  </div>
 
   <div class="nextrow">
     <a href="deeper_journey_rhythm.html"><div class="k">다음</div><div class="t">한 달, 그리고 그다음 →</div></a>
