@@ -16,46 +16,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ══════════════════════════════════════════════
+   DEEPER 비주얼 아이덴티티 v1 토큰 (디지털 트랙)
+   코어 그린 #1A4A35 · 페이퍼 크림 · 웜 잉크
+   포인트 = 클레이 하나 (골드는 인쇄 전용, 여기 없음)
+   ══════════════════════════════════════════════ */
 :root {
-  --ink: #111;
-  --muted: #888;
-  --border: #f0f0f0;
-  --surface: #fafafa;
-  --forest: #2C3B2D;
-  --forest-light: #7a9c7b;
-  --gold: #B8860B;
-  --gold-bg: #FAEEDA;
-  --red: #8B1A1A;
-  --red-bg: #FDF0F0;
-  --blue: #185FA5;
-  --blue-bg: #E6F1FB;
+  --green: #1A4A35;
+  --green-deep: #003D2C;
+  --green-deepest: #002E22;
+  --green-mid: #025D3C;
+  --green-soft: #7DA890;
+
+  --paper: #F4F1E8;
+  --surface: #EFEADD;
+  --rule: #D9D1BF;
+  --rule-strong: #C4BCA9;
+  --ink: #1A1916;
+  --ink-soft: #46443D;
+  --ink-mute: #6E6A60;
+
+  --clay: #C67E58;
+  --clay-deep: #B86D46;
+  --clay-soft: #D4916C;
+  --clay-tint: #F3E5DB;
+
+  --green-tint: #E6ECE4;
+  --on-green: #F4F1E8;      /* 그린 패널 위 크림 텍스트 */
+  --on-green-mute: #9DBBA9; /* 그린 패널 위 흐린 텍스트 */
 }
 body {
   font-family: 'Noto Sans KR', sans-serif;
-  background: #fff;
+  background: var(--paper);
   color: var(--ink);
   font-size: 16px;
   line-height: 1.9;
   -webkit-font-smoothing: antialiased;
 }
-.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+.page { max-width: 720px; margin: 0 auto; padding: 72px 28px 120px; }
 
 .breadcrumb {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--ink-mute);
   margin-bottom: 52px;
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
-.breadcrumb .sep { opacity: 0.35; }
+.breadcrumb .sep { opacity: 0.4; }
 
 .article-header {
   margin-bottom: 60px;
   padding-bottom: 44px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
 .meta {
   display: flex;
@@ -71,10 +88,10 @@ body {
   border-radius: 100px;
   letter-spacing: 0.06em;
 }
-.badge-grammar { background: var(--gold-bg); color: #854F0B; }
-.badge-session { background: var(--blue-bg); color: var(--blue); }
-.dot { color: #ddd; }
-.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+.badge-grammar { background: var(--green-tint); color: var(--green); }
+.badge-session { background: var(--clay-tint); color: var(--clay-deep); }
+.dot { color: var(--rule-strong); }
+.meta-text { font-size: 12px; color: var(--ink-mute); font-family: 'DM Mono', monospace; }
 h1 {
   font-family: 'Noto Serif KR', serif;
   font-size: 36px;
@@ -82,12 +99,13 @@ h1 {
   line-height: 1.3;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  color: var(--ink);
 }
 .subtitle {
   font-family: 'Noto Serif KR', serif;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
-  color: #666;
+  color: var(--ink-soft);
   line-height: 1.75;
   font-style: italic;
   margin-bottom: 28px;
@@ -97,8 +115,8 @@ h1 {
   font-size: 12px;
   padding: 3px 12px;
   border-radius: 100px;
-  background: #f5f5f5;
-  color: var(--muted);
+  background: var(--surface);
+  color: var(--ink-mute);
   font-family: 'DM Mono', monospace;
   letter-spacing: 0.04em;
 }
@@ -106,8 +124,8 @@ h1 {
 /* ── 목차 ── */
 .toc {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
   padding: 24px 28px;
   margin-bottom: 52px;
 }
@@ -116,7 +134,7 @@ h1 {
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-mute);
   margin-bottom: 16px;
 }
 .toc-item {
@@ -124,15 +142,15 @@ h1 {
   align-items: baseline;
   gap: 14px;
   padding: 7px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  color: #444;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+  color: var(--ink-soft);
 }
 .toc-item:last-child { border-bottom: none; }
 .toc-num {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--forest-light);
+  color: var(--green-soft);
   flex-shrink: 0;
   letter-spacing: 0.05em;
 }
@@ -142,26 +160,27 @@ h1 {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 60px 0 32px;
+  margin: 64px 0 32px;
 }
 .section-num {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--forest-light);
+  color: var(--clay-deep);
   letter-spacing: 0.1em;
   white-space: nowrap;
 }
-.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-line { flex: 1; height: 1px; background: var(--rule); }
 .section-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   margin-bottom: 20px;
   letter-spacing: -0.01em;
   line-height: 1.45;
+  color: var(--ink);
 }
 
-p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+p { color: var(--ink-soft); margin-bottom: 18px; font-size: 16px; line-height: 1.95; }
 .lead {
   font-family: 'Noto Serif KR', serif;
   font-size: 19px;
@@ -170,26 +189,26 @@ p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
   color: var(--ink);
   margin-bottom: 28px;
 }
-em { font-style: italic; color: var(--ink); }
+em { font-style: italic; color: var(--green-mid); font-weight: 500; }
 strong { font-weight: 500; color: var(--ink); }
 
 blockquote {
   margin: 32px 0;
   padding: 0 0 0 28px;
-  border-left: 2px solid var(--ink);
+  border-left: 2px solid var(--green);
 }
 blockquote p {
   font-family: 'Noto Serif KR', serif;
   font-size: 18px;
   font-style: italic;
-  color: #222;
+  color: var(--ink);
   line-height: 1.8;
   margin-bottom: 10px;
 }
 blockquote cite {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--muted);
+  color: var(--ink-mute);
   font-style: normal;
   letter-spacing: 0.06em;
 }
@@ -197,7 +216,7 @@ blockquote cite {
 .callout {
   padding: 22px 26px;
   margin: 28px 0;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 12px 12px 0;
 }
 .callout-label {
   font-family: 'DM Mono', monospace;
@@ -206,27 +225,30 @@ blockquote cite {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-.callout p { font-size: 14px; line-height: 1.85; margin: 0; }
-.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--ink); }
-.callout-speaker .callout-label { color: var(--muted); }
-.callout-speaker p { color: #333; }
-.callout-ref { background: var(--gold-bg); border-left: 2.5px solid var(--gold); }
-.callout-ref .callout-label { color: #854F0B; }
-.callout-ref p { color: #5a3800; }
-.callout-q { background: #F0F4FF; border-left: 2.5px solid #4A6FA5; }
-.callout-q .callout-label { color: #4A6FA5; }
-.callout-q p { color: #2a3f6f; }
+.callout p { font-size: 15px; line-height: 1.9; margin: 0; }
+/* 진행자 멘트 — 구조의 목소리(그린) */
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--green); }
+.callout-speaker .callout-label { color: var(--green-mid); }
+.callout-speaker p { color: var(--ink-soft); }
+/* 참고(벤야민) — 조용한 근거 */
+.callout-ref { background: var(--surface); border-left: 2.5px solid var(--green-soft); }
+.callout-ref .callout-label { color: var(--ink-mute); }
+.callout-ref p { color: var(--ink-soft); }
+/* 대화·나눔 — 사람이 만나는 순간(클레이) */
+.callout-q { background: var(--clay-tint); border-left: 2.5px solid var(--clay); }
+.callout-q .callout-label { color: var(--clay-deep); }
+.callout-q p { color: #5a3a28; }
 
 .concept {
   display: flex;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
   overflow: hidden;
   margin: 28px 0;
 }
 .concept-term {
-  background: var(--forest);
-  color: #fff;
+  background: var(--green);
+  color: var(--on-green);
   padding: 22px 24px;
   display: flex;
   align-items: center;
@@ -239,16 +261,17 @@ blockquote cite {
   writing-mode: vertical-rl;
   letter-spacing: 0.12em;
 }
-.concept-def { padding: 22px 24px; flex: 1; }
+.concept-def { padding: 22px 24px; flex: 1; background: var(--surface); }
 .concept-def .term-en {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--muted);
+  color: var(--ink-mute);
   letter-spacing: 0.1em;
   margin-bottom: 10px;
   display: block;
 }
-.concept-def p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; }
+.concept-def p { font-size: 15px; color: var(--ink-soft); line-height: 1.9; margin: 0; }
+.concept-def strong { color: var(--green); }
 
 .three-col {
   display: grid;
@@ -257,8 +280,8 @@ blockquote cite {
   margin: 28px 0;
 }
 .col-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
   padding: 20px 18px;
   background: var(--surface);
 }
@@ -267,7 +290,7 @@ blockquote cite {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-mute);
   margin-bottom: 10px;
 }
 .col-card .col-main {
@@ -277,11 +300,11 @@ blockquote cite {
   margin-bottom: 10px;
   line-height: 1.5;
 }
-.col-card .col-sub { font-size: 13px; color: #666; line-height: 1.75; }
-.col-card.highlight { background: var(--forest); border-color: var(--forest); }
-.col-card.highlight h3 { color: var(--forest-light); }
-.col-card.highlight .col-main { color: #f0ece4; }
-.col-card.highlight .col-sub { color: #a8c5a0; }
+.col-card .col-sub { font-size: 13.5px; color: var(--ink-soft); line-height: 1.75; }
+.col-card.highlight { background: var(--green); border-color: var(--green); }
+.col-card.highlight h3 { color: var(--green-soft); }
+.col-card.highlight .col-main { color: var(--on-green); }
+.col-card.highlight .col-sub { color: var(--on-green-mute); }
 
 .two-col {
   display: grid;
@@ -290,33 +313,34 @@ blockquote cite {
   margin: 28px 0;
 }
 .two-col-card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: 12px;
   padding: 22px 20px;
+  background: var(--surface);
 }
 .two-col-card h3 {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-mute);
   margin-bottom: 14px;
 }
 .two-col-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .two-col-card ul li {
-  font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.65;
+  font-size: 14.5px; color: var(--ink-soft); padding-left: 18px; position: relative; line-height: 1.65;
 }
-.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
-.two-col-card.dark { background: var(--forest); border-color: var(--forest); }
-.two-col-card.dark h3 { color: var(--forest-light); }
-.two-col-card.dark ul li { color: #d4e8d4; }
-.two-col-card.dark ul li::before { color: var(--forest-light); }
+.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--rule-strong); }
+.two-col-card.dark { background: var(--green); border-color: var(--green); }
+.two-col-card.dark h3 { color: var(--green-soft); }
+.two-col-card.dark ul li { color: var(--on-green); }
+.two-col-card.dark ul li::before { color: var(--green-soft); }
 
-/* ── 실습 박스 ── */
+/* ── 실습 박스 (그린 = 직접 해보는 자리) ── */
 .exercise {
-  background: #F5F8F2;
-  border: 1px solid #C8DFC0;
-  border-radius: 14px;
+  background: var(--green-tint);
+  border: 1px solid #C7D6C6;
+  border-radius: 16px;
   padding: 32px 28px;
   margin: 36px 0;
 }
@@ -325,14 +349,14 @@ blockquote cite {
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--forest-light);
+  color: var(--green-mid);
   margin-bottom: 14px;
 }
 .exercise h3 {
   font-family: 'Noto Serif KR', serif;
   font-size: 20px;
   font-weight: 400;
-  color: var(--forest);
+  color: var(--green);
   margin-bottom: 16px;
   line-height: 1.5;
 }
@@ -343,19 +367,20 @@ blockquote cite {
   gap: 10px;
   margin-bottom: 0;
 }
-.exercise ol li { font-size: 14px; color: #3a5a3a; line-height: 1.8; }
+.exercise ol li { font-size: 14.5px; color: var(--ink-soft); line-height: 1.8; }
+.exercise ol li strong { color: var(--green); }
 .exercise-prompt {
   margin-top: 20px;
-  background: rgba(44,59,45,0.06);
-  border-left: 2.5px solid var(--forest);
+  background: rgba(26,74,53,0.06);
+  border-left: 2.5px solid var(--green);
   padding: 16px 18px;
   border-radius: 0 8px 8px 0;
 }
-.exercise-prompt p { font-size: 14px; color: var(--forest); margin: 0; font-style: italic; line-height: 1.8; }
+.exercise-prompt p { font-size: 14px; color: var(--green-deep); margin: 0; font-style: italic; line-height: 1.8; }
 
-/* ── CTA / 클로징 ── */
+/* ── CTA / 클로징 (밤하늘 — 가장 깊은 그린) ── */
 .close-box {
-  background: var(--forest);
+  background: var(--green-deep);
   border-radius: 16px;
   padding: 48px 40px;
   text-align: center;
@@ -366,31 +391,31 @@ blockquote cite {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--forest-light);
+  color: var(--green-soft);
   margin-bottom: 20px;
 }
 .close-text {
   font-family: 'Noto Serif KR', serif;
-  color: #f0ece4;
+  color: var(--on-green);
   font-size: 22px;
   font-weight: 300;
   line-height: 1.75;
   margin-bottom: 24px;
 }
-.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+.close-sub { font-size: 13.5px; color: var(--green-soft); line-height: 1.8; }
 .close-task {
   margin: 0 auto 24px;
   max-width: 520px;
   text-align: left;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(122,156,123,0.35);
+  background: rgba(244,241,232,0.06);
+  border: 1px solid rgba(157,187,169,0.3);
   border-radius: 12px;
   padding: 22px 24px;
 }
-.close-task p { font-size: 13.5px; color: #d4e8d4; line-height: 1.9; margin-bottom: 10px; }
+.close-task p { font-size: 13.5px; color: #d7e4d7; line-height: 1.9; margin-bottom: 10px; }
 .close-task p:last-child { margin-bottom: 0; }
-.close-task strong { color: #f0ece4; font-weight: 500; }
-.close-task a { color: #a8c5a0; }
+.close-task strong { color: var(--on-green); font-weight: 500; }
+.close-task a { color: var(--clay-soft); }
 
 .flow {
   display: flex;
@@ -401,37 +426,39 @@ blockquote cite {
 }
 .flow-item {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: 8px;
   padding: 14px 18px;
   font-size: 13px;
-  color: #444;
+  color: var(--ink-soft);
   text-align: center;
   flex: 1;
   min-width: 100px;
 }
-.flow-item.active { background: var(--forest); border-color: var(--forest); color: #f0ece4; }
-.flow-arrow { font-family: 'DM Mono', monospace; color: #ccc; padding: 0 8px; font-size: 14px; }
+.flow-item.active { background: var(--green); border-color: var(--green); color: var(--on-green); }
+.flow-arrow { font-family: 'DM Mono', monospace; color: var(--rule-strong); padding: 0 8px; font-size: 14px; }
 
 .footnote {
   margin-top: 72px;
   padding-top: 28px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
 }
 .footnote p {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: #bbb;
+  color: var(--ink-mute);
   letter-spacing: 0.04em;
   margin-bottom: 6px;
   line-height: 1.7;
 }
 
-/* AI 프롬프트 박스 공용 */
+/* ── AI 프롬프트 박스 (한 가족, 포인트로만 구분) ── */
 .ai-box {
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 32px 28px;
   margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
 }
 .ai-label {
   font-family: 'DM Mono', monospace;
@@ -446,14 +473,16 @@ blockquote cite {
   font-weight: 400;
   margin-bottom: 12px;
   line-height: 1.5;
+  color: var(--green);
 }
-.ai-box p.ai-desc { font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
+.ai-box p.ai-desc { font-size: 14.5px; line-height: 1.9; margin-bottom: 16px; color: var(--ink-soft); }
 .ai-box ol { padding-left: 18px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.ai-box ol li { font-size: 14px; line-height: 1.8; }
+.ai-box ol li { font-size: 14.5px; line-height: 1.8; color: var(--ink-soft); }
 .ai-prompt-block {
   border-radius: 0 8px 8px 0;
   padding: 18px 20px;
   margin-bottom: 12px;
+  background: #FBF9F3;
 }
 .ai-prompt-label {
   font-family: 'DM Mono', monospace;
@@ -462,37 +491,29 @@ blockquote cite {
   margin-bottom: 10px;
   display: block;
 }
-.ai-prompt-block p { font-size: 13px; line-height: 1.95; margin: 0; }
+.ai-prompt-block p { font-size: 13px; line-height: 1.95; margin: 0; color: var(--ink-soft); }
 .ai-note {
   margin-top: 16px;
   padding: 12px 16px;
-  background: rgba(44,59,45,0.06);
+  background: rgba(26,74,53,0.06);
   border-radius: 8px;
 }
-.ai-note p { font-size: 13px; color: #3a5a3a; margin: 0; }
+.ai-note p { font-size: 13px; color: var(--green-deep); margin: 0; line-height: 1.75; }
 
-/* 로고테라피 박스 */
-.box-logo { background: #F5F0FF; border: 1px solid #C4B0DE; }
-.box-logo .ai-label { color: #6A4FA5; }
-.box-logo h3 { color: #3a2a6f; }
-.box-logo p.ai-desc { color: #4a3a8f; }
-.box-logo ol li { color: #3a2a6f; }
-.box-logo .ai-prompt-block { background: rgba(106,79,165,0.07); border-left: 2.5px solid #6A4FA5; }
-.box-logo .ai-prompt-label { color: #6A4FA5; }
-.box-logo .ai-prompt-block p { color: #3a2a6f; }
+/* 실험 01 · 의미 발굴 — 그린 키 (안으로 파고드는 자리) */
+.box-a .ai-label { color: var(--green-mid); }
+.box-a .ai-prompt-block { border-left: 2.5px solid var(--green); }
+.box-a .ai-prompt-label { color: var(--green-mid); }
 
-/* 언어지문 박스 */
-.box-lang { background: #F0F4FF; border: 1px solid #B0C4DE; }
-.box-lang .ai-label { color: #4A6FA5; }
-.box-lang h3 { color: #2a3f6f; }
-.box-lang p.ai-desc { color: #3a4f7f; }
-.box-lang ol li { color: #2a3f6f; }
-.box-lang .ai-prompt-block { background: rgba(74,111,165,0.06); border-left: 2.5px solid #4A6FA5; }
-.box-lang .ai-prompt-label { color: #4A6FA5; }
-.box-lang .ai-prompt-block p { color: #2a3f6f; }
+/* 실험 02 · 언어 감사 — 클레이 키 (밖으로 드러나는 자리) */
+.box-b .ai-label { color: var(--clay-deep); }
+.box-b .ai-prompt-block { border-left: 2.5px solid var(--clay); }
+.box-b .ai-prompt-label { color: var(--clay-deep); }
 
 @media (max-width: 600px) {
-  h1 { font-size: 27px; }
+  .page { padding: 56px 20px 100px; }
+  h1 { font-size: 28px; }
+  .section-title { font-size: 21px; }
   .three-col { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
   .concept { flex-direction: column; }
@@ -500,8 +521,9 @@ blockquote cite {
   .concept-term span { writing-mode: horizontal-tb; }
   .flow { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
+  .close-box { padding: 40px 24px; }
 }
-@media print { .page { padding: 24px 0; } }
+@media print { body { background: #fff; } .page { padding: 24px 0; } }
 </style>
 </head>
 <body>
@@ -691,13 +713,13 @@ blockquote cite {
   </div>
 
   <div class="flow">
-    <div class="flow-item">정보 수집<br><small style="color:#999;font-size:11px">AI와 동급</small></div>
+    <div class="flow-item">정보 수집<br><small style="color:var(--ink-mute);font-size:11px">AI와 동급</small></div>
     <span class="flow-arrow">→</span>
-    <div class="flow-item">분석·정리<br><small style="color:#999;font-size:11px">AI가 유리</small></div>
+    <div class="flow-item">분석·정리<br><small style="color:var(--ink-mute);font-size:11px">AI가 유리</small></div>
     <span class="flow-arrow">→</span>
-    <div class="flow-item">통찰 발견<br><small style="color:#999;font-size:11px">경험이 필요</small></div>
+    <div class="flow-item">통찰 발견<br><small style="color:var(--ink-mute);font-size:11px">경험이 필요</small></div>
     <span class="flow-arrow">→</span>
-    <div class="flow-item active">지혜 발화<br><small style="color:#7a9c7b;font-size:11px">디퍼님만 가능</small></div>
+    <div class="flow-item active">지혜 발화<br><small style="color:var(--green-soft);font-size:11px">디퍼님만 가능</small></div>
   </div>
 
   <p>원천 텍스트는 지식층에 있지 않습니다. 지혜층에 있습니다. 디퍼님이 틀렸다가 바뀐 것, 실패하고 나서 알게 된 것, 몸이 먼저 알아챈 것 — 이것들이 원천 텍스트의 재료입니다.</p>
@@ -817,19 +839,19 @@ blockquote cite {
   <p>원천 텍스트와 AI를 처음으로 연결해보는 실험입니다. 두 개의 프롬프트를 제안합니다. 순서대로 진행하시면 더 효과적입니다 — 먼저 의미의 뿌리를 발굴하고, 그다음 언어의 패턴을 분석합니다. 하나만 해도 충분합니다.</p>
 
   <!-- 프롬프트 01: 로고테라피 -->
-  <div class="ai-box box-logo">
-    <div class="ai-label" style="color:#6A4FA5;">AI 프롬프트 01 · 로고테라피 기반 의미 발굴</div>
-    <h3 style="color:#3a2a6f;">빅터 프랭클의 세 질문 — 나의 의미를 찾아서</h3>
+  <div class="ai-box box-a">
+    <div class="ai-label">AI 프롬프트 01 · 로고테라피 기반 의미 발굴</div>
+    <h3>빅터 프랭클의 세 질문 — 나의 의미를 찾아서</h3>
     <p class="ai-desc">로고테라피(Logotherapy)는 '의미에의 의지(Will to Meaning)'를 인간의 근원 동력으로 봅니다. 빅터 프랭클은 의미를 발견하는 세 가지 경로를 제안합니다: 창조적 가치(무언가를 만드는 것), 경험적 가치(무언가를 깊이 만나는 것), 태도적 가치(피할 수 없는 고통 앞에서 태도를 선택하는 것). 이 세 경로가 디퍼님의 원천 텍스트와 연결됩니다. 이 대화는 AI의 질문에 솔직하게 답하는 방식으로 진행됩니다 — 완성된 생각이 아니어도 됩니다.</p>
     <ol>
-      <li style="color:#3a2a6f;">새 Claude 대화를 열고 아래 프롬프트 전체를 한 번에 붙여넣습니다.</li>
-      <li style="color:#3a2a6f;">AI의 첫 번째 질문에 솔직하게 답합니다. 대화를 따라가세요.</li>
-      <li style="color:#3a2a6f;">세 질문이 모두 끝나면: <em>"지금까지 나눈 대화에서 나의 원천 텍스트 후보 문장을 세 개만 뽑아줘"</em>라고 요청합니다.</li>
+      <li>새 Claude 대화를 열고 아래 프롬프트 전체를 한 번에 붙여넣습니다.</li>
+      <li>AI의 첫 번째 질문에 솔직하게 답합니다. 대화를 따라가세요.</li>
+      <li>세 질문이 모두 끝나면: <em>"지금까지 나눈 대화에서 나의 원천 텍스트 후보 문장을 세 개만 뽑아줘"</em>라고 요청합니다.</li>
     </ol>
 
-    <div class="ai-prompt-block" style="background:rgba(106,79,165,0.07);border-left:2.5px solid #6A4FA5;margin-top:20px;">
-      <span class="ai-prompt-label" style="color:#6A4FA5;">[전체 프롬프트]</span>
-      <p style="color:#3a2a6f;font-size:13px;line-height:1.95;">나는 지금 나만의 원천 텍스트 — 내가 아니면 아무도 쓸 수 없는 글의 씨앗 — 를 찾고 싶습니다. 빅터 프랭클의 로고테라피 방식으로 나를 안내해주세요. 다음 순서로 진행합니다.<br><br>
+    <div class="ai-prompt-block">
+      <span class="ai-prompt-label">[전체 프롬프트]</span>
+      <p>나는 지금 나만의 원천 텍스트 — 내가 아니면 아무도 쓸 수 없는 글의 씨앗 — 를 찾고 싶습니다. 빅터 프랭클의 로고테라피 방식으로 나를 안내해주세요. 다음 순서로 진행합니다.<br><br>
 
       첫째, 창조적 가치 질문: "당신이 지금까지 만든 것들 중에서, 만들지 않았더라면 세상에 존재하지 않았을 것이 있다면 무엇인가요? 규모는 상관없습니다." 내가 답하면, 내 답 안에서 반복되는 언어와 내가 가장 살아있다고 느끼는 순간의 패턴을 찾아주세요. 그리고 이것이 어떤 비즈니스 가치로 연결될 수 있는지 한 문장으로 짚어주세요.<br><br>
 
@@ -850,19 +872,19 @@ blockquote cite {
   </div>
 
   <!-- 프롬프트 02: 언어 지문 -->
-  <div class="ai-box box-lang">
-    <div class="ai-label" style="color:#4A6FA5;">AI 프롬프트 02 · 퍼스널 브랜드 언어 감사</div>
-    <h3 style="color:#2a3f6f;">나의 언어 지문 — 포지셔닝 분석</h3>
+  <div class="ai-box box-b">
+    <div class="ai-label">AI 프롬프트 02 · 퍼스널 브랜드 언어 감사</div>
+    <h3>나의 언어 지문 — 포지셔닝 분석</h3>
     <p class="ai-desc">내가 쓴 글을 AI에게 퍼스널 브랜드 전략가 역할로 분석시킵니다. 여기서 핵심은 '잘 쓴 글'이 아니라 '가장 나답게 쓴 글'을 가져오는 것입니다. 블로그 초고, 인스타그램 캡션, 메모앱 단상 — 형식은 상관없습니다. 가공되지 않은 것일수록 분석의 정확도가 높아집니다. 시스템 설정과 분석 요청을 분리해서 입력하세요.</p>
     <ol>
-      <li style="color:#2a3f6f;">Claude에서 새 대화를 시작합니다.</li>
-      <li style="color:#2a3f6f;">먼저 아래 <strong>[시스템 설정]</strong>을 입력합니다.</li>
-      <li style="color:#2a3f6f;">내가 쓴 글 3–5편을 붙여넣고 <strong>[분석 요청]</strong>을 입력합니다.</li>
+      <li>Claude에서 새 대화를 시작합니다.</li>
+      <li>먼저 아래 <strong>[시스템 설정]</strong>을 입력합니다.</li>
+      <li>내가 쓴 글 3–5편을 붙여넣고 <strong>[분석 요청]</strong>을 입력합니다.</li>
     </ol>
 
-    <div class="ai-prompt-block" style="background:rgba(74,111,165,0.06);border-left:2.5px solid #4A6FA5;margin-top:20px;margin-bottom:12px;">
-      <span class="ai-prompt-label" style="color:#4A6FA5;">[시스템 설정 — 먼저 입력]</span>
-      <p style="color:#2a3f6f;font-size:13px;line-height:1.95;">당신은 20년 이상 1인 창작자와 전문가의 퍼스널 브랜드를 설계해온 전략 컨설턴트입니다. 수백 명의 작가, 강사, 코치, 컨설턴트의 글을 분석하며 발견한 핵심 원칙이 있습니다: 가장 강력한 포지셔닝은 '차별화 전략'이 아니라 '가장 나다운 것의 발굴'에서 나온다는 것. 당신의 분석은 칭찬이 아니라 발견을 목표로 합니다. 분석은 다섯 층위로 진행합니다.<br><br>
+    <div class="ai-prompt-block">
+      <span class="ai-prompt-label">[시스템 설정 — 먼저 입력]</span>
+      <p>당신은 20년 이상 1인 창작자와 전문가의 퍼스널 브랜드를 설계해온 전략 컨설턴트입니다. 수백 명의 작가, 강사, 코치, 컨설턴트의 글을 분석하며 발견한 핵심 원칙이 있습니다: 가장 강력한 포지셔닝은 '차별화 전략'이 아니라 '가장 나다운 것의 발굴'에서 나온다는 것. 당신의 분석은 칭찬이 아니라 발견을 목표로 합니다. 분석은 다섯 층위로 진행합니다.<br><br>
 
       (1) 언어 지문: 이 사람이 반복적으로 쓰는 단어, 문장 구조, 리듬의 패턴. 의식적으로 선택했다기보다 자연스럽게 배어나온 것들.<br>
       (2) 세계관의 결: 이 글들이 암묵적으로 전제하는 믿음과 가치관. 명시적으로 쓰여 있지 않지만 모든 문장 아래 흐르는 것.<br>
@@ -873,9 +895,9 @@ blockquote cite {
       [분석의 규율] 모든 층위마다 이 사람의 실제 문장을 최소 하나 그대로 인용해 근거로 삼으세요. 글에 근거가 없는 것은 지어내지 말고 "이 부분은 자료가 더 필요하다"고 적으세요. 층위당 다섯 문장 이내 — 길이가 아니라 정확함이 신뢰를 만듭니다. (5)의 후보 문장 세 개에는 이 사람이 실제로 쓴 단어가 하나 이상 그대로 들어가야 합니다.</p>
     </div>
 
-    <div class="ai-prompt-block" style="background:rgba(74,111,165,0.06);border-left:2.5px solid #4A6FA5;">
-      <span class="ai-prompt-label" style="color:#4A6FA5;">[분석 요청 — 글 붙여넣기 후 입력]</span>
-      <p style="color:#2a3f6f;font-size:13px;line-height:1.95;">위 글들은 내가 최근 쓴 것들입니다. 다섯 층위로 분석해주세요. 특히 세 번째(니치 포지셔닝)와 네 번째(희석 신호)에 집중해주세요. 분석이 끝나면, 나에게 가장 중요한 질문 하나를 던져주세요 — 내 원천 텍스트를 발굴하는 데 도움이 될 질문으로.</p>
+    <div class="ai-prompt-block">
+      <span class="ai-prompt-label">[분석 요청 — 글 붙여넣기 후 입력]</span>
+      <p>위 글들은 내가 최근 쓴 것들입니다. 다섯 층위로 분석해주세요. 특히 세 번째(니치 포지셔닝)와 네 번째(희석 신호)에 집중해주세요. 분석이 끝나면, 나에게 가장 중요한 질문 하나를 던져주세요 — 내 원천 텍스트를 발굴하는 데 도움이 될 질문으로.</p>
     </div>
 
     <div class="ai-note">
