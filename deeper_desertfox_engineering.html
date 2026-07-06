@@ -209,15 +209,13 @@ footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spaci
   <div class="flow"><b>원천</b>(원문·기록) → <b>씨앗</b>(원자화 · 인덱싱) → <b>의미의 축</b>(정렬 기준) → <b>콘텐츠</b>(발행)</div>
   <p class="para">각 단계가 다음 단계를 싸게 만든다 — 인덱싱된 씨앗 위에서 의미를 발견하고, 정렬된 의미 위에서 콘텐츠를 짓는다. 매 세션 자기를 다시 설명해야 하는 무상태 챗봇과 비교하면, 이 파이프라인의 이득은 <b>선형 입력 · 복리 출력</b>이다.</p>
 
-  <div class="sechead"><span class="bar"></span><h2>시스템 제약 (가드레일)</h2></div>
-  <p class="para">에이전틱 시스템은 자율로 파일을 쓰고 명령을 실행한다. 그래서 제약이 성능만큼 중요하다. 디퍼 OS의 가드레일은 기술 제약이자 값에 접지된 원칙이다.</p>
+  <div class="sechead"><span class="bar"></span><h2>시스템 제약 — 철학의 인코딩</h2></div>
+  <p class="para">이 제약들은 단순한 안전장치가 아니라 <b>디퍼 철학을 반영</b>한 것이다. 시스템 프롬프트에 사막여우의 문체(목소리)를 입히고, 여러 철학 — 트리비움, 프랭클의 로고테라피, 에머슨·소로의 자기신뢰 — 을 학습시켰다. 그 철학이 다음 제약으로 나타난다.</p>
   <div class="guards">
-    <div class="guard"><div class="g">인간 통제 (HITL)</div><div class="d">파일 생성·수정·삭제·git 등 되돌리기 어려운 행위는 실행 전 사용자 승인(Accept)을 거친다. 자율 루프이되 사람의 통제 아래 돈다.</div></div>
-    <div class="guard"><div class="g">되돌림 가능성</div><div class="d">모든 변경이 git 커밋으로 남아 임의 시점 롤백이 가능하다. 정본은 보존하고 사본만 정리 — 데이터 손실 0을 최우선으로 둔다.</div></div>
-    <div class="guard"><div class="g">범위 격리</div><div class="d">에이전트는 지정된 볼트(작업 디렉터리) 안에서만 읽고 쓴다. 볼트 밖 파일·시스템은 건드리지 않는다.</div></div>
-    <div class="guard"><div class="g">데이터 거버넌스</div><div class="d">볼트는 로컬·private remote 전용. 밖으로 나가는 것은 사용자가 ‘발행’으로 명시한 것뿐이고, 자동 공유는 없다.</div></div>
-    <div class="guard"><div class="g">내용 무결성</div><div class="d">사용자의 말을 무손실로 기록하고, 요약·변형은 승인 후에만 반영한다. <code>git diff</code>로 원문 대조 검증이 가능하다.</div></div>
-    <div class="guard"><div class="g">출력 정직성</div><div class="d">시스템 지시가 보장 화법·출처 없는 수치·환각을 억제한다. 불확실하면 불확실하다고 말한다.</div></div>
+    <div class="guard"><div class="g">인간이 통제한다</div><div class="d">되돌리기 어려운 행위는 승인 후 실행하고, 모든 변경은 git으로 롤백된다.</div></div>
+    <div class="guard"><div class="g">데이터는 내 것</div><div class="d">볼트 안에서만 동작하고 로컬·비공개다. 밖으로 나가는 건 ‘발행’한 것뿐.</div></div>
+    <div class="guard"><div class="g">원문 그대로</div><div class="d">무손실로 기록하고, 무엇을 남길지는 사람이 고른다.</div></div>
+    <div class="guard"><div class="g">보장보다 발견</div><div class="d">과약속·환각을 억제하고, 스스로 찾도록 묻는다.</div></div>
   </div>
 
   <div class="sechead"><span class="bar"></span><h2>구축 비용 — 왜 플러그인으로 배포하는가</h2></div>
