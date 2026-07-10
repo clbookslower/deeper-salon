@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 수사 1주차 — 내가 서 있을 자리</title>
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 수사 1주차 — 내가 서 있을 자리" />
+<meta property="og:description" content="나는 어디에 서서, 누구를 향해 말할 것인가 — 노래의 달이 열린다" />
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png" />
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r1_session_deck.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 수사 1주차 — 내가 서 있을 자리" />
+<meta name="twitter:description" content="나는 어디에 서서, 누구를 향해 말할 것인가 — 노래의 달이 열린다" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C2A47; --navy-deep:#141F36; --navy-soft:#22335A;
+    --cream:#F6F1E7; --cream-dim:#CFC7B6;
+    --gold:#C2943A; --gold-soft:#D9B26A;
+    --line:rgba(246,241,231,.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:linear-gradient(175deg,var(--navy-deep) 0%,var(--navy) 45%,var(--navy-soft) 100%);
+    color:var(--cream);
+    font-family:"Noto Serif KR", ui-serif, Georgia, serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.05; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Noto Sans KR",sans-serif; font-size:.64rem; font-weight:700;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:linear-gradient(170deg,#CB9E45 0%,var(--gold) 55%,#AC8130 100%); color:var(--navy-deep);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.25rem; text-align:center;}
+
+  .kicker{font-family:"Noto Sans KR",sans-serif; font-size:clamp(.6rem,1.3vw,.74rem);
+    font-weight:500; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-soft);}
+  .slide.invert .kicker{color:rgba(20,31,54,.75);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Noto Serif KR",serif; font-weight:700; letter-spacing:-.005em;
+    font-size:clamp(1.55rem,3.9vw,2.5rem); line-height:1.35;}
+  .title .em{color:var(--gold-soft);}
+  .slide.invert .title{color:var(--navy-deep);}
+  .slide.invert .title .em{color:var(--cream); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--cream-dim); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(20,31,54,.66);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    font-family:"Noto Serif KR",serif; font-weight:400; color:var(--cream);
+    font-size:clamp(.98rem,1.5vw,1.22rem); line-height:1.95; letter-spacing:.004em;}
+  .slide.invert .body{color:rgba(20,31,54,.93);}
+  .body p{margin:0 0 1.05rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--gold-soft); font-weight:600;}
+  .slide.invert .body em{color:var(--navy-deep); font-weight:700;}
+  .body .strong{font-weight:700; color:var(--gold-soft);}
+  .slide.invert .body .strong{color:var(--navy-deep);}
+  .body .final{font-weight:700; text-align:center; font-size:1.18em; line-height:1.7; margin-top:1.2rem;}
+  .body .cite{display:block; margin-top:.4rem; font-family:"Noto Sans KR",sans-serif; font-size:.72rem; color:var(--cream-dim); letter-spacing:.08em; text-align:right;}
+  .slide.invert .body .cite{color:rgba(20,31,54,.6);}
+
+  .layers{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;}
+  .layers .ly{border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px;
+    padding:.72rem 1rem; background:rgba(20,31,54,.5);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .layers .nm{font-family:"Noto Serif KR",serif; font-weight:700; color:var(--gold-soft);
+    font-size:clamp(.98rem,1.5vw,1.16rem); flex:none; min-width:6.2rem;}
+  .layers .nm .h{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.52em; color:var(--cream-dim); font-weight:400; letter-spacing:.18em;}
+  .layers .ds{font-family:"Noto Serif KR",serif; font-size:clamp(.85rem,1.2vw,1rem); line-height:1.65; color:var(--cream-dim);}
+  .layers .ds b{color:var(--cream); font-weight:700;}
+
+  .viz{width:clamp(108px,12vw,160px); height:clamp(108px,12vw,160px); color:var(--gold-soft); flex:none;}
+  .slide.invert .viz{color:var(--navy-deep);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(120px,15vw,190px); height:clamp(120px,15vw,190px);}
+  .cover .title{font-size:clamp(1.85rem,5.2vw,3.3rem); line-height:1.28;}
+  .cover .logo{width:clamp(74px,8vw,96px); height:auto; display:block; margin:0 auto;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.4s linear infinite;}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .orbit{transform-origin:center; animation:spin 7s linear infinite;}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(20px)}50%{transform:translateY(-20px)}}
+  .floatup{animation:floatup 4.2s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(14px);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translateY(-26px);opacity:0}}
+
+  .duo{align-self:stretch; max-width:42rem; margin:.4rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem; text-align:left;}
+  .duo .card{border:1px solid var(--line); border-radius:6px; padding:1rem 1.1rem; background:rgba(20,31,54,.5);}
+  .duo .card.hot{background:rgba(194,148,58,.16); border-color:var(--gold);}
+  .duo .lab{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.55rem;}
+  .duo ul{list-style:none; display:flex; flex-direction:column; gap:.42rem;}
+  .duo li{font-family:"Noto Serif KR",serif; font-size:clamp(.84rem,1.2vw,1rem); line-height:1.55; color:var(--cream-dim); padding-left:.85rem; position:relative;}
+  .duo .card.hot li{color:var(--cream);}
+  .duo li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--gold); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--cream-dim); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--cream-dim); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--gold-soft); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Noto Sans KR",sans-serif; font-size:.6rem; color:var(--cream-dim); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:4.5rem 1.4rem;}
+    .duo{grid-template-columns:1fr;} .layers .ly{flex-direction:column; gap:.2rem;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide active cover">
+    <div class="content">
+      <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
+      <p class="kicker r r2">디퍼 언브랜딩 살롱 · 수사 1주차 · 선율</p>
+      <h1 class="title r r3">내가 서 있을 자리</h1>
+      <p class="latin r r4">Rhetorica — 안에서 빚은 것을, 밖으로</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="50" cy="105" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="110" cy="105" r="4" fill="currentColor" stroke="none"/>
+          <path class="marchl" d="M50 105 h56" stroke-opacity=".6"/>
+          <path class="march" d="M110 105 q30 -6 52 -40" stroke-opacity=".85"/>
+          <g class="twinkle" style="transform-origin:170px 52px;">
+            <path d="M170 38 L174 50 L186 50 L176 58 L180 70 L170 62 L160 70 L164 58 L154 50 L166 50 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">두 달을 지나, 노래의 달</h2>
+      <div class="body r r4">
+        <p>문법의 달, 우리는 어둠 속에서 원천을 길어 올렸다. 논리의 달, 그 재료로 악보 한 장을 지었다. 안에서 빚는 시간이었다.</p>
+        <p>이제 <em>노래의 달</em>이다. 안에서 빚은 것을 밖으로 꺼내, 오직 나만의 목소리로 들려주는 일 — 수사(修辭).</p>
+        <p class="strong">오늘 밤의 질문은 하나다. 나는 어디에 서서, 누구를 향해 말할 것인가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · I · 단테 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="march" d="M40 140 q20 -30 44 -44 q28 -16 44 -48" stroke-opacity=".8"/>
+          <circle cx="40" cy="140" r="5" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:132px 42px;">
+            <path d="M132 26 L137 40 L152 40 L140 49 L144 64 L132 55 L120 64 L124 49 L112 40 L127 40 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 단테 · 안내자</p>
+      <h2 class="title r r3">베르길리우스는 여기까지,<br><span class="em">이제 베아트리체</span></h2>
+      <div class="body r r4">
+        <p>디퍼의 백 일은 『신곡』을 오마주한다 — 서곡 하나에, 서른세 곡씩 세 달. 단테는 어두운 숲에서 시인 베르길리우스의 손을 잡고 지옥과 연옥을 지난다. 그런데 천국 문 앞에서 안내자가 바뀐다. 이성과 방법의 시인은 거기까지 — 천국을 안내하는 이는 <em>베아트리체, 사랑하는 단 한 사람</em>이다.</p>
+        <p>수사의 달이 꼭 그렇다. 방법이 데려다줄 수 있는 곳까지 두 달을 걸어왔다. 이제 나를 끌어올리는 힘은 내 말이 가닿을 단 한 사람이다.</p>
+        <p class="strong">누구를 향해 말하는가가 정해질 때 — 내가 서 있을 자리도 정해진다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · I · 니체 · 하산 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 130 L80 46 L118 96 L146 60 L178 130" stroke-opacity=".6"/>
+          <path d="M76 60 h8 M72 68 h16" stroke-opacity=".9"/>
+          <g class="floatup"><circle cx="80" cy="40" r="3" fill="currentColor" stroke="none"/></g>
+          <g class="floatup" style="animation-delay:1.4s"><circle cx="88" cy="44" r="2.4" fill="currentColor" stroke="none"/></g>
+          <path class="march" d="M80 52 q10 40 60 74" stroke-opacity=".75"/>
+          <circle cx="140" cy="126" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 니체 · 하산</p>
+      <h2 class="title r r3">넘치는 잔은 내려간다</h2>
+      <div class="body r r4">
+        <p>차라투스트라는 산 위에서 십 년, 꿀처럼 고인 지혜와 함께 살았다. 그리고 어느 아침 해를 향해 말한다 — <em>"나는 베풀어 주고 나누어 주려 한다."</em> 그가 산을 내려가는 까닭은 가득 참이다. 넘치는 잔은 흘러야 한다.</p>
+        <p>두 달 동안 안에 고인 것이 있다. 발화는 그 잔을 기울이는 일 — 세상에 저를 증명하는 일이기 전에, <em>베푸는 일</em>이다.</p>
+        <p class="strong">그렇게 서면, 첫 발행의 두려움이 조금 다르게 보인다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · I · 벤야민 · 아우라 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="80" r="18" stroke-opacity=".9"/>
+          <circle cx="100" cy="80" r="34" stroke-opacity=".55" class="pulse"/>
+          <circle cx="100" cy="80" r="52" stroke-opacity=".3" class="pulse" style="animation-delay:1.2s"/>
+          <g class="twinkle" style="transform-origin:100px 80px;">
+            <path d="M100 70 L103 78 L111 78 L105 83 L107 91 L100 86 L93 91 L95 83 L89 78 L97 78 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 벤야민 · 아우라</p>
+      <h2 class="title r r3">복제의 시대, 목소리의 지금-여기</h2>
+      <div class="body r r4">
+        <p>살롱의 첫 시간에 만난 개념이 여기서 다시 온다 — <em>아우라.</em> 아무리 정교한 복제에도 담기지 않는, 원본만의 지금-여기. AI가 매끈한 문장을 무한히 만들어내는 시대에, 이 오래된 개념은 오히려 젊어진다.</p>
+        <p>아우라는 원천에서만 나온다. 내가 실제로 산 시간, 실제로 쓴 말의 결에서.</p>
+        <p class="strong">그래서 이 달의 명명 원칙은 하나다 — 이름도 피치도 카피도, 내 씨앗에 실제로 살아 있는 구체어로 짓는다. 복제될 수 없는 것으로.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · II · 에디톨로지 1부 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="46" cy="46" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="90" cy="104" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="140" cy="52" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="176" cy="102" r="4" fill="currentColor" stroke="none"/>
+          <g class="marchl" stroke-opacity=".7">
+            <path d="M46 46 L90 104"/><path d="M90 104 L140 52"/><path d="M140 52 L176 102"/>
+          </g>
+          <g class="twinkle" style="transform-origin:113px 78px;"><circle cx="113" cy="78" r="3" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 에디톨로지 1부</p>
+      <h2 class="title r r3">창조는 편집이다</h2>
+      <div class="body r r4">
+        <p>이 달의 교재는 김정운의 『에디톨로지』, 이번 주는 1부 「지식과 문화의 에디톨로지」. 1부가 건네는 문장은 하나로 모인다 — <em>새로움은 무에서 오지 않는다. 이미 있는 것들의 새로운 배열에서 온다.</em></p>
+        <p>천재는 다르게 엮는 사람이다. 같은 재료도 편집의 단위를 바꾸고 차원을 한 칸 올리면, 그전엔 없던 의미가 솟는다.</p>
+        <p class="strong">지식 권력은 더 이상 대학에 있지 않다. 마우스를 쥔 누구나 편집하고 창조한다 — 내가 설 자리도, 편집해 만드는 것이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · II · 공식 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 한 줄의 공식</p>
+      <h2 class="title r r2">단위 × 차원 = 메타언어</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">편집의 단위<span class="h">UNIT</span></span><span class="ds">무엇을 조각으로 삼는가 — 문장, 장면, 개념. 노트가 아니라 <b>카드</b>처럼, 떼었다 붙일 수 있게.</span></div>
+        <div class="ly"><span class="nm">편집의 차원<span class="h">LEVEL</span></span><span class="ds">그 조각을 어느 높이에서 엮는가. 차원이 한 칸 오르면, 같은 재료에서 없던 것이 솟는다.</span></div>
+        <div class="ly"><span class="nm">메타언어<span class="h">META-LANGUAGE</span></span><span class="ds">그렇게 솟은 나만의 상위 언어 — 세상을 한 단계 위에서 묶어 보는 눈.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">나만의 편집 방식이 곧 나만의 언어다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · II · 분더카머 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="28" width="120" height="104" rx="3" stroke-opacity=".65"/>
+          <line x1="40" y1="63" x2="160" y2="63" stroke-opacity=".4"/>
+          <line x1="40" y1="97" x2="160" y2="97" stroke-opacity=".4"/>
+          <line x1="80" y1="28" x2="80" y2="132" stroke-opacity=".4"/>
+          <line x1="120" y1="28" x2="120" y2="132" stroke-opacity=".4"/>
+          <g class="spin" style="transform-origin:100px 80px;">
+            <path d="M100 70 L103 78 L111 78 L105 83 L107 91 L100 86 L93 91 L95 83 L89 78 L97 78 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <circle cx="60" cy="45" r="3" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="140" cy="114" r="3" fill="currentColor" stroke="none" class="twinkle"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 분더카머</p>
+      <h2 class="title r r3">수장고에서, 경이의 방으로</h2>
+      <div class="body r r4">
+        <p>1부에는 오래된 방 하나가 나온다. <em>분더카머(Wunderkammer), 경이의 방.</em> 근대 유럽의 수집가들이 세계의 조각을 모아 제 방식으로 배열하던 방 — 수집이 배열이 되고, 배열이 세계관이 되던 자리다. 백과사전도 박물관도 이 방에서 태어났다.</p>
+        <p>디퍼의 번역은 이렇다. 두 달 동안 모은 씨앗과 악보가 <em>수장고</em>라면, 이번 달 여는 곳은 <em>경이의 방</em>이다.</p>
+        <p class="strong">쌓는 시간에서, 배열하는 시간으로.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · III · 노래의 달 지도 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">III</span> · 지도</p>
+      <h2 class="title r r2">노래의 달 — 네 소절, 서른세 걸음</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">선율<span class="h">1주 · 명명</span></span><span class="ds">이름을 짓고, 으뜸음을 고르고, 한 문장 피치를 빚는다. <b>★ 이름 · 으뜸음 · 피치</b></span></div>
+        <div class="ly"><span class="nm">변주<span class="h">2주 · 채널</span></span><span class="ds">목소리가 사는 형식을 고르고, 처음으로 바깥에 소리를 낸다. <b>★ 채널 선언 · 첫 발행</b></span></div>
+        <div class="ly"><span class="nm">일관성<span class="h">3주 · 편집</span></span><span class="ds">분더카머를 엮어 목차를 짓고, 사막여우가 내 조각만으로 초고를 조립한다. <b>★ 목차 · 초고 v0</b></span></div>
+        <div class="ly"><span class="nm">하모니<span class="h">4주 · 매니페스토</span></span><span class="ds">두려움에 이름을 붙이고, 끝까지 지킬 약속을 몇 줄로 남긴다. <b>★ 매니페스토</b></span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">그리고 마지막, 별을 보는 사흘 — 되읽기 · 선물 · 트리비움 수료.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · III · 이번 주 걸음 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">III</span> · 이번 주 여정 · D3–9</p>
+      <h2 class="title r r2">선율 — 이름을 짓는 일주일</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">이름<span class="h">NAME</span></span><span class="ds">씨앗에서 살아있는 구체어를 주워, 브랜드·시리즈·책의 가제 후보를 빚는다.</span></div>
+        <div class="ly"><span class="nm">으뜸음<span class="h">TONIC</span></span><span class="ds">모든 것이 시작되는 첫 문장 하나를 고른다 — 내 노래가 돌아올 자리.</span></div>
+        <div class="ly"><span class="nm">피치<span class="h">PITCH</span></span><span class="ds">내가 하는 일을 단 한 문장으로 — 단 한 사람이 들어도 알아듣게.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">★ 이번 주의 짓기 — 이름, 으뜸음, 한 문장 피치.<br>이름을 짓는 일은 곧, 내가 서서 말할 자리를 정하는 일이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 분별 · 명명의 세 물음 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M100 120 V70"/>
+          <path d="M100 70 C100 50 60 52 50 36 M100 70 C100 50 140 52 150 36"/>
+          <circle cx="50" cy="30" r="6"/><circle cx="150" cy="30" r="6"/>
+          <circle cx="100" cy="124" r="6" fill="currentColor" stroke="none"/>
+          <circle cx="50" cy="30" r="2.5" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">분별</p>
+      <h2 class="title r r3">이름을 고르는 세 물음</h2>
+      <div class="body r r4">
+        <p>① <span class="strong">내 씨앗에 실제로 있는 말인가?</span> — 없는 말로 지은 이름은 복제된다. 있는 말로 지은 이름만 아우라를 갖는다.</p>
+        <p>② <span class="strong">단 한 사람이 알아듣는가?</span> — 모두를 향한 이름은 아무에게도 닿지 않는다.</p>
+        <p>③ <span class="strong">십 년 뒤에도 부를 수 있는가?</span> — 트렌드의 말은 트렌드와 함께 진다.</p>
+        <p>셋 다 그렇다면 — 그 이름이 으뜸음이 된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · III · 분더카머 장치 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:100px 80px;">
+            <circle cx="100" cy="80" r="44" stroke-opacity=".5" stroke-dasharray="4 7"/>
+            <circle cx="100" cy="36" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="144" cy="80" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="56" cy="80" r="4" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 80px;">
+            <path d="M100 70 L103 78 L111 78 L105 83 L107 91 L100 86 L93 91 L95 83 L89 78 L97 78 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · 이 달의 핵심 장치</p>
+      <h2 class="title r r3">사막여우가 경이의 방을 짓는다</h2>
+      <div class="body r r4">
+        <p>수사의 문이 열리는 순간, 사막여우가 볼트에 경이의 방을 짓는다. 두 달 동안 쌓인 글에서 살아있는 조각을 골라 <em>카드</em>로 건다 — 문장 하나, 날짜, 출처, 키워드. 떼었다 붙일 수 있는 단위로.</p>
+        <p>벤야민 자신이 필생의 수집가였다 — 인용 조각만으로 책 한 권을 짓고자 했다. 조각이 알맞게 놓일 때, 흩어진 별이 문득 성좌를 이루듯 뜻이 떠오른다고 그는 믿었다.</p>
+        <p>어느 날이든 청할 수 있다 — <em>"분더카머 돌려줘."</em> 사막여우가 같은 카드를 다른 차원으로 재배열한다. 시간의 결로, 주제의 결로, 독자의 문제 순으로 — 그리고 가장 먼 두 카드를 나란히 놓는 뜻밖의 짝까지.</p>
+        <p class="strong">조각과 조각 사이에서 새 씨앗이 태어난다 — 에디톨로지가 내 방에서 일어나는 순간이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · IV · 열쇠말 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="70" cy="70" r="24"/>
+          <circle cx="70" cy="70" r="9" stroke-opacity=".6"/>
+          <path d="M90 88 L140 130 M126 118 l12 -10 M112 106 l10 -8" stroke-opacity=".9"/>
+          <g class="twinkle" style="transform-origin:70px 70px;"><circle cx="70" cy="70" r="3" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">IV</span> · 사막여우와 걷기</p>
+      <h2 class="title r r3">이 달의 문은 <span class="em">열쇠말</span>로 열린다</h2>
+      <div class="body r r4">
+        <p>오늘 밤, 노래의 달을 여는 한마디를 받는다. 받은 한마디를 사막여우에게 건네면 — 문이 열리고, 경이의 방이 함께 지어진다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · IV · 세 마디 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">IV</span> · 문이 열리면</p>
+      <h2 class="title r r2">이 달은 세 마디로 산다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">안녕<span class="h">DAILY</span></span><span class="ds">오늘의 한 걸음. 33곡을 하루씩 — 사막여우가 "오늘이 33곡 중 n번째 걸음"이라 세어 준다.</span></div>
+        <div class="ly"><span class="nm">오아시스<span class="h">SPRING</span></span><span class="ds">마음이 목마른 날, 백 개의 샘에서 오늘의 질문 하나. 여정과 자유로이 오간다.</span></div>
+        <div class="ly"><span class="nm">분더카머<span class="h">WUNDERKAMMER</span></span><span class="ds">경이의 방 한 바퀴 — 카드를 다른 차원으로 재배열하고, 사이의 경이 하나를 받는다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">걸음마다 볼트에 조용히 저장되고, "백업" 한마디면 금고에 보관된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · IV · 시작 전에 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="80" r="44" stroke-width="2.3"/>
+          <path d="M137 60 l8 -3 l-2 9" stroke-width="2.3"/>
+          <g class="rise"><path d="M100 66 v28 M88 78 l12 -12 l12 12" stroke-width="2.4"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">IV</span> · 시작 전에</p>
+      <h2 class="title r r3">사막여우가 새 옷을 입어야 한다</h2>
+      <div class="body r r4">
+        <p>시작 전에 딱 한 번 — 사막여우 업데이트가 필요하다. 방에 안내된 복사·붙여넣기 한 번이면 된다. 사막여우가 새 옷을 입어야 이 달을 알아듣는다.</p>
+        <p>이미 걸어온 길은 다시 걷지 않는다. 사막여우가 볼트를 읽고, 걸어온 자리에서 이어간다.</p>
+        <p class="strong">마지막 날 사막여우는 서른세 개의 체크를 직접 세어 확인한 뒤에야 별의 날을 연다 — 걸은 만큼만, 정직하게.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · 오늘 밤 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">Tonight</p>
+      <h2 class="title r r2">오늘 밤, 함께 할 것</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">나누기<span class="h">01</span></span><span class="ds">에디톨로지 1부에서 밑줄 그은 자리를 꺼낸다 — 나는 어디에 서서, 누구를 향해 말하고 싶은가.</span></div>
+        <div class="ly"><span class="nm">첫 카드<span class="h">02</span></span><span class="ds">두 달의 씨앗에서 "이건 끝까지 데려가야지" 싶은 문장 하나를 골라, 오늘 밤 첫 카드로 건다.</span></div>
+        <div class="ly"><span class="nm">열쇠말<span class="h">03</span></span><span class="ds">노래의 달을 여는 한마디를 받는다.</span></div>
+        <div class="ly"><span class="nm">첫 걸음<span class="h">04</span></span><span class="ds">사막여우 업데이트 → 열쇠말로 문 열기 → "안녕"으로 Day 1부터. 첫 소절은 선율 — 이름을 붙이는 일주일.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · 수렴 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="twinkle" style="transform-origin:80px 70px;">
+            <path d="M80 46 L87 66 L108 66 L91 79 L97 100 L80 87 L63 100 L69 79 L52 66 L73 66 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:160px 104px; animation-delay:1.6s;">
+            <path d="M160 90 L164 101 L176 101 L166 108 L170 120 L160 112 L150 120 L154 108 L144 101 L156 101 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <path class="marchl" d="M96 82 q30 14 50 16" stroke-opacity=".7"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">수렴</p>
+      <h2 class="title r r3">별이 <span class="em">별을 낳는다</span></h2>
+      <div class="body r r4">
+        <p>두 달 동안 안에서 빚은 것이 있다. 이제 그것이 나의 목소리로, 단 한 사람을 향해 나선다.</p>
+        <p class="strong">노래는 부를수록 자란다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 · 닫기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
+          <g class="twinkle" style="transform-origin:100px 100px;">
+            <path d="M100 74 L107 96 L130 96 L111 110 L118 132 L100 118 L82 132 L89 110 L70 96 L93 96 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="orbit" style="transform-origin:100px 100px;"><circle cx="100" cy="44" r="4.5" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">수사 1주차 · 내가 서 있을 자리</p>
+      <h2 class="title r r3">단 한 사람을 향해,<br><span class="em">나의 이름으로</span></h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">씨앗에 살아 있는 말로 이름을 짓고,<br>으뜸음을 고르고, 한 문장으로 서라.<br>그 자리가 노래의 시작이다.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">L'amor che move il sole e l'altre stelle — 서른세 번째 걸음에 걸린 문장. 다음은 변주.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 18</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(20,31,54,.75)' : 'var(--cream-dim)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
