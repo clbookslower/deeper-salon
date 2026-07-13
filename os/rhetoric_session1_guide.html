@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내가 서 있을 자리 — 수사 첫 시간</title>
+<meta property="og:title" content="내가 서 있을 자리 — 수사 첫 시간">
+<meta property="og:description" content="나는 어디에 서서, 누구를 향해 말할 것인가. 노래의 달이 열립니다.">
+<style>
+  :root{
+    --navy:#1C2A47; --navy-deep:#141F36; --cream:#F6F1E7; --cream-dim:#D9D2C3;
+    --gold:#C2943A; --gold-soft:#D9B26A; --ink:#1A1A1A; --line:rgba(246,241,231,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:linear-gradient(175deg,var(--navy-deep) 0%,var(--navy) 40%,#22335A 100%);
+    color:var(--cream);
+    font-family:'Noto Serif KR',ui-serif,Georgia,serif;
+    line-height:1.85; letter-spacing:-.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{ /* film grain */
+    content:''; position:fixed; inset:0; pointer-events:none; opacity:.05; z-index:9;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px}
+  /* ── 헤더 ── */
+  header{padding:76px 0 56px;text-align:center}
+  header img{width:92px;height:auto;display:block;margin:0 auto 14px;opacity:1}
+  .logo-rule{width:36px;height:1px;background:var(--gold);opacity:.55;margin:0 auto 30px}
+  .eyebrow{font-family:'Noto Sans KR',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.42em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:18px}
+  h1{font-size:clamp(1.7rem,6vw,2.4rem);font-weight:600;letter-spacing:.02em;line-height:1.5}
+  .sub{margin-top:16px;color:var(--cream-dim);font-size:.98rem}
+  .thread{width:1px;height:64px;margin:44px auto 0;background:linear-gradient(to bottom,transparent,var(--gold));opacity:.7}
+  /* ── 리드 ── */
+  .lede{padding:8px 0 26px;font-size:1.08rem;text-align:center}
+  .lede p{margin-bottom:1.2em}
+  .lede em{font-style:normal;color:var(--gold-soft)}
+  /* ── 섹션 공통 ── */
+  section{padding:58px 0 8px}
+  .sec-eyebrow{font-family:'Noto Sans KR',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.4em;color:var(--gold-soft);margin-bottom:14px}
+  h2{font-size:clamp(1.32rem,4.6vw,1.62rem);font-weight:600;line-height:1.55;margin-bottom:26px}
+  p{margin-bottom:1.15em;font-size:1.0rem;color:var(--cream)}
+  .dim{color:var(--cream-dim)}
+  .pull{
+    margin:34px 0;padding:26px 26px;border-left:2px solid var(--gold);
+    background:rgba(246,241,231,.045);font-size:1.06rem;line-height:2.0;
+  }
+  .pull .src{display:block;margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;color:var(--cream-dim);letter-spacing:.06em}
+  /* ── 카드 목록 ── */
+  .cards{display:grid;gap:14px;margin:26px 0 10px}
+  .card{
+    border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+    background:rgba(20,31,54,.55);
+  }
+  .card .wk{font-family:'Noto Sans KR',sans-serif;font-size:.72rem;letter-spacing:.28em;color:var(--gold-soft);margin-bottom:8px}
+  .card .t{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+  .card .d{font-size:.93rem;color:var(--cream-dim);line-height:1.8}
+  .card .out{margin-top:10px;font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--gold-soft)}
+  /* ── 명령 카드 ── */
+  .cmd{display:grid;gap:10px;margin:24px 0}
+  .cmd div{
+    display:flex;gap:16px;align-items:baseline;border-bottom:1px solid var(--line);padding:12px 4px 14px;
+  }
+  .cmd b{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:.95rem;color:var(--gold-soft);min-width:88px;letter-spacing:.04em}
+  .cmd span{font-size:.93rem;color:var(--cream-dim);line-height:1.75}
+  /* ── 오늘의 흐름 ── */
+  .flow{counter-reset:step;margin:26px 0 6px}
+  .flow li{
+    list-style:none;position:relative;padding:0 0 26px 52px;
+  }
+  .flow li::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--gold);color:var(--gold-soft);
+    font-family:'Noto Sans KR',sans-serif;font-size:.85rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .flow li::after{
+    content:'';position:absolute;left:16px;top:40px;bottom:6px;width:1px;background:var(--line);
+  }
+  .flow li:last-child::after{display:none}
+  .flow .t{font-weight:600;font-size:1.02rem;margin-bottom:4px}
+  .flow .d{font-size:.92rem;color:var(--cream-dim);line-height:1.8}
+  /* ── 열쇠말 안내 ── */
+  .keybox{
+    margin:34px 0;padding:30px 26px;text-align:center;border:1px solid var(--gold);border-radius:12px;
+    background:radial-gradient(ellipse at top,rgba(194,148,58,.12),transparent 70%);
+  }
+  .keybox .k{font-size:1.08rem;line-height:2.0}
+  .keybox .n{margin-top:10px;font-family:'Noto Sans KR',sans-serif;font-size:.8rem;color:var(--cream-dim)}
+  /* ── 피날레 ── */
+  .finale{padding:70px 0 90px;text-align:center}
+  .finale .stars{letter-spacing:.9em;color:var(--gold-soft);font-size:.8rem;margin-bottom:30px}
+  .finale p{font-size:1.12rem;line-height:2.2}
+  footer{padding:0 0 56px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:.74rem;color:var(--cream-dim);letter-spacing:.12em}
+  @media (max-width:420px){
+    .wrap{padding:0 18px}
+    header{padding:56px 0 44px}
+    .cmd b{min-width:76px}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <img src="data:image/png;base64,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" alt="DEEPER">
+  <div class="logo-rule"></div>
+  <div class="eyebrow">RHETORIC · 노래의 달 · 첫 시간</div>
+  <h1>내가 서 있을 자리</h1>
+  <div class="sub">디퍼 언브랜딩살롱 1기 · 목요일 밤</div>
+  <div class="thread"></div>
+</header>
+
+<div class="wrap lede">
+  <p>문법의 달, 디퍼님은 어둠 속에서 원천을 길어 올리셨습니다.<br>
+  논리의 달, 그 재료로 악보 한 장을 지으셨습니다.</p>
+  <p>이제 <em>부르는 달</em>입니다. 오늘 밤의 질문은 하나 —<br>
+  <b>나는 어디에 서서, 누구를 향해 말할 것인가.</b></p>
+</div>
+
+<section class="wrap">
+  <div class="sec-eyebrow">DANTE · 안내자</div>
+  <h2>베르길리우스는 여기까지, 이제 베아트리체</h2>
+  <p>디퍼의 백 일은 단테의 『신곡』을 오마주합니다 — 서곡 하나에, 서른세 곡씩 세 달. 단테는 어두운 숲에서 시인 베르길리우스의 손을 잡고 지옥과 연옥을 지납니다. 그런데 천국 문 앞에서 안내자가 바뀝니다. 이성과 방법의 시인은 거기까지 — 천국을 안내하는 이는 <b>베아트리체, 사랑하는 단 한 사람</b>입니다.</p>
+  <p>수사의 달이 꼭 그렇습니다. 방법이 데려다줄 수 있는 곳까지, 디퍼님은 두 달을 걸어오셨습니다. 이제 디퍼님을 끌어올리는 힘은 디퍼님의 말이 가닿을 <b>단 한 사람</b>입니다. 누구를 향해 말하는가가 정해질 때 — 내가 서 있을 자리도 정해집니다.</p>
+  <div class="pull">
+    "해와 다른 별들을 움직이는 사랑."
+    <span class="src">— 단테, 『신곡』 천국편의 마지막 행 · 이 달 서른세 번째 걸음에 걸려 있는 문장</span>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">NIETZSCHE · 하산</div>
+  <h2>넘치는 잔은 내려갑니다</h2>
+  <p>차라투스트라는 산 위에서 십 년, 꿀처럼 고인 지혜와 함께 살았습니다. 그리고 어느 아침 해를 향해 말합니다 — <span class="dim">"나는 베풀어 주고 나누어 주려 한다."</span> 그가 산을 내려가는 까닭은 가득 참입니다. 넘치는 잔은 흘러야 하니까요.</p>
+  <p>두 달 동안 디퍼님 안에 고인 것이 있습니다. 발화는 그 잔을 기울이는 일 — 세상에 저를 증명하는 일이기 전에, <b>베푸는 일</b>입니다. 그렇게 서면, 첫 발행의 두려움이 조금 다르게 보입니다.</p>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">BENJAMIN · 아우라</div>
+  <h2>복제의 시대, 목소리의 지금-여기</h2>
+  <p>살롱의 첫 시간, 우리는 발터 벤야민의 <b>아우라</b>를 이야기했습니다 — 아무리 정교한 복제에도 담기지 않는, 원본만의 지금-여기. AI가 매끈한 문장을 무한히 만들어내는 시대에, 이 오래된 개념은 오히려 젊어집니다. <b>아우라는 원천에서만 나옵니다.</b> 디퍼님이 실제로 산 시간, 실제로 쓴 말의 결에서.</p>
+  <p>그래서 이 달의 명명 원칙은 하나입니다. 이름도 피치도 카피도, 디퍼님의 씨앗에 실제로 살아 있는 구체어로 짓습니다 — <b>복제될 수 없는 것으로.</b></p>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">EDITOLOGY · 1부</div>
+  <h2>창조는 편집입니다</h2>
+  <p>이 달의 교재는 김정운의 『에디톨로지』, 그중 1부 <span class="dim">「지식과 문화의 편집」</span>입니다. 1부가 건네는 문장은 하나로 모입니다 — <b>새로움은 무에서 오지 않는다. 이미 있는 것들의 새로운 배열에서 온다.</b></p>
+  <p>천재는 <b>다르게 엮는 사람</b>입니다. 같은 재료도 편집의 단위를 바꾸고 차원을 한 칸 올리면, 그전엔 없던 의미가 솟습니다. 『에디톨로지』는 이 공식을 한 줄로 적습니다 — <b>편집의 단위 × 편집의 차원 = 메타언어.</b> 나만의 편집 방식이 곧 나만의 언어입니다.</p>
+  <p>1부에는 오래된 방 하나가 나옵니다. <b>분더카머(Wunderkammer), 경이의 방.</b> 근대 유럽의 수집가들이 세계의 조각들을 모아 제 방식으로 배열하던 방 — 수집이 배열이 되고, 배열이 세계관이 되던 자리입니다. 백과사전도 박물관도 이 방에서 태어났습니다.</p>
+  <p>디퍼의 번역은 이렇습니다. 디퍼님이 두 달 동안 모은 씨앗과 악보가 <b>수장고</b>라면, 이번 달 여는 것은 <b>전시실</b>입니다. 쌓는 시간은 끝났습니다 — 이제 배열하는 시간입니다.</p>
+  <div class="pull">
+    "창조는 편집이다."
+    <span class="src">— 김정운, 『에디톨로지』</span>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">THE MAP</div>
+  <h2>노래의 달 — 네 소절, 서른세 걸음</h2>
+  <p>이 달도 하루 한 걸음입니다. 다만 걸음마다 <b>밖으로 나갑니다.</b> 네 소절로 부릅니다.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="wk">1주 · 선율 — 내가 서 있을 자리</div>
+      <div class="t">명명 — 이름을 짓고, 자리를 정합니다</div>
+      <div class="d">씨앗에서 살아있는 구체어를 주워 이름 후보를 빚고, 모든 것이 시작되는 으뜸음(첫 문장)을 고르고, 한 문장 피치를 짓습니다. 이름을 짓는 일은 곧 내가 서서 말할 자리를 정하는 일 — 디퍼님이 실제로 쓴 말의 결로만 짓습니다.</div>
+      <div class="out">★ 이름 · 으뜸음 · 한 문장 피치</div>
+    </div>
+    <div class="card">
+      <div class="wk">2주 · 변주</div>
+      <div class="t">채널 — 목소리가 살 자리를 고릅니다</div>
+      <div class="d">잘하는 형식보다, 자연스러운 형식을 찾습니다. 지치지 않을 가장 작은 발행 단위를 정하고, 이번 주 안에 아주 작게 한 번 — 처음으로 바깥에 소리를 냅니다.</div>
+      <div class="out">★ 채널 선언 · 첫 발행</div>
+    </div>
+    <div class="card">
+      <div class="wk">3주 · 일관성</div>
+      <div class="t">편집 — 조각들이 한 권이 됩니다</div>
+      <div class="d">분더카머를 크게 한 바퀴 돌려 방을 정돈하고, 목차를 짓고, 나답지 않은 문장을 지웁니다. 그리고 Day 22 — 사막여우가 디퍼님의 조각만으로 초고를 조립합니다. 새 문장은 한 줄도 쓰지 않습니다. 엮기만 합니다.</div>
+      <div class="out">★ 목차 · 단행본 초고 v0</div>
+    </div>
+    <div class="card">
+      <div class="wk">4주 · 하모니</div>
+      <div class="t">매니페스토 — 끝까지 지킬 약속</div>
+      <div class="d">발행을 망설이게 하는 두려움에 이름을 붙이고, 첫 독자를 그리고, 세상에 지키고 싶은 단 하나의 약속을 선언 몇 줄로 남깁니다.</div>
+      <div class="out">★ 매니페스토</div>
+    </div>
+    <div class="card">
+      <div class="wk">마지막 · 별을 보는 사흘</div>
+      <div class="t">되읽기 · 선물 · 하모니</div>
+      <div class="d">매니페스토를 소리내어 읽고, 한 줄을 한 사람에게 건네고 — 마지막 날, 문법 첫 문장과 의미의 축과 악보와 매니페스토를 나란히 놓습니다. 100곡이 한 바퀴 도는 자리, 트리비움 수료입니다.</div>
+      <div class="out">★ 트리비움 수료 — "해와 다른 별들을 움직이는 사랑"</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">WUNDERKAMMER</div>
+  <h2>분더카머 — 이 달의 핵심 장치</h2>
+  <p>수사의 문이 열리는 순간, 사막여우가 디퍼님의 볼트에 <b>경이의 방</b>을 짓습니다. 두 달 동안 쌓인 글에서 살아있는 조각을 골라 <b>카드</b>로 겁니다 — 문장 하나, 날짜, 출처, 키워드. 떼었다 붙일 수 있는 단위로.</p>
+  <p>벤야민 자신이 필생의 수집가였습니다 — 인용 조각들만으로 책 한 권을 짓고자 했지요. 조각들이 알맞게 놓일 때, 흩어진 별들이 문득 성좌를 이루듯 뜻이 떠오른다고 그는 믿었습니다. 디퍼님의 분더카머가 바로 그 방입니다.</p>
+  <p>그리고 어느 날이든 이렇게 청하실 수 있습니다 — <b>"분더카머 돌려줘."</b> 여우가 같은 카드들을 다른 차원으로 재배열합니다. 시간의 결로, 주제의 결로, 감정의 결로, 독자의 문제 순으로 — 그리고 가장 먼 두 카드를 나란히 놓는 <b>뜻밖의 짝</b>까지. 한 바퀴 돌 때마다 방 전체의 의미가 달라집니다.</p>
+  <p>돌릴 때마다 여우는 딱 하나만 짚습니다. <span class="dim">"이 두 카드가 나란히 놓이니, 이런 문장이 태어나는데요."</span> 조각과 조각 <b>사이</b>에서 새 씨앗이 태어납니다 — 에디톨로지가 디퍼님의 방에서 일어나는 순간입니다.</p>
+  <p>글감이 필요한 어느 날이든, 방을 한 바퀴 돌리고 한 조각을 꺼내 발행합니다 — <b>평생의 방</b>입니다.</p>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">WITH THE FOX</div>
+  <h2>사막여우와 이 달을 걷는 법</h2>
+
+  <div class="keybox">
+    <div class="k">이 달의 문은 <b>열쇠말</b>로 열립니다.</div>
+    <div class="n">받으신 한마디를 사막여우에게 건네시면 — 문이 열리고, 경이의 방이 함께 지어집니다.</div>
+  </div>
+
+  <p>문이 열리면 이 달은 세 마디로 삽니다.</p>
+  <div class="cmd">
+    <div><b>안녕</b><span>오늘의 한 걸음. 33곡을 하루씩 — 여우가 "오늘이 33곡 중 n번째 걸음이에요"라고 세어 줍니다.</span></div>
+    <div><b>오아시스</b><span>마음이 목마른 날, 백 개의 샘에서 오늘의 질문 하나. 여정과 자유로이 오갑니다.</span></div>
+    <div><b>분더카머</b><span>경이의 방 한 바퀴 — 카드를 다른 차원으로 재배열하고, 사이의 경이 하나를 받습니다. Day 1부터 어느 날이든.</span></div>
+  </div>
+  <p class="dim">걸음마다 볼트에 조용히 저장되고, "백업" 한마디면 금고(GitHub)에 보관됩니다. 마지막 날 여우는 서른세 개의 체크를 직접 세어 확인한 뒤에야 별의 날을 엽니다 — 걸은 만큼만, 정직하게.</p>
+  <p><b>시작 전에 딱 한 번</b> — 사막여우 업데이트가 필요합니다(방에 안내드린 복사·붙여넣기 한 번). 여우가 새 옷을 입어야 이 달을 알아듣습니다. 이미 걸어오신 길은 다시 걷지 않습니다 — 여우가 디퍼님의 볼트를 읽고, 걸어온 자리에서 이어갑니다.</p>
+</section>
+
+<section class="wrap">
+  <div class="sec-eyebrow">TONIGHT</div>
+  <h2>오늘 밤, 함께 할 것</h2>
+  <ol class="flow">
+    <li>
+      <div class="t">내가 서 있을 자리 — 이야기 나누기</div>
+      <div class="d">에디톨로지 1부에서 밑줄 그은 자리를 서로 꺼내고, 오늘의 질문을 나눕니다 — 나는 어디에 서서, 누구를 향해 말하고 싶은가.</div>
+    </li>
+    <li>
+      <div class="t">내 경이의 방, 첫 카드</div>
+      <div class="d">두 달의 씨앗에서 "이건 끝까지 데려가야지" 싶은 문장 하나를 골라, 오늘 밤 첫 카드로 겁니다.</div>
+    </li>
+    <li>
+      <div class="t">열쇠말 받기</div>
+      <div class="d">노래의 달을 여는 한마디.</div>
+    </li>
+    <li>
+      <div class="t">이번 주의 걸음</div>
+      <div class="d">여우 업데이트 → 열쇠말로 문 열기 → "안녕"으로 Day 1부터. 첫 소절은 선율 — 디퍼님의 것에 이름을 붙이는 일주일입니다.</div>
+    </li>
+  </ol>
+</section>
+
+<div class="wrap finale">
+  <div class="stars">✦ ✦ ✦</div>
+  <p>두 달 동안 안에서 빚으신 것이 있습니다.<br>
+  이제 그것이 디퍼님의 목소리로, 단 한 사람을 향해 나섭니다.<br><br>
+  노래는 부를수록 자랍니다.<br><b>별이 별을 낳습니다.</b></p>
+</div>
+
+<footer class="wrap">DEEPER · 디퍼 언브랜딩살롱 · 수사 — 노래의 달</footer>
+
+</body>
+</html>
