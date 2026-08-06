@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>진영님 맥북 이사 가이드 — 사막여우와 짐 전부, 안전하게</title>
+<title>진영님 맥북 이사 가이드 — 미니동킴에게 세 번만 시키면 끝</title>
 <style>
   :root{
     --ground:#F6F0E4;
@@ -96,15 +96,11 @@
     width:17px;height:17px;margin-top:4px;flex-shrink:0;accent-color:var(--umber);cursor:pointer;
   }
   .check label{cursor:pointer;}
-  .badge{
-    display:inline-block;font-size:11.5px;padding:1px 9px;border-radius:20px;
-    border:1px solid currentColor;margin-right:6px;vertical-align:1px;letter-spacing:.04em;
+  .hands{
+    background:var(--card);border:1px dashed var(--umber);
+    padding:16px 20px;margin:16px 0;font-size:14.5px;
   }
-  .badge.ok{color:var(--ok);}
-  .badge.no{color:var(--warn);}
-  .qa{margin:20px 0;}
-  .qa .q{font-weight:800;font-size:16.5px;margin-bottom:6px;}
-  .qa .a{padding-left:14px;border-left:3px solid var(--line);}
+  .hands b.t{color:var(--umber);}
   code{
     font-family:ui-monospace,'SF Mono',Consolas,monospace;font-size:13px;
     background:var(--card);border:1px solid var(--line);padding:1px 6px;
@@ -128,142 +124,172 @@
 <header class="top">
   <img class="logo" src="data:image/png;base64,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" alt="DEEPER">
   <div class="kicker">MOVING&nbsp;DAY&nbsp;·&nbsp;NOA&nbsp;DENTAL&nbsp;SECOND&nbsp;BRAIN</div>
-  <h1 class="serif">진영님 맥북 이사 가이드<br>— 사막여우와 짐 전부, 안전하게</h1>
-  <p class="lede">병원 공용 노트북에서 돌리던 디퍼 OS(사막여우 볼트 + 에이전트)와 작업물 전부를 새 맥북으로 옮기고, 공용 노트북은 흔적 없이 비우는 전 과정입니다. 순서대로만 가면 됩니다.</p>
-  <div class="principle"><b>대원칙 — 삭제는 맨 마지막.</b> 공용 노트북의 어떤 것도, 맥북에서 살아 움직이는 걸 두 눈으로 확인하기 전에는 지우지 않습니다.</div>
+  <h1 class="serif">진영님 맥북 이사 가이드<br>— 미니동킴에게 세 번만 시키면 끝</h1>
+  <p class="lede">병원 공용 노트북의 세컨드브레인(사막여우 볼트 + 에이전트 + 작업물)을 새 맥북으로 옮기고, 공용 노트북은 흔적 없이 비웁니다. <b>실무는 전부 비서 미니동킴이 합니다.</b> 진영님이 하실 일은 심부름 세 번 시키기, USB 꽂기, 그리고 몇 번의 승인뿐이에요.</p>
+  <div class="principle"><b>대원칙 — 삭제는 맨 마지막.</b> 공용 노트북의 어떤 것도, 맥북에서 살아 움직이는 걸 확인하기 전에는 지우지 않습니다. 미니동킴도 이 원칙을 지키도록 심부름 문안에 박아뒀습니다.</div>
   <nav class="toc" aria-label="목차">
-    <a href="#q0"><span class="n">Q</span>사막출발·도착이면 끝일까?</a>
-    <a href="#act1"><span class="n">1막</span>짐 조사 (공용 노트북)</a>
-    <a href="#act2"><span class="n">2막</span>이사 실행</a>
-    <a href="#act3"><span class="n">3막</span>공용 노트북 소거</a>
+    <a href="#run1"><span class="n">심부름 ①</span>공용 노트북 — 짐 싸기</a>
+    <a href="#setup"><span class="n">기초 공사</span>새 맥북 — 앱 설치 5가지</a>
+    <a href="#run2"><span class="n">심부름 ②</span>맥북 — 짐 풀기</a>
+    <a href="#run3"><span class="n">심부름 ③</span>공용 노트북 — 비우기</a>
     <a href="#safety"><span class="n">§</span>안전선 — HIPAA·재정</a>
     <a href="#comms"><span class="n">§</span>맥 메시지 · 슬랙 가이드</a>
   </nav>
 </header>
 
 <!-- ================================================== -->
-<section id="q0">
-<h2><span class="act">먼저, 핵심 질문</span>"사막출발 → 사막도착"만 하면 될까?</h2>
-<div class="qa">
-  <div class="q serif">뼈대는 됩니다. 그러나 그것만 하면 짐의 절반이 남습니다.</div>
-  <div class="a">
-    <p>"사막출발"은 사막여우 볼트(desert-fox 폴더)를 깃허브 비공개 백업에 실어 보내고, "사막도착"은 새 컴퓨터에서 그걸 내려받는 장치입니다. 즉 <b>깃(git)이 추적하는 볼트 안의 기록</b>은 완벽하게 옮겨집니다. 문제는 깃 밖에 사는 것들입니다.</p>
-  </div>
-</div>
+<section id="run1">
+<h2><span class="act">심부름 ① · 공용 노트북에서</span>짐 싸기 — 조사부터 포장까지 미니동킴이</h2>
+<p>공용 노트북에서 클로드 코드를 열고 미니동킴을 불러, 아래를 통째로 붙여넣으세요. 조사 → 볼트 백업 → 민감자료 포장까지 한 번에 진행하고, 중간중간 진영님께 확인을 받습니다.</p>
 
-<div class="tablewrap">
-<table>
-  <tr><th style="width:44%">짐</th><th>사막출발·도착으로?</th><th>어떻게 옮기나</th></tr>
-  <tr><td><b>사막여우 볼트</b> (데일리노트·씨앗·여정기록·냠냠…)</td><td><span class="badge ok">옮겨짐</span>깃허브 백업 경유</td><td>2막-A</td></tr>
-  <tr><td><b>보안폴더</b> (재정 등 — 깃에서 일부러 제외한 민감자료)</td><td><span class="badge no">누락</span>깃에 없으니 백업에도 없음</td><td>2막-B · 오프라인 이동</td></tr>
-  <tr><td><b>agents 폴더</b> (볼트 밖에 따로 있는 에이전트 정의·기록)</td><td><span class="badge no">누락</span>볼트 밖이면 깃 추적 밖</td><td>2막-B</td></tr>
-  <tr><td><b>클로드 코드 흔적</b> (~/.claude — 대화 기록·설정·로그인)</td><td><span class="badge no">누락 + 소거 대상</span></td><td>설정은 새로, 기록은 3막에서 소거</td></tr>
-  <tr><td><b>각종 로그인</b> (깃허브·Gmail·MCP 연동)</td><td><span class="badge no">누락</span>기기별로 다시</td><td>2막-C 재로그인 · 3막 로그아웃</td></tr>
-  <tr><td><b>흩어진 파일</b> (다운로드·바탕화면·문서 폴더의 작업물)</td><td><span class="badge no">누락</span>가장 잘 잊는 짐</td><td>1막 조사에서 건져냄</td></tr>
-</table>
-</div>
-<p class="sub">이 가이드의 1~3막은 이 표의 여섯 줄을 하나도 빠뜨리지 않기 위한 순서입니다.</p>
-</section>
+<div class="prompt-label">미니동킴에게 붙여넣기 ① — 짐 싸기</div>
+<div class="prompt" id="p1">미니동킴, 컴퓨터 이사를 너에게 처음부터 끝까지 맡길게.
+이 공용 노트북의 내 작업 전부를 새 맥북으로 옮기고, 이 컴퓨터는
+나중에 깨끗이 비울 거야. 오늘은 1단계 "짐 싸기"만 한다.
+아직 아무것도 지우지 마.
 
-<!-- ================================================== -->
-<section id="act1">
-<h2><span class="act">1막 · 공용 노트북에서</span>짐 조사 — 에이전트에게 시키기</h2>
-<p>손으로 뒤지지 마세요. 공용 노트북의 클로드 코드를 열고, 아래를 그대로 붙여넣으면 에이전트가 이삿짐 목록을 만들어 줍니다.</p>
+[1. 짐 조사]
+- 사막여우 볼트(desert-fox) 폴더 위치, 파일 수, 용량. 깃 상태(커밋 안 된
+  변경, 마지막 푸시 시각)도 확인.
+- .gitignore로 깃에서 제외된 폴더·파일 전부 찾기. (재정 보안폴더가
+  여기 있어 — 경로와 파일 수를 정확히)
+- agents 폴더 위치와 내용물.
+- 다운로드·바탕화면·문서 폴더에서 최근 6개월 내 업무 파일.
+- 이 컴퓨터에 로그인된 흔적(깃허브 자격 증명, 클로드 코드, 브라우저).
+- 전부를 "이사목록.md"로 정리: ①깃으로 갈 짐 ②USB로 갈 짐
+  ③옮기지 않고 지우기만 할 것.
 
-<div class="prompt-label">붙여넣기 ① — 이삿짐 전수조사</div>
-<div class="prompt" id="p1">컴퓨터 이사 준비를 도와줘. 나는 이 컴퓨터의 모든 작업물을 새 맥북으로 옮기고 이 컴퓨터는 깨끗이 비울 거야. 아래를 조사해서 "이사목록.md" 파일로 정리해줘.
+[2. 볼트 백업]
+- 이사목록을 나에게 보여주고 내가 확인하면, 볼트의 모든 변경사항을
+  커밋하고 깃허브 비공개 백업에 푸시해. 푸시가 최신인지 검증까지.
 
-1. 사막여우 볼트(desert-fox) 폴더의 위치, 전체 파일 수와 용량.
-   깃 상태도 확인해줘 — 커밋 안 된 변경이 있는지, 마지막 푸시가 언제인지.
-2. 볼트 안팎에서 .gitignore로 깃에서 제외된 폴더·파일을 전부 찾아줘.
-   (보안폴더·재정 자료가 여기 있을 거야 — 경로와 파일 수를 적어줘)
-3. agents 폴더의 위치와 내용물 목록.
-4. 다운로드·바탕화면·문서 폴더에서 최근 6개월 내 만들어진
-   업무 관련 파일(문서·스프레드시트·PDF·이미지)을 찾아 목록으로.
-5. 이 컴퓨터에 로그인된 계정 흔적을 정리해줘 —
-   깃허브 자격 증명, 클로드 코드 로그인, 브라우저에 저장된 로그인.
-6. 위 전부를 ①깃으로 갈 짐 ②손으로 옮길 짐 ③옮기지 않고
-   지우기만 할 것, 세 묶음으로 나눠서 정리해줘.
+[3. 민감자료 포장]
+- ②USB로 갈 짐(보안폴더·agents 폴더·흩어진 파일)을 암호 걸린 zip
+  하나로 만들어. 암호는 강하게 만들어서 나한테 딱 한 번 보여줘 —
+  내가 폰에 옮겨 적을게. 이사목록.md도 zip에 같이 넣어.
+- zip이 완성되면 USB에 복사하는 것까지 안내해줘.
 
-아직 아무것도 옮기거나 지우지 마. 목록만.</div>
+각 단계가 끝날 때마다 뭘 했는지 짧게 보고하고, 판단이 필요한 건
+임의로 정하지 말고 나에게 물어봐.</div>
 <button class="copybtn" data-copy="p1">복사</button>
 
-<p>나온 <code>이사목록.md</code>를 한 번 훑어보세요. 특히 <b>②손으로 옮길 짐</b> 묶음에 재정 보안폴더와 agents 폴더가 들어 있는지 — 이 확인이 1막의 전부입니다.</p>
+<div class="hands"><b class="t">진영님 손이 필요한 순간</b> — ① 이사목록 훑어보고 "진행해" 한마디 ② zip 암호를 폰 메모에 옮겨 적기 ③ USB 꽂기. 이게 전부입니다.</div>
+
+<div class="card warn">
+  <h4>재정 등 민감자료가 USB로 가는 이유</h4>
+  <p>보안폴더는 일부러 깃에서 빼놓은 자료라 깃허브 백업에 실리지 않습니다(그게 정상). 그래서 이 짐만은 <b>암호 zip + USB 손 이동</b>입니다. 클라우드·이메일·카톡에 올리지 마세요 — 병원 공용 계정과 무료 클라우드에는 흔적이 남습니다.</p>
+</div>
 </section>
 
 <!-- ================================================== -->
-<section id="act2">
-<h2><span class="act">2막 · 이사 실행</span>세 갈래로 나눠 옮기기</h2>
+<section id="setup">
+<h2><span class="act">기초 공사 · 새 맥북에서</span>앱 설치 다섯 가지 — 여기만 손으로</h2>
+<p>새 맥북엔 아직 아무것도 없으니, 이 다섯 가지만 진영님이 직접 설치합니다. 순서대로 15분이면 끝나요. 이게 끝나면 나머지는 다시 에이전트의 일입니다.</p>
 
-<h3>A. 볼트 — "사막출발"</h3>
-<ul>
-  <li>공용 노트북에서 사막여우에게 <b>"사막출발"</b> — 커밋 안 된 기록까지 전부 실어 깃허브 비공개 백업에 푸시합니다.</li>
-  <li>끝나면 에이전트에게 "푸시가 최신인지 확인해줘"라고 한 번 더 — <b>마지막 커밋 시각이 방금</b>이어야 합니다.</li>
-</ul>
-
-<h3>B. 깃 밖의 짐 — 손 이사 (보안폴더 · agents 폴더 · 흩어진 파일)</h3>
-<div class="card warn">
-  <h4>재정 등 민감자료의 이동 규칙</h4>
-  <ul>
-    <li><b>클라우드·이메일·카톡으로 보내지 않기.</b> 병원 공용 계정이나 무료 클라우드에 재정 파일이 스치기만 해도 흔적이 남습니다.</li>
-    <li>방법: 에이전트에게 "②손으로 옮길 짐 묶음을 <b>암호 걸린 zip</b> 하나로 만들어줘" → <b>USB 메모리</b>에 담아 → 맥북에서 풀기 → 확인 후 USB도 비우기.</li>
-    <li>zip 암호는 파일과 다른 경로로(직접 기억하거나 문자로).</li>
-  </ul>
-</div>
-<p>옮긴 뒤 맥북에서 "zip을 푼 결과의 파일 수·용량이 이사목록.md의 숫자와 맞는지 대조해줘"라고 시키면 검증까지 끝납니다.</p>
-
-<h3>C. 맥북 도착 세팅</h3>
 <ol>
-  <li>맥북에 클로드 코드(데스크탑 앱) 설치 → 로그인.</li>
-  <li>깃허브 로그인 후, 사막여우 백업 저장소를 원하는 위치에 <code>git clone</code>. (에이전트에게 "내 사막여우 백업 저장소를 클론해줘"라고 해도 됩니다)</li>
-  <li>클론한 볼트 폴더에서 <b>"사막도착"</b> — 여정·기록이 그대로 이어집니다.</li>
-  <li>USB의 보안폴더·agents 폴더를 <b>원래 있던 상대 위치</b>에 풀어 넣기. (에이전트에게 이사목록.md를 보여주며 "이 구조대로 배치해줘")</li>
-  <li>재로그인 3종 — 깃허브, Gmail 연동, 쓰던 MCP 연동. 로그인은 기기별이라 새로 해야 합니다.</li>
-  <li>⚠️ <b>한글 파일명 주의</b> — 윈도우→맥 이사에서 한글 자모가 풀려 보이거나 깃이 전체 파일을 변경으로 잡는 일이 가끔 있습니다. 증상이 보이면 에이전트에게 "맥 한글 자소 분리 문제야. <code>git config core.precomposeUnicode true</code> 적용하고 상태 다시 봐줘"라고 하면 됩니다.</li>
+  <li><b>클로드 데스크탑 앱</b> — 브라우저에서 <a href="https://claude.ai/download">claude.ai/download</a> → Mac용 내려받기 → 응용 프로그램에 넣고 실행 → 로그인.</li>
+  <li><b>git</b> — <b>터미널</b>을 엽니다(Spotlight에서 ⌘+스페이스 → "터미널" 입력). 아래 한 줄을 붙여넣고 엔터:
+    <div class="prompt" id="s1">git --version</div>
+    <button class="copybtn" data-copy="s1">복사</button>
+    처음이면 "명령어 라인 개발자 도구를 설치하겠습니까?" 창이 뜹니다 → <b>설치</b> 클릭. (이게 맥의 git 설치 방식이에요. 이미 있으면 버전 숫자가 나오고 끝.)</li>
+  <li><b>옵시디언(Obsidian)</b> — <a href="https://obsidian.md">obsidian.md</a>에서 Mac용 내려받기 → 응용 프로그램에 넣기. (볼트 열기는 짐 풀기가 끝난 뒤에 — 아래에서 안내)</li>
+  <li><b>클로드 코드(터미널용)</b> — 터미널에 아래 한 줄을 붙여넣고 엔터:
+    <div class="prompt" id="s2">curl -fsSL https://claude.ai/install.sh | bash</div>
+    <button class="copybtn" data-copy="s2">복사</button>
+    끝나면 터미널을 껐다 켜고 <code>claude</code> 입력 → 브라우저가 열리며 로그인하면 준비 완료.</li>
+  <li><b>USB 꽂기</b> — 심부름 ①에서 싼 짐(암호 zip)이 든 USB를 꽂아둡니다.</li>
 </ol>
 
+<div class="hands"><b class="t">여기까지 되면</b> — 맥북에 클로드(앱+터미널)·git·옵시디언이 갖춰졌습니다. 이제 심부름 ②를 시키면 됩니다.</div>
+</section>
+
+<!-- ================================================== -->
+<section id="run2">
+<h2><span class="act">심부름 ② · 새 맥북에서</span>짐 풀기 — 복원부터 검증까지 미니동킴이</h2>
+<p>터미널에서 <code>claude</code>를 실행하거나 클로드 데스크탑 앱의 Code 탭을 열고, 아래를 붙여넣으세요. <b>미니동킴이 아직 맥북에 없어도 괜찮습니다</b> — 이 심부름을 받은 클로드가 agents 폴더를 복원하는 순간 미니동킴도 함께 돌아옵니다.</p>
+
+<div class="prompt-label">맥북 클로드 코드에 붙여넣기 ② — 짐 풀기</div>
+<div class="prompt" id="p2">새 맥북이야. 공용 노트북에서 이사 온 짐을 풀어줘.
+USB에 암호 zip이 있고, 그 안의 "이사목록.md"가 짐 목록의 기준이야.
+
+1. 깃허브 로그인을 확인하고, 내 사막여우 백업 저장소를 문서 폴더
+   아래에 클론해줘.
+2. USB의 zip을 풀어서(암호는 내가 입력할게) 이사목록.md 구조 그대로
+   배치해줘 — 보안폴더는 원래의 상대 위치에, agents 폴더도 제자리에.
+3. 검증: 풀린 파일 수·용량이 이사목록.md의 숫자와 맞는지 대조해서
+   보고해줘.
+4. 한글 파일명이 깨져 보이거나 깃이 전체 파일을 변경으로 잡으면,
+   맥 한글 자소 분리 문제야 — git config core.precomposeUnicode true
+   적용하고 상태를 다시 확인해줘.
+5. 다시 로그인해야 할 것들(깃허브·Gmail 연동·MCP)을 목록으로 주고,
+   하나씩 같이 진행하자.
+6. 끝나면 미니동킴으로 깨어나서, 어제까지의 기록이 다 있는지
+   너의 눈으로 최종 확인하고 보고해줘.
+7. zip 원본은 아직 USB에 그대로 둬 — 소거는 다음 단계에서 한다.</div>
+<button class="copybtn" data-copy="p2">복사</button>
+
+<div class="hands"><b class="t">진영님 손이 필요한 순간</b> — ① zip 암호 입력 ② 로그인 3종 클릭(깃허브·Gmail·MCP는 기기별이라 새로 해야 합니다).</div>
+
 <div class="card">
-  <h4>이사 완료 검증 — 이 네 가지가 다 "예"면 3막으로</h4>
+  <h4>이사 완료 검증 — 네 가지가 다 "예"여야 심부름 ③으로</h4>
   <ul class="check">
-    <li><input type="checkbox" id="v1"><label for="v1">맥북에서 사막여우가 깨어나 오늘 날짜의 여정을 이어간다</label></li>
+    <li><input type="checkbox" id="v1"><label for="v1">맥북에서 사막여우가 깨어나 오늘의 기록을 이어간다</label></li>
     <li><input type="checkbox" id="v2"><label for="v2">보안폴더(재정) 파일 수가 이사목록.md와 일치한다</label></li>
-    <li><input type="checkbox" id="v3"><label for="v3">agents 폴더의 에이전트들이 맥북에서 호출된다</label></li>
+    <li><input type="checkbox" id="v3"><label for="v3">미니동킴이 맥북에서 정상 호출된다</label></li>
     <li><input type="checkbox" id="v4"><label for="v4">어제까지의 기록(데일리노트 등)이 맥북에서 열린다</label></li>
   </ul>
 </div>
+
+<h3>짐을 다 풀었으면 — 볼트에 옷 입히기 (옵시디언 + 디퍼 OS)</h3>
+<ol>
+  <li><b>옵시디언으로 볼트 열기</b> — 옵시디언 실행 → "Open folder as vault(폴더를 보관함으로 열기)" → 방금 클론한 사막여우 볼트 폴더 선택. 어제까지의 노트가 그대로 보이면 성공.</li>
+  <li><b>디퍼 OS 설치 — 열쇠로</b> :
+    <div class="card warn">
+      <h4>🔑 열쇠는 이 가이드에 없습니다</h4>
+      <ul>
+        <li>디퍼 OS 설치 열쇠(한 줄 명령)는 <b>퍼핀이 카톡으로 따로</b> 보냅니다. 열쇠는 구독자 개인 것이라 공개 문서에 싣지 않아요.</li>
+        <li>받은 한 줄은 <b>클로드 대화창이 아니라 터미널에</b> 그대로 붙여넣고 엔터. (대화창에 넣으면 서식이 오염되어 실패할 수 있습니다)</li>
+        <li>설치가 끝나면 볼트 폴더에서 <code>claude</code>를 열고 <b>"안녕"</b> — 사막여우가 맥북에서 첫 인사를 하면 이사 완료입니다.</li>
+      </ul>
+    </div>
+  </li>
+</ol>
 </section>
 
 <!-- ================================================== -->
-<section id="act3">
-<h2><span class="act">3막 · 공용 노트북에서</span>흔적 없이 비우기</h2>
-<p>병원 공용 노트북은 다음 사람이 씁니다. 폴더 삭제만으로는 부족합니다 — <b>대화 기록과 로그인 흔적</b>이 진짜 소거 대상입니다.</p>
+<section id="run3">
+<h2><span class="act">심부름 ③ · 다시 공용 노트북에서</span>비우기 — 흔적까지 미니동킴이</h2>
+<p>병원 공용 노트북은 다음 사람이 씁니다. 폴더 삭제만으로는 부족해요 — <b>대화 기록과 로그인 흔적</b>이 진짜 소거 대상입니다. 위 검증 4개를 모두 마친 뒤에만 진행하세요.</p>
 
-<div class="prompt-label">붙여넣기 ② — 소거 (검증 체크 4개를 모두 마친 뒤에만)</div>
-<div class="prompt" id="p2">이사가 끝났고 맥북에서 전부 확인했어. 이제 이 컴퓨터를 깨끗이 비워줘.
-이사목록.md를 기준으로, 하나 지울 때마다 뭘 지웠는지 보고해줘.
+<div class="prompt-label">공용 노트북의 미니동킴에게 붙여넣기 ③ — 비우기</div>
+<div class="prompt" id="p3">미니동킴, 이사가 끝났고 맥북에서 전부 확인했어.
+이제 이 컴퓨터를 깨끗이 비워줘. 이사목록.md 기준으로,
+하나 지울 때마다 뭘 지웠는지 보고하면서 진행해.
 
 1. desert-fox 볼트 폴더, agents 폴더, 보안폴더 삭제.
-2. 다운로드·바탕화면·문서의 내 업무 파일 삭제 (목록의 ③번 묶음 포함).
-3. 사용자 폴더의 .claude 폴더 삭제 — 대화 기록·세션이 여기 있어.
-4. 깃 자격 증명 삭제 — Windows 자격 증명 관리자에서 github 항목,
-   그리고 .gitconfig와 .ssh 폴더의 내 키.
-5. 압축했던 zip 파일과 임시 파일 삭제.
-6. 휴지통 비우기.
-7. 마지막으로 내 이름·계정으로 검색해서 남은 파일이 없는지 훑어줘.
+2. 다운로드·바탕화면·문서의 내 업무 파일 삭제(목록의 ③ 묶음 포함).
+3. 사용자 폴더의 .claude 폴더 삭제 — 우리 대화 기록이 여기 있어.
+   (이걸 지우면 너와의 기록도 이 컴퓨터에선 사라져. 맥북에 새 집이
+   있으니 괜찮아.)
+4. 깃 자격 증명 삭제 — Windows 자격 증명 관리자의 github 항목,
+   .gitconfig, .ssh 폴더의 내 키.
+5. 이사 때 만든 zip과 임시 파일 삭제, 휴지통 비우기.
+6. 내 이름과 계정명으로 전체 검색해서 남은 파일이 없는지 마지막
+   점검.
+7. 브라우저는 내가 직접 할게 — 로그아웃할 계정과 지울 저장 항목을
+   목록으로 줘.</div>
+<button class="copybtn" data-copy="p3">복사</button>
 
-브라우저는 네가 알려주면 내가 직접 할게 —
-로그아웃해야 할 계정과 지워야 할 저장 항목을 목록으로 줘.</div>
-<button class="copybtn" data-copy="p2">복사</button>
+<div class="hands"><b class="t">진영님 손이 필요한 순간</b> — 미니동킴이 주는 목록대로 브라우저 마무리:</div>
 
 <div class="card">
-  <h4>브라우저·계정은 손으로 (에이전트가 목록을 주면)</h4>
   <ul class="check">
     <li><input type="checkbox" id="e1"><label for="e1">브라우저: Gmail·깃허브·claude.ai 로그아웃</label></li>
     <li><input type="checkbox" id="e2"><label for="e2">브라우저 저장 비밀번호·자동완성에서 내 항목 삭제</label></li>
     <li><input type="checkbox" id="e3"><label for="e3">방문 기록·쿠키 삭제 (기간: 전체)</label></li>
-    <li><input type="checkbox" id="e4"><label for="e4">클로드 코드 로그아웃 후 앱 삭제 (공용에서 더 안 쓸 경우)</label></li>
+    <li><input type="checkbox" id="e4"><label for="e4">클로드 코드 로그아웃 후 앱 삭제</label></li>
     <li><input type="checkbox" id="e5"><label for="e5">내 전용 윈도우 계정을 만들어 썼다면 — 관리자에게 계정 삭제 요청 (가장 깔끔한 마무리)</label></li>
-    <li><input type="checkbox" id="e6"><label for="e6">USB 메모리 비우기 (zip 삭제 + 휴지통 비우기)</label></li>
+    <li><input type="checkbox" id="e6"><label for="e6">USB 비우기 (zip 삭제 + 휴지통 비우기)</label></li>
   </ul>
 </div>
 </section>
@@ -276,7 +302,7 @@
   <h4>① 환자 정보(PHI)는 AI 도구에 넣지 않는다 — HIPAA</h4>
   <ul>
     <li>환자 이름·연락처·진료 내용이 식별되는 형태로 클로드·볼트·슬랙에 들어가면 안 됩니다. (BAA 계약이 있는 엔터프라이즈 환경이 아닌 한)</li>
-    <li>에이전트가 다루는 것은 <b>운영 정보까지만</b> — "오늘 리콜 12건, 명단은 병원 시스템에서 확인" ⭕ / "김OO님 임플란트 재예약" ❌</li>
+    <li>미니동킴이 다루는 것은 <b>운영 정보까지만</b> — "오늘 리콜 12건, 명단은 병원 시스템에서 확인" ⭕ / "김OO님 임플란트 재예약" ❌</li>
     <li>환자에게 가는 문자·리마인더는 병원의 HIPAA 준수 시스템(기존 PMS·문자 서비스)으로. 클로드는 그 <b>문안을 다듬는 데까지</b>.</li>
   </ul>
 </div>
@@ -284,7 +310,7 @@
 <div class="card warn">
   <h4>② 재정·계약 자료는 볼트의 보안폴더에만</h4>
   <ul>
-    <li>지금처럼 <b>깃 제외 보안폴더</b> 방식 유지 — 깃허브 백업에도 안 올라가는 게 정상입니다. (그래서 이사 때 손으로 옮긴 것)</li>
+    <li>지금처럼 <b>깃 제외 보안폴더</b> 방식 유지 — 깃허브 백업에 안 올라가는 게 정상입니다. (그래서 이사 때 USB로 옮긴 것)</li>
     <li>공용 컴퓨터에는 다시 만들지 않기. 이제 이 시스템의 집은 <b>진영님 맥북 하나</b>입니다.</li>
     <li>보안폴더의 별도 백업이 필요하면 암호 zip + 외장 저장장치로, 분기에 한 번이면 충분합니다.</li>
   </ul>
@@ -294,12 +320,12 @@
 <!-- ================================================== -->
 <section id="comms">
 <h2><span class="act">맥북에서 열리는 것</span>메시지와 슬랙 — 직원 소통 세팅</h2>
-<p class="sub">이메일은 이미 쓰고 계시니, 맥북이 와서 새로 열리는 두 갈래만 정리합니다. 공통 원칙은 하나 — <b>초안은 에이전트가, 전송 승인은 진영님이.</b> 클로드는 승인 없이 남의 명의로 메시지를 보내지 않습니다.</p>
+<p class="sub">이메일은 이미 쓰고 계시니, 맥북이 와서 새로 열리는 두 갈래만 정리합니다. 공통 원칙은 하나 — <b>초안은 미니동킴이, 전송 승인은 진영님이.</b> 클로드는 승인 없이 남의 명의로 메시지를 보내지 않습니다.</p>
 
 <h3>맥의 메시지(iMessage·문자)</h3>
 <ol>
   <li><b>준비</b> : 맥의 Messages 앱에 Apple ID 로그인. 일반 문자(SMS)까지 보내려면 아이폰에서 설정 → 메시지 → <b>문자 메시지 전달(Text Message Forwarding)</b>에서 맥북을 켭니다.</li>
-  <li><b>사용</b> : 클로드 코드가 화면 제어로 Messages 앱을 다룹니다. "프런트 리사에게 내일 오전 스케줄 변경 문자 초안 잡아줘" → 초안 확인 → 승인하면 전송.</li>
+  <li><b>사용</b> : 미니동킴이 화면 제어로 Messages 앱을 다룹니다. "프런트 리사에게 내일 오전 스케줄 변경 문자 초안 잡아줘" → 초안 확인 → 승인하면 전송.</li>
   <li><b>알맞은 용도</b> : 직원 개인에게 가는 짧은 연락. <b>대량 발송·환자 문자에는 쓰지 않기</b> — 환자 연락은 병원 시스템으로(위 안전선 ①).</li>
   <li>화면 제어는 이메일·슬랙보다 손이 느리고 오작동 여지가 있어, 셋 중 <b>보조 수단</b>으로 두는 걸 권합니다.</li>
 </ol>
@@ -307,7 +333,7 @@
 <h3>슬랙 — 직원 소통의 본진으로</h3>
 <ol>
   <li><b>워크스페이스 만들기</b> : slack.com에서 병원 워크스페이스 생성(무료 플랜으로 충분) → 직원 초대 → 채널은 단순하게: <code>#공지</code> <code>#프런트</code> <code>#진료실</code> 정도.</li>
-  <li><b>클로드 코드와 연결</b> : claude.ai 커넥터 설정에서 Slack을 연결하거나, 클로드 코드에서 <code>/mcp</code>로 Slack 연동을 추가하고 브라우저에서 승인. 한 번 연결하면 계속 갑니다. (막히면 에이전트에게 "슬랙 MCP 연결 도와줘" — 단계별로 안내합니다)</li>
+  <li><b>클로드와 연결</b> : claude.ai 커넥터 설정에서 Slack을 연결하거나, 클로드 코드에서 <code>/mcp</code>로 Slack 연동을 추가하고 브라우저에서 승인. 한 번 연결하면 계속 갑니다. (막히면 미니동킴에게 "슬랙 연결 도와줘" — 단계별로 안내합니다)</li>
   <li><b>쓰는 패턴 세 가지</b> :
     <ul>
       <li><b>아침 브리핑</b> — "오늘 스케줄 요약해서 #공지 초안 잡아줘" → 승인 → 게시</li>
@@ -321,8 +347,8 @@
 
 <!-- ================================================== -->
 <footer>
-  <p><b>요약</b> — 사막출발·도착은 볼트만 옮깁니다. 보안폴더·agents 폴더·흩어진 파일은 암호 zip+USB로, 로그인은 새로, 공용 노트북은 대화 기록(.claude)과 자격 증명까지 지워야 끝. 삭제는 맥북 검증 후에만.</p>
-  <p style="margin-top:10px;">Noa Dental Second Brain · 이사 가이드 v1 · 2026. 8</p>
+  <p><b>요약</b> — ① 공용 노트북에서 짐 싸기(조사·백업·암호 zip) → 맥북 기초 공사(앱 5가지, 15분) → ② 짐 풀기(복원·검증·재로그인) + 옵시디언·디퍼 OS(열쇠는 카톡으로) → ③ 공용 노트북 비우기(파일·대화 기록·자격 증명까지). 실무는 미니동킴, 진영님은 설치·USB·승인만. 삭제는 언제나 맥북 검증 후에.</p>
+  <p style="margin-top:10px;">Noa Dental Second Brain · 이사 가이드 v2 · 2026. 8</p>
 </footer>
 
 </div>
