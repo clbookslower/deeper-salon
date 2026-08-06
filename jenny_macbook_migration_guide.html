@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>진영님 맥북 이사 가이드 — 사막여우와 짐 전부, 안전하게</title>
+<style>
+  :root{
+    --ground:#F6F0E4;
+    --card:#FFFDF8;
+    --ink:#29241C;
+    --sub:#6E6353;
+    --umber:#8A5A2E;
+    --warn:#A0472F;
+    --warn-bg:#F7E9E2;
+    --line:#E4DAC6;
+    --mono-bg:#2E2820;
+    --mono-ink:#EFE6D2;
+    --ok:#5A6B4D;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#201B14; --card:#2A2419; --ink:#EDE4D3; --sub:#B0A48E;
+      --umber:#C89058; --warn:#D98A6F; --warn-bg:#3A2A22; --line:#3D3527;
+      --mono-bg:#171310; --mono-ink:#E6DCC8; --ok:#9FB08A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#201B14; --card:#2A2419; --ink:#EDE4D3; --sub:#B0A48E;
+    --umber:#C89058; --warn:#D98A6F; --warn-bg:#3A2A22; --line:#3D3527;
+    --mono-bg:#171310; --mono-ink:#E6DCC8; --ok:#9FB08A;
+  }
+  :root[data-theme="light"]{
+    --ground:#F6F0E4; --card:#FFFDF8; --ink:#29241C; --sub:#6E6353;
+    --umber:#8A5A2E; --warn:#A0472F; --warn-bg:#F7E9E2; --line:#E4DAC6;
+    --mono-bg:#2E2820; --mono-ink:#EFE6D2; --ok:#5A6B4D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    line-height:1.8; font-size:15.5px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 90px;}
+  .serif{font-family:'Nanum Myeongjo','Noto Serif KR','Apple SD Gothic Neo',serif;}
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:30px;margin-bottom:44px;}
+  header.top img.logo{height:26px;display:block;margin-bottom:26px;}
+  @media (prefers-color-scheme: dark){ header.top img.logo{filter:invert(.9) sepia(.2);} }
+  :root[data-theme="dark"] header.top img.logo{filter:invert(.9) sepia(.2);}
+  :root[data-theme="light"] header.top img.logo{filter:none;}
+  header.top .kicker{font-size:12.5px;letter-spacing:.28em;color:var(--umber);margin-bottom:14px;}
+  header.top h1{font-size:29px;line-height:1.45;font-weight:800;text-wrap:balance;}
+  header.top .lede{margin-top:16px;color:var(--sub);font-size:15px;max-width:56ch;}
+  .principle{
+    margin-top:22px;padding:14px 18px;background:var(--card);
+    border-left:4px solid var(--umber);font-size:14.5px;
+  }
+  h2{font-size:20px;font-weight:800;margin:60px 0 6px;line-height:1.5;}
+  h2 .act{display:block;font-size:12px;letter-spacing:.26em;color:var(--umber);margin-bottom:6px;font-weight:700;}
+  h3{font-size:16px;font-weight:700;margin:28px 0 8px;color:var(--umber);}
+  p{margin:10px 0;}
+  p.sub{color:var(--sub);font-size:14px;}
+  ul,ol{margin:10px 0 16px 20px;}
+  li{margin-bottom:8px;}
+  table{width:100%;border-collapse:collapse;margin:18px 0 8px;background:var(--card);font-size:14px;}
+  th{border-bottom:2px solid var(--ink);padding:10px 12px;text-align:left;font-size:13px;letter-spacing:.05em;}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .tablewrap{overflow-x:auto;}
+  .card{background:var(--card);border:1px solid var(--line);padding:22px 24px;margin:16px 0;}
+  .card.warn{background:var(--warn-bg);border-color:var(--warn);}
+  .card.warn h4{color:var(--warn);}
+  .card h4{font-size:15px;font-weight:800;margin-bottom:8px;}
+  .prompt{
+    background:var(--mono-bg);color:var(--mono-ink);
+    font-family:ui-monospace,'SF Mono',Consolas,'Nanum Gothic Coding',monospace;
+    font-size:13px;line-height:1.75;padding:20px 22px;margin:14px 0 4px;
+    white-space:pre-wrap;overflow-x:auto;border-radius:2px;
+  }
+  .prompt-label{
+    font-size:12px;letter-spacing:.14em;color:var(--umber);
+    margin-top:18px;font-weight:700;
+  }
+  .copybtn{
+    margin:6px 0 18px;font-size:12.5px;padding:6px 16px;cursor:pointer;
+    background:none;border:1px solid var(--umber);color:var(--umber);
+    font-family:inherit;letter-spacing:.05em;
+  }
+  .copybtn:focus-visible{outline:2px solid var(--umber);outline-offset:2px;}
+  .check{list-style:none;margin-left:0;}
+  .check li{
+    display:flex;gap:11px;align-items:flex-start;margin-bottom:10px;
+    padding:9px 12px;background:var(--card);border:1px solid var(--line);
+  }
+  .check input[type=checkbox]{
+    width:17px;height:17px;margin-top:4px;flex-shrink:0;accent-color:var(--umber);cursor:pointer;
+  }
+  .check label{cursor:pointer;}
+  .badge{
+    display:inline-block;font-size:11.5px;padding:1px 9px;border-radius:20px;
+    border:1px solid currentColor;margin-right:6px;vertical-align:1px;letter-spacing:.04em;
+  }
+  .badge.ok{color:var(--ok);}
+  .badge.no{color:var(--warn);}
+  .qa{margin:20px 0;}
+  .qa .q{font-weight:800;font-size:16.5px;margin-bottom:6px;}
+  .qa .a{padding-left:14px;border-left:3px solid var(--line);}
+  code{
+    font-family:ui-monospace,'SF Mono',Consolas,monospace;font-size:13px;
+    background:var(--card);border:1px solid var(--line);padding:1px 6px;
+  }
+  footer{
+    margin-top:80px;padding-top:24px;border-top:2px solid var(--ink);
+    font-size:13px;color:var(--sub);
+  }
+  .toc{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin:20px 0 0;font-size:14px;}
+  @media(max-width:560px){.toc{grid-template-columns:1fr;}}
+  .toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:6px;}
+  .toc a:hover{color:var(--umber);}
+  .toc .n{color:var(--umber);font-weight:700;margin-right:8px;font-size:12.5px;}
+  a{color:var(--umber);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="top">
+  <img class="logo" src="data:image/png;base64,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" alt="DEEPER">
+  <div class="kicker">MOVING&nbsp;DAY&nbsp;·&nbsp;NOA&nbsp;DENTAL&nbsp;SECOND&nbsp;BRAIN</div>
+  <h1 class="serif">진영님 맥북 이사 가이드<br>— 사막여우와 짐 전부, 안전하게</h1>
+  <p class="lede">병원 공용 노트북에서 돌리던 디퍼 OS(사막여우 볼트 + 에이전트)와 작업물 전부를 새 맥북으로 옮기고, 공용 노트북은 흔적 없이 비우는 전 과정입니다. 순서대로만 가면 됩니다.</p>
+  <div class="principle"><b>대원칙 — 삭제는 맨 마지막.</b> 공용 노트북의 어떤 것도, 맥북에서 살아 움직이는 걸 두 눈으로 확인하기 전에는 지우지 않습니다.</div>
+  <nav class="toc" aria-label="목차">
+    <a href="#q0"><span class="n">Q</span>사막출발·도착이면 끝일까?</a>
+    <a href="#act1"><span class="n">1막</span>짐 조사 (공용 노트북)</a>
+    <a href="#act2"><span class="n">2막</span>이사 실행</a>
+    <a href="#act3"><span class="n">3막</span>공용 노트북 소거</a>
+    <a href="#safety"><span class="n">§</span>안전선 — HIPAA·재정</a>
+    <a href="#comms"><span class="n">§</span>맥 메시지 · 슬랙 가이드</a>
+  </nav>
+</header>
+
+<!-- ================================================== -->
+<section id="q0">
+<h2><span class="act">먼저, 핵심 질문</span>"사막출발 → 사막도착"만 하면 될까?</h2>
+<div class="qa">
+  <div class="q serif">뼈대는 됩니다. 그러나 그것만 하면 짐의 절반이 남습니다.</div>
+  <div class="a">
+    <p>"사막출발"은 사막여우 볼트(desert-fox 폴더)를 깃허브 비공개 백업에 실어 보내고, "사막도착"은 새 컴퓨터에서 그걸 내려받는 장치입니다. 즉 <b>깃(git)이 추적하는 볼트 안의 기록</b>은 완벽하게 옮겨집니다. 문제는 깃 밖에 사는 것들입니다.</p>
+  </div>
+</div>
+
+<div class="tablewrap">
+<table>
+  <tr><th style="width:44%">짐</th><th>사막출발·도착으로?</th><th>어떻게 옮기나</th></tr>
+  <tr><td><b>사막여우 볼트</b> (데일리노트·씨앗·여정기록·냠냠…)</td><td><span class="badge ok">옮겨짐</span>깃허브 백업 경유</td><td>2막-A</td></tr>
+  <tr><td><b>보안폴더</b> (재정 등 — 깃에서 일부러 제외한 민감자료)</td><td><span class="badge no">누락</span>깃에 없으니 백업에도 없음</td><td>2막-B · 오프라인 이동</td></tr>
+  <tr><td><b>agents 폴더</b> (볼트 밖에 따로 있는 에이전트 정의·기록)</td><td><span class="badge no">누락</span>볼트 밖이면 깃 추적 밖</td><td>2막-B</td></tr>
+  <tr><td><b>클로드 코드 흔적</b> (~/.claude — 대화 기록·설정·로그인)</td><td><span class="badge no">누락 + 소거 대상</span></td><td>설정은 새로, 기록은 3막에서 소거</td></tr>
+  <tr><td><b>각종 로그인</b> (깃허브·Gmail·MCP 연동)</td><td><span class="badge no">누락</span>기기별로 다시</td><td>2막-C 재로그인 · 3막 로그아웃</td></tr>
+  <tr><td><b>흩어진 파일</b> (다운로드·바탕화면·문서 폴더의 작업물)</td><td><span class="badge no">누락</span>가장 잘 잊는 짐</td><td>1막 조사에서 건져냄</td></tr>
+</table>
+</div>
+<p class="sub">이 가이드의 1~3막은 이 표의 여섯 줄을 하나도 빠뜨리지 않기 위한 순서입니다.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="act1">
+<h2><span class="act">1막 · 공용 노트북에서</span>짐 조사 — 에이전트에게 시키기</h2>
+<p>손으로 뒤지지 마세요. 공용 노트북의 클로드 코드를 열고, 아래를 그대로 붙여넣으면 에이전트가 이삿짐 목록을 만들어 줍니다.</p>
+
+<div class="prompt-label">붙여넣기 ① — 이삿짐 전수조사</div>
+<div class="prompt" id="p1">컴퓨터 이사 준비를 도와줘. 나는 이 컴퓨터의 모든 작업물을 새 맥북으로 옮기고 이 컴퓨터는 깨끗이 비울 거야. 아래를 조사해서 "이사목록.md" 파일로 정리해줘.
+
+1. 사막여우 볼트(desert-fox) 폴더의 위치, 전체 파일 수와 용량.
+   깃 상태도 확인해줘 — 커밋 안 된 변경이 있는지, 마지막 푸시가 언제인지.
+2. 볼트 안팎에서 .gitignore로 깃에서 제외된 폴더·파일을 전부 찾아줘.
+   (보안폴더·재정 자료가 여기 있을 거야 — 경로와 파일 수를 적어줘)
+3. agents 폴더의 위치와 내용물 목록.
+4. 다운로드·바탕화면·문서 폴더에서 최근 6개월 내 만들어진
+   업무 관련 파일(문서·스프레드시트·PDF·이미지)을 찾아 목록으로.
+5. 이 컴퓨터에 로그인된 계정 흔적을 정리해줘 —
+   깃허브 자격 증명, 클로드 코드 로그인, 브라우저에 저장된 로그인.
+6. 위 전부를 ①깃으로 갈 짐 ②손으로 옮길 짐 ③옮기지 않고
+   지우기만 할 것, 세 묶음으로 나눠서 정리해줘.
+
+아직 아무것도 옮기거나 지우지 마. 목록만.</div>
+<button class="copybtn" data-copy="p1">복사</button>
+
+<p>나온 <code>이사목록.md</code>를 한 번 훑어보세요. 특히 <b>②손으로 옮길 짐</b> 묶음에 재정 보안폴더와 agents 폴더가 들어 있는지 — 이 확인이 1막의 전부입니다.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="act2">
+<h2><span class="act">2막 · 이사 실행</span>세 갈래로 나눠 옮기기</h2>
+
+<h3>A. 볼트 — "사막출발"</h3>
+<ul>
+  <li>공용 노트북에서 사막여우에게 <b>"사막출발"</b> — 커밋 안 된 기록까지 전부 실어 깃허브 비공개 백업에 푸시합니다.</li>
+  <li>끝나면 에이전트에게 "푸시가 최신인지 확인해줘"라고 한 번 더 — <b>마지막 커밋 시각이 방금</b>이어야 합니다.</li>
+</ul>
+
+<h3>B. 깃 밖의 짐 — 손 이사 (보안폴더 · agents 폴더 · 흩어진 파일)</h3>
+<div class="card warn">
+  <h4>재정 등 민감자료의 이동 규칙</h4>
+  <ul>
+    <li><b>클라우드·이메일·카톡으로 보내지 않기.</b> 병원 공용 계정이나 무료 클라우드에 재정 파일이 스치기만 해도 흔적이 남습니다.</li>
+    <li>방법: 에이전트에게 "②손으로 옮길 짐 묶음을 <b>암호 걸린 zip</b> 하나로 만들어줘" → <b>USB 메모리</b>에 담아 → 맥북에서 풀기 → 확인 후 USB도 비우기.</li>
+    <li>zip 암호는 파일과 다른 경로로(직접 기억하거나 문자로).</li>
+  </ul>
+</div>
+<p>옮긴 뒤 맥북에서 "zip을 푼 결과의 파일 수·용량이 이사목록.md의 숫자와 맞는지 대조해줘"라고 시키면 검증까지 끝납니다.</p>
+
+<h3>C. 맥북 도착 세팅</h3>
+<ol>
+  <li>맥북에 클로드 코드(데스크탑 앱) 설치 → 로그인.</li>
+  <li>깃허브 로그인 후, 사막여우 백업 저장소를 원하는 위치에 <code>git clone</code>. (에이전트에게 "내 사막여우 백업 저장소를 클론해줘"라고 해도 됩니다)</li>
+  <li>클론한 볼트 폴더에서 <b>"사막도착"</b> — 여정·기록이 그대로 이어집니다.</li>
+  <li>USB의 보안폴더·agents 폴더를 <b>원래 있던 상대 위치</b>에 풀어 넣기. (에이전트에게 이사목록.md를 보여주며 "이 구조대로 배치해줘")</li>
+  <li>재로그인 3종 — 깃허브, Gmail 연동, 쓰던 MCP 연동. 로그인은 기기별이라 새로 해야 합니다.</li>
+  <li>⚠️ <b>한글 파일명 주의</b> — 윈도우→맥 이사에서 한글 자모가 풀려 보이거나 깃이 전체 파일을 변경으로 잡는 일이 가끔 있습니다. 증상이 보이면 에이전트에게 "맥 한글 자소 분리 문제야. <code>git config core.precomposeUnicode true</code> 적용하고 상태 다시 봐줘"라고 하면 됩니다.</li>
+</ol>
+
+<div class="card">
+  <h4>이사 완료 검증 — 이 네 가지가 다 "예"면 3막으로</h4>
+  <ul class="check">
+    <li><input type="checkbox" id="v1"><label for="v1">맥북에서 사막여우가 깨어나 오늘 날짜의 여정을 이어간다</label></li>
+    <li><input type="checkbox" id="v2"><label for="v2">보안폴더(재정) 파일 수가 이사목록.md와 일치한다</label></li>
+    <li><input type="checkbox" id="v3"><label for="v3">agents 폴더의 에이전트들이 맥북에서 호출된다</label></li>
+    <li><input type="checkbox" id="v4"><label for="v4">어제까지의 기록(데일리노트 등)이 맥북에서 열린다</label></li>
+  </ul>
+</div>
+</section>
+
+<!-- ================================================== -->
+<section id="act3">
+<h2><span class="act">3막 · 공용 노트북에서</span>흔적 없이 비우기</h2>
+<p>병원 공용 노트북은 다음 사람이 씁니다. 폴더 삭제만으로는 부족합니다 — <b>대화 기록과 로그인 흔적</b>이 진짜 소거 대상입니다.</p>
+
+<div class="prompt-label">붙여넣기 ② — 소거 (검증 체크 4개를 모두 마친 뒤에만)</div>
+<div class="prompt" id="p2">이사가 끝났고 맥북에서 전부 확인했어. 이제 이 컴퓨터를 깨끗이 비워줘.
+이사목록.md를 기준으로, 하나 지울 때마다 뭘 지웠는지 보고해줘.
+
+1. desert-fox 볼트 폴더, agents 폴더, 보안폴더 삭제.
+2. 다운로드·바탕화면·문서의 내 업무 파일 삭제 (목록의 ③번 묶음 포함).
+3. 사용자 폴더의 .claude 폴더 삭제 — 대화 기록·세션이 여기 있어.
+4. 깃 자격 증명 삭제 — Windows 자격 증명 관리자에서 github 항목,
+   그리고 .gitconfig와 .ssh 폴더의 내 키.
+5. 압축했던 zip 파일과 임시 파일 삭제.
+6. 휴지통 비우기.
+7. 마지막으로 내 이름·계정으로 검색해서 남은 파일이 없는지 훑어줘.
+
+브라우저는 네가 알려주면 내가 직접 할게 —
+로그아웃해야 할 계정과 지워야 할 저장 항목을 목록으로 줘.</div>
+<button class="copybtn" data-copy="p2">복사</button>
+
+<div class="card">
+  <h4>브라우저·계정은 손으로 (에이전트가 목록을 주면)</h4>
+  <ul class="check">
+    <li><input type="checkbox" id="e1"><label for="e1">브라우저: Gmail·깃허브·claude.ai 로그아웃</label></li>
+    <li><input type="checkbox" id="e2"><label for="e2">브라우저 저장 비밀번호·자동완성에서 내 항목 삭제</label></li>
+    <li><input type="checkbox" id="e3"><label for="e3">방문 기록·쿠키 삭제 (기간: 전체)</label></li>
+    <li><input type="checkbox" id="e4"><label for="e4">클로드 코드 로그아웃 후 앱 삭제 (공용에서 더 안 쓸 경우)</label></li>
+    <li><input type="checkbox" id="e5"><label for="e5">내 전용 윈도우 계정을 만들어 썼다면 — 관리자에게 계정 삭제 요청 (가장 깔끔한 마무리)</label></li>
+    <li><input type="checkbox" id="e6"><label for="e6">USB 메모리 비우기 (zip 삭제 + 휴지통 비우기)</label></li>
+  </ul>
+</div>
+</section>
+
+<!-- ================================================== -->
+<section id="safety">
+<h2><span class="act">안전선</span>병원에서 AI를 쓰는 두 개의 금</h2>
+
+<div class="card warn">
+  <h4>① 환자 정보(PHI)는 AI 도구에 넣지 않는다 — HIPAA</h4>
+  <ul>
+    <li>환자 이름·연락처·진료 내용이 식별되는 형태로 클로드·볼트·슬랙에 들어가면 안 됩니다. (BAA 계약이 있는 엔터프라이즈 환경이 아닌 한)</li>
+    <li>에이전트가 다루는 것은 <b>운영 정보까지만</b> — "오늘 리콜 12건, 명단은 병원 시스템에서 확인" ⭕ / "김OO님 임플란트 재예약" ❌</li>
+    <li>환자에게 가는 문자·리마인더는 병원의 HIPAA 준수 시스템(기존 PMS·문자 서비스)으로. 클로드는 그 <b>문안을 다듬는 데까지</b>.</li>
+  </ul>
+</div>
+
+<div class="card warn">
+  <h4>② 재정·계약 자료는 볼트의 보안폴더에만</h4>
+  <ul>
+    <li>지금처럼 <b>깃 제외 보안폴더</b> 방식 유지 — 깃허브 백업에도 안 올라가는 게 정상입니다. (그래서 이사 때 손으로 옮긴 것)</li>
+    <li>공용 컴퓨터에는 다시 만들지 않기. 이제 이 시스템의 집은 <b>진영님 맥북 하나</b>입니다.</li>
+    <li>보안폴더의 별도 백업이 필요하면 암호 zip + 외장 저장장치로, 분기에 한 번이면 충분합니다.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ================================================== -->
+<section id="comms">
+<h2><span class="act">맥북에서 열리는 것</span>메시지와 슬랙 — 직원 소통 세팅</h2>
+<p class="sub">이메일은 이미 쓰고 계시니, 맥북이 와서 새로 열리는 두 갈래만 정리합니다. 공통 원칙은 하나 — <b>초안은 에이전트가, 전송 승인은 진영님이.</b> 클로드는 승인 없이 남의 명의로 메시지를 보내지 않습니다.</p>
+
+<h3>맥의 메시지(iMessage·문자)</h3>
+<ol>
+  <li><b>준비</b> : 맥의 Messages 앱에 Apple ID 로그인. 일반 문자(SMS)까지 보내려면 아이폰에서 설정 → 메시지 → <b>문자 메시지 전달(Text Message Forwarding)</b>에서 맥북을 켭니다.</li>
+  <li><b>사용</b> : 클로드 코드가 화면 제어로 Messages 앱을 다룹니다. "프런트 리사에게 내일 오전 스케줄 변경 문자 초안 잡아줘" → 초안 확인 → 승인하면 전송.</li>
+  <li><b>알맞은 용도</b> : 직원 개인에게 가는 짧은 연락. <b>대량 발송·환자 문자에는 쓰지 않기</b> — 환자 연락은 병원 시스템으로(위 안전선 ①).</li>
+  <li>화면 제어는 이메일·슬랙보다 손이 느리고 오작동 여지가 있어, 셋 중 <b>보조 수단</b>으로 두는 걸 권합니다.</li>
+</ol>
+
+<h3>슬랙 — 직원 소통의 본진으로</h3>
+<ol>
+  <li><b>워크스페이스 만들기</b> : slack.com에서 병원 워크스페이스 생성(무료 플랜으로 충분) → 직원 초대 → 채널은 단순하게: <code>#공지</code> <code>#프런트</code> <code>#진료실</code> 정도.</li>
+  <li><b>클로드 코드와 연결</b> : claude.ai 커넥터 설정에서 Slack을 연결하거나, 클로드 코드에서 <code>/mcp</code>로 Slack 연동을 추가하고 브라우저에서 승인. 한 번 연결하면 계속 갑니다. (막히면 에이전트에게 "슬랙 MCP 연결 도와줘" — 단계별로 안내합니다)</li>
+  <li><b>쓰는 패턴 세 가지</b> :
+    <ul>
+      <li><b>아침 브리핑</b> — "오늘 스케줄 요약해서 #공지 초안 잡아줘" → 승인 → 게시</li>
+      <li><b>업무 지시</b> — "재고 주문 건, 프런트 채널에 부탁 메시지로" → 승인 → 전송</li>
+      <li><b>회의 정리</b> — 회의 메모를 주고 "결정사항만 추려 #공지에" → 승인 → 게시</li>
+    </ul>
+  </li>
+  <li><b>채널 규칙 한 줄</b>을 첫 공지로 박아두세요 : "슬랙에는 환자 성함·진료 내용을 쓰지 않습니다. 환자 건은 병원 시스템에서."</li>
+</ol>
+</section>
+
+<!-- ================================================== -->
+<footer>
+  <p><b>요약</b> — 사막출발·도착은 볼트만 옮깁니다. 보안폴더·agents 폴더·흩어진 파일은 암호 zip+USB로, 로그인은 새로, 공용 노트북은 대화 기록(.claude)과 자격 증명까지 지워야 끝. 삭제는 맥북 검증 후에만.</p>
+  <p style="margin-top:10px;">Noa Dental Second Brain · 이사 가이드 v1 · 2026. 8</p>
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el = document.getElementById(btn.dataset.copy);
+    navigator.clipboard.writeText(el.textContent).then(function(){
+      var old = btn.textContent; btn.textContent = '복사됨';
+      setTimeout(function(){ btn.textContent = old; }, 1600);
+    });
+  });
+});
+document.querySelectorAll('.check input[type=checkbox]').forEach(function(cb){
+  var key = 'jenny-move-' + cb.id;
+  try{
+    if(localStorage.getItem(key) === '1') cb.checked = true;
+    cb.addEventListener('change', function(){
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+    });
+  }catch(e){}
+});
+</script>
+
+</body>
+</html>
