@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>진영님 맥북 이사 가이드 — 미니동킴에게 세 번만 시키면 끝</title>
 <style>
   :root{
@@ -117,8 +111,6 @@
   .toc .n{color:var(--umber);font-weight:700;margin-right:8px;font-size:12.5px;}
   a{color:var(--umber);}
 </style>
-</head>
-<body>
 
 <div class="wrap">
 
@@ -197,7 +189,22 @@
   <li><b>클로드 코드(터미널용)</b> — 터미널에 아래 한 줄을 붙여넣고 엔터:
     <div class="prompt" id="s2">curl -fsSL https://claude.ai/install.sh | bash</div>
     <button class="copybtn" data-copy="s2">복사</button>
-    끝나면 터미널을 껐다 켜고 <code>claude</code> 입력 → 브라우저가 열리며 로그인하면 준비 완료.</li>
+    끝나면 터미널을 껐다 켜고 <code>claude</code> 입력. 그다음은 여섯 관문을 순서대로 지나갑니다:
+    <ol>
+      <li><b>글자 스타일(테마)</b> 고르기 — 마음에 드는 것에 두고 그냥 <b>엔터</b> (다크 모드 추천)</li>
+      <li><b>"Use Claude Code's terminal setup?"</b> — 1번(Yes, 추천 설정)에서 <b>엔터</b></li>
+      <li><b>로그인 방법</b> — <b>1번 (Claude account with subscription)</b> 선택하고 엔터</li>
+      <li>그 순간 <b>브라우저가 저절로 열리며</b> claude.ai 로그인 페이지가 뜹니다 — 평소 클로드 앱 쓰던 계정으로 로그인 → <b>Authorize(승인)</b> 클릭</li>
+      <li>화면에 <b>코드</b>(긴 글자열)가 나오면 복사해서 터미널에 붙여넣고 엔터 (코드 없이 바로 성공이 뜨면 건너뜀)</li>
+      <li>"Login successful" 후 시키는 대로 엔터 몇 번, 폴더를 신뢰하냐고 물으면 <b>Yes</b> — 터미널에 <code>&gt;</code> 입력창이 뜨면 준비 완료</li>
+    </ol>
+    <div class="card warn">
+      <h4>🔧 <code>claude</code>를 쳤는데 "command not found"가 나오면</h4>
+      <p>설치는 됐는데 터미널이 클로드의 주소를 아직 모르는 것뿐입니다(새 맥에서 흔한 일 — 껐다 켜도 안 풀립니다). 아래 한 줄을 통째로 붙여넣고 엔터 한 번이면 주소 등록부터 실행까지 한 번에 됩니다:</p>
+      <div class="prompt" id="s2fix">[ -x ~/.local/bin/claude ] || curl -fsSL https://claude.ai/install.sh | bash; echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.zshrc; source ~/.zshrc; claude</div>
+      <button class="copybtn" data-copy="s2fix">복사</button>
+    </div>
+  </li>
   <li><b>USB 꽂기</b> — 심부름 ①에서 싼 짐(암호 zip)이 든 USB를 꽂아둡니다.</li>
 </ol>
 
@@ -208,6 +215,20 @@
 <section id="run2">
 <h2><span class="act">심부름 ② · 새 맥북에서</span>짐 풀기 — 복원부터 검증까지 미니동킴이</h2>
 <p>터미널에서 <code>claude</code>를 실행하거나 클로드 데스크탑 앱의 Code 탭을 열고, 아래를 붙여넣으세요. <b>미니동킴이 아직 맥북에 없어도 괜찮습니다</b> — 이 심부름을 받은 클로드가 agents 폴더를 복원하는 순간 미니동킴도 함께 돌아옵니다.</p>
+
+<div class="card">
+  <h4>데스크탑 앱 Code 탭으로 할 때 — "폴더 선택" 창이 뜨면</h4>
+  <ul>
+    <li>Code 탭은 시작할 때 <b>"어느 폴더에서 일할까?"</b>를 묻는 폴더 선택창을 띄웁니다. <b>새 폴더를 만들지 마세요</b> — 왼쪽 목록에서 <b>Documents(문서)</b>를 한 번 클릭하고 오른쪽 아래 <b>Open</b>을 누르면 끝입니다.</li>
+    <li>볼트 폴더는 클로드가 짐을 풀면서 옛 컴퓨터와 같은 이름으로 알아서 만듭니다. 미리 빈 폴더를 만들어 지정하면 폴더 속 폴더로 겹쳐질 수 있어요.</li>
+    <li>환경은 <b>Local</b>을 씁니다(Cloud 아님). 로그인·디퍼 OS 설치는 터미널과 데스크탑 앱이 함께 쓰므로 <b>한 번만 하면 양쪽에 다 삽니다.</b></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h4>USB가 아직 없어도 시작할 수 있어요</h4>
+  <p>아래 심부름의 <b>1번(깃허브에서 볼트 내려받기)은 USB 없이도 됩니다.</b> 클로드가 USB를 찾으면 "USB는 나중에, 1번부터 해줘"라고 말하면 돼요. zip 풀기(2번)만 USB가 도착한 뒤에 이어서 하면 됩니다. 급하다고 재정 zip을 클라우드·이메일로 보내지는 마세요 — 그 짐만은 끝까지 손 이동입니다.</p>
+</div>
 
 <div class="prompt-label">맥북 클로드 코드에 붙여넣기 ② — 짐 풀기</div>
 <div class="prompt" id="p2">새 맥북이야. 공용 노트북에서 이사 온 짐을 풀어줘.
@@ -243,14 +264,16 @@ USB에 암호 zip이 있고, 그 안의 "이사목록.md"가 짐 목록의 기�
 
 <h3>짐을 다 풀었으면 — 볼트에 옷 입히기 (옵시디언 + 디퍼 OS)</h3>
 <ol>
-  <li><b>옵시디언으로 볼트 열기</b> — 옵시디언 실행 → "Open folder as vault(폴더를 보관함으로 열기)" → 방금 클론한 사막여우 볼트 폴더 선택. 어제까지의 노트가 그대로 보이면 성공.</li>
+  <li><b>옵시디언으로 볼트 열기</b> — 옵시디언 실행 → "Open folder as vault(폴더를 보관함으로 열기)" → 방금 클론한 사막여우 볼트 폴더 선택. 처음 열면 "이 볼트의 제작자를 신뢰하시겠습니까?" 같은 확인창이 뜹니다 — <b>신뢰(Trust author and enable plugins)</b>를 누르세요(진영님 본인의 볼트니까요). 어제까지의 노트가 그대로 보이면 성공.</li>
   <li><b>디퍼 OS 설치 — 열쇠로</b> :
     <div class="card warn">
       <h4>🔑 열쇠는 이 가이드에 없습니다</h4>
       <ul>
-        <li>디퍼 OS 설치 열쇠(한 줄 명령)는 <b>퍼핀이 카톡으로 따로</b> 보냅니다. 열쇠는 구독자 개인 것이라 공개 문서에 싣지 않아요.</li>
-        <li>받은 한 줄은 <b>클로드 대화창이 아니라 터미널에</b> 그대로 붙여넣고 엔터. (대화창에 넣으면 서식이 오염되어 실패할 수 있습니다)</li>
-        <li>설치가 끝나면 볼트 폴더에서 <code>claude</code>를 열고 <b>"안녕"</b> — 사막여우가 맥북에서 첫 인사를 하면 이사 완료입니다.</li>
+        <li>디퍼 OS 설치 열쇠(<code>/plugin</code>으로 시작하는 한 줄)는 <b>퍼핀이 카톡으로 따로</b> 보냅니다. 열쇠는 구독자 개인 것이라 공개 문서에 싣지 않아요.</li>
+        <li>받은 줄은 <b>링크를 누르는 게 아니라 글자를 통째로 복사</b>합니다(길게 누르기/우클릭 → 복사). 답장-인용으로 다시 받은 건 뒤가 잘릴 수 있으니 <b>처음 온 원본 메시지에서</b> 복사하세요.</li>
+        <li>붙여넣는 자리는 터미널 맨바닥(<code>%</code>)이 아니라 <b><code>claude</code>가 켜진 화면의 <code>&gt;</code> 입력창</b>입니다. 붙인 뒤 줄 끝이 <code>deeper-os-private.git</code>으로 끝나는지 확인하고 엔터.</li>
+        <li>"Successfully added marketplace" 가 나오면 이어서 두 줄을 하나씩: <code>/plugin install deeper-os@deeper-os</code> → <code>/reload-plugins</code></li>
+        <li>끝나면 claude를 껐다 켜고(<code>/exit</code> 후 다시 <code>claude</code>) <b>"사막여우 안녕"</b> — 여우가 대답하면 설치 성공. 볼트가 아직 없으면 "못 찾겠다"고 하는 게 정상이니, "새로 만들까요?"에는 <b>만들지 말고</b> "아직 이사 전"이라고만 답하세요.</li>
       </ul>
     </div>
   </li>
@@ -349,7 +372,7 @@ USB에 암호 zip이 있고, 그 안의 "이사목록.md"가 짐 목록의 기�
 <!-- ================================================== -->
 <footer>
   <p><b>요약</b> — ① 공용 노트북에서 짐 싸기(조사·백업·암호 zip) → 맥북 기초 공사(앱 5가지, 15분) → ② 짐 풀기(복원·검증·재로그인) + 옵시디언·디퍼 OS(열쇠는 카톡으로) → ③ 공용 노트북 비우기(파일·대화 기록·자격 증명까지). 실무는 미니동킴, 진영님은 설치·USB·승인만. 삭제는 언제나 맥북 검증 후에.</p>
-  <p style="margin-top:10px;">Noa Dental Second Brain · 이사 가이드 v2 · 2026. 8</p>
+  <p style="margin-top:10px;">Noa Dental Second Brain · 이사 가이드 v2.2 (8/13 실전 반영: 로그인 여섯 관문 · command not found 처방 · Code 탭 폴더 선택 · 열쇠 붙여넣는 자리) · 2026. 8</p>
 </footer>
 
 </div>
@@ -374,6 +397,3 @@ document.querySelectorAll('.check input[type=checkbox]').forEach(function(cb){
   }catch(e){}
 });
 </script>
-
-</body>
-</html>
