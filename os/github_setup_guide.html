@@ -56,6 +56,14 @@
   .callout p{font-size:14px;color:#444;line-height:1.85;margin:0}
   .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
   .tip{border-left-color:var(--green-soft)}.tip .label{color:var(--green-soft)}
+  .dl{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 6px}
+  .dl a{flex:1 1 210px;display:block;text-align:center;text-decoration:none;background:var(--green);
+    color:#F4F1E8;border-radius:12px;padding:14px 16px;font-weight:700;font-size:15px;line-height:1.5}
+  .dl a:hover,.dl a:focus-visible{background:#143B2A;outline:none}
+  .dl a span{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+    color:#B9CFC1;font-weight:400;margin-top:4px}
+  a.link{color:var(--green);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(176,141,87,.55)}
+  a.link:hover,a.link:focus-visible{border-bottom-color:var(--gold);outline:none}
   .done{background:var(--green);border-radius:16px;padding:28px 26px;text-align:center;margin:48px 0 0;color:#EFE9DC}
   .done .big{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.55}
   .done p{font-size:14px;color:#C7D7CB;line-height:1.8;margin:0}
@@ -78,7 +86,8 @@
 
   <div class="step"><div class="num">1</div><div class="step-body">
     <div class="step-title">깃허브 사이트 접속 → 가입</div>
-    <p><span class="key">github.com</span> 에 들어가 오른쪽 위 <b>Sign up</b>(가입) 을 눌러요.</p>
+    <p><a class="link" href="https://github.com/signup" target="_blank" rel="noopener">github.com</a> 에 들어가 오른쪽 위 <b>Sign up</b>(가입) 을 눌러요.</p>
+    <div class="dl"><a href="https://github.com/signup" target="_blank" rel="noopener">깃허브 가입 화면 열기<span>github.com/signup &middot; 무료</span></a></div>
   </div></div>
   <div class="step"><div class="num">2</div><div class="step-body">
     <div class="step-title">이메일 입력</div>
@@ -112,7 +121,7 @@
 
   <div class="step"><div class="num">1</div><div class="step-body">
     <div class="step-title"><span class="os">🪟 윈도우</span> Git for Windows 받기</div>
-    <p><span class="key">git-scm.com</span> 접속 → <b>Download for Windows</b> → 받은 파일을 실행.</p>
+    <p><a class="link" href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> 에 들어가면 <b>내려받기가 바로 시작</b>돼요. 받은 파일을 실행하세요.</p>
   </div></div>
   <div class="step"><div class="num">2</div><div class="step-body">
     <div class="step-title"><span class="os">🪟 윈도우</span> 그냥 ‘Next’ 연타 → Install</div>
@@ -120,7 +129,7 @@
   </div></div>
   <div class="step"><div class="num">·</div><div class="step-body">
     <div class="step-title"><span class="os mac">🍎 맥</span> 보통 이미 있어요</div>
-    <p>맥은 Git이 대개 깔려 있어요. 없으면 디퍼 OS <b>백업 연결</b> 때 <b>“명령어 도구 설치”</b> 창이 뜨는데, <b>설치</b>를 누르면 돼요(몇 분).</p>
+    <p>맥은 Git이 대개 깔려 있어요. 직접 받으려면 <a class="link" href="https://git-scm.com/download/mac" target="_blank" rel="noopener">git-scm.com/download/mac</a>. 없으면 디퍼 OS <b>백업 연결</b> 때 <b>“명령어 도구 설치”</b> 창이 뜨는데, <b>설치</b>를 누르면 돼요(몇 분).</p>
   </div></div>
 
   <div class="done">
