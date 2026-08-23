@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3주차 — 오토파지 데일리 루틴</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111; --muted: #888; --border: #f0f0f0; --surface: #fafafa;
+  --forest: #2C3B2D; --forest-l: #7a9c7b;
+  --gold: #B8860B; --gold-bg: #FAEEDA;
+  --blue: #185FA5; --blue-bg: #E6F1FB;
+}
+body { font-family:'Noto Sans KR',sans-serif; background:#fff; color:var(--ink); font-size:15px; line-height:1.85; -webkit-font-smoothing:antialiased; }
+.page { max-width:740px; margin:0 auto; padding:60px 28px 100px; }
+
+.breadcrumb { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--muted); margin-bottom:44px; display:flex; align-items:center; gap:8px; }
+.breadcrumb .sep { opacity:.35; }
+
+/* 헤더 */
+.guide-header { margin-bottom:48px; padding-bottom:36px; border-bottom:1px solid var(--border); }
+.meta { display:flex; align-items:center; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.badge { font-family:'DM Mono',monospace; font-size:11px; padding:3px 12px; border-radius:100px; letter-spacing:.06em; }
+.badge-week { background:var(--gold-bg); color:#854F0B; }
+.badge-guide { background:#f0f4ff; color:var(--blue); }
+h1 { font-family:'Noto Serif KR',serif; font-size:30px; font-weight:400; line-height:1.35; letter-spacing:-.02em; margin-bottom:12px; }
+.subtitle { font-family:'Noto Serif KR',serif; font-size:16px; font-weight:300; color:#666; line-height:1.7; font-style:italic; }
+
+/* 오토파지 사이클 */
+.cycle-wrap { margin:40px 0; }
+.cycle-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+
+/* 맥락 연결 */
+.context-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:28px 0; }
+.ctx-card { border:1px solid var(--border); border-radius:10px; padding:16px 14px; }
+.ctx-session { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.ctx-title { font-family:'Noto Serif KR',serif; font-size:13px; color:var(--ink); margin-bottom:6px; line-height:1.4; }
+.ctx-body { font-size:12px; color:#666; line-height:1.65; }
+.ctx-card.s03 { background:var(--forest); border-color:var(--forest); }
+.ctx-card.s03 .ctx-session { color:var(--forest-l); }
+.ctx-card.s03 .ctx-title { color:#f0ece4; }
+.ctx-card.s03 .ctx-body { color:#a8c5a0; }
+
+/* 매일 기본 */
+.daily-base { background:var(--forest); border-radius:14px; padding:28px 24px; margin:36px 0; }
+.daily-base-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--forest-l); margin-bottom:14px; }
+.daily-base-title { font-family:'Noto Serif KR',serif; font-size:18px; color:#f0ece4; margin-bottom:10px; }
+.daily-base-body { font-size:13px; color:#a8c5a0; line-height:1.85; }
+.morning-steps { display:flex; flex-direction:column; gap:8px; margin-top:16px; }
+.m-step { display:flex; gap:12px; align-items:flex-start; font-size:13px; color:#d4e8d4; line-height:1.65; }
+.m-num { font-family:'DM Mono',monospace; font-size:10px; color:var(--forest-l); flex-shrink:0; margin-top:2px; letter-spacing:.06em; }
+
+/* 데일리 카드 */
+.days { display:flex; flex-direction:column; gap:12px; margin-top:36px; }
+.day-card { border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+.day-head { display:grid; grid-template-columns:68px 1fr auto; align-items:center; gap:0; padding:16px 20px; background:var(--surface); }
+.day-num { font-family:'DM Mono',monospace; }
+.day-num .dn { font-size:22px; font-weight:300; color:var(--ink); line-height:1; }
+.day-num .dw { font-size:10px; color:var(--muted); letter-spacing:.08em; margin-top:2px; }
+.day-info .day-title { font-family:'Noto Serif KR',serif; font-size:15px; color:var(--ink); margin-bottom:3px; }
+.day-info .day-sub { font-size:12px; color:var(--muted); }
+.stage-badge { font-family:'DM Mono',monospace; font-size:10px; padding:3px 10px; border-radius:20px; letter-spacing:.06em; white-space:nowrap; }
+.stage-id { background:var(--gold-bg); color:#854F0B; }
+.stage-dg { background:#f0f5f0; color:var(--forest); }
+.stage-rb { background:var(--blue-bg); color:var(--blue); }
+.stage-cy { background:#f5f0ff; color:#6030b0; }
+
+.day-body { padding:16px 20px; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.day-body.full { grid-template-columns:1fr; }
+
+.db-section { }
+.db-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.db-actions { display:flex; flex-direction:column; gap:6px; }
+.db-action { display:flex; gap:10px; font-size:13px; color:#333; line-height:1.6; align-items:flex-start; }
+.db-dot { flex-shrink:0; width:5px; height:5px; border-radius:50%; background:var(--forest-l); margin-top:7px; }
+.db-question { background:#f9f7f2; border-left:2.5px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 14px; font-size:13px; color:#3a2800; line-height:1.75; font-style:italic; }
+.db-question::before { content:'Q. '; font-family:'DM Mono',monospace; font-size:11px; color:var(--gold); font-style:normal; letter-spacing:.06em; }
+.db-time { font-family:'DM Mono',monospace; font-size:10px; color:#bbb; margin-top:6px; letter-spacing:.06em; }
+
+/* 오토파지 사이클 SVG */
+.cycle-svg-wrap { text-align:center; margin:8px 0 28px; }
+
+/* 주간 체크리스트 */
+.checklist { border:1px solid var(--border); border-radius:14px; padding:24px; margin:36px 0; }
+.cl-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.cl-title { font-family:'Noto Serif KR',serif; font-size:18px; color:var(--ink); margin-bottom:14px; }
+.cl-items { display:flex; flex-direction:column; gap:8px; }
+.cl-item { display:flex; gap:12px; align-items:flex-start; font-size:13px; color:#444; line-height:1.65; padding:8px 0; border-bottom:1px solid var(--border); }
+.cl-item:last-child { border-bottom:none; }
+.cl-box { width:18px; height:18px; border:1.5px solid #c8c0b8; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.cl-tag { font-family:'DM Mono',monospace; font-size:9px; padding:2px 8px; border-radius:10px; background:var(--gold-bg); color:#854F0B; letter-spacing:.06em; flex-shrink:0; margin-top:2px; }
+
+.note-box { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin:24px 0 0; }
+.note-box p { font-size:13px; color:#666; line-height:1.85; margin:0; }
+.note-box strong { color:var(--ink); font-weight:500; }
+
+@media (max-width:600px) {
+  h1 { font-size:24px; }
+  .context-row { grid-template-columns:1fr; }
+  .day-body { grid-template-columns:1fr; }
+  .day-head { grid-template-columns:56px 1fr auto; }
+}
+@media print {
+  .page { padding:20px 0; }
+  .day-card { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · 1기</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>3주차 데일리 루틴</span>
+  </nav>
+
+  <div class="guide-header">
+    <div class="meta">
+      <span class="badge badge-week">WEEK 03</span>
+      <span class="badge badge-guide">DAILY ROUTINE</span>
+    </div>
+    <h1>오토파지 데일리 루틴</h1>
+    <p class="subtitle">나에게서 다시 나에게로 — 이번 한 주, 오토파지를 하루씩 실천합니다</p>
+  </div>
+
+
+  <!-- 맥락 연결: 3주 흐름 -->
+  <div class="cycle-label">3주 오토파지 사이클 — 지금 우리는 어디에</div>
+  <div class="context-row">
+    <div class="ctx-card">
+      <div class="ctx-session">S01 · 문법 01</div>
+      <div class="ctx-title">원천 텍스트 발굴</div>
+      <div class="ctx-body">나만이 쓸 수 있는 것을 처음 물었다. 모닝페이지를 시작했다. 빌려온 언어와 내 언어를 처음으로 구분했다.</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-session">S02 · 문법 02</div>
+      <div class="ctx-title">목소리의 결 × 브랜드 씨앗</div>
+      <div class="ctx-body">고난이 특이점이 된다. 암묵지를 AI로 꺼냈다. 브랜드 씨앗 문장을 처음 썼다.</div>
+    </div>
+    <div class="ctx-card s03">
+      <div class="ctx-session">S03 · 문법 03 · 지금</div>
+      <div class="ctx-title">독점적 관점 — 자가포식</div>
+      <div class="ctx-body">오토파지가 시작되었다. 소화할 것들을 식별했다. 핵(살아낸 것)을 발굴했다. 이번 주에 완성한다.</div>
+    </div>
+  </div>
+
+  <!-- 오토파지가 무엇인가 - 정확하게 -->
+  <div style="background:#f9f7f2; border:1px solid #e8e0d0; border-radius:14px; padding:24px 26px; margin:28px 0;">
+    <div class="cycle-label" style="margin-bottom:16px;">오토파지의 생물학 — 정확하게</div>
+
+    <p style="font-size:14px; color:#444; line-height:1.95; margin-bottom:16px;"><strong>오토파지는 선택적입니다.</strong> 세포가 자신의 구성 요소를 무차별로 소화하는 것이 아닙니다. 수용체 단백질들이 소화 대상에 <em>표지(tag)</em>를 붙입니다 — 손상된 단백질, 기능을 잃은 소기관, 잘못 접힌 단백질 응집체. 표지가 붙은 것만 오토파지솜이 감싸 분해합니다. 분해된 재료는 새로운 구조의 원료가 됩니다. 오토파지는 소비가 아닙니다. 재활용입니다.</p>
+
+    <p style="font-size:14px; color:#444; line-height:1.95; margin-bottom:16px;"><strong>비움이 오토파지를 깨웁니다.</strong> 오토파지는 영양이 풍부한 상태에서 억제됩니다. 간헐적 단식, 운동, 수면 — 비우는 행위가 오토파지를 활성화합니다. 세포가 외부에서 영양을 가져오지 못할 때, 내부의 낡은 것을 분해해서 새것을 만듭니다. 모닝페이지가 그 비움입니다. 외부 정보를 끊고, 3페이지를 비워냅니다. 쏟아내는 것이 소화입니다.</p>
+
+    <p style="font-size:14px; color:#444; line-height:1.95; margin-bottom:0;"><strong>오토파지가 억제되면 암이 생깁니다.</strong> 손상된 단백질이 쌓이고, 세포는 비정상적으로 증식하기 시작합니다. 알츠하이머, 파킨슨병도 오토파지 결함과 연관됩니다. 반대로, 오토파지가 활성화된 유기체는 수명이 깁니다. 선충, 초파리, 쥐, 포유류까지 — 잘 비우는 생명체가 오래 삽니다. 창작자도 마찬가지입니다. 빌려온 것들이 소화되지 않으면 목소리가 희석되고, 번아웃이 옵니다.</p>
+  </div>
+
+  <!-- 창작자의 오토파지 매핑 -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:20px 0 28px;">
+    <div style="border:1px solid #e8e0d0; border-radius:12px; padding:18px 16px; background:#fff;">
+      <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin-bottom:10px;">세포의 오토파지 — 소화 대상</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:13px; color:#555; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#c0b8a8;">↺</span> 손상된 단백질</li>
+        <li style="font-size:13px; color:#555; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#c0b8a8;">↺</span> 기능 잃은 소기관</li>
+        <li style="font-size:13px; color:#555; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#c0b8a8;">↺</span> 잘못 접힌 단백질 응집체</li>
+        <li style="font-size:13px; color:#555; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#c0b8a8;">↺</span> 세포 내 노폐물</li>
+      </ul>
+    </div>
+    <div style="border:1px solid #2C3B2D; border-radius:12px; padding:18px 16px; background:#2C3B2D;">
+      <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#7a9c7b; margin-bottom:10px;">창작자의 오토파지 — 소화 대상</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:13px; color:#d4e8d4; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#7a9c7b;">↺</span> 빌려온 언어와 남의 프레임워크</li>
+        <li style="font-size:13px; color:#d4e8d4; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#7a9c7b;">↺</span> 트렌드를 따라 쓴 표현</li>
+        <li style="font-size:13px; color:#d4e8d4; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#7a9c7b;">↺</span> 두려움에서 만들어진 패턴</li>
+        <li style="font-size:13px; color:#d4e8d4; line-height:1.65; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#7a9c7b;">↺</span> 남의 시선으로 쓴 것들</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 살아낸 것이란? -->
+  <div style="background:var(--gold-bg,#FAEEDA); border:1px solid #d4b060; border-radius:14px; padding:24px 26px; margin:0 0 28px;">
+    <div class="cycle-label" style="color:#854F0B; margin-bottom:14px;">'살아낸 것'이란 무엇인가 — S01/S02에서 이미 발굴한 것</div>
+    <p style="font-size:14px; color:#3a2800; line-height:1.95; margin-bottom:14px;">S02에서 폴라니의 암묵지를 다뤘습니다. <em>"우리는 말할 수 있는 것보다 더 많이 안다."</em> 살아낸 것은 그 암묵지입니다. S01에서 발굴한 원천 텍스트, S02에서 찾아낸 고난과 특이점 — 그것들이 살아낸 것입니다. 새로 발굴할 필요가 없습니다. 이미 있습니다. 이번 주는 그것을 더 선명하게 꺼내는 주입니다.</p>
+    <p style="font-size:13px; color:#5a3800; line-height:1.7; margin-bottom:12px;"><strong>배워서 아는 것</strong>: 책, 강의, 교육으로 얻은 것. AI도 압니다.<br>
+    <strong>살아낸 것</strong>: 직접 부딪혀서, 실패해서, 아파서 알게 된 것. 말로 완전히 옮길 수 없습니다.</p>
+    <div style="display:flex; flex-direction:column; gap:7px;">
+      <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#854F0B; margin-bottom:4px;">살아낸 것을 찾는 질문 5가지 — 오늘 모닝페이지에 하나씩</div>
+      <div style="font-size:13px; color:#3a2800; line-height:1.65; padding:8px 12px; background:rgba(184,134,11,0.08); border-radius:6px;">① 내 분야에서 아무도 미리 알려주지 않았지만 직접 해보고 알게 된 것은?</div>
+      <div style="font-size:13px; color:#3a2800; line-height:1.65; padding:8px 12px; background:rgba(184,134,11,0.08); border-radius:6px;">② "교과서에는 이렇게 나와 있지만 실제로 해보니 달랐다" — 그런 것이 있다면?</div>
+      <div style="font-size:13px; color:#3a2800; line-height:1.65; padding:8px 12px; background:rgba(184,134,11,0.08); border-radius:6px;">③ 처음 시작할 때와 지금, 완전히 반대로 생각하게 된 것이 있다면?</div>
+      <div style="font-size:13px; color:#3a2800; line-height:1.65; padding:8px 12px; background:rgba(184,134,11,0.08); border-radius:6px;">④ "이걸 알았더라면" 하고 과거의 나에게 말해주고 싶은 것은?</div>
+      <div style="font-size:13px; color:#3a2800; line-height:1.65; padding:8px 12px; background:rgba(184,134,11,0.08); border-radius:6px;">⑤ 내 분야에서 직접 실패해본 사람만 아는 것은?</div>
+    </div>
+  </div>
+
+  <!-- 오토파지 3단계 SVG -->
+  <div class="cycle-svg-wrap">
+    <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;">
+      <defs>
+        <marker id="arrowC" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#c0b8a8"/>
+        </marker>
+      </defs>
+      <!-- Stage 1: 식별 -->
+      <circle cx="120" cy="90" r="52" fill="var(--gold-bg,#FAEEDA)" stroke="#B8860B" stroke-width="1.5"/>
+      <text x="120" y="82" font-family="'DM Mono',monospace" font-size="9" fill="#854F0B" text-anchor="middle" letter-spacing="0.1em">STAGE 01</text>
+      <text x="120" y="97" font-family="'Noto Serif KR',serif" font-size="15" fill="#3a2800" text-anchor="middle">식별</text>
+      <text x="120" y="113" font-family="'DM Mono',monospace" font-size="8.5" fill="#a07020" text-anchor="middle" letter-spacing="0.06em">무엇을 소화할 것인가</text>
+      <!-- Arrow 1→2 -->
+      <path d="M174,90 L220,90" stroke="#c0b8a8" stroke-width="1.5" marker-end="url(#arrowC)"/>
+      <!-- Stage 2: 소화 -->
+      <circle cx="284" cy="90" r="52" fill="#f0f5f0" stroke="#2C3B2D" stroke-width="1.5"/>
+      <text x="284" y="82" font-family="'DM Mono',monospace" font-size="9" fill="#4a6a4a" text-anchor="middle" letter-spacing="0.1em">STAGE 02</text>
+      <text x="284" y="97" font-family="'Noto Serif KR',serif" font-size="15" fill="#2C3B2D" text-anchor="middle">소화</text>
+      <text x="284" y="113" font-family="'DM Mono',monospace" font-size="8.5" fill="#5a8060" text-anchor="middle" letter-spacing="0.06em">모닝페이지가 수행한다</text>
+      <!-- Arrow 2→3 -->
+      <path d="M338,90 L384,90" stroke="#c0b8a8" stroke-width="1.5" marker-end="url(#arrowC)"/>
+      <!-- Stage 3: 재건 -->
+      <circle cx="448" cy="90" r="52" fill="#e6f0fb" stroke="#185FA5" stroke-width="1.5"/>
+      <text x="448" y="82" font-family="'DM Mono',monospace" font-size="9" fill="#185FA5" text-anchor="middle" letter-spacing="0.1em">STAGE 03</text>
+      <text x="448" y="97" font-family="'Noto Serif KR',serif" font-size="15" fill="#0a2a5a" text-anchor="middle">재건</text>
+      <text x="448" y="113" font-family="'DM Mono',monospace" font-size="8.5" fill="#3060a0" text-anchor="middle" letter-spacing="0.06em">핵으로 새 구조를 짓는다</text>
+      <!-- Arrow 3→순환 -->
+      <path d="M502,90 L548,90" stroke="#c0b8a8" stroke-width="1.5" marker-end="url(#arrowC)"/>
+      <!-- 순환 텍스트 -->
+      <text x="608" y="85" font-family="'Noto Serif KR',serif" font-size="13" fill="#888" text-anchor="middle">다시</text>
+      <text x="608" y="100" font-family="'Noto Serif KR',serif" font-size="13" fill="#888" text-anchor="middle">순환</text>
+      <path d="M648,80 C668,55 40,55 18,80" stroke="#c0b8a8" stroke-width="1" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowC)"/>
+    </svg>
+  </div>
+
+
+  <!-- 매일 기본: 모닝페이지 오토파지 방법 -->
+  <div class="daily-base">
+    <div class="daily-base-label">매일 기본 · Every Morning</div>
+    <div class="daily-base-title">모닝페이지 — 일상적 오토파지</div>
+    <div class="daily-base-body">오토파지의 첫 번째 단계는 표지 붙이기(tagging)입니다. 세포가 소화할 것들에 표지를 붙이듯 — 모닝페이지는 창작자가 매일 아침 소화할 것들에 표지를 붙이는 시간입니다.</div>
+    <div class="morning-steps">
+      <div class="m-step"><span class="m-num">01</span><span><strong style="color:#f0ece4;">시작 전, 비움의 의도 하나</strong> — "오늘 소화할 것은?" 어제 신경 쓰였던 것, 빌려온 언어, 남의 시선에서 나온 생각. 그것이 오늘의 소화 대상입니다.</span></div>
+      <div class="m-step"><span class="m-num">02</span><span><strong style="color:#f0ece4;">판단 없이 쏟아낸다</strong> — 잘 쓰려 하지 않습니다. 두려움, 판단, 어제의 감정. 종이 위에 표지를 붙이는 행위입니다. 쓰는 것이 소화를 시작합니다.</span></div>
+      <div class="m-step"><span class="m-num">03</span><span><strong style="color:#f0ece4;">마지막 반 페이지 — 살아낸 것 질문 하나</strong> — 위의 5가지 질문 중 하나를 갖고 씁니다. 매일 하나씩 돌아가며. 이것이 핵(살아낸 것)을 선명하게 만드는 과정입니다.</span></div>
+      <div class="m-step"><span class="m-num">04</span><span><strong style="color:#f0ece4;">브랜드 씨앗 문장</strong>을 마지막에 한 번 읽고 덮습니다. 이것이 오토파지가 보존하는 방향입니다.</span></div>
+    </div>
+  </div>
+
+
+  <!-- 7일 데일리 카드 -->
+  <div class="cycle-label" style="margin-bottom:12px;">이번 주 하루씩 — 오토파지 7일 실천</div>
+
+  <div class="days">
+
+    <!-- DAY 1 목요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D1</div><div class="dw">목요일</div></div>
+        <div class="day-info">
+          <div class="day-title">세션 직후 — 소화 대상 확정하기</div>
+          <div class="day-sub">세션 당일 밤, 30분</div>
+        </div>
+        <span class="stage-badge stage-id">식별</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>세션 실습 결과물(자가포식 목록 + 살아낸 것 목록 + 콘텐츠 재건 초안) 긱어스에 올리기</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>가장 소화하고 싶은 패턴 <strong>하나</strong>를 정한다 — 이번 주 오토파지의 대상</span></div>
+          </div>
+          <div class="db-time">세션 후 · 약 20분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">오늘 세션에서, '이건 내 것이 아니었다'고 느낀 것이 있다면 무엇인가?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 금요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D2</div><div class="dw">금요일</div></div>
+        <div class="day-info">
+          <div class="day-title">소화 대상 지도 그리기 — AI 실험 01</div>
+          <div class="day-sub">모닝페이지 후, 40분</div>
+        </div>
+        <span class="stage-badge stage-id">식별</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>모닝페이지 오늘의 질문: "지금까지 내가 쓴 것 중, 내 것이 아닌 언어로 쓴 것이 있다면?"</span></div>
+            <div class="db-action"><span class="db-dot"></span><span><strong>AI 실험 01 진행</strong> — 씨앗 문장 + 세션 실습 글 + 최근 쓴 글을 Claude에 붙여넣고 지형도 받기</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>Claude가 출력한 지형도를 긱어스에 올리기 (복사 또는 캡처)</span></div>
+          </div>
+          <div class="db-time">모닝페이지 후 · 약 40분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">내가 이 분야에서 가장 많이 반복해서 말하는 것 중, 실제로 살아서 알게 된 것과 배워서 아는 것은 무엇인가?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 토요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D3</div><div class="dw">토요일</div></div>
+        <div class="day-info">
+          <div class="day-title">핵 발굴 — 소화되지 않는 것 찾기</div>
+          <div class="day-sub">모닝페이지 중, 30분</div>
+        </div>
+        <span class="stage-badge stage-dg">소화</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>모닝페이지를 오늘은 <strong>살아낸 것 발굴 모드</strong>로 — 위의 질문 ①②③ 중 하나를 갖고 씁니다</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>S01 원천 텍스트, S02 고난과 특이점에서 쓴 것 다시 읽기 — 그것이 살아낸 것의 원형입니다</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>세션 실습의 "살아낸 것 목록"을 3→5가지로 구체화해서 긱어스 업데이트</span></div>
+          </div>
+          <div class="db-time">모닝페이지 안에서 · 약 30분 총</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">S01에서 찾은 원천 텍스트, S02에서 발굴한 고난의 통찰 — 그것을 아무도 가져갈 수 없다면, 그것이 내가 소화하지 않는 것이다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 일요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D4</div><div class="dw">일요일</div></div>
+        <div class="day-info">
+          <div class="day-title">독자의 언어로 내려가기 — AI 실험 02</div>
+          <div class="day-sub">오후 자유 시간, 30분</div>
+        </div>
+        <span class="stage-badge stage-dg">소화</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>AI 지형도에서 추천받은 기둥 주제 하나로 <strong>AI 실험 02 진행</strong></span></div>
+            <div class="db-action"><span class="db-dot"></span><span>출력된 제목 9개 중 가장 끌리는 것 하나 + 첫 문장 하나를 긱어스에 올리기</span></div>
+          </div>
+          <div class="db-time">오후 · 약 30분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">내 오토파지 이전의 내가 이 주제에 대해 검색했다면 어떤 말을 썼을까? 그 말이 독자의 언어다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 월요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D5</div><div class="dw">월요일</div></div>
+        <div class="day-info">
+          <div class="day-title">재건 시작 — 첫 글 500자</div>
+          <div class="day-sub">모닝페이지 후 또는 저녁, 30분</div>
+        </div>
+        <span class="stage-badge stage-rb">재건</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>고른 제목으로 세션 첫 문장에서 이어서 <strong>500자까지 쓴다</strong></span></div>
+            <div class="db-action"><span class="db-dot"></span><span>막히는 곳이 오면 — "나는 여기서 막혔다, 왜냐하면 —" 그대로 쓴다</span></div>
+          </div>
+          <div class="db-time">저녁 · 약 30분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">막히는 곳은 아직 소화 중인 자리다. 막힘을 쓰는 것이 소화를 완성한다. 지금 막히는 곳은 어디인가?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 6 화요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D6</div><div class="dw">화요일</div></div>
+        <div class="day-info">
+          <div class="day-title">재건 심화 — 콘텐츠 재건 초안 완성</div>
+          <div class="day-sub">모닝페이지 후, 30분</div>
+        </div>
+        <span class="stage-badge stage-rb">재건</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>씨앗 문장 + 재건 방향 3개 + 각 방향의 가지 3개 — 콘텐츠 재건 초안 긱어스에 올리기</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>이번 주 소화된 것 한 가지, 아직 소화 중인 것 한 가지를 모닝페이지에 쓴다</span></div>
+          </div>
+          <div class="db-time">모닝페이지 후 · 약 25분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">이번 주, 내 안에서 소화된 것이 있다면? 그 자리에 무엇이 생겼는가?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 7 수요일 -->
+    <div class="day-card">
+      <div class="day-head">
+        <div class="day-num"><div class="dn">D7</div><div class="dw">수요일</div></div>
+        <div class="day-info">
+          <div class="day-title">순환 점검 — S04 전날 통합</div>
+          <div class="day-sub">세션 전날, 15분</div>
+        </div>
+        <span class="stage-badge stage-cy">순환</span>
+      </div>
+      <div class="day-body">
+        <div class="db-section">
+          <div class="db-label">오늘 할 것</div>
+          <div class="db-actions">
+            <div class="db-action"><span class="db-dot"></span><span>이번 주 오토파지 한 문장 정리 — "나는 이것을 소화했고, 이것이 남았다"</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>브랜드 씨앗 문장을 다시 읽는다. 바꾸고 싶어졌는가? 더 선명해졌는가?</span></div>
+            <div class="db-action"><span class="db-dot"></span><span>내일 S04에서 이 문장으로 출발할 것이다</span></div>
+          </div>
+          <div class="db-time">S04 전날 · 15분</div>
+        </div>
+        <div class="db-section">
+          <div class="db-label">오늘의 오토파지 질문</div>
+          <div class="db-question">3주간의 오토파지가 지나고, 나의 독점적 관점이 한 줄이라면 무엇인가?</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 주간 체크리스트 -->
+  <div class="checklist">
+    <div class="cl-label">이번 주 오토파지 체크리스트</div>
+    <div class="cl-title">S03 완료 전에 긱어스에 올릴 것들</div>
+    <div class="cl-items">
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D1</span><span>자가포식 실천 목록 (소화하고 싶은 패턴 5가지)</span></div>
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D1</span><span>살아낸 것 목록 (핵 후보 5가지)</span></div>
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D1</span><span>콘텐츠 재건 초안 — 씨앗 문장 + 재건 방향 3개 + 가지</span></div>
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D2</span><span>AI 실험 01 결과 — Claude가 그린 나의 지식 지형도</span></div>
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D4</span><span>AI 실험 02 결과 — 고른 제목 + 첫 문장</span></div>
+      <div class="cl-item"><span class="cl-box"></span><span class="cl-tag">D5</span><span>첫 글 500자 (세션 첫 문장에서 이어 쓴 것)</span></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <p><strong>모닝페이지는 매일의 비움입니다.</strong> 간헐적 단식이 세포의 오토파지를 활성화하듯, 모닝페이지는 창작자의 오토파지를 활성화합니다. 외부 정보를 끊고, 3페이지를 비웁니다. 이 비움 없이 추가 과제만 하면 오토파지가 작동하지 않습니다.<br><br>
+    <strong>살아낸 것이 어렵게 느껴진다면</strong> — S01의 원천 텍스트, S02의 고난과 특이점으로 돌아가세요. 이미 발굴해둔 것들이 있습니다. 살아낸 것은 새로 만들어내는 것이 아닙니다. 이미 살아낸 것을 다시 보는 것입니다.<br><br>
+    <strong>막히는 날이 올 것입니다.</strong> 그날 모닝페이지에 "오늘은 소화가 막혔다"고 씁니다. 막혔다는 것을 아는 것이 소화의 시작입니다. 오토파지도 조건이 맞아야 활성화됩니다 — 억지로 되지 않습니다. 비우면, 깨어납니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

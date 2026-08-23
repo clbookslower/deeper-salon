@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>서울, 사흘 — 진영과</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F4F0E6;
+  --ink:#1C1A17;
+  --red:#CC3333;
+  --dim:#8A8175;
+  --rule:#D8D1C1;
+  --paper:#FBF8F1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:'Nanum Myeongjo',serif;
+  line-height:1.7;
+  padding-bottom:80px;
+}
+header{
+  padding:60px 24px 36px;
+  max-width:780px;margin:0 auto;
+  border-bottom:1px solid var(--rule);
+}
+.eyebrow{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:11px;letter-spacing:.32em;
+  color:var(--red);text-transform:uppercase;
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;font-size:clamp(38px,9vw,64px);
+  line-height:1.05;
+}
+h1 em{font-style:italic;color:var(--red)}
+.sub{margin-top:18px;font-size:15px;color:var(--dim);max-width:34em}
+.sub b{color:var(--ink)}
+
+main{max-width:780px;margin:0 auto;padding:0 24px}
+
+/* 하루 */
+.day{padding:44px 0 12px;border-bottom:1px solid var(--rule)}
+.day:last-of-type{border-bottom:none}
+.day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.day-head .num{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;font-style:italic;
+  font-size:40px;color:var(--red);line-height:1;
+}
+.day-head h2{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.day-head .date{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:11px;letter-spacing:.18em;color:var(--dim);
+}
+.day-note{font-size:14px;color:var(--dim);margin-bottom:26px;max-width:38em}
+
+/* 시간 블록 */
+.slot{
+  display:grid;grid-template-columns:74px 1fr;gap:0 18px;
+  border-top:1px solid var(--rule);
+  padding:20px 0;
+}
+.slot:first-of-type{border-top:none}
+.when{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:12px;font-weight:700;color:var(--red);
+  letter-spacing:.06em;padding-top:4px;
+}
+.when small{display:block;font-weight:400;color:var(--dim);letter-spacing:.02em;margin-top:2px}
+.what .name{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.what .name .star{color:var(--red);font-size:14px;margin-left:6px;font-family:'Nanum Gothic',sans-serif;font-weight:700}
+.what .why{font-size:14.5px;color:#4A443C;margin-top:6px;max-width:38em}
+.go{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:12px;color:var(--dim);margin-top:8px;
+  display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;
+}
+.go a{
+  color:var(--red);text-decoration:none;
+  border-bottom:1px solid rgba(204,51,51,.35);
+}
+.go a:hover{border-color:var(--red)}
+.warn{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:12.5px;line-height:1.6;
+  color:var(--red);margin-top:9px;max-width:38em;
+  padding-left:12px;border-left:2px solid var(--red);
+}
+.alt{
+  font-size:13px;color:var(--dim);margin-top:8px;
+  padding-left:12px;border-left:2px solid var(--rule);
+  max-width:38em;
+}
+.alt b{color:var(--ink);font-weight:700}
+
+/* 고정 약속 */
+.fixed{
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--ink);
+  padding:16px 18px;margin-top:4px;
+}
+.fixed .name{font-size:17px}
+
+/* 예약 박스 */
+.todo{
+  margin:40px 0 8px;
+  background:var(--ink);color:var(--ivory);
+  padding:24px 26px;border-radius:2px;
+}
+.todo h3{
+  font-family:'Nanum Gothic',sans-serif;
+  font-size:11px;letter-spacing:.28em;color:var(--red);
+  margin-bottom:12px;text-transform:uppercase;
+}
+.todo li{
+  list-style:none;font-size:14.5px;line-height:1.9;
+  padding-left:20px;position:relative;
+}
+.todo li::before{
+  content:"○";position:absolute;left:0;color:var(--red);font-size:12px;
+}
+.todo b{color:#fff}
+
+footer{
+  max-width:780px;margin:0 auto;padding:40px 24px 60px;
+  font-size:13px;color:var(--dim);
+}
+footer b{color:var(--ink)}
+footer p+p{margin-top:10px}
+
+@media (max-width:560px){
+  header{padding:44px 20px 30px}
+  main{padding:0 20px}
+  .slot{grid-template-columns:58px 1fr;gap:0 12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Seoul · 월화수 · with Jenny</div>
+  <h1>서울, 사흘<br><em>진영과</em></h1>
+  <p class="sub">
+    진영이가 하고 싶다던 세 가지 — <b>더현대, 홍대 버스킹, 한강의 밤 라면</b> — 를
+    첫날에 전부 넣었습니다. 폭염이라 낮은 실내에서 실내로만 잇고,
+    바깥은 전부 해 진 뒤입니다. 시간은 못이 아니라 기준.
+  </p>
+</header>
+
+<main>
+
+<!-- ─────────── 월 ─────────── -->
+<section class="day">
+  <div class="day-head"><span class="num">I</span><h2>소원 세 개를 하루에</h2><span class="date">월요일 · 8월 3일</span></div>
+  <p class="day-note">역삼 → 여의도 → 홍대 → 한강. 서쪽으로 한 방향으로만 흘러가는 동선이라 되돌아오는 길이 없습니다. 한낮은 전부 냉방 안, 거리는 밤에만.</p>
+
+  <div class="slot">
+    <div class="when">12:30<small>점심</small></div>
+    <div class="what">
+      <div class="name">동화고옥 강남</div>
+      <div class="why">밤죽과 콩국으로 문을 열고 한우로 닫는 한정식. 전 좌석 룸이라 조용하고, 점심 코스는 저녁보다 값이 훨씬 내려갑니다. 오랜만의 첫 상으로 손색없는 자리 — 상 차림의 격이 대화의 격을 만들어 줍니다.</div>
+      <div class="go">역삼역 도보 6분 · 11:30 오픈 <a href="https://maps.google.com/?q=동화고옥+강남+테헤란로" target="_blank" rel="noopener">지도</a></div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">14:30<small>오후</small></div>
+    <div class="what">
+      <div class="name">더현대 서울 <span class="star">★ 진영의 소원 1</span></div>
+      <div class="why">5층에 실내 숲이 통째로 들어앉은 백화점 — 이라기보다 유리 지붕을 얹은 광장. 한낮 제일 뜨거운 시간을 통째로 여기 안에서 보냅니다. 여의도역 지하 연결이라 밖을 거의 안 걷습니다.</div>
+      <div class="go">역삼 → 9호선 급행 or 택시 25분 → 여의도 <a href="https://maps.google.com/?q=The+Hyundai+Seoul+Yeouido" target="_blank" rel="noopener">지도</a></div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">17:30<small>이동</small></div>
+    <div class="what">
+      <div class="name">여의도 → 홍대</div>
+      <div class="why">택시로 15~20분. 해가 기울기 시작할 때 강을 건넙니다.</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">18:00<small>저녁</small></div>
+    <div class="what">
+      <div class="name">연남서식당</div>
+      <div class="why">숯불 돼지갈비 노포. 수십 년째 같은 방식으로 굽고, 마지막은 볶음밥으로 닫습니다. 화려한 집이 아니라 <b>오래 버틴 집</b> — 미국에서 30년 산 사람에게 서울이 내밀 수 있는 가장 진짜배기 저녁입니다. 웨이팅이 있으니 이른 저녁으로.</div>
+      <div class="go">홍대입구역 도보 5분 <a href="https://maps.google.com/?q=연남서식당" target="_blank" rel="noopener">지도</a></div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">19:30<small>밤</small></div>
+    <div class="what">
+      <div class="name">홍대 버스킹 <span class="star">★ 진영의 소원 2</span></div>
+      <div class="why">걷고싶은거리(레드로드)와 홍대입구역 9번 출구 일대. 보통 저녁 7시부터 10시 사이에 팀들이 돌아가며 섭니다. 해가 진 뒤라 걸을 만하고, 마음에 드는 무대 앞에 오래 서 있으면 됩니다 — 그게 이 동네 노는 법.</div>
+      <div class="go">연남서식당에서 도보 10분 <a href="https://maps.google.com/?q=홍대+걷고싶은거리" target="_blank" rel="noopener">지도</a></div>
+      <div class="warn">평일이라 팀이 적을 수 있습니다. 그날 무대가 비었으면 상상마당 골목과 클럽거리를 한 바퀴 — 거리 자체가 공연입니다.</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">21:30<small>더 밤</small></div>
+    <div class="what">
+      <div class="name">망원한강공원 — 라면과 소주 <span class="star">★ 진영의 소원 3</span></div>
+      <div class="why">홍대에서 택시 10분. 편의점에서 봉지라면을 골라 즉석조리기에 앉히고, 소주 한 병과 돗자리를 들고 강가로. 밤바람에 강 건너 불빛 — 첫날 밤에 소원 세 개가 다 이뤄집니다.</div>
+      <div class="go">홍대 → 택시 10분 · 귀가는 택시 약 30분 <a href="https://maps.google.com/?q=망원한강공원+편의점" target="_blank" rel="noopener">지도</a></div>
+      <div class="alt">반포대교 달빛무지개분수가 보고 싶으면 <b>반포한강공원</b>으로(택시 25분) — 분수 회차가 밤 9시 전후로 끝나는 날이 많으니 당일 시간을 먼저 확인하고 정하세요. 반포는 역삼까지 택시 15분이라 귀가는 오히려 가깝습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 화 ─────────── -->
+<section class="day">
+  <div class="day-head"><span class="num">II</span><h2>옛 서울의 낮, 약속의 저녁</h2><span class="date">화요일 · 8월 4일</span></div>
+  <p class="day-note">낮은 한옥 안쪽 — 전부 실내와 그늘. 저녁은 교회 친구들과의 모임이라 비워뒀습니다.</p>
+
+  <div class="slot">
+    <div class="when">12:00<small>점심</small></div>
+    <div class="what">
+      <div class="name">담솥 익선</div>
+      <div class="why">연어나 전복을 올려 갓 지어 내는 솥밥. 값에 비해 상이 정갈합니다. 익선동 한옥 골목 초입.</div>
+      <div class="go">역삼 → 종로3가역 4번 출구 약 40분, 도보 6분 <a href="https://maps.google.com/?q=Damsot+Ikseon+Seoul" target="_blank" rel="noopener">지도</a></div>
+      <div class="alt">줄이 길면 — <b>익선동 요록</b>(도보 1분, 4.8·후기 431).</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">13:30<small>오후</small></div>
+    <div class="what">
+      <div class="name">한식문화공간 이음 — 전통주 시음</div>
+      <div class="why">막걸리에서 약주, 소주까지 순서대로 따라주며 설명해 주는 무료 프로그램. <b>영어로도 진행</b>되는 문화 프로그램이라 손님 접대 격으로도 딱 맞습니다. 월요일은 쉬고 화요일은 여니 오늘이 정확한 날.</div>
+      <div class="go">안국역 2번 출구 도보 4분 · 예약제 <a href="https://maps.google.com/?q=한식문화공간+이음+북촌로" target="_blank" rel="noopener">지도</a></div>
+      <div class="alt">시음 뒤 — <b>북촌브루어리</b>(도보 6분, 18시까지)에서 막걸리·소주 포장. 미국 갈 때 수하물 선물로 이만한 게 없습니다.</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">15:30<small>선택</small></div>
+    <div class="what">
+      <div class="name">리움미술관</div>
+      <div class="why">마리오 보타·장 누벨·렘 콜하스가 나눠 지은 건물 셋. 고미술관의 나선 계단이 서울에서 가장 자주 회자되는 실내입니다. 화요일 개관 — 하버드에서 온 눈에도 부족함이 없는 두 시간.</div>
+      <div class="go">안국 → 한강진역 약 25분, 도보 5분 · 18시까지 <a href="https://maps.google.com/?q=Leeum+Museum+of+Art+Seoul" target="_blank" rel="noopener">지도</a></div>
+      <div class="warn">예약제입니다. 갈 거면 오늘 중에 자리부터 확인. 힘들면 건너뛰고 뜨란(익선동 한옥 찻집)에서 오미자차로 쉬어도 충분합니다.</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">18:30<small>저녁</small></div>
+    <div class="what fixed">
+      <div class="name">교회 친구들 저녁 — 민관 · 오연 · 진영과</div>
+      <div class="why">이 자리는 약속대로. 장소가 아직이면 낮 동선(안국·익선동)이나 숙소(역삼) 근처로 잡으면 이동이 짧습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 수 ─────────── -->
+<section class="day">
+  <div class="day-head"><span class="num">III</span><h2>강남, 재즈로 마무리</h2><span class="date">수요일 · 8월 5일</span></div>
+  <p class="day-note">마지막 날은 멀리 안 갑니다. 전부 호텔에서 15분 안 — 이틀 걸은 다리를 쉬게 하고, 저녁이 오늘의 본론입니다.</p>
+
+  <div class="slot">
+    <div class="when">12:30<small>점심</small></div>
+    <div class="what">
+      <div class="name">고우가</div>
+      <div class="why">전 좌석이 룸. 코스로 나오다가 마지막에 화로를 놓고 한우를 굽습니다. 조용히 이야기하기에 이만한 데가 드뭅니다 — 후기 366건에 5.0.</div>
+      <div class="go">역삼역 도보 1분 · 11:00 오픈 <a href="https://maps.google.com/?q=Gowooga+Yeoksam+Seoul" target="_blank" rel="noopener">지도</a></div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">15:00<small>오후</small></div>
+    <div class="what">
+      <div class="name">별마당도서관 · 코엑스</div>
+      <div class="why">쇼핑몰 한가운데 13미터 책장. 삼성역 지하 연결이라 밖을 한 걸음도 안 걷습니다. 마지막 기념품도 코엑스 안에서 한 번에. 밤 10시까지라 시간 압박도 없음.</div>
+      <div class="go">역삼역 → 삼성역 11분 <a href="https://maps.google.com/?q=Starfield+Library+COEX+Seoul" target="_blank" rel="noopener">지도</a></div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">18:30<small>저녁</small></div>
+    <div class="what">
+      <div class="name">플랫나인 <span class="star">★ 피날레</span></div>
+      <div class="why">강남대로 K타워 5층, 재즈 라이브에 코스요리를 붙이는 집. 수비드 살치살 스테이크·트러플 뇨끼. 평일에도 거의 만석이라는 후기가 반복됩니다. 18시 오픈이니 첫 타임으로 들어가 무대 가까운 자리를 — 사흘의 마지막 밤을 여기서 닫습니다.</div>
+      <div class="go">강남역 10번 출구 도보 6분 · 역삼에서 10분 · 0507-1389-9630 <a href="https://place.map.kakao.com/1522254344" target="_blank" rel="noopener">카카오맵</a> · <a href="https://www.instagram.com/flatnine_jazzbar/" target="_blank" rel="noopener">인스타</a></div>
+      <div class="warn">미리 전화 예약부터. 코스를 시키면 와인 한 병이 따라붙는 구성이 있으니, 술을 따로 고르고 싶으면 단품으로.</div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="when">22:00<small>밤</small></div>
+    <div class="what">
+      <div class="name">천천히 걸어서 귀가</div>
+      <div class="why">호텔까지 10분. 한 잔이 아쉬우면 호텔 옆 <b>루프탑 클라우드</b>(테헤란로 21층) — 강남 불빛이 발밑으로 깔립니다.</div>
+    </div>
+  </div>
+</section>
+
+<div class="todo">
+  <h3>지금 잡아둘 것</h3>
+  <ul>
+    <li><b>플랫나인 수요일 저녁 예약</b> — 0507-1389-9630 (첫 타임 18:00~18:30, 2명)</li>
+    <li><b>이음 화요일 시음 예약</b> — 네이버 예약, 영어 진행 요청 가능</li>
+    <li><b>리움 화요일 오후</b>(선택) — 예약제, 자리 확인</li>
+    <li>진영 교통카드 — 편의점에서 <b>티머니</b> 한 장 사서 충전</li>
+  </ul>
+</div>
+
+</main>
+
+<footer>
+  <p><b>더위 수칙</b> — 8월 초 서울은 한낮 33도 안팎. 낮 이동은 지하철·지하 연결·택시 위주로 짰고, 거리를 걷는 구간은 전부 해 진 뒤입니다. 물병 하나씩.</p>
+  <p><b>바꿔치기 카드</b> — 계획이 밀리면: 서울스카이(밤 11시까지) · 을지로 노포 골목(산청숯불가든·모스) · 익선반주(한옥 막걸리집). 자세한 건 원래 리스트(seoul-list)에 다 있습니다.</p>
+  <p>하루에 큰 장면 하나씩 — 월 한강의 밤, 화 친구들, 수 재즈. 나머지는 흘러가는 대로.</p>
+</footer>
+
+</body>
+</html>

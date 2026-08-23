@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="생각학교 ASK">
+<meta property="og:title" content="인문고전 상식 퀴즈 열전 — 생각학교 ASK">
+<meta property="og:description" content="평생 읽기 목록의 책들, 뜻밖의 이야기 열 문제 · 많이 맞힌 분께 상품이 갑니다">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/ask-classics-quiz.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/ask-classics-quiz-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/ask-classics-quiz-og.png">
+<title>인문고전 상식 퀴즈 열전 — 생각학교 ASK</title>
+<style>
+  :root {
+    --ink: #1f2a24;
+    --deep: #1A4A35;
+    --deep-soft: #2c5f47;
+    --cream: #faf6ee;
+    --paper: #fffdf8;
+    --gold: #b8923e;
+    --gold-soft: #d9c08a;
+    --wrong: #b0a894;
+    --shadow: 0 10px 40px rgba(26, 74, 53, 0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    font-family: 'Nanum Myeongjo', 'Noto Serif KR', 'Batang', 'BatangChe', serif;
+    background: var(--cream);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    line-height: 1.65;
+  }
+  /* 배경 장식 */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(184,146,62,0.07) 0, transparent 30%),
+      radial-gradient(circle at 88% 82%, rgba(26,74,53,0.06) 0, transparent 35%);
+    pointer-events: none;
+  }
+  .stage {
+    width: 100%;
+    max-width: 880px;
+    position: relative;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid rgba(184,146,62,0.35);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 56px 60px 48px;
+    display: none;
+    animation: rise .45s ease both;
+  }
+  .card.active { display: block; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── 표지 ── */
+  .cover { text-align: center; padding: 72px 60px; }
+  .cover .school {
+    font-size: 15px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--deep);
+    letter-spacing: 2px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .cover .sub {
+    font-size: 17px;
+    color: #6b6455;
+    margin-bottom: 40px;
+  }
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 28px 0 36px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .ornament::before, .ornament::after {
+    content: '';
+    width: 90px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-soft));
+  }
+  .ornament::after { background: linear-gradient(to left, transparent, var(--gold-soft)); }
+  .rules {
+    display: inline-block;
+    text-align: left;
+    background: var(--cream);
+    border: 1px solid rgba(184,146,62,0.3);
+    border-radius: 12px;
+    padding: 22px 32px;
+    font-size: 15.5px;
+    color: #4a463c;
+    margin-bottom: 42px;
+  }
+  .rules li { list-style: none; padding: 3px 0; }
+  .rules li::before { content: '· '; color: var(--gold); font-weight: 700; }
+
+  /* ── 문제 ── */
+  .qhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+  }
+  .qnum {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+  .qnum b { font-size: 26px; color: var(--deep); letter-spacing: 0; }
+  .qcat {
+    font-size: 13.5px;
+    color: var(--paper);
+    background: var(--deep);
+    padding: 5px 16px;
+    border-radius: 999px;
+    letter-spacing: 1px;
+  }
+  .qtext {
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 34px;
+    word-break: keep-all;
+  }
+  .qtext .em { color: var(--deep); }
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 30px; }
+  .choice {
+    border: 1.5px solid rgba(26,74,53,0.25);
+    border-radius: 12px;
+    padding: 17px 22px;
+    font-size: 19px;
+    background: var(--paper);
+    transition: all .35s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    word-break: keep-all;
+  }
+  .choice .tag {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .revealed .choice { opacity: 0.35; }
+  .revealed .choice.correct {
+    opacity: 1;
+    background: var(--deep);
+    border-color: var(--deep);
+    color: var(--paper);
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(26,74,53,0.3);
+  }
+  .revealed .choice.correct .tag {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--paper);
+  }
+  .aha {
+    display: none;
+    background: linear-gradient(135deg, rgba(184,146,62,0.1), rgba(26,74,53,0.06));
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 22px 28px;
+    font-size: 17px;
+    color: #3d382e;
+    margin-bottom: 30px;
+    animation: rise .4s ease both;
+    word-break: keep-all;
+  }
+  .aha.show { display: block; }
+  .aha .label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ── 버튼·진행 ── */
+  .controls { display: flex; justify-content: space-between; align-items: center; }
+  .btn {
+    font-family: inherit;
+    font-size: 17px;
+    padding: 13px 36px;
+    border-radius: 999px;
+    border: 1.5px solid var(--deep);
+    background: var(--deep);
+    color: var(--paper);
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all .25s ease;
+  }
+  .btn:hover { background: var(--deep-soft); transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--deep); }
+  .btn.ghost:hover { background: rgba(26,74,53,0.07); }
+  .btn.gold { background: var(--gold); border-color: var(--gold); }
+  .btn.gold:hover { background: #a5822f; }
+  .dots { display: flex; gap: 8px; }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: rgba(26,74,53,0.18);
+    transition: all .3s ease;
+  }
+  .dot.on { background: var(--gold); transform: scale(1.25); }
+  .dot.done { background: var(--deep); }
+  .hint {
+    text-align: center;
+    font-size: 13px;
+    color: #a09a8a;
+    margin-top: 18px;
+    letter-spacing: 1px;
+  }
+
+  /* ── 마무리 ── */
+  .finale { text-align: center; padding: 64px 60px; }
+  .finale h2 {
+    font-size: 38px;
+    color: var(--deep);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .finale .msg { font-size: 18px; color: #6b6455; margin-bottom: 40px; }
+  .recap {
+    text-align: left;
+    background: var(--cream);
+    border: 1px solid rgba(184,146,62,0.3);
+    border-radius: 14px;
+    padding: 28px 36px;
+    margin-bottom: 36px;
+  }
+  .recap h3 {
+    font-size: 15px; letter-spacing: 3px;
+    color: var(--gold); margin-bottom: 16px;
+    text-align: center;
+  }
+  .recap table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  .recap td { padding: 7px 8px; border-bottom: 1px dashed rgba(184,146,62,0.3); vertical-align: top; }
+  .recap tr:last-child td { border-bottom: none; }
+  .recap .no { color: var(--gold); font-weight: 700; width: 34px; }
+  .recap .ans { color: var(--deep); font-weight: 700; white-space: nowrap; padding-left: 14px; }
+
+  @media (max-width: 640px) {
+    .card { padding: 36px 26px; }
+    .cover h1 { font-size: 32px; }
+    .qtext { font-size: 21px; }
+    .choices { grid-template-columns: 1fr; }
+    .choice { font-size: 17px; }
+    .recap .ans { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 표지 -->
+  <section class="card cover active" id="cover">
+    <div class="school">생각학교 ASK</div>
+    <h1>인문고전<br>상식 퀴즈 열전</h1>
+    <p class="sub">평생 읽기 목록의 책들, 뜻밖의 이야기 열 가지</p>
+    <div class="ornament">✦</div>
+    <ul class="rules">
+      <li>문제는 모두 열 문제, 보기는 네 개입니다.</li>
+      <li>정답을 외치면 진행자가 정답을 공개합니다.</li>
+      <li>정답 뒤에 숨은 이야기가 한 자락씩 따라옵니다.</li>
+      <li>많이 맞힌 분께는 상품이 갑니다.</li>
+    </ul>
+    <div>
+      <button class="btn gold" onclick="start()">퀴즈 시작</button>
+    </div>
+    <p class="hint">스페이스 키로도 진행할 수 있습니다</p>
+  </section>
+
+  <!-- 문제 카드 (스크립트가 채움) -->
+  <section class="card" id="quiz">
+    <div class="qhead">
+      <div class="qnum">문제 <b id="qNo">1</b> / 10</div>
+      <div class="qcat" id="qCat"></div>
+    </div>
+    <div class="qtext" id="qText"></div>
+    <div class="choices" id="qChoices"></div>
+    <div class="aha" id="qAha"><span class="label">아하!</span><span id="qAhaText"></span></div>
+    <div class="controls">
+      <div class="dots" id="dots"></div>
+      <button class="btn" id="nextBtn" onclick="advance()">정답 공개</button>
+    </div>
+    <p class="hint">스페이스: 다음 단계 &nbsp;·&nbsp; ← : 이전 문제</p>
+  </section>
+
+  <!-- 마무리 -->
+  <section class="card finale" id="finale">
+    <div class="school" style="font-size:14px;letter-spacing:5px;color:var(--gold);margin-bottom:16px;">생각학교 ASK</div>
+    <h2>열 문제, 모두 끝났습니다</h2>
+    <p class="msg">이제 채점하고, 상품 받으러 나오세요.</p>
+    <div class="recap">
+      <h3>정답 한눈에 보기</h3>
+      <table id="recapTable"></table>
+    </div>
+    <button class="btn ghost" onclick="restart()">처음부터 다시</button>
+  </section>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    cat: '세계문학',
+    q: '『돈키호테』의 세르반테스와 셰익스피어. 두 사람에 얽힌 <span class="em">놀라운 우연</span>은 무엇일까요?',
+    choices: ['같은 배를 타고 항해한 적이 있다', '기록상 같은 날짜에 세상을 떠났다', '서로의 작품을 번역해 주었다', '같은 사람을 짝사랑했다'],
+    answer: 1,
+    aha: '두 거장 모두 1616년 4월 23일에 세상을 떠난 것으로 기록되어 있습니다. 그래서 유네스코는 4월 23일을 「세계 책의 날」로 정했습니다. 다만 당시 영국과 스페인은 서로 다른 달력을 썼기 때문에, 실제로는 열흘쯤 차이가 난다는 뒷이야기까지 있습니다.',
+    short: '같은 날짜에 별세 → 세계 책의 날'
+  },
+  {
+    cat: '그리스 철학',
+    q: '서양 철학의 아버지 소크라테스. 그가 평생 남긴 <span class="em">저서</span>는 모두 몇 권일까요?',
+    choices: ['0권', '3권', '12권', '무려 100권이 넘는다'],
+    answer: 0,
+    aha: '소크라테스는 단 한 권도 쓰지 않았습니다. 오직 광장에서 묻고 대화했을 뿐입니다. 우리가 아는 소크라테스는 전부 제자 플라톤이 받아 적은 기록입니다. 책 한 권 없이 2,400년을 살아남은 사람 — 질문의 힘입니다.',
+    short: '0권 (플라톤이 기록)'
+  },
+  {
+    cat: '에세이의 탄생',
+    q: '몽테뉴가 만든 책 제목이자 오늘날 하나의 장르가 된 「에세(Essai)」. 이 말의 <span class="em">원래 뜻</span>은 무엇일까요?',
+    choices: ['고백하다', '시도하다', '산책하다', '수다 떨다'],
+    answer: 1,
+    aha: '에세이는 프랑스어로 「시도(essai)」라는 뜻입니다. 몽테뉴는 완성된 답이 아니라 생각의 시도들을 묶어 책을 냈고, 그 제목이 그대로 장르의 이름이 되었습니다. 우리가 에세이를 쓸 때마다, 사실은 몽테뉴처럼 「한번 시도해 보는」 중인 셈입니다.',
+    short: '시도하다 (essai)'
+  },
+  {
+    cat: '중세의 걸작',
+    q: '단테의 『신곡(神曲)』. 그런데 단테가 붙인 <span class="em">원래 제목</span>에는 없던 글자가 있습니다. 무엇일까요?',
+    choices: ['곡(曲)', '신(神)', '지옥', '단테라는 이름'],
+    answer: 1,
+    aha: '단테가 붙인 제목은 그냥 「희극(Commedia)」이었습니다. 「신성한(Divina)」이라는 수식은 후배 작가 보카치오가 감탄하며 붙인 말이 굳어진 것입니다. 제목의 절반을 독자가 완성해 준, 문학사에서 가장 유명한 헌사입니다.',
+    short: '신(神) — 보카치오가 붙임'
+  },
+  {
+    cat: '영문학',
+    q: '제인 오스틴의 『오만과 편견』. 처음 원고에 붙었던 <span class="em">원래 제목</span>은 무엇이었을까요?',
+    choices: ['첫인상', '다아시 씨', '다섯 자매', '결혼 대작전'],
+    answer: 0,
+    aha: '원래 제목은 「첫인상(First Impressions)」이었습니다. 첫인상 때문에 서로를 오해한 두 사람이 그 벽을 넘어서는 이야기 — 제목이 바뀌면서 「오만」과 「편견」이라는 두 단어가 각각 누구의 것이었는지 곱씹게 만드는 책이 되었습니다.',
+    short: '첫인상 (First Impressions)'
+  },
+  {
+    cat: '러시아 문학',
+    q: '『죄와 벌』의 도스토옙스키. 그가 스물여덟 살에 <span class="em">실제로 겪은 일</span>은 무엇일까요?',
+    choices: ['시베리아에서 곰을 만났다', '사형 집행 직전에 사면되었다', '카지노를 통째로 샀다', '황제의 전속 작가가 되었다'],
+    answer: 1,
+    aha: '반체제 독서 모임에 나갔다는 죄로 사형 선고를 받고, 형장에 끌려나가 총살 직전까지 갔다가 마지막 순간 황제의 사면이 도착했습니다. 죽음 바로 앞까지 다녀온 이 몇 분이 이후 『죄와 벌』, 『카라마조프가의 형제들』의 깊이가 되었다고 평가받습니다.',
+    short: '사형 직전 사면'
+  },
+  {
+    cat: '20세기 문학',
+    q: '『변신』의 카프카는 죽기 전 친구에게 유언을 남겼습니다. <span class="em">"내 원고를 전부 ___"</span> 빈칸에 들어갈 말은?',
+    choices: ['출판해 다오', '태워 다오', '박물관에 기증해 다오', '어머니께 전해 다오'],
+    answer: 1,
+    aha: '카프카는 「읽지 말고 전부 태워 달라」고 부탁했습니다. 하지만 친구 막스 브로트는 그 유언을 어기고 원고를 세상에 냈습니다. 『소송』도 『성』도 그렇게 살아남았습니다. 우리가 카프카를 읽을 수 있는 건, 유언을 지키지 않은 한 친구 덕분입니다.',
+    short: '태워 다오 → 친구가 거부'
+  },
+  {
+    cat: '언어의 발명가',
+    q: '셰익스피어가 작품을 쓰며 <span class="em">새로 만들어낸 영어 단어</span>는 대략 몇 개로 추정될까요?',
+    choices: ['약 17개', '약 170개', '약 1,700개', '약 17,000개'],
+    answer: 2,
+    aha: '약 1,700개로 추정됩니다. lonely(외로운), gloomy(우울한), bedroom(침실) 같은 일상어들이 셰익스피어의 펜에서 처음 기록됐습니다. 한 작가가 언어의 지도를 다시 그린 셈입니다. 쓰고 싶은 말이 없으면 만들어서라도 썼던 사람입니다.',
+    short: '약 1,700개'
+  },
+  {
+    cat: '로마의 지혜',
+    q: '『명상록』을 쓴 마르쿠스 아우렐리우스의 <span class="em">본업</span>은 무엇이었을까요?',
+    choices: ['철학 학교 교장', '로마 제국의 황제', '검투사 출신 의사', '도서관 사서'],
+    answer: 1,
+    aha: '로마 제국의 황제였습니다. 게다가 『명상록』은 출판할 생각이 전혀 없이, 전쟁터 막사에서 자기 자신에게 쓴 일기였습니다. 원래 제목도 「자기 자신에게」. 세상에서 가장 바쁜 사람이 매일 밤 자신과 나눈 대화가, 2천 년 뒤 우리의 베개맡 책이 되었습니다.',
+    short: '로마 황제 (자신에게 쓴 일기)'
+  },
+  {
+    cat: '니체',
+    q: '니체의 『차라투스트라는 이렇게 말했다』. <span class="em">"춤추는 별을 낳으려면, 사람은 자기 안에 ___을 지니고 있어야 한다."</span> 빈칸은?',
+    choices: ['음악', '혼돈', '고요', '사랑'],
+    answer: 1,
+    aha: '「혼돈」입니다. 지금 내 안이 어지럽고 뒤죽박죽이라면, 그것은 실패의 증거가 아니라 별이 태어나기 직전이라는 신호일지도 모릅니다. 니체는 정리된 사람이 아니라 혼돈을 품은 사람이 새로운 것을 낳는다고 말했습니다.',
+    short: '혼돈'
+  }
+];
+
+let qi = -1;        // 현재 문제 인덱스
+let stage = 0;      // 0: 문제, 1: 정답 공개, 2: 아하 공개
+const $ = id => document.getElementById(id);
+
+function buildDots() {
+  $('dots').innerHTML = QUESTIONS.map((_, i) =>
+    `<div class="dot${i < qi ? ' done' : i === qi ? ' on' : ''}"></div>`).join('');
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[qi];
+  $('qNo').textContent = qi + 1;
+  $('qCat').textContent = q.cat;
+  $('qText').innerHTML = q.q;
+  $('qChoices').innerHTML = q.choices.map((c, i) =>
+    `<div class="choice${i === q.answer ? ' correct' : ''}"><span class="tag">${'①②③④'[i]}</span>${c}</div>`).join('');
+  $('qChoices').classList.remove('revealed');
+  $('qAha').classList.remove('show');
+  $('qAhaText').textContent = q.aha;
+  $('nextBtn').textContent = '정답 공개';
+  stage = 0;
+  buildDots();
+}
+
+function show(id) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  $(id).classList.add('active');
+}
+
+function start() {
+  qi = 0;
+  show('quiz');
+  renderQuestion();
+}
+
+function advance() {
+  if (stage === 0) {
+    $('qChoices').classList.add('revealed');
+    $('nextBtn').textContent = '이야기 듣기';
+    stage = 1;
+  } else if (stage === 1) {
+    $('qAha').classList.add('show');
+    $('nextBtn').textContent = qi === QUESTIONS.length - 1 ? '결과 보기' : '다음 문제';
+    stage = 2;
+  } else {
+    if (qi === QUESTIONS.length - 1) { finish(); return; }
+    qi++;
+    renderQuestion();
+    show('quiz');
+  }
+}
+
+function back() {
+  if (qi > 0) { qi--; renderQuestion(); }
+}
+
+function finish() {
+  $('recapTable').innerHTML = QUESTIONS.map((q, i) =>
+    `<tr><td class="no">${i + 1}</td><td>${q.cat}</td><td class="ans">${q.short}</td></tr>`).join('');
+  show('finale');
+}
+
+function restart() {
+  qi = -1;
+  show('cover');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' || e.code === 'ArrowRight' || e.code === 'Enter') {
+    e.preventDefault();
+    if ($('cover').classList.contains('active')) start();
+    else if ($('quiz').classList.contains('active')) advance();
+  } else if (e.code === 'ArrowLeft' && $('quiz').classList.contains('active')) {
+    back();
+  }
+});
+</script>
+</body>
+</html>

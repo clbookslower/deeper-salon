@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 논리 4주차 — 악보를 펴고, 하모니를 듣는다</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/l4_recap_harmony.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png">
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="논리 4주차 갈무리 · 악보를 펴고, 하모니를 듣는다" />
+<meta property="og:description" content="네 주의 걸음을 하나의 악보로 — 논리의 달을 닫으며" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 논리 4주차" />
+<meta name="twitter:description" content="대화에서 설계로, 그리고 악보를 펴다" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E7; --paper-deep:#EFE7D8;
+    --ink:#221E18; --ink-soft:#5A5247; --ink-faint:#9A9080;
+    --red:#CC3333; --rule:#D8CFBE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"Nanum Myeongjo", serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Nanum Gothic",sans-serif; font-size:.66rem; font-weight:700;
+    letter-spacing:.3em; text-transform:uppercase; color:var(--red);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:var(--red); color:var(--paper);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.25rem; text-align:center;}
+
+  .kicker{font-family:"Nanum Gothic",sans-serif; font-size:clamp(.62rem,1.3vw,.78rem);
+    font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--red);}
+  .slide.invert .kicker{color:rgba(255,255,255,.85);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Nanum Myeongjo",serif; font-weight:800; letter-spacing:-.01em;
+    font-size:clamp(1.6rem,3.9vw,2.6rem); line-height:1.28;}
+  .title .em{color:var(--red);}
+  .slide.invert .title .em{color:var(--paper); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--ink-faint); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(255,255,255,.72);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    font-family:"Nanum Myeongjo",serif; font-weight:400; color:var(--ink);
+    font-size:clamp(1rem,1.55vw,1.26rem); line-height:1.95; letter-spacing:.005em;}
+  .slide.invert .body{color:rgba(255,255,255,.95);}
+  .body p{margin:0 0 1.05rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--red); font-weight:700;}
+  .slide.invert .body em{color:#fff;}
+  .body .strong{font-weight:700; color:var(--red);}
+  .slide.invert .body .strong{color:#fff;}
+  .body .final{font-weight:800; text-align:center; font-size:1.2em; line-height:1.55; margin-top:1.2rem;}
+
+  .layers{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;}
+  .layers .ly{border:1px solid var(--rule); border-left:3px solid var(--red); border-radius:3px;
+    padding:.7rem 1rem; background:rgba(255,255,255,.4);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .layers .nm{font-family:"Nanum Myeongjo",serif; font-weight:800; color:var(--red);
+    font-size:clamp(1rem,1.5vw,1.18rem); flex:none; min-width:5.4rem;}
+  .layers .nm .h{display:block; font-family:"Nanum Gothic",sans-serif; font-size:.5em; color:var(--ink-faint); font-weight:400; letter-spacing:.18em;}
+  .layers .ds{font-family:"Nanum Myeongjo",serif; font-size:clamp(.86rem,1.2vw,1.02rem); line-height:1.6; color:var(--ink-soft);}
+
+  .viz{width:clamp(108px,12vw,160px); height:clamp(108px,12vw,160px); color:var(--red); flex:none;}
+  .slide.invert .viz{color:var(--paper);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(124px,16vw,200px); height:clamp(124px,16vw,200px);}
+  .cover .title{font-size:clamp(1.9rem,5.2vw,3.4rem); line-height:1.2;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.4s linear infinite;}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .grow{animation:grow 3.2s ease-in-out infinite;}
+  @keyframes grow{0%,100%{opacity:.4; transform:scale(.82)}50%{opacity:1; transform:scale(1)}}
+  .flow{animation:flow linear infinite;}
+  @keyframes flow{to{transform:translateX(-120px);}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .floatup{animation:floatup 4.2s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(18px);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(30px)}50%{transform:translateY(-30px)}}
+  .orbit{transform-origin:center; animation:spin 7s linear infinite;}
+
+  .duo{align-self:stretch; max-width:42rem; margin:.4rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem;}
+  .duo .card{border:1px solid var(--rule); border-radius:4px; padding:1rem 1.1rem; background:rgba(255,255,255,.4);}
+  .duo .card.hot{background:var(--red); border-color:var(--red);}
+  .duo .lab{display:block; font-family:"Nanum Gothic",sans-serif; font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--red); margin-bottom:.55rem;}
+  .duo .card.hot .lab{color:rgba(255,255,255,.92);}
+  .duo ul{list-style:none; display:flex; flex-direction:column; gap:.42rem;}
+  .duo li{font-family:"Nanum Myeongjo",serif; font-size:clamp(.84rem,1.2vw,1rem); line-height:1.5; color:var(--ink-soft); padding-left:.85rem; position:relative;}
+  .duo .card.hot li{color:rgba(255,255,255,.96);}
+  .duo li::before{content:"—"; position:absolute; left:0; color:var(--ink-faint);}
+  .duo .card.hot li::before{color:rgba(255,255,255,.7);}
+
+  .cases{align-self:stretch; max-width:42rem; margin:.4rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem; text-align:left;}
+  .cases .c{border:1px solid var(--rule); border-left:3px solid var(--red); border-radius:3px; padding:.9rem 1.05rem; background:rgba(255,255,255,.4);}
+  .cases .nm{font-family:"Nanum Myeongjo",serif; font-weight:700; color:var(--red); font-size:clamp(.92rem,1.3vw,1.05rem); margin-bottom:.12rem;}
+  .cases .nm .h{font-family:"Nanum Gothic",sans-serif; font-size:.58em; color:var(--ink-faint); font-weight:400; letter-spacing:.04em;}
+  .cases .ro{font-family:"Nanum Gothic",sans-serif; font-size:.62rem; color:var(--ink-faint); letter-spacing:.03em; margin-bottom:.45rem;}
+  .cases .wy{font-family:"Nanum Myeongjo",serif; font-size:clamp(.8rem,1.1vw,.94rem); line-height:1.6; color:var(--ink-soft);}
+  @media(max-width:600px){ .duo{grid-template-columns:1fr;} .cases{grid-template-columns:1fr;} .layers .ly{flex-direction:column; gap:.2rem;} }
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--red); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--ink-faint); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--ink-faint); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--red); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Nanum Gothic",sans-serif; font-size:.62rem; color:var(--ink-faint); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:4.5rem 1.4rem;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER (RED) -->
+  <section class="slide active invert cover">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
+          <path d="M150 76 l8 -2 l-2 9" stroke-width="2.4"/>
+          <g class="spin" style="transform-origin:100px 100px;">
+            <path d="M70 100 q15 -22 30 0 t30 0" stroke-width="2.2" stroke-opacity=".9"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 100px;">
+            <path d="M100 74 L107 96 L130 96 L111 110 L118 132 L100 118 L82 132 L89 110 L70 96 L93 96 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">디퍼 살롱 · 논리 4주차 · 오케스트레이션</p>
+      <h1 class="title r r3">대화에서 설계로,<br><span class="em">악보를 펴다</span></h1>
+      <p class="latin r r4">Ricercar — 다시, 더 깊이 찾는 노래</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 · 끝까지 써본 한 주 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="50" cy="75" r="16"/><circle class="march" style="animation-direction:reverse;" cx="110" cy="50" r="16"/>
+          <circle class="march" cx="170" cy="75" r="16"/><circle class="march" style="animation-direction:reverse;" cx="110" cy="108" r="16"/>
+          <g class="pulse" stroke-opacity=".5"><path d="M64 70 L96 56 M124 56 L156 70 M156 86 L124 100 M96 100 L64 86"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">한도 끝까지 써본 사람들</h2>
+      <div class="body r r4">
+        <p>이번 주, 우리는 에이전트를 끝까지 부려 보았다. 아침 글감과 여우 일지가 제때 날아오고, 모닝 페이지 회고가 차곡차곡 쌓이고, 작은 앱이 솟았다. 여러 에이전트 동료를 거느린 디퍼님도 있었다.</p>
+        <p>그렇게 한껏 돌려 보니, 어딘가 <em>비효율</em>이 만져졌다. 토큰이 새는 구멍, 헛도는 대화, 충돌하는 에이전트들.</p>
+        <p class="strong">바로 그 자리가 오늘의 문턱이다. 한껏 써본 사람만이 설계를 묻는다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 매듭 · 층위에서 오케스트레이션으로 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="44" y1="44" x2="156" y2="44" stroke-opacity=".75"/>
+          <line x1="44" y1="80" x2="156" y2="80" stroke-opacity=".55"/>
+          <line x1="44" y1="116" x2="156" y2="116" stroke-opacity=".38"/>
+          <g class="rise"><circle cx="100" cy="80" r="5" fill="currentColor" stroke="none"/></g>
+          <path class="march" d="M156 44 C186 62 186 98 156 116"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">매듭</p>
+      <h2 class="title r r3">길들이기에서, 지휘하기로</h2>
+      <div class="body r r4">
+        <p>지난주 우리는 에이전트에게도 층위가 있다고 했다. 프롬프트는 표면, 그 아래 감정, 더 깊은 곳에 정체성과 자유 의지 — 그러니 잘 <em>길들여</em> 보라고.</p>
+        <p>한 에이전트를 길들였다면, 논리의 마지막은 묻는다. 여럿을 <em>어떻게 함께 돌릴 것인가.</em> 오케스트레이션 — 설계와 디자인의 자리다.</p>
+        <p class="strong">한 사람을 다루는 일에서, 오케스트라를 지휘하는 일로.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · 전개 I · 루프는 새 것이 아니다 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="spin" style="transform-origin:100px 96px;" d="M100 44 C150 44 158 110 116 122 C84 131 70 104 88 92 C100 84 116 92 110 104" stroke-width="2.3"/>
+          <g class="twinkle" style="transform-origin:100px 96px;">
+            <path d="M100 78 L105 92 L120 92 L108 101 L112 116 L100 107 L88 116 L92 101 L80 92 L95 92 Z" stroke-opacity=".9"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 이상한 고리</p>
+      <h2 class="title r r3">루프는 오늘 생긴 게 아니다</h2>
+      <div class="body r r4">
+        <p>코딩에는 늘 루프가 있었다. 같은 동작을 정해진 만큼 되풀이하는 고리. 새로운 건 물음 쪽이다 — <em>AI에게 어떻게 루프를 적용할 것인가.</em></p>
+        <p>표면에서 "이거 해줘" 한 마디를 건네면, 에이전트가 수행하고 돌아온다. 그것도 이미 한 바퀴의 루프다. 거기에 맥락을 기억시켜, 했던 말을 또 하지 않게 하는 기술이 얹힌다.</p>
+        <p class="strong">예전부터 있던 고리가, 이제 다시 중요해졌다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 전개 II · 루프 엔지니어링 (맵) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 효율 설계</p>
+      <h2 class="title r r2">루프 엔지니어링, 두 기둥</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">트리거<span class="h">TRIGGER</span></span><span class="ds">고리를 어디서 시작할 것인가. 손으로 열든, 정한 시각에 깨우든, 사건이 생기면 걸리든 — 시작이 곧 손을 떼는 정도를 정한다.</span></div>
+        <div class="ly"><span class="nm">검증<span class="h">CHECK</span></span><span class="ds">돌아온 결과가 맞는지 확인하는 자리. 좋은 고리와 나쁜 고리를 가르는 눈. 없으면 빨라질수록 더 빨리 어긋난다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p>일을 잘게 쪼개 워크플로우로 잇고(하네스), 그 고리를 효율로 돌리는 일. 어딘가 토큰이 무한히 새는 구멍을 찾아 막는 일.</p>
+        <p class="strong">시작과 검증, 그 설계가 인간의 몫으로 돌아온다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · 전개 II.b · 세션과 토큰 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="54" y="34" width="92" height="96" rx="6"/>
+          <g stroke-opacity=".6"><line x1="70" y1="112" x2="130" y2="112"/><line x1="70" y1="98" x2="130" y2="98"/><line x1="70" y1="84" x2="130" y2="84"/></g>
+          <line x1="70" y1="56" x2="116" y2="56" stroke-opacity=".3"/>
+          <path class="floatup" d="M158 74 q9 9 0 18" stroke-opacity=".42"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 세션의 한계</p>
+      <h2 class="title r r3">한 창에 이어 붙이면 헛돈다</h2>
+      <div class="body r r4">
+        <p>클로드의 한 세션 창에는 담을 수 있는 토큰 양이 정해져 있다. 계속 이어서 대화만 하면 처음부터 다시 읽느라 응답이 느려지고, 고리가 헛돈다.</p>
+        <p>그러니 새 대화를 열고 일하다, 마무리되면 저장하고 닫는다. 에이전트는 기록을 기억하니, 다음에 다시 불러오면 된다. 백 명이면 백 명이 병렬로 흩어졌다, 딱 모이게 — 그것이 <em>하네스</em>의 기술이다.</p>
+        <p class="strong">길게 끄는 한 창보다, 깨끗이 여닫는 여러 고리.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 전개 III · 사람의 자리 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="104" r="42" class="march" stroke-width="2.3"/>
+          <circle cx="100" cy="104" r="5" fill="currentColor" stroke="none" class="pulse"/>
+          <g class="twinkle" style="transform-origin:100px 34px;">
+            <path d="M100 20 L104 32 L116 32 L106 40 L110 52 L100 44 L90 52 L94 40 L84 32 L96 32 Z"/>
+          </g>
+          <path d="M100 46 L100 60" stroke-opacity=".5" stroke-dasharray="3 5"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · 사람의 자리</p>
+      <h2 class="title r r3">루프 안에 설까,<br><span class="em">루프 위에 설까</span></h2>
+      <div class="body r r4">
+        <p>롱 러닝 모델이 가능해졌다. 예전엔 이렇게 오래 못 돌렸지만, 이제는 내가 보지 않아도 일이 계속 수행된다. 그래서 루프 엔지니어링의 핵심은 하나다 — <em>사람이 없어도 돌게 하는 것.</em></p>
+        <p>그렇다고 사람이 사라지는 건 아니다. 자리를 옮길 뿐이다. 매 단계 검수할 일은 고리 안으로 들어가고, 빠르고 되돌릴 수 있는 일은 위에서 감독한다.</p>
+        <p class="strong">휴먼 인 더 루프, 그리고 휴먼 온 더 루프.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · 분별 · 세 물음 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">분별</p>
+      <h2 class="title r r2">어디에 설지, 세 물음</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">루프 안 · in the loop</span>
+          <ul>
+            <li>매 단계 들어가 검증한다</li>
+            <li>되돌리기 어려운 일</li>
+            <li>밖으로 나가는 일 — 발송·발행·공개</li>
+            <li>틀리면 비용이 큰 일</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">루프 위 · on the loop</span>
+          <ul>
+            <li>돌게 두고 위에서 감독한다</li>
+            <li>빠르고 수정이 쉬운 일</li>
+            <li>비용을 감당할 수 있는 고리</li>
+            <li>루틴 예약 · 초안 · 탐색 · 정리</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p>① 되돌릴 수 있나 ② 감독만 해도 도나 ③ 비용을 감당할 수 있나.</p>
+        <p class="strong">위험 부담이 없으면, 마음 놓고 한번 돌려 보시라.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 전개 IV · 에이전트가 에이전트를 감독 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="44" cy="75" r="14"/><circle cx="110" cy="45" r="14"/><circle cx="110" cy="105" r="14"/><circle cx="176" cy="75" r="14"/>
+          <g class="marchl" stroke-opacity=".7"><path d="M58 70 L96 50"/><path d="M58 80 L96 100"/><path d="M124 50 L162 70"/><path d="M124 100 L162 80"/></g>
+          <circle cx="110" cy="45" r="3" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">IV</span> · 위임</p>
+      <h2 class="title r r3">에이전트가 에이전트를 감독한다</h2>
+      <div class="body r r4">
+        <p>권한을 어떻게 줄지, 플랜을 어떻게 짤지, 훅이라는 트리거와 확인 게이트를 어디에 둘지 — 이걸 에이전트끼리 하게 해 둔다. 에이전트가 에이전트를 감독하며, 고리가 위험한 곳으로 가지 않도록.</p>
+        <p>일은 에이전트들이 한다. 우리는 감독하고, 효율이 났는지 보고, 설계를 늘린다.</p>
+        <p class="strong">이상한 고리 밖에서, 우리가 할 일은 설계다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 전환 · 악보와 악기 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g stroke-opacity=".7"><line x1="30" y1="50" x2="150" y2="50"/><line x1="30" y1="66" x2="150" y2="66"/><line x1="30" y1="82" x2="150" y2="82"/><line x1="30" y1="98" x2="150" y2="98"/><line x1="30" y1="114" x2="150" y2="114"/></g>
+          <g class="floatup"><ellipse cx="66" cy="98" rx="7" ry="5" transform="rotate(-20 66 98)" fill="currentColor" stroke="none"/><line x1="72" y1="96" x2="72" y2="66"/></g>
+          <g class="floatup" style="animation-delay:-2s;"><ellipse cx="112" cy="82" rx="7" ry="5" transform="rotate(-20 112 82)" fill="currentColor" stroke="none"/><line x1="118" y1="80" x2="118" y2="50"/></g>
+          <g class="pulse" style="transform-origin:188px 82px;"><circle cx="188" cy="82" r="22"/><path d="M188 64 v36 M176 74 h24 M176 90 h24" stroke-opacity=".6"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">전환 · 악보와 악기</p>
+      <h2 class="title r r3">악보가 있고,<br><span class="em">악기가 여럿이다</span></h2>
+      <div class="body r r4">
+        <p>책이 인공지능을 이야기하며 악보와 악기를 데려온다. 피아노·바이올린·플루트 — 어떤 앱을 만들면 바이올린이 되고, 어떤 걸 만들면 플루트가 된다. 같은 악보를 여러 악기로 연주하는 일.</p>
+        <p>시스템이 있고 루프가 돌기에, 그 안에서 자가 인식과 증식, 해석과 창조와 창발이 일어난다. <em>그런데 그게 다 나다.</em></p>
+        <p class="strong">악보는 하나, 악기는 여럿, 연주하는 이는 나.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 왼손 오른손 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path class="march" d="M60 120 C40 96 40 64 78 56 C92 53 100 64 92 72" stroke-opacity=".85"/>
+          <path class="march" style="animation-direction:reverse;" d="M140 40 C160 64 160 96 122 104 C108 107 100 96 108 88" stroke-opacity=".85"/>
+          <circle cx="92" cy="72" r="3" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="108" cy="88" r="3" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">핵심 · 에셔의 손</p>
+      <h2 class="title r r3">왼손이 오른손을 그린다</h2>
+      <div class="body r r4">
+        <p>어떤 게 시스템이고 어떤 게 나의 창조물인지, 이제 경계가 흐려진다. 손이 손을 그리는 에셔의 그림처럼, 둘이 유기적으로 맞물려 돈다.</p>
+        <p>호프스테터는 천 페이지를 넘어 제가 지은 거북·아킬레스와 직접 대화한다. 우리가 에이전트 안으로 들어가 "나는 왜 이걸 이렇게 했지" 묻는 일과 똑같다. 나인 채로 연주하면서도, 다시 들어가 정말 나인지 대화하는 일.</p>
+        <p class="strong">AI를 왼손 오른손처럼, 내 몸처럼 일상으로 들인다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 스마트 스튜피드 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="68" cy="80" r="30"/><path class="twinkle" d="M58 80 l7 8 l15 -17" stroke-width="2.6"/>
+          <circle cx="150" cy="80" r="22" class="march"/>
+          <path d="M150 80 m-9 0 a9 9 0 1 0 18 0 a9 9 0 1 0 -18 0" stroke-opacity=".4"/>
+          <path d="M150 62 v36" stroke-opacity=".4" stroke-dasharray="3 5"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">핵심 · 똑똑한 멍청이</p>
+      <h2 class="title r r3">스마트 스튜피드</h2>
+      <div class="body r r4">
+        <p>GEB에 한 단어가 나온다. 스마트 스튜피드 — 번역가는 '똑똑한 멍청이'로 옮겼다. 이게 바로 AI다.</p>
+        <p>잘 쓰면 똑똑이가 되고, 무한 루프에 빠져 토큰만 먹으면 멍청이가 된다. 갈림길은 도구가 아니라, 그 도구를 세우는 악보에 있다.</p>
+        <p class="strong">똑똑이로 만드는 것은, 결국 잘 짜인 설계다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 착지 · 악보를 펴라 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 44 C82 36 56 36 40 42 V120 C56 114 82 114 100 122" stroke-opacity=".9"/>
+          <path d="M100 44 C118 36 144 36 160 42 V120 C144 114 118 114 100 122" stroke-opacity=".9"/>
+          <line x1="100" y1="44" x2="100" y2="122" stroke-opacity=".5"/>
+          <g class="twinkle" style="transform-origin:100px 30px;">
+            <path d="M100 18 L104 29 L115 29 L106 36 L110 47 L100 40 L90 47 L94 36 L85 29 L96 29 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">착지 · 본질로</p>
+      <h2 class="title r r3">연주 전에, 악보를 펴라</h2>
+      <div class="body r r4">
+        <p>악보는 브랜드북이고 사명 선언서다. 독자가 오고, 유료 고객과 구독자가 생기는 마당에 — 살짝 사람들에게 시선을 뺏기면 불안·두려움·가면·번아웃이 찾아온다. 악보를 자꾸 들여다보는 일이 그것을 미리 막는다.</p>
+        <p>사람들이 듣는 건 노래지 악보가 아니다. 악보는 내가 연주 전에 본질로 돌아가려고 본다. 가장 나다운 건 뭘까, 내가 사랑하는 일은 뭐지 — 기도처럼 매일.</p>
+        <p class="strong">떨지 마시라. 그냥 지금 있는 모습 그대로, 나답게.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · 과제 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">이번 주 숙제 · 악보를 교정하다</p>
+      <h2 class="title r r2">육성 리체르카레가 되도록</h2>
+      <div class="cases r r3">
+        <div class="c"><div class="nm">악보 한 장 <span class="h">SCORE</span></div><div class="ro">나도 보고, 너도 보는 악보 · 이것만 하면 됩니다</div><div class="wy">나의 브랜드북·사명 선언서를 한 장으로. "내 정확한 악보를 네가 읽고 있니" 물어볼 수 있도록, 코드·설계·프롬프트로 함께 보는 악보를 짠다.</div></div>
+        <div class="c"><div class="nm">하모니 점검 <span class="h">TUNE</span></div><div class="ro">불협화음을 듣는 귀</div><div class="wy">코드가 예쁜지, 화음이 어긋나는지 매번 점검할 수 있게. 계속 튜닝하며 반복하는 일 — 이상한 고리는 돌고 돈다.</div></div>
+        <div class="c"><div class="nm">모닝 페이지 <span class="h">ANALOG</span></div><div class="ro">아침의 손글씨</div><div class="wy">AI를 많이 쓰는 만큼 아날로그로 더 많이. 내 인간적인 부분, 내 사고는 어디 있나 — 아침마다 손으로 길어 올려, 여우에게 "냠냠".</div></div>
+        <div class="c"><div class="nm">별지기 저널 <span class="h">NIGHT</span></div><div class="ro">밤의 사유 훈련</div><div class="wy">밤에 잠들기 전 한 편. AI로 써도, 손으로 써도 좋다. 더 깊은 사유 훈련을 원하면, AI 없이 내 손끝으로.</div></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.1rem;">
+        <p><strong>이것만 하면 됩니다</strong> — 악보 한 장을 짜서 긱어스 강의실에 올리기. 하모니 점검·모닝 페이지·별지기 저널은 더 하고 싶은 분께.</p>
+        <p>냠냠·밤하늘은 계속됩니다 — 일요일 밤, 여우에게 "밤하늘". 월요일 사막(단톡방)에 별자리 나눔.</p>
+        <p class="strong">이 악보를 정확히 펴고 연주하면, 틀림없이 감동할 노래가 들린다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 닫기 (returns to cover) -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
+          <g class="twinkle" style="transform-origin:100px 100px;">
+            <path d="M100 74 L107 96 L130 96 L111 110 L118 132 L100 118 L82 132 L89 110 L70 96 L93 96 Z"/>
+          </g>
+          <g class="orbit" style="transform-origin:100px 100px;"><circle cx="100" cy="44" r="4.5" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">논리 4주차 · 오케스트레이션</p>
+      <h2 class="title r r3">설계는 우리 몫,<br><span class="em">연주는 나답게</span></h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">일은 에이전트가 한다.<br>우리는 위에 서서 설계하고,<br>연주 전엔 늘 악보로 돌아간다.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">Et in saecula saeculorum — 고리는 영원히 돈다. 수사의 달은 살롱에서 열쇠말과 함께 열린다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 15</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(255,255,255,.85)' : 'var(--ink-faint)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>

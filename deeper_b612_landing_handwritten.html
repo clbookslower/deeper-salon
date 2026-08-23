@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩살롱 2기 · 문법 한 달 — 손글씨 안내</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --paper:#FBF6EA; --paper2:#F3EAD6; --card:#FFFDF7;
+    --ink:#26211B; --ink-soft:#473F35; --muted:#8c8170;
+    --green:#1A4A35; --green-deep:#123424; --gold:#C28A2C; --star:#E6B23E; --rose:#C24D33;
+    --line:#d8cdb4;
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(230,178,62,.07), transparent 12%),
+      radial-gradient(circle at 82% 30%, rgba(26,74,53,.05), transparent 14%);
+    color:var(--ink); font-family:'Gaegu', cursive; font-weight:400;
+    font-size:19px; line-height:1.95; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 24px 110px; }
+
+  /* 손글씨 제목 */
+  .pen{ font-family:'Nanum Pen Script', cursive; }
+  h1{ font-family:'Nanum Pen Script',cursive; font-weight:400; font-size:clamp(44px,9vw,80px); line-height:1.04; color:var(--ink); letter-spacing:.5px; }
+  h2{ font-family:'Nanum Pen Script',cursive; font-weight:400; font-size:clamp(32px,5.5vw,46px); line-height:1.1; color:var(--green); margin-bottom:18px; }
+  h2 .u{ color:var(--ink); }
+  p{ font-size:19px; color:var(--ink-soft); line-height:1.95; margin-bottom:16px; }
+  strong{ font-weight:700; color:var(--ink); }
+  em{ font-style:normal; color:var(--rose); font-weight:700; }
+
+  /* 손으로 그린 테두리 */
+  .sketch{ border:2.5px solid var(--ink); border-radius:225px 12px 215px 14px/14px 215px 12px 225px; background:var(--card); }
+  .sketch.alt{ border-radius:14px 220px 12px 210px/210px 14px 220px 12px; }
+
+  /* 물결 밑줄 */
+  .wave{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='12'%3E%3Cpath d='M2 7 Q15 2 30 7 T60 7 T90 7 T118 7' fill='none' stroke='%23C28A2C' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:repeat-x; background-position:0 100%; background-size:100px 10px; padding-bottom:8px;
+  }
+  .circle{ box-shadow:none; position:relative; font-weight:700; color:var(--ink); }
+  .circle::after{
+    content:''; position:absolute; inset:-8px -12px; border:2.4px solid var(--rose);
+    border-radius:60% 40% 55% 45%/50% 55% 45% 50%; transform:rotate(-2deg); pointer-events:none;
+  }
+
+  /* 별 도들 */
+  .star{ display:inline-block; color:var(--star); }
+  .hero{ position:relative; text-align:center; padding:96px 18px 70px; }
+  .hero .doodles{ position:absolute; inset:0; pointer-events:none; }
+  .hero .doodles svg{ position:absolute; opacity:.9; }
+  .logo{ height:30px; margin:0 auto 30px; display:block; }
+  .eyebrow{ font-family:'Gaegu',cursive; font-weight:700; font-size:18px; letter-spacing:1px; color:var(--green); margin-bottom:10px; transform:rotate(-1.2deg); display:inline-block; }
+  .hero .sub{ font-family:'Gaegu',cursive; font-size:21px; color:var(--ink-soft); margin-top:18px; line-height:1.7; }
+  .tags{ margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .tag{ font-family:'Gaegu',cursive; font-weight:700; font-size:16px; color:var(--ink); padding:6px 16px; border:2.2px solid var(--ink); border-radius:140px 10px 140px 10px/10px 140px 10px 140px; background:var(--card); transform:rotate(-1deg); }
+  .tag:nth-child(2){ transform:rotate(1.2deg); }
+  .tag:nth-child(3){ transform:rotate(-.6deg); }
+
+  section{ padding:46px 0 8px; }
+  .label{ font-family:'Gaegu',cursive; font-weight:700; font-size:17px; color:var(--gold); letter-spacing:.5px; margin-bottom:6px; display:inline-block; transform:rotate(-1deg); }
+  .lead{ font-family:'Nanum Pen Script',cursive; font-size:30px; line-height:1.35; color:var(--ink); margin:6px 0 18px; }
+
+  .rule{ border:none; height:18px; margin:38px 0; background:center/contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='18'%3E%3Cpath d='M4 11 Q80 3 160 10 T316 8' fill='none' stroke='%23d8cdb4' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+  /* 증언 카드 */
+  .voices{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
+  .voice{ padding:22px 22px 18px; }
+  .voice:nth-child(odd){ transform:rotate(-1deg); }
+  .voice:nth-child(even){ transform:rotate(1deg); }
+  .voice .q{ font-size:19px; color:var(--ink); line-height:1.7; margin-bottom:10px; }
+  .voice .q.blank{ min-height:72px; margin-bottom:12px;
+    background-image:repeating-linear-gradient(transparent 0, transparent 26px, var(--line) 26px, var(--line) 27.6px);
+    background-position:0 8px; }
+  .voice .nm{ font-family:'Gaegu',cursive; font-weight:700; font-size:16px; color:var(--rose); }
+
+  /* 얻는 것 체크 */
+  .gains{ list-style:none; margin-top:14px; }
+  .gains li{ position:relative; padding:10px 0 10px 38px; font-size:19px; color:var(--ink-soft); line-height:1.7; }
+  .gains li::before{ content:'✦'; position:absolute; left:4px; top:8px; color:var(--star); font-size:22px; }
+  .gains b{ color:var(--ink); font-weight:700; }
+
+  /* 주차 */
+  .weeks{ margin-top:14px; }
+  .wk{ display:flex; gap:16px; align-items:baseline; padding:12px 0; border-bottom:2px dotted var(--line); }
+  .wk:last-child{ border-bottom:none; }
+  .wk .d{ font-family:'Gaegu',cursive; font-weight:700; font-size:17px; color:var(--green); flex-shrink:0; width:92px; }
+  .wk .t{ font-size:18px; color:var(--ink-soft); line-height:1.65; }
+  .wk .t b{ color:var(--ink); }
+
+  /* 대상 */
+  .fit{ display:grid; gap:16px; margin-top:14px; }
+  .fit .b{ padding:20px 24px; }
+  .fit .b.no{ background:var(--paper2); }
+  .fit h4{ font-family:'Nanum Pen Script',cursive; font-size:27px; color:var(--green); margin-bottom:8px; }
+  .fit .b.no h4{ color:var(--rose); }
+  .fit ul{ list-style:none; }
+  .fit li{ font-size:18px; color:var(--ink-soft); padding-left:22px; position:relative; line-height:1.7; }
+  .fit li::before{ content:'→'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+
+  /* 정보 박스 */
+  .info{ padding:8px 26px; margin-top:14px; }
+  .info .r{ display:grid; grid-template-columns:96px 1fr; padding:14px 0; border-bottom:2px dotted var(--line); }
+  .info .r:last-child{ border-bottom:none; }
+  .info .k{ font-family:'Gaegu',cursive; font-weight:700; font-size:17px; color:var(--green); }
+  .info .v{ font-size:18px; color:var(--ink); line-height:1.6; }
+  .info .v.price{ font-family:'Nanum Pen Script',cursive; font-size:36px; color:var(--rose); line-height:1; }
+
+  /* CTA */
+  .cta-wrap{ text-align:center; margin:34px 0 8px; }
+  .cta{ display:inline-block; font-family:'Nanum Pen Script',cursive; font-size:34px; color:var(--ink); text-decoration:none;
+    padding:14px 50px; background:var(--star); border:2.6px solid var(--ink);
+    border-radius:180px 16px 180px 16px/16px 180px 16px 180px; transform:rotate(-1.4deg); }
+  .cta:hover{ transform:rotate(0deg); }
+  .cta-wrap small{ display:block; margin-top:18px; font-family:'Gaegu',cursive; font-size:16px; color:var(--ink-soft); }
+
+  /* FAQ */
+  .qa{ padding:16px 0; border-bottom:2px dotted var(--line); }
+  .qa:last-child{ border-bottom:none; }
+  .qa .q{ font-family:'Gaegu',cursive; font-weight:700; font-size:20px; color:var(--green); margin-bottom:4px; }
+  .qa .q::before{ content:'Q. '; color:var(--rose); }
+  .qa .a{ font-size:18px; color:var(--ink-soft); line-height:1.7; }
+
+  .closing{ text-align:center; margin-top:50px; padding:54px 30px; background:var(--green-deep); color:var(--paper);
+    border-radius:200px 20px 200px 22px/22px 200px 18px 200px; }
+  .closing h2{ color:#fff; }
+  .closing .well{ font-family:'Nanum Pen Script',cursive; font-size:34px; line-height:1.3; color:var(--star); margin:18px 0; }
+  .closing p{ color:#e6ddc6; font-size:18px; }
+  .closing .cta{ background:var(--star); margin-top:8px; }
+
+  .footer{ text-align:center; padding-top:46px; color:var(--muted); font-family:'Gaegu',cursive; font-size:15px; line-height:1.8; }
+  .footer img{ height:20px; opacity:.5; margin-bottom:10px; }
+
+  @media (max-width:600px){
+    body{ font-size:18px; }
+    .voices{ grid-template-columns:1fr; }
+    .hero{ padding:80px 12px 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="doodles">
+    <svg width="34" height="34" style="top:8%;left:10%;transform:rotate(-12deg)" viewBox="0 0 24 24"><path d="M12 2 L14.2 8.6 L21 9 L15.4 13.4 L17.5 20 L12 15.8 L6.5 20 L8.6 13.4 L3 9 L9.8 8.6 Z" fill="none" stroke="%23E6B23E" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <svg width="22" height="22" style="top:20%;left:84%;transform:rotate(8deg)" viewBox="0 0 24 24"><path d="M12 2 L14.2 8.6 L21 9 L15.4 13.4 L17.5 20 L12 15.8 L6.5 20 L8.6 13.4 L3 9 L9.8 8.6 Z" fill="none" stroke="%23C28A2C" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <svg width="46" height="46" style="top:60%;left:80%;transform:rotate(-6deg)" viewBox="0 0 60 60"><circle cx="30" cy="30" r="14" fill="none" stroke="%231A4A35" stroke-width="1.8"/><ellipse cx="30" cy="30" rx="26" ry="8" fill="none" stroke="%231A4A35" stroke-width="1.6" transform="rotate(-18 30 30)"/></svg>
+    <svg width="20" height="20" style="top:72%;left:12%;transform:rotate(14deg)" viewBox="0 0 24 24"><path d="M12 2 L14.2 8.6 L21 9 L15.4 13.4 L17.5 20 L12 15.8 L6.5 20 L8.6 13.4 L3 9 L9.8 8.6 Z" fill="none" stroke="%23E6B23E" stroke-width="1.8" stroke-linejoin="round"/></svg>
+  </div>
+  <img class="logo" src="data:image/png;base64,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" alt="DEEPER" onerror="this.style.display='none'">
+  <div class="eyebrow">디퍼 언브랜딩살롱 2기 · 문법 한 달</div>
+  <h1>당신 안의<br>한 문장을<br>찾는 한 달</h1>
+  <div class="sub">매주 월요일 밤, 열두 사람이 모여<br>남이 덧씌운 이름을 벗고 — 자기 별을 켭니다 <span class="star">✦</span></div>
+  <div class="tags">
+    <span class="tag">6/29 시작 · 4주</span>
+    <span class="tag">월 밤 9–11시</span>
+    <span class="tag">정원 12명</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <span class="label">무엇을 하나요</span>
+    <div class="lead">언브랜딩은, 남이 덧씌운 ‘나’를 벗고<br>진짜 내 목소리를 되찾는 일이에요.</div>
+    <p>
+      세상이 붙여준 이름표를 한 겹씩 떼어내고, 마침내 내 안에 숨어 있던 진짜 나에 닿는 것.
+      마치 사막의 모래를 파 내려가, 숨은 우물에 닿듯이.
+      디퍼 언브랜딩살롱은 AI 시대를 함께 건너가는 사람들이 <strong>자기 삶의 문장을 잃지 않도록</strong> 서로의 곁을 지키는 창작 공동체예요.
+    </p>
+    <p>그 길은 <span class="wave">트리비움 — 문법·논리·수사</span>의 세 걸음. 2기는 그 첫 걸음, <strong>문법 한 달</strong>입니다.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">왜 지금인가요</span>
+    <h2>매끈한 문장은 넘치는데,<br><span class="u">나의 문장</span>은 흐려질 때</h2>
+    <p>
+      AI는 무엇이든 대신 써 줘요. 빠르고, 매끈하고, 그럴듯하게. 그 편리함 속에서 우리는 자주 가장 중요한 걸 놓칩니다 — 바로 <em>자기만의 목소리</em>.
+    </p>
+    <p>혼자선 안 보이던 것이, 곁의 한 사람과 AI라는 거울 앞에 서면 비로소 보여요. 디퍼가 건네는 건 AI가 못 주는 것 — 함께 읽는 사람, 목격되는 경험, 끝까지 곁을 지키는 동료입니다.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">1기의 한 달</span>
+    <h2>먼저 걸어본 사람들의 변화</h2>
+    <p>우리가 지어낸 말이 아니라, 그들이 직접 건넬 말이에요.</p>
+    <!-- 별지기 여섯 분께 문구 받아 빈칸을 채울 자리 -->
+    <div class="voices">
+      <div class="voice sketch"><div class="q blank"></div><div class="nm">— 단무지님</div></div>
+      <div class="voice sketch alt"><div class="q blank"></div><div class="nm">— 솔담님</div></div>
+      <div class="voice sketch alt"><div class="q blank"></div><div class="nm">— 스윗워러님</div></div>
+      <div class="voice sketch"><div class="q blank"></div><div class="nm">— 햇살님</div></div>
+      <div class="voice sketch"><div class="q blank"></div><div class="nm">— 헤더님</div></div>
+      <div class="voice sketch alt"><div class="q blank"></div><div class="nm">— 야간비행님</div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">무엇을 얻나요</span>
+    <h2>한 달 뒤, 당신에게 남는 것</h2>
+    <ul class="gains">
+      <li><b>자기만의 한 문장</b> — 남의 언어가 아닌, 나를 설명하는 브랜드의 씨앗</li>
+      <li><b>AI를 내 목소리로 부리는 법</b> — 답을 받는 기계가 아니라, 나를 비추는 거울로</li>
+      <li><b>나만의 AI 동무 ‘여우’</b> — 4주 안에 직접 세우고 길들이는 나만의 세컨드브레인(디퍼 OS). 내 글과 생각이 쌓일수록, 나를 닮아가는 나만의 AI</li>
+      <li><b>책과 브랜드로 가는 첫 걸음</b> — 디퍼의 북투브랜드, 그 출발점</li>
+      <li><b>끝까지 곁을 지키는 동료</b> — 작은 사막에서 만난, 세상에 단 하나뿐인 관계</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">어떻게 걷나요</span>
+    <h2>네 번의 월요일 밤</h2>
+    <div class="weeks">
+      <div class="wk"><div class="d">6/29 · OT</div><div class="t"><b>입주.</b> 자기 사막에 이름을 붙이고, 매일의 <em>오아시스</em>(아침의 글)를 함께 엽니다.</div></div>
+      <div class="wk"><div class="d">7/6 · 1주</div><div class="t">원천으로 — 남이 준 이름을 내려놓고, 진짜 나를 마주하는 시간.</div></div>
+      <div class="wk"><div class="d">7/13 · 2주</div><div class="t">매일의 리듬 — 작은 의례가 어떻게 나를 다시 세우는지.</div></div>
+      <div class="wk"><div class="d">7/20 · 3주</div><div class="t">자기 해체 — AI라는 거울 앞에서, 덧씌운 껍질을 벗는다.</div></div>
+      <div class="wk"><div class="d">7/27 · 수료</div><div class="t"><b>씨앗 문장.</b> 자기만의 한 문장을 손에 쥐고, 다음 걸음을 스스로 택한다.</div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">우리의 리듬</span>
+    <h2>혼자가 아니라,<br>작은 사막에서 함께</h2>
+    <p>열두 사람을 일부러 섞어 <strong>세 개의 작은 사막</strong>으로 나눠요. 낯선 별들이 만나야 더 깊이 알아보니까요. 사막마다 먼저 걸어본 <strong>1기 별지기 둘</strong>이 곁을 지킵니다.</p>
+    <p>매주 월요일 밤 다 함께 모였다가 각자의 사막으로 흩어져 깊이 나누고, 매일 아침 <em>오아시스</em>에 들러요. 수업과 글은 긱어스에 쌓이고, 일상의 온기는 카톡 사막방에 흐릅니다.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">이런 분께</span>
+    <h2>누구와 함께 걷고 싶은가</h2>
+    <div class="fit">
+      <div class="b sketch">
+        <h4>이런 분께 권해요</h4>
+        <ul>
+          <li>AI는 쓰지만, 내 글이 점점 사라지는 듯한 분</li>
+          <li>오래 미뤄둔 자기 이야기를 시작하고 싶은 분</li>
+          <li>혼자 말고, 곁의 동료와 꾸준히 가고 싶은 분</li>
+        </ul>
+      </div>
+      <div class="b sketch alt no">
+        <h4>조금 이를 수 있어요</h4>
+        <ul>
+          <li>빠른 치트키·정보만 얻고 싶은 분 — 우리는 깊이·오래 머무는 결이에요</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">한눈에 보기</span>
+    <h2>모임 정보</h2>
+    <div class="info sketch">
+      <div class="r"><div class="k">일정</div><div class="v">6/29(월) OT + 정규 4주<br>7/6 · 7/13 · 7/20 · 7/27(수료)</div></div>
+      <div class="r"><div class="k">시간</div><div class="v">매주 월요일 밤 9–11시</div></div>
+      <div class="r"><div class="k">인원</div><div class="v">12명 · 세 개의 사막</div></div>
+      <div class="r"><div class="k">진행</div><div class="v">온라인 라이브 + 긱어스 + 카톡</div></div>
+      <div class="r"><div class="k">함께</div><div class="v">1기 별지기 6인이 사막마다 동행</div></div>
+      <div class="r"><div class="k">수강료</div><div class="v price">250,000원</div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">신청 방법</span>
+    <h2>먼저, 신청서를 써주세요</h2>
+    <p>정원이 작아 <span class="circle">신청제</span>로 모십니다. 짧은 신청서를 써주시면, 함께 한 달을 걸을 분들을 정해 한 분 한 분께 안내드려요.</p>
+    <div class="cta-wrap">
+      <!-- ⬇ 구글폼 주소로 교체하세요 ⬇ -->
+      <a class="cta" href="#구글폼링크">신청서 쓰기 →</a>
+      <small>신청 → 선발 안내 → 스마트스토어 결제 → 6/29 입주</small>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <span class="label">자주 묻는 질문</span>
+    <h2>궁금한 것들</h2>
+    <div class="qa"><div class="q">AI를 잘 몰라도 괜찮나요?</div><div class="a">네. 챗지피티·클로드를 처음 써도 괜찮아요. 잘 다루는 법이 아니라, 그걸 거울 삼아 나를 보는 법을 함께 익혀요.</div></div>
+    <div class="qa"><div class="q">온라인인가요?</div><div class="a">네, 매주 월요일 밤 온라인 라이브예요. 다 함께 모였다가 각자의 사막으로 나뉘어 깊이 나눕니다.</div></div>
+    <div class="qa"><div class="q">그날 못 오면요?</div><div class="a">기록과 글이 긱어스에 쌓여요. 한 번 빠져도 곁의 사막 식구와 별지기가 흐름을 이어줍니다.</div></div>
+    <div class="qa"><div class="q">4주가 끝나면요?</div><div class="a">수료 후엔 ‘디퍼님’으로 남고, 논리·수사로 자기 호흡에 맞춰 이어가요. 끝까지 걸으면 책 한 권과 자기 브랜드가 남습니다.</div></div>
+  </section>
+
+  <div class="closing">
+    <span class="label" style="color:var(--star)">사막이 아름다운 이유</span>
+    <h2>당신 안에, 우물이 있어요</h2>
+    <div class="well">“사막이 아름다운 건,<br>어딘가에 우물을 숨기고 있기 때문이야.”</div>
+    <p>여섯 번째 별까지 켜졌어요.<br>이제, 일곱 번째 자리를 당신께 내어드릴게요.</p>
+    <div class="cta-wrap"><a class="cta" href="#구글폼링크">신청서 쓰기 →</a></div>
+  </div>
+
+  <div class="footer">
+    <img src="data:image/png;base64,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" alt="DEEPER" onerror="this.style.display='none'"><br>
+    DEEPER · 디퍼 언브랜딩살롱 2기 · 2026<br>
+    AI 시대를 함께 건너가는 사람들을 위한 인문학적 창작 공동체
+  </div>
+
+</div>
+</body>
+</html>

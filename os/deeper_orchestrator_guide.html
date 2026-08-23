@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나만의 총괄 에이전트 ‘디퍼’ 만들기 — 복붙 가이드</title>
+<meta name="description" content="클로드 코드가 깔려 있으니, 이제 대화창에 복붙만 하면 돼요. 파일 만들기·저장은 전부 디퍼(AI)가 해요. 비개발자도 입력만 하면 내 일을 함께 굴리는 작은 팀이 생겨요.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="나만의 총괄 에이전트 ‘디퍼’ 만들기">
+<meta property="og:description" content="대화창에 복붙만 하면, 디퍼가 알아서 만들어줘요. 비개발자용 복붙 가이드.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/deeper_orchestrator_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-orchestrator.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-orchestrator.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1A4A35;--green-soft:#3B6D52;--ink:#2A2622;--ink-soft:#5A5248;
+    --paper:#FBF7EE;--gold:#B08D57;--line:rgba(42,38,34,.12)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:30px;line-height:1.4;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.85;max-width:32em;margin:0 auto}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 36px;border-radius:2px}
+  p{margin:0 0 14px}
+  p,li{font-size:15.5px;color:#3c3833}
+  h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:22px;color:var(--green);
+    margin:52px 0 6px;line-height:1.4;display:flex;align-items:baseline;gap:10px}
+  h2 .hn{font-family:'DM Mono',monospace;font-size:14px;color:var(--gold);font-weight:400}
+  .sectsub{font-size:14.5px;color:var(--ink-soft);margin:0 0 20px}
+  b,strong{color:var(--green);font-weight:700}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+  th{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:var(--green-soft);text-transform:uppercase;font-weight:400}
+  td:first-child{font-weight:700;color:var(--green);white-space:nowrap}
+  ul.sub{margin:8px 0 12px;padding-left:0;list-style:none}
+  ul.sub li{position:relative;padding-left:18px;margin-bottom:8px;line-height:1.8}
+  ul.sub li::before{content:'·';position:absolute;left:3px;color:var(--gold);font-weight:700}
+  .key{font-family:'DM Mono',monospace;font-size:.88em;background:#EFEADD;border:1px solid var(--line);
+    border-radius:6px;padding:1px 7px;color:var(--ink)}
+  a.link{color:#185FA5;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(24,95,165,.3)}
+  .analogy{background:#F2EEE2;border-radius:14px;padding:18px 20px;margin:18px 0;font-size:15px;line-height:1.85;color:var(--ink-soft)}
+  .analogy b{color:var(--green)}
+  .how{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin:20px 0}
+  .how .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+  .how p{font-size:14.5px;color:#4a463f;line-height:1.9;margin:0}
+  .ok{border-left-color:#3B6D11}.ok .label{color:#3B6D11}
+  .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
+  /* 복붙 박스 */
+  .step{display:flex;gap:14px;align-items:flex-start;margin:30px 0 6px}
+  .num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .step-h{flex:1}
+  .step-h .t{font-family:'Noto Serif KR',serif;font-weight:600;font-size:17px;color:var(--ink);line-height:1.4}
+  .step-h .d{font-size:14px;color:var(--ink-soft);margin-top:3px;line-height:1.7}
+  .prompt{background:#fff;border:1.5px solid var(--green-soft);border-radius:12px;margin:10px 0 6px;overflow:hidden;
+    box-shadow:0 2px 10px rgba(26,74,53,.06)}
+  .ptop{background:#EEF4E6;padding:8px 14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;
+    color:#356018;border-bottom:1px solid rgba(59,109,17,.16)}
+  .pbody{padding:15px 17px;font-size:14px;line-height:1.95;color:#2f2c28;white-space:pre-wrap;word-break:break-word}
+  .fill{background:#FBEAC6;border:1px solid #E2C77B;border-radius:5px;padding:0 5px;color:#8A6512;font-weight:700;font-size:.95em}
+  .pcap{font-size:13px;color:var(--ink-soft);margin:0 0 8px;padding-left:4px;line-height:1.75}
+  .pcap b{color:var(--green-soft)}
+  .recap{background:var(--green);border-radius:14px;padding:18px 22px;margin:24px 0 8px;color:#EFE9DC;font-size:14.5px;line-height:1.85}
+  .recap .rlabel{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;color:#E2C77B;margin-bottom:7px;text-transform:uppercase}
+  .recap b{color:#fff}
+  .done{background:#F2EEE2;border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;margin:50px 0 0}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--green);margin-bottom:10px;line-height:1.55}
+  .done p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin:0}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:54px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+  @media (max-width:460px){.page{padding:48px 18px 80px}h1{font-size:26px}table{font-size:13px}th,td{padding:8px 7px}td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<div style="max-width:760px;margin:20px auto 0;padding:14px 20px;background:#1A4A35;color:#FAF6EF;border-radius:12px;font-size:14px;line-height:1.6;word-break:keep-all;">📢 <b>새 가이드가 나왔습니다.</b> 이제 폴더 이사부터 에이전트 팀·학습 루프까지 정비사가 한 번에 세팅해 드립니다. → <a href="secondbrain_setup_guide.html" style="color:#E8C87A;font-weight:bold;">세컨드브레인 표준 구조 세팅 가이드</a></div>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER">
+  <div class="eyebrow">DEEPER OS · 다음 단계 (심화)</div>
+  <h1>나만의 총괄 에이전트<br>‘디퍼’ 만들기</h1>
+  <p class="lead">클로드 코드가 깔려 있으니, 이제 <b>대화창에 복붙만</b> 하면 돼요. 파일 만들기·저장은 전부 <b>디퍼(AI)가</b> 해요. 우린 <b>입력만</b> 하면, 내 일을 함께 굴리는 작은 팀이 생겨요. 🦊</p>
+  <div class="rule"></div>
+
+  <div class="how ok"><div class="label">이 가이드 쓰는 법 — 복붙 가이드예요</div><p>아래 <b>흰 상자</b>를 복사해서 <b>클로드 대화창에 붙여넣기</b> → 디퍼가 알아서 만들어줘요. 노란 <span class="fill">[칸]</span>만 내 걸로 바꾸면 끝. <b>폴더니 파일이니 직접 안 만들어도 돼요</b> — 그건 다 디퍼가 합니다. 위에서 아래로 차례대로 하나씩만 따라오세요.</p></div>
+
+  <h2><span class="hn">01</span>이게 뭔가요 — ‘총괄’ 한 줄로</h2>
+  <div class="analogy">그냥 AI에게 시키는 건 <b>혼자 다 하는 1인 사업자</b>예요. 매번 “나는 이런 사람이고, 이 기준으로 써줘”를 다시 설명해야 하죠. <b>총괄 ‘디퍼’</b>를 두는 건 <b>작은 회사</b>를 갖는 거예요. 실장(디퍼)이 일을 받아, 그 일에 맞는 <b>전문 직원</b>에게 맡겨요. 직원은 자기 기준·말투를 <i>이미</i> 알아서, 매번 설명할 필요가 없어요.</div>
+  <table>
+    <tr><th></th><th>그냥 시키기</th><th>총괄 디퍼 + 팀</th></tr>
+    <tr><td>맥락</td><td>매번 다시 설명</td><td>직원마다 기준이 박혀 있음</td></tr>
+    <tr><td>품질</td><td>그때그때 다름</td><td>같은 일 → 같은 품질</td></tr>
+  </table>
+
+  <h2><span class="hn">02</span>먼저 — 일할 폴더 하나 열기</h2>
+  <p class="sectsub">클로드 코드(Code 탭 · Local)로 <b>폴더 하나</b>를 열어요. 거기서 아래 복붙을 시작하면 돼요.</p>
+  <div class="how"><div class="label">💡 어디서 시작하죠?</div><p>사막여우의 <b>30일 여정과 섞이지 않게</b>, 일 폴더는 <b>따로</b> 두는 걸 권해요. 헷갈리면 — 바탕화면에 새 폴더(예: <span class="key">내업무</span>)를 하나 만들고, 클로드 코드에서 그 폴더를 열면 됩니다.<br>⚠️ <b>사막여우 볼트 안에는 만들지 마세요.</b> 볼트의 규칙책(CLAUDE.md)은 사막여우의 집이라, 거기에 총괄을 얹으면 <em>"사막여우를 불렀는데 다른 직원이 나와요"</em> 같은 혼선이 생겨요. 총괄은 꼭 <b>별도 일 폴더</b>에요.</p></div>
+
+  <h2><span class="hn">03</span>복붙으로 디퍼 만들기 — 다섯 걸음</h2>
+  <p class="sectsub">하나 붙여넣고, 디퍼가 답하면, 다음 걸로. 천천히요.</p>
+
+  <div class="step"><div class="num">1</div><div class="step-h"><div class="t">총괄 ‘디퍼’를 깨우기</div><div class="d">디퍼가 자기 규칙책(CLAUDE.md)을 직접 만들어 저장해요.</div></div></div>
+  <div class="prompt"><div class="ptop">📋 복사해서 클로드 대화창에 붙여넣기</div><div class="pbody">나는 비개발자야. 지금부터 너에게 ‘총괄 에이전트’를 만들어달라고 할 거야.
+파일·폴더 만들기와 저장은 전부 네가 해줘. 나는 대화로만 부탁할게.
+
+먼저 — 여기가 맞는 폴더인지 확인해줘. 이 폴더에 00-Daily·01-Grammar·_여정기록.md 같은 게 보이면 여기는 사막여우(디퍼 OS) 볼트야. 그 경우 아무것도 만들지 말고 “에이전트용 폴더를 따로 열어주세요”라고 알려줘.
+
+이 폴더에 나의 총괄 에이전트를 만들어줘.
+- 총괄 이름: <span class="fill">[디퍼]</span>
+- 내 말투 취향: <span class="fill">[다정하되 군더더기 없이]</span>
+
+이 폴더의 CLAUDE.md 파일에 이렇게 적고 저장해줘:
+“너는 나의 총괄 에이전트다. 일이 들어오면 직접 다 하지 말고,
+알맞은 직원(서브에이전트)에게 맡긴 뒤 결과를 종합해 보고한다.
+단, ‘사막여우’라는 이름이나 디퍼 OS의 짧은 명령(안녕·오아시스·정리·백업·냠냠·밤하늘·이사·새옷)이 오면
+직원에게 맡기지 말고 사막여우(디퍼 OS)가 받도록 그대로 둔다.”
+위의 이름과 말투도 함께 적어줘.</div></div>
+  <p class="pcap">→ 노란 칸: <b>[디퍼]</b>에 부르고 싶은 이름, <b>[말투]</b>에 내 취향을 넣으세요. (그대로 둬도 돼요.)</p>
+
+  <div class="step"><div class="num">2</div><div class="step-h"><div class="t">내 일을 보여주고 — 직원 추천받기</div><div class="d">디퍼가 내 일을 3~6명의 직원으로 묶어 제안해요.</div></div></div>
+  <div class="prompt"><div class="ptop">📋 복사해서 붙여넣기</div><div class="pbody">내가 자주 하는 일은 이런 거야:
+<span class="fill">[카피 쓰기 / 일정 챙기기 / 자료 조사 / 회의록 정리 / 글 다듬기]</span>
+
+이걸 보고 전문 직원(서브에이전트)을 3~6명으로 묶어서 추천해줘.
+각 직원의 이름·하는 일·안 하는 일·판단 기준을 표로 보여줘.
+확정은 내가 할게.</div></div>
+  <p class="pcap">→ 노란 칸에 <b>내가 하는 일</b>을 편하게 나열하세요(완벽하지 않아도 돼요). 디퍼가 알아서 묶어줘요.</p>
+
+  <div class="step"><div class="num">3</div><div class="step-h"><div class="t">“좋아, 만들어줘” — 직원들 생성</div><div class="d">디퍼가 직원 파일을 만들고, 명단·위임 규칙까지 정리해 저장해요.</div></div></div>
+  <div class="prompt"><div class="ptop">📋 복사해서 붙여넣기</div><div class="pbody">좋아. 추천해준 직원들을 실제로 만들어줘.
+- 각 직원을, 클로드 코드가 알아보는 자리(.claude/agents 폴더)에 파일로 만들어 저장해줘.
+- 총괄(CLAUDE.md)에도 ‘직원 명단’과 ‘어떤 일을 누구에게 맡길지(위임 규칙)’를 추가해줘.
+- 각 직원에 ‘하지 말 것(금지)’도 꼭 넣어줘.
+<span class="fill">[특별히 강조할 점이 있으면 여기에: 예 — 카피는 클리셰 금지]</span></div></div>
+  <p class="pcap">→ 강조할 게 없으면 노란 칸은 <b>지우고</b> 붙여넣어도 돼요. 폴더 위치는 디퍼가 알아서 처리해요.</p>
+
+  <div class="step"><div class="num">4</div><div class="step-h"><div class="t">잘 됐는지 확인</div><div class="d">디퍼가 자기와 직원들을 소개하면 완성!</div></div></div>
+  <div class="prompt"><div class="ptop">📋 복사해서 붙여넣기</div><div class="pbody"><span class="fill">[디퍼]</span>야, 너는 누구고 직원이 누구야? 한 명씩 짧게 소개해줘.</div></div>
+  <p class="pcap">→ <b>[디퍼]</b>는 1번에서 정한 이름으로. 직원들을 소개하면 <b>성공이에요</b> 🎉</p>
+
+  <div class="step"><div class="num">5</div><div class="step-h"><div class="t">이제 그냥 일을 시켜보기</div><div class="d">평소 말로 부탁하면, 디퍼가 알맞은 직원에게 맡겨요.</div></div></div>
+  <div class="prompt"><div class="ptop">📋 복사해서 붙여넣기</div><div class="pbody"><span class="fill">[가을 살롱 모집 글]</span> 써줘.</div></div>
+  <p class="pcap">→ 노란 칸에 <b>지금 필요한 일</b>을 넣으세요. 명령어를 외울 필요 없어요 — 평소 말이면 돼요.</p>
+
+  <h2><span class="hn">04</span>이름 바꾸기 — ‘디퍼’를 내 이름으로</h2>
+  <p class="sectsub">언제든 바꿀 수 있어요. 이 한 줄을 붙여넣으면 디퍼가 관련 파일까지 고쳐줘요.</p>
+  <div class="prompt"><div class="ptop">📋 복사해서 붙여넣기</div><div class="pbody">총괄 이름을 <span class="fill">[별지기]</span>로 바꿔줘. 관련된 파일도 같이 고쳐서 저장해줘.</div></div>
+  <p class="pcap">→ 직원 이름도 같은 식으로 바꿀 수 있어요. <b>내가 부르기 좋은 이름</b>이 제일 좋은 이름이에요. 🦊</p>
+
+  <h2><span class="hn">05</span>작게 시작하는 게 좋아요</h2>
+  <ul class="sub">
+    <li><b>직원은 3~6명</b>이면 충분해요. 너무 잘게 쪼개면 관리만 번거로워요.</li>
+    <li>‘인스타 카피’와 ‘카드 카피’처럼 비슷한 건 <b>한 직원(글 담당)</b>으로 묶으세요.</li>
+    <li>처음부터 완벽하지 않아도 돼요. <b>한 명부터</b> 만들어 써보고, 어색하면 디퍼에게 “○○ 직원을 이렇게 고쳐줘” 하면 돼요.</li>
+  </ul>
+
+  <div class="recap"><div class="rlabel">한 줄 요약</div><b>복사 → 붙여넣기 → 노란 칸만 내 걸로.</b> 파일도 폴더도 디퍼가 다 만들어줘요. 우린 입력만 하면, 내 일이 ‘눈에 보이는 작은 회사’가 돼요.</div>
+
+  <h2><span class="hn">06</span>에이전트도 일기를 써요 — 쓸수록 똑똑해지게</h2>
+  <p class="lead">사람이 업무일지를 쓰며 늘듯, 에이전트도 <b>일한 뒤 일기를 남기면 자라요.</b> 무엇이 통했고 무엇이 막혔는지 스스로 적고 — <b>다음 일을 시작하기 전에 그 일기를 먼저 읽어요.</b> 이 ‘읽고 → 일하고 → 남기고’의 고리가 돌수록, 디퍼와 직원들의 판단이 점점 나에게 맞게 다듬어져요.</p>
+
+  <div class="analogy">🦊 <b>왜 좋은가요</b> — 어제 “이 말투는 별로였어”를 적어두면, 내일 그 직원이 그걸 먼저 읽고 피해가요. 기억이 쌓이는 거예요. 팀이 클수록(총괄+여러 직원) 각자 자기 일기를 가지니, 직원마다 결이 따로 자라요.</div>
+
+  <div class="how"><b>어디에 세팅하나요?</b> — <b>디퍼(에이전트)를 만든 이 폴더</b>에 해요. 사막여우(디퍼) 볼트가 아니에요. 헷갈리셔도 괜찮아요 — 아래 프롬프트를 붙여넣으면 <b>클로드가 맞는 폴더인지 먼저 확인</b>해 드려요. 이 폴더의 백업은 총괄에게 “이 폴더를 깃허브에 백업해줘”라고 부탁하세요 — 그럼 일기도 함께 실려요. (“백업” 한마디는 사막여우가 디퍼 볼트를 백업하는 말이에요.)</div>
+
+  <div class="prompt"><div class="ptop">📋 복사해서 클로드 대화창에 붙여넣기 (한 번만)</div><div class="pbody">내가 만든 에이전트들이 스스로 배우며 자라도록 ‘에이전트 일기’ 학습 체계를 세팅하려고 해. 나는 폴더를 잘 구분하지 못하니, 먼저 지금 열린 폴더가 맞는 곳인지 네가 확인해줘.
+
+【먼저 — 여기가 맞는 폴더인지 확인】
+- 이 세팅은 내가 에이전트(총괄·팀)를 만든 폴더에 해야 해. 보통 그 폴더엔 내가 따르는 CLAUDE.md 규칙책과 .claude/agents 폴더(에이전트 정의)가 있어.
+- 만약 지금 열린 곳이 사막여우(디퍼) 볼트라면 — 00-Daily·01-Grammar·_여정기록.md 같은 게 보이면 — 여기가 아니야. 그 경우 아무것도 만들지 말고 “에이전트 폴더를 열어주세요”라고 알려줘.
+- 둘 다 아니거나 헷갈리면, 지금 폴더에 뭐가 있는지 쉬운 말로 알려주고 여기서 진행해도 될지 한 번 물어봐줘.
+
+【맞는 폴더가 확인되면 — 세팅】
+1. 이 폴더 안에 ‘일기’ 폴더를 만들어줘.
+2. 이 폴더의 CLAUDE.md 맨 아래에 ‘에이전트 일기 규약’을 한 단락 추가해줘:
+   - 각 에이전트는 일을 마치면 일기/[자기이름]_일기.md 맨 아래에 오늘 날짜로 짧게 남긴다 — ①무엇을 했나 ②잘 통한 판단·표현 ③막히거나 틀린 것 ④다음엔 이렇게 ⑤한 문장.
+   - 각 에이전트는 일을 시작하기 전에 자기 일기의 최근 며칠을 먼저 읽고, 배운 것을 이번 일에 적용한다.
+   - 이 일기는 사람에게 보고하는 글이 아니라, 에이전트 자신이 다시 읽을 학습 기록이다. 솔직하게, 짧게.
+3. 기존 에이전트 정의나 다른 파일은 바꾸지 말고, ‘일기’ 폴더 생성 + CLAUDE.md에 규약 한 단락 추가만 해줘.
+
+다 되면 앞으로 어떻게 돌아가는지 두어 줄로 알려줘.</div></div>
+  <p class="pcap">→ 핵심은 <b>‘일을 시작하기 전에 자기 일기를 먼저 읽는 것’</b>이에요. 이게 있어야 어제의 배움이 오늘의 판단으로 이어지는 <b>자가 학습의 고리</b>가 돼요.</p>
+
+  <div class="done">
+    <div class="big">우린 입력만, 만드는 건 디퍼가 🦊</div>
+    <p>한 걸음씩, 천천히 붙여넣어 보세요. 막히면 그냥 <b>클로드 대화창에 물어보면</b> 돼요 — “방금 이게 안 됐어, 도와줘”처럼요.</p>
+  </div>
+
+  <div class="foot">DEEPER 언브랜딩 살롱 · 디퍼 OS 다음 단계</div>
+</div>
+</body>
+</html>

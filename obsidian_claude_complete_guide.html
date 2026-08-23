@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsidian + Claude 완전 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1e1a14;
+  --ink-mid: #3a342a;
+  --ink-soft: #7a7060;
+  --ink-ghost: #b4a890;
+  --paper: #f7f3ec;
+  --paper-warm: #ede8df;
+  --paper-dark: #ddd6c8;
+  --white: #ffffff;
+  --gold: #c9a96e;
+  --gold-pale: rgba(201,169,110,0.1);
+  --gold-line: rgba(201,169,110,0.28);
+  --night: #111009;
+  --night-2: #1e1c16;
+  --cream: #f0ebe0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--night);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 44px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex; gap: 28px; list-style: none;
+}
+
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  background: var(--night);
+  padding: 72px 44px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, transparent 65%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+}
+
+.hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: rgba(240,235,224,0.55);
+}
+
+.hero-desc {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.85;
+  max-width: 520px;
+  margin-bottom: 40px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 300;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border: 1px solid rgba(201,169,110,0.2);
+  background: rgba(201,169,110,0.05);
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+}
+
+.pill-dot {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* PART BANNER */
+.part-banner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 44px;
+}
+
+.pb-num {
+  background: var(--gold);
+  color: var(--night);
+  padding: 14px 22px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.pb-body {
+  flex: 1;
+  padding: 14px 20px;
+  background: var(--night-2);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.pb-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: rgba(201,169,110,0.6);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.pb-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+/* TOC */
+.toc-block {
+  background: var(--white);
+  border-bottom: 1px solid var(--paper-dark);
+  padding: 32px 44px;
+}
+
+.toc-inner { max-width: 780px; margin: 0 auto; }
+
+.toc-row {
+  display: flex;
+  gap: 24px;
+}
+
+.toc-col { flex: 1; }
+
+.toc-col-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gold-line);
+}
+
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+
+.toc-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  text-decoration: none;
+  background: var(--paper);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.toc-list a:hover {
+  border-color: var(--gold-line);
+  background: var(--gold-pale);
+}
+
+.toc-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--gold);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.toc-text {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+
+/* MAIN */
+.main { max-width: 780px; margin: 0 auto; padding: 0 44px; }
+
+/* Section */
+.section { padding: 64px 0 0; }
+
+.sec-header { margin-bottom: 32px; }
+
+.sec-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sec-eyebrow::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: var(--gold);
+}
+
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.sec-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--paper-dark);
+  margin: 0 0 32px;
+}
+
+/* Prose */
+.prose {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.prose strong { color: var(--ink); font-weight: 500; }
+
+/* Comparison table */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+}
+
+.comp-table th {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gold-line);
+  background: var(--gold-pale);
+  font-weight: normal;
+}
+
+.comp-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--paper-dark);
+  color: var(--ink-mid);
+  vertical-align: top;
+  line-height: 1.65;
+  font-weight: 300;
+  background: var(--white);
+}
+
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td:first-child {
+  font-weight: 400;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  width: 120px;
+}
+
+.comp-table td.highlight {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Install steps */
+.install-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.install-card {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  padding: 18px 16px;
+  border-top: 2px solid var(--gold);
+}
+
+.ic-device {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ic-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ic-step {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-weight: 300;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.ic-step-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+  opacity: 0.7;
+}
+
+/* Screen visual */
+.screen-visual {
+  background: var(--night);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* Button table */
+.btn-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 12.5px;
+}
+
+.btn-table th {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--gold-line);
+  background: var(--gold-pale);
+  font-weight: normal;
+}
+
+.btn-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--paper-dark);
+  color: var(--ink-mid);
+  font-weight: 300;
+  background: var(--white);
+  line-height: 1.6;
+}
+
+.btn-table tr:last-child td { border-bottom: none; }
+
+/* Markdown demos */
+.md-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.md-input {
+  background: var(--night);
+  padding: 14px 16px;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+.md-output {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.md-output h1 { font-size: 18px; font-family: 'Noto Serif KR', serif; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.md-output h2 { font-size: 15px; font-family: 'Noto Serif KR', serif; font-weight: 500; color: var(--ink-mid); margin-bottom: 2px; }
+.md-output h3 { font-size: 13px; font-family: 'Noto Serif KR', serif; font-weight: 500; color: var(--ink-soft); }
+
+/* Mini label */
+.mini-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink-ghost);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Note */
+.note {
+  background: var(--gold-pale);
+  border-left: 2px solid var(--gold);
+  padding: 13px 16px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.note strong { color: var(--ink-mid); font-weight: 500; }
+
+/* Dark block */
+.dark-block {
+  background: var(--night);
+  padding: 28px 32px 24px;
+  margin: 24px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-block::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; right: -30px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(201,169,110,0.08), transparent 65%);
+}
+
+.db-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.db-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.db-body {
+  font-size: 13px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.db-body strong { color: rgba(255,255,255,0.7); font-weight: 400; }
+
+/* Folder tree */
+.folder-tree {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  padding: 18px 20px;
+  margin: 16px 0;
+  font-family: monospace;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* Method cards */
+.method-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.method-card {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  overflow: hidden;
+}
+
+.mc-header {
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--night-2);
+}
+
+.mc-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.mc-badge {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  padding: 2px 9px;
+  border: 1px solid var(--gold-line);
+  background: var(--gold-pale);
+}
+
+.mc-body { padding: 16px 18px; }
+
+.mc-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.mc-step {
+  font-size: 11px;
+  color: var(--white);
+  background: var(--night);
+  padding: 4px 10px;
+  font-weight: 300;
+}
+
+.mc-arrow {
+  color: var(--ink-ghost);
+  font-size: 12px;
+}
+
+.mc-desc {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.mc-pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mc-pro, .mc-con {
+  padding: 10px 12px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.mc-pro {
+  background: rgba(138,171,136,0.06);
+  border: 1px solid rgba(138,171,136,0.2);
+}
+
+.mc-con {
+  background: rgba(180,120,100,0.04);
+  border: 1px solid rgba(180,120,100,0.15);
+}
+
+.mc-pro-label {
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  color: #5a8a58;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.mc-con-label {
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  color: #b07060;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+/* Prompt block */
+.prompt-block {
+  background: var(--night);
+  padding: 16px 18px;
+  margin: 12px 0;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+  border-left: 2px solid var(--gold-line);
+}
+
+/* Prompt cards */
+.prompt-card {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  padding: 16px 18px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.prompt-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+.prompt-situation {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.prompt-q {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.prompt-code {
+  font-family: monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  background: var(--paper);
+  padding: 8px 12px;
+  margin-top: 8px;
+}
+
+/* FAQ */
+.faq-list { margin: 20px 0; }
+
+.faq-item {
+  border-bottom: 1px solid var(--paper-dark);
+  padding: 18px 0;
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.faq-q-mark {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.faq-a {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  font-weight: 300;
+  padding-left: 22px;
+}
+
+/* Team flow */
+.team-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.tf-box {
+  background: var(--white);
+  border: 1px solid var(--paper-dark);
+  padding: 16px 14px;
+}
+
+.tf-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tf-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.tf-items { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+
+.tf-item {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--paper-warm);
+}
+
+.tf-item:last-child { border-bottom: none; }
+
+.tf-arrow {
+  text-align: center;
+  font-size: 20px;
+  color: var(--paper-dark);
+}
+
+/* Routine table */
+.routine-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+}
+
+.routine-table th {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--gold-line);
+  background: var(--gold-pale);
+  font-weight: normal;
+}
+
+.routine-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--paper-dark);
+  color: var(--ink-mid);
+  font-weight: 300;
+  background: var(--white);
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.routine-table tr:last-child td { border-bottom: none; }
+.routine-table td:first-child { font-weight: 500; color: var(--ink); white-space: nowrap; }
+.routine-table td code {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: var(--paper-warm);
+  padding: 1px 6px;
+}
+
+/* Essentials */
+.essentials {
+  background: var(--night);
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+
+.es-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.es-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.es-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 12px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.es-item strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+
+/* Divider */
+.part-divider {
+  background: var(--night-2);
+  padding: 0;
+  margin: 72px 0 0;
+  height: 1px;
+}
+
+.sec-divider {
+  height: 1px;
+  background: var(--paper-dark);
+  margin: 64px 0 0;
+}
+
+/* Footer */
+.footer {
+  background: var(--night);
+  padding: 44px;
+  margin-top: 80px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.footer-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 0.1em;
+}
+
+/* Fade */
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up.visible { opacity: 1; transform: none; }
+
+@media(max-width: 640px) {
+  .nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 48px 20px 48px; }
+  .hero-title { font-size: 26px; }
+  .main, .part-banner, .toc-block { padding-left: 20px; padding-right: 20px; }
+  .install-grid { grid-template-columns: 1fr; }
+  .md-demo { grid-template-columns: 1fr; }
+  .mc-pros-cons { grid-template-columns: 1fr; }
+  .toc-row { flex-direction: column; }
+  .team-flow { grid-template-columns: 1fr; }
+  .tf-arrow { transform: rotate(90deg); }
+  .es-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="#">Obsidian + Claude · 완전 가이드</a>
+  <ul class="nav-links">
+    <li><a href="#part1">Part 1 · 시작하기</a></li>
+    <li><a href="#part2">Part 2 · 개인 활용</a></li>
+    <li><a href="#team">팀 시너지</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Deeper Unbranding Salon 1기</div>
+    <h1 class="hero-title">
+      Obsidian + Claude<br>
+      <em>처음부터 인사이트까지</em>
+    </h1>
+    <p class="hero-desc">
+      처음 쓰는 분을 위한 설치·기본 사용법부터,<br>
+      손글씨 모닝페이지를 디지털로 저장하고<br>
+      Claude가 패턴을 읽어주는 개인 시스템까지.
+    </p>
+    <div class="hero-pills">
+      <div class="pill"><span class="pill-dot"></span> Mac · Windows · iPad 모두 가능</div>
+      <div class="pill"><span class="pill-dot"></span> Obsidian 무료</div>
+      <div class="pill"><span class="pill-dot"></span> 설치 시간 약 30분</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-block">
+  <div class="toc-inner">
+    <div class="toc-row">
+      <div class="toc-col">
+        <div class="toc-col-label">Part 1 · Obsidian 시작하기</div>
+        <ul class="toc-list">
+          <li><a href="#what"><span class="toc-num">01</span><span class="toc-text">Obsidian이 뭐야?</span></a></li>
+          <li><a href="#install"><span class="toc-num">02</span><span class="toc-text">설치하기</span></a></li>
+          <li><a href="#vault"><span class="toc-num">03</span><span class="toc-text">볼트 만들기</span></a></li>
+          <li><a href="#ui"><span class="toc-num">04</span><span class="toc-text">화면 이해하기</span></a></li>
+          <li><a href="#write"><span class="toc-num">05</span><span class="toc-text">노트 만들고 쓰기</span></a></li>
+          <li><a href="#syntax"><span class="toc-num">06</span><span class="toc-text">기본 글쓰기 문법</span></a></li>
+          <li><a href="#link"><span class="toc-num">07</span><span class="toc-text">노트끼리 연결하기</span></a></li>
+          <li><a href="#folder"><span class="toc-num">08</span><span class="toc-text">폴더로 정리하기</span></a></li>
+          <li><a href="#ipad"><span class="toc-num">09</span><span class="toc-text">iPad에서 쓰기</span></a></li>
+          <li><a href="#faq"><span class="toc-num">10</span><span class="toc-text">자주 묻는 것들</span></a></li>
+        </ul>
+      </div>
+      <div class="toc-col">
+        <div class="toc-col-label">Part 2 · 개인 시스템 + Claude</div>
+        <ul class="toc-list">
+          <li><a href="#apps"><span class="toc-num">01</span><span class="toc-text">앱 3가지 설치</span></a></li>
+          <li><a href="#structure"><span class="toc-num">02</span><span class="toc-text">내 볼트 구조 만들기</span></a></li>
+          <li><a href="#morning"><span class="toc-num">03</span><span class="toc-text">모닝페이지 → 텍스트 저장</span></a></li>
+          <li><a href="#writing"><span class="toc-num">04</span><span class="toc-text">집필 · 아이디어 · 독서</span></a></li>
+          <li><a href="#insights"><span class="toc-num">05</span><span class="toc-text">Claude 인사이트 추출</span></a></li>
+          <li><a href="#team"><span class="toc-num">06</span><span class="toc-text">팀과 시너지 내기</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PART 1 ═══════════════════════════════ -->
+
+<div style="max-width:780px;margin:0 auto;padding:48px 44px 0;">
+  <div class="part-banner" style="padding:0;">
+    <div class="pb-num">Part 1</div>
+    <div class="pb-body">
+      <div class="pb-label">Beginner Guide</div>
+      <div class="pb-title">Obsidian 처음 쓰는 분을 위한 안내</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- 01 WHAT -->
+<div class="section fade-up" id="what">
+  <div class="sec-header">
+    <div class="sec-eyebrow">01</div>
+    <h2 class="sec-title">Obsidian이 뭐야?</h2>
+    <p class="sec-sub">한 줄로 말하면: 내 컴퓨터에 저장되는 노트 앱이에요</p>
+  </div>
+  <hr class="rule">
+
+  <table class="comp-table">
+    <thead>
+      <tr><th></th><th>보통 노트 앱</th><th>Obsidian</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>저장 위치</td><td>앱 서버 (남의 컴퓨터)</td><td class="highlight">내 기기 / 내 OneDrive</td></tr>
+      <tr><td>파일 형식</td><td>앱 전용 형식</td><td class="highlight">.md 텍스트 파일</td></tr>
+      <tr><td>앱 없어지면</td><td>기록 사라질 수 있음</td><td class="highlight">파일은 영원히 남음</td></tr>
+      <tr><td>노트 간 연결</td><td>없음</td><td class="highlight">[[링크]]로 연결 가능</td></tr>
+      <tr><td>비용</td><td>대부분 무료</td><td class="highlight">무료</td></tr>
+    </tbody>
+  </table>
+
+  <div class="dark-block">
+    <div class="db-eyebrow">왜 .md 파일이 좋아?</div>
+    <div class="db-title">내 글이 진짜로 내 것이 되는 형식</div>
+    <div class="db-body">
+      <strong>.md</strong>는 마크다운(Markdown) 파일이에요. 그냥 텍스트 파일이에요. 메모장으로도 열려요.
+      Obsidian이 없어져도, 10년 후에도, 어떤 앱으로도 열 수 있어요.
+      서버에 종속되지 않고, 내 OneDrive 폴더 안의 파일이 전부예요.
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 02 INSTALL -->
+<div class="section fade-up" id="install">
+  <div class="sec-header">
+    <div class="sec-eyebrow">02</div>
+    <h2 class="sec-title">설치하기</h2>
+    <p class="sec-sub">iPad · Mac · Windows 모두 무료</p>
+  </div>
+  <hr class="rule">
+
+  <div class="install-grid">
+    <div class="install-card">
+      <div class="ic-device">iPad</div>
+      <ol class="ic-steps">
+        <li class="ic-step"><span class="ic-step-num">1</span>App Store 열기</li>
+        <li class="ic-step"><span class="ic-step-num">2</span>Obsidian 검색</li>
+        <li class="ic-step"><span class="ic-step-num">3</span>설치 (무료)</li>
+      </ol>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">Mac</div>
+      <ol class="ic-steps">
+        <li class="ic-step"><span class="ic-step-num">1</span>obsidian.md 접속</li>
+        <li class="ic-step"><span class="ic-step-num">2</span>Download 버튼 클릭</li>
+        <li class="ic-step"><span class="ic-step-num">3</span>다운로드 파일 열어서 설치</li>
+      </ol>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">Windows</div>
+      <ol class="ic-steps">
+        <li class="ic-step"><span class="ic-step-num">1</span>obsidian.md 접속</li>
+        <li class="ic-step"><span class="ic-step-num">2</span>Download 버튼 클릭</li>
+        <li class="ic-step"><span class="ic-step-num">3</span>설치 파일 실행</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 03 VAULT -->
+<div class="section fade-up" id="vault">
+  <div class="sec-header">
+    <div class="sec-eyebrow">03</div>
+    <h2 class="sec-title">볼트 만들기</h2>
+    <p class="sec-sub">볼트(Vault) = 내 노트들이 모여있는 폴더</p>
+  </div>
+  <hr class="rule">
+
+  <p class="prose">OneDrive에 만들어두면 iPad ↔ PC가 자동으로 동기화돼요.</p>
+
+  <div class="install-grid">
+    <div class="install-card">
+      <div class="ic-device">iPad에서</div>
+      <ol class="ic-steps">
+        <li class="ic-step"><span class="ic-step-num">1</span>파일 앱 → OneDrive 폴더</li>
+        <li class="ic-step"><span class="ic-step-num">2</span>내-기록 폴더 새로 만들기</li>
+        <li class="ic-step"><span class="ic-step-num">3</span>Obsidian → Open folder as vault</li>
+        <li class="ic-step"><span class="ic-step-num">4</span>OneDrive → 내-기록 폴더 선택</li>
+      </ol>
+    </div>
+    <div class="install-card" style="grid-column: span 2;">
+      <div class="ic-device">PC에서</div>
+      <ol class="ic-steps">
+        <li class="ic-step"><span class="ic-step-num">1</span>OneDrive 폴더 안에 내-기록 폴더 생성</li>
+        <li class="ic-step"><span class="ic-step-num">2</span>Obsidian 열기 → Open folder as vault</li>
+        <li class="ic-step"><span class="ic-step-num">3</span>내-기록 폴더 선택 → 완료</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note">이 폴더 안에 만드는 모든 노트가 iPad와 PC에서 동시에 보여요.</div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 04 UI -->
+<div class="section fade-up" id="ui">
+  <div class="sec-header">
+    <div class="sec-eyebrow">04</div>
+    <h2 class="sec-title">화면 이해하기</h2>
+  </div>
+  <hr class="rule">
+
+  <div class="screen-visual">┌──────────────────────────────────────────────────┐
+│   파일 탐색기          │   노트 작성 영역          │
+│                        │                           │
+│   📁 내-기록           │   # 노트 제목             │
+│    ├ 📁 morning        │                           │
+│    ├ 📁 ideas          │   여기에 글을 써요         │
+│    └ 📁 writing        │                           │
+│                        │                           │
+│   [최근 파일 목록]     │                           │
+└──────────────────────────────────────────────────┘</div>
+
+  <table class="btn-table">
+    <thead><tr><th>위치</th><th>버튼</th><th>하는 일</th></tr></thead>
+    <tbody>
+      <tr><td>왼쪽 위</td><td>📁</td><td>파일 탐색기 열기/닫기</td></tr>
+      <tr><td>왼쪽 위</td><td>🔍</td><td>전체 노트 검색</td></tr>
+      <tr><td>왼쪽 위</td><td>✏️</td><td>새 노트 만들기</td></tr>
+      <tr><td>오른쪽 위</td><td>편집 / 미리보기</td><td>쓰기 모드 ↔ 읽기 모드 전환 (Ctrl+E)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 05 WRITE -->
+<div class="section fade-up" id="write">
+  <div class="sec-header">
+    <div class="sec-eyebrow">05</div>
+    <h2 class="sec-title">노트 만들고 쓰기</h2>
+  </div>
+  <hr class="rule">
+
+  <div class="install-grid">
+    <div class="install-card">
+      <div class="ic-device">새 노트 — PC</div>
+      <p style="font-size:13px;color:var(--ink-soft);font-weight:300;">Ctrl+N 또는 왼쪽 상단 ✏️ 버튼</p>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">새 노트 — iPad</div>
+      <p style="font-size:13px;color:var(--ink-soft);font-weight:300;">왼쪽 하단 ✏️ 버튼</p>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">저장</div>
+      <p style="font-size:13px;color:var(--ink-soft);font-weight:300;"><strong style="color:var(--ink);">자동 저장</strong> — 따로 저장 버튼 안 눌러도 돼요</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>노트 이름 짓는 법:</strong> 날짜를 앞에 붙이면 나중에 찾기 쉬워요.<br>
+    <code style="font-family:monospace;font-size:11px;">2026-05-01-모닝페이지 &nbsp;|&nbsp; 2026-05-01-아이디어 &nbsp;|&nbsp; 원고-챕터1</code>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 06 SYNTAX -->
+<div class="section fade-up" id="syntax">
+  <div class="sec-header">
+    <div class="sec-eyebrow">06</div>
+    <h2 class="sec-title">기본 글쓰기 문법</h2>
+    <p class="sec-sub">기호 몇 개만 알면 충분해요</p>
+  </div>
+  <hr class="rule">
+
+  <div class="mini-label">제목</div>
+  <div class="md-demo">
+    <div class="md-input"># 큰 제목
+## 중간 제목
+### 작은 제목</div>
+    <div class="md-output">
+      <h1>큰 제목</h1>
+      <h2>중간 제목</h2>
+      <h3>작은 제목</h3>
+    </div>
+  </div>
+
+  <div class="mini-label" style="margin-top:16px;">굵게 · 기울임</div>
+  <div class="md-demo">
+    <div class="md-input">**굵게 쓰고 싶은 단어**
+*기울여 쓰고 싶은 단어*</div>
+    <div class="md-output">
+      <strong>굵게 쓰고 싶은 단어</strong><br>
+      <em>기울여 쓰고 싶은 단어</em>
+    </div>
+  </div>
+
+  <div class="mini-label" style="margin-top:16px;">목록</div>
+  <div class="md-demo">
+    <div class="md-input">- 항목 하나
+- 항목 둘
+
+1. 첫 번째
+2. 두 번째</div>
+    <div class="md-output">
+      <ul style="padding-left:16px;color:var(--ink-mid);font-size:13px;margin-bottom:8px;">
+        <li>항목 하나</li><li>항목 둘</li>
+      </ul>
+      <ol style="padding-left:16px;color:var(--ink-mid);font-size:13px;">
+        <li>첫 번째</li><li>두 번째</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="mini-label" style="margin-top:16px;">인용</div>
+  <div class="md-demo">
+    <div class="md-input">> 이 문장은 강조하고 싶은 문장</div>
+    <div class="md-output">
+      <blockquote style="border-left:3px solid var(--paper-dark);padding-left:12px;color:var(--ink-soft);font-style:italic;">이 문장은 강조하고 싶은 문장</blockquote>
+    </div>
+  </div>
+
+  <div class="essentials">
+    <div class="es-title">핵심만 기억하기 — 이 네 가지만 알면 충분해요</div>
+    <div class="es-grid">
+      <div class="es-item"><strong># 제목</strong> — 큰 제목 달기</div>
+      <div class="es-item"><strong>본문</strong> — 그냥 쓰면 됨</div>
+      <div class="es-item"><strong>- 목록</strong> — 항목 나열</div>
+      <div class="es-item"><strong>**단어**</strong> — 굵게 강조</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 07 LINK -->
+<div class="section fade-up" id="link">
+  <div class="sec-header">
+    <div class="sec-eyebrow">07</div>
+    <h2 class="sec-title">노트끼리 연결하기</h2>
+    <p class="sec-sub">이게 Obsidian의 진짜 힘이에요</p>
+  </div>
+  <hr class="rule">
+
+  <p class="prose"><strong>[[ 입력하면</strong> 노트 목록이 뜨고, 고르면 연결돼요.</p>
+
+  <div class="prompt-block">오늘 모닝페이지에서 [[언브랜딩]] 개념이 계속 떠올랐다.
+지난주에 읽은 [[레베카 솔닛 메모]]랑 연결되는 느낌.</div>
+
+  <div class="dark-block">
+    <div class="db-eyebrow">Graph View — 생각의 지도</div>
+    <div class="db-title">링크가 쌓이면 내 사유 지형도가 만들어져요</div>
+    <div class="db-body">
+      왼쪽 사이드바 그래프 아이콘 클릭 → Graph View 열기.<br>
+      같은 키워드를 다른 날 연결하면 노드가 생겨요.
+      <strong>처음엔 많이 연결 안 해도 돼요.</strong> 생각날 때만 해도 돼요.
+      조금씩 쌓이다 보면 어느 날 지도가 보여요.
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 08 FOLDER -->
+<div class="section fade-up" id="folder">
+  <div class="sec-header">
+    <div class="sec-eyebrow">08</div>
+    <h2 class="sec-title">폴더로 정리하기</h2>
+    <p class="sec-sub">처음엔 이 네 개로 시작하세요</p>
+  </div>
+  <hr class="rule">
+
+  <div class="folder-tree">내-기록/
+├── 📓 morning    ← 모닝페이지
+├── ✍️ writing    ← 집필 · 초고
+├── 🌱 ideas      ← 아이디어 메모
+└── 🔗 publish    ← 팀과 나눌 것 (선택)</div>
+
+  <div class="install-grid">
+    <div class="install-card">
+      <div class="ic-device">PC에서 폴더 만들기</div>
+      <p style="font-size:12px;color:var(--ink-soft);font-weight:300;line-height:1.7;">파일 탐색기에서 우클릭 → 새 폴더</p>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">iPad에서 폴더 만들기</div>
+      <p style="font-size:12px;color:var(--ink-soft);font-weight:300;line-height:1.7;">파일 탐색기 → … 버튼 → 새 폴더</p>
+    </div>
+    <div class="install-card">
+      <div class="ic-device">폴더 없이 써도 돼요</div>
+      <p style="font-size:12px;color:var(--ink-soft);font-weight:300;line-height:1.7;">검색으로 다 찾을 수 있어요. 처음엔 일단 막 쌓아도 됩니다.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 09 IPAD -->
+<div class="section fade-up" id="ipad">
+  <div class="sec-header">
+    <div class="sec-eyebrow">09</div>
+    <h2 class="sec-title">iPad에서 쓰기</h2>
+    <p class="sec-sub">PC랑 거의 같아요</p>
+  </div>
+  <hr class="rule">
+
+  <table class="btn-table">
+    <thead><tr><th>기능</th><th>방법</th></tr></thead>
+    <tbody>
+      <tr><td>새 노트</td><td>오른쪽 하단 ✏️ 버튼</td></tr>
+      <tr><td>파일 탐색기</td><td>왼쪽 위 메뉴 버튼 → 파일 탭</td></tr>
+      <tr><td>검색</td><td>왼쪽 위 🔍 버튼</td></tr>
+      <tr><td>홈화면 위젯</td><td>홈화면 길게 누르기 → 위젯 추가 → Obsidian → 앱 안 열고 바로 메모</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Apple Pencil로 쓰기:</strong> 메모 앱에서 Apple Pencil로 쓰기 → 텍스트 변환 → 복사 → Obsidian 붙여넣기.<br>
+    또는 손글씨 사진 → Claude 앱으로 변환 → 붙여넣기. (Part 2 모닝페이지 섹션에서 자세히 설명해요.)
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- 10 FAQ -->
+<div class="section fade-up" id="faq">
+  <div class="sec-header">
+    <div class="sec-eyebrow">10</div>
+    <h2 class="sec-title">자주 묻는 것들</h2>
+  </div>
+  <hr class="rule">
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>실수로 노트 삭제했어요.</div>
+      <div class="faq-a">Obsidian 왼쪽 사이드바 → 휴지통 아이콘에서 복구할 수 있어요. OneDrive에서도 복구 가능해요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>다른 사람이 내 노트를 볼 수 있어요?</div>
+      <div class="faq-a">개인 OneDrive에 저장하면 본인만 봐요. 공유 폴더에 올리지 않는 한 아무도 못 봐요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>노트가 너무 많아지면 어떻게 관리해요?</div>
+      <div class="faq-a">검색(Ctrl+O 또는 모바일 🔍)이 가장 빠르고 편해요. 폴더 구조 완벽하게 안 잡아도 검색으로 다 찾아요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>마크다운 문법 다 외워야 해요?</div>
+      <div class="faq-a">아니요. # 제목이랑 - 목록, 이 두 개만 알아도 충분해요. 나머지는 필요할 때 찾아쓰면 돼요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>폰트나 테마 바꾸고 싶어요.</div>
+      <div class="faq-a">설정(⚙️) → 외관(Appearance) → 테마(Themes)에서 다양한 테마 설치 가능해요. 무료예요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PART 2 ═══════════════════════════════ -->
+
+<div style="margin-top:80px;">
+  <div class="part-banner" style="padding:0;">
+    <div class="pb-num">Part 2</div>
+    <div class="pb-body">
+      <div class="pb-label">Personal System Guide</div>
+      <div class="pb-title">나만의 생각 시스템 — 개인 활용 + Claude 인사이트</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-01 APPS -->
+<div class="section fade-up" id="apps">
+  <div class="sec-header">
+    <div class="sec-eyebrow">01</div>
+    <h2 class="sec-title">앱 3가지 설치</h2>
+    <p class="sec-sub">이것만 있으면 시작돼요</p>
+  </div>
+  <hr class="rule">
+
+  <table class="comp-table">
+    <thead><tr><th>앱</th><th>어디서</th><th>비용</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td>Obsidian</td><td>obsidian.md</td><td>무료</td><td>기록이 쌓이는 집</td></tr>
+      <tr><td>OneDrive</td><td>앱스토어 / 기본 설치</td><td>무료 (5GB)</td><td>iPad ↔ PC 동기화</td></tr>
+      <tr><td>Claude</td><td>claude.ai 앱</td><td>무료 / Pro $20</td><td>사진 텍스트 변환 + 인사이트</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>iPad 메인이라면:</strong> Obsidian 모바일 + Claude 앱 두 개면 시작돼요.<br>
+    <strong>PC도 함께 쓴다면:</strong> PC에 Obsidian + Claude Desktop 추가 설치.
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-02 STRUCTURE -->
+<div class="section fade-up" id="structure">
+  <div class="sec-header">
+    <div class="sec-eyebrow">02</div>
+    <h2 class="sec-title">내 볼트 구조 만들기</h2>
+    <p class="sec-sub">처음엔 다섯 개로 시작하세요</p>
+  </div>
+  <hr class="rule">
+
+  <div class="folder-tree">내-기록/
+│
+├── 📓 /morning       — 모닝페이지 (사진 → 텍스트 저장)
+│
+├── ✍️ /writing       — 집필 중인 원고 · 초고
+│
+├── 🌱 /ideas         — 아이디어 씨앗 · 짧은 메모
+│
+├── 📚 /reading       — 읽은 책 메모 · 밑줄 옮기기
+│
+└── 🔗 /publish       — 팀과 나눌 것만 (선택)</div>
+
+  <div class="note">
+    <strong>플러그인 (선택):</strong> Obsidian 설정 → 커뮤니티 플러그인에서 설치.<br>
+    Templater — 노트 열면 날짜·형식 자동 생성 &nbsp;|&nbsp; Dataview — 기록 통계 보기
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-03 MORNING -->
+<div class="section fade-up" id="morning">
+  <div class="sec-header">
+    <div class="sec-eyebrow">03</div>
+    <h2 class="sec-title">모닝페이지 — 사진 찍으면 텍스트로 저장</h2>
+    <p class="sec-sub">세 가지 방법 중 편한 것으로 고르세요</p>
+  </div>
+  <hr class="rule">
+
+  <div class="method-list">
+
+    <div class="method-card">
+      <div class="mc-header">
+        <div class="mc-title">방법 A. Claude 앱으로 즉시 변환</div>
+        <div class="mc-badge">가장 쉬움</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-flow">
+          <div class="mc-step">사진 찍기</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">Claude 앱 첨부</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">텍스트 받기</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">Obsidian 붙여넣기</div>
+        </div>
+        <div class="prompt-block">이 손글씨를 그대로 텍스트로 옮겨줘.
+맞춤법 수정 없이, 원문 그대로.
+단락 나눔만 유지해줘.</div>
+        <div class="mc-pros-cons">
+          <div class="mc-pro"><div class="mc-pro-label">Good</div>앱 두 개만 있으면 돼요. 설정 없음.</div>
+          <div class="mc-con"><div class="mc-con-label">Limit</div>매일 수동으로 해야 해요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card">
+      <div class="mc-header">
+        <div class="mc-title">방법 B. iOS 단축어 자동화</div>
+        <div class="mc-badge">중간 난이도</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-flow">
+          <div class="mc-step">사진 찍기</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">단축어 실행</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">Live Text OCR</div>
+          <div class="mc-arrow">→</div>
+          <div class="mc-step">OneDrive 자동 저장</div>
+        </div>
+        <div class="mc-desc">단축어 앱 → 새 단축어 → 사진 선택 → 텍스트 추출(Live Text) → OneDrive/내-기록/morning/오늘날짜.md 저장.<br>홈화면에 추가하면 탭 한 번으로 실행. iOS 16 이상, 한국어 지원.</div>
+        <div class="mc-pros-cons">
+          <div class="mc-pro"><div class="mc-pro-label">Good</div>탭 한 번으로 완료.</div>
+          <div class="mc-con"><div class="mc-con-label">Limit</div>흘려쓴 글씨는 방법 A가 더 정확해요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card">
+      <div class="mc-header">
+        <div class="mc-title">방법 C. 사진만 저장, 주 1회 정리</div>
+        <div class="mc-badge">제일 가벼움</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-desc">매일 완벽하게 옮기려 하면 금방 지쳐요. 사진만 노트에 첨부해두고 일주일에 한 번 Claude로 한꺼번에 변환하는 방법.</div>
+        <div class="prompt-block">오늘 쓴 노트들이야. (사진 5장 첨부)
+날짜별로 텍스트로 변환해줘. 원문 그대로, 수정 없이.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note"><strong>추천:</strong> 처음엔 방법 A로 시작하세요. 습관이 되면 방법 B로 자동화해요.</div>
+
+  <div class="mini-label" style="margin-top:24px;">모닝페이지 Templater 템플릿</div>
+  <div class="prompt-block">---
+date: {{date}}
+type: morning-pages
+---
+
+# 모닝페이지 · {{date}}
+
+## 원문
+(손글씨 변환 텍스트 붙여넣기)
+
+## 오늘의 한 줄
+(읽고 나서 남는 한 문장)
+
+## 링크
+(연결되는 이전 기록 [[링크]])</div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-04 WRITING -->
+<div class="section fade-up" id="writing">
+  <div class="sec-header">
+    <div class="sec-eyebrow">04</div>
+    <h2 class="sec-title">집필 · 아이디어 · 독서 기록</h2>
+  </div>
+  <hr class="rule">
+
+  <div class="prompt-card">
+    <span class="prompt-icon">✍️</span>
+    <div>
+      <div class="prompt-situation">집필 중인 원고 — /writing</div>
+      <div class="prompt-q">초고는 완성도 신경 쓰지 말고 바로 저장. Claude와 함께 쓰는 법:</div>
+      <div class="prompt-code">이 초고 읽고 논리 흐름에서 빠진 부분 알려줘. 독자가 처음 읽는다고 가정하고.
+이 단락, 더 간결하게 다듬어줘. 내 문장 스타일은 유지하면서.
+이 글에서 내가 진짜 하고 싶은 말이 뭔지 한 문장으로 말해줘.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card" style="margin-top:8px;">
+    <span class="prompt-icon">🌱</span>
+    <div>
+      <div class="prompt-situation">아이디어 씨앗 — /ideas</div>
+      <div class="prompt-q">떠오르는 순간 바로 저장. 한 줄이어도 됩니다.</div>
+      <div class="mc-desc" style="margin-top:6px;font-size:12px;color:var(--ink-soft);">Obsidian 모바일 하단 연필 아이콘 → 저장. 홈화면 위젯 설정하면 앱 안 열고도 바로 입력 가능.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card" style="margin-top:8px;">
+    <span class="prompt-icon">📚</span>
+    <div>
+      <div class="prompt-situation">읽기 메모 — /reading</div>
+      <div class="prompt-q">책 읽다가 밑줄 친 문장, 떠오른 생각 바로 저장</div>
+      <div class="prompt-code"># 책 제목 · 저자
+
+## 밑줄
+- "문장 그대로 옮기기" (p.123)
+
+## 내 생각
+이 문장이 걸린 이유:
+
+## 연결
+→ [[관련 아이디어 노트]]</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-05 INSIGHTS -->
+<div class="section fade-up" id="insights">
+  <div class="sec-header">
+    <div class="sec-eyebrow">05</div>
+    <h2 class="sec-title">Claude에게 인사이트 물어보기</h2>
+    <p class="sec-sub">내용을 붙여넣거나, MCP 연결 시 볼트 전체를 자동으로 읽어요</p>
+  </div>
+  <hr class="rule">
+
+  <div class="prompt-card">
+    <span class="prompt-icon">📓</span>
+    <div>
+      <div class="prompt-situation">모닝페이지 패턴 분석</div>
+      <div class="prompt-code">지난 2주 모닝페이지야. (텍스트 붙여넣기)
+반복되는 단어, 감정, 주제가 뭐야?
+내가 의식하지 못하는 패턴도 보이면 알려줘.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <span class="prompt-icon">✍️</span>
+    <div>
+      <div class="prompt-situation">글쓰기 막힌 지점 찾기</div>
+      <div class="prompt-code">이 초고들이야. (붙여넣기)
+내가 계속 쓰다가 멈춘 것 같은 지점이 어디야?
+왜 거기서 막히는 것 같아?</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <span class="prompt-icon">🌱</span>
+    <div>
+      <div class="prompt-situation">아이디어 연결하기</div>
+      <div class="prompt-code">이 아이디어 메모들이야. (붙여넣기)
+서로 연결되는 것들끼리 묶어줘.
+내가 놓치고 있는 연결도 있으면 보여줘.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <span class="prompt-icon">🔄</span>
+    <div>
+      <div class="prompt-situation">주간 회고</div>
+      <div class="prompt-code">이번 주 모닝페이지와 메모들이야. (붙여넣기)
+이번 주 나는 무엇에 집중했고, 무엇을 피했어?
+다음 주에 이어갈 만한 실마리가 있으면 뽑아줘.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <span class="prompt-icon">🪞</span>
+    <div>
+      <div class="prompt-situation">글쓰기 자아 발견</div>
+      <div class="prompt-code">내가 지난 한 달간 쓴 글들이야. (붙여넣기)
+내 글에서 반복되는 문장 구조, 즐겨 쓰는 표현이 뭐야?
+내 글쓰기 목소리를 한 문단으로 묘사해줘.</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- P2-06 TEAM -->
+<div class="section fade-up" id="team">
+  <div class="sec-header">
+    <div class="sec-eyebrow">06</div>
+    <h2 class="sec-title">팀과 시너지 내기</h2>
+    <p class="sec-sub">내 기록이 팀에 흘러들어가는 구조 — 강제 공유 없이</p>
+  </div>
+  <hr class="rule">
+
+  <div class="team-flow">
+    <div class="tf-box">
+      <div class="tf-label">개인 볼트</div>
+      <div class="tf-title">내-기록</div>
+      <ul class="tf-items">
+        <li class="tf-item">📓 모닝페이지</li>
+        <li class="tf-item">✍️ 집필 초고</li>
+        <li class="tf-item">🌱 아이디어</li>
+        <li class="tf-item" style="color:var(--gold);border-color:var(--gold-line);">🔗 /publish ← 여기만 공유</li>
+      </ul>
+    </div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-box">
+      <div class="tf-label">팀 볼트</div>
+      <div class="tf-title">디퍼-팀</div>
+      <ul class="tf-items">
+        <li class="tf-item">📌 /daily — 긱어스 포스팅</li>
+        <li class="tf-item">🎙 /thursday — 공유회</li>
+        <li class="tf-item">📊 /weekly — 주간 리포트</li>
+        <li class="tf-item">💡 /insights — 팀 인사이트</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>/publish 원칙:</strong> 개인 볼트 안의 어떤 노트든 팀과 나누고 싶을 때만 /publish로 복사.
+    옮기기 전까지 팀원은 아무것도 볼 수 없어요. 내 기록은 완전히 나의 것이에요.
+  </div>
+
+  <div class="mini-label" style="margin-top:24px;">팀 시너지가 생기는 순간들</div>
+
+  <div class="prompt-card" style="margin-bottom:8px;">
+    <span class="prompt-icon">🎙</span>
+    <div>
+      <div class="prompt-situation">목요 공유회 준비</div>
+      <div class="prompt-code">이번 주 내 기록에서 팀과 나눌 만한 인사이트 한 가지 뽑아줘.
+5분 안에 말할 수 있는 분량으로.</div>
+    </div>
+  </div>
+
+  <div class="routine-table-wrap">
+    <div class="mini-label" style="margin-top:24px;">개인 사용 루틴 요약</div>
+    <table class="routine-table">
+      <thead><tr><th>타이밍</th><th>행동</th><th>저장 위치</th></tr></thead>
+      <tbody>
+        <tr><td>아침</td><td>손글씨 모닝페이지 → 사진 → Claude 변환 → 저장</td><td><code>/morning</code></td></tr>
+        <tr><td>하루 중</td><td>아이디어 떠오르면 즉시 메모</td><td><code>/ideas</code></td></tr>
+        <tr><td>글 쓸 때</td><td>초고 저장 · Claude 피드백</td><td><code>/writing</code></td></tr>
+        <tr><td>책 읽을 때</td><td>밑줄 + 생각 저장 · 연결</td><td><code>/reading</code></td></tr>
+        <tr><td>주 1회</td><td>Claude에게 한 주 패턴 물어보기</td><td>전체</td></tr>
+        <tr><td>팀 공유 시</td><td>나누고 싶은 것만 /publish로 이동</td><td><code>/publish</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dark-block">
+    <div class="db-eyebrow">12주 후</div>
+    <div class="db-title">살롱 전체의 사유 지형도가 만들어져요</div>
+    <div class="db-body">
+      개인 볼트 12주 기록 + 팀 볼트 12주 기록을 Claude가 함께 읽어요.
+      나는 어떻게 변했는지, 팀 안에서 나의 목소리가 어디에 있었는지가 보여요.
+      <strong>기록이 쌓이면 그게 이미 시스템이에요.</strong>
+    </div>
+  </div>
+</div>
+
+<div style="height: 80px;"></div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Obsidian + Claude · 완전 가이드</div>
+  <div class="footer-sub">Deeper Unbranding Salon 1기 · Slower × Deeper · 2026</div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 수사 종강 — 함께 부르기</title>
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 수사 종강 — 함께 부르기" />
+<meta property="og:description" content="일관성에서 하모니까지 — 게 카논·매니페스토·대수렴, 세 달의 마지막 밤" />
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r_final_session_deck.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 수사 종강 — 함께 부르기" />
+<meta name="twitter:description" content="게 카논·매니페스토·대수렴 — 세 달의 마지막 밤" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C2A47; --navy-deep:#141F36; --navy-soft:#22335A;
+    --cream:#F6F1E7; --cream-dim:#CFC7B6;
+    --gold:#C2943A; --gold-soft:#D9B26A;
+    --line:rgba(246,241,231,.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:linear-gradient(175deg,var(--navy-deep) 0%,var(--navy) 45%,var(--navy-soft) 100%);
+    color:var(--cream);
+    font-family:"Noto Serif KR", ui-serif, Georgia, serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.05; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Noto Sans KR",sans-serif; font-size:.64rem; font-weight:700;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:linear-gradient(170deg,#CB9E45 0%,var(--gold) 55%,#AC8130 100%); color:var(--navy-deep);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.25rem; text-align:center;}
+
+  .kicker{font-family:"Noto Sans KR",sans-serif; font-size:clamp(.6rem,1.3vw,.74rem);
+    font-weight:500; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-soft);}
+  .slide.invert .kicker{color:rgba(20,31,54,.75);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Noto Serif KR",serif; font-weight:700; letter-spacing:-.005em;
+    font-size:clamp(1.55rem,3.9vw,2.5rem); line-height:1.35;}
+  .title .em{color:var(--gold-soft);}
+  .slide.invert .title{color:var(--navy-deep);}
+  .slide.invert .title .em{color:var(--cream); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--cream-dim); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(20,31,54,.66);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    font-family:"Noto Serif KR",serif; font-weight:400; color:var(--cream);
+    font-size:clamp(.98rem,1.5vw,1.22rem); line-height:1.95; letter-spacing:.004em;}
+  .slide.invert .body{color:rgba(20,31,54,.93);}
+  .body p{margin:0 0 1.05rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--gold-soft); font-weight:600;}
+  .slide.invert .body em{color:var(--navy-deep); font-weight:700;}
+  .body .strong{font-weight:700; color:var(--gold-soft);}
+  .slide.invert .body .strong{color:var(--navy-deep);}
+  .body .final{font-weight:700; text-align:center; font-size:1.18em; line-height:1.7; margin-top:1.2rem;}
+  .body .cite{display:block; margin-top:.4rem; font-family:"Noto Sans KR",sans-serif; font-size:.72rem; color:var(--cream-dim); letter-spacing:.08em; text-align:right;}
+
+  .layers{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;}
+  .layers .ly{border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px;
+    padding:.72rem 1rem; background:rgba(20,31,54,.5);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .layers .nm{font-family:"Noto Serif KR",serif; font-weight:700; color:var(--gold-soft);
+    font-size:clamp(.98rem,1.5vw,1.16rem); flex:none; min-width:6.2rem;}
+  .layers .nm .h{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.52em; color:var(--cream-dim); font-weight:400; letter-spacing:.18em;}
+  .layers .ds{font-family:"Noto Serif KR",serif; font-size:clamp(.85rem,1.2vw,1rem); line-height:1.65; color:var(--cream-dim);}
+
+  .viz{width:clamp(108px,12vw,160px); height:clamp(108px,12vw,160px); color:var(--gold-soft); flex:none;}
+  .slide.invert .viz{color:var(--navy-deep);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(120px,15vw,190px); height:clamp(120px,15vw,190px);}
+  .cover .title{font-size:clamp(1.85rem,5.2vw,3.3rem); line-height:1.28;}
+  .cover .logo{width:clamp(74px,8vw,96px); height:auto; display:block; margin:0 auto;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.4s linear infinite;}
+  .marchr{stroke-dasharray:5 8; animation:marchr 3.4s linear infinite;}
+  @keyframes marchr{to{stroke-dashoffset:60;}}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .orbit{transform-origin:center; animation:spin 7s linear infinite;}
+
+  .duo{align-self:stretch; max-width:42rem; margin:.4rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem; text-align:left;}
+  .duo .card{border:1px solid var(--line); border-radius:6px; padding:1rem 1.1rem; background:rgba(20,31,54,.5);}
+  .duo .card.hot{background:rgba(194,148,58,.16); border-color:var(--gold);}
+  .duo .lab{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.55rem;}
+  .duo ul{list-style:none; display:flex; flex-direction:column; gap:.42rem;}
+  .duo li{font-family:"Noto Serif KR",serif; font-size:clamp(.84rem,1.2vw,1rem); line-height:1.55; color:var(--cream-dim); padding-left:.85rem; position:relative;}
+  .duo .card.hot li{color:var(--cream);}
+  .duo li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--gold); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--cream-dim); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--cream-dim); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--gold-soft); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Noto Sans KR",sans-serif; font-size:.6rem; color:var(--cream-dim); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:4.5rem 1.4rem;}
+    .duo{grid-template-columns:1fr;} .layers .ly{flex-direction:column; gap:.2rem;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide active cover">
+    <div class="content">
+      <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
+      <p class="kicker r r2">디퍼 언브랜딩 살롱 · 수사 종강 · 일관성과 하모니</p>
+      <h1 class="title r r3">함께 부르기 —<br><span class="em">단 하나의 약속</span></h1>
+      <p class="latin r r4">L'amor che move il sole e l'altre stelle<br>해와 다른 별들을 움직이는 사랑</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="pulse" d="M20 110 q22 -26 44 -14 q26 14 48 -8 q24 -24 48 -16 q20 6 40 -12" stroke-opacity=".55"/>
+          <circle cx="20" cy="110" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="88" cy="94" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="146" cy="76" r="4" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:200px 60px;">
+            <path d="M200 44 L204 56 L216 56 L206 64 L210 76 L200 68 L190 76 L194 64 L184 56 L196 56 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">세 소절을 지나, 마지막 밤</h2>
+      <div class="body r r4">
+        <p>선율의 주에 이름을 짓고 으뜸음을 골랐다. 변주의 주에 채널을 선언하고, 소실점을 세 번 돌려 작게 소리를 냈다. 그리고 『에디톨로지』를 끝까지 읽었다.</p>
+        <p>오늘은 남은 두 소절 — <em>일관성</em>과 <em>하모니</em> — 를 한 밤에 부른다. 줌으로 만나는 마지막 시간이고, 토요일에는 얼굴을 마주한다.</p>
+        <p class="strong">오늘 밤의 물음은 둘이다. 어디를 펼쳐 읽어도 나인가. 그리고 끝까지 지킬 한 줄은 무엇인가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 매듭 · 에디톨로지 3부 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="28" width="120" height="104" rx="3" stroke-opacity=".65"/>
+          <line x1="40" y1="63" x2="160" y2="63" stroke-opacity=".4"/>
+          <line x1="40" y1="97" x2="160" y2="97" stroke-opacity=".4"/>
+          <line x1="100" y1="28" x2="100" y2="132" stroke-opacity=".4"/>
+          <circle cx="70" cy="45" r="3" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="130" cy="80" r="3" fill="currentColor" stroke="none" class="twinkle"/>
+          <circle cx="70" cy="114" r="3" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">매듭 · 에디톨로지 3부에서 건진 것</p>
+      <h2 class="title r r3">'나'도 편집이다</h2>
+      <div class="body r r4">
+        <p>3부는 편집의 칼끝을 가장 가까운 곳으로 돌린다. 지식도 관점도 편집이었다면 — '나'는 어떤가. 지금 내가 믿는 '나'조차 기억이 편집된 서사다. 기억은 꺼낼 때마다 다시 짜인다.</p>
+        <p>뒤집으면 이 말은 허락이 된다. 나다움은 어딘가 묻힌 원석이기 전에, <em>발췌하고 연결하고 배열하는 손</em>에서 단단해지는 것.</p>
+        <p>3부의 마지막 장 제목이 오늘의 방법론이다 — "책은 끝까지 읽는 것이 아니다." 두 달의 씨앗도 같다. 전부 다시 읽는 대신, 발췌하고 배열한다.</p>
+        <p class="strong">편집하는 손이 곧 나를 짓는 손이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · I · 게 카논 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M20 75 q12 -22 24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0" stroke-opacity=".35"/>
+          <g class="marchl" stroke-opacity=".75"><path d="M24 52 h172"/></g>
+          <g class="marchr" stroke-opacity=".75"><path d="M196 98 h-172"/></g>
+          <path d="M188 46 l10 6 l-10 6" stroke-opacity=".8"/>
+          <path d="M32 92 l-10 6 l10 6" stroke-opacity=".8"/>
+          <circle cx="110" cy="75" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 일관성 · 게 카논</p>
+      <h2 class="title r r3">거꾸로 읽어도 무너지지 않는</h2>
+      <div class="body r r4">
+        <p>논리의 달에 만난 『괴델, 에셔, 바흐』의 게 카논 — 한 선율을 앞에서 연주하고, 동시에 같은 선율을 뒤에서부터 연주해도 하나의 음악이 되는 곡. 게처럼 옆으로, 거꾸로 걸어도 무너지지 않는 구조.</p>
+        <p>독자는 내 글을 내가 쓴 순서대로 읽어주지 않는다. 어제 올린 글로 나를 처음 만나는 사람이 있고, 오래전 글부터 거슬러 올라오는 사람이 있다. <em>어느 문으로 들어와도 같은 목소리가 들릴 때</em>, 그때 언어가 단단하다.</p>
+        <p class="strong">판정 기준은 이미 손에 있다 — 논리의 달에 지은 악보.<br>악보에서 벗어난 소리는 아무리 좋아도 남의 노래다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · I · 일관성의 방향 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">I</span> · 분별</p>
+      <h2 class="title r r2">일관성이 향하는 곳</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">향하지 않는 곳</span>
+          <ul>
+            <li>같은 말의 반복</li>
+            <li>한 가지 형식만 고집하기</li>
+            <li>실수 없는 매끈함</li>
+            <li>변하지 않겠다는 다짐</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">향하는 곳</span>
+          <ul>
+            <li>변주가 아무리 달라도 하나인 으뜸음</li>
+            <li>거꾸로 읽어도 유지되는 목소리</li>
+            <li>3년 전 글과 어제 글이 같은 사람</li>
+            <li>악보에서 벗어나지 않는 소리</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p class="strong">첫 글과 최근 글을 나란히 놓고 거꾸로 읽는다 —<br>같은 목소리가 들리는가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · I · 배열이 편집 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">I</span> · 분더카머에서 초고까지</p>
+      <h2 class="title r r2">배열이 편집이고, 편집이 창조다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">수장고<span class="h">씨앗</span></span><span class="ds">매일 길어 올린 씨앗이 쌓이는 곳 — 그대로 둔다. 정돈하다 지우고 싶어져도 씨앗은 건드리지 않는다.</span></div>
+        <div class="ly"><span class="nm">전시실<span class="h">분더카머</span></span><span class="ds">살아 있는 카드를 꺼내 배열하는 곳. 한 칸을 옮기면 방 전체의 뜻이 달라진다 — 배열의 최종 손은 디퍼님.</span></div>
+        <div class="ly"><span class="nm">목차<span class="h">초고 v0</span></span><span class="ds">독자가 들어오는 칸의 순서. 장 제목은 원천의 실제 문장 결로 — 여우는 엮기만 하고, 빈 장은 [비어 있는 칸]으로 남긴다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">카드 × 배열의 결 = 메타언어 —<br>내 초고가 시간이 아니라 무엇의 차원으로 짜였는가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · I · 뺄셈 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g stroke-opacity=".5">
+            <circle cx="40" cy="75" r="7"/><path d="M35 70 l10 10 M45 70 l-10 10"/>
+            <circle cx="80" cy="75" r="7"/><path d="M75 70 l10 10 M85 70 l-10 10"/>
+            <circle cx="160" cy="75" r="7"/><path d="M155 70 l10 10 M165 70 l-10 10"/>
+          </g>
+          <g class="twinkle" style="transform-origin:120px 75px;">
+            <path d="M120 59 L125 71 L137 71 L127 79 L131 91 L120 84 L109 91 L113 79 L103 71 L115 71 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 뺄셈의 퇴고</p>
+      <h2 class="title r r3">지우고 남는 것이 <span class="em">목소리다</span></h2>
+      <div class="body r r4">
+        <p>이 소절의 퇴고는 뺄셈이다. 빌려 온 표현, 트렌드에 맞춰 끼워 넣은 말, 확신 없는 과장, 독자 눈치를 보며 늘어난 설명 — 문법의 달에 만난 <em>희석 신호</em>를 지운다.</p>
+        <p>어린 왕자의 여우가 말했다 — "가장 중요한 것은 눈에 보이지 않아." 눈에 띄려고 얹은 것들을 걷어내면, 보이지 않던 것 — 목소리가 남는다.</p>
+        <p>그리고 선 하나를 긋는다. 완벽의 선 말고, <em>"이 정도면 됐다"의 선.</em> 게 카논이 기준이 되어준다 — 어디를 펼쳐 읽어도 내 목소리가 유지된다면, 그 글은 내보낼 수 있다. 매끈하지 않아도.</p>
+        <p class="strong">더 잘 쓰려는 손을 내려놓고, 나답지 않은 문장을 지운다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · II · 두려움에 이름 붙이기 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 하모니 · 발행을 막는 것</p>
+      <h2 class="title r r2">두려움에 이름을 붙이면</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">안개일 때</span>
+          <ul>
+            <li>"그냥, 아직인 것 같아서"</li>
+            <li>"뭔가 부족한 느낌이 들어서"</li>
+            <li>"때가 되면 하려고"</li>
+            <li>"조금만 더 다듬고 나서"</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">이름 붙였을 때</span>
+          <ul>
+            <li>잘 쓰는 사람이 이미 많다는 두려움</li>
+            <li>아는 사람이 볼까 봐 — 들킴의 두려움</li>
+            <li>이게 나로 확정될까 봐 — 고정의 두려움</li>
+            <li>아무도 안 읽을까 봐 — 침묵의 두려움</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p class="strong">이름 없는 두려움은 안개처럼 크다.<br>이름이 붙는 순간, 다룰 수 있는 크기가 된다 — 없앨 적이기보다, 옆에 앉힐 동행.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · II · 매니페스토 · 정의와 방법 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 매니페스토 · 정의와 방법</p>
+      <h2 class="title r r2">단 하나의 약속, 다섯에서 일곱 줄</h2>
+      <div class="body r r2" style="text-align:center; margin-top:0;">
+        <p>한가운데에 <em>단 하나의 약속</em>이 서고, 나머지 줄들이 떠받친다.<br>더 길어지면 다짐의 목록이 된다. 짓는 길은 셋이다.</p>
+      </div>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">재료<span class="h">캐기</span></span><span class="ds">석 달의 기록에서만 — 발행을 망설이게 한 두려움, 단 한 사람, 닿는 장면, 끝까지 지키고 싶은 것. 빌려 온 좋은 말은 한 줄도 필요하지 않다.</span></div>
+        <div class="ly"><span class="nm">짓기<span class="h">5–7줄</span></span><span class="ds">각 줄에 내가 실제로 쓴 단어가 하나는 살아 있게. "누구나 · 무조건 · N배"를 경계하고 — 크게 말하기보다 정확하게.</span></div>
+        <div class="ly"><span class="nm">낭독<span class="h">다듬기</span></span><span class="ds">최종 교정자는 눈이 아니라 입. 소리 내어 두 번 읽고, 걸리는 줄의 빌려 온 단어를 내 단어로 바꾸거나 지운다 — 그 자리가 남의 말이 섞인 자리. 다섯 줄이 일곱 줄보다 나은 경우가 많다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">남기는 기준은 하나 — 이 줄을 3개월 뒤에도 내 입으로 읽을 수 있는가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · II · 매니페스토 · 갱신 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="90" r="52" stroke-opacity=".7"/>
+          <g class="twinkle" style="transform-origin:100px 90px;">
+            <path d="M100 68 L106 86 L125 86 L110 97 L115 115 L100 104 L85 115 L90 97 L75 86 L94 86 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="orbit" style="transform-origin:100px 90px;"><circle cx="100" cy="38" r="4.5" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 매니페스토 · 갱신</p>
+      <h2 class="title r r3">부를수록 <span class="em">자라는 약속</span></h2>
+      <div class="body r r4">
+        <p>오늘 확정하는 판은 첫 판이다. 석 달에 한 번, 소리 내어 되읽는다 — <em>입에 안 붙게 된 줄이 갱신의 자리다.</em> 그사이 쌓인 씨앗과 발행에서 더 정확해진 내 단어를 가져와 바꾸거나, 지운다. 여기서도 빌려 오지 않는다. 악보와 나란히 놓고 조성을 맞춘다 — 어긋나 있다면 매니페스토를 고칠 차례일 수도, 악보를 다시 볼 차례일 수도 있다. 그것도 발견이다.</p>
+        <p>갱신할 수 있다는 사실이 고정의 두려움을 풀어준다. 오늘의 약속은 오늘의 나로 충분하다. 그리고 판이 몇 번 바뀌어도 으뜸음은 남는다 — 지난 판과 새 판을 거꾸로 읽어도 같은 목소리가 들린다면, 약속은 깊어진 것이다.</p>
+        <p class="strong">매니페스토는 돌에 한 번 새기는 글이기보다, 계속 부르는 노래다 —<br>이 노래는 부를수록 자란다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 실전 · 분더카머 → 초고 v0 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">실전 · 에디톨로지로 초고 조립</p>
+      <h2 class="title r r2">분더카머에서 초고 v0까지, 다섯 걸음</h2>
+      <div class="body r r2" style="text-align:center; margin-top:0;">
+        <p>『에디톨로지』의 손 그대로 — 통독 대신 발췌, 발췌한 카드의 배열.<br>새로 쓰는 걸음은 하나도 없다.</p>
+      </div>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">돌리기<span class="h">어느 날이든</span></span><span class="ds">여우에게 <b>"분더카머 돌려줘"</b> — 같은 카드가 시간의 결 → 주제의 결 → 감정의 결 → 독자의 문제 순 → 뜻밖의 짝으로 재배열된다. 마음에 남는 사이의 경이는 <b>"정리"</b> — 씨앗으로 심긴다.</span></div>
+        <div class="ly"><span class="nm">정돈<span class="h">DAY 17</span></span><span class="ds">칸(주제의 결)을 정돈한다. 수장고의 씨앗(01-Grammar/Insights)은 그대로 두고, 내리는 건 전시실(03-Rhetoric/분더카머.md)에서만.</span></div>
+        <div class="ly"><span class="nm">목차<span class="h">DAY 18–19</span></span><span class="ds">내 시간순 말고, 독자가 어느 칸부터 들어올지 순서를 정한다. 장 제목은 내가 실제로 쓴 문장에서 후보 2~3개 — 소리 내어 읽어 입에 붙는 것으로, 최종은 내가.</span></div>
+        <div class="ly"><span class="nm">조립<span class="h">DAY 22</span></span><span class="ds">여우가 목차 순서로 03-Rhetoric/초고_v0.md를 조립한다. 세 약속 — 엮기만 한다(새 문장 없이, 출처 날짜를 달아) · 빈 장은 [비어 있는 칸] · 조립 전 승인.</span></div>
+        <div class="ly"><span class="nm">통독<span class="h">DAY 23</span></span><span class="ds">함께 통독하며 한 질문 — "비어 있는 칸 중 더 살고 싶은 칸은 어디예요?" 가제·목차·장별 한 줄을 여정기록에 남긴다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">새로 쓰지 않아도 된다. 이미 쓴 것을 다시 놓는 것 —<br>배열이 편집이고, 편집이 창조다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 대수렴 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="marchl" stroke-opacity=".6">
+            <path d="M30 130 L110 52"/><path d="M83 130 L110 52"/>
+            <path d="M137 130 L110 52"/><path d="M190 130 L110 52"/>
+          </g>
+          <circle cx="30" cy="130" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="83" cy="130" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="137" cy="130" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="190" cy="130" r="4" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:110px 44px;">
+            <path d="M110 28 L115 40 L127 40 L117 48 L121 60 L110 53 L99 60 L103 48 L93 40 L105 40 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">대수렴 · 트리비움 한 바퀴</p>
+      <h2 class="title r r3">트리비움의 완성</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">첫 문장<span class="h">문법 · 재료</span></span><span class="ds">문법 Day 1, 처음 길어 올린 한 줄.</span></div>
+        <div class="ly"><span class="nm">의미의 축<span class="h">문법 · 의미</span></span><span class="ds">세 가지 답을 관통한 한 문장.</span></div>
+        <div class="ly"><span class="nm">악보<span class="h">논리 · 구조</span></span><span class="ds">공리 · 단 한 사람 · 안 할 것.</span></div>
+        <div class="ly"><span class="nm">매니페스토<span class="h">수사 · 발화</span></span><span class="ds">끝까지 지키고 싶은 단 하나의 약속.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">문법 첫날의 거칠고 어색한 문장이 이미 약속의 씨앗을 품고 있었다 —<br>처음의 문장이 한 옥타브 위에서 다시 들린다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 수렴 (GOLD) · 단테 -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="marchl" stroke-opacity=".55">
+            <path d="M38 138 L86 104"/><path d="M86 104 L134 70"/><path d="M134 70 L178 40"/>
+          </g>
+          <g class="pulse"><path d="M38 130 L41 137 L48 137 L42 142 L44 149 L38 145 L32 149 L34 142 L28 137 L35 137 Z" fill="currentColor" stroke="none"/></g>
+          <g class="pulse" style="animation-delay:.8s"><path d="M86 96 L89 103 L96 103 L90 108 L92 115 L86 111 L80 115 L82 108 L76 103 L83 103 Z" fill="currentColor" stroke="none"/></g>
+          <g class="pulse" style="animation-delay:1.6s"><path d="M134 62 L137 69 L144 69 L138 74 L140 81 L134 77 L128 81 L130 74 L124 69 L131 69 Z" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:178px 32px;">
+            <path d="M178 8 L185 28 L206 28 L189 41 L195 61 L178 49 L161 61 L167 41 L150 28 L171 28 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">수렴 · 단테 『신곡』</p>
+      <h2 class="title r r3">모든 노래는 <span class="em">별로 끝난다</span></h2>
+      <div class="body r r4">
+        <p>단테는 백 곡의 노래를 세 편으로 지었다. 지옥을 다 지나 나오며 — <em>"다시 별들을 보았다."</em> 연옥의 꼭대기에서 — <em>"별들로 오를 준비가 되어."</em> 그리고 천국의 마지막 행 — <em>"해와 다른 별들을 움직이는 사랑."</em> 세 편이 전부 같은 한 단어로 닫힌다. 별.</p>
+        <p>우리의 세 달도 그렇게 닫혀 왔다. 문법의 끝에서 별을 보았고, 논리의 끝에서 별을 보았고, 오늘 수사의 끝에서 다시 별을 본다. 이제 별을 보는 사흘이 남았다 — 여정 전체의 <em>별 문장</em> 하나를 골라 여정기록 맨 위에 거는 사흘.</p>
+        <p>단테를 지옥의 밑바닥에서 천국의 끝까지 밀고 간 힘은 사랑이었다 — 해와 다른 별들을 움직이는 그 힘. 내 것이 누군가에게 닿아 그 사람의 별이 되는 순간이 온다. <em>별이 별을 낳는다.</em></p>
+        <p class="strong">각자의 별에서 웃는다. 하늘 전체가 함께 웃는다.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:.9rem;">E quindi uscimmo a riveder le stelle.</p>
+    </div>
+  </section>
+
+  <!-- 14 · 남은 걸음 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="march" d="M100 80 m-14 0 a14 14 0 1 1 14 14 a28 28 0 1 1 -28 -28 a42 42 0 1 1 42 42 a56 56 0 1 1 -56 -56" stroke-opacity=".8"/>
+          <circle cx="100" cy="80" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">남은 걸음 · 각자의 속도로</p>
+      <h2 class="title r r3">커리큘럼 다음의 커리큘럼</h2>
+      <div class="body r r4">
+        <p>여정 Day 17–30은 각자의 속도로 걷는다 — 분더카머 정돈에서 초고 v0, 매니페스토, 별을 보는 사흘까지. 날짜에 쫓기지 않는다. 확정한 매니페스토 한 줄은 사막에 나눠 주기 — <em>서로의 약속이 모이면, 그게 우리의 돌림노래다.</em></p>
+        <p>커리큘럼은 끝나지만 도구들은 전부 곁에 남는다. 아침이 오면 "안녕", 글감이 마르면 "분더카머", 벗고 싶은 날엔 "오아시스", 한 주의 끝엔 "밤하늘". 그리고 가장 작은 단위로, 계속 발행하는 것.</p>
+        <p class="strong">커리큘럼이라기보다, 그냥 사는 방식이지만.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 닫기 · 수료 오프 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="20" y1="120" x2="200" y2="120" stroke-opacity=".5"/>
+          <path d="M92 120 q18 -26 36 0" stroke-opacity=".7"/>
+          <g class="twinkle" style="transform-origin:110px 52px;">
+            <path d="M110 30 L117 52 L140 52 L121 66 L128 88 L110 74 L92 88 L99 66 L80 52 L103 52 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <circle cx="52" cy="132" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="78" cy="138" r="4" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="142" cy="138" r="4" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="168" cy="132" r="4" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">7월 25일 토요일 · 수료</p>
+      <h2 class="title r r3">책을 덮고,<br><span class="em">서로를 펼치는 날</span></h2>
+      <div class="body r r4">
+        <p>트리비움 한 바퀴를 함께 돈 우리가, 얼굴을 마주한다. 한 사람 10분 — 세 달의 여정 이야기를 들려준다. 발표 자료는 미리 긱어스나 톡에 올려두고, 몸은 가볍게. 챙겨올 것은 둘 — <em>백 일의 문장 하나, 손글씨 공책.</em></p>
+        <p>"사막이 아름다운 건, 어딘가에 우물을 감추고 있기 때문이야" — 『어린 왕자』의 문장이다. 혼자 걷던 사막이 아름다웠던 건, 그 어딘가에 서로라는 우물이 있었기 때문인지도 모른다.</p>
+        <p class="final">토요일에 만나요.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">Da capo — 끝나는 자리에서, 처음의 노래를 다시 부른다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 15</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(20,31,54,.75)' : 'var(--cream-dim)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>

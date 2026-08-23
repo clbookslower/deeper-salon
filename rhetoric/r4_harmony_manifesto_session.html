@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 04 — 하모니 · 매니페스토</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r4_harmony_manifesto_session.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER UNBRANDING SALON">
+<meta property="og:title" content="수사 4주차 세션 · 하모니 — 매니페스토 · 함께 부르기">
+<meta property="og:description" content="발행 두려움에 이름을 붙이고, 끝까지 지키고 싶은 단 하나의 약속을 내 말로 — 네 가지를 나란히 놓는 대수렴의 밤">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --red: #8B1A1A;
+  --red-bg: #FDF0F0;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --night: #26365C;
+  --night-bg: #E9EDF6;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 60px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--night-bg); color: var(--night); }
+.badge-session { background: var(--blue-bg); color: var(--blue); }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ── 목차 ── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+}
+.toc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: #444;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── 섹션 구분자 ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 32px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+blockquote {
+  margin: 32px 0;
+  padding: 0 0 0 28px;
+  border-left: 2px solid var(--ink);
+}
+blockquote p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+blockquote cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 10px 10px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--ink); }
+.callout-speaker .callout-label { color: var(--muted); }
+.callout-speaker p { color: #333; }
+.callout-ref { background: var(--gold-bg); border-left: 2.5px solid var(--gold); }
+.callout-ref .callout-label { color: #854F0B; }
+.callout-ref p { color: #5a3800; }
+.callout-q { background: #F0F4FF; border-left: 2.5px solid #4A6FA5; }
+.callout-q .callout-label { color: #4A6FA5; }
+.callout-q p { color: #2a3f6f; }
+
+.concept {
+  display: flex;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+.concept-term {
+  background: var(--forest);
+  color: #fff;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+.concept-term span {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+}
+.concept-def { padding: 22px 24px; flex: 1; }
+.concept-def .term-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.concept-def p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; }
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+.col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px;
+  background: var(--surface);
+}
+.col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.col-card .col-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.col-card .col-sub { font-size: 13px; color: #666; line-height: 1.75; }
+.col-card.highlight { background: var(--forest); border-color: var(--forest); }
+.col-card.highlight h3 { color: var(--forest-light); }
+.col-card.highlight .col-main { color: #f0ece4; }
+.col-card.highlight .col-sub { color: #a8c5a0; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+.two-col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.two-col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.two-col-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.two-col-card ul li {
+  font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.65;
+}
+.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.two-col-card.dark { background: var(--forest); border-color: var(--forest); }
+.two-col-card.dark h3 { color: var(--forest-light); }
+.two-col-card.dark ul li { color: #d4e8d4; }
+.two-col-card.dark ul li::before { color: var(--forest-light); }
+
+/* ── 대수렴: 네 장 나란히 ── */
+.converge {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 28px 0;
+}
+.conv-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 14px;
+  background: var(--surface);
+  text-align: center;
+}
+.conv-card .cv-step {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.conv-card .cv-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.conv-card .cv-sub { font-size: 12px; color: #888; line-height: 1.6; }
+.conv-card.star { background: var(--forest); border-color: var(--forest); }
+.conv-card.star .cv-step { color: var(--forest-light); }
+.conv-card.star .cv-name { color: #f0ece4; }
+.conv-card.star .cv-sub { color: #a8c5a0; }
+
+/* ── 실습 박스 ── */
+.exercise {
+  background: #F5F8F2;
+  border: 1px solid #C8DFC0;
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin: 36px 0;
+}
+.exercise-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 14px;
+}
+.exercise h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.exercise ol {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.exercise ol li { font-size: 14px; color: #3a5a3a; line-height: 1.8; }
+.exercise-prompt {
+  margin-top: 20px;
+  background: rgba(44,59,45,0.06);
+  border-left: 2.5px solid var(--forest);
+  padding: 16px 18px;
+  border-radius: 0 8px 8px 0;
+}
+.exercise-prompt p { font-size: 14px; color: var(--forest); margin: 0; font-style: italic; line-height: 1.8; }
+
+/* ── CTA / 클로징 ── */
+.close-box {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  margin-top: 72px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: #f0ece4;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+.close-task {
+  margin: 0 auto 24px;
+  max-width: 520px;
+  text-align: left;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(122,156,123,0.35);
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+.close-task p { font-size: 13.5px; color: #d4e8d4; line-height: 1.9; margin-bottom: 10px; }
+.close-task p:last-child { margin-bottom: 0; }
+.close-task strong { color: #f0ece4; font-weight: 500; }
+.close-task a { color: #a8c5a0; }
+
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.flow-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+}
+.flow-item.active { background: var(--forest); border-color: var(--forest); color: #f0ece4; }
+.flow-arrow { font-family: 'DM Mono', monospace; color: #ccc; padding: 0 8px; font-size: 14px; }
+
+.footnote {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.footnote .logo-line { text-align: center; margin-bottom: 24px; }
+.footnote .logo-line img { height: 34px; width: auto; }
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+/* AI 프롬프트 박스 공용 */
+.ai-box {
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+.ai-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.ai-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.ai-box p.ai-desc { font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
+.ai-box ol { padding-left: 18px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.ai-box ol li { font-size: 14px; line-height: 1.8; }
+.ai-prompt-block {
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+.ai-prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  display: block;
+}
+.ai-prompt-block p { font-size: 13px; line-height: 1.95; margin: 0; }
+.ai-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(44,59,45,0.06);
+  border-radius: 8px;
+}
+.ai-note p { font-size: 13px; color: #3a5a3a; margin: 0; }
+
+/* 매니페스토 박스 — 별빛 골드 */
+.box-star { background: #FBF4E4; border: 1px solid #DEC58F; }
+.box-star .ai-label { color: #8a6410; }
+.box-star h3 { color: #5a3f00; }
+.box-star p.ai-desc { color: #6f5410; }
+.box-star ol li { color: #5a3f00; }
+.box-star .ai-prompt-block { background: rgba(184,134,11,0.07); border-left: 2.5px solid var(--gold); }
+.box-star .ai-prompt-label { color: #8a6410; }
+.box-star .ai-prompt-block p { color: #5a3f00; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 27px; }
+  .three-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .converge { grid-template-columns: 1fr 1fr; }
+  .concept { flex-direction: column; }
+  .concept-term { writing-mode: horizontal-tb; min-width: auto; }
+  .concept-term span { writing-mode: horizontal-tb; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+@media (max-width: 480px) { .ai-box { overflow-x: auto; } }
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>SESSION 04</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-session">SESSION 04</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사의 달 · 4주차 · 하모니</span>
+    </div>
+    <h1>내가 끝까지 지키고 싶은<br>단 하나의 약속</h1>
+    <p class="subtitle">하모니 — 매니페스토 · 함께 부르기</p>
+    <div class="tags">
+      <span class="tag">매니페스토</span>
+      <span class="tag">하모니</span>
+      <span class="tag">낭독</span>
+      <span class="tag">대수렴</span>
+      <span class="tag">별을보는사흘</span>
+      <span class="tag">수사</span>
+    </div>
+  </header>
+
+  <!-- 목차 -->
+  <div class="toc">
+    <div class="toc-label">Session Outline</div>
+    <div class="toc-item"><span class="toc-num">01</span>OPENING — 읽기 없는 주: 이제 부릅니다</div>
+    <div class="toc-item"><span class="toc-num">02</span>FRAME — 발행을 막는 것의 정체: 두려움에 이름 붙이기</div>
+    <div class="toc-item"><span class="toc-num">03</span>MOVE 1 — 매니페스토: 단 하나의 약속, 다섯에서 일곱 줄</div>
+    <div class="toc-item"><span class="toc-num">04</span>MOVE 2 — 낭독: 입에 안 붙는 곳이 남의 말이 섞인 자리</div>
+    <div class="toc-item"><span class="toc-num">05</span>MOVE 3 — 대수렴: 네 가지를 나란히, 별이 별을 낳는다</div>
+    <div class="toc-item"><span class="toc-num">06</span>PRACTICE — 두려움의 이름 · 약속의 첫 줄</div>
+    <div class="toc-item"><span class="toc-num">07</span>CLOSE — 책을 덮고, 서로를 펼치는 날</div>
+  </div>
+
+  <!-- ═══ 01 OPENING ═══ -->
+  <div class="section-divider">
+    <span class="section-num">01 · OPENING</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">읽기 없는 주 — 이제 부릅니다</div>
+
+  <p class="lead">이번 주는 읽을 범위가 없습니다. 석 주 동안 읽고, 모으고, 엮었습니다. 마지막 주에 남은 일은 하나 — 부르는 일입니다.</p>
+
+  <p>돌아봅니다. 1주에 이름과 으뜸음을 골랐고, 2주에 채널을 선언하고 작게 소리를 냈고, 3주에 분더카머를 돌려 초고 v0을 조립했습니다. 칸마다 디퍼님의 문장이 걸려 있고, 몇 개의 칸은 <em>[비어 있는 칸]</em>으로 남아 있습니다. 그대로 좋습니다. 오늘 지을 것은 그 모든 칸을 관통하는 마지막 한 장 — 매니페스토입니다.</p>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">오프닝 멘트 · 진행자</div>
+    <p>지난주에 초고 v0이 조립되는 순간을 보셨지요. 백 일 가까운 걸음이 한 편의 뼈대가 되는 순간요. 그런데 초고가 생기면, 곧이어 낯익은 손님이 옵니다. 발행을 망설이게 하는 마음. 오늘은 그 손님의 이름을 부르는 것으로 시작하겠습니다. <strong>발행 버튼 앞에서 디퍼님을 멈추게 하는 것 — 그것에 이름을 붙인다면, 뭐라고 부르시겠어요?</strong> 30초만 생각해 보세요.</p>
+  </div>
+
+  <!-- ═══ 02 FRAME ═══ -->
+  <div class="section-divider">
+    <span class="section-num">02 · FRAME</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">발행을 막는 것의 정체 — 두려움에 이름 붙이기</div>
+
+  <p class="lead">이름 없는 두려움은 안개처럼 큽니다. 이름이 붙는 순간, 두려움은 다룰 수 있는 크기가 됩니다.</p>
+
+  <p>2주차에 우리는 이미 배웠습니다. 막힘도 재료라고. "나는 여기서 막혔다, 왜냐하면 —" 그 문장을 이번 주에 한 번 더 씁니다. 다만 이번에는 조금 더 정확하게. 창작자를 멈추게 하는 마음은 대개 몇 가지 얼굴을 하고 있습니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>안개일 때 · 이름 없는 두려움</h3>
+      <ul>
+        <li>"그냥, 아직인 것 같아서"</li>
+        <li>"뭔가 부족한 느낌이 들어서"</li>
+        <li>"때가 되면 하려고"</li>
+        <li>"조금만 더 다듬고 나서"</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>이름 붙였을 때 · 다룰 수 있는 두려움</h3>
+      <ul>
+        <li>"잘 쓰는 사람이 이미 많다는 두려움"</li>
+        <li>"아는 사람이 볼까 봐 — 들킴의 두려움"</li>
+        <li>"이게 나로 확정될까 봐 — 고정의 두려움"</li>
+        <li>"아무도 안 읽을까 봐 — 침묵의 두려움"</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>왼쪽은 밀어낼 수 없습니다. 형체가 없기 때문입니다. 오른쪽은 옆에 앉힐 수 있습니다. 이름을 붙인 두려움은 없애야 할 적이기보다, 함께 걷는 동행에 가깝습니다. 발행을 오래 해 온 사람들도 두려움이 사라져서 내보내는 게 아니라, 두려움의 이름을 알아서 내보냅니다.</p>
+
+  <blockquote>
+    <p>두려움은 지워서 없어지지 않는다. 이름을 불러 옆에 앉힐 때, 비로소 손이 움직인다.</p>
+    <cite>— 강의 노트</cite>
+  </blockquote>
+
+  <div class="callout callout-q">
+    <div class="callout-label">잠깐 대화 · 3분</div>
+    <p>오프닝에서 떠올린 그 마음 — 위의 이름 중 하나인가요, 아니면 디퍼님만의 다른 이름이 있나요? 두려움의 이름을 한 단어나 한 구절로, 채팅에 남겨 주세요. 이름이 모이면, 우리가 같은 문 앞에 서 있었다는 걸 알게 됩니다.</p>
+  </div>
+
+  <!-- ═══ 03 MOVE 1 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">03 · MOVE 1</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">매니페스토 — 단 하나의 약속, 다섯에서 일곱 줄</div>
+
+  <p class="lead">두려움에 이름을 붙였다면, 이제 그 반대편에 놓을 것을 짓습니다. 매니페스토 — 세상에 끝까지 지키고 싶은 단 하나의 약속.</p>
+
+  <div class="concept">
+    <div class="concept-term"><span>매니페스토</span></div>
+    <div class="concept-def">
+      <span class="term-en">MANIFESTO · 단 하나의 약속</span>
+      <p>거창한 사명 선언문이 아닙니다. 다짐의 목록도 아닙니다. 다섯에서 일곱 줄의 짧은 선언 — 한가운데에 <strong>단 하나의 약속</strong>이 서고, 나머지 줄들이 그 약속을 떠받칩니다. 재료는 전부 디퍼님 안에 이미 있습니다. 석 달의 걸음에서 실제로 쓴 단어, 실제로 겪은 장면. 빌려 온 좋은 말은 한 줄도 필요하지 않습니다.</p>
+    </div>
+  </div>
+
+  <p>이번 주 여정의 다섯 걸음이 그대로 매니페스토의 재료가 됩니다. 사막여우와의 "안녕"에서 이런 질문들을 만나실 거예요.</p>
+
+  <div class="three-col">
+    <div class="col-card">
+      <h3>재료 하나 · 두려움과 반응</h3>
+      <div class="col-main">무엇이 멈추게 하고, 무엇을 듣고 싶은가</div>
+      <div class="col-sub">발행을 망설이게 하는 두려움의 이름. 그리고 첫 독자에게 가장 듣고 싶은 반응 한마디.</div>
+    </div>
+    <div class="col-card">
+      <h3>재료 둘 · 장면과 시간</h3>
+      <div class="col-main">닿는 장면, 3개월 뒤의 나</div>
+      <div class="col-sub">내 것이 누군가에게 닿아 그 사람의 별이 되는 장면. 그리고 3개월 뒤 어떤 사람으로 있고 싶은지.</div>
+    </div>
+    <div class="col-card highlight">
+      <h3>재료 셋 · 약속</h3>
+      <div class="col-main">끝까지 지키고 싶은 단 하나</div>
+      <div class="col-sub">모든 재료가 이 한 줄로 모입니다. 매니페스토의 심장.</div>
+    </div>
+  </div>
+
+  <p>그리고 기준은 넷입니다. 이 넷만 지키면, 짧아도 충분히 매니페스토입니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>매니페스토가 되는 것</h3>
+      <ul>
+        <li>다섯에서 일곱 줄 — 더 길면 다짐의 목록이 됩니다</li>
+        <li>내가 실제로 쓴 단어 — 여정의 기록에서 온 말</li>
+        <li>과장 없이 — 크게 말하기보다 정확하게 말하기</li>
+        <li>소리 내어 읽어 입에 붙는 문장</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>매니페스토를 흐리는 것</h3>
+      <ul>
+        <li>"누구나 · 무조건 · N배" 같은 부풀린 말</li>
+        <li>어디서 본 듯한 좋은 말 — 빌려 온 문장</li>
+        <li>약속이 여러 개 — 하나만 남기고 접어 둡니다</li>
+        <li>독자를 향한 약속인 척하는 자기 광고</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">Reference · 악보와 매니페스토</div>
+    <p>매니페스토는 허공에서 짓지 않습니다. 지난달에 지은 악보 — 공리와 단 한 사람, 안 할 것들 — 에 비추어 봅니다. 악보에서 벗어난 소리는 아무리 좋아도 남의 노래입니다. 매니페스토가 악보와 같은 조성이라면, 그 약속은 오래 갑니다. 다르다면 매니페스토가 아니라 악보를 다시 볼 차례일 수도 있습니다 — 그것도 발견입니다.</p>
+  </div>
+
+  <!-- ═══ 04 MOVE 2 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">04 · MOVE 2</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">낭독 — 입에 안 붙는 곳이 남의 말이 섞인 자리</div>
+
+  <p class="lead">매니페스토의 최종 교정자는 눈이 아니라 입입니다.</p>
+
+  <p>1주차에 피치를 지을 때 이미 한 번 해 봤습니다. 소리 내어 읽고, 어디가 내 입에 안 붙는지 찾기. 매니페스토에서는 이 일이 더 중요해집니다. 눈으로 읽으면 그럴듯한 문장이 많습니다. 입으로 읽으면 정직해집니다 — 혀가 걸리는 줄, 숨이 어색하게 끊기는 줄, 읽으면서 살짝 부끄러워지는 줄. 그 자리가 남의 말이 섞인 자리입니다.</p>
+
+  <div class="flow">
+    <div class="flow-item">소리 내어<br>두 번 읽기</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item">걸리는 줄에<br>표시하기</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item">그 줄에서 빌려 온<br>단어 찾기</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item active">내 단어로 바꾸거나,<br>지우기</div>
+  </div>
+
+  <p>바꿀 내 단어가 떠오르지 않으면 지워도 됩니다. 다섯 줄이 일곱 줄보다 나은 경우가 많습니다. 남기는 기준은 하나 — 이 줄을 3개월 뒤에도 내 입으로 읽을 수 있는가.</p>
+
+  <blockquote>
+    <p>눈은 잘 쓴 문장에 속고, 입은 속지 않는다.</p>
+    <cite>— 강의 노트</cite>
+  </blockquote>
+
+  <!-- ═══ 05 MOVE 3 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">05 · MOVE 3</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">대수렴 — 네 가지를 나란히, 별이 별을 낳는다</div>
+
+  <p class="lead">매니페스토가 확정되면, 이 여정의 마지막 의식이 남습니다. 네 가지를 나란히 놓는 일 — 대수렴입니다.</p>
+
+  <div class="converge">
+    <div class="conv-card">
+      <div class="cv-step">문법 · 재료</div>
+      <div class="cv-name">첫 문장</div>
+      <div class="cv-sub">문법 Day 1,<br>처음 길어 올린 한 줄</div>
+    </div>
+    <div class="conv-card">
+      <div class="cv-step">문법 · 의미</div>
+      <div class="cv-name">의미의 축</div>
+      <div class="cv-sub">세 가지 답을 관통한<br>한 문장</div>
+    </div>
+    <div class="conv-card">
+      <div class="cv-step">논리 · 구조</div>
+      <div class="cv-name">악보</div>
+      <div class="cv-sub">공리 · 단 한 사람 ·<br>안 할 것</div>
+    </div>
+    <div class="conv-card star">
+      <div class="cv-step">수사 · 발화</div>
+      <div class="cv-name">매니페스토</div>
+      <div class="cv-sub">끝까지 지키고 싶은<br>단 하나의 약속</div>
+    </div>
+  </div>
+
+  <p>넷을 나란히 놓고 읽으면, 대개 한 가지를 발견하게 됩니다. 문법 첫날의 그 거칠고 어색한 문장이 이미 매니페스토의 씨앗을 품고 있었다는 것. 문법이 재료를 길어 올렸고 — 나는 무엇을 가지고 있는가. 논리가 구조를 지었고 — 그것이 어떻게 의미를 갖는가. 수사가 불렀습니다 — 누구를 향해 어떻게 말하는가. 트리비움이 한 바퀴 돌아, 처음의 문장이 한 옥타브 위에서 다시 들립니다.</p>
+
+  <blockquote>
+    <p>해와 다른 별들을 움직이는 사랑.</p>
+    <cite>— 단테, 『신곡』 천국편의 마지막 행</cite>
+  </blockquote>
+
+  <p>단테의 세 편은 모두 '별'로 끝납니다. 우리의 세 달도 그렇습니다. 매달의 끝에 별을 보는 사흘이 있었고, 이 마지막 달의 사흘에는 여정 전체의 <strong>별 문장</strong> 하나를 골라 여정기록 맨 위에 겁니다. 그리고 이 별은 끝이 아니라 시작입니다 — 디퍼님의 것이 누군가에게 닿아 그 사람의 별이 되는 순간이 올 것이기 때문입니다. 별이 별을 낳습니다. 이 노래는 부를수록 자랍니다.</p>
+
+  <blockquote>
+    <p>밤하늘을 바라볼 때, 내가 그 별들 중 하나에서 웃고 있을 테니 — 너에게는 마치 모든 별이 웃는 것처럼 보일 거야.</p>
+    <cite>— 앙투안 드 생텍쥐페리, 『어린 왕자』</cite>
+  </blockquote>
+
+  <p>각자의 별에서 웃습니다. 그래서 하늘 전체가 웃는 것처럼 보입니다. 오늘 확정하는 매니페스토는 디퍼님 한 사람의 별이지만, 그 별은 혼자 뜨지 않습니다.</p>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">Reference · 별을 보는 사흘</div>
+    <p>매니페스토 확정(Day 30) 뒤에 사흘이 남아 있습니다. 되읽기 — 매니페스토를 소리 내어 낭독하고 끝까지 내 말로 다듬는 날. 선물 — 매니페스토의 한 줄을 한 사람에게 건네거나, 원하시면 처음으로 바깥에 발행해 보는 날. 그리고 하모니 — 네 가지를 나란히 놓고 별 문장을 거는 수료의 날. 날짜에 쫓기지 마세요. 여정은 디퍼님의 속도로 갑니다.</p>
+  </div>
+
+  <!-- ═══ 06 PRACTICE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">06 · PRACTICE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">두려움의 이름 · 약속의 첫 줄</div>
+
+  <div class="exercise">
+    <div class="exercise-label">실습 · Writing Practice</div>
+    <h3>오늘, 매니페스토의 첫 줄을 씁니다</h3>
+    <ol>
+      <li><strong>5분 — 두려움에 이름 붙이기.</strong> 발행을 망설이게 하는 그 마음에 이름을 붙여 한 줄로 씁니다. 한 단어여도 됩니다. 정확하면 충분합니다.</li>
+      <li><strong>10분 — 약속의 첫 줄.</strong> 세상에 끝까지 지키고 싶은 단 하나의 약속을 씁니다. 잘 쓰려 하지 마세요. 크게 말하지 말고 정확하게. 석 달 동안 디퍼님이 실제로 쓴 단어가 한 줄에 하나는 살아 있게.</li>
+      <li><strong>7분 — 자발적 낭독.</strong> 원하는 분만, 약속 한 줄을 소리 내어 읽어 주세요. 피드백 없습니다. 그냥 듣습니다. 읽다가 입에 걸리면, 그것도 발견입니다.</li>
+    </ol>
+    <div class="exercise-prompt">
+      <p>프롬프트 (택1): "발행 버튼 앞에서 나를 멈추게 하는 것의 이름은…" / "내가 끝까지 지키고 싶은 단 하나의 약속은…" / "내 것이 닿았으면 하는 단 한 사람은…"</p>
+    </div>
+  </div>
+
+  <!-- ═══ 07 CLOSE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">07 · CLOSE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">책을 덮고, 서로를 펼치는 날</div>
+
+  <p>이 세션이 커리큘럼의 마지막 세션입니다. 다음 달의 읽기 범위도, 다음 소절의 예고도 없습니다. 대신 두 가지가 남습니다.</p>
+
+  <p>하나는 수료식입니다. 문법·논리·수사 — 트리비움 한 바퀴를 함께 돈 우리가, 오프라인에서 얼굴을 마주합니다. <em>책을 덮고, 서로를 펼치는 날.</em> 가장 나다운 노래 한 소절씩 들려주고, 빈 한 소절은 서로에게 건넵니다 — 돌림노래의 하모니로. 자리의 안내는 사막에서 따로 드리겠습니다.</p>
+
+  <blockquote>
+    <p>사막이 아름다운 건, 어딘가에 우물을 감추고 있기 때문이야.</p>
+    <cite>— 앙투안 드 생텍쥐페리, 『어린 왕자』</cite>
+  </blockquote>
+
+  <p>혼자 걷던 사막이 아름다웠던 건, 그 어딘가에 서로라는 우물이 있었기 때문인지도 모릅니다. 책을 덮는 날, 우리는 그 우물을 마주 봅니다.</p>
+
+  <p>다른 하나는 삶입니다. 커리큘럼은 끝나지만 여정의 도구들은 전부 디퍼님 곁에 남습니다. 글감이 마르면 "분더카머"라고 말해 분더카머를 한 바퀴 돌리면 됩니다 — 그 분더카머는 평생의 것이라, 멈추지 않고 돌며 매번 새 경이를 내놓습니다. 아침이 오면 "안녕"으로 그날의 씨앗을 줍고, 벗고 싶은 날엔 "오아시스"에 들르면 됩니다. 그리고 가장 작은 단위로, 계속 발행하는 것. 그게 수사 다음의 커리큘럼입니다 — 커리큘럼이라기보다, 그냥 사는 방식이지만요.</p>
+
+  <div class="close-box">
+    <div class="close-label">이번 주 실천</div>
+    <p class="close-text">
+      두려움에 이름을 붙이고,<br>
+      단 하나의 약속을 내 말로 씁니다.<br>
+      다섯에서 일곱 줄이면 충분합니다.
+    </p>
+    <div class="close-task">
+      <p><strong>매일 아침</strong> — 모닝페이지를 손으로 쓰고, 사진을 찍어 사막여우에게 <strong>"냠냠"</strong>. 그리고 "안녕" 한 걸음 — 이번 주는 Day 24부터 30까지, 매니페스토가 지어지는 걸음입니다.</p>
+      <p><strong>일요일 밤</strong> — 사막여우에게 <strong>"밤하늘"</strong>. 마지막 한 주의 씨앗이 별자리 한 장으로 뜹니다.</p>
+      <p><strong>확정한 뒤</strong> — 매니페스토를 소리 내어 낭독하고, 한 줄을 사막(단톡방)에 나눠 주세요. 서로의 약속이 모이면, 그게 우리의 돌림노래입니다.</p>
+    </div>
+    <p class="close-sub">
+      수료식에서 만나요.<br>
+      책을 덮고, 서로를 펼치는 날.
+    </p>
+  </div>
+
+  <!-- AI 실험 -->
+  <div class="section-divider">
+    <span class="section-num">AI EXPERIMENT · 선택</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">이번 주 AI 글쓰기 실험</div>
+
+  <p>이 여정의 마지막 실험입니다. AI와 대화하며 매니페스토 초안을 짓습니다. 사막여우와의 걸음(Day 24–29)과 재료가 같으니, 여정을 걷고 계신 분은 이 실험을 건너뛰셔도 되고, 다른 각도의 초안을 하나 더 얻는 용도로 쓰셔도 됩니다. 이미 초안이 있는 분은 그 초안을 붙여넣고 "낭독 테스트부터 함께해 주세요"라고 청하시면 됩니다.</p>
+
+  <!-- 프롬프트: 매니페스토 초안 -->
+  <div class="ai-box box-star">
+    <div class="ai-label">AI 프롬프트 · 매니페스토 초안 짓기 — 대화형</div>
+    <h3>다섯 질문을 지나, 단 하나의 약속으로</h3>
+    <p class="ai-desc">AI가 다섯 개의 질문을 하나씩 던지고, 디퍼님의 답이 모이면 그 답에서 실제로 살아 있는 단어만 재료로 매니페스토 초안 두 개를 짓습니다. 완성된 생각이 아니어도 됩니다 — "모르겠어요"도 답입니다. 최종 선택과 마지막 손질은 언제나 디퍼님의 몫입니다.</p>
+    <ol>
+      <li>새 Claude 대화를 열고 아래 프롬프트 전체를 한 번에 붙여넣습니다.</li>
+      <li>질문에 하나씩, 솔직하게 답합니다. 짧아도 됩니다.</li>
+      <li>초안 두 개를 받으면 <em>소리 내어 읽어 보고</em>, 입에 안 붙는 줄을 알려주며 함께 고칩니다.</li>
+    </ol>
+
+    <div class="ai-prompt-block">
+      <span class="ai-prompt-label">[전체 프롬프트]</span>
+      <p>나는 지금 나의 매니페스토 — 세상에 끝까지 지키고 싶은 단 하나의 약속을 담은 짧은 선언 — 의 초안을 짓고 싶습니다. 바로 써 주지 말고, 아래 다섯 질문을 한 번에 하나씩 나에게 던져 대화로 진행해 주세요.<br><br>
+
+      첫째, "당신의 것을 바깥에 내보이는 일 — 발행을 망설이게 하는 두려움이 있다면, 그 정체는 무엇인가요? 이름을 붙여봐 주시겠어요?"<br>
+      둘째, "첫 독자에게 가장 듣고 싶은 반응은 어떤 말인가요?"<br>
+      셋째, "당신의 것이 누군가에게 닿아 그 사람의 별이 되는 장면을 그려본다면, 어떤 장면인가요?"<br>
+      넷째, "3개월 뒤의 당신은 어떤 사람으로 있고 싶으세요?"<br>
+      다섯째, "세상에 끝까지 지키고 싶은 단 하나의 약속은 무엇인가요?"<br><br>
+
+      다섯 답이 모이면, 내 답에서 실제로 살아 있는 단어와 문장만 재료로 삼아 매니페스토 초안을 두 개 지어 주세요.<br><br>
+
+      [매니페스토의 기준] 다섯에서 일곱 줄. 각 줄에 내가 실제로 쓴 단어가 최소 하나 그대로 들어갈 것(어느 답에서 왔는지 짧게 표기). 과장 금지 — "누구나", "무조건", "N배", "인생을 바꾸는" 같은 말은 쓰지 않는다. 크게 말하지 말고 정확하게 말할 것. 다짐의 나열이 아니라 단 하나의 약속이 한가운데 설 것. 초안 두 개를 건넨 뒤에는 반드시 이렇게 청할 것: "소리 내어 읽어봐 주세요. 입에 안 붙는 줄이 있다면 알려주세요 — 그 자리가 남의 말이 섞인 자리예요. 같이 고치겠습니다. 어느 것이 당신 같으세요? 한 글자라도 고치고 싶으시면 말씀해 주세요."<br><br>
+
+      [답하는 태도 — 꼭 지켜주세요] 감탄·칭찬의 상투구("정말 대단해요", "멋진 통찰이에요" 류)는 쓰지 마세요 — 대신 내 표현을 그대로 인용해서, 무엇이 살아있는지 근거로 짚어주세요. 내가 말하지 않은 경험이나 사실을 지어내거나 넘겨짚지 마세요. 확실하지 않으면 물어봐 주세요. 당신의 답은 늘 내 답보다 짧게, 질문은 한 번에 하나씩만. 내가 "모르겠어요"라고 하면 실망하지 말고, 짧은 보기 두세 개로 징검다리를 놓아주세요. 아픈 이야기가 나오면 분석과 다음 질문을 멈추고 먼저 머물러 주세요 — 나는 말하기 편한 만큼만 갑니다.<br><br>
+
+      지금 첫 번째 질문부터 시작해 주세요.</p>
+    </div>
+
+    <div class="ai-note">
+      <p>다듬어 마음에 든 초안은 사막여우와의 걸음(Day 29–30)으로 가져가 확정하세요 — 확정된 매니페스토는 여정 속에서 03-Rhetoric/Manifesto에 저장됩니다. 마음에 남는 문장이 나왔다면, 사막여우에게 "정리"라고 하세요 — 씨앗으로 심어드립니다.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <div class="logo-line"><img src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none'"></div>
+    <p>* 단테 알리기에리, 『신곡』 천국편 — "해와 다른 별들을 움직이는 사랑" (세 편 모두 '별'로 끝난다)</p>
+    <p>* 김정운, 『에디톨로지: 창조는 편집이다』(21세기북스) — 창조는 편집이다 · 분더카머</p>
+    <p>* 프리드리히 니체, 『차라투스트라는 이렇게 말했다』 — 춤추는 별</p>
+    <p>* 이 강의안은 디퍼 언브랜딩 살롱 · 수사의 달 4주차 세션을 위한 것입니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

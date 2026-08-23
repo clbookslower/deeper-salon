@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 논리 4주차 — 나만의 구조</title>
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 논리 4주차 — 나만의 구조" />
+<meta property="og:description" content="내가 나를 쓰고, 그 글이 다시 나를 쓴다" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 논리 4주차 — 나만의 구조" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E7; --paper-deep:#EFE7D8;
+    --ink:#221E18; --ink-soft:#5A5247; --ink-faint:#9A9080;
+    --red:#CC3333; --rule:#D8CFBE;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"Nanum Myeongjo", serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Nanum Gothic",sans-serif; font-size:.66rem; font-weight:700;
+    letter-spacing:.3em; text-transform:uppercase; color:var(--red);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:var(--red); color:var(--paper);}
+
+  .content{margin:auto; width:100%; max-width:46rem;
+    padding:6rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center;}
+
+  .kicker{font-family:"Nanum Gothic",sans-serif; font-size:clamp(.62rem,1.3vw,.78rem);
+    font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--red);}
+  .slide.invert .kicker{color:rgba(255,255,255,.85);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Nanum Myeongjo",serif; font-weight:800; letter-spacing:-.01em;
+    font-size:clamp(1.6rem,3.9vw,2.6rem); line-height:1.32;}
+  .title .em{color:var(--red);}
+  .slide.invert .title .em{color:var(--paper); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--ink-faint); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(255,255,255,.72);}
+
+  .body{align-self:stretch; max-width:38rem; margin:.6rem auto 0; text-align:left;
+    font-family:"Nanum Myeongjo",serif; font-weight:400; color:var(--ink);
+    font-size:clamp(1.05rem,1.6vw,1.32rem); line-height:2.05; letter-spacing:.005em;}
+  .slide.invert .body{color:rgba(255,255,255,.96);}
+  .body p{margin:0 0 1.2rem;}
+  .body p:last-child{margin:0;}
+  .body .strong{font-weight:700; color:var(--red);}
+  .slide.invert .body .strong{color:#fff;}
+  .body .final{font-weight:800; text-align:center; font-size:1.16em; line-height:1.7; margin-top:1rem;}
+
+  .viz{width:clamp(100px,11vw,150px); height:clamp(100px,11vw,150px); color:var(--red); flex:none;}
+  .slide.invert .viz{color:var(--paper);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(120px,15vw,188px); height:clamp(120px,15vw,188px);}
+  .cover .title{font-size:clamp(1.9rem,5.2vw,3.3rem); line-height:1.22;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.24s}
+  .slide.active .r3{transition-delay:.40s}.slide.active .r4{transition-delay:.58s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .grow{animation:grow 3.2s ease-in-out infinite;}
+  @keyframes grow{0%,100%{opacity:.4; transform:scale(.82)}50%{opacity:1; transform:scale(1)}}
+  .flow{animation:flow linear infinite;}
+  @keyframes flow{to{transform:translateX(-120px);}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .floatup{animation:floatup 4.2s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(18px);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+  /* meta-view map */
+  .map{align-self:stretch; max-width:38rem; margin:.6rem auto 0; display:flex; flex-direction:column; text-align:left;}
+  .map .row{display:grid; grid-template-columns:8.5rem 1fr; gap:1rem; align-items:baseline;
+    border-bottom:1px solid var(--rule); padding:.7rem 0;}
+  .map .row:last-child{border-bottom:none;}
+  .map .m{font-family:"Nanum Myeongjo",serif; font-weight:800; color:var(--red); font-size:clamp(1.02rem,1.5vw,1.24rem); white-space:nowrap;}
+  .map .m .lt{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:.72em; color:var(--ink-faint); margin-left:.25em;}
+  .map .d{font-family:"Nanum Myeongjo",serif; color:var(--ink-soft); font-size:clamp(.9rem,1.2vw,1.04rem); line-height:1.55;}
+  .map .d b{color:var(--ink); font-weight:700;}
+  @media(max-width:600px){ .map .row{grid-template-columns:1fr; gap:.15rem;} }
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--red); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--ink-faint); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--ink-faint); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--red); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Nanum Gothic",sans-serif; font-size:.62rem; color:var(--ink-faint); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:5rem 1.4rem;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide active invert cover">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="36" y1="46" x2="184" y2="46" stroke-opacity=".5"/>
+          <line x1="36" y1="66" x2="184" y2="66" stroke-opacity=".5"/>
+          <line x1="36" y1="86" x2="184" y2="86" stroke-opacity=".5"/>
+          <line x1="36" y1="106" x2="184" y2="106" stroke-opacity=".5"/>
+          <ellipse cx="92" cy="86" rx="9" ry="6.5" transform="rotate(-20 92 86)" fill="currentColor" stroke="none"/>
+          <line x1="100" y1="84" x2="100" y2="52"/>
+          <ellipse cx="146" cy="66" rx="9" ry="6.5" transform="rotate(-20 146 66)" fill="currentColor" stroke="none" class="pulse"/>
+          <line x1="154" y1="64" x2="154" y2="34"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">디퍼 살롱 · 논리 4주차 · 나만의 구조</p>
+      <h1 class="title r r3">내가 나를 쓰고,<br><span class="em">그 글이 다시 나를 쓴다</span></h1>
+      <p class="latin r r4">악기 · 악보 · 연주 · 노래 · 하모니 — 그리고 무한히 상승하는 카논</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="34" y1="54" x2="166" y2="54" stroke-opacity=".7"/>
+          <line x1="34" y1="76" x2="166" y2="76" stroke-opacity=".5"/>
+          <line x1="34" y1="98" x2="166" y2="98" stroke-opacity=".32"/>
+          <circle cx="100" cy="76" r="2.6" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">악보는, 연주되기 전엔 고요해요</h2>
+      <div class="body r r4">
+        <p>지난 3주, 우리는 나만의 악보를 쓰는 시스템을 고민해왔어요. 그런데 악보 한 장은 펼쳐 두기만 하면 고요한 잉크 자국이에요. 누군가 손을 얹어 연주할 때, 그제야 노래가 됩니다.</p>
+        <p>그래서 오늘은 — <span class="strong">그 악보가 끝내 어떤 노래가 되는지</span>, 그 이야기예요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 나를 쓰는 손 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M58 96 C 50 70, 86 54, 112 64"/>
+          <path d="M112 64 l-2 -9 m2 9 l8 -4"/>
+          <path d="M142 54 C 150 80, 114 96, 88 86"/>
+          <path d="M88 86 l2 9 m-2 -9 l-8 4"/>
+          <circle cx="100" cy="75" r="2.6" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">1</span> · 나를 쓰는 손</p>
+      <h2 class="title r r3">내가 쓴 글이,<br><span class="em">다시 나를 씁니다</span></h2>
+      <div class="body r r4">
+        <p>에셔의 두 손은 서로를 그려요. 오른손이 왼손을, 그 왼손이 다시 오른손을. 어느 손이 먼저인지는 알 수 없죠.</p>
+        <p>당신도 그래요. 오늘 적은 한 줄이 내일의 당신을 빚고, 그렇게 빚어진 당신이 다음 줄을 적어요. <span class="strong">누구도 베낄 수 없는 단 하나의 무늬는, 그렇게 천천히 자랍니다.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · 악기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <g class="spin" style="transform-origin:74px 76px;">
+            <circle cx="74" cy="76" r="26"/>
+            <path d="M74 44 v-8 M74 116 v-8 M42 76 h-8 M114 76 h-8 M51 53 l-6 -6 M97 53 l6 -6 M51 99 l-6 6 M97 99 l6 6" stroke-opacity=".6"/>
+            <circle cx="74" cy="76" r="4" fill="currentColor" stroke="none"/>
+          </g>
+          <path class="pulse" d="M132 76 q14 -16 28 0"/>
+          <path class="pulse" style="animation-delay:.5s;" d="M132 76 q22 -26 44 0" stroke-opacity=".7"/>
+          <path class="pulse" style="animation-delay:1s;" d="M132 76 q30 -36 60 0" stroke-opacity=".5"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">2</span> · 악기</p>
+      <h2 class="title r r3">AI는 '똑똑이-멍청이',<br><span class="em">당신의 악기예요</span></h2>
+      <div class="body r r4">
+        <p>AI는 똑똑하면서도 어딘가 멍청해요. 무엇이든 연주하지만, 악보가 없으면 그저 소음이고요.</p>
+        <p>그러니 이것만 기억해 주세요. <span class="strong">악기는 연주자를 덮어쓰지 않아요.</span> 당신의 악보를, 더 멀리까지 울려 줄 뿐이에요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 메타뷰 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="34" y1="40" x2="166" y2="40" stroke-opacity=".7"/>
+          <line x1="34" y1="60" x2="166" y2="60" stroke-opacity=".56"/>
+          <line x1="34" y1="80" x2="166" y2="80" stroke-opacity=".44"/>
+          <line x1="34" y1="100" x2="166" y2="100" stroke-opacity=".32"/>
+          <line x1="34" y1="120" x2="166" y2="120" stroke-opacity=".24"/>
+          <ellipse cx="64" cy="80" rx="8" ry="5.6" transform="rotate(-20 64 80)" fill="currentColor" stroke="none"/><line x1="71" y1="78" x2="71" y2="54"/>
+          <ellipse cx="108" cy="60" rx="8" ry="5.6" transform="rotate(-20 108 60)" fill="currentColor" stroke="none" class="pulse"/><line x1="115" y1="58" x2="115" y2="36"/>
+          <ellipse cx="146" cy="100" rx="8" ry="5.6" transform="rotate(-20 146 100)" fill="currentColor" stroke="none"/><line x1="153" y1="98" x2="153" y2="76"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">한 장으로</p>
+      <h2 class="title r r3">다섯의 자리</h2>
+      <div class="map r r4">
+        <div class="row"><div class="m">악기<span class="lt">instrument</span></div><div class="d"><b>AI</b> · 악보가 없으면 소음. 나를 덮어쓰지 않는 도구.</div></div>
+        <div class="row"><div class="m">악보<span class="lt">score</span></div><div class="d"><b>나만의 구조</b> · 브랜드북·사명서. 본질을 담아 자꾸 돌아와 보는 것.</div></div>
+        <div class="row"><div class="m">연주<span class="lt">play</span></div><div class="d"><b>비즈니스</b> · 매일 같은 고리를 도는 일.</div></div>
+        <div class="row"><div class="m">노래<span class="lt">song</span></div><div class="d"><b>수사</b> · 사람들이 듣는 나의 이야기.</div></div>
+        <div class="row"><div class="m">하모니<span class="lt">harmony</span></div><div class="d"><b>나의 사람들</b> · 내 별빛에 공명하는 팬들.</div></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p><span class="strong">악기만 바꾸면 흉내, 악보부터 쓰면 음악이에요.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · 악보 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="76" r="14" class="grow"/>
+          <circle cx="100" cy="76" r="28" stroke-opacity=".6" class="grow" style="animation-delay:.5s;"/>
+          <circle cx="100" cy="76" r="42" stroke-opacity=".35" class="grow" style="animation-delay:1s;"/>
+          <circle cx="100" cy="76" r="3.5" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">3</span> · 악보</p>
+      <h2 class="title r r3">악보는 사랑을 먹고,<br><span class="em">자꾸자꾸 자랍니다</span></h2>
+      <div class="body r r4">
+        <p>악보는 당신이 쓴 브랜드북, 당신의 사명서예요. 연주자가 자꾸 악보로 눈을 돌리듯, 당신도 자꾸 돌아와 보게 됩니다 — 본질을 잃지 않으려고요.</p>
+        <p>왜 본질을 지킬까요. <span class="strong">지치지 않고, 사랑하는 일을 오래오래 하고 싶어서예요.</span> 그래서 악보엔 빌려 온 말투가 아니라, 당신다움 그 자체가 담깁니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 노래 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path class="flow" style="animation-duration:9s;" d="M-120 86 q30 -18 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+          <path class="flow" style="animation-duration:9s; animation-delay:-3s;" stroke-opacity=".55" stroke-width="1.8" d="M-120 104 q30 -14 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
+          <ellipse cx="150" cy="60" rx="9" ry="6.5" transform="rotate(-20 150 60)" fill="currentColor" stroke="none" class="pulse"/>
+          <line x1="158" y1="58" x2="158" y2="32"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">4</span> · 노래</p>
+      <h2 class="title r r3">사람의 마음을 적시는 건,<br><span class="em">노래예요</span></h2>
+      <div class="body r r4">
+        <p>악보를 연주하는 일이 당신의 매일이라면, 사람들이 사랑하는 건 그 연주가 남긴 노래 — 당신의 이야기예요.</p>
+        <p>같은 악보라도 당신의 목소리로 부를 때, 누구도 흉내 낼 수 없는 노래가 돼요. <span class="strong">논리에서 악보를 썼다면, 수사에서 우리는 그것을 노래합니다.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · 하모니 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="march" d="M28 44 C 60 28 92 60 124 44 S 188 28 196 44"/>
+          <path class="march" stroke-opacity=".85" d="M28 62 C 60 78 92 46 124 62 S 188 78 196 62"/>
+          <path class="march" stroke-opacity=".72" d="M28 80 C 60 64 92 96 124 80 S 188 64 196 80"/>
+          <path class="march" stroke-opacity=".58" d="M28 98 C 60 114 92 82 124 98 S 188 114 196 98"/>
+          <path class="march" stroke-opacity=".44" d="M28 116 C 60 100 92 132 124 116 S 188 100 196 116"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">5</span> · 하모니</p>
+      <h2 class="title r r3">내 별빛에 길들여진 사람들과,<br><span class="em">함께 부르는 노래</span></h2>
+      <div class="body r r4">
+        <p>어린왕자에게 장미가 단 하나였듯, 여우가 길들임으로 곁이 되었듯 — 당신에게도 당신만의 별이 있어요. 당신의 팬은 군중이 아니라, <span class="strong">당신이 길들이고, 또 당신을 길들인 몇 사람</span>이에요.</p>
+        <p>가장 당신다운 파장이 그들의 파장과 만나 떨릴 때, 노래는 비로소 화음이 돼요. 별이 별을 부르고, 작은 성좌 하나가 같이 빛납니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 무한히 상승하는 카논 (RED) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path class="march" d="M34 130 C 62 112, 62 90, 90 78 C 118 66, 118 44, 146 32"/>
+          <path class="march" stroke-opacity=".6" d="M50 130 C 78 112, 78 90, 106 78 C 134 66, 134 44, 162 32"/>
+          <path d="M146 32 l-2 -10 m2 10 l9 -3"/>
+          <g class="twinkle" style="transform-origin:158px 20px;">
+            <path d="M158 8 L162 19 L173 19 L164 26 L168 37 L158 30 L148 37 L152 26 L143 19 L154 19 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">정점</p>
+      <h2 class="title r r3">끝이 처음을 물고,<br><span class="em">무한히 상승하는 카논</span></h2>
+      <div class="body r r4">
+        <p>호프스태터는 천 페이지 끝에서 제 책 속으로 걸어 들어와, 자기가 지은 인물들과 마주 앉아요. 만든 사람이, 만들어진 것의 한 음이 되는 순간이죠.</p>
+        <p>당신도 그래요. 나는 AI를 연주하고, AI는 나를 더 나답게 울리고. <span class="strong">덮어쓰는 게 아니라 '나인 채로', 우리는 끝없이 상승하는 카논을 함께 지어 갑니다.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · CLOSE (RED) -->
+  <section class="slide invert cover">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path class="march" d="M62 78 C 62 53, 100 53, 110 78 C 120 103, 158 103, 158 78 C 158 53, 120 53, 110 78 C 100 103, 62 103, 62 78 Z"/>
+          <g class="twinkle" style="transform-origin:110px 42px;">
+            <path d="M110 26 L114 38 L126 38 L116 46 L120 58 L110 50 L100 58 L104 46 L94 38 L106 38 Z"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">논리 4주차 · 나만의 구조</p>
+      <h2 class="title r r3">가장 나다운 파장,<br><span class="em">당신의 노래</span></h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">악보는, 본질을 잃지 않으려 자꾸 돌아와 보는 자리.<br>지치지 않고, 사랑하는 일을 오래오래.<br>가장 당신다운 파장이면, 그걸로 충분해요.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.2rem; opacity:.82;">Cantabo — 나는 노래하리라</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 10</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(255,255,255,.85)' : 'var(--ink-faint)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>

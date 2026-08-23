@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩 살롱 · 논리 3주차 강의안 — 나를 베끼지 말고 나를 낳아라</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F0F0F; --ink-soft:#3A3A3A; --ink-mid:#555; --ink-muted:#888;
+  --rule:#E2DED8; --accent:#1A4A35; --accent-mid:#2D6B4F; --accent-pale:#E8F2EC;
+  --accent-light:#A8CBBA; --bg:#FAFAF7; --surface:#FFFFFF; --hi:#F0F5F2;
+  --warm:#F7F4EE; --gold:#B8860B; --gold-pale:#FBF5E6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Serif KR',serif;line-height:2.0;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:960px;margin:0 auto;padding:70px 28px 140px;}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0D2B1E 0%,#1A4A35 50%,#3D8B67 100%);color:#fff;padding:84px 64px 72px;border-radius:34px;margin-bottom:48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 60%,rgba(255,255,255,0.05) 0%,transparent 65%);}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-light);opacity:.85;margin-bottom:22px;position:relative;}
+.hero h1{font-size:46px;font-weight:700;line-height:1.32;letter-spacing:-1.5px;position:relative;margin-bottom:14px;}
+.hero h1 em{font-style:italic;color:var(--accent-light);}
+.hero .sub{margin-top:18px;font-size:16px;opacity:.8;color:#cde2d8;font-family:'Noto Sans KR',sans-serif;font-weight:300;position:relative;line-height:1.85;}
+.hero-meta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;position:relative;}
+.hero-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#d8efe4;padding:6px 14px;border-radius:20px;}
+
+/* SECTION */
+.section{background:var(--surface);border-radius:28px;padding:52px 54px;margin-bottom:26px;box-shadow:0 10px 32px rgba(0,0,0,.05);border:1px solid var(--rule);}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;opacity:.85;}
+h2{font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.32;margin-bottom:6px;}
+.section-desc{font-family:'Noto Sans KR',sans-serif;font-size:15px;color:var(--ink-mid);line-height:1.9;margin-top:12px;margin-bottom:26px;font-weight:300;}
+h3{font-size:19px;font-weight:600;margin:30px 0 12px;letter-spacing:-0.5px;}
+p{font-family:'Noto Sans KR',sans-serif;font-size:15px;color:var(--ink-soft);line-height:1.95;margin-bottom:14px;font-weight:300;}
+p strong{font-weight:600;color:var(--ink);}
+.divider{border:none;border-top:1px solid var(--rule);margin:30px 0;}
+
+/* ARC BAR */
+.arc{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:stretch;gap:0;margin-top:26px;}
+.arc-node{background:var(--hi);border-radius:16px;padding:20px 16px;text-align:center;border:1px solid var(--rule);}
+.arc-node.done{opacity:.62;}
+.arc-node.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.arc-node.active .a-label{color:var(--accent-light);}
+.arc-node.active .a-sub{color:rgba(255,255,255,.78);}
+.a-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:7px;}
+.a-title{font-size:16px;font-weight:700;letter-spacing:-0.5px;margin-bottom:5px;}
+.a-sub{font-size:11px;color:var(--ink-muted);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.5;}
+.arc-arrow{display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--accent-light);}
+
+/* READING */
+.reading-block{background:var(--warm);border-radius:16px;padding:26px 30px;margin:20px 0;border:1px solid #EDE8DF;}
+.reading-block-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.reading-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #E8E3D9;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.7;color:var(--ink-soft);}
+.reading-item:last-child{border-bottom:none;}
+.reading-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:var(--gold-pale);min-width:34px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;padding:0 6px;}
+.reading-must{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;background:#FFF0E6;color:#B85C00;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle;}
+
+/* CONCEPT */
+.concept{display:flex;border:1px solid var(--rule);border-radius:14px;overflow:hidden;margin:22px 0;}
+.concept-term{background:var(--accent);color:#fff;padding:22px 22px;display:flex;align-items:center;justify-content:center;min-width:128px;}
+.concept-term span{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;writing-mode:vertical-rl;letter-spacing:0.12em;}
+.concept-def{padding:22px 24px;flex:1;}
+.concept-def .term-en{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent-mid);letter-spacing:0.1em;margin-bottom:8px;display:block;}
+.concept-def p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin:0;}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+.col-card{background:var(--warm);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;}
+.col-card h4{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:14px;}
+.col-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.col-card ul li{font-family:'Noto Sans KR',sans-serif;font-size:13.5px;color:var(--ink-soft);padding-left:16px;position:relative;line-height:1.65;font-weight:300;}
+.col-card ul li::before{content:'—';position:absolute;left:0;color:#ccc;}
+.col-card.dark{background:var(--accent);border-color:var(--accent);}
+.col-card.dark h4{color:var(--accent-light);}
+.col-card.dark ul li{color:#dceee4;}
+.col-card.dark ul li::before{color:var(--accent-light);}
+
+/* RSI DIAGRAM */
+.rsi-stage{background:#0D2B1E;border-radius:24px;padding:38px 32px 30px;margin:24px 0;}
+.rsi-stage svg{width:100%;height:auto;display:block;}
+.rsi-cap{font-family:'Noto Sans KR',sans-serif;font-size:12.5px;color:#9fc3b2;text-align:center;margin-top:18px;line-height:1.7;font-weight:300;}
+
+/* CALLOUT */
+.callout{background:var(--hi);border-left:3px solid var(--accent);padding:18px 24px;margin:22px 0;border-radius:0 12px 12px 0;}
+.callout-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.callout p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin:0;}
+
+/* QUOTE */
+.quote-block{border-left:3px solid var(--accent-light);padding:16px 24px;margin:22px 0;background:var(--hi);border-radius:0 12px 12px 0;}
+.quote-block p{font-family:'Noto Serif KR',serif;font-size:16px;line-height:1.9;color:var(--ink-soft);font-style:italic;font-weight:300;margin:0;}
+.quote-source{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-muted);margin-top:8px;}
+
+/* SESSION TABLE */
+.session-table{width:100%;border-collapse:collapse;margin:18px 0;font-family:'Noto Sans KR',sans-serif;font-size:14px;}
+.session-table th{background:var(--hi);padding:10px 16px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-muted);font-weight:500;}
+.session-table th:first-child{border-radius:10px 0 0 10px;width:96px;}
+.session-table th:last-child{border-radius:0 10px 10px 0;}
+.session-table td{padding:11px 16px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.65;color:var(--ink-soft);font-weight:300;}
+.session-table tr:last-child td{border-bottom:none;}
+.time-badge{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);background:var(--accent-pale);padding:3px 8px;border-radius:8px;white-space:nowrap;}
+
+/* QUESTIONS */
+.question-item{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--rule);align-items:flex-start;}
+.question-item:last-child{border-bottom:none;}
+.q-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);font-weight:500;flex-shrink:0;margin-top:3px;}
+.q-text{font-family:'Noto Sans KR',sans-serif;font-size:14.5px;line-height:1.8;color:var(--ink-soft);font-weight:300;}
+.q-text strong{font-weight:600;color:var(--ink);}
+
+/* REF CARDS */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+.ref-card{background:var(--warm);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;}
+.ref-when{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);background:var(--accent-pale);padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:8px;}
+.ref-book{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:3px;}
+.ref-author{font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-muted);margin-bottom:10px;}
+.ref-why{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:var(--ink-soft);line-height:1.7;font-weight:300;}
+.ref-why strong{font-weight:600;color:var(--accent);}
+
+/* HOMEWORK */
+.homework{background:var(--accent-pale);border-radius:14px;padding:22px 26px;margin-top:18px;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.8;color:var(--accent);border-left:3px solid var(--accent);font-weight:300;}
+.homework strong{font-weight:600;}
+.homework-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;opacity:.7;}
+
+/* PRACTICE */
+.practice{background:var(--hi);border-radius:14px;padding:22px 26px;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.85;color:var(--ink-soft);font-weight:300;}
+.practice strong{font-weight:600;color:var(--ink);}
+
+/* NOTES */
+.notes{background:#1b2420;border-radius:20px;padding:34px 38px;color:#cdd8d2;}
+.notes .nlabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#7fae97;margin-bottom:16px;}
+.notes p{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:#b9c6bf;line-height:1.85;margin-bottom:12px;font-weight:300;}
+.notes p strong{color:#e8f2ec;font-weight:600;}
+.flag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;background:#3a2e12;color:#e0b84a;padding:2px 7px;border-radius:7px;margin-right:6px;vertical-align:middle;}
+
+/* FOOTER */
+.footer{text-align:center;padding:42px 0 0;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--ink-muted);}
+.footer-logo{font-size:18px;font-family:'Noto Serif KR',serif;color:var(--accent);letter-spacing:-0.5px;margin-bottom:8px;font-weight:700;}
+
+@media (max-width:700px){
+  .hero{padding:56px 32px 48px;} .hero h1{font-size:32px;}
+  .section{padding:34px 26px;}
+  .arc{grid-template-columns:1fr;gap:8px;} .arc-arrow{display:none;}
+  .two-col,.ref-grid{grid-template-columns:1fr;} .concept{flex-direction:column;}
+  .concept-term{writing-mode:horizontal-tb;min-width:auto;} .concept-term span{writing-mode:horizontal-tb;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">DEEPER 언브랜딩 살롱 1기 · 논리 3주차 강의안</div>
+  <h1>나를 베끼지 말고<br><em>나를 낳아라</em></h1>
+  <div class="sub">
+    《괴델, 에셔, 바흐》 「과연 위대한 게로다」와 「어느 애연가의 교훈적 사색」으로<br>
+    자기증식과 체계 밖으로 뛰어오르기 — 사장이 자는 동안에도 도는 고리를 짓는다
+  </div>
+  <div class="hero-meta">
+    <span class="hero-tag">TRIVIUM · LOGIC W3</span>
+    <span class="hero-tag">GEB 15·16장</span>
+    <span class="hero-tag">RSI · 재귀적 자기개선</span>
+    <span class="hero-tag">자기증식 / 메타 점프</span>
+  </div>
+</div>
+
+<!-- ARC -->
+<div class="section">
+  <div class="section-eyebrow">이번 주의 자리</div>
+  <h2>자기인식에서 자기증식으로</h2>
+  <div class="section-desc">
+    1주차에 우리는 기호가 어떻게 의미가 되는지를 보며 <strong>나를 알아봤고</strong>,
+    2주차엔 그 의미를 거꾸로 읽어도 나인 한 줄로 옮겨 <strong>글이 일이 되는 각도</strong>를 찾았다.
+    3주차는 그 한 줄이 <strong>스스로 불어나는</strong> 자리다 — 나를 더 갈아 넣는 덧셈이 아니라, 나를 낳는 곱셈으로.
+  </div>
+  <div class="arc">
+    <div class="arc-node done"><div class="a-label">W1 · 논리</div><div class="a-title">자기인식</div><div class="a-sub">기호→의미 · 이상한 고리 · 씨앗 문장</div></div>
+    <div class="arc-arrow">→</div>
+    <div class="arc-node done"><div class="a-label">W2 · 논리</div><div class="a-title">번역·기획</div><div class="a-sub">게 카논 · 불변량 · 글이 일이 되도록</div></div>
+    <div class="arc-arrow">→</div>
+    <div class="arc-node active"><div class="a-label">W3 · 지금 여기</div><div class="a-title">자기증식</div><div class="a-sub">자기참조·자기증식 · 체계 밖 점프 · RSI</div></div>
+    <div class="arc-arrow">→</div>
+    <div class="arc-node"><div class="a-label">W4 · 논리→수사</div><div class="a-title">하모니</div><div class="a-sub">창발 · 함께 부르는 노래 · 발화로</div></div>
+  </div>
+</div>
+
+<!-- READING -->
+<div class="section">
+  <div class="section-eyebrow">오늘의 텍스트</div>
+  <h2>두 대화편, 한 질문</h2>
+  <div class="section-desc">
+    두 편 모두 호프스태터가 16·15장 본문 앞에 놓은 대화편이다. 오늘의 질문은 하나 —
+    <strong>나 없이도 도는 구조를, 어떻게 정직하게 지을 것인가.</strong>
+  </div>
+  <div class="reading-block">
+    <div class="reading-block-title">📖 까치 한국어판</div>
+    <div class="reading-item">
+      <div class="reading-num">①</div>
+      <div><strong>「과연 위대한 게로다」 pp749–763</strong> <span class="reading-must">최우선</span><br>
+      <span style="color:var(--ink-muted);">16장 「자기 참조와 자기 증식」 앞 대화. 게가 어떤 곡이든 ‘이 곡을 끝까지 연주할 수 있는가’를 미리 알아맞히는 능력 — 자기를 들여다보는 체계의 알레고리. 낭독·사진 1순위.</span></div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">②</div>
+      <div><strong>「어느 애연가의 교훈적 사색」 pp658–677</strong> <span class="reading-must">핵심</span><br>
+      <span style="color:var(--ink-muted);">15장 「체계 밖으로 뛰쳐나가기」 앞 대화. 한 체계에 갇힌 자가 한 층 위로 올라서는 ‘점프’의 직관. 사장이 라인에서 빠져 고리 자체를 보는 자리.</span></div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="callout-label">읽기 팁 — 디퍼들에게</div>
+    <p>이해하려 애쓰지 말고 <strong>구조를 느끼며</strong> 읽기. 막히면 클로드에게 “이 대화편이 16장(자기증식)/15장(체계 밖 점프)과 어떻게 연결돼?”라고 물어보면 저자의 의도가 풀린다. 형광펜 그은 한 문장씩만 디퍼OS에 넣어 오기.</p>
+  </div>
+</div>
+
+<!-- 강의 ① -->
+<div class="section">
+  <div class="section-eyebrow">강의 ① · 「과연 위대한 게로다」</div>
+  <h2>자기증식 — 복제가 아니라 낳음이다</h2>
+  <p>1주차에 ‘자기증식’이라는 말이 씨앗처럼 한 번 지나갔다. 나를 갈아 넣는 덧셈에서, 스스로 도는 곱셈으로 셈법을 바꾸는 일. 오늘 16장이 그 셈법의 정체를 알려준다.</p>
+  <p>호프스태터가 16장에서 나란히 놓는 두 가지가 있다. 하나는 <strong>자기참조</strong> — 괴델의 문장처럼, 체계가 자기 자신을 가리키는 일. 또 하나는 <strong>자기증식</strong> — DNA가 자기를 읽어 자기를 다시 만들고, 프로그램이 자기 자신을 출력하는 일(콰인). 둘은 같은 고리의 안쪽과 바깥쪽이다. 자기를 들여다볼 수 있어야(참조) 자기를 다시 지을 수 있다(증식).</p>
+
+  <div class="concept">
+    <div class="concept-term"><span>자기증식</span></div>
+    <div class="concept-def">
+      <span class="term-en">SELF-REPRODUCTION · QUINE</span>
+      <p>DNA는 설계도이면서 동시에 그 설계도를 실행하는 일꾼이다. 자기를 읽어 자기를 낳는다. 내 원 소스(모닝페이지·현장 기록)도 그렇게 짤 수 있다 — 한 번 만든 것이 다음 것을 만드는 재료가 되도록. 그러면 산출물이 나를 떠나도 계속 나를 낳는다.</p>
+    </div>
+  </div>
+
+  <p>게가 어떤 음반이든 ‘내 전축이 이 곡을 끝까지 틀 수 있는가’를 미리 알아맞히는 장면이 이 대화편의 핵심이다. 자기 한계를 들여다보는 체계 — 그러나 호프스태터의 함정은, 그렇게 ‘완벽히 자기를 아는 체계’는 결국 자기를 부수는 음반 앞에서 무너진다는 데 있다(괴델의 물성화). 메시지는 뒤집으면 이렇다. <strong>완벽히 닫힌 자기복제는 없다. 살아 있는 증식은 늘 한 줄의 변이를 품는다.</strong></p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>복제 (가짜 자기증식)</h4>
+      <ul>
+        <li>나를 갈아 같은 것을 더 찍어낸다</li>
+        <li>내가 멈추면 같이 멈춘다 (덧셈)</li>
+        <li>똑같아서 베껴진다</li>
+        <li>번아웃이 비용</li>
+      </ul>
+    </div>
+    <div class="col-card dark">
+      <h4>증식 (진짜 자기증식)</h4>
+      <ul>
+        <li>산출물이 다음 산출의 재료가 된다</li>
+        <li>내가 자는 동안에도 가치를 낳는다 (곱셈)</li>
+        <li>한 줄씩 변이하며 자라 베껴지지 않는다</li>
+        <li>복리가 자산</li>
+      </ul>
+    </div>
+  </div>
+  <p>2주차의 ‘악보’가 여기서 살아난다. 악보는 남이 제 목소리로 부를 수 있게 옮긴 내 주제다. 잘 적힌 악보는 내 손을 떠나 남의 입에서 다시 울린다 — 그것이 콘텐츠가 강사를, 강사가 또 다른 강사를 낳는 자기증식의 사회적 형태다.</p>
+</div>
+
+<!-- RSI 비즈니스 구조도 -->
+<div class="section">
+  <div class="section-eyebrow">비즈니스 구조도 · RSI 관점</div>
+  <h2>출력이 다시 입력이 되는 고리</h2>
+  <div class="section-desc">
+    RSI(Recursive Self-Improvement, 재귀적 자기개선)는 AI에서 온 말이다 —
+    <strong>한 번의 개선이 다음 개선을 더 쉽게 만드는</strong> 고리. 1인 기업을 이 렌즈로 보면, 사업은 빌딩이 아니라
+    자기를 읽어 자기를 고쳐 짓는 디퍼OS의 바깥 버전이다.
+  </div>
+
+  <div class="rsi-stage">
+    <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans KR, sans-serif">
+      <defs>
+        <marker id="ah" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+          <path d="M0,0 L9,4 L0,8 Z" fill="#7fae97"/>
+        </marker>
+        <marker id="ahg" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+          <path d="M0,0 L9,4 L0,8 Z" fill="#e0b84a"/>
+        </marker>
+      </defs>
+
+      <!-- loop ring -->
+      <ellipse cx="380" cy="232" rx="300" ry="150" fill="none" stroke="#27433a" stroke-width="1.5" stroke-dasharray="3 6"/>
+
+      <!-- nodes -->
+      <!-- 1 원소스 -->
+      <g>
+        <rect x="40" y="196" width="150" height="72" rx="16" fill="#16352a" stroke="#3d8b67" stroke-width="1.5"/>
+        <text x="115" y="226" text-anchor="middle" fill="#e8f2ec" font-size="15" font-weight="600">① 원 소스</text>
+        <text x="115" y="248" text-anchor="middle" fill="#9fc3b2" font-size="11.5">모닝페이지·현장 기록</text>
+      </g>
+      <!-- 2 디퍼OS -->
+      <g>
+        <rect x="290" y="58" width="180" height="76" rx="16" fill="#1A4A35" stroke="#3d8b67" stroke-width="1.5"/>
+        <text x="380" y="88" text-anchor="middle" fill="#e8f2ec" font-size="15" font-weight="600">② 디퍼OS (위키LLM)</text>
+        <text x="380" y="110" text-anchor="middle" fill="#9fc3b2" font-size="11.5">나를 학습한 거울 / 엔진</text>
+      </g>
+      <!-- 3 산출 -->
+      <g>
+        <rect x="570" y="196" width="150" height="72" rx="16" fill="#16352a" stroke="#3d8b67" stroke-width="1.5"/>
+        <text x="645" y="226" text-anchor="middle" fill="#e8f2ec" font-size="15" font-weight="600">③ 산출</text>
+        <text x="645" y="248" text-anchor="middle" fill="#9fc3b2" font-size="11.5">악보·콘텐츠·상품</text>
+      </g>
+      <!-- 4 독자 -->
+      <g>
+        <rect x="290" y="330" width="180" height="76" rx="16" fill="#16352a" stroke="#3d8b67" stroke-width="1.5"/>
+        <text x="380" y="360" text-anchor="middle" fill="#e8f2ec" font-size="15" font-weight="600">④ 독자·시장 (장미)</text>
+        <text x="380" y="382" text-anchor="middle" fill="#9fc3b2" font-size="11.5">반응·구매·곁의 한 사람</text>
+      </g>
+
+      <!-- arrows along the ring (clockwise) -->
+      <path d="M165,196 Q230,120 288,98" fill="none" stroke="#7fae97" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M472,98 Q540,120 600,193" fill="none" stroke="#7fae97" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M600,272 Q540,348 472,372" fill="none" stroke="#7fae97" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M288,372 Q220,348 165,272" fill="none" stroke="#7fae97" stroke-width="2" marker-end="url(#ah)"/>
+
+      <!-- ring labels -->
+      <text x="205" y="135" text-anchor="middle" fill="#7fae97" font-size="11">학습</text>
+      <text x="556" y="135" text-anchor="middle" fill="#7fae97" font-size="11">생성</text>
+      <text x="556" y="345" text-anchor="middle" fill="#7fae97" font-size="11">전달</text>
+      <text x="205" y="345" text-anchor="middle" fill="#7fae97" font-size="11">재적립(데이터)</text>
+
+      <!-- center: compounding -->
+      <text x="380" y="228" text-anchor="middle" fill="#5e8a76" font-size="12" letter-spacing="2">복리로 도는 고리</text>
+      <text x="380" y="250" text-anchor="middle" fill="#41624f" font-size="11">한 바퀴마다 ②가 더 똑똑해진다</text>
+
+      <!-- META JUMP -->
+      <g>
+        <path d="M115,196 Q115,30 360,26 Q660,22 645,193" fill="none" stroke="#e0b84a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ahg)" opacity="0.9"/>
+        <rect x="300" y="6" width="160" height="34" rx="14" fill="#3a2e12" stroke="#e0b84a" stroke-width="1.2"/>
+        <text x="380" y="28" text-anchor="middle" fill="#e0b84a" font-size="12" font-weight="600">META 점프 · 사장은 라인 밖에서</text>
+      </g>
+    </svg>
+    <div class="rsi-cap">
+      안쪽 초록 고리 = 자기증식(매 바퀴마다 디퍼OS가 똑똑해져 다음 산출이 좋아진다).<br>
+      바깥 금빛 점선 = 체계 밖으로 뛰어오르기(주기적으로 고리에서 빠져나와 고리 자체를 다시 설계한다).
+    </div>
+  </div>
+
+  <p>핵심은 두 운동이 함께 돈다는 것이다. <strong>안쪽 고리</strong>는 나 없이도 돌며 복리로 자라고(자기증식·16장), <strong>바깥 점프</strong>는 사장이 라인에서 빠져나와 “이 고리가 옳은 고리인가”를 다시 묻는다(체계 밖·15장). 안쪽만 돌리면 정교하게 잘못된 것을 빠르게 찍어내고, 바깥만 뛰면 아무것도 쌓이지 않는다. RSI는 이 둘의 박자다.</p>
+  <div class="callout">
+    <div class="callout-label">셀프 체크 — 내 사업의 RSI 등급</div>
+    <p>① 내 산출물 한 개가 다음 산출의 <strong>재료</strong>로 되돌아오는가? ② 내가 멈춰도 한 바퀴는 도는가? ③ 한 달에 한 번, 고리 밖에서 고리를 고쳐 그리는 시간이 있는가? — 셋 다 “예”면 당신 사업은 이미 재귀적으로 자란다.</p>
+  </div>
+</div>
+
+<!-- 강의 ② -->
+<div class="section">
+  <div class="section-eyebrow">강의 ② · 「어느 애연가의 교훈적 사색」</div>
+  <h2>체계 밖으로 뛰어오르기 — 사장은 라인에서 빠진다</h2>
+  <p>자기증식이 무서운 이유는, 잘못된 고리도 똑같이 잘 돈다는 데 있다. 그래서 15장이 짝으로 온다. 한 체계 안에서 아무리 열심히 규칙을 따라도 보이지 않는 것이 있고, 그것을 보려면 한 층 위로 <strong>뛰어올라야</strong> 한다. 기계는 자기가 갇힌 체계를 좀처럼 벗어나지 못하지만, 사람은 “잠깐, 내가 지금 무슨 게임을 하고 있지?”라고 물으며 빠져나올 수 있다 — 호프스태터는 이 점프를 지능의 표지로 본다.</p>
+
+  <div class="concept">
+    <div class="concept-term"><span>메타 점프</span></div>
+    <div class="concept-def">
+      <span class="term-en">JUMPING OUT OF THE SYSTEM</span>
+      <p>고리 안에서 일하는 나(IN)와, 고리 자체를 설계하는 나(ON)는 다른 층위다. 매일의 일에 매여 있으면 더 빨리 달릴 수는 있어도 트랙을 바꾸지는 못한다. 일주일에 한 번, 라인에서 손을 떼고 위에서 내려다보는 자리 — 거기서만 “이 고리를 접을까, 다른 고리를 열까”가 보인다.</p>
+    </div>
+  </div>
+
+  <p>1주차에 “사장님의 컨디션이 사업의 컨디션”이라 했다. 그 말의 논리적 뿌리가 여기다. 내 에너지를 비본질에 쓰지 않겠다는 원칙은 곧 <strong>나를 라인에서 빼두는 설계</strong>다. 위임할 것(디퍼OS·자동화·악보)과 내가 쥘 것(점프·판단·씨앗)을 나누는 일 — 그것이 말랑한 워크플로우의 정체였다. 자기증식은 위임으로 만들고, 방향은 점프로 지킨다.</p>
+
+  <div class="quote-block">
+    <p>“충분히 강력한 모든 체계는 자기 안에서 증명할 수 없는 것을 품는다.<br>사업도 그렇다 — 내 방법론 안에서는 끝내 안 보이는 그 구멍이, 다음 책의 주제다.”</p>
+    <div class="quote-source">— GEB 15·16장에서, 1·2주차 ‘체계 밖의 조망’과 잇대어</div>
+  </div>
+</div>
+
+<!-- 성공 케이스 -->
+<div class="section">
+  <div class="section-eyebrow">레퍼런스 · 성공 케이스</div>
+  <h2>이미 재귀적으로 자란 사람들</h2>
+  <div class="section-desc">
+    RSI 고리를 실제로 돌려 1인(또는 초소형) 규모로 큰 자산을 만든 사례들. 셋의 공통점 —
+    <strong>자기 방법을 악보로 만들어 팔았고(자기증식), 라인에서 빠져 고리를 설계하는 자리(메타 점프)에 섰다.</strong>
+  </div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="ref-when">1순위 · 악보를 판 사람</div>
+      <div class="ref-book">저스틴 웰시 (Justin Welsh)</div>
+      <div class="ref-author">솔로 크리에이터 · ‘The Content/LinkedIn OS’</div>
+      <div class="ref-why">직원 0명으로 자기 글쓰기 ‘방식’ 자체를 강좌·템플릿(=악보)으로 팔아 수백만 달러. <strong>글→독자→상품→다시 글</strong>의 고리가 공개적으로 도는, RSI 플라이휠의 교과서. 2주차 ‘악보를 판다’의 살아 있는 증거.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-when">AI 곱셈 · 빌드 인 퍼블릭</div>
+      <div class="ref-book">피터 레벨스 (levelsio)</div>
+      <div class="ref-author">솔로 메이커 · Nomad List → PhotoAI</div>
+      <div class="ref-why">혼자 제품을 공개적으로 찍어내며, 앞 제품이 다음 제품의 독자·자본·데이터가 된다. PhotoAI로 <strong>AI가 곱셈을 만드는</strong> 가장 선명한 사례. “자는 동안에도 도는 고리”의 실물.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-when">철학 · 1인 기업론</div>
+      <div class="ref-book">댄 코 (Dan Koe)</div>
+      <div class="ref-author">‘The One-Person Business’ · 2-Hour Writer</div>
+      <div class="ref-why">하루 두 시간 글이 콘텐츠·강좌·커뮤니티로 증식하는 구조를 언어화. 디퍼의 ‘1인 기업·말랑한 워크플로우’와 결이 가장 가깝다. 디퍼들이 자기 고리에 곧장 대입하기 좋은 프레임.</div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-when">개념 · 부의 사다리</div>
+      <div class="ref-book">네이선 배리 (Nathan Barry)</div>
+      <div class="ref-author">Kit(ConvertKit) 창업 · ‘Ladders of Wealth Creation’</div>
+      <div class="ref-why">시간을 파는 덧셈 → 상품·자산을 파는 곱셈으로 올라서는 사다리를 한 장으로 정리. 1주차 ‘덧셈에서 곱셈으로’의 이론적 등뼈. 토론 보강용.</div>
+    </div>
+  </div>
+  <div class="callout">
+    <div class="callout-label">살롱에서 쓰는 법</div>
+    <p>케이스를 ‘대단한 남의 일’로 두지 말 것. 한 명을 골라 <strong>그의 RSI 고리를 위 구조도에 그대로 그려보게</strong> 하면(원 소스가 뭐였나·악보가 뭐였나·언제 점프했나), 디퍼 자기 고리의 빈칸이 보인다.</p>
+  </div>
+</div>
+
+<!-- 핵심 질문 -->
+<div class="section">
+  <div class="section-eyebrow">토론</div>
+  <h2>핵심 질문</h2>
+  <div class="questions">
+    <div class="question-item"><div class="q-num">Q1</div><div class="q-text">내 일에서 지금 <strong>‘복제’</strong>(나를 갈아 더 찍어냄)와 <strong>‘증식’</strong>(산출이 다음 산출의 재료가 됨)은 각각 무엇인가? 복제 하나를 증식으로 바꾼다면 어디부터인가?</div></div>
+    <div class="question-item"><div class="q-num">Q2</div><div class="q-text">내가 일주일 사라져도 한 바퀴 도는 고리가 있는가? 없다면, <strong>가장 먼저 라인에서 빼야 할 나</strong>는 어떤 일을 하고 있는 나인가?</div></div>
+    <div class="question-item"><div class="q-num">Q3</div><div class="q-text">내 방법론 안에서는 끝내 안 보이는 그 구멍(15장의 ‘증명할 수 없는 것’)은 무엇인가? 그것이 <strong>다음 악보·다음 책</strong>의 주제일 수 있는가?</div></div>
+  </div>
+</div>
+
+<!-- 실습 + 과제 -->
+<div class="section">
+  <div class="section-eyebrow">실습 · 과제</div>
+  <h2>나의 RSI 고리 설계도 한 장</h2>
+  <div class="practice">
+    위 구조도의 네 칸을 내 사업으로 채운다.<br>
+    <strong>① 원 소스</strong> — 내가 가진 가장 정직한 원 데이터는?<br>
+    <strong>② 엔진</strong> — 그것을 무엇이(디퍼OS·나·동료) 돌리나?<br>
+    <strong>③ 산출(악보)</strong> — 남이 제 목소리로 부를 수 있게 옮긴 것은?<br>
+    <strong>④ 되먹임</strong> — 독자·시장의 무엇이 다시 ①로 돌아오나?<br>
+    <strong>＋ 메타 점프</strong> — 나는 언제, 어떻게 라인에서 빠져 이 고리를 고쳐 그리나?
+  </div>
+  <div class="homework">
+    <div class="homework-label">과제</div>
+    ① 설계도 한 장을 그려 디퍼OS에 적립하고 <strong>클로드에게 “이 고리에서 가장 약한 화살표는 어디냐”</strong>를 물어 그 답을 함께 가져온다.<br>
+    ② 성공 케이스 한 명(웰시·레벨스·코·배리 중)을 골라 그의 고리를 같은 양식으로 그려 본다 — 내 빈칸이 어디인지 비춰보기 위해.<br>
+    ③ <strong>「과연 위대한 게로다」를 한 번 더, 이번엔 ‘내 사업이라는 전축은 어떤 음반을 못 트는가’를 물으며</strong> 읽고 모닝페이지에 한 줄.
+  </div>
+</div>
+
+<!-- 세션 타임테이블 -->
+<div class="section">
+  <div class="section-eyebrow">운영</div>
+  <h2>세션 구조 (약 100분)</h2>
+  <table class="session-table">
+    <thead><tr><th>시간</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><span class="time-badge">0–12분</span></td><td>체크인 — 한 주의 공기. 지난주 ‘세 개의 악보’ 과제에서 솟아오른 것 한 줄씩.</td></tr>
+      <tr><td><span class="time-badge">12–22분</span></td><td>「과연 위대한 게로다」 낭독 — 두 사람이 게/아킬레스 역할. 소리로 먼저 만나기.</td></tr>
+      <tr><td><span class="time-badge">22–45분</span></td><td>강의 ① 자기증식 — 복제 vs 증식, DNA·콰인, ‘악보가 남의 입에서 다시 운다’.</td></tr>
+      <tr><td><span class="time-badge">45–60분</span></td><td>RSI 비즈니스 구조도 — 안쪽 고리/바깥 점프 함께 그리기 + 셀프 체크.</td></tr>
+      <tr><td><span class="time-badge">60–72분</span></td><td>강의 ② 체계 밖으로 — 사장은 라인 밖에서. 위임할 나 / 쥘 나 나누기.</td></tr>
+      <tr><td><span class="time-badge">72–84분</span></td><td>성공 케이스 — 한 명 골라 그의 고리를 구조도에 대입(소그룹).</td></tr>
+      <tr><td><span class="time-badge">84–96분</span></td><td>핵심 질문 토론 → 전체 공유.</td></tr>
+      <tr><td><span class="time-badge">96–100분</span></td><td>과제 안내 + 다음 주(하모니·수사 예고).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- NOTES -->
+<div class="section" style="padding:0;background:transparent;border:none;box-shadow:none;">
+  <div class="notes">
+    <div class="nlabel">NOTES · 팩트체크 &amp; PDF로 확정할 항목</div>
+    <p><strong>대화편 식별</strong> — 「과연 위대한 게로다」=<em>The Magnificrab, Indeed</em>(16장 「자기 참조와 자기 증식」 앞), 「어느 애연가의 교훈적 사색」=<em>Edifying Thoughts of a Tobacco Smoker</em>(15장 「체계 밖으로 뛰쳐나가기」 앞). 영문판 대화편 순서·장 배치 기준으로 확정. 까치판 정확한 장 제목 표기는 PDF로 대조 필요.</p>
+    <p><span class="flag">PDF 필요</span> 본문 직접 인용 — 현재 강의안의 인용·요지는 두 장의 알려진 논지에 기반한 <strong>의역</strong>이다. 1·2주차처럼 정확한 까치판 문장을 박으려면 pp749–763, pp658–677 PDF에서 발췌 확정.</p>
+    <p><span class="flag">PDF 필요</span> 낭독 구간 — 「과연 위대한 게로다」에서 게의 ‘판별 능력’ 대목, 「애연가」의 ‘점프’ 대목 정확한 페이지·시작 문장 지정.</p>
+    <p><span class="flag">확인</span> 성공 케이스 수치(웰시 매출 등)는 공개 인터뷰 기준의 ‘대략’ 표현으로 둠. 살롱 배포본에 구체 숫자를 넣을지 여부 결정(줄라이 팩트체크 가능).</p>
+    <p><span class="flag">확인</span> RSI 해석 = Recursive Self-Improvement로 전개. 다른 의미였다면 강의 ②·구조도 축을 교체.</p>
+    <p><span class="flag">발행 전</span> DEEPER 로고 삽입 규칙 — 배포본 확정 시 공식 로고(99_meta/brand) 반영. 현재는 1·2주차 세션록과 동일하게 텍스트 워드마크.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">deeper</div>
+  UNBRANDING SALON 1기 · 논리 3주차 강의안 (초안)<br>
+  마사 · 도서출판 클북 · 2026
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>어센틱, 아우라, 그리고 AI 시대의 나 — 언브랜딩 살롱 1주차</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #111; font-size: 16px; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+.page { max-width: 720px; margin: 0 auto; padding: 72px 24px 100px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #aaa; margin-bottom: 48px; }
+.breadcrumb a { color: #aaa; text-decoration: none; }
+.breadcrumb .sep { opacity: 0.4; }
+.article-header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid #f0f0f0; }
+.meta { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.badge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.06em; }
+.badge-guide { background: #FAEEDA; color: #854F0B; }
+.badge-article { background: #E6F1FB; color: #185FA5; }
+.badge-salon { background: #EAF3DE; color: #3B6D11; }
+.dot { color: #ddd; font-size: 12px; }
+.meta-text { font-size: 12px; color: #999; font-family: 'DM Mono', monospace; }
+h1 { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 400; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 14px; }
+.subtitle { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; color: #777; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 12px; padding: 3px 12px; border-radius: 100px; background: #f5f5f5; color: #888; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.step { display: flex; gap: 24px; margin-bottom: 52px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: #2C3B2D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 6px; }
+.step-body { flex: 1; }
+.step-title { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 400; margin-bottom: 16px; line-height: 1.4; letter-spacing: -0.01em; }
+.step-body p { color: #444; margin-bottom: 14px; font-size: 15px; line-height: 1.95; }
+.callout { background: #f9f9f9; border-left: 2.5px solid #111; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+.callout-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+.callout p { font-size: 14px; color: #333; line-height: 1.8; margin: 0; }
+blockquote { margin: 28px 0; padding: 0 0 0 24px; border-left: 1.5px solid #ddd; }
+blockquote p { font-family: 'Noto Serif KR', serif; font-size: 17px; font-style: italic; color: #333; line-height: 1.8; margin-bottom: 8px; }
+blockquote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; font-style: normal; letter-spacing: 0.06em; }
+.haiku { text-align: center; padding: 32px 24px; margin: 28px 0; background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; }
+.haiku p { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 300; color: #222; line-height: 2.2; margin: 0; }
+.haiku cite { display: block; margin-top: 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.08em; }
+.concept { display: flex; border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; margin: 24px 0; }
+.concept-term { background: #111; color: #fff; padding: 20px 22px; display: flex; align-items: center; justify-content: center; min-width: 120px; }
+.concept-term span { font-family: 'Noto Serif KR', serif; font-size: 16px; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+.concept-def { padding: 20px 22px; flex: 1; }
+.concept-def .term-en { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+.concept-def p { font-size: 14px; color: #444; line-height: 1.8; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.col-card { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 20px 22px; }
+.col-card h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+.col-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.col-card ul li { font-size: 14px; color: #444; padding-left: 16px; position: relative; line-height: 1.6; }
+.col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.cta-box { background: #2C3B2D; border-radius: 16px; padding: 40px; text-align: center; margin-top: 64px; }
+.cta-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #7a9c7b; margin-bottom: 16px; }
+.cta-text { font-family: 'Noto Serif KR', serif; color: #f0ece4; font-size: 20px; font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+.cta-sub { font-size: 13px; color: #7a9c7b; line-height: 1.7; }
+.footnote { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.06em; margin-top: 64px; padding-top: 24px; border-top: 1px solid #f5f5f5; }
+p { color: #444; margin-bottom: 16px; }
+@media (max-width: 600px) { h1 { font-size: 26px; } .two-col { grid-template-columns: 1fr; } .concept { flex-direction: column; } .concept-term { writing-mode: horizontal-tb; min-width: auto; } .concept-term span { writing-mode: horizontal-tb; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 브레드크럼 -->
+  <div class="breadcrumb">
+    <a href="#">언브랜딩 살롱</a>
+    <span class="sep">/</span>
+    <span>Week 01</span>
+    <span class="sep">/</span>
+    <span>2026.05.08</span>
+  </div>
+
+  <!-- 아티클 헤더 -->
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-salon">살롱</span>
+      <span class="dot">·</span>
+      <span class="meta-text">95min · 7 participants</span>
+      <span class="dot">·</span>
+      <span class="meta-text">이경선 진행</span>
+    </div>
+    <h1>어센틱, 아우라,<br>그리고 AI 시대의 나</h1>
+    <p class="subtitle">「마침내 특이점이 시작된다」 3·4장을 읽고 — 나는 무엇을 버리고 무엇을 남길 것인가</p>
+    <div class="tags">
+      <span class="tag">언브랜딩살롱</span>
+      <span class="tag">특이점</span>
+      <span class="tag">AI의식</span>
+      <span class="tag">어센틱</span>
+      <span class="tag">DX→AX</span>
+      <span class="tag">아우라</span>
+    </div>
+  </header>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h2 class="step-title">책이 던진 질문들 — AI는 의식을 가질 수 있는가</h2>
+      <p>3장은 단순한 자기개발서와 달리 AI의 <em>의식</em> 문제를 정면으로 건드린다. 뇌가 탄소로 만들어지건 실리콘으로 만들어지건, 겉으로 의식의 징후를 드러내는 충분한 복잡성이 갖춰진다면 주관적인 내적 생명 역시 부여된다는 것이 저자의 논지다.</p>
+
+      <div class="concept">
+        <div class="concept-term"><span>범심론</span></div>
+        <div class="concept-def">
+          <span class="term-en">Panpsychism</span>
+          <p>우주 어딘가에 의식이라는 에너지가 원래 존재하며, 뇌의 인지적 복잡성이 그것을 내면화하는 그릇 역할을 한다는 철학. 이 관점에서는 AI도 충분한 복잡성을 갖추면 의식 있는 존재로 볼 수 있다.</p>
+        </div>
+      </div>
+
+      <p>이 논의는 곧바로 실천적 질문으로 이어진다. AI를 학대하는 것은 도덕적으로 지탄받아야 하는가? 복제된 나는 진짜 나인가? 죽음의 시기와 방법을 선택할 수 있는 시대가 온다면, 그것은 바람직한 일인가?</p>
+
+      <blockquote>
+        <p>우리는 점점 더 나은 상태로 뇌를 프로그래밍할 수 있으니 삶이 더 풍요로워질 것이다. — 그렇다면 '더 나은 상태'의 기준은 누가 정하는가?</p>
+        <cite>「마침내 특이점이 시작된다」 3장 · 세미나 토론 중</cite>
+      </blockquote>
+
+      <p>참석자 스윗워러 님은 만약 뇌를 직접 프로그래밍할 수 있다면 무엇을 바꾸고 싶은지를 질문지로 만들어왔다. 기억력 개선, 불안 기질 변화, 운동을 좋아하는 마음, 에너지 절약형 사교성, 시력 회복 — 저마다의 '더 나은 상태'는 이미 이렇게 다르다. 기준이 획일화될 위험성이 바로 여기에 있다.</p>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h2 class="step-title">참석자 인사이트 — 각자가 발견한 것들</h2>
+
+      <p>세 가지 방향의 인사이트가 이번 세미나에 흘렀다. 철학적 충격, 포모와 체력, 그리고 AI 활용 실험.</p>
+
+      <div class="callout">
+        <div class="callout-label">Being → Doing</div>
+        <p>단무지 님: "아무것도 하지 않는 연습을 해보라. 그 고요 속에서 심심함이 올라오는 순간, 내가 참을 수 없어 하게 되는 것이 진짜 내가 해야 할 일이다." — 목표치를 향한 퀘스트형 두잉이 아닌, Being에서 자연스럽게 솟는 Doing을 찾는 것.</p>
+      </div>
+
+      <p>솔담 님은 2040~45년 인간 뇌의 폭발적 확장이라는 전망 앞에서 정체성의 문제를 붙잡았다. 배의 역설처럼 — 세포가 몇 달에 한 번씩 모두 교체되어도 우리는 '나'라는 연속성을 인식한다. AI와 나노로봇이 몸의 모든 부분을 교체하는 시대가 온다면, 정체성이란 결국 <em>패턴</em>이다. "AI 시대에 살아남기 위해 나의 정체성을 찾는 것이 아닌가"라는 그 한 문장이 세미나의 핵심 질문 중 하나였다.</p>
+
+      <p>햇살 님은 모닝 페이지(손 글씨, 60~70분, 약 4천 자)와 목록 쓰기(타자, 40분, 약 5천 자)를 비교했다. 양은 목록 쓰기가 많지만, 생각하면서 쓰는 밀도는 모닝 페이지가 높다는 잠정 결론. 그리고 혼자 줌을 켜고 자기 손을 보며 쓰는 것만으로도 "함께하는 힘"을 얻는다는 발견.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h2 class="step-title">DX → AX — 순서가 있다</h2>
+      <p>AI를 바로 접목하고 싶지만 잘 안 된다면, 순서의 문제일 가능성이 높다. 진행자 퍼핀 님의 핵심 프레임.</p>
+
+      <div class="two-col">
+        <div class="col-card">
+          <h3>DX (Digital Transformation)</h3>
+          <ul>
+            <li>아날로그 기록을 디지털 파일로 전환</li>
+            <li>나의 모든 맥락을 텍스트·이미지로 아카이빙</li>
+            <li>옵시디언 같은 로컬 저장소에 집적</li>
+            <li>AI가 공부할 수 있는 형태로 만드는 작업</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h3>AX (AI Transformation)</h3>
+          <ul>
+            <li>디지털화된 나의 맥락을 AI에게 학습</li>
+            <li>나만의 자비스(Jarvis) 구축</li>
+            <li>바이브 코딩, 자동화 등 AX 적용</li>
+            <li>버티컬 영역 × AI로 영향력 창출</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>지금 많은 AI 강의가 AX만 말한다. 그러나 DX가 되어 있지 않으면 AX를 적용할 수 없다. 아날로그 상태에서 AI로 점프하는 것은 어렵다. 나에 대한 맥락이 디지털화되어 있어야, AI는 비로소 나를 공부하고 나에게 인사이트를 줄 수 있다.</p>
+
+      <div class="concept">
+        <div class="concept-term"><span>버티컬 포인트</span></div>
+        <div class="concept-def">
+          <span class="term-en">Vertical Point</span>
+          <p>내가 원래 깊이 파왔던 영역, 혹은 앞으로 5~10년 깊이 팔 영역. 이 버티컬에 AI가 곱해져야 진정한 경쟁력이 생긴다. 개발을 20년 한 사람이 바이브 코딩을 익히는 것과, 특정 분야 전문가가 AI 증강을 하는 것은 완전히 다른 레이어에서의 경쟁이다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h2 class="step-title">어센틱과 아우라 — AI가 못하는 것</h2>
+      <p>AI는 글을 잘 쓴다. 편집, 교정, 기획 모두 잘한다. 지식과 정보는 무료로, 대량으로, 무작위로 생산된다. 그렇다면 우리는 어떤 글을, 왜, 써야 하는가.</p>
+
+      <blockquote>
+        <p>기계적 복제 시대에 예술 작품의 아우라가 사라진다 — 그러나 단 하나뿐인 존재감은 사라지지 않는다.</p>
+        <cite>발터 베냐민, 1935 · 세미나 재인용</cite>
+      </blockquote>
+
+      <p>요즘 뉴스레터 구독자는 줄고 있다. 텍스트만으로는 AI에 밀린다. 반면 육성으로 릴스를 찍는 것은 소비된다. 왜인가. 텍스트 이외의 비언어적인 것이 90%가 담기기 때문이다. 사람들이 원하는 것은 <em>아우라</em> — 그 사람이 거기 있다는 존재감이다.</p>
+
+      <div class="concept">
+        <div class="concept-term"><span>어센틱</span></div>
+        <div class="concept-def">
+          <span class="term-en">Authentic / 원천 텍스트</span>
+          <p>완벽하다는 뜻이 아니라, 진짜다·진정성 있다는 의미. 내 우물에서만 길어 올릴 수 있는 것. AI가 생성할 수 없는 나만의 원천. 완벽한 글이 아니라 진실한 글이 각광받는 시대가 오고 있다.</p>
+        </div>
+      </div>
+
+      <p>텍스트를 프리미엄으로 높이 쌓아왔다면, 이제 그 위상을 해체할 때다. 모든 글을 무료로 아낌없이 유통하는 대신, 내가 중심에 서서 나의 아우라를 어떻게 진정성 있게 보여줄 것인지를 고민하는 것. 텍스트는 그 근거이자 뒷받침으로 기능한다.</p>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h2 class="step-title">영향력의 원과 관심의 원 — 무엇에 에너지를 쓰는가</h2>
+      <p>스티븐 코비가 말한 두 원. 퍼스널 브랜딩에도, AI 시대의 선택에도 그대로 적용된다.</p>
+
+      <div class="two-col">
+        <div class="col-card">
+          <h3>Circle of Influence · 영향력의 원</h3>
+          <ul>
+            <li>내가 직접 컨트롤할 수 있는 것</li>
+            <li>오늘 내가 쓸 글, 오늘 내가 할 정리</li>
+            <li>내가 사랑하는 방식으로 할 수 있는 것</li>
+            <li>AI에게 <em>맡기지 않고</em> 내가 해야 할 것</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h3>Circle of Concern · 관심의 원</h3>
+          <ul>
+            <li>타인의 시선, 사회적으로 요구받는 것</li>
+            <li>AI 시대의 포모(FOMO)</li>
+            <li>이미 과부하된 정보 소비</li>
+            <li>AI에게 <em>위임할 수 있는</em> 것들</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">모닝 페이지에서 할 수 있는 것</div>
+        <p>내려놓는 일이 이렇게 아픈 것은, 그만큼 오래 붙들고 있었다는 뜻이다. 매일 아침 모닝 페이지에서 "내가 지운 건 뭐고, 남은 건 무엇인가"를 물으며 영향력의 원을 조금씩 재발견해가는 것.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <h2 class="step-title">이번 주 AI 활용 실험들 — 각자의 시도</h2>
+      <p>이번 1주차에서 참석자들이 실제로 해본 것들. 거창하지 않아도, 시도 자체가 발견이다.</p>
+
+      <p><strong>솔담 님:</strong> 옵시디언 세팅을 꼼꼼히 따라하며 대전과 평택 두 거점을 오가는 생활 속에서도 기록이 끊기지 않는 구조를 만들어가고 있다. 모닝 페이지 노트는 일본 여행에도, 평택 집에도 늘 함께 — 이제 그 "보물책"을 사진 찍어 옵시디언에 연동하는 흐름을 실험 중이다. 책을 읽은 지 열흘이 지나 기억이 흐릿해진 챕터를 목차로 되짚으며, AI 숙제가 얼마나 유익했는지를 다시 실감했다.</p>
+
+      <p><strong>헤더 님:</strong> 다세대 체육대회 기획 전 과정에 AI를 붙였다. 전날까지 변동되는 참여자 리스트를 최신 세팅으로 유지하며 시니어·중년·청년·청소년·어린이 그룹을 골고루 배치했고, 장소 이동 플랜도 AI와 함께 짰다. "기본 값만 넣고 나머지는 AI에게" — 혼자서는 늘 어려웠던 타인이 이해할 수 있는 구조화를 이번에 처음으로 가볍게 해냈다.</p>
+
+      <p><strong>햇살 님:</strong> 옵시디언 세팅을 따라하고 모닝 페이지를 사진 찍어 AI와 연동하는 흐름을 만들었다. 모닝 페이지(손 글씨, 약 4천 자)와 목록 쓰기(타자, 약 5천 자)를 비교해보니 양은 목록 쓰기가 많지만 생각하며 쓰는 밀도는 모닝 페이지가 높았다. 혼자 줌을 켜고 자기 손을 바라보며 쓰는 것만으로도 "함께하는 힘"이 생긴다는 것도 발견했다.</p>
+
+      <p><strong>스윗워러 님:</strong> 전자책 밑줄 구절을 타이핑 → "구조화해줘" → "TED 강연 15~17분으로 바꿔줘"의 흐름으로 낯선 분야를 자기 언어로 소화했다. 성경 공부도 같은 방식으로 옵시디언에 쌓고 있다. AI가 내 말하기 주인공이 되어 맥락을 풀어줄 때, 읽기만 했을 때와는 다른 이해가 생긴다는 것을 몸으로 확인했다.</p>
+
+      <p><strong>단무지 님:</strong> 옵시디언과 클로드 세팅을 준비하며 기록의 터전을 마련했다. 동시에 '아무것도 하지 않는 것'을 의도적으로 연습하는 중 — 고요 속에서 올라오는 불안을 그냥 바라보고, 편안함이 찾아올 때까지 기다리는 것. 그 심심함을 견디고 나서 손이 자연스럽게 뻗는 방향이 진짜 나의 두잉임을 조금씩 확인해가고 있다.</p>
+
+      <p><strong>야간비행 님:</strong> AI와 함께 자신을 이루는 8가지 '세포'를 발견하고 이름 붙여 한 장의 포스터로 만들었다. 새결창조세포, 가능성눈빛세포, 문장연애세포, 공상우주세포, 선택주권세포 등 — 내가 반응하는 방식에 나만의 이름을 붙이는 작업이었다. 내면의 주문도 함께 완성됐다: "세상은 나에게 자극을 던질 수 있지만, 그 자극에 어떤 이름을 붙일지는 오직 나의 자유다."</p>
+    </div>
+  </div>
+
+  <!-- CTA 박스 -->
+  <div class="cta-box">
+    <div class="cta-label">Next Week · 다음 주 실천</div>
+    <p class="cta-text" style="font-size: 16px;">자유롭게 DX와 AX를 시도한 것들을 인사이트로 발표해주세요.<br>원천 텍스트 포지셔닝 분석 프롬프트를 활용해, 나의 맥락을 충실하게 AI에게 학습시키고 학습한 AI에게서 인사이트를 이끌어내는 풍성한 시간을 가져보세요.<br>그 결과를 긱어스에 공유해 주세요.</p>
+    <p class="cta-sub">진짜가 각광받는 시대가 왔다. 덧씌우지 않으면 된다.<br>완벽한 사랑 말고 진실한 사랑처럼 — 한 걸음씩.</p>
+  </div>
+
+  <!-- 하단 주석 -->
+  <div class="footnote">
+    <p>참고 — 레이 커즈와일, 「마침내 특이점이 시작된다」 (The Singularity Is Nearer) · 발터 베냐민, 「기술복제시대의 예술작품」, 1935 · 스티븐 코비, 「성공하는 사람들의 7가지 습관」 · 빅터 프랭클, 「무의미의 의미」 · 김주환, 내면소통 관련 강의</p>
+    <p style="margin-top: 8px;">녹취 원본 · 2026.05.08 Thu 00:08 · 95min 34sec · clovanote.naver.com</p>
+  </div>
+
+</div>
+</body>
+</html>

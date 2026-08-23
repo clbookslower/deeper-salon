@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>컴퓨터 이사 🦊 — 내 디퍼를 안전하게 데려가는 법</title>
+<meta name="description" content="컴퓨터는 창문, 디퍼는 금고에 살아요. 떠날 땐 '사막출발', 도착하면 '사막도착' — 노트도 씨앗도 에이전트도, 하나 잃지 않고 함께 가요.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="컴퓨터 이사 🦊 — 내 디퍼를 안전하게 데려가는 법">
+<meta property="og:description" content="컴퓨터는 창문, 디퍼는 금고에 살아요. 떠날 땐 '사막출발', 도착하면 '사막도착' — 노트도 씨앗도 에이전트도, 하나 잃지 않고 함께 가요.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/device_move_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-device-move.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-device-move.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1A4A35;--green-soft:#3B6D52;--ink:#2A2622;--ink-soft:#5A5248;
+    --paper:#FBF7EE;--gold:#B08D57;--line:rgba(42,38,34,.12)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:30px;line-height:1.4;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.85;max-width:32em;margin:0 auto}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 36px;border-radius:2px}
+  p{margin:0 0 14px}
+  h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:21px;color:var(--green);
+    margin:48px 0 10px;line-height:1.45}
+  .sectsub{font-size:14.5px;color:var(--ink-soft);margin:0 0 22px}
+  .step{display:flex;gap:18px;align-items:flex-start;margin:0 0 26px}
+  .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .step-body{flex:1}
+  .step-title{font-family:'Noto Serif KR',serif;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;line-height:1.45}
+  .step-body p{font-size:15px;color:#444;line-height:1.95;margin:0 0 9px}
+  .step-body p:last-child{margin-bottom:0}
+  ul.sub{list-style:none;margin:6px 0 9px}
+  ul.sub li{position:relative;padding-left:16px;margin-bottom:7px;font-size:14.5px;color:#444;line-height:1.85}
+  ul.sub li::before{content:'·';position:absolute;left:2px;color:var(--gold);font-weight:700}
+  b,strong{color:var(--green);font-weight:700}
+  .say{display:inline-block;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:.94em;
+    background:#EEF4E6;border:1px solid rgba(59,109,17,.18);border-radius:7px;padding:1px 9px;color:#356018}
+  a.link{color:#185FA5;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(24,95,165,.3)}
+  .principle{background:var(--green);border-radius:16px;padding:26px 26px;margin:8px 0 8px;color:#EFE9DC}
+  .principle .plabel{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;color:#E2C77B;margin-bottom:14px;text-transform:uppercase}
+  .principle ul{list-style:none}
+  .principle li{position:relative;padding-left:22px;margin-bottom:11px;font-size:15.5px;line-height:1.7;color:#F1ECDF}
+  .principle li:last-child{margin-bottom:0}
+  .principle li::before{content:'✦';position:absolute;left:0;color:#E2C77B}
+  .principle b{color:#fff}
+  .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:16px 18px;margin:6px 0 12px;font-size:14.5px}
+  .flow .box{background:#EFEADD;border-radius:8px;padding:6px 13px;font-weight:700;color:var(--green)}
+  .flow .arr{color:var(--gold);font-weight:700}
+  .callout{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+  .callout .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-size:14px;color:#444;line-height:1.85;margin:0 0 7px}
+  .callout p:last-child{margin:0}
+  .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
+  .ok{border-left-color:#3B6D11}.ok .label{color:#3B6D11}
+  .done{background:#F2EEE2;border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;margin:46px 0 0}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--green);margin-bottom:10px;line-height:1.55}
+  .done p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin:0}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+  @media (max-width:460px){.flow{font-size:13.5px;gap:8px}.flow .box{padding:5px 10px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER">
+  <div class="eyebrow">DEEPER OS · 이사 가이드</div>
+  <h1>컴퓨터 이사<br>내 디퍼를 안전하게 데려가는 법</h1>
+  <p class="lead">디퍼는 <b>컴퓨터에 묶이지 않아요.</b> 컴퓨터는 창문, 디퍼는 금고에 살거든요. 이사는 두 마디예요 — 떠날 땐 <b>“사막출발”</b>, 도착하면 <b>“사막도착”</b>. 노트도 씨앗도 에이전트도, 하나 잃지 않고 함께 가요. 🦊</p>
+  <div class="rule"></div>
+
+  <div class="principle">
+    <div class="plabel">먼저, 이 세 가지만</div>
+    <ul>
+      <li><b>지금은 ‘한 번에 한 컴퓨터’만</b> 쓰세요. 두 대를 동시에 쓰는 건 조금 더 익숙해진 다음에요.</li>
+      <li><b>떠날 땐 “사막출발”(싣기), 도착하면 “사막도착”(내리기).</b> 볼트도, 총괄 에이전트의 일 폴더도 여우가 함께 실어요.</li>
+      <li><b>GitHub 금고에 있는 게 늘 ‘정본(최신)’</b>이에요. 컴퓨터들은 그 금고를 보고 서로 맞춰요.</li>
+    </ul>
+  </div>
+  <p style="font-size:14px;color:var(--ink-soft);margin-top:14px">※ 전부 사막여우에게 그 말 그대로 시키면 돼요. 명령어를 외울 필요 없어요. 혹시 여우가 ‘사막출발’을 못 알아들으면 — 아직 옛 옷이에요. <span class="say">새옷</span> 한마디로 먼저 갈아입혀 주세요.</p>
+
+  <h2>1. 매일의 리듬 — 받고 → 쓰고 → 백업</h2>
+  <p class="sectsub">한 컴퓨터만 꾸준히 쓰신다면, 사실 <b>“백업”</b> 하나만 챙기면 돼요.</p>
+  <div class="flow"><span class="box">이어받기</span><span class="arr">→</span><span class="box">오늘 쓰기</span><span class="arr">→</span><span class="box">백업</span></div>
+  <ul class="sub">
+    <li><b>일 시작 전</b> — 다른 컴퓨터에서도 쓴 적이 있으면, 먼저 <span class="say">최신으로 이어받아줘</span>. (한 대만 쓰면 건너뛰어도 돼요.)</li>
+    <li><b>오늘의 한 걸음</b> — 사막여우에게 <span class="say">안녕</span>, 그리고 쓰고 싶은 걸 써요.</li>
+    <li><b>마칠 때</b> — <span class="say">백업</span> 한마디. 오늘 쓴 게 금고에 안전하게 올라가요.</li>
+  </ul>
+  <div class="callout"><div class="label">왜 백업이 중요하냐면</div><p>금고에 올려둬야, 나중에 <b>다른 컴퓨터에서 그걸 다시 받아올 수 있어요.</b> 백업하지 않은 글은 그 컴퓨터 안에만 남아 있어요. 오늘의 마무리는 늘 “백업”으로.</p></div>
+
+  <h2>2. 잠깐 다른 컴퓨터로 (임시 이동)</h2>
+  <p class="sectsub">직장 컴퓨터를 쓰다가 집 노트북으로 — <b>두 컴퓨터에 디퍼가 이미 깔려 있을 때</b>예요.</p>
+  <div class="step"><div class="num">A</div><div class="step-body">
+    <div class="step-title">떠나는 컴퓨터에서 — 사막출발</div>
+    <p>자리를 뜨기 전에 사막여우에게 <span class="say">사막출발</span>. 볼트와 일 폴더, 오늘까지의 전부가 금고로 올라가요.</p>
+  </div></div>
+  <div class="step"><div class="num">B</div><div class="step-body">
+    <div class="step-title">도착한 컴퓨터에서 — 사막도착 (쓰기 전에 먼저!)</div>
+    <p>새 글을 쓰기 <b>전에</b> 먼저 <span class="say">사막도착</span>. 금고의 최신을 받아와 맞춘 다음 이어가면 돼요.</p>
+  </div></div>
+  <div class="callout ok"><div class="label">✅ 한 줄로</div><p><b>떠날 때 ‘사막출발’, 도착해서 ‘사막도착’.</b> 이 두 마디만 챙기면, 두 컴퓨터를 오가도 늘 같은 자리에서 이어져요.</p></div>
+
+  <h2>3. 컴퓨터를 아예 바꿀 때 (반납·새 컴퓨터)</h2>
+  <p class="sectsub">대여 노트북을 반납하거나, 새 컴퓨터로 갈아탈 때. 차근차근 하면 <b>하나도 안 잃어요.</b></p>
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title">옛 컴퓨터에서 — 사막출발</div>
+    <p>떠나기 전, 사막여우에게 <span class="say">사막출발</span>. 여우가 볼트를 금고에 싣고, <b>총괄 에이전트(디퍼)가 사는 일 폴더가 있는지 한 번 물어봐요</b> — “맞아요” 하면 그 폴더도 자기 금고에 실어요. 무엇을 실었는지 짐 목록으로 보여주면 확인 끝. (반납이라면, 그다음 노트·일 폴더는 지우고 돌려주세요 — 내 글이니까요.)</p>
+  </div></div>
+  <div class="step"><div class="num">2</div><div class="step-body">
+    <div class="step-title">새 컴퓨터에서 — 사막여우 다시 깔기</div>
+    <p>사막여우는 <b>‘앱’</b>이라, 백업해 짊어질 필요 없이 <b>새로 깔면 돼요</b>(무료·몇 분이면 끝). 옵시디언과 디퍼 OS를 순서대로 다시 깔아요.</p>
+    <ul class="sub">
+      <li>설치 순서가 가물가물하면 → <a class="link" href="https://clbookslower.github.io/deeper-salon/os/claude_code_install_guide.html">클로드 코드 설치 ①</a> · <a class="link" href="https://clbookslower.github.io/deeper-salon/os/deeper_os_install_guide.html">디퍼 OS 깔기 ②</a></li>
+    </ul>
+  </div></div>
+  <div class="step"><div class="num">3</div><div class="step-body">
+    <div class="step-title">새 컴퓨터에서 — 사막도착</div>
+    <p>사막여우에게 <span class="say">사막도착</span>. 여우가 금고에서 볼트를 내려받고, 짐 목록을 읽어 <b>일 폴더까지 원래 자리에 스스로 내려놔요.</b> 저장소 이름 같은 건 하나도 기억할 필요 없어요 — 목록이 금고에 같이 실려 있으니까요.</p>
+    <p style="color:#777;font-size:13.5px">※ 이때 <b>내 GitHub에 로그인</b>돼 있어야 받아와요 — 처음 한 번, 화면의 숫자코드를 브라우저에 입력하는 식이에요. 여우가 한 걸음씩 안내해요.</p>
+    <p style="color:#777;font-size:13.5px">※ 옵시디언은 <b>“폴더를 보관함으로 열기”</b>로 내려온 볼트 폴더를 열면, 어제 보던 노트가 그대로 보여요.</p>
+  </div></div>
+  <div class="step"><div class="num">4</div><div class="step-body">
+    <div class="step-title">확인 — “안녕”</div>
+    <p>사막여우에게 <span class="say">안녕</span> 해보세요. 어제까지의 여정이 그대로 이어지면 <b>이사 성공!</b> 🎉 컴퓨터는 바뀌었어도, 쌓아온 건 그대로예요.</p>
+  </div></div>
+
+  <div class="callout warn"><div class="label">⚠️ 딱 하나, 조심</div><p><b>아직은 두 컴퓨터를 ‘동시에’ 쓰지 마세요.</b> 양쪽에서 따로 글을 고치면 ‘어느 게 최신이지?’ 하고 갈라져요(옮겨다닐 때 유일한 사고예요).</p><p>혹시 이미 양쪽 다 고쳐버렸다면 — <b>그냥 이어받기를 누르지 말고</b>, 먼저 노트 폴더를 통째로 한 부 복사해 두세요. 그리고 <b>총괄 에이전트(디퍼)나 그냥 클로드 대화창</b>에 <span class="say">양쪽 안 잃게 합쳐줘</span> 하면, 덮어쓰지 않고 안전하게 붙여줘요.</p></div>
+
+  <div class="done">
+    <div class="big">컴퓨터는 ‘창문’, 디퍼는 ‘금고’에 살아요 🦊</div>
+    <p>창문은 바꿔 끼워도, 그 안의 별들은 그대로예요.<br>막히면 그냥 <b>클로드 대화창에 물어보세요.</b> 총괄 에이전트 ‘디퍼’를 두셨다면 디퍼에게 맡겨도 돼요. 🦊</p>
+  </div>
+
+  <div class="foot">DEEPER 언브랜딩 살롱 · 디퍼 OS<br>떠날 땐 사막출발 · 도착하면 사막도착 · 한 번에 한 컴퓨터</div>
+</div>
+</body>
+</html>

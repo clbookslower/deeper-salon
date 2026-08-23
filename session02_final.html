@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 02 — 목소리의 결 × AI 재설계</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --red: #7a1a1a;
+  --red-bg: #fdf2f2;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 60px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-grammar { background: var(--gold-bg); color: #854F0B; }
+.badge-session { background: var(--blue-bg); color: var(--blue); }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ── 목차 ── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+}
+.toc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: #444;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── 섹션 구분자 ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 32px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--forest-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+blockquote {
+  margin: 32px 0;
+  padding: 0 0 0 28px;
+  border-left: 2px solid var(--ink);
+}
+blockquote p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+blockquote cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 10px 10px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; }
+.callout + .callout { margin-top: -10px; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--ink); }
+.callout-speaker .callout-label { color: var(--muted); }
+.callout-speaker p { color: #333; }
+.callout-ref { background: var(--gold-bg); border-left: 2.5px solid var(--gold); }
+.callout-ref .callout-label { color: #854F0B; }
+.callout-ref p { color: #5a3800; }
+.callout-q { background: #F0F4FF; border-left: 2.5px solid #4A6FA5; }
+.callout-q .callout-label { color: #4A6FA5; }
+.callout-q p { color: #2a3f6f; }
+
+.concept {
+  display: flex;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+.concept-term {
+  background: var(--forest);
+  color: #fff;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+.concept-term span {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+}
+.concept-def { padding: 22px 24px; flex: 1; }
+.concept-def .term-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.concept-def p { font-size: 14px; color: #444; line-height: 1.85; margin: 0; }
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+.col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px;
+  background: var(--surface);
+}
+.col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.col-card .col-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.col-card .col-sub { font-size: 13px; color: #666; line-height: 1.75; }
+.col-card.highlight { background: var(--forest); border-color: var(--forest); }
+.col-card.highlight h3 { color: var(--forest-light); }
+.col-card.highlight .col-main { color: #f0ece4; }
+.col-card.highlight .col-sub { color: #a8c5a0; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+.two-col-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.two-col-card h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.two-col-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.two-col-card ul li {
+  font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.65;
+}
+.two-col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.two-col-card.dark { background: var(--forest); border-color: var(--forest); }
+.two-col-card.dark h3 { color: var(--forest-light); }
+.two-col-card.dark ul li { color: #d4e8d4; }
+.two-col-card.dark ul li::before { color: var(--forest-light); }
+
+/* ── 흐름 다이어그램 ── */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.flow-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+}
+.flow-item.active { background: var(--forest); border-color: var(--forest); color: #f0ece4; }
+.flow-item.accent { background: var(--gold-bg); border-color: #d4a830; color: #5a3800; }
+.flow-arrow { font-family: 'DM Mono', monospace; color: #ccc; padding: 0 8px; font-size: 14px; }
+
+/* ── 실습 박스 ── */
+.exercise {
+  background: #F5F8F2;
+  border: 1px solid #C8DFC0;
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin: 36px 0;
+}
+.exercise-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 14px;
+}
+.exercise h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.exercise ol {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.exercise ol li { font-size: 14px; color: #3a5a3a; line-height: 1.8; }
+.exercise-prompt {
+  margin-top: 20px;
+  background: rgba(44,59,45,0.06);
+  border-left: 2.5px solid var(--forest);
+  padding: 16px 18px;
+  border-radius: 0 8px 8px 0;
+}
+.exercise-prompt p { font-size: 14px; color: var(--forest); margin: 0; font-style: italic; line-height: 1.8; }
+
+/* ── 브랜드 문장 박스 ── */
+.brand-sentence {
+  background: var(--forest);
+  border-radius: 14px;
+  padding: 36px 32px;
+  margin: 32px 0;
+}
+.brand-sentence-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 18px;
+}
+.brand-sentence-template {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: #f0ece4;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+.brand-sentence-template .blank {
+  display: inline-block;
+  min-width: 90px;
+  color: #c9a96e;
+  font-style: italic;
+}
+.brand-sentence-template .fill-line {
+  display: inline-block;
+  border-bottom: 1px solid rgba(201,169,110,0.5);
+  min-width: 100px;
+  margin: 0 4px;
+  vertical-align: bottom;
+}
+.brand-sentence-note { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+/* ── CTA / 클로징 ── */
+.close-box {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  margin-top: 72px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: #f0ece4;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-sub { font-size: 13px; color: #7a9c7b; line-height: 1.8; }
+
+/* ── AI 프롬프트 공용 ── */
+.ai-box {
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+.ai-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.ai-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.ai-box p.ai-desc { font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
+.ai-box ol { padding-left: 18px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.ai-box ol li { font-size: 14px; line-height: 1.8; }
+.ai-prompt-block {
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+.ai-prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  display: block;
+}
+.ai-prompt-block p { font-size: 13px; line-height: 1.95; margin: 0; }
+.ai-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(44,59,45,0.06);
+  border-radius: 8px;
+}
+.ai-note p { font-size: 13px; color: #3a5a3a; margin: 0; }
+
+/* AI 박스 — 암묵지 */
+.box-tacit { background: #F5F0FF; border: 1px solid #C4B0DE; }
+.box-tacit .ai-label { color: #6A4FA5; }
+.box-tacit h3 { color: #3a2a6f; }
+.box-tacit p.ai-desc { color: #4a3a8f; }
+.box-tacit ol li { color: #3a2a6f; }
+.box-tacit .ai-prompt-block { background: rgba(106,79,165,0.07); border-left: 2.5px solid #6A4FA5; }
+.box-tacit .ai-prompt-label { color: #6A4FA5; }
+.box-tacit .ai-prompt-block p { color: #3a2a6f; }
+
+/* AI 박스 — 특이점 */
+.box-singular { background: var(--red-bg); border: 1px solid #e8c0c0; }
+.box-singular .ai-label { color: var(--red); }
+.box-singular h3 { color: #4a0a0a; }
+.box-singular p.ai-desc { color: #5a1a1a; }
+.box-singular ol li { color: #4a0a0a; }
+.box-singular .ai-prompt-block { background: rgba(122,26,26,0.06); border-left: 2.5px solid var(--red); }
+.box-singular .ai-prompt-label { color: var(--red); }
+.box-singular .ai-prompt-block p { color: #4a0a0a; }
+.box-singular .ai-note { background: rgba(122,26,26,0.04); }
+.box-singular .ai-note p { color: #6a2a2a; }
+
+/* AI 박스 — 브랜드 설계 */
+.box-brand { background: var(--gold-bg); border: 1px solid #d4b060; }
+.box-brand .ai-label { color: #854F0B; }
+.box-brand h3 { color: #3a2800; }
+.box-brand p.ai-desc { color: #5a3800; }
+.box-brand ol li { color: #3a2800; }
+.box-brand .ai-prompt-block { background: rgba(184,134,11,0.07); border-left: 2.5px solid var(--gold); }
+.box-brand .ai-prompt-label { color: #854F0B; }
+.box-brand .ai-prompt-block p { color: #3a2800; }
+.box-brand .ai-note { background: rgba(184,134,11,0.07); }
+.box-brand .ai-note p { color: #5a3800; }
+
+/* ── 각주 ── */
+.footnote {
+  margin-top: 72px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 27px; }
+  .three-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .concept { flex-direction: column; }
+  .concept-term { writing-mode: horizontal-tb; min-width: auto; }
+  .concept-term span { writing-mode: horizontal-tb; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .brand-sentence-template { font-size: 16px; }
+}
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · 1기</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>SESSION 02</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-grammar">GRAMMAR</span>
+      <span class="dot">·</span>
+      <span class="badge badge-session">SESSION 02</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.05.14 THU 22:00</span>
+    </div>
+    <h1>목소리의 결 × AI 재설계</h1>
+    <p class="subtitle">암묵지에서 독창적 프레임워크로 — 나의 특이점을 발굴하고 출발지를 새롭게 정의하다</p>
+    <div class="tags">
+      <span class="tag">목소리의결</span>
+      <span class="tag">암묵지</span>
+      <span class="tag">AI이식</span>
+      <span class="tag">특이점</span>
+      <span class="tag">출발지재정의</span>
+      <span class="tag">브랜드설계</span>
+      <span class="tag">문법</span>
+    </div>
+  </header>
+
+  <!-- 목차 -->
+  <div class="toc">
+    <div class="toc-label">Session Outline</div>
+    <div class="toc-item"><span class="toc-num">01</span>OPENING — 고난과 절망이 희망의 빛이 될 때</div>
+    <div class="toc-item"><span class="toc-num">02</span>FRAME — 암묵지의 외부화: AI가 나를 재설계한다</div>
+    <div class="toc-item"><span class="toc-num">03</span>MOVE 1 — 목소리의 결은 고난 속에서 새겨진다</div>
+    <div class="toc-item"><span class="toc-num">04</span>MOVE 2 — 언어 지문에서 독창적 프레임워크로</div>
+    <div class="toc-item"><span class="toc-num">05</span>MOVE 3 — 출발지를 새롭게 정의하기: 봉사하는 브랜드</div>
+    <div class="toc-item"><span class="toc-num">06</span>PRACTICE — 나의 특이점 지도 + 브랜드 씨앗 문장</div>
+    <div class="toc-item"><span class="toc-num">07</span>CLOSE — 살아낸 것들이 이미 당신의 지도다</div>
+  </div>
+
+  <!-- ═══ 01 OPENING ═══ -->
+  <div class="section-divider">
+    <span class="section-num">01 · OPENING</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">고난과 절망이 희망의 빛이 될 때</div>
+
+  <p class="lead">지난주에 우리는 원천 텍스트의 개념을 열었습니다. 나만이 쓸 수 있는 것. 오늘은 그 씨앗이 어디서 왔는지를 봅니다. 그리고 그것을 어떻게 시스템으로 설계하는지를.</p>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">오프닝 멘트 · 진행자</div>
+    <p>한 주 동안 어떻게 지내셨나요. 모닝페이지를 쓰면서, 쓰기 불편하거나 힘든 점은 없으셨어요? 어색하거나, 너무 솔직한 것 같거나, 이걸 써도 되나 싶었던 것들. 오늘 우리가 들어가는 곳이 바로 거기입니다.<br><br>
+    오늘 세션을 시작하기 전에 하나만 여쭤볼게요. <strong>지금까지 살면서, 아무도 몰랐으면 했지만 결국 혼자 버텨낸 어려움이 있다면 — 그 경험이 아직도 당신을 가로막고 있나요? 여전히 마음이 아프고 힘든가요? 그럼에도 불구하고 당신이 하는 일과 어떤 식으로든 연결되어 있나요?</strong></p>
+  </div>
+
+  <p>가장 깊은 목소리는 가장 아픈 경험에서 옵니다. 당신이 버티고, 견디고, 혼자 해결해야만 했던 그 시간들 — 그것이 당신의 원천 텍스트의 지층입니다. 오늘 우리는 그 지층을 AI의 도움으로 외부화합니다.</p>
+
+  <!-- ═══ 02 FRAME ═══ -->
+  <div class="section-divider">
+    <span class="section-num">02 · FRAME</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">암묵지의 외부화 — AI가 나를 재설계한다</div>
+
+  <p class="lead">헝가리 출신의 철학자 마이클 폴라니는 1966년에 썼습니다. "우리는 말할 수 있는 것보다 더 많이 안다(We can know more than we can tell)." 이것이 암묵지(Tacit Knowledge)의 핵심입니다.</p>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">Reference · Michael Polanyi</div>
+    <p>폴라니는 예를 들었습니다. 우리는 아는 사람의 얼굴을 수천 명의 군중 속에서 즉시 알아보지만, 그 사람의 얼굴을 글로 설명하지는 못합니다. 자전거 타는 법을 알지만, 그 물리학적 원리를 설명하지는 못합니다. 전문가는 자신이 어떻게 그 판단에 이르렀는지 설명하지 못하는 경우가 많습니다. <em>암묵지는 언어가 닿지 않는 곳에서 작동합니다.</em> 그런데 역설이 있습니다. 말로 설명할 수 없기 때문에, 전수도 설계도 어렵습니다.</p>
+  </div>
+
+  <p>창작자의 가장 강력한 자산은 대부분 암묵지입니다. 왜 이 단어를 고르는지, 왜 이 비유가 자연스럽게 나오는지, 왜 이 주제에 유독 깊이 들어가는지 — 당신은 '그냥 그렇게 된다'고 말하지만 거기에 패턴이 있습니다. 수십 년의 삶이 새긴 패턴이. 이것이 AI와 연결될 때 새로운 일이 생깁니다.</p>
+
+  <div class="concept">
+    <div class="concept-term"><span>AI 이식</span></div>
+    <div class="concept-def">
+      <span class="term-en">AI TRANSPLANTATION OF VOICE</span>
+      <p>내 글을 AI에게 반복적으로 학습시키고 대화하면서, 내가 미처 언어화하지 못한 패턴을 AI가 거울처럼 돌려줍니다. AI가 나를 대체하는 것이 아니라, <em>내가 말할 수 없었던 것을 AI가 보여주는 것</em>입니다. 이를 통해 암묵지가 명시지(Explicit Knowledge)로 전환되고, 그것이 나만의 독창적 프레임워크의 씨앗이 됩니다. AI가 나를 만드는 것이 아닙니다. AI가 이미 있던 나를 드러냅니다.</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="flow-item">암묵지<br><small style="color:#999;font-size:11px">말할 수 없는 것</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item">AI 대화·분석<br><small style="color:#999;font-size:11px">거울이 되다</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item">패턴 외부화<br><small style="color:#999;font-size:11px">명시지로 전환</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item accent">독창적 프레임워크<br><small style="color:#854f0b;font-size:11px">나만의 구조</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item active">브랜드 설계<br><small style="color:#7a9c7b;font-size:11px">지속가능한 시스템</small></div>
+  </div>
+
+  <p>이것이 디퍼의 AI 철학입니다. AI를 <em>나를 발굴하는 파트너</em>로 쓰는 것. 인류 역사상 처음으로, 암묵지를 이렇게 빠르게 외부화할 수 있는 도구가 생겼습니다. 이것을 가장 먼저, 가장 깊게 활용하는 창작자가 새로운 시대의 브랜드를 갖게 됩니다.</p>
+
+  <!-- 레프리젠테이션 × 아티피셜 -->
+  <div style="margin:40px 0 44px;">
+
+    <!-- 섹션 레이블 -->
+    <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#aaa; margin-bottom:20px;">Brand Design Framework · 두 개의 언어</div>
+
+    <!-- 이미지 + 레이블 -->
+    <div style="display:flex; align-items:flex-start; gap:14px; margin-bottom:32px;">
+
+      <!-- 동굴벽화 -->
+      <div style="flex:1; text-align:center;">
+        <div style="border-radius:10px; overflow:hidden; border:1px solid #e0dbd2; aspect-ratio:4/3; background:#8a4820;">
+          <img id="altamira-img"
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/AltamiraBison.jpg/800px-AltamiraBison.jpg"
+               alt="알타미라 동굴벽화 — 들소, c.15000 BC, 스페인"
+               style="width:100%; height:100%; object-fit:cover; display:block;"
+               onerror="
+                 var urls = [
+                   'https://upload.wikimedia.org/wikipedia/commons/b/bf/12_Vista_general_del_techo_de_pol%C3%ADcromos.jpg',
+                   'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Altamira-10.jpg/800px-Altamira-10.jpg',
+                   'https://www.worldhistory.org/img/r/p/750x750/3537.jpg'
+                 ];
+                 var el = this;
+                 var i = parseInt(el.dataset.try || 0);
+                 if (i < urls.length) { el.dataset.try = i+1; el.src = urls[i]; }
+               " />
+        </div>
+        <div style="margin-top:14px; padding:0 4px;">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:#333; letter-spacing:0.06em; margin-bottom:4px;">representation</div>
+          <div style="font-family:'Noto Serif KR',serif; font-size:14px; color:#555; font-weight:500; margin-bottom:6px;">재현</div>
+          <div style="font-size:12px; color:#999; line-height:1.65;">내 삶을 직접 보여주는 것.<br>꿈을 바로 현실로 데려오는 것.</div>
+        </div>
+      </div>
+
+      <!-- 플러스 -->
+      <div style="flex-shrink:0; display:flex; align-items:center; padding-top:60px;">
+        <span style="font-family:'DM Mono',monospace; font-size:20px; color:#ccc;">+</span>
+      </div>
+
+      <!-- 피라미드 -->
+      <div style="flex:1; text-align:center;">
+        <div style="border-radius:10px; overflow:hidden; border:1px solid #e0dbd2; aspect-ratio:4/3; background:#c8a840;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg"
+               alt="이집트 기자 쿠푸왕 피라미드, c.2560 BC"
+               style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div style="margin-top:14px; padding:0 4px;">
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:#333; letter-spacing:0.06em; margin-bottom:4px;">artificial</div>
+          <div style="font-family:'Noto Serif KR',serif; font-size:14px; color:#555; font-weight:500; margin-bottom:6px;">추상</div>
+          <div style="font-size:12px; color:#999; line-height:1.65;">오직 인간만이 만들 수 있는 것.<br>보이지 않는 개념을 구조로 만드는 것.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 본문 설명 -->
+    <div style="background:#fafafa; border:1px solid #efefef; border-radius:14px; padding:28px 28px 24px;">
+
+      <!-- 재현의 의미 -->
+      <div style="margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid #f0f0f0;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#B8860B; margin-bottom:10px;">representation · 재현</div>
+        <p style="font-size:14px; color:#444; line-height:1.9; margin:0;">구석기 시대 인간들은 동굴 벽에 소를 그렸습니다. 소를 그리면 소가 <em>이미 사냥되었다</em>고 믿었습니다. 이미지가 곧 현실이었고, 재현이 곧 성취였습니다. 이것이 레프리젠테이션의 본질입니다. 내 삶의 경험을, 내가 꿈꾸는 것을, 지금 이 순간 다른 사람의 감각 앞에 즉각적으로 데려오는 힘. 설명 없이도 알아보는 것. "저게 내 이야기다"라고 느끼게 하는 것. 당신의 원천 텍스트가 살아있는 언어가 될 때, 그것은 힘을 갖습니다.</p>
+      </div>
+
+      <!-- 아티피셜의 의미 -->
+      <div style="margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid #f0f0f0;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#2C3B2D; margin-bottom:10px;">artificial · 추상</div>
+        <p style="font-size:14px; color:#444; line-height:1.9; margin:0;">피라미드는 인류 역사상 가장 오래된 인공 구조물 중 하나입니다. 눈에 보이지 않는 것을 형태로 만드는 것, 이것이 아티피셜입니다. <em>인간만이 할 수 있는 추상화</em>. 독창적 프레임워크란 바로 이것입니다 — 당신이 고난의 여정에서 얻어온 선물, 영웅이 돌아오며 가져오는 열쇠. 그것을 보는 사람이 자신도 피라미드를 만들 수 있다는 것을 깨닫게 합니다. 당신의 프레임워크가 그 역할을 합니다.</p>
+      </div>
+
+      <!-- 왜 둘 다 필요한가 -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:22px;">
+        <div style="border:1px solid #f0ece4; border-radius:8px; padding:16px 16px; background:#fff;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#B8860B; margin-bottom:8px;">재현만 있을 때</div>
+          <div style="font-size:13px; color:#666; line-height:1.75;">사람들이 감동받고 흩어진다.<br>공감은 얻지만 방향이 없다.<br>수익화 시스템이 작동하지 않는다.</div>
+        </div>
+        <div style="border:1px solid #d4e8d4; border-radius:8px; padding:16px 16px; background:#fff;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#2C3B2D; margin-bottom:8px;">추상만 있을 때</div>
+          <div style="font-size:13px; color:#666; line-height:1.75;">아무도 없는 사막의 피라미드.<br>구조는 완벽하지만 문을 두드리지 않는다.<br>피라미드를 만든 이유를 아무도 모른다.</div>
+        </div>
+      </div>
+
+      <!-- 통합 -->
+      <div style="background:#2C3B2D; border-radius:10px; padding:22px 24px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#7a9c7b; margin-bottom:12px;">통합 · 원천텍스트가 다리가 된다</div>
+        <p style="font-family:'Noto Serif KR',serif; font-size:15px; color:#e8e4da; line-height:1.9; margin-bottom:14px;">피라미드를 멋지게 구상한다고 성공하는 것이 아닙니다. 피라미드를 만든 과정, 왜 만들려 했는지를 공유할 수 있어야 브랜드는 작동합니다. 재현이 피라미드를 살아있게 만들고, 피라미드가 재현에 방향을 줍니다.</p>
+        <p style="font-size:13px; color:#a8c5a0; line-height:1.85; margin:0;">그래서 우리는 나를 탐구하고 발견한 <strong style="color:#c9d4c0;">원천텍스트</strong>를 기반으로 이 두 영역을 하나로 통합합니다. 내 고난의 경험이 재현의 언어가 되고, 그 경험에서 증류된 독창적 프레임워크가 피라미드가 됩니다. 그리고 그 피라미드가 누군가의 삶을 바꿀 열쇠가 됩니다 — 당신이 새로운 계기를 주어서, 그들도 자신의 피라미드를 만들 수 있게.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ═══ 03 MOVE 1 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">03 · MOVE 1</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">목소리의 결은 고난 속에서 새겨진다</div>
+
+  <p>롤랑 바르트는 1972년 에세이 「목소리의 결(The Grain of the Voice)」에서 말합니다. 결은 기교가 아닙니다. 결은 몸이 언어를 통과할 때 남기는 물성입니다. 나무의 결이 그 나무가 살아온 방식의 흔적인 것처럼 — 목소리의 결은 당신이 살아온 방식의 흔적입니다.</p>
+
+  <p>그렇다면 결이 가장 선명하게 새겨지는 것은 언제입니까. 순조롭게 흘러가는 시간이 아닙니다. 저항이 있을 때입니다. 버텨야 할 때. 아무도 모르게 참아야 할 때. 혼자 해결해야만 하는데 도저히 돌파할 수 없을 것 같았던 그 절망의 벽 앞에서. 결은 그 순간에 새겨집니다.</p>
+
+  <blockquote>
+    <p>상처받은 곳이 빛이 들어오는 곳이다.</p>
+    <cite>— LEONARD COHEN, Anthem, 1992</cite>
+  </blockquote>
+
+  <p>조셉 캠벨은 영웅 신화를 연구하며 발견합니다. 모든 위대한 이야기의 주인공은 예외 없이 깊은 상처를 가지고 있습니다. 그 상처가 여정의 방향을 결정하고, 그 여정이 돌아와 다른 사람들을 이끄는 지도가 됩니다. 당신의 고난이 바로 그것입니다. 낭비된 시간이 아닙니다. 지도입니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>고난을 보는 두 가지 시선</h3>
+      <ul>
+        <li>낭비된 시간, 손해 본 것</li>
+        <li>남들보다 뒤처진 근거</li>
+        <li>숨겨야 할 약점</li>
+        <li>이 주제는 너무 개인적이라서…</li>
+        <li>이미 지나간 것, 관계없는 것</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>고난이 자산이 되는 방식</h3>
+      <ul>
+        <li>같은 고난을 겪는 사람들의 언어가 된다</li>
+        <li>해결책을 가장 깊이 아는 사람의 자격</li>
+        <li>아무도 복제할 수 없는 특이점</li>
+        <li>가장 솔직한 목소리의 진원지</li>
+        <li>서비스의 출발점, 브랜드의 핵심</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-q">
+    <div class="callout-label">잠깐 대화 · 3분</div>
+    <p>지금까지 내가 창작자·전문가로서 활동하면서, 스스로 겪어봤기 때문에 누구보다 잘 안다고 느끼는 것이 있나요? 그것이 고난의 경험과 연결되어 있나요?</p>
+  </div>
+
+  <p>과거로 돌아갈 수 없습니다. 이전 방식이 통하지 않는 오늘을 설계해야 합니다. 그런데 이 설계의 재료가 되는 것은 미래에 만들 것이 아닙니다. 이미 살아낸 것들입니다. 버티고 견딘 어려움, 아무도 모르게 참고 흘린 눈물, 절망의 벽 앞에 서 있던 그 시간 — 그것이 당신의 특이점입니다. 이제 그 고난의 의미를 희망으로 바꿔낼 스토리와 영향력을 흘려보낼 차례입니다.</p>
+
+  <!-- ═══ 04 MOVE 2 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">04 · MOVE 2</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">언어 지문에서 독창적 프레임워크로</div>
+
+  <p class="lead">암묵지는 혼자 꺼내기 어렵습니다. 너무 오래 안에 있었기 때문입니다. AI와의 대화가 그 외부화를 돕습니다. 그런데 더 중요한 것이 있습니다. AI가 당신의 언어로 배운 것을 당신에게 돌려줄 때 — 그때 당신만의 프레임워크가 보이기 시작합니다.</p>
+
+  <p>내가 만든 AI가 나를 재설계한다는 것이 무슨 뜻입니까. 단순히 프롬프트를 저장해두는 것이 아닙니다. 내 글을 반복적으로 대화에 가져오면서, AI가 내 언어 패턴을 학습합니다. 그렇게 만들어진 AI는 — 내 어휘로 말하고, 내 비유를 쓰고, 내 호흡을 흉내냅니다. 그 AI와 대화할 때 나는 처음으로 외부에서 나 자신을 봅니다.</p>
+
+  <div class="three-col">
+    <div class="col-card">
+      <h3>1단계 · 언어 지문</h3>
+      <div class="col-main">패턴 발견</div>
+      <div class="col-sub">내가 반복하는 단어, 비유, 호흡의 영역. 의식하지 않아도 나타나는 것들.</div>
+    </div>
+    <div class="col-card">
+      <h3>2단계 · 암묵지 외부화</h3>
+      <div class="col-main">패턴 명시화</div>
+      <div class="col-sub">AI와의 대화를 통해 언어화되지 않던 나의 세계관, 믿음, 관점이 문장이 된다.</div>
+    </div>
+    <div class="col-card highlight">
+      <h3>3단계 · 독창적 프레임워크</h3>
+      <div class="col-main">구조 설계</div>
+      <div class="col-sub">나만의 개념, 나만의 언어, 나만의 방법론. 아무도 복제할 수 없는 구조.</div>
+    </div>
+  </div>
+
+  <p>독창적 프레임워크란 거창한 것이 아닙니다. 당신이 세상을 보는 방식을 구조화한 것입니다. 예를 들어 누군가에게 '문법-논리-수사'는 단순한 학문적 분류가 아닙니다. 그것은 창작자의 성장 단계를 바라보는 특정한 시선입니다. 그 시선이 프레임워크가 됩니다. 당신에게도 그런 시선이 있습니다. 지금은 아직 암묵지 안에 있을 뿐입니다.</p>
+
+  <blockquote>
+    <p>We know more than we can tell. The skill of the driver cannot be replaced by a thorough schooling in the theory of the motorcar.</p>
+    <cite>— MICHAEL POLANYI, The Tacit Dimension, 1966</cite>
+  </blockquote>
+
+  <p>AI는 당신의 '드라이버 스킬' — 수십 년 운전하면서 몸에 새겨진 것 — 을 언어로 끌어냅니다. 그 과정에서 당신은 처음으로 자신이 실제로 알고 있는 것의 전체 지도를 봅니다. 그 지도가 독창적 프레임워크입니다.</p>
+
+  <!-- ═══ 05 MOVE 3 ═══ -->
+  <div class="section-divider">
+    <span class="section-num">05 · MOVE 3</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">출발지를 새롭게 정의하기 — 봉사하는 브랜드</div>
+
+  <p>사이먼 사이넥은 말합니다. 사람들은 당신이 하는 것을 사는 것이 아니라, 당신이 왜 하는지를 삽니다. 골든 서클(Golden Circle)의 핵심입니다. 안에서 밖으로 — Why, How, What. 그런데 대부분의 창작자는 반대로 시작합니다. What에서 시작합니다. 내 상품을 어떻게 팔까에서 시작합니다.</p>
+
+  <div class="callout callout-ref">
+    <div class="callout-label">Reference · Simon Sinek</div>
+    <p>사이넥은 마틴 루터 킹 목사를 예로 들었습니다. 그는 계획을 가진 것이 아니었습니다. 꿈을 가졌습니다. 사람들이 워싱턴에 모인 것은 그의 계획 때문이 아니라 그의 믿음 때문이었습니다. 같은 믿음을 가진 사람들이 모였습니다. 강력한 브랜드는 항상 이렇게 작동합니다 — 상품이 아니라 믿음으로 사람을 모읍니다. 그 믿음은 반드시 당신의 삶에서 왔습니다. 당신이 겪어낸 것에서 왔습니다.</p>
+  </div>
+
+  <p>출발지를 새롭게 정의한다는 것이 무슨 뜻입니까. 지금까지 내가 있던 자리를 새롭게 보는 것입니다. 나는 어떤 사람인가 — 실패와 좌절이 학습된 무기력한 내가 아니라, 내가 누구를 위해 무엇을 해결하는 사람인가로. 어떻게 하면 내가 만든 상품을 팔 수 있을까가 아니라, <em>어떻게 하면 사람들에게 봉사할 수 있을까</em>가 출발점이 될 때 — 목소리가 달라집니다. 글이 달라집니다. 그리고 브랜드가 달라집니다.</p>
+
+  <div class="two-col">
+    <div class="two-col-card">
+      <h3>판매에서 시작하는 사람</h3>
+      <ul>
+        <li>내 상품의 기능과 차별점 먼저</li>
+        <li>어떻게 하면 더 많이 팔까</li>
+        <li>트렌드와 알고리즘을 따라간다</li>
+        <li>콘텐츠가 마케팅 수단이다</li>
+        <li>소진되고, 흉내 내고, 지워진다</li>
+      </ul>
+    </div>
+    <div class="two-col-card dark">
+      <h3>봉사에서 시작하는 사람</h3>
+      <ul>
+        <li>내가 해결할 수 있는 고통이 먼저</li>
+        <li>어떻게 하면 더 잘 도울 수 있을까</li>
+        <li>믿음을 공유하는 사람을 모은다</li>
+        <li>콘텐츠가 봉사의 표현이다</li>
+        <li>지속되고, 깊어지고, 기억된다</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>도널드 밀러는 《무기가 되는 스토리》에서 말합니다. 브랜드의 가장 큰 실수는 자신을 이야기의 주인공으로 만드는 것이라고. 주인공은 당신의 독자, 당신의 고객입니다. 당신은 가이드입니다. 상처를 이겨낸 경험이 있는 가이드. 그 경험이 당신을 신뢰할 수 있는 가이드로 만듭니다. 왜냐하면 그들이 지금 겪고 있는 것을, 당신은 이미 겪었기 때문입니다.</p>
+
+  <p>셰르파를 생각해보세요. 에베레스트를 안내하는 사람. 그들이 가이드가 된 것은 산을 공부했기 때문이 아닙니다. 살면서 그 산을 수백 번 올랐기 때문입니다. 어느 지점에서 발을 잘못 디디면 어떤 일이 생기는지, 어느 계절에 어떤 위험이 찾아오는지 — 그것은 교재에 있는 지식이 아닙니다. 몸이 기억하는 것입니다. 셰르파는 "내 가이드 서비스를 어떻게 팔까"를 고민하지 않습니다. 그 산이 그들의 스토리이고, 그 산 앞에 선 사람들이 그들을 필요로 합니다. 당신도 이미 그 산을 오른 사람입니다. 고난의 산, 절망의 산. 지금 그 산 앞에 서서 길을 잃은 사람들이 당신을 필요로 합니다.</p>
+
+  <!-- 브랜드 씨앗 문장 -->
+  <div class="brand-sentence">
+    <div class="brand-sentence-label">Brand Seed Sentence · 브랜드 씨앗 문장 프레임</div>
+    <div class="brand-sentence-template">
+      나는 <span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>에게<br>
+      그들이 다가갈 수 있는 <span class="blank">새로운 꿈</span><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>을 제시하며<br>
+      <span class="blank">삶을 바꿀 계기</span><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>를 선사하고<br>
+      <span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>을 성취하며 성장하도록<br>
+      돕는 사람이다.
+    </div>
+    <div class="brand-sentence-note">
+      진실하게 쓰는 것이 목표입니다. 이 문장은 다음 10주 동안 계속 다듬어집니다. 목적지는 그들이 필요로 하는 리더가 되는 것 — 그 방향이 보이면 충분합니다.
+    </div>
+  </div>
+
+  <!-- ═══ 06 PRACTICE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">06 · PRACTICE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">나의 특이점 지도 + 브랜드 씨앗 문장</div>
+
+  <div class="exercise">
+    <div class="exercise-label">실습 · Singularity Map</div>
+    <h3>고난에서 프레임워크까지, 나의 특이점을 그리기</h3>
+    <ol>
+      <li><strong>10분, 고요히 씁니다</strong> — 카메라 끄셔도 됩니다. 아래 세 가지를 순서대로 씁니다. 완성된 문장이 아니어도 됩니다. 단어 하나, 이미지 하나도 괜찮습니다.<br>
+      <em>① 지금까지 가장 힘들었던 시간 — 아무도 몰랐으면 했지만 혼자 버텨낸 것. ② 그 경험을 통해 알게 된 것 — 겪어봤기 때문에 누구보다 잘 아는 것. ③ 그 앎을 가장 필요로 하는 사람 — 지금 내가 돕고 싶은 사람.</em>
+      </li>
+      <li><strong>5분, 브랜드 씨앗 문장 초고</strong> — 위에 제시된 프레임에 맞게, 지금 처음 쓰는 문장을 완성합니다. 틀려도 됩니다. 오늘의 버전입니다.</li>
+      <li><strong>7분, 자발적 공유</strong> — 원하는 분만, 브랜드 씨앗 문장을 읽어주세요. 피드백 없습니다. 그냥 듣습니다. 듣는 것 자체가 이미 당신에게 거울이 됩니다.</li>
+    </ol>
+    <div class="exercise-prompt">
+      <p>막히는 분들을 위한 보조 질문: "내가 10년 전에 이것을 알았더라면 — 이라고 생각하는 것이 있나요?" / "내 주변에서 나에게만 이런 종류의 상담을 요청하는 패턴이 있나요?" / "내가 가장 열정적으로 이야기하게 되는 주제는 무엇인가요?"</p>
+    </div>
+  </div>
+
+  <!-- ═══ 07 CLOSE ═══ -->
+  <div class="section-divider">
+    <span class="section-num">07 · CLOSE</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">살아낸 것들이 이미 당신의 지도다</div>
+
+  <p>고난과 절망에 매여 낡아진 시간이 있었다면 — 그것은 낭비가 아니었습니다. 그것이 당신의 특이점입니다. 이전 방식이 통하지 않는 오늘, 당신은 이미 그 새로운 방식을 몸으로 알고 있습니다. 겪어낸 것이 가르쳐줬기 때문입니다.</p>
+
+  <p>이제 새롭게 태어나 고난의 의미를 희망으로 바꿔낸 스토리와 영향력을 흘려보낼 차례입니다. 많은 사람들의 문제를 해결하고 도와줄 것입니다. 그것이 당신의 브랜드의 핵심이 될 것입니다. 단, 지금 당장 완성하려 하지 마세요. 오늘은 씨앗을 심는 날입니다. 씨앗은 완성되어 있지 않습니다. 그래서 씨앗입니다.</p>
+
+  <blockquote>
+    <p>People don't buy what you do; they buy why you do it. And what you do simply proves what you believe.</p>
+    <cite>— SIMON SINEK, Start with Why, 2009</cite>
+  </blockquote>
+
+  <p>왜 하는지를 먼저 알아야 합니다. 그리고 그 왜(Why)는 반드시 당신이 살아온 곳에서 나옵니다. 오늘 쓴 브랜드 씨앗 문장은 아직 거칩니다. 괜찮습니다. 10주 후, 당신은 이 문장이 얼마나 달라졌는지 보게 될 겁니다. 그 변화의 과정 자체가 당신의 원천 텍스트가 됩니다.</p>
+
+  <div class="close-box">
+    <div class="close-label">이번 주 실천</div>
+    <p class="close-text">
+      오늘 쓴 브랜드 씨앗 문장을 어딘가에 붙여두세요.<br>
+      모닝페이지를 쓸 때, 그 문장을 먼저 읽고 시작하세요.<br>
+      그 문장에 동의가 되는 날도, 낯선 날도 있을 겁니다.<br>
+      그 거리감이 다음 발견의 씨앗입니다.
+    </p>
+    <p class="close-sub">
+      언브랜딩 질문: 내가 겪어냈기 때문에 가장 잘 아는 것은 무엇인가.<br>
+      그것을 필요로 하는 사람은 지금 어디서 헤매고 있는가.<br><br>
+      모닝페이지 (1–3p) + 브랜드 씨앗 문장 → 긱어스 게시판에 사진 업로드<br>
+      SESSION 03 — 독자라는 거울: 내 글을 처음 읽는 사람의 눈
+    </p>
+  </div>
+
+  <!-- AI 실험 -->
+  <div class="section-divider">
+    <span class="section-num">AI EXPERIMENT · 선택</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-title">이번 주 AI 글쓰기 실험</div>
+
+  <p>세 가지 실험을 제안합니다. 하나만 해도 충분합니다. 순서대로 하면 더 깊어집니다. 첫 번째는 언어 패턴을 AI에 이식하고 외부화합니다. 두 번째는 고난과 특이점을 발굴합니다. 세 번째는 브랜드 씨앗 문장을 정제합니다.</p>
+
+  <!-- 프롬프트 01: 암묵지 외부화 -->
+  <div class="ai-box box-tacit">
+    <div class="ai-label" style="color:#6A4FA5;">AI 프롬프트 01 · 암묵지 외부화 — 언어 지문 이식</div>
+    <h3 style="color:#3a2a6f;">내가 말할 수 없었던 것을 AI가 보여주다</h3>
+    <p class="ai-desc">내가 쓴 글을 AI에게 줍니다. AI는 내 언어 패턴을 분석하고, 내가 말하지 않았지만 반복적으로 전제하는 세계관을 끌어냅니다. 가장 날것에 가까운 글일수록 분석의 정밀도가 높아집니다 — 모닝페이지, 초고, 메모 모두 가능합니다. 잘 다듬어진 글보다 아직 가공하지 않은 것을 가져오세요.</p>
+    <ol>
+      <li style="color:#3a2a6f;">Claude에서 새 대화를 시작합니다.</li>
+      <li style="color:#3a2a6f;">아래 프롬프트를 먼저 붙여넣고, 그 아래 내가 쓴 글 3–5편을 붙여넣습니다.</li>
+      <li style="color:#3a2a6f;">분석이 끝나면 이 질문을 추가합니다: <em>"이 글들을 쓴 사람의 세계관을 한 문장으로 말한다면? 그리고 이 사람이 아직 쓰지 않은, 하지만 이미 알고 있는 것은 무엇인 것 같아?"</em></li>
+    </ol>
+
+    <div class="ai-prompt-block" style="background:rgba(106,79,165,0.07);border-left:2.5px solid #6A4FA5;margin-top:20px;">
+      <span class="ai-prompt-label" style="color:#6A4FA5;">[전체 프롬프트]</span>
+      <p style="color:#3a2a6f;font-size:13px;line-height:1.95;">아래 글들은 내가 쓴 것들입니다. 마이클 폴라니의 암묵지(Tacit Knowledge) 개념을 적용해서 분석해주세요. 목표는 내가 의식적으로 표현한 것이 아니라, 이 언어들 아래에 구조적으로 작동하고 있는 것들을 꺼내는 것입니다.<br><br>
+
+      다섯 가지를 분석해주세요.<br><br>
+
+      첫째, <strong>어휘의 결</strong>: 이 사람이 반복적으로 사용하는 단어와 표현. 의식적 선택이 아니라 자연스럽게 배어나온 것들. 이 어휘들이 어떤 세계를 구성하는지 짚어주세요.<br><br>
+
+      둘째, <strong>비유의 영역</strong>: 무언가를 설명할 때 끌어오는 이미지의 영역 — 자연, 신체, 음악, 건축, 요리, 시간, 기타. 이 비유의 영역이 이 사람의 어떤 감각을 반영하는지.<br><br>
+
+      셋째, <strong>암묵적 세계관</strong>: 이 글들이 명시적으로 주장하지 않지만, 모든 문장 아래에 구조적으로 흐르는 믿음과 전제. "이 사람은 세상이 ___하다고 믿는다"의 형식으로 3–5가지.<br><br>
+
+      넷째, <strong>독창적 프레임워크 후보</strong>: 이 사람만이 세상을 보는 방식, 특유의 구조나 관점. 아직 명시화되지 않았지만 이 글들 전체를 관통하는 사유의 틀이 있다면 무엇인지.<br><br>
+
+      다섯째, <strong>아직 쓰지 않은 것</strong>: 이 글들에서 시작되었지만 깊이 들어가지 않은 것, 암시만 하고 지나간 것. 이 사람이 이미 알고 있지만 아직 꺼내지 않은 것이 있다면 무엇인지 추측해주세요.<br><br>
+
+      분석이 끝나면, 이 모든 것을 관통하는 이 사람의 언어 지문(Language Fingerprint)을 한 문장으로 정의해주세요.</p>
+    </div>
+
+    <div class="ai-note">
+      <p>분석에서 가장 낯설었던 것, 혹은 가장 정확하게 느껴진 것을 긱어스에 한 줄로 남겨주세요.</p>
+    </div>
+  </div>
+
+  <!-- 프롬프트 02: 특이점 발굴 -->
+  <div class="ai-box box-singular">
+    <div class="ai-label">AI 프롬프트 02 · 고난과 특이점 발굴</div>
+    <h3 style="color:#4a0a0a;">고난의 의미를 희망으로 바꾸는 스토리 구조</h3>
+    <p class="ai-desc" style="color:#5a1a1a;">조셉 캠벨의 영웅 여정(Hero's Journey)을 창작자의 브랜드 스토리에 적용합니다. 상처가 자산이 되는 구조를 AI와의 대화를 통해 발굴합니다. 이 실험은 완성된 스토리를 만드는 것이 아닙니다. 아직 언어화하지 않은 당신의 특이점을 처음 꺼내보는 것입니다.</p>
+    <ol>
+      <li style="color:#4a0a0a;">Claude에서 새 대화를 시작합니다.</li>
+      <li style="color:#4a0a0a;">아래 프롬프트를 붙여넣습니다. AI가 질문을 시작합니다. 대화를 따라가세요.</li>
+      <li style="color:#4a0a0a;">대화가 끝나면: <em>"지금까지 나눈 이야기에서, 나의 특이점(아무도 복제할 수 없는 경험과 관점)을 한 문장으로 정의해줘"</em>라고 요청하세요.</li>
+    </ol>
+
+    <div class="ai-prompt-block" style="background:rgba(122,26,26,0.06);border-left:2.5px solid #7a1a1a;margin-top:20px;">
+      <span class="ai-prompt-label" style="color:#7a1a1a;">[전체 프롬프트]</span>
+      <p style="color:#4a0a0a;font-size:13px;line-height:1.95;">나는 지금 나의 브랜드 스토리의 핵심 — 내가 겪어낸 것이 어떻게 다른 사람들을 돕는 자산이 되는지 — 을 발굴하는 작업을 하고 있습니다. 조셉 캠벨의 영웅 여정 구조를 참고해서 나를 안내해주세요. 평가하지 말고, 들어주고, 패턴을 발견해주세요.<br><br>
+
+      <strong>중요: 질문은 반드시 한 번에 하나씩만 해주세요. 내가 답하면 그 다음 질문으로 넘어갑니다. 절대 두 개 이상의 질문을 한꺼번에 하지 마세요.</strong><br><br>
+
+      다음 순서로 질문하세요.<br><br>
+
+      <strong>첫 번째 질문:</strong> "지금까지 살면서 가장 힘들었던 시간을 하나 꼽는다면 어떤 것인가요? 아무도 몰랐으면 했지만 혼자 버텨낸 것, 또는 도저히 돌파할 수 없을 것 같았던 절망의 벽이 있었나요? 말하기 편한 만큼만 이야기해주세요." 내가 답하면, 내 답변의 핵심 감정이나 이미지를 한 단어로만 짚어주세요. 분석하지 마세요. 그리고 두 번째 질문으로 넘어가세요.<br><br>
+
+      <strong>두 번째 질문:</strong> "그 경험을 통해, 이전에는 몰랐지만 그 이후로는 확실히 알게 된 것이 있나요? 겪어봤기 때문에 누구보다 잘 이해하게 된 것, 또는 그 고난이 없었다면 절대 알 수 없었을 것이 있나요?" 내가 답하면, 내 답변에서 가장 살아있는 문장이나 단어 하나만 짚어주세요. 그리고 세 번째 질문으로 넘어가세요.<br><br>
+
+      <strong>세 번째 질문:</strong> "지금 당신이 하는 일 — 창작이든, 강의든, 코칭이든 — 이 그 경험과 어떤 식으로든 연결되어 있나요? 의식적으로 연결한 것이 아니더라도, 돌아보면 연결되어 있는 것 같다면요." 내가 답하면, 세 가지 대화를 관통하는 <strong>특이점(Singularity)</strong> — 다른 누구와도 겹치지 않는 이 사람만의 경험과 관점의 조합 — 을 한 문장으로 정의해주세요. 그리고 이 특이점이 어떤 사람들에게 가장 깊이 닿을 수 있는지도 말해주세요.<br><br>
+
+      지금 첫 번째 질문만 해주세요.</p>
+    </div>
+
+    <div class="ai-note" style="background:rgba(122,26,26,0.04);">
+      <p style="color:#6a2a2a;">이 대화는 개인적인 것입니다. 공유할 의무 없습니다. 다만, AI가 정의한 '특이점 문장'이 마음에 들었다면 긱어스에 남겨주세요.</p>
+    </div>
+  </div>
+
+  <!-- 프롬프트 03: 브랜드 씨앗 정제 -->
+  <div class="ai-box box-brand">
+    <div class="ai-label">AI 프롬프트 03 · 브랜드 씨앗 문장 정제</div>
+    <h3 style="color:#3a2800;">오늘 쓴 초고를 더 선명하게</h3>
+    <p class="ai-desc" style="color:#5a3800;">실습에서 쓴 브랜드 씨앗 문장이 있다면, 이것을 재료로 삼습니다. 아직 거칠고 어색한 상태가 정상입니다. AI와의 대화를 통해 더 선명하고, 더 나다운 방향으로 다듬습니다. 단, AI가 완성하는 것이 아닙니다. AI는 질문을 통해 방향을 찾게 도와줍니다.</p>
+    <ol>
+      <li style="color:#3a2800;">Claude에서 새 대화를 시작합니다.</li>
+      <li style="color:#3a2800;">아래 프롬프트를 붙여넣고, 오늘 쓴 브랜드 씨앗 문장 초고도 함께 붙여넣습니다.</li>
+      <li style="color:#3a2800;">AI의 질문에 답하면서 3–5회 반복합니다. 가장 마음에 드는 버전을 고르세요.</li>
+    </ol>
+
+    <div class="ai-prompt-block" style="background:rgba(184,134,11,0.07);border-left:2.5px solid #B8860B;margin-top:20px;">
+      <span class="ai-prompt-label" style="color:#854F0B;">[전체 프롬프트]</span>
+      <p style="color:#3a2800;font-size:13px;line-height:1.95;">아래는 내가 오늘 처음 쓴 브랜드 씨앗 문장 초고입니다. 사이먼 사이넥의 골든 서클(Why → How → What)과 도널드 밀러의 스토리브랜드(고객이 주인공, 나는 가이드) 관점에서 이 문장을 정제하는 것을 도와주세요.<br><br>
+
+      [내 브랜드 씨앗 문장 초고를 여기에 붙여넣기]<br><br>
+
+      다음 순서로 진행해주세요.<br><br>
+
+      첫째, 이 문장의 현재 상태를 짧게 진단해주세요: 지금 이 문장은 Why(왜 하는지)에서 출발하고 있나요, 아니면 What(무엇을 파는지)에서 출발하고 있나요? 독자(고객)가 주인공인가요, 아니면 내가 주인공인가요?<br><br>
+
+      둘째, 이 문장을 더 선명하게 만들기 위한 질문 세 가지를 해주세요. 질문에 내가 답하면, 그 답을 반영해서 이 브랜드 씨앗 문장의 수정안을 세 가지 버전으로 제시해주세요. 각 버전은 다른 강조점을 가져야 합니다.<br><br>
+
+      셋째, 세 버전을 보여준 뒤 이 질문을 해주세요: "이 세 가지 중에서 가장 '나다운' 것은 어떤 건가요? 또는 각 버전에서 하나씩 가져오고 싶은 것이 있나요?" 그 답을 바탕으로 최종 정제안 하나를 만들어주세요.<br><br>
+
+      지금 첫 번째 단계(진단)부터 시작해주세요.</p>
+    </div>
+
+    <div class="ai-note" style="background:rgba(184,134,11,0.07);">
+      <p style="color:#5a3800;">가장 마음에 드는 브랜드 씨앗 문장 버전을 긱어스에 남겨주세요. 10주 후에 이 문장이 어떻게 바뀌었는지 비교할 것입니다.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>* 마이클 폴라니, 『암묵적 차원(The Tacit Dimension)』(1966) — "우리는 말할 수 있는 것보다 더 많이 안다"</p>
+    <p>* 롤랑 바르트, 「목소리의 결(The Grain of the Voice)」(1972) — 기교 너머의 목소리 물성</p>
+    <p>* 조셉 캠벨, 『천의 얼굴을 가진 영웅(The Hero with a Thousand Faces)』(1949) — 상처가 여정의 자산이 된다</p>
+    <p>* 사이먼 사이넥, 『나는 왜 이 일을 하는가(Start with Why)』(2009) — 골든 서클: Why → How → What</p>
+    <p>* 도널드 밀러, 『무기가 되는 스토리(Building a StoryBrand)』(2017) — 고객이 주인공, 브랜드는 가이드</p>
+    <p>* 칼 구스타프 융 — 페르소나(Persona)와 그림자(Shadow): 억압한 것이 가장 강한 것</p>
+    <p>* 이 강의안은 디퍼 언브랜딩살롱 1기 Session 02 (2026.05.14)을 위해 작성되었습니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

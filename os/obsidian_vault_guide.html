@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>옵시디언 볼트 만들기 — 디퍼 OS 시작 전 1단계</title>
+<meta name="description" content="옵시디언을 깔았다면, 디퍼 OS를 시작하기 전 '내 볼트(보관소)'를 한 번만 만들면 됩니다. 한 걸음씩, 그림처럼 따라오세요.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="옵시디언 볼트 만들기 — 디퍼 OS 시작 전 1단계">
+<meta property="og:description" content="옵시디언을 깔았다면, 디퍼 OS 시작 전 '내 볼트'를 한 번만 만들면 됩니다. 한 걸음씩 따라오세요.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/obsidian_vault_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-vault-guide.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-vault-guide.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1A4A35; --green-soft:#3B6D52; --ink:#2A2622; --ink-soft:#5A5248;
+    --paper:#FBF7EE; --paper2:#F3EEE1; --gold:#B08D57; --line:rgba(42,38,34,.12);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:32px;line-height:1.36;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.8;max-width:30em;margin:0 auto 8px}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 44px;border-radius:2px}
+  h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:21px;color:var(--green);
+    margin:48px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  p{margin:0 0 14px}
+  .os{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;padding:2px 9px;border-radius:100px;
+    background:#EAF3DE;color:#3B6D11;letter-spacing:.04em;vertical-align:middle;margin-right:4px}
+  .os.mac{background:#E6F1FB;color:#185FA5}
+  .step{display:flex;gap:18px;align-items:flex-start;margin:0 0 30px}
+  .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .step-body{flex:1}
+  .step-title{font-family:'Noto Serif KR',serif;font-weight:600;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.45}
+  .step-body p{font-size:15px;color:#444;line-height:1.9;margin:0 0 8px}
+  b,strong{color:var(--green);font-weight:700}
+  .key{font-family:'DM Mono',monospace;font-size:.92em;background:#EFEADD;border:1px solid var(--line);
+    border-radius:6px;padding:1px 7px;color:var(--ink)}
+  .callout{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+  .callout .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-size:14px;color:#444;line-height:1.85;margin:0}
+  .warn{border-left-color:#C0622E}
+  .warn .label{color:#C0622E}
+  .dl{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 6px}
+  .dl a{flex:1 1 210px;display:block;text-align:center;text-decoration:none;background:var(--green);
+    color:#F4F1E8;border-radius:12px;padding:14px 16px;font-weight:700;font-size:15px;line-height:1.5}
+  .dl a:hover,.dl a:focus-visible{background:#143B2A;outline:none}
+  .dl a span{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+    color:#B9CFC1;font-weight:400;margin-top:4px}
+  a.link{color:var(--green);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(176,141,87,.55)}
+  a.link:hover,a.link:focus-visible{border-bottom-color:var(--gold);outline:none}
+  .done{background:var(--green);border-radius:16px;padding:28px 26px;text-align:center;margin:44px 0 0;color:#EFE9DC}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.55}
+  .done p{font-size:14px;color:#C7D7CB;line-height:1.8;margin:0}
+  .done a{color:#E2C77B;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(226,199,123,.4)}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER">
+  <div class="eyebrow">DEEPER OS · 시작 전 1단계</div>
+  <h1>옵시디언 ‘볼트’ 만들기</h1>
+  <p class="lead">옵시디언을 막 깔았다면, 디퍼 OS를 시작하기 전에<br><b>‘내 볼트’</b>를 딱 한 번만 만들면 돼요. 어렵지 않아요 — 한 걸음씩 따라오세요. 🦊</p>
+  <div class="rule"></div>
+
+  <h2>먼저 — 옵시디언 내려받기</h2>
+  <p>아직 옵시디언이 없다면 여기서 먼저 받아요. <b>무료</b>예요. 내 컴퓨터에 맞는 쪽을 누르세요.</p>
+  <div class="dl">
+    <a href="https://obsidian.md/download" target="_blank" rel="noopener">🪟 윈도우용 내려받기<span>obsidian.md &middot; .exe</span></a>
+    <a href="https://obsidian.md/download" target="_blank" rel="noopener">🍎 맥용 내려받기<span>obsidian.md &middot; .dmg</span></a>
+  </div>
+  <div class="callout"><div class="label">화면이 영어로 떠도 당황 마세요</div><p>공식 페이지는 <b>내 컴퓨터를 알아보고</b> 맞는 파일을 먼저 보여줘요. 큰 버튼 하나만 누르면 됩니다 &mdash; 윈도우는 <span class="key">.exe</span>, 맥은 <span class="key">.dmg</span>가 받아져요. 받은 파일을 열고 <b>기본값 그대로</b> 설치하면 끝이에요.<br>버튼이 안 보이면 <a class="link" href="https://github.com/obsidianmd/obsidian-releases/releases/latest" target="_blank" rel="noopener">최신 버전 목록</a>에서 <span class="key">.exe</span>(윈도우)나 <span class="key">.dmg</span>(맥)를 직접 골라도 됩니다.</p></div>
+
+  <h2>볼트가 뭐예요?</h2>
+  <p><b>‘볼트(Vault·보관소)’ = 내 노트가 담기는 폴더 하나</b>예요. 옵시디언은 이 폴더 안에 글·메모를 쌓아요. 사막여우(디퍼 OS)도 바로 이 폴더 안에서 살게 됩니다. 그러니 <b>볼트를 먼저 만들어야</b> 그다음 디퍼 OS를 깔 수 있어요.</p>
+
+  <h2>이렇게 만들어요 (6걸음)</h2>
+
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title">옵시디언을 열어요</div>
+    <p>방금 깔고 처음 열면, 가운데에 <b>‘보관소를 선택하세요’</b> 창이 떠요.</p>
+    <div class="callout"><div class="label">이미 창이 닫혔다면</div><p>왼쪽 맨 아래의 <b>금고 모양 아이콘</b>(보관소 전환)을 누르면 같은 화면이 다시 나와요.</p></div>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="step-body">
+    <div class="step-title">‘새 보관소 만들기’를 눌러요</div>
+    <p><b>새 보관소 만들기</b>(영어로는 <span class="key">Create new vault</span>) 옆의 <b>‘만들기’</b> 버튼을 눌러요. (그 아래 ‘폴더를 보관소로 열기’가 아니에요 — <b>새로 만들기</b> 쪽이에요.)</p>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="step-body">
+    <div class="step-title">이름을 정해요</div>
+    <p><b>보관소 이름</b> 칸에 원하는 이름을 적어요. 예: <span class="key">사막여우</span> 또는 내 닉네임. <span class="ink-soft">(나중에 바꿔도 괜찮아요.)</span></p>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div class="step-body">
+    <div class="step-title">위치(폴더)를 골라요</div>
+    <p><b>위치</b> 옆 <b>‘찾아보기’</b>(<span class="key">Browse</span>)를 눌러, 볼트를 둘 폴더를 골라요.</p>
+    <p><span class="os">🪟 윈도우</span> <b>문서</b> 폴더 추천 · <span class="os mac">🍎 맥</span> <b>사용자 홈</b> 아래 추천. — 나중에 찾기 쉬운 곳이면 돼요.</p>
+    <div class="callout warn"><div class="label">⚠️ 한 가지만 주의</div><p><b>회사 드라이브·공유 폴더에는 두지 마세요.</b> 디퍼 OS는 <b>나만 보는 개인 공간</b>이에요. 평범한 내 폴더(문서 등)에 두면 됩니다.</p></div>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div class="step-body">
+    <div class="step-title">‘만들기’를 눌러요</div>
+    <p><b>만들기</b>(<span class="key">Create</span>)를 누르면 — <b>텅 빈 보관소가 열려요. 이게 바로 내 볼트예요!</b> 🎉 (지금은 비어 있는 게 정상이에요. 사막여우가 곧 채워줘요.)</p>
+  </div></div>
+
+  <div class="step"><div class="num">6</div><div class="step-body">
+    <div class="step-title">이 폴더가 ‘어디에 있는지’ 알아둬요</div>
+    <p>다음 단계에서 <b>클로드 코드</b>로 이 폴더를 열 거예요. 그래서 위치를 기억해두면 편해요.</p>
+    <p>옵시디언 왼쪽 파일 목록에서 <b>아무 곳이나 마우스 오른쪽 클릭 → ‘시스템 탐색기에서 보기’</b>(<span class="key">Reveal in system explorer</span>)를 누르면, 실제 폴더가 화면에 열려요. <b>그 창을 띄워두거나 경로를 기억</b>해두세요.</p>
+  </div></div>
+
+  <div class="done">
+    <div class="big">여기까지 하면, 볼트 만들기 끝! ✅</div>
+    <p>이제 이 볼트를 <b style="color:#fff">클로드 코드</b>에서 열고 <span style="font-family:'DM Mono',monospace;color:#E2C77B">/deeper-os:setup</span> 을 돌리면 사막여우가 보금자리를 지어요.<br><br>👉 다음 단계: <a href="https://clbookslower.github.io/deeper-salon/os/deeper_os_install_guide.html">디퍼 OS 세팅 가이드</a></p>
+  </div>
+
+  <div class="foot">막히면 캡처 한 장 주세요 — 같이 봐요.<br>DEEPER 언브랜딩 살롱 · 디퍼 OS</div>
+</div>
+</body>
+</html>

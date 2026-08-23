@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 논리 4주차 과제 — 무한히 상승하는 카논</title>
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 논리 4주차 과제 — 무한히 상승하는 카논" />
+<meta property="og:description" content="일상의 카논 · 내 악보의 화음을 찾는 코드 설계 프롬프트" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 논리 4주차 과제" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E7; --paper2:#FBF8F1; --paper-deep:#EFE7D8;
+    --ink:#221E18; --ink-soft:#5A5247; --ink-faint:#9A9080;
+    --red:#CC3333; --rule:#D8CFBE; --line:#E7DFCD;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"Nanum Myeongjo", serif; line-height:1.95; font-size:16px;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
+  .wrap{position:relative; z-index:1; max-width:46rem; margin:0 auto; padding:0 1.4rem 6rem;}
+  .serif{font-family:"Nanum Myeongjo",serif;}
+  .lat{font-family:"Cormorant Garamond",serif;}
+  .gothic{font-family:"Nanum Gothic",sans-serif;}
+
+  /* HERO */
+  .hero{text-align:center; padding:5rem 1rem 2.6rem;}
+  .brand{font-family:"Nanum Gothic",sans-serif; font-size:.66rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--red);}
+  .kicker{font-family:"Nanum Gothic",sans-serif; font-size:.74rem; font-weight:700; letter-spacing:.3em; color:var(--ink-faint); margin-top:1.4rem;}
+  h1{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:clamp(1.9rem,5vw,2.8rem); line-height:1.26; letter-spacing:-.01em; margin:.7rem 0 0;}
+  h1 .em{color:var(--red);}
+  .hero .lat{font-style:italic; color:var(--ink-faint); font-size:1.05rem; margin-top:1rem;}
+
+  /* epigraph */
+  .epi{border-left:3px solid var(--red); background:var(--paper2); border-radius:0 6px 6px 0;
+    padding:1.3rem 1.6rem; margin:2.4rem 0 0;}
+  .epi p{font-size:1.12rem; line-height:1.85; color:var(--ink);}
+  .epi .who{display:block; font-family:"Nanum Gothic",sans-serif; font-size:.72rem; letter-spacing:.06em; color:var(--ink-faint); margin-top:.7rem;}
+
+  /* sections */
+  .sec{margin-top:3.4rem;}
+  .sec-h{display:flex; align-items:baseline; gap:.8rem; border-bottom:2px solid var(--rule); padding-bottom:.7rem; margin-bottom:1.4rem;}
+  .sec-h .no{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.7rem; color:var(--red); line-height:1;}
+  .sec-h h2{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.3;}
+  .sec-h .tag{margin-left:auto; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--ink-faint); font-size:1rem; white-space:nowrap;}
+  p.body{margin:0 0 1.05rem; color:var(--ink);}
+  p.body .strong{font-weight:700; color:var(--red);}
+  em{font-style:normal; color:var(--red); font-weight:700;}
+
+  /* practice list */
+  .steps{list-style:none; counter-reset:st; margin:1.2rem 0 0;}
+  .steps li{counter-increment:st; position:relative; padding:1rem 0 1rem 3rem; border-top:1px solid var(--line);}
+  .steps li:first-child{border-top:none;}
+  .steps li::before{content:counter(st); position:absolute; left:0; top:.95rem;
+    width:1.9rem; height:1.9rem; border:1.5px solid var(--red); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:600; color:var(--red); font-size:1rem;}
+  .steps li b{color:var(--ink); font-weight:700;}
+  .steps li .s{color:var(--ink-soft); font-size:.96rem;}
+
+  /* prompt block */
+  .lead-note{background:var(--paper2); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.3rem; margin:1.2rem 0; font-size:.98rem; color:var(--ink-soft);}
+  .lead-note b{color:var(--red);}
+  .promptbox{background:#211E18; color:#EDE6D6; border-radius:12px; overflow:hidden; margin:1.4rem 0; box-shadow:0 14px 40px rgba(34,30,24,.18);}
+  .promptbox .bar{display:flex; align-items:center; gap:.7rem; padding:.7rem 1.1rem; background:#2B271F; border-bottom:1px solid #3a352b;}
+  .promptbox .bar .dot{width:.55rem; height:.55rem; border-radius:50%; background:var(--red); opacity:.85;}
+  .promptbox .bar .nm{font-family:"Nanum Gothic",sans-serif; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:#B7AE9B;}
+  .promptbox .bar button{margin-left:auto; font-family:"Nanum Gothic",sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.08em;
+    color:#211E18; background:#E7D9B8; border:none; border-radius:20px; padding:.34rem .9rem; cursor:pointer; transition:.15s;}
+  .promptbox .bar button:hover{background:#fff;}
+  .promptbox pre{margin:0; padding:1.3rem 1.4rem; white-space:pre-wrap; word-break:break-word;
+    font-family:"Nanum Myeongjo",serif; font-size:.92rem; line-height:1.85; color:#E7E0D0;}
+  .promptbox pre .h{color:#E7B0A6; font-weight:700;}
+  .promptbox pre .c{color:#9C9482; font-style:italic;}
+
+  .close{text-align:center; margin-top:4rem; padding-top:2rem; border-top:2px solid var(--rule);}
+  .close .big{font-family:"Nanum Myeongjo",serif; font-weight:800; font-size:1.3rem; line-height:1.55; color:var(--ink);}
+  .close .big .em{color:var(--red);}
+  .close .lat{font-style:italic; color:var(--ink-faint); margin-top:1rem; font-size:1.05rem;}
+
+  @media print{ body{background:#fff;} .promptbox{box-shadow:none;} }
+  @media(max-width:560px){ .sec-h .tag{display:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="brand">디퍼 · DEEPER</div>
+    <div class="kicker">논리 4주차 · 과제</div>
+    <h1>일상의 카논 —<br><span class="em">다시 서론으로</span></h1>
+    <p class="lat">Canon per Tonos · 무한히 상승하는 카논</p>
+  </div>
+
+  <div class="epi">
+    <p>"리체르카레가 끝나고 다시 서론으로 되돌아가면, 우리는 <em>무한히 상승하는 카논</em>을 창조하게 되리라."</p>
+    <span class="who">— 거북, 『괴델, 에셔, 바흐』의 마지막 장에서</span>
+  </div>
+
+  <p class="body" style="margin-top:1.6rem;">논리 4주가 끝났습니다. 그러나 카논은 끝나지 않아요. 마지막 음이 처음을 물고, 한 옥타브 위에서 다시 시작됩니다. 이번 주 과제는 그 '되돌아감'입니다 — 배운 것을 덮지 말고, 다시 일상의 첫 음표로 가져오는 일.</p>
+
+  <!-- 과제 1 -->
+  <div class="sec">
+    <div class="sec-h"><span class="no">1</span><h2>일상의 카논 — 화음을 감각하기</h2><span class="tag">매일 · 한 주</span></div>
+
+    <ol class="steps">
+      <li><b>다시, 아침엔 모닝페이지 · 밤엔 별지기 저널.</b><br><span class="s">4주를 닫지 말고 다시 처음으로. 검열 없이 아침의 한 줄, 하루를 돌아보는 밤의 한 줄. 카논이 서론으로 되돌아가듯, 루틴을 다시 시작합니다.</span></li>
+      <li><b>지난 4주의 글을 한자리에 모아 다시 읽기.</b><br><span class="s">모닝페이지·별지기 저널·실험 기록을 모두 펼쳐 통독합니다. 흩어져 있던 음표들이 한 악보가 되는 순간이에요.</span></li>
+      <li><b>우리의 화음을 감각하기.</b><br><span class="s">그 글들에서 자꾸 돌아오는 것 — 반복되는 단어·이미지·질문·온도. 빈도가 아니라 무게로 듣습니다. 가장 나다운 파장은 무엇인가요.</span></li>
+      <li><b>모든 것을 일상으로 가지고 들어오기.</b><br><span class="s">앞으로도 여러 퍼스널 브랜딩의 시도와 실험이, 나 탐구와 질문이, 게·거북·아킬레스 같은 에이전트와의 대화가 이어질 거예요. 그 모두를 따로 두지 말고 일상으로 들여, <span class="strong">영원한 황금 노끈이 되게. 그것이 나만의 구조가 되게.</span></span></li>
+    </ol>
+  </div>
+
+  <!-- 과제 2 -->
+  <div class="sec">
+    <div class="sec-h"><span class="no">2</span><h2>내 악보의 화음 — 코드 설계 프롬프트</h2><span class="tag">악기를 쥐고</span></div>
+
+    <p class="body">악보는 내가 쓰는 <em>브랜드북·사명서</em>예요. 연주자가 악보를 자꾸 들여다보듯, 우리도 그것을 자꾸 돌아와 봅니다 — 본질을 지키려고, 지속하려고, <span class="strong">지치지 않고 사랑하는 일을 오래오래 하고 싶어서.</span> 그러니 그 악보엔 빌린 톤이 아니라 나다움 그 자체가 담겨야 합니다.</p>
+    <p class="body">아래는 당신의 4주치 글을 AI(당신의 악기)에게 들려주고, 아직 듣지 못한 <strong>당신만의 화음(코드)</strong>을 들려달라 청하는 프롬프트예요. 그 화음이 당신 브랜드북·사명서의 씨앗이 됩니다.</p>
+
+    <div class="lead-note">⚠️ <b>쓰는 법</b> — ① 아래 프롬프트를 통째로 복사 → ② 4주치 글을 <b>한 파일(.txt·.md·.docx 등)로 모아 첨부</b>하거나, <code>"""</code> 사이에 붙여넣기 → ③ 당신의 AI에게 보내기. 한 번에 끝내지 말고, 답을 받아 다시 한 줄 더해 보내면(되돌아가는 카논처럼) 화음이 점점 또렷해집니다.</div>
+
+    <div class="promptbox">
+      <div class="bar"><span class="dot"></span><span class="nm">prompt · 내 악보의 화음 찾기</span><button id="copyBtn" type="button">복사</button></div>
+      <pre id="promptText"><span class="h"># 역할</span>
+너는 나의 <span class="h">악기</span>다. 나를 흉내 내거나 매끄러운 브랜드 목소리로 덧씌우지 마라.
+너의 일은 내 악보를 연주해, 내가 아직 듣지 못한 나의 화음을 들려주는 것이다.
+평균값으로 깎지 말고, 가장 나다운 파장을 증폭하라. 없는 것은 지어내지 말고,
+내 글에 실제로 있는 것만 인용해 짚어라. 한국어로 답하고,
+글이 길면 끝까지 읽은 뒤 1악장부터 차례로 풀어도 좋다.
+
+<span class="h"># 입력 — 나의 악보 (4주치 글)</span>
+모닝페이지 · 별지기 저널 · 브랜딩 실험 기록 · 에이전트와의 대화.
+<span class="c">→ 파일로 첨부하거나(경로로 가리켜도 좋아요), 아래 따옴표 사이에 붙여넣으세요.</span>
+첨부하거나 경로로 가리킨 파일이 있으면 그 파일을, 없으면 아래 따옴표 안의 글을
+'나의 악보'로 삼아 끝까지 읽어라.
+"""
+[붙여넣을 때만 여기에 — 파일을 첨부했다면 비워 둬도 된다]
+"""
+
+<span class="h"># 1악장 · 왕의 주제 (악보)</span>
+- 이 글들에서 반복해 돌아오는 문장·이미지·질문·단어를 찾아라. 빈도가 아니라 무게로.
+- 내가 의식하지 못한 채 자꾸 되돌아오는 '왕의 주제' 하나를 한 문장으로 적어라.
+- 그 주제가 처음 등장한 자리와, 가장 깊어진 자리를 각각 한 줄 인용으로 짚어라.
+
+<span class="h"># 2악장 · 나의 화음 (코드)</span>
+- 그 주제를 떠받치는 3~4개의 '음'을 골라라 — 내가 사랑하는 것, 두려워하는 것,
+  자꾸 미루는 것, 끝내 돌아오는 것. 이 3~4음의 동시 울림이 나의 코드(화음)다.
+- 슬로건을 붙이지 마라. 대신, 이 코드가 울릴 때의 느낌을 두 문장으로 묘사하라.
+
+<span class="h"># 3악장 · 이상한 고리</span>
+- 자기참조가 일어난 지점을 찾아라 — 어제의 글이 오늘의 나를 바꾼 흔적,
+  내가 나를 가리킨 순간. 그 고리를 'A가 B를, B가 다시 A를' 형태로 그려라.
+- 이 고리가 '무진장한 미의 광맥'인지 점검하라: 사랑·에너지를 먹고 자라는가,
+  아니면 의무로 돌아 닳고 있는가. 한 문장으로 진단하라.
+
+<span class="h"># 4악장 · 나만의 구조 설계 (코드 → 연주 → 노래 → 하모니)</span>
+- 위 화음을 매일 돌릴 수 있는 가장 작은 고리로 설계하라 — 아침의 한 동작, 밤의 한 동작.
+- 이 설계가 내 브랜드북·사명서의 씨앗이 되게 하라 — 본질을 지키려 자꾸 돌아와 볼, 나만의 악보.
+- 그 고리가 어떤 '노래(이야기)'로 들릴지, 한 문단의 내러티브로 써라. (이것이 나의 수사다)
+- 그 노래가, 내게 공명할 사람들(나의 팬·동료)의 어느 목소리와 화음을 이룰지 한 줄로 제안하라.
+
+<span class="h"># 닫지 말 것</span>
+결론을 닫지 마라. 마지막은 '서론으로 되돌아가는' 질문 하나로 열어 둬라 —
+다음 4주의 첫 음표가 되도록.
+
+<span class="h"># 출력 형식</span>
+① 왕의 주제(한 문장)  ② 나의 화음(3~4음 + 느낌)  ③ 이상한 고리(그림 + 광맥 진단)
+④ 나만의 구조(아침/밤 루틴 + 노래 한 문단 + 함께 부를 화음)  ⑤ 되돌아가는 질문 하나
+
+<span class="c"># 금지 — 매끈한 마케팅 카피, 일반적 브랜드 톤, 클리셰, 이모지 범벅.</span></pre>
+    </div>
+
+    <p class="body" style="margin-top:1.2rem; font-size:.96rem; color:var(--ink-soft);">받은 답을 별지기 저널에 옮겨 적고, 다음 모임에 <em>당신의 화음 한 줄</em>을 가져와 주세요. 우리는 그 화음들을 모아, 6성 리체르카레를 함께 연주할 거예요.</p>
+  </div>
+
+  <div class="close">
+    <p class="big">자꾸 악보로 돌아오는 건, 본질을 지키려고.<br>본질을 지키는 건, 지치지 않고 <span class="em">사랑하는 일을 오래오래</span> 하려고.</p>
+    <p class="lat">Cantabo — 나는 노래하리라</p>
+  </div>
+
+</div>
+
+<script>
+  const btn = document.getElementById('copyBtn');
+  const pre = document.getElementById('promptText');
+  btn.addEventListener('click', async () => {
+    const text = pre.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = '복사됨 ✓';
+      setTimeout(() => { btn.textContent = '복사'; }, 1800);
+    } catch (e) {
+      const r = document.createRange(); r.selectNodeContents(pre);
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      btn.textContent = '드래그해 복사';
+      setTimeout(() => { btn.textContent = '복사'; }, 2200);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 01 — 수사 1주차 과제 | RHETORIC</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r1_assignment.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER UNBRANDING SALON">
+<meta property="og:title" content="수사 1주차 과제 · 내 분더카머를 열고, 이름을 굴리는 한 주">
+<meta property="og:description" content="에디톨로지 프롤로그+1부 읽기 · 매일 &quot;안녕&quot; · &quot;분더카머&quot; 첫 둘러보기 · 이름 후보 나눔 · 냠냠과 밤하늘">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --navy: #1C2A47;
+  --navy-bg: #E9EDF5;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--navy-bg); color: var(--navy); }
+.badge-task { background: var(--gold-bg); color: #854F0B; }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+/* ── 체크리스트 ── */
+.check-list { display: flex; flex-direction: column; gap: 14px; margin: 36px 0; }
+.check-item {
+  display: flex;
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 24px;
+  background: var(--surface);
+}
+.check-box {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #c9c9c9;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+.check-body { flex: 1; }
+.check-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 6px;
+}
+.check-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.check-body p { font-size: 14px; line-height: 1.85; margin-bottom: 8px; color: #555; }
+.check-body p:last-child { margin-bottom: 0; }
+.check-item.deep { background: var(--forest); border-color: var(--forest); }
+.check-item.deep .check-box { border-color: rgba(255,255,255,0.4); }
+.check-item.deep .check-num { color: var(--forest-light); }
+.check-item.deep .check-title { color: #f0ece4; }
+.check-item.deep .check-body p { color: #d4e8d4; }
+.check-item.deep strong { color: #f0ece4; }
+
+.cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: rgba(44,59,45,0.08);
+  border-radius: 5px;
+  padding: 1px 7px;
+  color: var(--forest);
+  white-space: nowrap;
+}
+.check-item.deep .cmd { background: rgba(255,255,255,0.12); color: #f0ece4; }
+
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f0f0f0;
+  color: #777;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.callout {
+  padding: 20px 24px;
+  margin: 32px 0;
+  border-radius: 0 10px 10px 0;
+  background: var(--gold-bg);
+  border-left: 2.5px solid var(--gold);
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #854F0B;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; color: #5a3800; }
+
+.footnote {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 25px; }
+  .check-item { padding: 20px 18px; gap: 14px; }
+}
+@media print { .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT 01</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-task">ASSIGNMENT 01</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사의 달 · 1주차 과제 · 선율 — 명명</span>
+    </div>
+    <h1>내 분더카머를 열고, 이름을 굴리는 한 주</h1>
+    <p class="subtitle">읽고, 걷고, 둘러보고, 나눕니다 — 다섯 가지, 모두 작게.</p>
+  </header>
+
+  <p class="lead">이번 주는 편집의 첫 주입니다. 새로 쓰는 일보다, 이미 쓴 것을 다시 보는 일이 많습니다. 무리하지 않아도 됩니다 — 분더카머는 이미 지어져 있고, 재료는 이미 있습니다.</p>
+
+  <div class="check-list">
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">01 · Reading</div>
+        <div class="check-title">『에디톨로지』 프롤로그 + 1부 읽기</div>
+        <p>완독이 목표가 아닙니다 — 편집이 목표입니다. 가볍게 훑되, 마음에 걸리는 한두 장은 천천히. 좋은 문장은 <strong>카드처럼</strong> 옮겨 적으세요. 떼었다 붙일 수 있게.</p>
+        <p>마음에 남은 문장은 사막여우에게 <span class="cmd">정리</span> — 씨앗으로 심고, 분더카머의 알맞은 칸에 카드로도 걸립니다.</p>
+        <div class="tags">
+          <span class="tag">02 낯설게 하기</span>
+          <span class="tag">04 마우스</span>
+          <span class="tag">06 노트와 카드</span>
+          <span class="tag">08 자막</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">02 · Daily</div>
+        <div class="check-title">매일 아침, "안녕" 한 걸음</div>
+        <p>모닝페이지를 손으로 쓰고 사진을 찍어 <span class="cmd">냠냠</span>. 이어서 <span class="cmd">안녕</span> — 수사 여정의 오늘 한 걸음. 이번 주 걸음은 악보 펼치기에서 이름·피치 확정까지 갑니다. 진도표가 아니라 디퍼님의 속도로 — 건너뛴 날은 다음에 이어 걸으면 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="check-item deep">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">03 · Wunderkammer</div>
+        <div class="check-title">"분더카머" 첫 둘러보기</div>
+        <p>이번 주 안에 한 번, 사막여우에게 <span class="cmd">분더카머</span>라고 말해보세요. 문 여는 날 태어난 디퍼님의 분더카머 — 그동안 쌓인 글의 살아있는 조각들이 카드로 걸려 있습니다. 어떤 칸(주제의 결)들이 생겼는지 구경만 해도 충분합니다.</p>
+        <p>여유가 있다면 <span class="cmd">분더카머 돌려줘</span> — 같은 카드들이 다른 차원(시간·주제·감정·독자의 문제·뜻밖의 짝)으로 재배열됩니다. 여우가 짚어주는 <strong>사이의 경이 하나</strong>, 받으시면 종합 씨앗으로 수장고에 심깁니다.</p>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">04 · Share</div>
+        <div class="check-title">이름 후보를 사막에 나누기</div>
+        <p>세션의 AI 실험(이름 빚기)으로 후보 2~3개를 빚고, 마음에 걸리는 하나를 사막(단톡방)에 한 줄과 함께 나눠주세요. 확정이 목표가 아닙니다 — 소리 내어 굴려보는 것이 목표입니다.</p>
+        <p>다른 디퍼님의 후보를 보시면, 고쳐주는 대신 이렇게만 물어주세요. <em>"어느 것이 디퍼님 같으세요?"</em> — 이름의 최종 선택은 늘 그 사람의 몫입니다.</p>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">05 · Weekly</div>
+        <div class="check-title">주말 밤, "밤하늘" 한 줄</div>
+        <p>주말 밤 사막여우에게 <span class="cmd">밤하늘</span> — 한 주의 씨앗이 별자리 한 장으로 뜹니다. 사막에 스크린샷으로 나눠주세요. 이것이 우리의 인사이트 나눔입니다.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">이번 주의 기준 하나</div>
+    <p>이름이든 문장이든, 소리 내어 읽어보세요. 입에 안 붙는 데가 남의 말이 섞인 자리입니다. 매끈한 것보다 내 것 — 그게 이 달의 전부입니다.</p>
+  </div>
+
+  <div class="footnote">
+    <p>* 읽기 — 김정운, 『에디톨로지: 창조는 편집이다』(21세기북스) 프롤로그 + 1부(01–10장)</p>
+    <p>* 명령 — "냠냠"(모닝페이지) · "안녕"(오늘 한 걸음) · "정리"(씨앗 저장) · "분더카머" / "분더카머 돌려줘"(분더카머) · "밤하늘"(한 주 별자리)</p>
+    <p>* 이 과제는 디퍼 언브랜딩 살롱 · 수사의 달 1주차 세션에 딸린 것입니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

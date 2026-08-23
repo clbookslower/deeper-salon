@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>총괄 에이전트에게 집안일 맡기기 🦊 — 폴더 정리·이메일 정리</title>
+<meta name="description" content="총괄 에이전트에게 폴더 정리와 이메일 정리를 맡기는 법. 황금 규칙은 하나 — 제안 먼저, 실행은 내 확인. 지우기와 보내기는 끝까지 내 손에.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="총괄 에이전트에게 집안일 맡기기 🦊 — 폴더 정리·이메일 정리">
+<meta property="og:description" content="총괄 에이전트에게 폴더 정리와 이메일 정리를 맡기는 법. 황금 규칙은 하나 — 제안 먼저, 실행은 내 확인. 지우기와 보내기는 끝까지 내 손에.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/agent_chores_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-chores.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-chores.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1A4A35;--green-soft:#3B6D52;--ink:#2A2622;--ink-soft:#5A5248;
+    --paper:#FBF7EE;--gold:#B08D57;--line:rgba(42,38,34,.12)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:29px;line-height:1.4;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.85;max-width:32em;margin:0 auto}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 36px;border-radius:2px}
+  p{margin:0 0 14px}
+  h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:21px;color:var(--green);
+    margin:48px 0 10px;line-height:1.45}
+  .sectsub{font-size:14.5px;color:var(--ink-soft);margin:0 0 22px}
+  .step{display:flex;gap:18px;align-items:flex-start;margin:0 0 22px}
+  .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .step-body{flex:1;min-width:0}
+  .step-title{font-family:'Noto Serif KR',serif;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;line-height:1.45}
+  .step-body p{font-size:15px;color:#444;line-height:1.95;margin:0 0 9px}
+  .step-body p:last-child{margin-bottom:0}
+  b,strong{color:var(--green);font-weight:700}
+  .say{display:inline-block;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:.94em;
+    background:#EEF4E6;border:1px solid rgba(59,109,17,.18);border-radius:7px;padding:1px 9px;color:#356018}
+  .principle{background:var(--green);border-radius:16px;padding:26px 26px;margin:8px 0;color:#EFE9DC}
+  .principle .plabel{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;color:#E2C77B;margin-bottom:14px;text-transform:uppercase}
+  .principle ul{list-style:none}
+  .principle li{position:relative;padding-left:22px;margin-bottom:11px;font-size:15.5px;line-height:1.7;color:#F1ECDF}
+  .principle li:last-child{margin-bottom:0}
+  .principle li::before{content:'✦';position:absolute;left:0;color:#E2C77B}
+  .principle b{color:#fff}
+  .prompt{background:#fff;border:1.5px solid var(--green-soft);border-radius:12px;margin:12px 0 6px;overflow:hidden;box-shadow:0 2px 10px rgba(26,74,53,.06)}
+  .ptop{background:#F0F4EC;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;color:#356018;padding:9px 16px;border-bottom:1px solid var(--line)}
+  .pbody{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;font-size:14px;line-height:1.85;color:#333;padding:16px 18px}
+  .callout{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+  .callout .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-size:14px;color:#444;line-height:1.85;margin:0 0 7px}
+  .callout p:last-child{margin:0}
+  .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
+  .ok{border-left-color:#3B6D11}.ok .label{color:#3B6D11}
+  .done{background:#F2EEE2;border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;margin:46px 0 0}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;color:var(--green);margin-bottom:10px;line-height:1.55}
+  .done p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin:0}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none'">
+  <div class="eyebrow">DEEPER OS · 다음 단계</div>
+  <h1>총괄 에이전트에게<br>집안일 맡기기</h1>
+  <p class="lead">디퍼님이 만든 에이전트(총괄·팀)는 이제 진짜 잔일도 도와요. 어질러진 폴더를 정리하고, 받은편지함을 훑어줍니다. 딱 하나만 기억하시면 돼요 — <b>제안 먼저, 실행은 내 확인.</b> 🦊</p>
+  <div class="rule"></div>
+
+  <div class="principle">
+    <div class="plabel">⭐ 황금 규칙 — 이것만은</div>
+    <ul>
+      <li><b>제안 먼저, 실행은 내 확인.</b> 총괄 에이전트가 뭘 할 때마다 “이거 해도 될까요?” 하고 물어요. 눈으로 보고 하나씩 허용하세요.</li>
+      <li><b>옮기기·정리는 편하게, 지우기·보내기는 끝까지 내 손에.</b> 되돌릴 수 있는 일은 맡겨도 되지만, ‘삭제’와 ‘메일 보내기’는 절대 자동으로 열어두지 마세요.</li>
+      <li><b>처음엔 작게.</b> 작은 폴더 하나, 메일 하루치로 연습하고 — 믿음이 쌓이면 범위를 넓히면 돼요.</li>
+    </ul>
+  </div>
+
+  <h2>📁 폴더 정리 맡기기</h2>
+  <p class="sectsub">어질러진 폴더 하나(다운로드·바탕화면 등)를 클로드에서 열고, 아래를 붙여넣으세요.</p>
+  <div class="prompt">
+    <div class="ptop">📋 복사해서 붙여넣기</div>
+    <div class="pbody">이 폴더를 정리해줘. 규칙은 이래:
+- 원본은 지우지 말고, 종류별(문서·이미지·영수증 등)로 하위 폴더에 옮기기만 해줘.
+- 뭘 어디로 옮길지 먼저 목록으로 보여주고, 내 확인을 받은 뒤에 옮겨줘.
+- 뭔지 애매한 파일은 옮기거나 지우지 말고 나에게 물어봐.
+- 확실히 쓸모없는 것(안 보는 화면 캡처 등)만 따로 모아서 “버릴까요?”라고 물어봐.</div>
+  </div>
+  <div class="callout ok">
+    <div class="label">왜 안전한가요</div>
+    <p>원본은 <b>지우지 않고 옮기기만</b> 하고, 무엇을 할지 <b>먼저 보여준 뒤 확인</b>받아요. 정리가 마음에 안 들면 되돌리면 그만이에요. 정말 버릴 것도 한데 모아 <b>“버릴까요?” 물은 뒤에만</b> 지웁니다.</p>
+  </div>
+
+  <h2>✉️ 이메일 정리 맡기기</h2>
+  <p class="sectsub">먼저, 지메일을 클로드에 <b>한 번만 연결</b>해두어야 해요.</p>
+
+  <div class="step"><div class="num">0</div><div class="step-body">
+    <div class="step-title">지메일 연결은 — 총괄 에이전트가 아니라 <u>내가</u> 해요</div>
+    <p>이건 총괄 에이전트가 대신 못 해줘요. 내 구글 계정에 로그인해서 “이 앱이 내 메일을 봐도 좋다”고 허락하는 일이라, <b>보안상 나만 할 수 있거든요.</b> (오히려 다행이에요 — 아무 프로그램도 내 메일에 함부로 못 들어오니까요.)</p>
+    <p>클로드의 <b>연결(커넥터) 설정</b>에서 Gmail을 켜고, 뜨는 구글 창에서 로그인·허용하면 끝. 딱 한 번이면 돼요. 어디 있는지 모르겠으면 — 클로드에게 <span class="say">지메일 연결은 어디서 해?</span> 라고 물어보세요.</p>
+  </div></div>
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title">연결됐으면 — 아래를 붙여넣기</div>
+  </div></div>
+  <div class="prompt">
+    <div class="ptop">📋 복사해서 붙여넣기</div>
+    <div class="pbody">받은편지함을 정리해줘.
+- 종류별로 라벨을 붙이거나 분류만 해줘(광고·뉴스레터·업무 등).
+- 답장이 필요한 메일만 목록으로 뽑아줘. 답장 초안까지는 써도 좋아.
+- ⚠️ 어떤 메일도 자동으로 보내거나 지우지 마. 보내기·삭제는 내가 직접 할게.</div>
+  </div>
+  <div class="callout warn">
+    <div class="label">이메일에서 꼭 지킬 것</div>
+    <p>메일은 <b>분류·라벨·초안까지만</b> 맡기세요. <b>보내기와 삭제는 자동으로 열어두지 마세요</b> — 잘못 보낸 메일, 지운 메일은 되돌릴 수 없으니까요. 초안을 보고, 보내기는 내 손으로.</p>
+  </div>
+
+  <h2>막힐 때</h2>
+  <div class="callout">
+    <div class="label">그냥 물어보세요</div>
+    <p>“방금 이게 안 됐어, 도와줘”, “지메일 연결이 안 보여”처럼 <b>클로드에게 그대로 물어보면</b> 돼요. 총괄 에이전트가 쉬운 말로 다음 한 걸음을 알려줍니다. 당황하지 않으셔도 돼요 — 되돌릴 수 없는 일(삭제·보내기)만 자동으로 안 열어두면, 실수는 늘 되돌릴 수 있어요.</p>
+  </div>
+
+  <div class="done">
+    <div class="big">맡기되, 되돌릴 수 없는 건 내 손에 🦊</div>
+    <p>작은 폴더 하나부터 시작해보세요. 총괄 에이전트가 손이 빨라질수록, 디퍼님의 하루가 한결 가벼워져요.</p>
+  </div>
+
+  <div class="foot">DEEPER 언브랜딩 살롱 · 디퍼 OS 다음 단계</div>
+</div>
+</body>
+</html>

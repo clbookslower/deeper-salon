@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 코드 설치하기 — 디퍼 OS 설치 ①</title>
+<meta name="description" content="디퍼 OS(사막여우)를 켤 자리, '클로드 코드'를 깔고 내 볼트에 연결하는 법. 다운로드부터 볼트 연결까지, 한 걸음씩 자세히.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="클로드 코드 설치하기 — 디퍼 OS 설치 ①">
+<meta property="og:description" content="다운로드부터 Code 탭, 내 볼트 연결까지. 한 걸음씩 자세히.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/claude_code_install_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-cc-install.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-cc-install.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1A4A35;--green-soft:#3B6D52;--ink:#2A2622;--ink-soft:#5A5248;
+    --paper:#FBF7EE;--gold:#B08D57;--line:rgba(42,38,34,.12)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:31px;line-height:1.38;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.85;max-width:31em;margin:0 auto}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 36px;border-radius:2px}
+  p{margin:0 0 14px}
+  .os{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;padding:2px 9px;border-radius:100px;
+    background:#EAF3DE;color:#3B6D11;letter-spacing:.04em;vertical-align:middle;margin-right:4px}
+  .os.mac{background:#E6F1FB;color:#185FA5}
+  .step{display:flex;gap:18px;align-items:flex-start;margin:0 0 30px}
+  .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .step-body{flex:1}
+  .step-title{font-family:'Noto Serif KR',serif;font-weight:600;font-size:18px;color:var(--ink);margin-bottom:9px;line-height:1.45}
+  .step-body p{font-size:15px;color:#444;line-height:1.95;margin:0 0 9px}
+  .step-body p:last-child{margin-bottom:0}
+  ul.sub{list-style:none;margin:6px 0 9px}
+  ul.sub li{position:relative;padding-left:16px;margin-bottom:7px;font-size:14.5px;color:#444;line-height:1.85}
+  ul.sub li::before{content:'·';position:absolute;left:2px;color:var(--gold);font-weight:700}
+  b,strong{color:var(--green);font-weight:700}
+  .key{font-family:'DM Mono',monospace;font-size:.9em;background:#EFEADD;border:1px solid var(--line);
+    border-radius:6px;padding:1px 7px;color:var(--ink)}
+  a.link{color:#185FA5;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(24,95,165,.3)}
+  .callout{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+  .callout .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-size:14px;color:#444;line-height:1.85;margin:0}
+  .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
+  .ok{border-left-color:#3B6D11}.ok .label{color:#3B6D11}
+  .done{background:var(--green);border-radius:16px;padding:28px 26px;text-align:center;margin:46px 0 0;color:#EFE9DC}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.55}
+  .done p{font-size:14px;color:#C7D7CB;line-height:1.8;margin:0}
+  .done a{color:#E2C77B;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(226,199,123,.4)}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER">
+  <div class="eyebrow">DEEPER OS · 설치 ①</div>
+  <h1>클로드 코드 설치하기</h1>
+  <p class="lead">디퍼 OS(사막여우)는 <b>‘클로드 코드’</b>라는 자리에서 켜져요. 앱을 깔고, <b>내 볼트에 연결</b>하는 것까지 — 천천히 같이 해요. 🦊</p>
+  <div class="rule"></div>
+
+  <div class="callout"><div class="label">시작 전 두 가지</div><p>① <b>클로드 유료(Pro 이상) 계정</b> (무료론 Code 탭이 안 열려요 · 없으면 <a class="link" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>에서 플랜)<br>② <b>옵시디언 볼트</b>를 미리 만들어 두기 (아직이면 <a class="link" href="https://clbookslower.github.io/deeper-salon/os/obsidian_vault_guide.html">볼트 만들기 가이드</a> 먼저)</p></div>
+
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title">앱 다운로드 · 설치</div>
+    <p><a class="link" href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> 에 들어가, 내 컴퓨터에 맞는 걸 받아요. 받은 파일은 보통 <b>‘다운로드’ 폴더</b>에 있어요.</p>
+    <ul class="sub">
+      <li><span class="os">🪟 윈도우</span> <b>설치 파일</b>(.exe)을 받아요 → <b>더블클릭</b> → 설치 화면이 뜨면 <b>‘다음/Next’ → ‘설치/Install’</b> → 끝나면 <b>‘마침/Finish’</b>.</li>
+      <li><span class="os mac">🍎 맥</span> <b>.dmg 파일</b>을 받아요 → 더블클릭해 열면 창이 뜨고 → <b>클로드 아이콘을 ‘Applications(응용 프로그램)’ 폴더로 드래그</b>해 넣어요.</li>
+    </ul>
+    <p style="color:#777;font-size:13.5px">⚠️ “확인되지 않은 앱” 경고가 떠도 괜찮아요 — 공식 앱이에요. 🪟 ‘추가 정보 → 실행’ · 🍎 ‘열기’.</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="step-body">
+    <div class="step-title">앱 실행 · 로그인</div>
+    <p>설치한 <b>클로드 앱을 열고</b> → <b>로그인(Log in)</b> → 브라우저가 열리면 <b>유료(Pro 이상) 계정</b>으로 로그인 → ‘허용/Authorize’ → 앱으로 돌아와요.</p>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="step-body">
+    <div class="step-title">위쪽 ‘Code’ 탭 + 환경 ‘Local’</div>
+    <p>화면 <b>위쪽 탭에서 <span class="key">Code</span></b> 를 눌러요. <span style="color:#777">(코딩하는 곳이 아니라, 내 노트를 다루는 AI를 켜는 자리예요.)</span></p>
+    <p>그다음 환경(위치)을 <span class="key">Local</span> 로 골라요 — 이러면 <b>내 컴퓨터의 진짜 폴더</b>에서 일해요.</p>
+    <div class="callout"><div class="label">💡 품질 팁 — 모델은 Opus로</div><p>사막여우 답·‘의미 선물 문장’의 깊이는 <b>모델 성능</b>이 좌우해요. 모델 설정에서 <b><span class="key">Opus 4.8</span> 이상</b>으로. (Opus가 없으면 있는 것 중 제일 좋은 모델로.)</p></div>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div class="step-body">
+    <div class="step-title">내 볼트 폴더 연결하기 ⭐</div>
+    <p>사막여우가 내 노트를 보려면, <b>“이 폴더에서 일해”</b>라고 가리켜줘야 해요. 이게 <b>옵시디언 ↔ 클로드 코드 연결</b>이에요.</p>
+    <ul class="sub">
+      <li>Code 탭에서 <span class="key">Select folder</span>(폴더 선택)를 눌러요 → 폴더 고르는 창이 떠요.</li>
+      <li><b>옵시디언으로 만든 ‘바로 그 볼트 폴더’</b>를 찾아 선택 → <b>‘폴더 선택/열기’</b>.</li>
+    </ul>
+    <div class="callout"><div class="label">볼트 폴더가 어디 있는지 모르겠다면</div><p>옵시디언을 열고 → <b>좌하단의 볼트 이름</b>(또는 좌측 끝 금고 아이콘)을 눌러 → 폴더 위치를 확인하거나, 파일 위에서 <b>마우스 오른쪽 → ‘시스템 탐색기에서 보기’</b> 하면 실제 폴더가 열려요. 그 위치를 고르면 돼요.</p></div>
+    <p><b>잘 연결됐는지 확인</b> — 입력창에 이렇게 쳐보세요:</p>
+    <p><span class="key">여기 어떤 폴더야? 안에 뭐가 있어?</span></p>
+    <p>→ 내 노트(또는 빈 폴더)를 읽어주면 <b>연결 성공!</b> 🎉</p>
+  </div></div>
+
+  <div class="callout ok"><div class="label">✅ 여기까지 됐으면</div><p>이제 클로드 코드가 <b>내 볼트를 보고 있어요.</b> 디퍼 OS를 깔 준비가 다 됐어요.</p></div>
+
+  <div class="done">
+    <div class="big">설치 · 연결 끝! 이제 ②로 🦊</div>
+    <p>다음은 이 볼트에 디퍼 OS(사막여우)를 까는 차례예요.<br><br>👉 다음 단계: <a href="https://clbookslower.github.io/deeper-salon/os/deeper_os_install_guide.html">디퍼 OS 깔기 (설치 ②)</a></p>
+  </div>
+
+  <div class="foot">막히면 그 화면 캡처 한 장 주세요 — 같이 봐요.<br>DEEPER 언브랜딩 살롱 · 디퍼 OS</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>함께 읽는 책들 · Deeper Unbranding Salon 1기</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #111;
+  --muted: #888;
+  --soft: #bbb;
+  --border: #ebebeb;
+  --surface: #f8f8f6;
+  --bg: #fff;
+
+  --gram-hue: #534AB7;
+  --gram-bg: #EEEDFE;
+  --gram-text: #3C3489;
+  --gram-mid: #7F77DD;
+  --gram-stripe: #AFA9EC;
+
+  --log-hue: #0F6E56;
+  --log-bg: #E1F5EE;
+  --log-text: #085041;
+  --log-mid: #1D9E75;
+  --log-stripe: #5DCAA5;
+
+  --rhet-hue: #854F0B;
+  --rhet-bg: #FAEEDA;
+  --rhet-text: #633806;
+  --rhet-mid: #BA7517;
+  --rhet-stripe: #EF9F27;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 32px 120px;
+}
+
+/* ── HEADER ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.site-url {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--soft);
+}
+
+.title-block {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.title-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.title-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.title-sub {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── SECTION ── */
+.section {
+  margin-bottom: 80px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 3px 11px;
+  border-radius: 100px;
+}
+
+.badge-g { background: var(--gram-bg); color: var(--gram-text); }
+.badge-l { background: var(--log-bg);  color: var(--log-text); }
+.badge-r { background: var(--rhet-bg); color: var(--rhet-text); }
+
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section-desc {
+  font-size: 12px;
+  color: var(--soft);
+  font-family: 'DM Mono', monospace;
+  margin-left: auto;
+}
+
+/* ── MAIN TEXT CARD ── */
+.main-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: var(--surface);
+}
+
+.main-card-stripe {
+  width: 4px;
+  flex-shrink: 0;
+}
+.stripe-g { background: var(--gram-mid); }
+.stripe-l { background: var(--log-mid); }
+.stripe-r { background: var(--rhet-mid); }
+
+.main-card-body {
+  padding: 20px 24px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.main-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 6px;
+}
+
+.main-card-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.main-card-author {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.main-card-original {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--soft);
+  margin-top: 2px;
+}
+
+.main-card-tag {
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.tag-g { background: var(--gram-bg); color: var(--gram-text); }
+.tag-l { background: var(--log-bg);  color: var(--log-text); }
+.tag-r { background: var(--rhet-bg); color: var(--rhet-text); }
+
+.main-cards-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.main-cards-duo .main-card {
+  margin-bottom: 0;
+}
+
+@media (max-width: 520px) {
+  .main-cards-duo { grid-template-columns: 1fr; }
+}
+
+/* ── SUPPLEMENTARY BOOKS ── */
+.books-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 12px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .books-grid { grid-template-columns: repeat(2, 1fr); }
+  .title-main { font-size: 28px; }
+  .section-desc { display: none; }
+}
+
+.book-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 14px 14px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.section.grammar .book-card::after { background: var(--gram-stripe); }
+.section.logic   .book-card::after { background: var(--log-stripe); }
+.section.rhetoric .book-card::after { background: var(--rhet-stripe); }
+
+.book-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--soft);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.book-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.book-author {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.book-original {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--soft);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 80px 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-mark {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.footer-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--soft);
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-name">Deeper Unbranding Salon · 1기</div>
+    <div class="site-url">geekus.kr/slowerdeeper</div>
+  </header>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="title-eyebrow">Trivium × AI · 커리큘럼 도서 목록</div>
+    <h1 class="title-main">함께 읽는 책들</h1>
+    <p class="title-sub">문법 → 논리 → 수사의 여정 속에서</p>
+  </div>
+
+  <!-- ═══ 문법 ═══ -->
+  <section class="section grammar">
+    <div class="section-head">
+      <span class="section-badge badge-g">문법 Grammar</span>
+      <span class="section-title">나를 발견하는 언어</span>
+      <span class="section-desc">Session 01–04</span>
+    </div>
+
+    <!-- 메인 텍스트 -->
+    <div class="main-cards-duo">
+      <div class="main-card">
+        <div class="main-card-stripe stripe-g"></div>
+        <div class="main-card-body">
+          <div>
+            <div class="main-card-label">메인 텍스트</div>
+            <div class="main-card-title">특이점이 온다</div>
+            <div class="main-card-author">레이 커즈와일</div>
+            <div class="main-card-original">The Singularity Is Near<br>Ray Kurzweil</div>
+          </div>
+          <span class="main-card-tag tag-g">Main</span>
+        </div>
+      </div>
+      <div class="main-card">
+        <div class="main-card-stripe stripe-g"></div>
+        <div class="main-card-body">
+          <div>
+            <div class="main-card-label">메인 텍스트</div>
+            <div class="main-card-title">마침내 특이점이 시작된다</div>
+            <div class="main-card-author">레이 커즈와일</div>
+            <div class="main-card-original">The Singularity Is Nearer<br>Ray Kurzweil</div>
+          </div>
+          <span class="main-card-tag tag-g">Main</span>
+        </div>
+      </div>
+    </div>
+    <div class="main-card">
+      <div class="main-card-stripe stripe-g"></div>
+      <div class="main-card-body">
+        <div>
+          <div class="main-card-label">메인 텍스트</div>
+          <div class="main-card-title">생각하는 기계</div>
+          <div class="main-card-author">파멜라 맥코덕</div>
+          <div class="main-card-original">Machines Who Think · Pamela McCorduck</div>
+        </div>
+        <span class="main-card-tag tag-g">Main Text</span>
+      </div>
+    </div>
+
+    <!-- 추천 도서 -->
+    <div class="books-label">함께 읽으면 좋은 책</div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-num">01</div>
+        <div class="book-title">중력과 은총</div>
+        <div class="book-author">시몬 베유</div>
+        <div class="book-original">La Pesanteur<br>et la Grâce</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">02</div>
+        <div class="book-title">자기신뢰</div>
+        <div class="book-author">랄프 왈도 에머슨</div>
+        <div class="book-original">Self-Reliance</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">03</div>
+        <div class="book-title">나 자신의 노래</div>
+        <div class="book-author">월트 휘트먼</div>
+        <div class="book-original">Song of Myself</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">04</div>
+        <div class="book-title">상처로 숨쉬는 법</div>
+        <div class="book-author">김진영</div>
+        <div class="book-original">&nbsp;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 논리 ═══ -->
+  <section class="section logic">
+    <div class="section-head">
+      <span class="section-badge badge-l">논리 Logic</span>
+      <span class="section-title">구조를 세우는 사유</span>
+      <span class="section-desc">Session 05–08</span>
+    </div>
+
+    <!-- 메인 텍스트 -->
+    <div class="main-card">
+      <div class="main-card-stripe stripe-l"></div>
+      <div class="main-card-body">
+        <div>
+          <div class="main-card-label">메인 텍스트</div>
+          <div class="main-card-title">괴델, 에셔, 바흐</div>
+          <div class="main-card-author">더글러스 호프스태터</div>
+          <div class="main-card-original">Gödel, Escher, Bach · Douglas Hofstadter</div>
+        </div>
+        <span class="main-card-tag tag-l">Main Text</span>
+      </div>
+    </div>
+
+    <div class="books-label">함께 읽으면 좋은 책</div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-num">01</div>
+        <div class="book-title">브랜드 설계자</div>
+        <div class="book-author">러셀 브런슨</div>
+        <div class="book-original">Expert Secrets<br>Russell Brunson</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">02</div>
+        <div class="book-title">1인기업</div>
+        <div class="book-author">폴 자비스</div>
+        <div class="book-original">Company of One<br>Paul Jarvis</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">03</div>
+        <div class="book-title">로빈슨 크루소</div>
+        <div class="book-author">다니엘 디포</div>
+        <div class="book-original">Robinson Crusoe<br>Daniel Defoe</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">04</div>
+        <div class="book-title">차라투스트라는 이렇게 말했다</div>
+        <div class="book-author">프리드리히 니체</div>
+        <div class="book-original">Also sprach<br>Zarathustra</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 수사 ═══ -->
+  <section class="section rhetoric">
+    <div class="section-head">
+      <span class="section-badge badge-r">수사 Rhetoric</span>
+      <span class="section-title">목소리를 만드는 기술</span>
+      <span class="section-desc">Session 09–12</span>
+    </div>
+
+    <!-- 메인 텍스트 -->
+    <div class="main-card">
+      <div class="main-card-stripe stripe-r"></div>
+      <div class="main-card-body">
+        <div>
+          <div class="main-card-label">메인 텍스트</div>
+          <div class="main-card-title">에디톨로지</div>
+          <div class="main-card-author">김정운</div>
+          <div class="book-original" style="font-family:'DM Mono',monospace;font-size:11px;font-style:italic;color:#bbb;margin-top:2px;">Editology</div>
+        </div>
+        <span class="main-card-tag tag-r">Main Text</span>
+      </div>
+    </div>
+
+    <div class="books-label">함께 읽으면 좋은 책</div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-num">01</div>
+        <div class="book-title">담론과 진실</div>
+        <div class="book-author">미셸 푸코</div>
+        <div class="book-original">Discourse &amp; Truth<br>Michel Foucault</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">02</div>
+        <div class="book-title">기술복제시대의 예술작품</div>
+        <div class="book-author">발터 벤야민</div>
+        <div class="book-original">Das Kunstwerk<br>Walter Benjamin</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">03</div>
+        <div class="book-title">어떻게 더불어 살 것인가</div>
+        <div class="book-author">롤랑 바르트</div>
+        <div class="book-original">Comment vivre<br>ensemble · Barthes</div>
+      </div>
+      <div class="book-card">
+        <div class="book-num">04</div>
+        <div class="book-title">1984</div>
+        <div class="book-author">조지 오웰</div>
+        <div class="book-original">Nineteen Eighty-Four<br>George Orwell</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-mark">deeper</div>
+      <div class="footer-meta">Unbranding Salon 1기 · 2026 · geekus.kr/slowerdeeper</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

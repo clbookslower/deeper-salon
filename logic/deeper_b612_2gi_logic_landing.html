@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>언브랜딩살롱 논리의 달 — 재료는 모였습니다, 구조를 지을 차례입니다</title>
+<meta name="description" content="문법의 달에 캐낸 원천과 씨앗 문장이, 어떻게 의미가 되고 일이 되는가. 프로젝트 B-612 언브랜딩살롱, 2기 논리의 달.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="디퍼 살롱">
+<meta property="og:title" content="논리의 달, 디퍼님의 자리">
+<meta property="og:description" content="재료는 모였습니다. 이제 구조를 지을 차례입니다. 등록은 8월 20일 목요일까지.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/deeper_b612_2gi_logic_landing.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic-landing.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic-landing.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* 팔레트 v2.3 「사막의 밤에 별을 읽는 출판사」 — 흙·모래 (2026-07-31 피터팬 시안) */
+  :root{
+    --night:#2A1C12; --umber-deep:#56341E; --umber:#6B4226; --sand:#C0A886; --sand-soft:#D8CDBE;
+    --paper:#F4F1E8; --paper-bright:#FBF9F3; --surface:#EFEADD; --rule:#E4DECE; --rule-strong:#C4BCA9;
+    --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+    --wine:#7E3A44; --wine-deep:#672F38;
+    --serif:'Noto Serif KR',serif; --sans:'Noto Sans KR',sans-serif; --mono:'DM Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+  .page{max-width:720px;margin:0 auto;padding:0 24px 120px}
+  section{margin-top:96px}
+  h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.4;letter-spacing:-0.02em;margin-bottom:28px}
+  p{margin-bottom:20px;color:var(--ink-soft)}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--umber);display:block;margin-bottom:16px}
+
+  .hero{background:var(--night);color:var(--paper);padding:88px 24px 72px;text-align:center}
+  .hero img.logo{width:120px;height:auto;margin-bottom:48px}
+  .hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--sand);margin-bottom:28px;display:block}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.5;letter-spacing:-0.02em;margin-bottom:28px}
+  .hero .sub{font-size:16px;line-height:2;color:var(--sand-soft);max-width:460px;margin:0 auto 44px}
+  .hero .facts{display:flex;justify-content:center;gap:0;border-top:1px solid rgba(192,168,134,0.25);border-bottom:1px solid rgba(192,168,134,0.25);max-width:520px;margin:0 auto}
+  .hero .facts div{flex:1;padding:18px 8px}
+  .hero .facts div+div{border-left:1px solid rgba(192,168,134,0.25)}
+  .hero .facts b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;color:var(--paper)}
+  .hero .facts span{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--sand)}
+
+  .pull{font-family:var(--serif);font-size:21px;line-height:1.8;color:var(--ink);padding:8px 0}
+  blockquote{border-left:1.5px solid var(--rule-strong);padding:4px 0 4px 24px;margin:32px 0;font-family:var(--serif);font-style:italic;color:var(--ink-soft)}
+
+  .bridge{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .bridge .card{margin-bottom:0}
+  .bridge .from{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--ink-mute);display:block;margin-bottom:8px}
+  .bridge .to{font-family:var(--serif);font-size:16.5px;color:var(--ink)}
+
+  .step{display:flex;gap:24px;margin-bottom:48px}
+  .step-num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--umber);color:var(--paper);font-family:var(--mono);font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+  .step h3{font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:8px}
+  .step .week{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--ink-mute)}
+  .step .made{display:inline-block;background:var(--surface);border:1px solid var(--rule);border-radius:6px;font-size:13px;padding:4px 12px;margin-top:10px;color:var(--umber-deep)}
+
+  .card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:32px;margin-bottom:16px}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:18px;margin-bottom:10px}
+  .card p{margin-bottom:0;font-size:15px}
+
+  .rhythm{border:1px solid var(--rule-strong);border-radius:12px;overflow:hidden}
+  .rhythm>div{padding:24px 30px}
+  .rhythm>div+div{border-top:1px solid var(--rule)}
+  .rhythm b{font-family:var(--serif);font-weight:500;display:block;margin-bottom:6px}
+  .rhythm p{margin:0;font-size:15px}
+  .rhythm .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--wine);display:block;margin-bottom:8px}
+
+  table.glance{width:100%;border-collapse:collapse;font-size:15px}
+  table.glance th{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:0.1em;color:var(--ink-mute);text-align:left;padding:14px 0;width:34%;vertical-align:top;border-bottom:1px solid var(--rule)}
+  table.glance td{padding:14px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+
+  .voice{background:var(--paper-bright);border:1px solid var(--rule);border-radius:12px;padding:28px 32px;margin-bottom:16px}
+  .voice p{font-family:var(--serif);font-size:16.5px;line-height:1.9;color:var(--ink);margin-bottom:14px}
+  .voice .who{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--umber)}
+
+  details{border-bottom:1px solid var(--rule);padding:20px 0}
+  details:first-of-type{border-top:1px solid var(--rule)}
+  summary{font-family:var(--serif);font-size:16.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";font-family:var(--mono);color:var(--ink-mute)}
+  details[open] summary::after{content:"—"}
+  details p{margin:16px 0 0;font-size:15px}
+
+  .cta-box{background:var(--night);border-radius:16px;padding:56px 40px;text-align:center;color:var(--paper);margin-top:96px}
+  .cta-box .label{color:var(--sand)}
+  .cta-box h2{color:var(--paper);margin-bottom:16px}
+  .cta-box p{color:var(--sand-soft)}
+  .btn{display:inline-block;background:var(--wine);color:var(--paper);font-family:var(--sans);font-weight:400;font-size:16px;padding:16px 48px;border-radius:8px;text-decoration:none;margin-top:24px}
+  .btn:hover{background:var(--wine-deep)}
+  .footnote{margin-top:80px;padding-top:24px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;line-height:2;color:var(--ink-mute);text-align:center}
+  .footnote img{width:86px;height:auto;display:block;margin:0 auto 16px}
+
+  @media (max-width:600px){
+    .hero h1{font-size:29px}
+    h2{font-size:24px}
+    section{margin-top:72px}
+    .bridge{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- 발행인 확정 2026-08-09: 개강 8/24 · 참가비 25만 · 회신 기한 8/20(목) -->
+
+<header class="hero">
+  <img class="logo" src="DEEPER_logo_white.png" alt="DEEPER">
+  <span class="eyebrow">PROJECT B-612 · THE MONTH OF LOGIC · 2ND</span>
+  <h1>재료는 모였습니다.<br>이제 구조를 지을 차례입니다.</h1>
+  <p class="sub">문법의 달에 캐낸 원천과 씨앗 문장이<br>어떻게 의미가 되고, 일이 되는가.<br>내 일을 아는 나만의 AI 에이전트를 짓는 한 달 —<br>2기 논리의 달, 문을 엽니다.</p>
+  <div class="facts">
+    <div><b>4번</b><span>월요일 밤</span></div>
+    <div><b>4장</b><span>주말의 짓기</span></div>
+    <div><b>한 장</b><span>나의 악보</span></div>
+  </div>
+</header>
+
+<main class="page">
+
+<section>
+  <span class="label">01 · 문법에서 논리로</span>
+  <h2>캐낸 것은, 아직 흩어져 있습니다</h2>
+  <p>한 달 동안 우리는 각자의 사막에서 원천을 캤습니다. 목소리의 결을 만졌고, 나만 볼 수 있는 각도를 찾았고, 마지막 밤에는 씨앗에 이름을 붙였습니다.</p>
+  <p>머릿속에만 있던 암묵지가 문법의 달에 글이 되어 나왔습니다. 그 글로 이번에는, 나를 대신해 내 일을 맡아 줄 AI 에이전트를 짓습니다. 이제 질문이 바뀝니다. 흩어진 조각이 어떻게 하나의 시스템이 되고, <em>시스템이 어떻게 내 시간을 돌려주는가.</em> 논리의 달은 그 답을 짓는 한 달입니다.</p>
+  <div class="bridge">
+    <div class="card"><span class="from">문법에서 가져온 것</span><span class="to">씨앗 문장</span></div>
+    <div class="card"><span class="from">논리에서 되는 것</span><span class="to">나의 공리(시스템 프롬프트) — 모든 것이 여기서 출발합니다</span></div>
+    <div class="card"><span class="from">문법에서 가져온 것</span><span class="to">목소리의 결</span></div>
+    <div class="card"><span class="from">논리에서 되는 것</span><span class="to">변환 규칙(오케스트레이션) — 어떤 글이든 내 결로 쓰는 문법</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="label">02 · 이 달의 숨은 뼈대</span>
+  <h2>나만의 AI가 내 노래를 부르도록</h2>
+  <p>이 커리큘럼의 뼈대는 『괴델, 에셔, 바흐』입니다. 어렵게 배우지 않습니다. 다만 그 책이 보여준 것 — 단순한 규칙이 쌓여 자기를 낳는 구조가 되고, 구조가 하모니를 이루는 과정 — 을 각자의 재료로 한 번 걸어 봅니다.</p>
+  <p class="pull">나의 정체성을 입고, 나만의 AI가 태어난다.</p>
+  <p>이 달에 짓는 것은 나만의 AI 퍼스널 시스템입니다. 기본기는 프롬프트와 컨텍스트 엔지니어링 — 그 위에 하네스(나의 규칙책) · 오케스트레이션(여럿에게 일을 맡기는 법) · 루프와 그래프(일이 스스로 도는 구조)까지, 실전에서 바로 쓰는 팁을 매주 나누며 함께 세팅합니다. 마지막 주에 각자 완성하는 것은 악보 한 장 — 내 공리(시스템 프롬프트), 내 독자(페르소나), 내 확장의 고리(워크플로우 루프)를 한눈에 담은 브랜드북이자, 나의 AI가 따라 연주하는 하네스입니다. AI에게 나를 맡기는 문서가 아니라, AI가 나를 지키게 하는 문서입니다.</p>
+</section>
+
+<section>
+  <span class="label">03 · 네 번의 주말, 네 장의 짓기</span>
+  <h2>어떻게 걷나요</h2>
+  <p>매주 한 장씩, 내 시스템의 부품을 짓습니다. 그리고 주말 짓기 끝에 한 줄 — 이번 주 에이전트에게 맡겨 본 내 일 하나와, 돌아온 시간을 적어 둡니다. 넉 줄이 쌓이면, 내 일의 효율이 어디서 얼마나 달라졌는지 내 기록으로 확인합니다.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div><span class="week">WEEK 01</span>
+    <h3>공리와 변환 규칙</h3>
+    <p>씨앗 문장을 공리로 세우고, 내 형식 체계의 규칙을 적습니다. 내 AI에게 주는 첫 시스템 프롬프트입니다.</p>
+    <span class="made">주말의 짓기 — 나의 형식 체계 v1</span></div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div><span class="week">WEEK 02</span>
+    <h3>이소모피즘 — 단 한 사람</h3>
+    <p>내 구조가 누구에게 옮겨 닿는지. 이상적 독자 한 사람을 그립니다. 내 AI가 늘 바라볼 페르소나 설계입니다.</p>
+    <span class="made">주말의 짓기 — 이상적 독자·변환 한 장</span></div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div><span class="week">WEEK 03</span>
+    <h3>이상한 고리</h3>
+    <p>글이 글을 낳고, 일이 일을 낳는 자기증식의 고리를 설계합니다. 반복 업무를 에이전트에게 맡기는 워크플로우 루프가 여기서 나옵니다.</p>
+    <span class="made">주말의 짓기 — IP 지도 + 오퍼 초안</span></div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div><span class="week">WEEK 04</span>
+    <h3>체계 밖으로, 그리고 루틴</h3>
+    <p>고리를 짓고 그 고리를 깨는 법까지. 넉 줄의 기록으로 한 달의 효율이 어떻게 달라졌는지 확인하고 그 구조 전부를 악보 한 장에 담습니다.</p>
+    <span class="made">주말의 짓기 — 악보 한 장, 나의 하네스 v1</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="label">04 · 이번 달의 리듬</span>
+  <h2>지난달보다 숨을 넓혔습니다</h2>
+  <p>종강 밤, 한 사막에서 이런 말이 나왔습니다. 책도 읽고 과제도 하고 글도 쓰려면 정신없이 간다고. 맞는 말이어서, 논리의 달은 리듬부터 다시 짰습니다.</p>
+  <div class="rhythm">
+    <div><span class="tag">매일 · 15분</span><b>사막여우와 안녕 · 오아시스</b><p>논리 여정을 하루 한 걸음. 매일 15분이면 됩니다.</p></div>
+    <div><span class="tag">주 1회 · 과제</span><b>내 일터와 삶터를 AX로 리쉐이프</b><p>주말의 짓기 한 장 — AI와 함께 일하는 방식으로 내 일 하나를 바꿔 봅니다. 끝에 한 줄, 맡긴 일과 돌아온 시간을 적습니다.</p></div>
+    <div><span class="tag">월요일 밤 9시 · 줌</span><b>살롱</b><p>강의와 살롱 나눔. 오티를 포함해 다섯 번의 월요일 밤입니다.</p></div>
+    <div><span class="tag">목요일 밤 10시 · 줌</span><b>디퍼 전체 인사이트 공유회</b><p>매주 목요일, 사막을 넘어 함께 모입니다.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="label">05 · 아직 걷는 중이어도</span>
+  <h2>문법을 다 못 끝냈는데요</h2>
+  <p>30일을 다 걷지 못했어도 괜찮습니다. 문법의 여정은 각자의 속도로 이어 걸으면서, 논리의 달에 함께 들어올 수 있습니다. 재료가 완성된 목록일 필요는 없습니다. 지금까지 쓴 것으로 이미 충분합니다.</p>
+</section>
+
+<section>
+  <span class="label">06 · 한눈에 보기</span>
+  <h2>논리의 달 안내</h2>
+  <table class="glance">
+    <tr><th>기간</th><td>2026년 8월 24일 – 9월 21일 (오티 8/24 · 8/31 · 9/7 · 9/14 · 9/21)</td></tr>
+    <tr><th>시간</th><td>매주 월요일 밤 21:00 – 23:00 · 줌</td></tr>
+    <tr><th>공유회</th><td>매주 목요일 밤 10시 — 디퍼 전체 인사이트 공유회 · 줌</td></tr>
+    <tr><th>대상</th><td>2기 문법을 함께 걸은 디퍼님</td></tr>
+    <tr><th>사막</th><td>새로 배정됩니다</td></tr>
+    <tr><th>진행</th><td>퍼핀 · 별지기</td></tr>
+    <tr><th>참가비</th><td>250,000원 — 문법의 달과 같습니다 (등록 폼에 안내된 계좌로 이체 · 시작 전 전액 환불)</td></tr>
+    <tr><th>등록 기한</th><td>8월 20일 (목)</td></tr>
+    <tr><th>열쇠</th><td>논리의 문은 첫 살롱에서, 열쇠말과 함께 열립니다</td></tr>
+  </table>
+</section>
+
+<section>
+  <span class="label">07 · 자주 묻는 질문</span>
+  <h2>망설이는 마음에게</h2>
+  <details>
+    <summary>코딩이나 기술을 몰라도 되나요?</summary>
+    <p>됩니다. 재료는 디퍼님의 글입니다. 문법의 달에 쓴 글이 그대로 첫 시스템 프롬프트의 재료가 됩니다. 세팅은 살롱에서 함께, 한 걸음씩 갑니다.</p>
+  </details>
+  <details>
+    <summary>문법 기록이 얼마 없는데 괜찮을까요?</summary>
+    <p>괜찮습니다. 공리는 분량에서 나오지 않습니다. 씨앗 문장 하나, 마음에 남은 기록 몇 장이면 첫 주를 시작할 수 있습니다.</p>
+  </details>
+  <details>
+    <summary>브레이크 기간에는 뭘 하면 되나요?</summary>
+    <p>쉬셔도 됩니다. 걷고 싶은 분은 문법 여정을 이어 걸으면 그대로 논리의 재료가 쌓입니다. 여우는 늘 같은 자리에 있습니다.</p>
+  </details>
+  <details>
+    <summary>『괴델, 에셔, 바흐』를 읽어야 하나요?</summary>
+    <p>아니요. 뼈대만 빌려 옵니다. 필요한 대목은 살롱에서 함께 읽고, 원문이 궁금한 분께만 읽을 자리를 따로 안내합니다.</p>
+  </details>
+  <details>
+    <summary>이번에 쉬면 다음 논리는 언제인가요?</summary>
+    <p>다음 논리의 달은 3기 문법이 끝난 뒤에야 열립니다. 날짜는 아직 정해지지 않았습니다.</p>
+  </details>
+</section>
+
+<div class="cta-box">
+  <span class="label">두 번째 달</span>
+  <h2>새 사막에서,<br>한 층 더 깊이</h2>
+  <p>한 달 전의 나와 지금의 나 사이에서<br>달라진 것 하나를 들고 오시면 충분합니다.</p>
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdGW38FNnhQLMqpVwjD2YZKV-A5ZTmyq-AOayYuJnxg8451EQ/viewform">논리의 달 등록하기</a><!-- 등록 구글폼 「논리의 달, 디퍼님의 자리」 · 2026-08-10 연결 -->
+  <p style="font-size:13px;margin-top:20px">이 자리는 2기 디퍼님만의 것입니다.<br>8월 20일 목요일까지 답을 주시면 됩니다.</p>
+
+</div>
+
+<div class="footnote">
+  <img src="DEEPER_logo.png" alt="DEEPER">
+  프로젝트 B-612 지원팀 · DEEPER<br>
+  clbook.slower@gmail.com
+</div>
+
+</main>
+</body>
+</html>

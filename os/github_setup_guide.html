@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>깃허브 준비하기 — 계정 만들기 + PC에 Git 깔기</title>
+<meta name="description" content="디퍼 OS는 내 노트를 깃허브 비공개 금고에 백업해요. 그러려면 깃허브 계정 한 번과 PC에 Git이 필요해요. 무료, 한 걸음씩 따라오세요.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="깃허브 준비하기 — 계정 만들기 + PC에 Git 깔기">
+<meta property="og:description" content="디퍼 OS 백업을 위한 깃허브 계정과 Git 설치. 무료, 한 걸음씩 따라오세요.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/os/github_setup_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/os/og-github-guide.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/os/og-github-guide.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1A4A35;--green-soft:#3B6D52;--ink:#2A2622;--ink-soft:#5A5248;
+    --paper:#FBF7EE;--gold:#B08D57;--line:rgba(42,38,34,.12)}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:64px 24px 96px}
+  .logo{height:42px;width:auto;display:block;margin:0 auto 40px;opacity:.92}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--green-soft);
+    text-transform:uppercase;text-align:center;margin-bottom:18px}
+  h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:32px;line-height:1.36;
+    letter-spacing:-.01em;color:var(--green);text-align:center;margin-bottom:18px}
+  .lead{font-family:'Noto Serif KR',serif;font-weight:400;font-size:17px;color:var(--ink-soft);
+    text-align:center;line-height:1.8;max-width:31em;margin:0 auto}
+  .rule{width:48px;height:2px;background:var(--gold);opacity:.7;margin:36px auto 44px;border-radius:2px}
+  h2{font-family:'Noto Serif KR',serif;font-weight:700;font-size:22px;color:var(--green);
+    margin:52px 0 8px}
+  .part{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-top:48px}
+  .sect-desc{font-size:15px;color:#555;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  p{margin:0 0 14px}
+  .os{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;padding:2px 9px;border-radius:100px;
+    background:#EAF3DE;color:#3B6D11;letter-spacing:.04em;vertical-align:middle;margin-right:4px}
+  .os.mac{background:#E6F1FB;color:#185FA5}
+  .step{display:flex;gap:18px;align-items:flex-start;margin:0 0 26px}
+  .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--green);color:#F4F1E8;
+    font-family:'DM Mono',monospace;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .step-body{flex:1}
+  .step-title{font-family:'Noto Serif KR',serif;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px;line-height:1.45}
+  .step-body p{font-size:15px;color:#444;line-height:1.9;margin:0}
+  b,strong{color:var(--green);font-weight:700}
+  .key{font-family:'DM Mono',monospace;font-size:.9em;background:#EFEADD;border:1px solid var(--line);
+    border-radius:6px;padding:1px 7px;color:var(--ink)}
+  .callout{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+  .callout .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-size:14px;color:#444;line-height:1.85;margin:0}
+  .warn{border-left-color:#C0622E}.warn .label{color:#C0622E}
+  .tip{border-left-color:var(--green-soft)}.tip .label{color:var(--green-soft)}
+  .dl{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 6px}
+  .dl a{flex:1 1 210px;display:block;text-align:center;text-decoration:none;background:var(--green);
+    color:#F4F1E8;border-radius:12px;padding:14px 16px;font-weight:700;font-size:15px;line-height:1.5}
+  .dl a:hover,.dl a:focus-visible{background:#143B2A;outline:none}
+  .dl a span{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+    color:#B9CFC1;font-weight:400;margin-top:4px}
+  a.link{color:var(--green);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(176,141,87,.55)}
+  a.link:hover,a.link:focus-visible{border-bottom-color:var(--gold);outline:none}
+  .done{background:var(--green);border-radius:16px;padding:28px 26px;text-align:center;margin:48px 0 0;color:#EFE9DC}
+  .done .big{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.55}
+  .done p{font-size:14px;color:#C7D7CB;line-height:1.8;margin:0}
+  .done a{color:#E2C77B;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(226,199,123,.4)}
+  .foot{font-family:'DM Mono',monospace;font-size:11px;color:#b6ad9c;text-align:center;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);letter-spacing:.05em;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER">
+  <div class="eyebrow">DEEPER OS · 백업 준비</div>
+  <h1>깃허브(GitHub) 준비하기</h1>
+  <p class="lead">디퍼 OS는 내 노트를 <b>‘깃허브’라는 안전한 금고</b>에 백업해요(비공개라 나만 봐요). 그러려면 <b>① 깃허브 계정</b>과 <b>② PC에 Git</b>이 한 번 필요해요. 무료고, 천천히 따라오면 돼요. 🦊</p>
+  <div class="rule"></div>
+
+  <div class="part">PART 1</div>
+  <h2>깃허브 계정 만들기 (무료·5분)</h2>
+  <p class="sect-desc">웹사이트에서 가입만 하면 돼요. 폰·PC 어디서든 되지만 <b>PC</b>로 하시길 권해요. <span style="color:#777">화면이 영어로 떠도 당황 마세요 — 아래 영어 버튼 이름 그대로 누르면 돼요.</span></p>
+
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title">깃허브 사이트 접속 → 가입</div>
+    <p><a class="link" href="https://github.com/" target="_blank" rel="noopener">github.com</a> 에 들어가 오른쪽 위 <b>Sign up</b>(가입) 을 눌러요.</p>
+    <div class="dl"><a href="https://github.com/" target="_blank" rel="noopener">깃허브 사이트 열기<span>github.com &middot; 오른쪽 위 Sign up</span></a></div>
+  </div></div>
+  <div class="step"><div class="num">2</div><div class="step-body">
+    <div class="step-title">이메일 입력</div>
+    <p>인증 코드를 받을 수 있는 <b>이메일</b>을 적고 <b>Continue</b>.</p>
+  </div></div>
+  <div class="step"><div class="num">3</div><div class="step-body">
+    <div class="step-title">비밀번호 만들기</div>
+    <p>비밀번호를 정하고 <b>Continue</b>. <span style="color:#C0622E">꼭 어딘가에 적어두세요</span> — 나중에 백업 연결할 때 써요.</p>
+  </div></div>
+  <div class="step"><div class="num">4</div><div class="step-body">
+    <div class="step-title">사용자 이름(Username) 정하기</div>
+    <p>영문·숫자로 된 <b>이름</b>을 정해요. 이미 쓰는 사람이 있으면 다른 걸로. <span style="color:#777">(공개되는 이름이에요. 닉네임처럼.)</span> → <b>Continue</b>.</p>
+  </div></div>
+  <div class="step"><div class="num">5</div><div class="step-body">
+    <div class="step-title">사람인지 확인 → 계정 만들기</div>
+    <p>간단한 <b>퍼즐</b>을 풀고, <b>Create account</b>를 눌러요.</p>
+  </div></div>
+  <div class="step"><div class="num">6</div><div class="step-body">
+    <div class="step-title">이메일 인증 코드 입력</div>
+    <p>적은 이메일로 <b>숫자 코드</b>가 와요. 그 코드를 입력하면 — <b>가입 완료! 🎉</b> (가입 후 설문이 나오면 대충 고르거나 건너뛰어도 돼요.)</p>
+  </div></div>
+
+  <div class="callout warn"><div class="label">⚠️ 요금제(플랜)를 고르라고 하면</div><p>꼭 <b>Free(무료)</b>를 고르세요. 디퍼 OS 백업은 <b>무료 비공개 저장소</b>면 충분해요 — 돈 낼 필요 없어요. (가입 직후 나오는 설문이나 플랜 화면은 <b>Free 선택</b> 또는 <b>건너뛰기</b>.)</p></div>
+  <div class="callout"><div class="label">적어둘 두 가지</div><p><b>사용자 이름(Username)</b>과 <b>비밀번호</b> — 이 둘은 디퍼 OS 백업 연결할 때 쓰니 메모해 두세요.</p></div>
+
+  <div class="part">PART 2</div>
+  <h2>PC에 Git 깔기 (백업 도구)</h2>
+  <p class="sect-desc">디퍼 OS가 백업할 때 <b>‘Git’</b>이라는 도구를 써요. 보통은 <b>디퍼 OS 세팅이 자동으로 깔아줘요</b> — 자동이 안 될 때만 아래처럼 직접.</p>
+
+  <div class="callout tip"><div class="label">먼저 — 보통은 자동</div><p>디퍼 OS 세팅에서 <span class="key">백업 연결</span> 이라고 하면, 사막여우가 Git을 <b>알아서 깔아줘요</b>. 그럼 이 PART 2는 건너뛰어도 돼요. 자동이 안 되거나 “git을 못 찾아요”가 뜨면 ↓</p></div>
+
+  <div class="step"><div class="num">1</div><div class="step-body">
+    <div class="step-title"><span class="os">🪟 윈도우</span> Git for Windows 받기</div>
+    <p><a class="link" href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> 에 들어가면 <b>내려받기가 바로 시작</b>돼요. 받은 파일을 실행하세요.</p>
+  </div></div>
+  <div class="step"><div class="num">2</div><div class="step-body">
+    <div class="step-title"><span class="os">🪟 윈도우</span> 그냥 ‘Next’ 연타 → Install</div>
+    <p>설치 화면이 여러 개 떠도 <b>전부 기본값 그대로 <span class="key">Next</span></b> 만 누르면 돼요. 마지막에 <b>Install</b> → <b>Finish</b>. (어려운 선택 안 해도 돼요.)</p>
+  </div></div>
+  <div class="step"><div class="num">·</div><div class="step-body">
+    <div class="step-title"><span class="os mac">🍎 맥</span> 보통 이미 있어요</div>
+    <p>맥은 Git이 대개 깔려 있어요. 직접 받으려면 <a class="link" href="https://git-scm.com/download/mac" target="_blank" rel="noopener">git-scm.com/download/mac</a>. 없으면 디퍼 OS <b>백업 연결</b> 때 <b>“명령어 도구 설치”</b> 창이 뜨는데, <b>설치</b>를 누르면 돼요(몇 분).</p>
+  </div></div>
+
+  <div class="done">
+    <div class="big">계정 + Git 준비 끝! ✅</div>
+    <p>이제 디퍼 OS에서 <span style="font-family:'DM Mono',monospace;color:#E2C77B">백업 연결</span> 이라고 하면, 방금 만든 계정으로 <b style="color:#fff">일회용 코드 로그인</b> 한 번 하고 끝이에요.<br><br>👉 다음 단계: <a href="https://clbookslower.github.io/deeper-salon/os/deeper_os_install_guide.html">디퍼 OS 세팅 가이드</a></p>
+  </div>
+
+  <div class="foot">막히면 그 화면 캡처 한 장 주세요 — 같이 봐요.<br>DEEPER 언브랜딩 살롱 · 디퍼 OS</div>
+</div>
+</body>
+</html>

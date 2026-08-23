@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 OS, 기술적으로 — 에이전틱 엔지니어링</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="디퍼 OS, 기술적으로 — 에이전틱 엔지니어링">
+<meta property="og:description" content="Claude Code 플러그인으로 구현된 에이전틱 시스템: 로컬 마크다운 볼트·스킬·커맨드·git. 프롬프트·컨텍스트 엔지니어링 위의 계층.">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/og.png">
+<style>
+:root{
+  --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22;
+  --green-mid:#025D3C; --green-soft:#7DA890;
+  --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF; --rule-strong:#C4BCA9;
+  --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+  --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+  --serif:"Noto Serif KR","Nanum Myeongjo","바탕",Batang,serif;
+  --sans:"Noto Sans KR","맑은 고딕","Malgun Gothic",sans-serif;
+  --mono:"JetBrains Mono","D2Coding","Consolas","Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:17px;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:740px;margin:0 auto;padding:0 22px}
+.topbar{max-width:740px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
+.topbar .logo{height:22px;opacity:.9}
+.topbar .doclabel{font-size:12.5px;letter-spacing:.05em;color:var(--ink-mute);text-transform:uppercase}
+
+.hero{position:relative;background:radial-gradient(120% 140% at 50% 0%,var(--green-deepest) 0%,var(--green-deep) 44%,var(--green) 74%,var(--paper) 100%);padding:62px 22px 78px;text-align:center;overflow:hidden}
+.hero .motif{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:300px;max-width:66%;height:80px;pointer-events:none;opacity:.42}
+.hero-inner{position:relative;max-width:620px;margin:0 auto}
+.hero .logo-w{height:26px;margin-bottom:28px;opacity:.95}
+.hero .eyebrow{color:var(--green-soft);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:700;color:#F7F4EC;font-size:32px;line-height:1.4;letter-spacing:.01em;margin-bottom:16px}
+.hero p{color:rgba(244,241,232,.84);font-size:15.5px;line-height:1.8;max-width:480px;margin:0 auto}
+.clayline{height:1px;background:var(--clay);opacity:.7;max-width:740px;margin:0 auto}
+
+main{padding:56px 0 40px}
+.para{color:var(--ink-soft);margin:18px 0}
+.lead{font-family:var(--serif);font-size:20px;line-height:1.7;color:var(--ink);margin:0 0 22px}
+b,strong{color:var(--ink);font-weight:700}
+code{font-family:var(--mono);font-size:.86em;background:var(--surface);padding:1px 6px;border-radius:4px;color:var(--green-deep)}
+
+.defbox{background:#FAF6EE;border:1px solid var(--rule);border-left:3px solid var(--clay);border-radius:0 12px 12px 0;padding:20px 24px;margin:8px 0 8px}
+.defbox p{color:var(--ink);font-size:16px;line-height:1.85;margin:0}
+.defbox code{font-size:13px}
+
+.sechead{display:flex;align-items:baseline;gap:12px;border-top:1px solid var(--rule-strong);padding-top:20px;margin:54px 0 20px}
+.sechead .bar{width:30px;height:4px;background:var(--clay);border-radius:4px;flex:none;position:relative;top:-4px}
+.sechead h2{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);line-height:1.32}
+
+/* 엔지니어링 계층 사다리 */
+.ladder{display:flex;flex-direction:column-reverse;gap:10px;margin:26px 0 8px}
+.rung{border:1px solid var(--rule-strong);border-radius:12px;padding:16px 18px;background:#fff;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.rung .tier{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink)}
+.rung .unit{font-family:var(--mono);font-size:11.5px;color:var(--clay-deep);text-align:right;white-space:nowrap}
+.rung .desc{grid-column:1 / -1;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+.rung.ours{border-color:var(--clay-soft);background:#FCF7F2}
+.rung.ours .tier{color:var(--clay-deep)}
+
+/* 아키텍처 스택 */
+.arch{display:flex;flex-direction:column;gap:10px;margin:26px 0 8px}
+.arch .layer{border:1px solid var(--rule-strong);border-radius:12px;padding:16px 18px;background:#fff;display:grid;grid-template-columns:150px 1fr;gap:4px 16px;align-items:baseline}
+.arch .layer .name{font-weight:700;color:var(--ink);font-size:15.5px}
+.arch .layer .name .tag{display:block;font-family:var(--mono);font-size:11px;color:var(--clay-deep);font-weight:400;margin-top:3px;letter-spacing:.02em}
+.arch .layer .impl{color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+.arch .layer .impl code{font-size:12.5px}
+.archcap{font-size:14px;color:var(--ink-mute);text-align:center;margin:14px 8px 0;line-height:1.7}
+
+.flow{font-family:var(--mono);font-size:13.5px;color:var(--green-deep);background:var(--surface);border-radius:10px;padding:16px 18px;margin:20px 0;line-height:1.9;overflow-x:auto}
+.flow b{color:var(--clay-deep)}
+
+.dict{width:100%;border-collapse:collapse;margin:6px 0;font-size:15px}
+.dict th{text-align:left;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;padding:0 12px 10px;border-bottom:1px solid var(--rule-strong)}
+.dict td{padding:14px 12px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft);line-height:1.65}
+.dict td:first-child{white-space:nowrap}
+.dict .cmd{font-family:var(--sans);font-weight:700;color:var(--green-deep);background:#E7EFEA;border-radius:6px;padding:2px 9px;font-size:14px}
+.dict code{font-size:12.5px}
+
+.honest{background:#F3F6F1;border:1px solid #DFE7DF;border-left:3px solid var(--green-soft);border-radius:10px;padding:16px 20px;margin:22px 0;font-size:14.5px;color:var(--green-deep);line-height:1.72}
+.honest b{color:var(--green-deep)}
+
+.guards{margin:22px 0 8px}
+.guard{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--rule)}
+.guard:first-child{border-top:none}
+.guard .g{font-family:var(--mono);font-weight:700;color:var(--clay-deep);flex:none;width:150px;font-size:13.5px}
+.guard .d{color:var(--ink-soft);font-size:15px;line-height:1.65}
+
+.closing{font-size:16px;line-height:1.85;color:var(--ink-soft);margin:8px 0 0}
+.closing b{color:var(--ink)}
+
+.nextrow{display:flex;gap:12px;flex-wrap:wrap;margin:52px 0 8px}
+.nextrow a{flex:1 1 200px;text-decoration:none;background:#fff;border:1px solid var(--rule);border-radius:12px;padding:18px 20px;color:var(--ink);transition:border-color .15s}
+.nextrow a:hover{border-color:var(--clay)}
+.nextrow .k{font-size:13px;color:var(--clay-deep);letter-spacing:.03em;margin-bottom:6px}
+.nextrow .t{font-family:var(--serif);font-size:16px;line-height:1.4}
+
+footer{border-top:1px solid var(--rule);margin-top:40px;padding:30px 22px 48px;text-align:center}
+footer .fmark{font-family:var(--serif);font-size:14px;color:var(--ink-mute);letter-spacing:.04em}
+footer .fnum{font-size:12px;color:var(--rule-strong);margin-top:8px;letter-spacing:.05em}
+
+@media(max-width:560px){
+  body{font-size:16px}.hero h1{font-size:26px}.sechead h2{font-size:19px}
+  .arch .layer{grid-template-columns:1fr}
+  .dict td:first-child{white-space:normal}
+  .guard{flex-direction:column;gap:4px}.guard .g{width:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADQCAYAAAB2gbhdAAAQbElEQVR4nO3da2wUVR/H8f9pC2I0MahAEOq2BbyAEYECLwgmXopGBYmaCrwgIaRcowGhpSjGBMS0pQjxQkCIQQ1RrIJKRaCVaEKi5SKVeIsUSikhBBRjYoAWuud58aSEhwdkd+bMnDM730+y73pm/j07+9v/mdmdVVprAYA4yrJdAADYQgACiC0CEEBsEYAAYosABBBbBCCA2CIAAcQWAQggtghAALFFAAKILQIQQGwRgABiiwAEEFs5XgcqpbiNDBBxS5Yskdtuu01yc3Pl1ltvlSFDhijbNYVJeb0dFgEIZL7NmzfLyJEjpXfv3hkZjAQggJTt2LFDioqKMiYMOQcIIGVjxowRpZRWSuktW7ZEvgkiAAF4Mm7cOFFK6UWLFuk//vgjkmHIEhiAMT/99JMMGjQoMktkAhCAcb/88ovcfffdzgchS2AAxg0cOFBeeukl55skOkAAgXrvvfdk8uTJTnaDBCCAUBw7dkz69OnjVBCyBAYQir59+0pNTY1TjRMdIIDQaa2d6ATpAAGETimljx49ar2JIgABWJFIJGTXrl1WQ5AABGDN6NGjrZ4XJAABWFVcXCzr16+3EoIEIADrpkyZYiUEuQoMwBkbNmyQSZMmhXaFmAAE4JQtW7bIE088EUoIEoAAnNPQ0CAjRowIPAQJQABOCuPD0lwEAeCkMJosAhCAs1599dVAQ5AlMACnffvtt3L//fcHshwmAAE4L6jzgSyBATgvqIaLAAQQCd98843xEGQJDCAyTC+Fc1wpBEC4Dh48qP/8809pbW2V4uJi2+WkZO3atbqkpMRY9njuAAFkniNHjujvv/9eJk6caLuUqzLZfHEOEMBFeXl5asKECUprrRobG22Xc0XLli0z1rXRAQL4VwcOHNCDBw+2Xcb/MNUF0gEC+Ff33nuv0lqr2tpa26VctGLFCiOdGx0ggJS1tLTovLw822WIiJkukA4QQMoSiYTSWqulS5faLkW++OIL390bHSAAT1atWqVnz55ttQa/XSAdIABPZs2apd5++22rNZw8edJXB0cAAvBs1qxZqqKiwtr+N23a5Gs8S2AAvtn8aqyfZTAdIADfmpubbZfgCQEIwLe8vDz1ySefWNn3hx9+6Ln7ZAkMwBhbS2Gvy2A6QADGuPr94auhAwRglI0u8OTJk9KjR4+0u0A6QABG7d27N/R9fvfdd57GEYAAjBo2bFjoN0v2ehWaJTAA49avX6+nTJkS6j69XAihAwRg3KhRo2yXkBI6QACBCPtiCB0gAGeUl5fbLuGaCEAAgbjrrrtC3d/x48fT7jgJQACBCPvO0adOnUp7DAEIIBC5ubmh7u/06dNpjyEAAQTihhtuCHV/Z8+eTXsMAQggEL169Qr1A9FnzpxJewwBCCAjePlIHwEIICPk5OSkPYYABBCI1tbWUD8I7eWcIwEIIBB///13qPu76aab0h5DAAIIxNGjR0PdX/fu3dMeQwACCMSBAwdC3d8dd9yR9lVnboYAIBDcDAEAHEYAAjCurq4uEktLAhCAcbt27Qp1f15vvUUAAjBu8eLFoe7P6623CEAARn3wwQehL38LCws9jeMqMACjbPwusJcrwCJ0gAAMstH9+UEAAjDixIkTevLkyaHvt7Ky0vNYAhCAEb1797ay36KiIs9jCUAAvtXU1Fhb+g4ZMsTzjVe5CALAl927d+uRI0da27/XCyAidIAAfDh48KDV8Nu5c6ev8XSAADw5dOiQ7t+/v9Ua/HR/InSAADxobGy0Hn6vvPKK723QAQJIy86dO/VDDz1kuww5duyY9OnThw4QQDhWrFjhRPiJiO/wExFJ/2eUAMTOrl279OjRo22XcVFDQ4OR7bAEBnBV+/bt015vNBAkvxc/OrEEBvB/tm/frpVSToafyXsN0gECkKamJv3rr7/KuHHjbJdyTaa6PxEf5wDfeust3Rme2dnZ0tHRIdnZ2ZJMJk3VBiAA7e3t0t7eLgsXLrRdStp+++03o9vz3AHauOcXgPhatGiRLFmyxFj3J0IAAogIk0vfTlwEAeC8rVu3BrJdOkAAzgui+xOhAwTguKDCT4QABOAw01d9L0cAAnDShg0b5M477wys+xMhAAE4qLy8XCZNmhRo+IlwEQSAg4I873cpOkAATgkr/EQIQAAOCTP8RAhAAI4IO/xECEAADrARfiIEIADLbIWfCAEIwJLKykqr4SfCb4IAsOCzzz6TJ5980mr4iRCAAEL2+++/y4ABA6yHnwhLYAAhWbx4sWitlSvhJ0IHCCAEu3fvluHDhzsTfJ3oAAEEpvNCh4vhJ0IHCCAgJ0+elB49ejgZfJ3oAAEY9fPPP4vWWrkefiJ0gAAMOXTokBQUFDgfepeiAwTg2YYNG0RrrbTWKmrhJ0IHCCBNK1eulLFjx0au27sSAhDANW3evFnGjx8f+cC7HAEI4KKXX35ZEomEFBYWyuDBgzMu8C7nOQBbW1ulra1NlFKitZasrCzRWotSGT9nQGTl5+erEydO6KysLOnZs2fsX6yefxMEAKKOq8AAYosABBBbBCCA2CIAAcQWAQggtghAALFFAAKILQIQQGwRgABiiwAEEFsEIIDYIgABxBYBCCC2CEAAsUUAAogtAhBAbBGAAGKLAAQQWwQggNgiAAHEFgEIILYIQACxRQACiC0CEEB8aa19PaqqqrSIhPKorKzU27Zt035rTuXx1VdfhfZ/XetRXV2d8v+8Y8cO6/V2PqqqqlKue/ny5aHUtHLlSr1161ajx1B9fb31ufZyrIT12q2qqtJ1dXWhvG7TfUSqA1ywYIE8+uijopTSSin95ptv6qD2lZ2dHdSm09bR0ZHy32od2JQE6sKFC6HsZ86cOfLYY49dPIY+//xz3xN2/vx5E6UZkUwmA/lbP8rKyqSoqOjinH/00UfOHKSRCsDLPf/88xcn9fDhw85Mqmk5OTkp/61SKsBKgpPO/2jS+PHjRSml161b5/n4cenNMp3n31bdEydOFKWUXrNmjfXXbKQD8FL9+vUTpZSxCXUpSNLpMOgAvSkpKRGllN63b1/aE5iVFc2Xke3gnjFjhuc5N8X3M+fak6+U0hs3bvQ9obZfkJdK50B1KbjTOTZcqbuwsFDefffdtI4fl14D6bwBunKMFxYWip8O3A/fz5yLHceECROkurraV2HXXXedqXJ8S+ccoCtBIpLeseHScTR16lRZtWpVygW5EiQi6c2jS8FdUlIiq1evDv0gcGcGDCstLfW1JHbpoE7nQHUpSNra2lL+W5eCW0Rk9uzZUlNT485kpiideQzrIkiqZs6cKZs2bQp1zjM2ADstXLgwcgfx5VwLh1R169bNdgm+FBcXy6lTpyJ1/Ni6mGTK008/Her+Mj4AKyoqxIWrTX64tFRJh2sdhhc9e/a0XUJaXPpIjlcmL2ZeSzRfWWmaMWOGHDlyJLIhmM5S0iWZEIAiIi0tLZE5dqK6WrjcwYMHQ5nzWASgiEh+fr7tEjzr27ev7RI86d69u+0SjMjLy7NdQspuvvlm2yUY8eWXX4ayH6snDLZv3y5aa+nSpYskk0nJzs6WtrY2uf766+XcuXNy4MABKSsrM7a/+vp6/fDDDwf+Fqm1juTbcKbVffjwYd3Y2Bj6eaV0ZNqct7S06B9++EGeeuopX9ufO3euzJkzx9c2UmE1AMeMGfOvT/4jjzwipaWl0tzcrAsKCnzvr6ioyKmrpAhWQUGBKigoEK21rF27Vk+bNs3ztpqamnT//v0jGVZhSiQSKpFIiNZa3nnnHT19+nTP2zp16pTu0aNHoHMeiSVwfn6+0lqrHTt2+N5WlM7nwJySkhJVXV3tefzhw4cNVhMP06ZN8xVejY2Nhiq5ukgEYKeioiLld1I+/fRTM8Ugch544AHPY8N4MWaiffv2eR7b3NxssJIri1QAiogMHjzY1zv5vHnzDFaDKBk6dKjnjqRLly4mS4kNP3P+119/mSzliiIXgCIi8+bNc/pcTOcdavw+qNsdZ8+eDWS7zLldkQxAEZGFCxd6Htvc3MwBE0N+Pgsa9W+12HL06FHPc37LLbeYLOWKIhuAQ4cO9TyWE9rxtHHjRs9jBw0aZLCS+Ni2bZvnsbm5uQYrubLIBuAzzzzjeRl8/Phxk6UgAmpra3V5ebnn8QMHDjRYTTzs2bPH18dgwpjzyAagH6dPn7ZdAkKybds2rZTSY8eO9bWd3Nxcp887u2bdunV6xIgRvrYRxpxH+9YRHgV1Qht2cBEgfJky57HsAKN+yyCEq6WlxXYJsfP111+Hsp9YBmAikbBdAiLk9ttvZ/kbsgcffDCUOY9sAG7evNlzC37jjTeaLAUZ7MiRI7ZLiJ29e/eGtq/IBqCfu03cc889BitBplq3bp0kEgm6vxBVVlbKsGHDQpvzSJ4M83ub8qCvLlVXV1/85flkMildu3aVc+fOSXZ29jVvWKmUkpycHDlz5kyQJV5RVVWV721kyt12KioqZOrUqYG/ECsrK0Xkv/OWnZ2d0vwlk0nJycmRjo4O6ejosP7zliaVlZWF+oYTyQB8//33bZfwr1z/qt7VlJaWRrJu01avXi3Tp08PZS7CfsG7zMa9ESO3BP7xxx/1/PnzPY830eUgc9XX14cWfvivjz/+2NqNYSPVAdbV1ekxY8b42sazzz5rqBpkkqVLl8qLL75I8IXM9h2xIxGATU1NesCAAUa2xUcacKlVq1bJzJkzOSYsaW5u1vn5+dbm32oA1tfXa621KKWkvb1dunXrJslkUtrb26Vr167S0NAgixYtMra/2tpaY9tCNFVVVUm/fv1k1KhR0qtXL4LPss6fLLDFagAWFRWFur/HH388lAM+iK8JNTQ0yIgRIwKtP4i69+7dG/jHGmwvo/wIYs53794tw4cPD3XO/fwf1dXVev78+Vaew8hdBPGqtbXVdgm+RPUGDlGtO8r++eef0Pfp59b3paWlvu4b6EcsAvCNN96Qvn37RrZLEJGM+qwXgtXe3h76PocOHaqWLVvmebytr6fGIgCfe+65SIefiEhWVjSfqqjWHWW23iz9LmOXLVsWeheY8UdnlM8PXerChQu2S/AkU74ZgtTs37/f89iysjJpamoK9YDJ2ACsqKjImPATkWt+hc5VbW1ttkuIHZtvOvfdd596/fXXPY839XG3VPkOwGQyaaIOo2pqamTBggW+EsO1c25RXUrG4ceEXHwNpCKoY2ru3Lm+XnsrVqwILcF9z4BrSxyttfLzeyGdOjo6TJRjTFQ7qVSPD9eOo3S4VnuqgXz+/PnAatizZ4/nsS+88EJov9wYzbbiClpbW40ueV1bcnbt2tV2CZ6k+kbi2nynw7UfTXehnsLCQlVdXe15fEFBgcFqrs53ANo8cNesWSNaa6W1VqY/5uLaRYeoLoFTrdu1Uw7pCLKT8iLVeoIOSr93RVq+fHngXWCkAvC1116Turq6i6E3bdq0wHbuWuCk2km5thyLcmeXKtd+YybVJXAYnxfcunWr57Hz58+X/fv3B3pAK9deMAAQFrfaHAAIEQEIILYIQACxRQACiC0CEEBsEYAAYosABBBbBCCA2CIAAcQWAQggtghAALFFAAKILQIQQGwRgABi6z/ij8CvDPxOZQAAAABJRU5ErkJggg==" alt="DEEPER">
+  <span class="doclabel">에이전틱 엔지니어링 · 문서 3</span>
+</div>
+
+<header class="hero">
+  <svg class="motif" viewBox="0 0 300 80" aria-hidden="true">
+    <rect x="90" y="8"  width="120" height="12" rx="3" fill="rgba(244,241,232,.5)"/>
+    <rect x="65" y="30" width="170" height="12" rx="3" fill="rgba(244,241,232,.4)"/>
+    <rect x="40" y="52" width="220" height="12" rx="3" fill="rgba(244,241,232,.3)"/>
+  </svg>
+  <div class="hero-inner">
+    <img class="logo-w" src="data:image/png;base64,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" alt="DEEPER">
+    <div class="eyebrow">프로젝트 B-612 · 기술 문서</div>
+    <h1>에이전틱 엔지니어링</h1>
+    <p>디퍼 OS가 기술적으로 무엇인지 짚습니다. 프롬프트·컨텍스트 엔지니어링 위에서, 에이전트가 로컬 볼트를 대상으로 도구를 써 스스로 동작하는 시스템입니다.</p>
+  </div>
+</header>
+<div class="clayline"></div>
+
+<main>
+<div class="wrap">
+
+  <p class="lead">한 문장 정의부터.</p>
+  <div class="defbox">
+    <p>디퍼 OS는 <b>Claude Code용 플러그인</b>이다. 로컬 Obsidian 볼트(마크다운 파일 디렉터리)를 대상으로 동작하며, ⑴ 에이전트 행위를 정의한 <b>스킬</b> 묶음, ⑵ 세션마다 로드되는 영속 지시(<code>CLAUDE.md</code>)와 디렉터리 규약, ⑶ 자연어 <b>커맨드</b> 인터페이스, ⑷ <b>git</b> 기반 버전관리를 하나로 묶은 <b>에이전틱 시스템</b>이다.</p>
+  </div>
+  <p class="para">이 문서는 그 시스템의 구조를 다룬다. 커맨드 이름의 뜻·배경(안녕·오아시스·밤하늘 등 명명의 이유)은 <b>문서 1(디퍼의 언어)</b>에 있고, 여기서는 각 커맨드가 <b>기술적으로 무엇을 실행하는지</b>만 본다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>엔지니어링 계층</h2></div>
+  <p class="para">LLM을 다루는 방식은 네 계층으로 나뉜다. 각 계층은 <b>무엇을 엔지니어링하는가</b>가 다르다.</p>
+  <div class="ladder">
+    <div class="rung"><div class="tier">프롬프트 엔지니어링</div><div class="unit">단위 · 단일 입력</div>
+      <div class="desc">한 번의 입력을 다듬어 출력을 최적화한다. 무상태(stateless).</div></div>
+    <div class="rung"><div class="tier">컨텍스트 엔지니어링</div><div class="unit">단위 · 컨텍스트 윈도</div>
+      <div class="desc">모델이 참조하는 컨텍스트를 구성한다 — 문서·기억·검색 결과·시스템 지시의 조립. 무엇을 넣느냐가 대상.</div></div>
+    <div class="rung"><div class="tier">루프 엔지니어링</div><div class="unit">단위 · 정해진 다단계 흐름</div>
+      <div class="desc"><b>워크플로.</b> 여러 호출을 <b>개발자가 미리 짠 경로</b>로 엮는다 — 체이닝·라우팅·병렬화·평가-개선. 제어 흐름이 코드에 고정.</div></div>
+    <div class="rung ours"><div class="tier">에이전틱 엔지니어링</div><div class="unit">단위 · 모델이 여는 루프 + 상태</div>
+      <div class="desc"><b>에이전트.</b> 모델이 스스로 도구(파일 read/write·셸·git)와 다음 행위·종료를 결정한다 — 관찰 → 계획 → 행위 → 관찰. 흐름이 코드가 아니라 모델에서 나온다. 영속 상태·오케스트레이션까지 설계 대상. <b>디퍼 OS가 서 있는 계층.</b></div></div>
+  </div>
+  <p class="para">셋째와 넷째의 차이는 <b>누가 흐름을 정하느냐</b>다 — 루프(워크플로)는 개발자가, 에이전틱(에이전트)은 모델이 정한다. 디퍼 OS는 <b>네 번째 계층</b>의 제품화된 시스템이다. Claude Code의 에이전트 런타임 위에, 방법론을 스킬로 인코딩하고 영속 상태(볼트)·버전관리(git)·자연어 인터페이스를 얹었다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>아키텍처 — 세 계층</h2></div>
+  <div class="arch">
+    <div class="layer">
+      <div class="name">인터페이스<span class="tag">interface</span></div>
+      <div class="impl">자연어 <b>커맨드</b>. 각 커맨드는 특정 스킬 호출로 매핑되는 alias다(<code>안녕</code>·<code>정리</code>·<code>백업</code> …).</div>
+    </div>
+    <div class="layer">
+      <div class="name">에이전트 런타임<span class="tag">runtime</span></div>
+      <div class="impl">Claude Code + 플러그인 <b>스킬</b>(각 <code>SKILL.md</code>에 명세된 절차)과 <code>CLAUDE.md</code>(영속 지시). 도구 = 파일 read/write · 셸 · git. 여기서 에이전틱 루프가 돈다.</div>
+    </div>
+    <div class="layer">
+      <div class="name">데이터<span class="tag">store</span></div>
+      <div class="impl">로컬 <b>Obsidian 볼트</b> = 평문 <code>.md</code> 파일 디렉터리(<code>[[wikilink]]</code> 그래프). 영속·이력·백업은 <b>git</b>(private remote).</div>
+    </div>
+  </div>
+  <p class="archcap">위에서 아래로: 커맨드가 스킬을 부르고, 스킬이 볼트 파일을 읽고 쓰고, git이 이력을 남긴다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>실행 모델 — 에이전틱 루프</h2></div>
+  <p class="para">커맨드 하나는 단발 응답이 아니라, 에이전트가 도구를 써서 도는 다단계 루프를 트리거한다.</p>
+  <div class="flow"><b>관찰</b> 작업 디렉터리 파일 read → <b>계획</b> 다음 행위 결정 → <b>행위</b> 파일 write · 셸 · git 실행 → <b>관찰</b> 결과 확인 → 반복 → 종료</div>
+  <div class="honest"><b>정확히.</b> 컨텍스트는 <b>파일 직접 접근</b>으로 채운다 — 임베딩 벡터 검색(RAG)이 아니다. 에이전트가 작업 디렉터리의 <code>.md</code>를 read/write 하고, <code>CLAUDE.md</code>가 세션마다 지시로 로드된다. 세션 간 상태는 모델 가중치가 아니라 <b>파일에 영속</b>한다(예: 여정 진행은 <code>_여정기록.md</code>에 기록·복원).</div>
+
+  <div class="sechead"><span class="bar"></span><h2>커맨드 → 실행 동작</h2></div>
+  <p class="para">각 커맨드가 트리거하는 스킬과 실제 파일/시스템 연산이다.</p>
+  <table class="dict">
+    <thead><tr><th>커맨드</th><th>트리거되는 동작</th></tr></thead>
+    <tbody>
+      <tr><td><span class="cmd">안녕</span></td><td>journey 스킬. 데일리노트 템플릿 인스턴스화 + <code>_여정기록.md</code>에서 진행 상태 로드·다음 스텝 제시.</td></tr>
+      <tr><td><span class="cmd">오아시스</span></td><td>oasis 스킬. 상태 추적된 인덱스에 해당하는 질문 1건 출력(상태는 파일에 기록).</td></tr>
+      <tr><td><span class="cmd">정리</span></td><td>당일 노트 파싱 → 원자 노트(‘씨앗’) 추출 → <code>01-Grammar/Insights</code>에 구조화 저장.</td></tr>
+      <tr><td><span class="cmd">백업</span></td><td>git <code>add</code> · <code>commit</code> · private remote <code>push</code>. 시점 스냅샷·롤백 지점 생성.</td></tr>
+      <tr><td><span class="cmd">냠냠</span></td><td>이미지(손글씨)·붙여넣은 텍스트 전사 → 데일리노트에 인입 + 원자 노트 추출.</td></tr>
+      <tr><td><span class="cmd">밤하늘</span></td><td>nightsky 스킬. 한 주 노트 집계 → 정적 대시보드 HTML 1건 생성.</td></tr>
+      <tr><td><span class="cmd">사막출발</span> · <span class="cmd">사막도착</span></td><td>볼트 + 설정 패키징/복원. git 기반으로 다른 기기에 이식.</td></tr>
+      <tr><td><span class="cmd">새옷</span></td><td>플러그인 업데이트: <code>/plugin marketplace update</code> → <code>/reload-plugins</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sechead"><span class="bar"></span><h2>데이터 모델</h2></div>
+  <table class="dict">
+    <thead><tr><th>객체</th><th>구현</th></tr></thead>
+    <tbody>
+      <tr><td>씨앗(seed)</td><td>원자 노트 — 자족적인 한 문장 주장. 날짜 메타 포함 마크다운. 지식 베이스의 최소 단위(atomic note).</td></tr>
+      <tr><td>볼트(vault)</td><td><code>.md</code> 파일 디렉터리. <code>[[wikilink]]</code>로 문서 그래프(위키). 평문·로컬·벤더 락인 없음.</td></tr>
+      <tr><td>이력(history)</td><td>git 커밋 그래프. private remote 백업, 임의 시점 <code>checkout</code>/롤백.</td></tr>
+    </tbody>
+  </table>
+  <p class="para">전체가 <b>로컬 우선(local-first)</b>이고 <b>평문</b>이라, 감사(audit)·이식·외부 도구 연동이 가능하다. 특정 SaaS에 잠기지 않는다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>언어모델 위키 — 인덱싱과 검증</h2></div>
+  <p class="para">이 데이터 모델의 다른 이름이 <b>언어모델 위키(WikiLLM)</b>다. Obsidian이 <b>기능</b>(마크다운·<code>[[wikilink]]</code> 그래프·백링크·로컬 저장)을 제공하고, 디퍼 OS가 그 위에 <b>방법론</b>(스킬·의미 발견 절차)을 얹는다. 결과는 LLM이 직접 읽고 쓰고 색인하는 개인 위키다.</p>
+  <p class="para"><b>인덱싱.</b> <code>[[wikilink]]</code> 그래프는 손으로 쌓는 지식 그래프 인덱스다. 여기에 씨앗(날짜·태그 메타를 가진 원자 노트)·폴더 규약, 그리고 중심 앵커인 <b>의미의 축</b>이 더해진다. 에이전트는 코퍼스를 매번 재처리하지 않고 <b>이 구조 자체를 인덱스로 순회</b>해 필요한 컨텍스트를 찾는다 — 임베딩 재색인 없이 grep·백링크·경로 탐색으로. 인덱스가 커져도 전체를 다시 읽지 않고 필요한 곳만 짚어 내고, 축적된 지식의 가치는 복리로 는다.</p>
+  <p class="para"><b>검증.</b> 각 씨앗은 자족적인 한 문장이라 <b>독립적으로 검증</b>된다. git 커밋 그래프는 모든 변경을 <b>감사·롤백</b> 가능하게 하고(이력 검증), 무엇을 남길지는 사람이 승인한다(무손실·원문 그대로 = 내용 검증). 그래서 쌓이는 것이 소음이 아니라 <b>검증된 자산</b>이 된다.</p>
+  <div class="flow"><b>원천</b>(원문·기록) → <b>씨앗</b>(원자화 · 인덱싱) → <b>의미의 축</b>(정렬 기준) → <b>콘텐츠</b>(발행)</div>
+  <p class="para">각 단계가 다음 단계를 싸게 만든다 — 인덱싱된 씨앗 위에서 의미를 발견하고, 정렬된 의미 위에서 콘텐츠를 짓는다. 매 세션 자기를 다시 설명해야 하는 무상태 챗봇과 비교하면, 이 파이프라인의 이득은 <b>선형 입력 · 복리 출력</b>이다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>시스템 제약 — 철학의 인코딩</h2></div>
+  <p class="para">이 제약들은 단순한 안전장치가 아니라 <b>디퍼 철학을 반영</b>한 것이다. 시스템 프롬프트에 사막여우의 문체(목소리)를 입히고, 트리비움과 빅터 프랭클의 로고테라피 등 디퍼 철학의 근간이 되는 여러 철학을 학습시켰다. 그 철학이 다음 제약으로 나타난다.</p>
+  <div class="guards">
+    <div class="guard"><div class="g">인간이 통제한다</div><div class="d">되돌리기 어려운 행위는 승인 후 실행하고, 모든 변경은 git으로 롤백된다.</div></div>
+    <div class="guard"><div class="g">데이터는 내 것</div><div class="d">볼트 안에서만 동작하고 로컬·비공개다. 밖으로 나가는 건 ‘발행’한 것뿐.</div></div>
+    <div class="guard"><div class="g">원문 그대로</div><div class="d">무손실로 기록하고, 무엇을 남길지는 사람이 고른다.</div></div>
+    <div class="guard"><div class="g">보장보다 발견</div><div class="d">과약속·환각을 억제하고, 스스로 찾도록 묻는다.</div></div>
+  </div>
+
+  <div class="sechead"><span class="bar"></span><h2>구축 비용 — 왜 플러그인으로 배포하는가</h2></div>
+  <p class="para">이 시스템을 직접 구현하려면 다음이 필요하다: 일관된 스킬 프롬프트 설계·검증, 컨텍스트 규약(파일 구조·<code>CLAUDE.md</code>·노트 포맷) 확립, git 백업·인증 흐름 자동화, 세션 간 상태 관리, 원클릭 설치 패키징. 에이전트·프롬프트·지식관리에 걸친 통합으로, 수 주에서 수개월 규모다.</p>
+  <p class="para">디퍼 OS는 이를 <code>/plugin install</code> 한 줄로 배포한다. 그리고 <b>평문 마크다운 · 공개 git 저장소 · 표준 Claude Code 플러그인 포맷</b>이라 블랙박스가 아니다 — 스킬 명세를 열어 보고, fork 하고, 확장할 수 있다.</p>
+  <div class="sechead"><span class="bar"></span><h2>인코딩된 방법론</h2></div>
+  <p class="para">공개된 것은 <b>골격</b>(파일 포맷·플러그인 구조)이다. 그러나 이 시스템의 값은 골격이 아니라 <b>인코딩된 방법론</b>에 있다 — 트리비움 30일 여정, 원천을 끌어내는 로고테라피식 질문, 일관된 사막여우의 목소리, 가치에 접지된 가드레일. 코드가 아니라 <b>교육학과 철학을 프롬프트로 인코딩</b>한 층이라, 골격을 짜는 것보다 이 층을 세우는 데 훨씬 오래 걸렸다.</p>
+  <p class="para"><code>/plugin install</code>로 받는 것은 파일 저장소가 아니라 <b>수개월의 설계가 담긴 방법론</b>이다. 저장소를 열어 둔 것도 그래서다 — 검증하고 확장하도록 열되, 값은 파일이 아니라 그 설계의 깊이에 있다. 그 방법론이 빈 세컨브레인을 하나의 방향, <b>퍼스널 브랜딩</b>으로 정렬한다.</p>
+
+  <div class="sechead"><span class="bar"></span><h2>결론 — 무엇을 위한 시스템인가</h2></div>
+  <p class="para">지금까지의 것 — 네 계층의 에이전틱 시스템, 인덱싱·검증되는 언어모델 위키 — 은 하나의 <b>세컨브레인</b>을 이룬다. 나를 기억하고, 내가 쌓은 것을 구조로 다루는 두 번째 뇌다.</p>
+  <p class="para">그러나 세컨브레인 자체는 빈 그릇이다. 디퍼 OS는 그 위에 <b>방법론(철학)을 얹는다</b> — 트리비움으로 원천을 발굴하고, 의미의 축을 세우고, 오직 나만의 목소리를 벼린다. 그 방법론이 인덱싱·검증된 지식을 한 방향으로 정렬한다.</p>
+  <div class="defbox">
+    <p>그래서 디퍼 OS는 <b>디퍼 철학을 얹어 퍼스널 브랜딩이 가능한 세컨브레인 시스템</b>이다. 자기 원천에서 나온, 검증된, 복리로 쌓이는 지식이 곧 남과 구별되는 자기 브랜드가 된다 — 원천 → 씨앗 → 의미의 축 → 콘텐츠, 그 파이프라인의 끝에서.</p>
+  </div>
+
+  <div class="nextrow">
+    <a href="deeper_journey_rhythm.html"><div class="k">다음</div><div class="t">한 달, 그리고 그다음 →</div></a>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="fmark">DEEPER · 프로젝트 B-612</div>
+  <div class="fnum">에이전틱 엔지니어링 · 문서 3</div>
+</footer>
+
+</body>
+</html>

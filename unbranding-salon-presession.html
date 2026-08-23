@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마침내, 이 자리에 — 언브랜딩 살롱 프리세션</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #111; font-size: 16px; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+.page { max-width: 720px; margin: 0 auto; padding: 72px 24px 100px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #aaa; margin-bottom: 48px; }
+.breadcrumb a { color: #aaa; text-decoration: none; }
+.breadcrumb .sep { opacity: 0.4; }
+.article-header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid #f0f0f0; }
+.meta { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.badge { font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 12px; border-radius: 100px; letter-spacing: 0.06em; }
+.badge-guide { background: #FAEEDA; color: #854F0B; }
+.badge-article { background: #E6F1FB; color: #185FA5; }
+.badge-salon { background: #EAF3DE; color: #3B6D11; }
+.dot { color: #ddd; font-size: 12px; }
+.meta-text { font-size: 12px; color: #999; font-family: 'DM Mono', monospace; }
+h1 { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 400; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 14px; }
+.subtitle { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; color: #777; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 12px; padding: 3px 12px; border-radius: 100px; background: #f5f5f5; color: #888; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.step { display: flex; gap: 24px; margin-bottom: 52px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: #2C3B2D; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 6px; }
+.step-body { flex: 1; }
+.step-title { font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 400; margin-bottom: 16px; line-height: 1.4; letter-spacing: -0.01em; }
+.step-body p { color: #444; margin-bottom: 14px; font-size: 15px; line-height: 1.95; }
+.callout { background: #f9f9f9; border-left: 2.5px solid #111; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+.callout-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+.callout p { font-size: 14px; color: #333; line-height: 1.8; margin: 0; }
+blockquote { margin: 28px 0; padding: 0 0 0 24px; border-left: 1.5px solid #ddd; }
+blockquote p { font-family: 'Noto Serif KR', serif; font-size: 17px; font-style: italic; color: #333; line-height: 1.8; margin-bottom: 8px; }
+blockquote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; font-style: normal; letter-spacing: 0.06em; }
+.haiku { text-align: center; padding: 32px 24px; margin: 28px 0; background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; }
+.haiku p { font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 300; color: #222; line-height: 2.2; margin: 0; }
+.haiku cite { display: block; margin-top: 16px; font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.08em; }
+.concept { display: flex; border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; margin: 24px 0; }
+.concept-term { background: #111; color: #fff; padding: 20px 22px; display: flex; align-items: center; justify-content: center; min-width: 120px; }
+.concept-term span { font-family: 'Noto Serif KR', serif; font-size: 16px; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+.concept-def { padding: 20px 22px; flex: 1; }
+.concept-def .term-en { font-family: 'DM Mono', monospace; font-size: 11px; color: #aaa; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+.concept-def p { font-size: 14px; color: #444; line-height: 1.8; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+.col-card { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 20px 22px; }
+.col-card h3 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+.col-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.col-card ul li { font-size: 14px; color: #444; padding-left: 16px; position: relative; line-height: 1.6; }
+.col-card ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.cta-box { background: #2C3B2D; border-radius: 16px; padding: 40px; text-align: center; margin-top: 64px; }
+.cta-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #7a9c7b; margin-bottom: 16px; }
+.cta-text { font-family: 'Noto Serif KR', serif; color: #f0ece4; font-size: 20px; font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+.cta-sub { font-size: 13px; color: #7a9c7b; line-height: 1.7; }
+.footnote { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; letter-spacing: 0.06em; margin-top: 64px; padding-top: 24px; border-top: 1px solid #f5f5f5; }
+.footnote p { margin-bottom: 6px; color: #bbb; font-size: 11px; }
+p { color: #444; margin-bottom: 16px; }
+h2 { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 400; margin: 40px 0 16px; letter-spacing: -0.01em; }
+@media (max-width: 600px) { h1 { font-size: 26px; } .two-col { grid-template-columns: 1fr; } .concept { flex-direction: column; } .concept-term { writing-mode: horizontal-tb; min-width: auto; } .concept-term span { writing-mode: horizontal-tb; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 브레드크럼 -->
+  <nav class="breadcrumb">
+    <a href="#">DEEPER UNBRANDING SALON</a>
+    <span class="sep">/</span>
+    <span>12주 여정</span>
+    <span class="sep">/</span>
+    <span>프리세션</span>
+  </nav>
+
+  <!-- 아티클 헤더 -->
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-salon">SALON</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.04.30 THU</span>
+      <span class="dot">·</span>
+      <span class="meta-text">진행 퍼핀</span>
+    </div>
+    <h1>마침내, 이 자리에</h1>
+    <p class="subtitle">언브랜딩 살롱 12주 여정의 프리세션 — 오래 기다려온 것들과, 이제 버려야 할 것들에 대하여</p>
+    <div class="tags">
+      <span class="tag">언브랜딩</span>
+      <span class="tag">특이점</span>
+      <span class="tag">AI</span>
+      <span class="tag">모닝페이지</span>
+      <span class="tag">12주여정</span>
+      <span class="tag">씨앗심기</span>
+    </div>
+  </header>
+
+  <!-- 본문 도입 -->
+  <p>「마침내」는 오래 기다린 끝에야 쓸 수 있는 부사다. 이 살롱의 텍스트북 제목이 <em>마침내 특이점이 시작된다</em>인 것처럼, 오늘 이 자리에 모인 일곱 명 각자에게도 저마다의 '마침내'가 있었다. 일을 갖지 못한 채 자존감을 잃어간 시간, 이국의 도시에서 무기력에 잠겨 있던 날들, 오래 미뤄두었던 질문들을 꺼내지 못한 긴 침묵. 그 기다림 끝에 이 자리가 열렸다.</p>
+
+  <p>오늘 프리세션은 12주 동안 함께할 사람들이 처음으로 모인 날이다. 거창한 목표보다 먼저, 우리가 무엇을 기다려왔는지를 나누는 것으로 시작했다.</p>
+
+  <!-- 개념 박스 1: 특이점 -->
+  <div class="concept">
+    <div class="concept-term"><span>특이점</span></div>
+    <div class="concept-def">
+      <span class="term-en">SINGULARITY</span>
+      <p>물리학에서 특이점은 기존의 법칙이 더 이상 작동하지 않는 지점이다. 기술에서는 AI가 인간 지능을 넘어서는 순간을 가리킨다. 언브랜딩 살롱에서 '나의 특이점'이란 — 사회와 역할에서 빌려온 언어들이 더 이상 나에게 필요해지지 않는 순간, 내 존재 자체가 메시지가 되는 지점이다.</p>
+    </div>
+  </div>
+
+  <!-- 개념 박스 2: 언브랜딩 -->
+  <div class="concept">
+    <div class="concept-term"><span>언브랜딩</span></div>
+    <div class="concept-def">
+      <span class="term-en">UNBRANDING</span>
+      <p>나를 설명하기 위해 빌려온 단어들, 가정과 역할과 사회가 붙여준 모든 라벨을 해체하는 작업. 더하는 것이 아니라 버리는 것. 12주가 끝날 때 씨앗 하나가 남으면 충분하다.</p>
+    </div>
+  </div>
+
+  <!-- 12주 여정: 3단계 -->
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">5월 — 밭 갈기: 나를 뒤덮은 것들 버리기</div>
+      <p>5월의 키워드는 해체(解體)다. 나라는 사람을 설명할 때 쓰는 단어가 몇 개인가. 그 단어들 대부분은 내가 만든 게 아니라 어딘가에서 빌려온 것이다. 이 달은 그 빌린 단어들을 직면하는 시간이다.</p>
+      <p>끊임없이 스스로에게 물어야 할 질문은 하나다. <em>나를 만나기 위해, 나는 무엇을 버려야 하는가?</em> 버릴 때의 감각은 통증이다. 괴롭지 않으면 아직 버리지 않은 것이다. 그 고통을 함께 나누기 위해 이 공동체가 있다.</p>
+
+      <div class="callout">
+        <div class="callout-label">핵심 질문</div>
+        <p>나를 사로잡고 있던 그 어떤 것을 벗어던지면서 나다워질 때, 거기로는 다시 돌아갈 수 없다 — 그 불가능한 순간이 바로 특이점이다.</p>
+      </div>
+
+      <p>매일 실천: 손으로 쓰는 모닝 페이지 한 단락 이상. 매주 목요일 줌에서는 한 주 동안 내가 버린 것, 발견한 것을 5~10분 자유 형식으로 공유한다.</p>
+    </div>
+  </div>
+
+  <!-- 2단 비교: 기술의 특이점 vs 나의 특이점 -->
+  <div class="two-col">
+    <div class="col-card">
+      <h3>기술의 특이점</h3>
+      <ul>
+        <li>기존 법칙이 작동하지 않는 지점</li>
+        <li>AI가 인간 지능을 초월하는 순간</li>
+        <li>컴퓨팅 제약이 사라지면서 가능해진 것</li>
+        <li>2029~2030 튜링 테스트 통과 예상</li>
+        <li>뇌-컴퓨터 인터페이스, 건강 수명 연장</li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3>나의 특이점</h3>
+      <ul>
+        <li>빌려온 언어가 더 이상 필요 없어지는 순간</li>
+        <li>남의 기준으로 나를 측정하기를 멈추는 것</li>
+        <li>내 존재 자체가 메시지가 되는 지점</li>
+        <li>이전 상태로 돌아갈 수 없는 불가능한 순간</li>
+        <li>나를 증명할 필요가 사라지는 때</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">6월 — 논리 파트: 종자 고르기</div>
+      <p>버리고 나면 바닥이 보인다. 6월은 그 바닥에서 무엇을 심을지 고르는 달이다. 농부가 겨울을 보내며 가장 튼실한 씨앗을 고르는 것처럼, 해체한 것들 중에서 남길 단 하나의 종자를 벼린다.</p>
+      <p>어떤 거를 버리고 어떤 거를 심을까 — 이 고민이 끝나야 가장 단단한 종자가 보인다. 논리와 구조로 내 언어의 뿌리를 다지는 시간이다.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">7월 — 씨앗 심기: 내 언어로 말하기</div>
+      <p>12주가 끝날 때 목표는 하나다. 씨앗 한 개를 심는 것. 거대한 숲이 아니다. 내 언어로, 내 목소리로 말하는 씨앗 하나. 가장 나다우면서도 가장 영향력 있는 목소리를 찾아 세상에 내보내는 실험이다.</p>
+      <p>이 씨앗은 아이디어만 있다면 AI가 구현을 도울 수 있다. 기술은 내 안에 이미 있던 것을 더 빠르게 꺼내는 도구다.</p>
+    </div>
+  </div>
+
+  <!-- AI와의 관계 -->
+  <h2>AI와 어떻게 친구할 것인가</h2>
+
+  <p>이 살롱은 나를 해체하는 작업과 AI를 도구로 익히는 작업을 동시에 한다. 두 가지는 따로가 아니다. 나를 알아갈수록 AI에게 더 잘 위임할 수 있고, AI를 더 잘 다룰수록 내 아이디어가 더 빠르게 실현된다.</p>
+
+  <p>기계가 어떻게 학습하는지를 이해해야 기계를 감독할 수 있다. 신경망이 레이어 구조로 작동하는 것처럼, 우리가 AI에게 시키는 일도 층층이 설계된 워크플로우다. 지금 당장 자동화 전문가가 될 필요는 없다. 지금은 데이트 단계다 — 맛집도 가고 여행도 가듯, 클로드도 써보고 GPT도 써보고 제미나이도 써보면서 어떤 파트너인지 알아가는 시간이다.</p>
+
+  <div class="callout">
+    <div class="callout-label">실천 지침</div>
+    <p>기획은 챗GPT·제미나이로 완결하고, 클로드는 마지막 단계에서 집중 활용한다. 막연한 유행 프롬프트를 따라 하는 것보다, 기계의 로직을 이해하고 내 문제를 분해해서 위임하는 연습이 먼저다.</p>
+  </div>
+
+  <!-- 참여자들의 "마침내" -->
+  <h2>각자의 마침내</h2>
+
+  <blockquote>
+    <p>결혼 후 울산에서 부산으로 오면서 어디서도 안 받아줬어요. 계속 서류에서 떨어지고, 자존감이 많이 떨어졌죠. 그리고 심지어 아이를 낳고도 제 일을 하고 싶었어요. 드디어 제가 일하는 공간이 생겼습니다.</p>
+    <cite>— 햇살, 부산에서</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>캄보디아에 와서 1년 반, 생존하느라 무기력하고 의욕도 없었어요. 이대로 있다가는 아무것도 못하겠다는 생각이 들었고, 용기를 내서 시작하자마자 엄청난 에너지를 받았습니다.</p>
+    <cite>— 스윗워러, 캄보디아에서</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>진주로 내려오면서 집이 가택 연금처럼 느껴졌는데, 오히려 그 덕에 책을 읽고 글을 쓸 수 있는 최적의 환경이 조성됐다는 걸 깨달았어요. 생각하고 싶지 않아서 꺼놨던 질문들을 이제 마주할 때가 됐습니다.</p>
+    <cite>— 헤더, 진주에서</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>두 달 전과 지금의 나는 완전히 달라졌어요. 기술을 배운다기보다, 동반자를 얻은 기분이에요. 내가 가장 좋아하는 일을 꾸준히 할 수 있는 동력이 생겼습니다.</p>
+    <cite>— 야간비행, 제주에서</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>글쓰기도 나에게는 새로운 일이었는데, 그게 이제 열렸구나 — 인생이 내가 예측한 대로 되지 않고 이렇게 잘 흘러가는구나 싶었어요. 너무 갇혀서 불안해하지 말아야겠다, 새로운 세상이 열렸구나 했습니다.</p>
+    <cite>— 솔담, 일본에서</cite>
+  </blockquote>
+
+  <!-- CTA 박스 -->
+  <div class="cta-box">
+    <div class="cta-label">Daily Practice</div>
+    <p class="cta-text">무엇을 버릴 것인가?<br>My singularity is near.</p>
+    <p class="cta-sub">모닝 페이지 → 긱어스 게시판 사진 업로드 → 목요일 줌 공유회<br>버리는 데 성공한 날의 감각은 통증이다. 괴롭지 않으면 아직 버리지 않은 것이다.</p>
+  </div>
+
+  <!-- 하단 주석 -->
+  <div class="footnote">
+    <p>* 텍스트북 — 레이 커즈와일, 『마침내 특이점이 시작된다』 (The Singularity Is Nearer), 2024</p>
+    <p>* 추천 병행 독서 — 레이 커즈와일, 『특이점이 온다』 (The Singularity Is Near), 2005</p>
+    <p>* 이 문서는 2026.05.01 진행된 디퍼 원 브랜딩 살롱 프리세션(95분) 녹취를 바탕으로 재구성되었습니다.</p>
+  </div>
+
+</div>
+</body>
+</html>

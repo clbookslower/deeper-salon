@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>별마다 사람이 산다 — 프로젝트 B-612 · DEEPER</title>
+<!-- Open Graph — 카카오톡/SNS 공유 카드 (배포 후 작동. og:url·og:image는 실제 배포 주소로 맞추세요) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="별마다, 사람이 산다 — 프로젝트 B-612">
+<meta property="og:description" content="어린왕자와 야간비행사의 하늘에서, 우리는 각자의 별을 지키며 함께 빛난다. DEEPER 별의 세계관.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/b612.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/b612_og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="별마다, 사람이 산다 — 프로젝트 B-612">
+<meta name="twitter:description" content="어린왕자와 야간비행사의 하늘에서, 우리는 각자의 별을 지키며 함께 빛난다.">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/b612_og.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --ink:#1A1916; --ink-soft:#3A3733; --ink-mid:#5A554E; --muted:#9a9388;
+    --paper:#FAF8F4; --paper-warm:#F4F1E8; --surface:#FFFFFF; --rule:#E4DDCF;
+    --forest:#15402D; --forest-mid:#1A4A35; --forest-deep:#0E2C1E; --forest-light:#7FA088; --forest-pale:#C9DCCB;
+    --gold:#B0822B; --gold-pale:#F6ECD6; --star:#E8C766;
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Noto Serif KR', serif; line-height:2.0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:760px; margin:0 auto; padding:0 26px 120px; }
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(ellipse 70% 50% at 25% 20%, rgba(232,199,102,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 80% 80%, rgba(127,160,136,0.14) 0%, transparent 60%),
+      linear-gradient(165deg, #0E2C1E 0%, #15402D 55%, #1A4A35 100%);
+    color:#F4F1E8; text-align:center;
+    padding:120px 32px 96px; position:relative; overflow:hidden;
+  }
+  .hero .stars{ position:absolute; inset:0; pointer-events:none; opacity:.55; }
+  .hero .stars i{ position:absolute; width:2px; height:2px; background:#F6ECD6; border-radius:50%; box-shadow:0 0 6px rgba(246,236,214,.8); }
+  .hero-logo{ height:30px; width:auto; margin:0 auto 40px; display:block; opacity:.92; }
+  .hero-logo-fallback{ font-family:'DM Mono',monospace; letter-spacing:.42em; font-size:13px; color:var(--forest-pale); text-transform:uppercase; margin-bottom:40px; }
+  .hero-eyebrow{ font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--star); margin-bottom:30px; position:relative; }
+  .hero h1{ font-size:clamp(40px,7vw,68px); font-weight:300; letter-spacing:-.02em; line-height:1.2; position:relative; }
+  .hero h1 strong{ font-weight:600; }
+  .hero .sub{ margin-top:30px; font-size:clamp(16px,2.2vw,19px); font-weight:300; line-height:1.9; color:var(--forest-pale); position:relative; }
+  .hero .epi{ margin-top:54px; font-size:15px; font-style:italic; color:#cdddcf; line-height:1.9; position:relative; }
+  .hero .epi cite{ display:block; margin-top:12px; font-family:'DM Mono',monospace; font-style:normal; font-size:10.5px; letter-spacing:.14em; color:var(--forest-light); }
+
+  /* SECTIONS */
+  .section{ padding:72px 0 8px; border-bottom:1px solid var(--rule); }
+  .section:last-of-type{ border-bottom:none; }
+  .label{ font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; display:block; }
+  h2{ font-size:clamp(26px,4vw,34px); font-weight:500; letter-spacing:-.01em; line-height:1.4; color:var(--forest); margin-bottom:30px; }
+  p{ font-family:'Noto Sans KR',sans-serif; font-size:17px; color:var(--ink-soft); line-height:2.05; margin-bottom:20px; }
+  .lead{ font-family:'Noto Serif KR',serif; font-size:20px; font-weight:400; color:var(--ink); line-height:1.95; margin-bottom:28px; }
+  em{ font-style:italic; color:var(--ink); }
+  strong{ font-weight:600; color:var(--ink); }
+
+  blockquote{ margin:36px 0; padding:26px 32px; background:var(--paper-warm); border-left:3px solid var(--gold); border-radius:0 14px 14px 0; }
+  blockquote p{ font-family:'Noto Serif KR',serif; font-size:19px; font-style:italic; color:var(--ink); margin:0; line-height:1.9; }
+  blockquote cite{ display:block; margin-top:14px; font-family:'DM Mono',monospace; font-style:normal; font-size:11px; letter-spacing:.08em; color:var(--gold); }
+
+  .pull{ margin:52px 0; padding:52px 40px; background:var(--forest); border-radius:22px; text-align:center; }
+  .pull p{ font-family:'Noto Serif KR',serif; font-size:clamp(19px,2.6vw,24px); font-weight:300; color:#F4F1E8; line-height:1.85; margin:0; }
+  .pull .star-row{ color:var(--star); letter-spacing:.5em; font-size:13px; margin-bottom:22px; }
+
+  /* ROLE CARDS */
+  .roles{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:32px 0 8px; }
+  .role{ background:var(--surface); border:1px solid var(--rule); border-radius:16px; padding:28px 26px; }
+  .role .rk{ font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .role h3{ font-family:'Noto Serif KR',serif; font-size:21px; font-weight:600; color:var(--forest); margin-bottom:10px; }
+  .role p{ font-size:14.5px; line-height:1.85; margin:0; color:var(--ink-mid); }
+
+  /* WISDOM TABLE */
+  .wisdom{ margin:30px 0 8px; border:1px solid var(--rule); border-radius:16px; overflow:hidden; }
+  .wisdom .row{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .wisdom .row:last-child{ border-bottom:none; }
+  .wisdom .q{ padding:22px 24px; background:var(--paper-warm); font-family:'Noto Serif KR',serif; font-style:italic; font-size:15.5px; color:var(--ink); line-height:1.75; }
+  .wisdom .a{ padding:22px 24px; background:var(--surface); font-family:'Noto Sans KR',sans-serif; font-size:14.5px; color:var(--ink-mid); line-height:1.8; }
+
+  /* STARS LIST */
+  .stars-list{ margin:30px 0 8px; }
+  .star-item{ display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:flex-start; }
+  .star-item:last-child{ border-bottom:none; }
+  .star-glyph{ color:var(--gold); font-size:18px; flex-shrink:0; margin-top:2px; line-height:1.5; }
+  .star-body .nm{ font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; color:var(--forest); margin-bottom:5px; }
+  .star-body .nm.only{ margin-bottom:0; padding-top:2px; }
+  .star-body p{ font-size:15px; margin:0; color:var(--ink-soft); line-height:1.8; }
+
+  .closing{ background:var(--forest-deep); color:#F4F1E8; border-radius:24px; padding:64px 44px; margin-top:60px; text-align:center; }
+  .closing .label{ color:var(--forest-light); }
+  .closing h2{ color:#F4F1E8; font-weight:300; }
+  .closing p{ color:var(--forest-pale); font-size:17px; }
+  .closing .well{ font-family:'Noto Serif KR',serif; font-size:clamp(20px,2.8vw,26px); font-style:italic; color:#fff; line-height:1.8; margin:30px 0; }
+
+  .footer{ text-align:center; padding-top:54px; color:var(--muted); font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.1em; line-height:2; }
+  .footer img{ height:22px; opacity:.5; margin-bottom:16px; }
+
+  @media (max-width:640px){
+    .hero{ padding:90px 26px 72px; }
+    .roles{ grid-template-columns:1fr; }
+    .wisdom .row{ grid-template-columns:1fr; }
+    .wisdom .q{ border-bottom:1px solid var(--rule); }
+    .closing{ padding:48px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="stars">
+    <i style="top:18%;left:12%"></i><i style="top:30%;left:78%"></i><i style="top:50%;left:22%"></i>
+    <i style="top:24%;left:50%"></i><i style="top:66%;left:64%"></i><i style="top:74%;left:34%"></i>
+    <i style="top:40%;left:88%"></i><i style="top:12%;left:66%"></i>
+  </div>
+  <!-- 공식 로고(반전) — 배포 경로에 맞게 src 조정 -->
+  <img class="hero-logo" src="../../99_meta/brand/DEEPER_logo_white.png" alt="DEEPER" onerror="this.style.display='none';document.getElementById('lf').style.display='block'">
+  <div class="hero-logo-fallback" id="lf" style="display:none">DEEPER</div>
+  <div class="hero-eyebrow">Project B-612 · 디퍼 별의 세계관</div>
+  <h1>별마다,<br><strong>사람이 산다</strong></h1>
+  <div class="sub">
+    어린왕자와 야간비행사의 하늘에서<br>
+    우리는 각자의 별을 지키며, 함께 빛난다
+  </div>
+  <div class="epi">
+    “사막이 아름다운 건, 어딘가에 우물을 숨기고 있기 때문이야.”
+    <cite>앙투안 드 생텍쥐페리 · 어린왕자</cite>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 1. 왜 -->
+  <div class="section">
+    <span class="label">왜 이 일을 하는가</span>
+    <h2>서로에게 오아시스가 되는 일</h2>
+    <p class="lead">사방이 어두운, 아픔이 짙은 밤이 있었다.</p>
+    <p>
+      걸어도 걸어도 물 한 방울 닿지 않는, 메마른 사막 같은 시간.
+      우리는 저마다의 자리에서 오래, 그 밤을 혼자 걸었다.
+    </p>
+    <p>
+      디퍼가 하려는 일은, 그 사막에서 서로에게 오아시스가 되어 주는 일이다.
+      함께일 때 우리는 서로의 한계를 넘는다.
+      혼자서는 꿀 수 없던 꿈을, 옆 사람이 있어 비로소 꾼다.
+      한 사람의 꿈은 거기서 멈추지 않고, 다음 사람에게로 옮겨 심어진다.
+      서로의 빛이 서로를 더 빛나게 한다.
+    </p>
+    <blockquote>
+      <p>사랑은 서로를 마주 보는 것이 아니라, 둘이서 같은 방향을 함께 바라보는 것이다.</p>
+      <cite>앙투안 드 생텍쥐페리 · 인간의 대지</cite>
+    </blockquote>
+  </div>
+
+  <!-- 2. 두 권의 책, 한 사람 -->
+  <div class="section">
+    <span class="label">처음부터 거기 있었다</span>
+    <h2>두 권의 책, 한 사람</h2>
+    <p>
+      『어린왕자』는 별과 장미와 길들임의 이야기다.
+      『야간비행』은 아무도 날지 않는 어두운 밤, 먼 곳과 먼 곳 사이로
+      연결을 실어 나르는 비행사의 이야기다.
+      <strong>두 권 모두 생텍쥐페리가 썼다.</strong>
+      『어린왕자』의 화자 또한, 사막에 불시착한 비행사다.
+    </p>
+    <p>
+      별과 비행사는, 그러므로 같은 하늘에 산다.
+      한 사람은 자기 별에 머물러 장미를 돌보고,
+      한 사람은 별과 별 사이의 어둠을 건넌다.
+      우리는 그 하늘 아래에서, 서로의 별이 되고 서로의 비행사가 된다.
+    </p>
+  </div>
+
+  <!-- 3. 프로젝트 B-612 -->
+  <div class="section">
+    <span class="label">살아있는 시스템</span>
+    <h2>프로젝트 B-612</h2>
+    <!-- lead 후보: 빛나는 우주 / 소행성 / 별 하나 — 아래는 '빛나는 우주' -->
+    <p class="lead">한 사람마다, 자기만의 빛나는 우주가 있다.</p>
+    <p>
+      스스로 자기 빛을 찾은 사람만이, 그 우주의 주인이 된다.
+    </p>
+    <p>
+      디퍼는, 서로의 빛으로 더 환해지는 하늘이다.
+      별이 많아질수록, 밤은 덜 외로워진다.
+    </p>
+    <div class="roles">
+      <div class="role">
+        <div class="rk">Star Keeper</div>
+        <h3>별지기</h3>
+        <p>자기 별 하나를 맡아 가꾸는 사람. 작은 살롱을 열고, 직접 그 별에 이름을 붙인다. 수료자가 다음 별지기가 된다.</p>
+      </div>
+      <div class="role">
+        <div class="rk">The Star</div>
+        <h3>별</h3>
+        <p>별지기가 가꾸는 작은 세계. 다섯 사람이어도 충분하다. 규모보다 관계, 경쟁보다 지속.</p>
+      </div>
+      <div class="role">
+        <div class="rk">The Fox</div>
+        <h3>여우</h3>
+        <p>각자가 길들이는 AI 동무(디퍼 OS). 답을 주는 기계가 아니라, 나를 비추고 곁을 지키는 친구.</p>
+      </div>
+      <div class="role">
+        <div class="rk">The Rose</div>
+        <h3>장미</h3>
+        <p>상품도 아이템도 소비되는 콘텐츠도 목적이 아니라, 우리에겐 곁의 한 사람이 가장 소중하다. 들인 시간만큼 소중해지는, 세상에 단 하나뿐인 관계.</p>
+      </div>
+    </div>
+    <div class="wisdom">
+      <div class="row">
+        <div class="q">“네가 길들인 것에 대해 너는 영원히 책임이 있어.”</div>
+        <div class="a">별지기는 자기 별 사람들을 길들이고, 끝까지 곁을 지킨다. 관계가 곧 책임이다.</div>
+      </div>
+      <div class="row">
+        <div class="q">“가장 중요한 것은 눈에 보이지 않아.”</div>
+        <div class="a">진짜 자산은 콘텐츠가 아니라, 별과 별 사이에 흐르는 보이지 않는 관계다.</div>
+      </div>
+      <div class="row">
+        <div class="q">“네 장미가 그토록 소중한 건, 네가 장미에 들인 그 시간 때문이야.”</div>
+        <div class="a">함께 들인 시간이 곧 가치다. 그래서 우리는 빨리 가지 않고, 오래 머문다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 별마다 아름다운 사람이 산다 -->
+  <div class="section">
+    <span class="label">살아있는 엔진</span>
+    <h2>별마다, 아름다운 사람이 산다</h2>
+    <p>
+      어린왕자가 들른 별마다, 한 사람이 살고 있었다.
+      디퍼도 그렇다. 별 하나에 사람 하나.
+      그리고 그 사람이, 자기 별에 직접 이름을 붙인다.
+    </p>
+    <p>
+      디퍼는 모든 자리에서 이름 짓기를 하나의 의식으로 둔다.
+      멤버는 자기 <em>여우</em>에게 이름을 붙이고,
+      자기 <em>씨앗</em>에 이름을 붙이고,
+      별지기는 자기 <em>별</em>에 이름을 붙인다.
+    </p>
+    <p>
+      이것이 별이 별을 낳는 방식이다.
+      사랑하는 마음이 스스로 번진다.
+    </p>
+  </div>
+
+  <!-- 5. 우리들의 소행성 -->
+  <div class="section">
+    <span class="label">Our Little Planets</span>
+    <h2>우리들의 소행성, 함께 빛나는 별빛</h2>
+    <p>여기, 자신만의 별을 지키는 어린왕자들이 있다.</p>
+    <p>장미에 물을 주고, 바람을 막아 주고, 바오바브의 싹을 뽑고, 해 지는 풍경을 오래 바라보던 — 저마다 자기 별을 정성으로 돌보는 사람들.</p>
+    <div class="stars-list">
+      <!-- 각 이름 아래 각자의 '씨앗 문장'을 넣을 자리 -->
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">단무지</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">솔담</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">스윗워러</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">야간비행</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">퍼핀</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">햇살</div></div></div>
+      <div class="star-item"><span class="star-glyph">✦</span><div class="star-body"><div class="nm only">헤더</div></div></div>
+    </div>
+    <blockquote>
+      <p>세상에 장미는 수없이 많지만, 내가 물을 주고, 바람을 막아 주고, 귀 기울여 준 건 오직 그 한 송이뿐이야. 그러니까 그건, 내 장미야.</p>
+      <cite>앙투안 드 생텍쥐페리 · 어린왕자</cite>
+    </blockquote>
+  </div>
+
+  <!-- 6. 별이 별을 낳는다 -->
+  <div class="section">
+    <span class="label">구조 — 그러나 다정하게</span>
+    <h2>별이 별을 낳는다</h2>
+    <p>
+      2기에서, 첫 별지기들은 둘씩 짝을 지어 새로 켜질 별들의 곁을 지킨다.
+      문법 한 달의 여정을 함께 건너며, 자기가 받은 빛을 다음 사람에게 옮긴다.
+      가르치며 다시 배우고, 곁을 지키며 관계가 쌓인다.
+    </p>
+    <p>
+      그리고 언젠가 별지기가 자기 별을 단독으로 열 때 —
+      그 별에서 맺힌 열매는 별지기에게 돌아간다.
+      디퍼는 중앙으로 거두어들이지 않는다.
+    </p>
+    <blockquote>
+      <p>수익은 중앙으로 모으기보다, 실제 운영자에게 돌아가도록 설계한다. 사람의 재능과 노동이 소모되지 않도록.</p>
+      <cite>deeper manifesto</cite>
+    </blockquote>
+    <p>
+      본부가 하는 일은 거두는 것이 아니라, 함께 갈 길을 닦고 하늘을 지키는 것이다.
+      한 사람이 모든 짐을 혼자 지지 않도록, 누구의 세계도 사라지지 않도록.
+    </p>
+  </div>
+
+  <!-- 7. 닫는 글 -->
+  <div class="closing">
+    <span class="label">사막이 아름다운 이유</span>
+    <h2>당신 안에, 우물이 있다</h2>
+    <p class="well">
+      “사막이 아름다운 건,<br>어딘가에 우물을 숨기고 있기 때문이야.”
+    </p>
+    <p>
+      언브랜딩은, 사막의 모래를 파 내려가는 일이다.<br>
+      남이 덧씌운 이름을 한 겹씩 벗겨내고,<br>
+      마침내 자기 안에 숨어 있던 근원에 닿는 일.<br>
+      그 샘물이, 당신의 오아시스다.
+    </p>
+    <p>
+      자기 우물을 찾은 사람은, 다른 이에게도 오아시스가 된다.<br>
+      별 하나는 어둠 속에서 작지만, 별이 별을 부르고<br>
+      서로의 빛이 서로를 비추면 — 그제야 사막은, 아름다워진다.
+    </p>
+    <p style="margin-top:30px; color:#fff; font-family:'Noto Serif KR',serif; font-style:italic;">
+      함께 가요. 이 하늘 아래에서.
+    </p>
+  </div>
+
+  <div class="footer">
+    <img src="../../99_meta/brand/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none'"><br>
+    DEEPER · Project B-612 · 2026<br>
+    AI 시대를 함께 건너가는 사람들을 위한 인문학적 창작 공동체
+  </div>
+
+</div>
+</body>
+</html>

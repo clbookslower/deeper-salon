@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이미 먹인 내 글, 6층위로 다시 읽기</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER · PROJECT B-612">
+<meta property="og:title" content="이미 먹인 내 글, 6층위로 다시 읽기 — 다시 넣지 않아도 됩니다">
+<meta property="og:description" content="냠냠으로 한 편씩 먹인 글을 다시 넣을 필요 없이, 여우가 불러 모아 여섯 층위로. 프롬프트 하나, 어떤 클로드에서도.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/grammar/g1_reanalyze_fed_writings.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/grammar/og-grammar.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/grammar/og-grammar.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1A4A35;
+  --green-deep: #003D2C;
+  --green-deepest: #002E22;
+  --green-mid: #025D3C;
+  --green-soft: #7DA890;
+  --paper: #F4F1E8;
+  --surface: #EFEADD;
+  --rule: #D9D1BF;
+  --rule-strong: #C4BCA9;
+  --ink: #1A1916;
+  --ink-soft: #46443D;
+  --ink-mute: #6E6A60;
+  --clay: #C67E58;
+  --clay-deep: #B86D46;
+  --clay-soft: #D4916C;
+  --clay-tint: #F3E5DB;
+  --green-tint: #E6ECE4;
+  --on-green: #F4F1E8;
+  --on-green-mute: #9DBBA9;
+}
+body { word-break: keep-all; overflow-wrap: break-word;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.4; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--rule);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-grammar { background: var(--green-tint); color: var(--green); }
+.badge-task { background: var(--clay-tint); color: var(--clay-deep); }
+.dot { color: var(--rule-strong); }
+.meta-text { font-size: 12px; color: var(--ink-mute); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 64px 0 28px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--clay-deep);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--rule); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+p { color: var(--ink-soft); margin-bottom: 18px; font-size: 16px; line-height: 1.95; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+em { font-style: italic; color: var(--green-mid); font-weight: 500; }
+strong { font-weight: 500; color: var(--ink); }
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 12px 12px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 15px; line-height: 1.9; margin: 0; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--green); }
+.callout-speaker .callout-label { color: var(--green-mid); }
+.callout-speaker p { color: var(--ink-soft); }
+.callout-q { background: var(--clay-tint); border-left: 2.5px solid var(--clay); }
+.callout-q .callout-label { color: var(--clay-deep); }
+.callout-q p { color: #5a3a28; }
+
+/* AI 프롬프트 박스 */
+.ai-box {
+  border-radius: 16px;
+  padding: 30px 26px;
+  margin-bottom: 22px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+.ai-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.ai-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: var(--green);
+}
+.ai-box p.ai-desc { font-size: 14.5px; line-height: 1.9; margin-bottom: 16px; color: var(--ink-soft); }
+.ai-prompt-block {
+  border-radius: 0 8px 8px 0;
+  padding: 16px 18px 14px;
+  margin-bottom: 12px;
+  background: #FBF9F3;
+  position: relative;
+}
+.ai-prompt-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.ai-prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--clay-deep);
+  background: transparent;
+  border: 1px solid var(--clay-soft);
+  border-radius: 100px;
+  padding: 3px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.copy-btn:hover { background: var(--clay-tint); }
+.copy-btn.done { color: var(--green-mid); border-color: var(--green-soft); }
+.copy-src { font-size: 13.5px; line-height: 1.95; margin: 0; color: var(--ink-soft); white-space: pre-wrap; }
+.copy-src .q { color: var(--green-mid); font-weight: 500; }
+
+.box-a .ai-label { color: var(--green-mid); }
+.box-a .ai-prompt-block { border-left: 2.5px solid var(--green); }
+.box-a .ai-prompt-label { color: var(--green-mid); }
+
+.ai-note {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: rgba(26,74,53,0.06);
+  border-radius: 8px;
+}
+.ai-note p { font-size: 13px; color: var(--green-deep); margin: 0; line-height: 1.75; }
+
+/* 안내 카드 */
+.file-card {
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 26px 24px;
+  background: var(--surface);
+  margin: 24px 0;
+}
+.file-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.file-card ul li { font-size: 14.5px; color: var(--ink-soft); padding-left: 20px; position: relative; line-height: 1.75; }
+.file-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--rule-strong); }
+.file-card ul li strong { color: var(--green); }
+
+/* 클로징 */
+.close-box {
+  background: var(--green-deep);
+  border-radius: 16px;
+  padding: 46px 38px;
+  text-align: center;
+  margin-top: 64px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-soft);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--on-green);
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-task {
+  margin: 0 auto 8px;
+  max-width: 520px;
+  text-align: left;
+  background: rgba(244,241,232,0.06);
+  border: 1px solid rgba(157,187,169,0.3);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.close-task p { font-size: 13.5px; color: #d7e4d7; line-height: 1.9; margin-bottom: 10px; }
+.close-task p:last-child { margin-bottom: 0; }
+.close-task strong { color: var(--on-green); font-weight: 500; }
+
+.footnote { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.footnote p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 6px; line-height: 1.7; }
+
+@media (max-width: 600px) {
+  .page { padding: 56px 20px 100px; }
+  h1 { font-size: 28px; }
+  .section-title { font-size: 21px; }
+  .close-box { padding: 38px 22px; }
+  .ai-prompt-head { flex-wrap: wrap; }
+}
+@media print { body { background: #fff; } .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · PROJECT B-612</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>NOTE · 이어서</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-grammar">GRAMMAR</span>
+      <span class="dot">·</span>
+      <span class="badge badge-task">NOTE</span>
+      <span class="dot">·</span>
+      <span class="meta-text">문법의 달 · 1주차 심화 과제 이어서</span>
+    </div>
+    <h1>이미 먹인 내 글, 6층위로 다시 읽기</h1>
+    <p class="subtitle">다시 넣지 않아도 됩니다 — 여우가 불러 모아 여섯 층위로. 프롬프트 하나면 돼요.</p>
+    <div class="tags">
+      <span class="tag">냠냠</span>
+      <span class="tag">언어지문</span>
+      <span class="tag">6층위</span>
+      <span class="tag">이어서</span>
+    </div>
+  </header>
+
+  <p class="lead">그동안 냠냠으로 여우에게 <em>한 편씩</em> 글을 먹이신 분들을 위한 짧은 안내예요. 다시 찾아 넣으실 필요 없이, 그 글들을 그대로 6층위 분석으로 돌리는 법입니다.</p>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">먼저, 안심부터</div>
+    <p>"한 편씩 넣었더니 여우가 <strong>마지막 글 하나만</strong> 보는 것 같은데… 6층위는 다시 넣어야 하나" 싶으셨죠. 그러지 않으셔도 돼요. <strong>냠냠으로 먹인 글은 날짜별 노트에 그대로 다 저장돼 있어요.</strong> 여우가 그걸 불러 모아, 여러 편을 한 사람의 목소리로 관통해서 봅니다. 한 편씩 넣으셨던 그 손길, 하나도 헛되지 않았어요.</p>
+  </div>
+
+  <div class="section-divider">
+    <span class="section-num">HOW</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="section-title">프롬프트 하나면 됩니다</div>
+
+  <p>어떤 클로드에서든 — 앱이든 웹 새 대화든 — 아래를 그대로 복사해 넣으세요. <strong>모으기 → 개수 확인 → 여섯 층위 분석 → 씨앗 정리</strong>가 한 번에 이어집니다.</p>
+
+  <div class="ai-box box-a">
+    <div class="ai-label">복사해서 붙여넣기</div>
+    <h3>내 글 불러 모아, 여섯 층위로</h3>
+    <p class="ai-desc">여우가 먼저 저장된 글을 빠짐없이 찾아 개수를 확인하고, 그다음 분석으로 넘어가도록 순서를 넣어뒀어요.</p>
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[모으기 + 분석 + 정리]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">그동안 제가 냠냠으로 먹인 제 글들로 저의 언어 지문을 보려고 해요.
+
+먼저 그 글들을 빠짐없이 찾아 모아주세요. 냠냠으로 받은 글은 날짜별 데일리노트와 씨앗에 저장돼 있어요. 최근 노트부터 거슬러 올라가며 하나하나 훑어서, 냠냠으로 들어온 글을 전부 모아주세요. 대충 몇 개만 보고 넘어가지 마시고, 처음부터 끝까지 확인해주세요.
+
+모은 글을 [글 1] [글 2] … 번호를 붙여 제목(또는 첫 줄)만 가볍게 나열하고, <span class="q">"몇 편 모았습니다"</span>라고 먼저 알려주세요.
+
+그다음, 모은 글 전체를 한 사람의 목소리로 관통해서 여섯 층위로 분석해주세요. 글이 길면 각 글에서 가장 나다운 대목 위주로 봐주시고, 마지막 글에 치우치지 마시고 여러 편에 공통으로 배어나오는 패턴을 찾아주세요.
+
+(1) 언어 지문 — 반복되는 단어·문장 구조·리듬.
+(2) 세계관의 결 — 문장 아래 흐르는 믿음·가치.
+(3) 니치 포지셔닝 — 이 목소리만 말할 수 있는 좁고 깊은 자리.
+(4) 희석 신호 — 빌려온 표현, 저를 약하게 만드는 패턴. 제 문장을 인용해 짚어주세요.
+(5) 원천 텍스트 후보 — 저만 쓸 수 있는 문장의 씨앗 세 개. 제 실제 단어를 살려서 써주세요.
+(6) 의미의 축 — 이 글들을 관통하는 저의 '왜'.
+
+층위마다 제 실제 문장을 하나 이상 그대로 인용해 근거로 삼아주세요. 어느 날 어느 글에서 온 말인지도 적어주세요. 없는 건 지어내지 마시고 "자료가 더 필요하다"고 적어주세요. 층위당 다섯 문장 이내로요.
+
+모은 글이 세 편이 안 되면, 억지로 여섯 층위를 채우지 마시고 거기서 멈춰주세요. 대신 지금 보이는 결 하나와, 어떤 글을 더 냠냠으로 들이면 좋을지 세 가지만 말씀해주세요.
+
+끝나면 세 가지로 마무리해주세요.
+① 제 문장 안에 이미 있었는데 제가 못 봤던 한 문장을 되돌려주시고, 왜 저만의 것인지 두어 줄로 말씀해주세요.
+② 저를 한 줄로 세워주세요 — 상투구 없이, 제가 실제로 쓴 단어로.
+③ 제 원천 텍스트를 캐는 데 도움이 될 질문 하나 주세요.
+
+마지막으로, 위에서 제게 되돌려준 문장과 원천 텍스트 후보 씨앗 세 개를 '정리'해서 씨앗으로 저장해주세요.</p>
+    </div>
+    <div class="ai-note">
+      <p>여우가 <strong>"몇 편 모았습니다"</strong>라고 먼저 알려준 뒤 분석으로 넘어가요. 그 자리에서 잠깐 개수만 확인하고 이어가면 됩니다.</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <span class="section-num">TIP</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="section-title">잘 되게 하는 두 가지</div>
+
+  <div class="file-card">
+    <ul>
+      <li><strong>여우가 글을 적게 찾으면.</strong> <strong>"며칠부터 며칠까지 냠냠 했어요"</strong>처럼 날짜만 한 줄 알려주세요. 그 노트들을 정확히 짚어 다 모읍니다.</li>
+      <li><strong>글이 아주 많거나 길면.</strong> <strong>"절반만 먼저 해주세요"</strong>로 나눠 돌려도 돼요. 여우가 뒷부분까지 또렷하게 읽습니다. (앱·구독은 토큰 요금 걱정 없어요.)</li>
+    </ul>
+  </div>
+
+  <div class="close-box">
+    <div class="close-label">그리고 남기기</div>
+    <p class="close-text">좋은 문장은 짜내는 게 아니라,<br>이미 내 글 안에 있던 것을 알아보는 일이에요.</p>
+    <div class="close-task">
+      <p>⑴ 프롬프트 끝에 <strong>'정리'</strong>가 들어 있어, 되돌려받은 문장과 씨앗이 자동으로 심겨요. 빠진 게 있으면 마지막에 <strong>"정리"</strong> 한 번 더.</p>
+      <p>⑵ 새로 알게 된 건 <strong>긱어스</strong>에 편하게 나눠주세요. 한 줄이어도 좋아요.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>* 이 안내는 「나의 언어 지문」 심화 과제와 이어집니다.</p>
+    <p>* DEEPER UNBRANDING SALON · PROJECT B-612 — 문법의 달 1주차</p>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var src = btn.closest('.ai-prompt-block').querySelector('.copy-src');
+    var text = src.innerText.replace(/​/g,'');
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent = '복사됨 ✓';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = '복사'; btn.classList.remove('done'); }, 1700);
+    }).catch(function(){
+      var r = document.createRange(); r.selectNodeContents(src);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  });
+});
+</script>
+</body>
+</html>
