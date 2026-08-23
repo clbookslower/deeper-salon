@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEPER 통합 캘린더 · 2026년 9월</title>
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --card:#FFFFFF;
+    --ink:#26251F;
+    --ink-soft:#5C594F;
+    --line:#E7E4DA;
+    --green:#1A4A35;
+    --green-deep:#0D2B1E;
+    --gold:#B5731A;
+    --sage:#6E7F63;
+    --night:#2C3A4A;
+    --gray:#8A857B;
+    --cream-tint:#F4F1E8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 64px;}
+
+  /* ── 헤더 ── */
+  header{text-align:center;margin-bottom:40px;}
+  header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
+  h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
+  .subtitle{margin-top:8px;font-size:14px;color:var(--ink-soft);letter-spacing:.08em;}
+  .period{margin-top:4px;font-size:12.5px;color:var(--gray);letter-spacing:.1em;}
+  .rule{width:56px;height:1px;background:var(--gold);margin:22px auto 0;}
+
+  /* ── 범례 ── */
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:26px 0 36px;}
+  .legend .li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);}
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+  .d-g{background:var(--green);}
+  .d-o{background:var(--gold);}
+  .d-s{background:var(--sage);}
+  .d-n{background:var(--night);}
+
+  /* ── 월 블록 ── */
+  .month{margin-bottom:44px;}
+  .month-name{
+    font-size:16px;font-weight:700;color:var(--green-deep);
+    letter-spacing:.1em;margin-bottom:4px;
+  }
+  .month-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
+  .cal-scroll{overflow-x:auto;}
+  table.cal{
+    width:100%;min-width:760px;border-collapse:collapse;
+    background:var(--card);border:1px solid var(--line);
+  }
+  table.cal th{
+    font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);
+    padding:10px 6px;border-bottom:1px solid var(--line);
+    background:var(--cream-tint);
+  }
+  table.cal th.sat{color:#4A5A6E;}
+  table.cal th.sun{color:#8A5A3A;}
+  table.cal td{
+    vertical-align:top;border:1px solid var(--line);
+    width:14.28%;min-height:96px;height:96px;padding:7px 7px 9px;
+  }
+  .dnum{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  td.dim{background:#F5F4EF;}
+  td.dim .dnum{color:#B9B4A8;}
+  td.dim .ev{opacity:.55;}
+  td.other{background:#F5F4EF;}
+  td.other .dnum{color:#C9C4B8;}
+
+  /* ── 일정 항목 ── */
+  .ev{
+    font-size:11.5px;line-height:1.4;margin-bottom:5px;
+    padding:3px 6px 4px 8px;border-radius:2px;
+    border-left:2.5px solid transparent;color:var(--ink);
+    background:#FBFAF6;
+  }
+  .ev .t{color:var(--gray);font-size:10.5px;}
+  .ev b{font-weight:600;}
+  .ev-g{border-left-color:var(--green);background:#F0F4F0;}
+  .ev-o{border-left-color:var(--gold);background:#F8F3E9;}
+  .ev-s{border-left-color:var(--sage);background:#F2F4EF;}
+  .ev-n{border-left-color:var(--night);background:#EFF1F4;}
+  .ev-p{border-left-style:dashed;color:var(--ink-soft);}
+  .ws-band{
+    font-size:11px;letter-spacing:.02em;
+    background:var(--night);color:#F2EFE6;
+    padding:3px 8px;border-radius:2px;margin-bottom:5px;
+  }
+  .ws-band.cont{background:#54637A;}
+
+  /* ── 미정 상자 ── */
+  .pending{
+    border:1px dashed var(--gold);background:#FBF7EE;
+    padding:18px 22px;border-radius:3px;margin-bottom:36px;
+  }
+  .pending h2{font-size:13.5px;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:10px;}
+  .pending ul{list-style:none;}
+  .pending li{font-size:12.5px;color:var(--ink-soft);padding:3px 0;}
+  .pending li::before{content:"⏳";margin-right:8px;}
+
+  /* ── 리듬 메모 ── */
+  .rhythm{
+    background:var(--card);border:1px solid var(--line);
+    padding:18px 22px;border-radius:3px;margin-bottom:36px;
+  }
+  .rhythm h2{font-size:13.5px;font-weight:700;color:var(--green-deep);letter-spacing:.08em;margin-bottom:10px;}
+  .rhythm p{font-size:12.5px;color:var(--ink-soft);padding:2px 0;}
+  .rhythm b{color:var(--ink);font-weight:600;}
+
+  footer{
+    text-align:center;margin-top:14px;padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  footer .quote{font-size:12.5px;color:var(--ink-soft);font-style:normal;}
+  footer .team{margin-top:10px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;}
+
+  /* ── 모바일(700px 이하): 세로 아젠다형 — 가로 조작 0 ── */
+  @media (max-width:700px){
+    .wrap{padding:32px 14px 48px;}
+    h1{font-size:21px;}
+    .subtitle{font-size:12.5px;}
+    .legend{gap:8px 14px;}
+    .cal-scroll{overflow-x:visible;}
+    table.cal, table.cal tbody, table.cal tr, table.cal td{
+      display:block;width:100%;min-width:0;height:auto;min-height:0;
+    }
+    table.cal thead{display:none;}
+    /* 주 단위 소제목 */
+    table.cal tr::before{
+      content:attr(data-week);
+      display:block;
+      font-size:11px;letter-spacing:.12em;color:var(--gray);
+      background:var(--cream-tint);
+      padding:6px 12px;border-bottom:1px solid var(--line);
+    }
+    table.cal{border:1px solid var(--line);}
+    table.cal td{border:none;border-bottom:1px solid var(--line);padding:9px 12px 10px;}
+    table.cal tr:last-child td:last-child{border-bottom:none;}
+    /* 일정 없는 날은 목록에서 접는다 (:has 미지원 브라우저는 전체 표시로 안전 낙하) */
+    table.cal td:not(:has(.ev)):not(:has(.ws-band)){display:none;}
+    td.other{display:none !important;}
+    .dnum{font-size:13px;margin-bottom:6px;}
+    .ev{font-size:12.5px;}
+    /* 요일 표기 — 열 위치로 붙인다 (일요일 시작) */
+    td:nth-child(1) .dnum::after{content:" · 일";color:var(--gray);font-weight:400;}
+    td:nth-child(2) .dnum::after{content:" · 월";color:var(--gray);font-weight:400;}
+    td:nth-child(3) .dnum::after{content:" · 화";color:var(--gray);font-weight:400;}
+    td:nth-child(4) .dnum::after{content:" · 수";color:var(--gray);font-weight:400;}
+    td:nth-child(5) .dnum::after{content:" · 목";color:var(--gray);font-weight:400;}
+    td:nth-child(6) .dnum::after{content:" · 금";color:var(--gray);font-weight:400;}
+    td:nth-child(7) .dnum::after{content:" · 토";color:var(--gray);font-weight:400;}
+    .month-note{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="logo" src="data:image/png;base64,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" alt="DEEPER">
+    <h1>디퍼의 한 달</h1>
+    <p class="subtitle">언브랜딩살롱 2기 논리의 달 · 3기 문법의 달 · 리딩 · 제주 워크숍</p>
+    <p class="period">2026. 8. 25 (화) — 2026. 9. 30 (수)</p>
+    <div class="rule"></div>
+  </header>
+
+  <div class="legend">
+    <span class="li"><span class="dot d-g"></span>2기 · 논리의 달 (월요일 밤)</span>
+    <span class="li"><span class="dot d-o"></span>3기 · 문법의 달 (목요일 밤)</span>
+    <span class="li"><span class="dot d-s"></span>리딩 코너</span>
+    <span class="li"><span class="dot d-n"></span>워크숍 · 행사</span>
+  </div>
+
+  <!-- ── 8월 마지막 주 ── -->
+  <section class="month">
+    <div class="month-name">8월 마지막 주</div>
+    <div class="month-note">지난 날(8/23·24)은 흐름을 보여드리기 위해 옅게 남겨 두었습니다.</div>
+    <div class="cal-scroll">
+    <table class="cal">
+      <thead>
+        <tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th></tr>
+      </thead>
+      <tbody>
+        <tr data-week="8/23 – 8/29">
+          <td class="dim"><div class="dnum">8/23</div></td>
+          <td class="dim">
+            <div class="dnum">8/24</div>
+            <div class="ev ev-g"><b>2기 오리엔테이션</b><br><span class="t">밤 9시 · 줌</span></div>
+          </td>
+          <td><div class="dnum">8/25</div></td>
+          <td><div class="dnum">8/26</div></td>
+          <td>
+            <div class="dnum">8/27</div>
+            <div class="ev ev-o"><b>3기 개강 · 오리엔테이션</b><br><span class="t">밤 9시 · 줌 — 문법 30일 여정 시작</span></div>
+            <div class="ev ev-o">인사이트 공유회<br><span class="t">밤 10시 · 사막별 발표</span></div>
+          </td>
+          <td><div class="dnum">8/28</div></td>
+          <td><div class="dnum">8/29</div></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ── 9월 ── -->
+  <section class="month">
+    <div class="month-name">9월</div>
+    <div class="month-note">8월 30·31일은 9월 첫 주에 함께 담았습니다.</div>
+    <div class="cal-scroll">
+    <table class="cal">
+      <thead>
+        <tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th></tr>
+      </thead>
+      <tbody>
+        <tr data-week="8/30 – 9/5">
+          <td><div class="dnum">8/30</div></td>
+          <td>
+            <div class="dnum">8/31</div>
+            <div class="ev ev-g"><b>2기 2회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-s">GEB 리딩 ① 서론+1장<br><span class="t">pp.3~62 · 월 밤</span></div>
+          </td>
+          <td><div class="dnum">9/1</div></td>
+          <td><div class="dnum">9/2</div></td>
+          <td>
+            <div class="dnum">9/3</div>
+            <div class="ev ev-o"><b>3기 2회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-o">인사이트 공유회<br><span class="t">밤 10시</span></div>
+          </td>
+          <td><div class="dnum">9/4</div></td>
+          <td>
+            <div class="dnum">9/5</div>
+            <div class="ev ev-s"><b>DEEPER Reading ①</b><br>『낭비와 베끼기』<br><span class="t">오전 9:30~11:00 · 2기 · 3기 · 별지기</span></div>
+          </td>
+        </tr>
+        <tr data-week="9/6 – 9/12">
+          <td>
+            <div class="dnum">9/6</div>
+            <div class="ev ev-s"><b>SLOWER Reading ①</b><br>『오뒷세이아』 제1권<br><span class="t">밤 9~10:30 · 2기 · 3기 · 별지기</span></div>
+          </td>
+          <td>
+            <div class="dnum">9/7</div>
+            <div class="ev ev-g"><b>2기 3회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-s">GEB 리딩 ② 게 카논 + 무의 헌정<br><span class="t">월 밤</span></div>
+          </td>
+          <td><div class="dnum">9/8</div></td>
+          <td><div class="dnum">9/9</div></td>
+          <td>
+            <div class="dnum">9/10</div>
+            <div class="ev ev-o"><b>3기 3회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-o">인사이트 공유회<br><span class="t">밤 10시</span></div>
+          </td>
+          <td><div class="dnum">9/11</div></td>
+          <td>
+            <div class="dnum">9/12</div>
+            <div class="ws-band">제주 워크숍 시작 · 오후 3시</div>
+            <div class="ev ev-s"><b>DEEPER Reading ②</b><br>『마침내 특이점이 시작된다』<br><span class="t">오전 9:30~11:00</span></div>
+          </td>
+        </tr>
+        <tr data-week="9/13 – 9/19">
+          <td>
+            <div class="dnum">9/13</div>
+            <div class="ws-band cont">제주 워크숍 둘째 날</div>
+            <div class="ev ev-s"><b>SLOWER Reading ②</b><br>『오뒷세이아』 제2권<br><span class="t">밤 9~10:30 · 워크숍 참가자는 제주에서 접속</span></div>
+          </td>
+          <td>
+            <div class="dnum">9/14</div>
+            <div class="ws-band cont">워크숍 마침 · 오전 11시</div>
+            <div class="ev ev-g"><b>2기 4회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-s">GEB 리딩 ③ 애연가의 사색 + 위대한게로다<br><span class="t">월 밤</span></div>
+          </td>
+          <td><div class="dnum">9/15</div></td>
+          <td><div class="dnum">9/16</div></td>
+          <td>
+            <div class="dnum">9/17</div>
+            <div class="ev ev-o"><b>3기 4회</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-o">인사이트 공유회<br><span class="t">밤 10시</span></div>
+          </td>
+          <td><div class="dnum">9/18</div></td>
+          <td>
+            <div class="dnum">9/19</div>
+            <div class="ev ev-s"><b>DEEPER Reading ③</b><br>『생각하는 기계』<br><span class="t">오전 9:30~11:00</span></div>
+          </td>
+        </tr>
+        <tr data-week="9/20 – 9/26">
+          <td>
+            <div class="dnum">9/20</div>
+            <div class="ev ev-s"><b>SLOWER Reading ③</b><br>『오뒷세이아』 제3권<br><span class="t">밤 9~10:30</span></div>
+          </td>
+          <td>
+            <div class="dnum">9/21</div>
+            <div class="ev ev-g"><b>2기 5회 (마지막)</b><br><span class="t">밤 9시 · 줌</span></div>
+            <div class="ev ev-s">GEB 리딩 ④ 패턴 + 나무늘보 카논<br><span class="t">월 밤</span></div>
+          </td>
+          <td><div class="dnum">9/22</div></td>
+          <td><div class="dnum">9/23</div></td>
+          <td>
+            <div class="dnum">9/24</div>
+            <div class="ev ev-o ev-p">⏳ 3기 5주차 여부 미정<br><span class="t">확정되면 안내드립니다</span></div>
+          </td>
+          <td><div class="dnum">9/25</div></td>
+          <td><div class="dnum">9/26</div></td>
+        </tr>
+        <tr data-week="9/27 – 9/30">
+          <td>
+            <div class="dnum">9/27</div>
+            <div class="ev ev-s"><b>SLOWER Reading ④ (마지막)</b><br>『오뒷세이아』 제4권<br><span class="t">밤 9~10:30</span></div>
+          </td>
+          <td><div class="dnum">9/28</div></td>
+          <td><div class="dnum">9/29</div></td>
+          <td><div class="dnum">9/30</div></td>
+          <td class="other"><div class="dnum">10/1</div></td>
+          <td class="other"><div class="dnum">10/2</div></td>
+          <td class="other"><div class="dnum">10/3</div></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ── 날짜가 아직 정해지지 않은 것 ── -->
+  <div class="pending">
+    <h2>날짜를 기다리는 일정</h2>
+    <ul>
+      <li><b>DEEPER 콤포스텔라 — 까미노 프리미티보</b> · 평일 오전 10~12시 · 9월 첫 주 개강, 요일 협의 중.</li>
+      <li><b>3기 9/24(목) 5주차</b> — 진행 여부 확정 대기. 정해지는 대로 안내드립니다.</li>
+    </ul>
+  </div>
+
+  <!-- ── 한 달의 리듬 ── -->
+  <div class="rhythm">
+    <h2>날마다 · 주마다 — 한 달의 리듬</h2>
+    <p><b>매일</b> — 모닝페이지, 긱어스에 인증</p>
+    <p><b>매일</b> — 사막여우와 안녕 · 오아시스 · 냠냠, 사막방에 인증</p>
+    <p><b>매주 1회</b> — 아티스트 데이트, 사막방에 인증</p>
+    <p><b>목요일 밤 10시</b> — 인사이트 공유회, 사막별 발표 (8/27 · 9/3 · 9/10 · 9/17 · 줌)</p>
+  </div>
+
+  <footer>
+    <p class="quote">"네 장미가 그토록 소중한 건, 그 꽃을 위해 네가 들인 시간 때문이야."</p>
+    <p class="team">DEEPER · 2026년 9월</p>
+  </footer>
+
+</div>
+</body>
+</html>
