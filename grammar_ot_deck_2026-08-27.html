@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 · 문법의 달 OT — 여우를 처음 만나는 밤</title>
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) · og:image는 기수 카드 제작 후 추가 -->
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/grammar_ot_deck_2026-08-27.html" />
+  <meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 언브랜딩 살롱" />
+<meta property="og:title" content="디퍼 살롱 · 문법의 달 OT — 여우를 처음 만나는 밤" />
+<meta property="og:description" content="내 컴퓨터에 살며 나를 기억하는, 나의 세컨브레인 — 서른 날이 시작된다" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="디퍼 살롱 · 문법의 달 OT — 여우를 처음 만나는 밤" />
+<meta name="twitter:description" content="내 컴퓨터에 살며 나를 기억하는, 나의 세컨브레인 — 서른 날이 시작된다" />
+<style>
+  :root{
+    /* 코어 — DEEPER 비주얼 아이덴티티 v1 (디지털 트랙: 포인트 = 클레이 하나만) */
+    --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22; --green-soft:#7DA890;
+    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF; --rule-strong:#C4BCA9;
+    --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+    --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+    --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic','Noto Sans CJK KR',sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:var(--serif); overflow:hidden; word-break:keep-all; overflow-wrap:break-word;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.5rem; z-index:8;
+    font-family:var(--sans); font-size:12px; font-weight:700;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--clay-deep); pointer-events:none;
+    transition:color .5s ease;}
+  body.on-dark .brandmark{color:var(--clay-soft);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto; overflow-x:hidden;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:linear-gradient(168deg,var(--green-deepest) 0%,var(--green-deep) 48%,var(--green) 100%);
+    color:var(--paper);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.4rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.2rem; text-align:center;}
+
+  .kicker{font-family:var(--sans); font-size:12px; font-weight:600;
+    letter-spacing:.34em; text-transform:uppercase; color:var(--clay-deep);}
+  .slide.invert .kicker{color:var(--clay-soft);}
+  .num{font-family:var(--serif); font-weight:700; letter-spacing:.14em;}
+
+  .title{font-family:var(--serif); font-weight:700; letter-spacing:-.01em;
+    font-size:clamp(25px,4.4vw,36px); line-height:1.3;}
+  .title .em{color:var(--clay-deep);}
+  .slide.invert .title{color:var(--paper);}
+  .slide.invert .title .em{color:var(--clay-soft);}
+
+  .latin{font-family:var(--serif); font-weight:400; font-style:italic;
+    color:var(--ink-mute); font-size:clamp(18px,2.2vw,22px); letter-spacing:.01em; line-height:1.5;}
+  .slide.invert .latin{color:var(--green-soft);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    font-family:var(--serif); font-weight:400; color:var(--ink-soft);
+    font-size:clamp(18px,1.4vw,22px); line-height:1.8;}
+  .slide.invert .body{color:rgba(244,241,232,.9);}
+  .body p{margin:0 0 1.1rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--clay-deep); font-weight:700;}
+  .slide.invert .body em{color:var(--clay-soft);}
+  .body .strong{font-weight:700; color:var(--ink);}
+  .slide.invert .body .strong{color:var(--paper);}
+  .body .final{font-weight:700; text-align:center; color:var(--ink);
+    font-size:25px; line-height:1.62; margin-top:1.1rem;}
+  .slide.invert .body .final{color:var(--paper);}
+  .body .quote{font-weight:700; text-align:center; color:var(--ink);
+    font-size:25px; line-height:1.6;}
+  .slide.invert .body .quote{color:var(--paper);}
+
+  .layers{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.5rem;}
+  .layers .ly{border:1px solid var(--rule); border-left:3px solid var(--clay);
+    border-radius:4px; padding:.7rem .95rem; background:var(--surface);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .slide.invert .layers .ly{border-color:rgba(244,241,232,.16); border-left-color:var(--clay-soft);
+    background:rgba(0,46,34,.42);}
+  .layers .nm{font-family:var(--serif); font-weight:700; color:var(--green);
+    font-size:22px; line-height:1.3; flex:none; min-width:6.4rem;}
+  .slide.invert .layers .nm{color:var(--paper);}
+  .layers .nm .h{display:block; font-family:var(--sans); font-size:12px; color:var(--ink-mute);
+    font-weight:600; letter-spacing:.18em; margin-top:.15rem;}
+  .slide.invert .layers .nm .h{color:var(--green-soft);}
+  .layers .ds{font-family:var(--serif); font-size:18px; line-height:1.7; color:var(--ink-soft);}
+  .slide.invert .layers .ds{color:rgba(244,241,232,.82);}
+  .layers .ds b{color:var(--clay-deep); font-weight:700;}
+  .slide.invert .layers .ds b{color:var(--clay-soft);}
+
+  .cards{align-self:stretch; max-width:42rem; margin:.3rem auto 0;
+    display:grid; grid-template-columns:1fr 1fr; gap:.5rem; text-align:left;}
+  .cards .cd{border:1px solid var(--rule); border-radius:4px; padding:.65rem .85rem; background:var(--surface);}
+  .slide.invert .cards .cd{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .cards .w{display:block; font-family:var(--serif); font-weight:700; font-size:22px;
+    line-height:1.3; color:var(--green);}
+  .slide.invert .cards .w{color:var(--paper);}
+  .cards .m{display:block; margin-top:.2rem; font-family:var(--serif); font-size:18px;
+    line-height:1.55; color:var(--ink-mute);}
+  .slide.invert .cards .m{color:rgba(244,241,232,.75);}
+
+  .viz{width:clamp(120px,13vw,168px); height:clamp(120px,13vw,168px); color:var(--green); flex:none;}
+  .viz.wide{width:min(100%,clamp(260px,42vw,440px)); height:auto;}
+  .slide.invert .viz{color:var(--green-soft);}
+  .viz svg{width:100%; height:100%; overflow:visible; display:block;}
+  .viz .ac{color:var(--clay);}
+  .slide.invert .viz .ac{color:var(--clay-soft);}
+  .lbl{font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:.08em;
+    fill:currentColor; stroke:none; paint-order:normal; opacity:.8;}
+
+  .cover .viz{width:clamp(130px,15vw,196px); height:clamp(130px,15vw,196px);}
+  .cover .title{font-size:clamp(45px,6vw,58px); line-height:1.24;}
+  .logo{width:clamp(78px,8vw,100px); height:auto; display:block; margin:0 auto;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.6s linear infinite;}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.55; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .orbit{transform-origin:center; animation:spin 8s linear infinite;}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(14px)}50%{transform:translateY(-14px)}}
+  .floatup{animation:floatup 4.6s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(10px);opacity:0}22%{opacity:1}78%{opacity:1}100%{transform:translateY(-20px);opacity:0}}
+  .drop{animation:drop 3.8s ease-in-out infinite;}
+  @keyframes drop{0%{transform:translateY(-14px);opacity:0}25%{opacity:1}75%{opacity:1}100%{transform:translateY(16px);opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    .spin,.march,.marchl,.pulse,.twinkle,.orbit,.rise,.floatup,.drop{animation:none;}
+    .r{transition:none; opacity:1; transform:none;}
+  }
+
+  /* 아래로 넘치는 글이 하단 크롬과 부딪히지 않도록 바탕색으로 사그라든다 */
+  .deck::after{content:""; position:fixed; left:0; right:0; bottom:0; height:58px; z-index:6;
+    pointer-events:none; background:linear-gradient(to top, var(--paper) 38%, rgba(244,241,232,0) 100%);
+    transition:background .5s ease;}
+  body.on-dark .deck::after{background:linear-gradient(to top, var(--green) 38%, rgba(26,74,53,0) 100%);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; width:0; background:var(--clay); z-index:9; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:var(--serif); font-weight:700; font-size:14px; color:var(--ink-mute); letter-spacing:.18em;}
+  body.on-dark .counter{color:var(--green-soft);}
+  .nav{position:fixed; bottom:1rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--ink-mute); font-family:var(--serif); font-size:28px; line-height:1; padding:.35rem .7rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--clay-deep); transform:scale(1.15);}
+  body.on-dark .nav{color:var(--green-soft);}
+  body.on-dark .nav:hover{color:var(--clay-soft);}
+  .nav.prev{right:4rem;} .nav.next{right:1.4rem;}
+  .hint{position:fixed; bottom:1.6rem; left:1.5rem; z-index:7;
+    font-family:var(--sans); font-size:12px; color:var(--ink-mute); letter-spacing:.12em; opacity:.75;}
+  body.on-dark .hint{color:var(--green-soft);}
+
+  @media(max-width:600px){
+    .hint{display:none;} .counter{bottom:.9rem; font-size:12px;}
+    .content{padding:3.6rem 1.2rem 3.4rem; gap:.75rem;}
+    .brandmark{top:1rem; left:1.1rem; font-size:11px; letter-spacing:.26em;}
+    .cards{grid-template-columns:1fr; gap:.35rem;}
+    .cards .cd{padding:.5rem .7rem;}
+    .cards .w{font-size:18px;}
+    .cards .m{font-size:16px; line-height:1.45; margin-top:.1rem;}
+    .layers{gap:.4rem;}
+    .layers .ly{flex-direction:column; gap:.15rem; padding:.58rem .8rem;}
+    .layers .nm{min-width:0; font-size:18px;}
+    .layers .nm .h{margin-top:.05rem;}
+    .layers .ds{line-height:1.62;}
+    .body p{margin-bottom:.85rem;}
+    .body .final,.body .quote{font-size:22px;}
+    .viz{width:clamp(96px,26vw,120px); height:clamp(96px,26vw,120px);}
+    .cover .viz{width:clamp(110px,30vw,140px); height:clamp(110px,30vw,140px);}
+    .nav{font-size:24px;} .nav.prev{right:3.4rem;} .nav.next{right:1rem;}
+    .viz.wide{width:min(100%,285px) !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · 표지 -->
+  <section class="slide active cover">
+    <div class="content">
+      <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
+      <p class="kicker r r2">디퍼 언브랜딩 살롱 · 문법의 달 · 오리엔테이션</p>
+      <h1 class="title r r3">여우를<br>처음 만나는 밤</h1>
+      <p class="latin r r4">Grammatica — 원천을 캐는 서른 날이 시작된다</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M34 122 q30 -14 66 -14 q36 0 66 14" stroke-opacity=".4"/>
+          <circle cx="76" cy="88" r="15" stroke-opacity=".85"/>
+          <path d="M64 78 l-5 -13 l13 6" stroke-opacity=".85"/>
+          <path d="M88 78 l5 -13 l-13 6" stroke-opacity=".85"/>
+          <circle cx="71" cy="88" r="1.8" fill="currentColor" stroke="none"/>
+          <circle cx="81" cy="88" r="1.8" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:140px 52px;">
+            <path class="ac" d="M140 38 L144 50 L156 50 L146 58 L150 70 L140 62 L130 70 L134 58 L124 50 L136 50 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <path class="marchl" d="M94 82 q22 -8 38 -24" stroke-opacity=".5"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">오늘은 소개받는 시간이다</h2>
+      <div class="body r r4">
+        <p>배우는 시간이라기보다, 한 달 동안 곁에 있을 친구를 소개받는 시간이다. 어려운 이야기는 하나도 나오지 않는다.</p>
+        <p class="strong">오늘 기억할 낱말은 사실상 둘이다. 나머지는 걸으면서 자연히 몸에 붙는다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 사막여우란 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="34" y="40" width="132" height="82" rx="6" stroke-opacity=".55"/>
+          <path d="M34 58 h132" stroke-opacity=".3"/>
+          <circle cx="46" cy="49" r="2" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle cx="56" cy="49" r="2" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle cx="100" cy="90" r="16" stroke-opacity=".9"/>
+          <path d="M88 80 l-5 -13 l13 6" stroke-opacity=".9"/>
+          <path d="M112 80 l5 -13 l-13 6" stroke-opacity=".9"/>
+          <circle cx="95" cy="90" r="1.8" fill="currentColor" stroke="none"/>
+          <circle cx="105" cy="90" r="1.8" fill="currentColor" stroke="none"/>
+          <g class="pulse"><path class="ac" d="M100 104 q0 8 -8 12 M100 104 q0 8 8 12" stroke-opacity=".7"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">여우와의 첫 만남</p>
+      <h2 class="title r r3">나를 기억하는 AI</h2>
+      <div class="body r r4">
+        <p>디퍼님 컴퓨터에는 이제 <em>사막여우</em>가 산다. 여우도 AI인데, 흔히 쓰는 채팅 AI와 다른 점이 하나 있다.</p>
+        <p class="strong">디퍼님을 기억한다.</p>
+        <p>어제 쓴 글, 지난주에 나눈 이야기 위에서 오늘을 시작한다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · 볼트 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M26 54 h44 l10 12 h94 v62 a4 4 0 0 1 -4 4 h-140 a4 4 0 0 1 -4 -4 v-70 a4 4 0 0 1 4 -4 z" stroke-opacity=".8"/>
+          <g class="ac">
+            <rect x="72" y="82" width="26" height="32" rx="2" stroke-width="1.8"/>
+            <rect x="104" y="82" width="26" height="32" rx="2" stroke-width="1.8"/>
+            <path d="M78 92 h14 M78 100 h10 M110 92 h14 M110 100 h10" stroke-opacity=".55" stroke-width="1.5"/>
+          </g>
+          <g class="floatup"><circle cx="150" cy="76" r="2.6" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">여우의 집</p>
+      <h2 class="title r r3">볼트 — 내 컴퓨터 안의 폴더 하나</h2>
+      <div class="body r r4">
+        <p>여우의 집을 <em>볼트</em>라고 부른다. 어딘가 먼 곳이 아니라 디퍼님 컴퓨터 안의 폴더 하나다.</p>
+        <p>그 안에 디퍼님의 기록이 파일로 차곡차곡 쌓인다. 여우가 디퍼님을 기억하는 비결은 이것뿐이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 원리 (그린) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz wide r r1" style="width:min(100%,clamp(230px,34vw,360px));">
+        <svg viewBox="0 0 240 150" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="22" y="30" width="76" height="88" rx="4" stroke-opacity=".45" stroke-dasharray="5 6"/>
+          <text class="lbl" x="60" y="136" text-anchor="middle">세션 · 백지</text>
+          <g class="ac">
+            <rect x="142" y="30" width="76" height="88" rx="4" stroke-width="2.2"/>
+            <path d="M154 50 h52 M154 64 h52 M154 78 h38 M154 92 h52" stroke-opacity=".6"/>
+          </g>
+          <text class="lbl ac" x="180" y="136" text-anchor="middle">파일 · 기억</text>
+          <path class="march" d="M138 74 h-26" stroke-width="2.2" stroke-opacity=".75"/>
+          <path d="M120 66 l-9 8 l9 8" stroke-opacity=".75"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">오늘의 단 하나뿐인 원리</p>
+      <h2 class="title r r3">세션은 백지,<br><span class="em">파일이 기억</span></h2>
+      <div class="body r r4">
+        <p>AI와의 새 대화는 어제를 모른다. 그런데 파일은 남는다.</p>
+        <p>그래서 여우는 말을 시작하기 전에 자기 집의 파일을 먼저 읽는다. 걸을수록 여우는 디퍼님을 더 잘 알게 된다.</p>
+      </div>
+      <img class="logo r r4" style="width:clamp(66px,6vw,84px); margin-top:1.4rem; opacity:.85;" src="data:image/png;base64,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" alt="DEEPER">
+    </div>
+  </section>
+
+  <!-- 06 · 여우의 방 한 바퀴 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz wide r r1" style="width:min(100%,clamp(250px,38vw,400px));">
+        <svg viewBox="0 0 280 176" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="20" y="16" width="240" height="144" rx="8" stroke-opacity=".85"/>
+          <path d="M20 40 h240" stroke-opacity=".3"/>
+          <text class="lbl" x="140" y="32" text-anchor="middle">여 우 의  방</text>
+          <!-- 한 달의 걸음 -->
+          <rect x="38" y="56" width="94" height="42" rx="4" stroke-opacity=".6"/>
+          <path d="M50 78 h12 M68 78 h12 M86 78 h12 M104 78 h12" stroke-opacity=".5"/>
+          <text class="lbl" x="85" y="70" text-anchor="middle">한 달의 걸음</text>
+          <!-- 오아시스 -->
+          <g class="ac">
+            <rect x="148" y="56" width="94" height="42" rx="4" stroke-width="2"/>
+            <path d="M176 84 q10 -14 22 -4" stroke-opacity=".7"/>
+            <circle cx="168" cy="84" r="2.4" fill="currentColor" stroke="none" class="pulse"/>
+          </g>
+          <text class="lbl ac" x="195" y="70" text-anchor="middle">오 아 시 스</text>
+          <!-- 밤하늘 -->
+          <rect x="38" y="108" width="94" height="38" rx="4" stroke-opacity=".6"/>
+          <text class="lbl" x="70" y="131" text-anchor="middle">밤 하 늘</text>
+          <g class="twinkle" style="transform-origin:104px 121px;"><circle cx="104" cy="121" r="2.4" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:118px 130px; animation-delay:1.3s;"><circle cx="118" cy="130" r="2" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:106px 136px; animation-delay:2.4s;"><circle cx="106" cy="136" r="2.4" fill="currentColor" stroke="none"/></g>
+          <!-- 저장 -->
+          <rect x="148" y="108" width="94" height="38" rx="4" stroke-opacity=".6"/>
+          <text class="lbl" x="182" y="131" text-anchor="middle">저 장</text>
+          <rect x="210" y="124" width="17" height="13" rx="2" stroke-opacity=".8" stroke-width="1.6"/>
+          <path d="M213 124 v-4 a5.5 5.5 0 0 1 11 0 v4" stroke-opacity=".8" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">방 한 바퀴</p>
+      <h2 class="title r r3">방 안에 사는 것들</h2>
+      <div class="layers r r4">
+        <div class="ly"><span class="nm">한 달의 걸음<span class="h">여정</span></span><span class="ds">문법의 달 서른세 곡이 여기 산다. <b>하루 한 곡씩.</b></span></div>
+        <div class="ly"><span class="nm">오아시스<span class="h">아침의 샘</span></span><span class="ds">아침마다 손으로 쓰는 글이 모인다. <b>이 달의 심장</b>이다.</span></div>
+        <div class="ly"><span class="nm">밤하늘<span class="h">주말</span></span><span class="ds">한 주의 기록이 <b>별자리 그림 한 장</b>이 된다.</span></div>
+        <div class="ly"><span class="nm">저장<span class="h">금고</span></span><span class="ds">“백업” 한마디면 <b>이 방 전체가 금고에 담긴다.</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 여우의 약속 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 24 l52 20 v40 q0 40 -52 62 q-52 -22 -52 -62 v-40 z" stroke-opacity=".85"/>
+          <g class="rise">
+            <circle class="ac" cx="100" cy="92" r="17" stroke-width="2.2"/>
+            <path class="ac" d="M100 84 v9 M100 100 v.5" stroke-width="2.6"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">여우가 지키는 약속</p>
+      <h2 class="title r r3">되돌리기 어려운 일은<br><span class="em">먼저 묻는다</span></h2>
+      <div class="body r r4">
+        <p>지우는 일, 밖으로 내보내는 일은 여우 혼자 하지 않는다. 반드시 디퍼님께 먼저 묻는다.</p>
+        <p class="strong">잘못 눌러 망가질 걱정은 내려놓아도 된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · 하루의 리듬 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz wide r r1" style="width:min(100%,clamp(240px,36vw,380px));">
+        <svg viewBox="0 0 280 140" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 해 -->
+          <circle cx="46" cy="46" r="15" stroke-opacity=".8"/>
+          <g class="pulse"><path d="M46 20 v-8 M46 80 v8 M20 46 h-8 M72 46 h8 M28 28 l-6 -6 M64 64 l6 6 M64 28 l6 -6 M28 64 l-6 6" stroke-opacity=".55"/></g>
+          <!-- 노트와 손글씨 -->
+          <rect x="106" y="26" width="60" height="44" rx="3" stroke-opacity=".75"/>
+          <path class="marchl ac" d="M116 42 q8 -8 15 0 q7 8 15 0 q6 -6 10 -1" stroke-width="2"/>
+          <path d="M116 56 h40" stroke-opacity=".35"/>
+          <!-- 화살표 -->
+          <path class="march" d="M178 48 h24" stroke-opacity=".7" stroke-width="2"/>
+          <path d="M196 41 l8 7 l-8 7" stroke-opacity=".7"/>
+          <!-- 안녕 -->
+          <g class="ac">
+            <rect x="212" y="26" width="54" height="40" rx="10" stroke-width="2.2"/>
+            <path d="M226 66 l-4 12 l14 -12" stroke-width="2.2"/>
+          </g>
+          <text class="lbl ac" x="239" y="52" text-anchor="middle">안 녕</text>
+          <!-- 하단 라인 -->
+          <path d="M40 112 h200" stroke-opacity=".3"/>
+          <circle cx="70" cy="112" r="3" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle cx="120" cy="112" r="3" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle cx="170" cy="112" r="3" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle class="ac" cx="220" cy="112" r="3.6" fill="currentColor" stroke="none"/>
+          <text class="lbl" x="140" y="134" text-anchor="middle">하루 10분이면 넉넉하다</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">하루의 리듬</p>
+      <h2 class="title r r3">아침의 손글씨, 그리고 “안녕”</h2>
+      <div class="body r r4">
+        <p>아침에 일어나 노트에 손으로 글을 쓴다. 잘 쓰려 하지 않아도 된다. 못 잔 이유, 먹고 싶은 것, <em>모르겠다</em>도 다 글이다.</p>
+        <p>그리고 여우에게 “안녕” 한마디를 건넨다. 여우가 오늘의 한 걸음을 함께 걷는다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 낱말 카드 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">낱말 카드</p>
+      <h2 class="title r r2">여우에게 건네는 여섯 한마디</h2>
+      <div class="cards r r3">
+        <div class="cd"><span class="w">안녕</span><span class="m">오늘의 한 걸음 — 여우와 하루를 시작</span></div>
+        <div class="cd"><span class="w">오아시스</span><span class="m">아침 손글씨를 여우와 함께 들여다보기</span></div>
+        <div class="cd"><span class="w">냠냠</span><span class="m">손글씨 사진을 여우의 방에 넣어주기</span></div>
+        <div class="cd"><span class="w">정리</span><span class="m">흩어진 기록과 씨앗을 제자리에</span></div>
+        <div class="cd"><span class="w">백업</span><span class="m">방 전체를 금고에 저장</span></div>
+        <div class="cd"><span class="w">도움말</span><span class="m">길을 잃었을 때 — 언제든 여기부터</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.2rem;">
+        <p class="strong">오늘 외울 것은 “안녕”과 “도움말” 둘이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 서른 날의 흐름 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">한 달의 흐름</p>
+      <h2 class="title r r2">서른 날은 이렇게 흐른다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">주중<span class="h">평일</span></span><span class="ds">아침 손글씨와 <b>“안녕”</b>으로 걷는다.</span></div>
+        <div class="ly"><span class="nm">주마다<span class="h">살롱</span></span><span class="ds">살롱에서 <b>함께 만난다.</b></span></div>
+        <div class="ly"><span class="nm">주말<span class="h">나눔</span></span><span class="ds">밤하늘 한 장을 <b>사막에 나눈다.</b></span></div>
+        <div class="ly"><span class="nm">마지막 사흘<span class="h">별의 날</span></span><span class="ds">서른 날을 걸으면 <b>별을 보는 시간</b>이 기다린다.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 하루 빠져도 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M28 108 h144" stroke-opacity=".3"/>
+          <circle cx="52" cy="108" r="4" fill="currentColor" stroke="none" opacity=".65"/>
+          <circle cx="82" cy="108" r="4" fill="currentColor" stroke="none" opacity=".65"/>
+          <circle cx="112" cy="108" r="4" stroke-opacity=".5" stroke-dasharray="2 3"/>
+          <circle class="ac" cx="142" cy="108" r="5" fill="currentColor" stroke="none"/>
+          <path class="march" d="M82 96 q30 -34 60 4" stroke-opacity=".7" stroke-width="2.1"/>
+          <g class="twinkle" style="transform-origin:112px 56px;">
+            <path class="ac" d="M112 44 L115 54 L126 54 L117 61 L120 71 L112 65 L104 71 L107 61 L98 54 L109 54 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">쉬어도 된다</p>
+      <h2 class="title r r3">하루 빠져도 괜찮다</h2>
+      <div class="body r r4">
+        <p>여우가 <em>어디까지 했더라</em>를 대신 기억한다. 돌아와서 “안녕” 하면 그 자리에서 이어진다.</p>
+        <p class="strong">따라잡을 것도, 만회할 것도 없다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 안심의 말 (그린) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="42" y="34" width="116" height="76" rx="6" stroke-opacity=".8"/>
+          <path d="M74 110 v14 h52 v-14" stroke-opacity=".6"/>
+          <path d="M62 128 h76" stroke-opacity=".5"/>
+          <path class="ac" d="M76 68 h32 M76 80 h24" stroke-opacity=".85" stroke-width="2"/>
+          <g class="twinkle" style="transform-origin:126px 60px;">
+            <circle class="ac" cx="126" cy="60" r="3.4" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">안심</p>
+      <h2 class="title r r3">기록은 <span class="em">처음부터 끝까지</span><br>디퍼님 것이다</h2>
+      <div class="body r r4">
+        <p>디퍼님의 기록은 전부 디퍼님 컴퓨터 안의 파일이다. 밖의 서버에 쌓이지 않는다.</p>
+        <p>언제든 폴더를 열면 평범한 글 파일로 다 읽을 수 있다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 못 외워도 된다 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="28" y="42" width="72" height="52" rx="12" stroke-opacity=".75"/>
+          <path d="M46 94 l-4 14 l16 -14" stroke-opacity=".75"/>
+          <path d="M46 62 h34 M46 74 h22" stroke-opacity=".45"/>
+          <g class="ac">
+            <rect x="106" y="66" width="66" height="48" rx="12" stroke-width="2.2"/>
+            <path d="M156 114 l4 13 l-16 -13" stroke-width="2.2"/>
+            <path d="M126 86 h28 M126 98 h18" stroke-opacity=".6"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">안심 하나 더</p>
+      <h2 class="title r r3">명령을 못 외워도 된다</h2>
+      <div class="body r r4">
+        <p>여우에게는 그냥 편하게 말을 걸면 된다. <em>이거 어떻게 하지</em>라고 물으면 여우가 알려준다.</p>
+        <p class="strong">잊으면 “도움말” 한마디. 그거면 충분하다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · 선물 예고 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz wide r r1" style="width:min(100%,clamp(230px,34vw,360px));">
+        <svg viewBox="0 0 240 150" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 밤하늘 -->
+          <rect x="16" y="30" width="94" height="70" rx="5" stroke-opacity=".7"/>
+          <g class="twinkle" style="transform-origin:44px 54px;"><circle cx="44" cy="54" r="2.6" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:72px 46px; animation-delay:1.1s;"><circle cx="72" cy="46" r="2.2" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:88px 72px; animation-delay:2.2s;"><circle cx="88" cy="72" r="2.8" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:52px 82px; animation-delay:1.7s;"><circle cx="52" cy="82" r="2.2" fill="currentColor" stroke="none"/></g>
+          <path class="marchl" d="M44 54 L72 46 L88 72 L52 82 Z" stroke-opacity=".45"/>
+          <text class="lbl" x="63" y="118" text-anchor="middle">밤 하 늘</text>
+          <!-- AI 월드 -->
+          <g class="ac">
+            <rect x="130" y="30" width="94" height="70" rx="5" stroke-width="2"/>
+            <path d="M146 88 l16 -16 l16 16" stroke-opacity=".8"/>
+            <rect x="152" y="66" width="20" height="22" stroke-opacity=".8"/>
+            <rect x="180" y="56" width="22" height="32" stroke-opacity=".8"/>
+            <path d="M186 64 h10 M186 72 h10" stroke-opacity=".5" stroke-width="1.4"/>
+          </g>
+          <text class="lbl ac" x="177" y="118" text-anchor="middle">A I  월 드</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">걷다 보면 기다리는 것</p>
+      <h2 class="title r r3">즐거운 것들이 있다</h2>
+      <div class="body r r4">
+        <p>주말마다 <em>밤하늘</em> — 내 한 주가 별자리 한 장이 된다. 그리고 <em>AI 월드</em> — 한마디면 내 기록의 세계가 밤 도시 지도로 그려진다. 도시는 기록이 자라는 만큼 자란다.</p>
+        <p>한 달을 완주하면 수료 선물이 있다. 이름만 미리 알려둔다 — <em>내 목소리</em>, 그리고 <em>나의 사막</em>.</p>
+        <p class="strong">무엇인지는 그날의 즐거움으로 남겨둔다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 닫기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle class="march" cx="100" cy="100" r="56" stroke-width="2.3" stroke-opacity=".5"/>
+          <circle cx="100" cy="104" r="20" stroke-opacity=".9"/>
+          <path d="M84 90 l-6 -16 l16 8" stroke-opacity=".9"/>
+          <path d="M116 90 l6 -16 l-16 8" stroke-opacity=".9"/>
+          <circle cx="93" cy="104" r="2.2" fill="currentColor" stroke="none"/>
+          <circle cx="107" cy="104" r="2.2" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:150px 48px;">
+            <path class="ac" d="M150 34 L154 46 L166 46 L156 54 L160 66 L150 58 L140 66 L144 54 L134 46 L146 46 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">닫기 · 문법의 달 오리엔테이션</p>
+      <h2 class="title r r3">서른 날은 <span class="em">한 마디</span>에서<br>시작된다</h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">오늘 밤이나 내일 아침,<br>노트에 손글씨 한 장을 쓰고<br>여우에게 첫 “안녕”을 건넨다.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1rem;">살롱에서 매주 만난다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 15</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    document.body.classList.toggle('on-dark', slides[i].classList.contains('invert'));
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
