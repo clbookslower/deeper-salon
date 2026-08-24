@@ -160,7 +160,7 @@
     table.cal td{border:none;border-bottom:1px solid var(--line);padding:9px 12px 10px;}
     table.cal tr:last-child td:last-child{border-bottom:none;}
     /* 일정 없는 날은 목록에서 접는다 (:has 미지원 브라우저는 전체 표시로 안전 낙하) */
-    table.cal td:not(:has(.ev)):not(:has(.ws-band)){display:none;}
+    table.cal td:not(:has(.ev)):not(:has(.ws-band)):not(:has(.cs-band)){display:none;}
     td.other{display:none !important;}
     .dnum{font-size:13px;margin-bottom:6px;}
     .ev{font-size:12.5px;}
