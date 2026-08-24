@@ -130,6 +130,12 @@
   footer .team{margin-top:10px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;}
 
   /* ── 모바일(700px 이하): 세로 아젠다형 — 가로 조작 0 ── */
+      @media (max-width:620px){
+      .legend{flex-direction:column; align-items:flex-start; gap:9px; padding:0 6px;}
+      .legend .li{align-items:flex-start; line-height:1.65; text-align:left;}
+      .legend .dot{margin-top:5px;}
+      .subtitle{font-size:13px;}
+    }
   @media (max-width:700px){
     .wrap{padding:32px 14px 48px;}
     h1{font-size:21px;}
