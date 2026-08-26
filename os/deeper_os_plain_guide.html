@@ -78,6 +78,10 @@
   .vs .a li{color:#66604f}
   .vs .b li{color:#C7D7CB}
   .vs .b li b{color:#E2C77B;font-weight:700}
+  .tool .tech{font-family:'DM Mono',Consolas,monospace;font-size:11.5px;color:#8b8375;
+    background:#F4F0E4;border-radius:8px;padding:7px 12px;margin-top:10px;
+    overflow-x:auto;white-space:nowrap}
+  .tool .tech::before{content:"> ";color:#B08D57}
   .fig{width:100%;max-width:400px;height:auto;display:block;margin:26px auto}
   .figcap{font-size:12px;color:#8b8375;text-align:center;margin:-10px 0 24px;line-height:1.7}
   @media (max-width:480px){.lead{text-align:left}}
@@ -146,18 +150,24 @@
   <h2><span class="tag">부르는 말</span>한마디가 실제로 하는 일</h2>
   <p>여우는 짧은 우리말 한마디로 부릅니다. 이름은 다정하지만, 뒤에서 도는 일은 정확한 파일 연산이에요.</p>
   <div class="tool"><div class="n">안녕</div><div class="role">여정 이어가기</div>
-  <p>여정 기록 파일에서 어제까지의 진행을 읽고, 오늘 자 노트를 만들어 다음 걸음을 내놓습니다.</p></div>
+  <p>여정 기록 파일에서 어제까지의 진행을 읽고, 오늘 자 노트를 만들어 다음 걸음을 내놓습니다.</p>
+  <div class="tech">read _여정기록.md → 상태 로드 → 데일리노트 템플릿 인스턴스화 → write</div></div>
   <div class="tool"><div class="n">냠냠</div><div class="role">손글씨 들이기</div>
-  <p>손글씨 사진이나 붙여넣은 글을 텍스트로 옮겨 오늘 노트에 넣고, 씨앗(한 문장짜리 원자 노트)을 추려 저장합니다.</p></div>
+  <p>손글씨 사진이나 붙여넣은 글을 텍스트로 옮겨 오늘 노트에 넣고, 씨앗(한 문장짜리 원자 노트)을 추려 저장합니다.</p>
+  <div class="tech">이미지 전사(vision) → 데일리노트 append → 원자 노트(atomic note) 추출·저장</div></div>
   <div class="tool"><div class="n">오아시스</div><div class="role">질문 하나</div>
-  <p>진행 상태를 파일에서 읽어, 지금 차례인 질문 하나를 건넵니다. 답도 파일로 남아요.</p></div>
+  <p>진행 상태를 파일에서 읽어, 지금 차례인 질문 하나를 건넵니다. 답도 파일로 남아요.</p>
+  <div class="tech">상태 인덱스 read → 질문 1건 출력 → 답변·인덱스 write (상태는 파일에 영속)</div></div>
   <div class="tool"><div class="n">밤하늘</div><div class="role">한 주 돌아보기</div>
-  <p>한 주치 노트를 모아 별자리 대시보드 HTML 한 장을 지어 줍니다.</p></div>
+  <p>한 주치 노트를 모아 별자리 대시보드 HTML 한 장을 지어 줍니다.</p>
+  <div class="tech">주간 노트 집계(파싱) → 정적 HTML 1건 생성 — 서버 없음, 파일 하나</div></div>
   <div class="tool"><div class="n">백업</div><div class="role">금고에 올리기</div>
-  <p>지금까지의 변경을 묶어 깃허브 금고에 올립니다. 시점이 남아, 지난달 상태로 되돌아갈 수도 있어요.</p></div>
+  <p>지금까지의 변경을 묶어 깃허브 금고에 올립니다. 시점이 남아, 지난달 상태로 되돌아갈 수도 있어요.</p>
+  <div class="tech">git add → commit → push (비공개 원격 저장소 · 커밋 = 롤백 지점)</div></div>
   <div class="tool"><div class="n">새옷</div><div class="role">여우 업데이트</div>
-  <p>플러그인을 최신판으로 갈아입힙니다. 볼트의 기록은 건드리지 않아요.</p></div>
-  <div class="callout"><div class="label">뒤에서 도는 방식</div><p>한마디는 단발 대답이 아니라 <b>읽기 → 계획 → 실행 → 확인</b>을 도는 여러 단계 작업을 엽니다. 여우가 검색 서버를 거치지 않고 <b>내 폴더의 파일을 직접</b> 읽고 씁니다.</p></div>
+  <p>플러그인을 최신판으로 갈아입힙니다. 볼트의 기록은 건드리지 않아요.</p>
+  <div class="tech">git fetch → reset --hard origin/main → 플러그인 리로드 (볼트 무접촉)</div></div>
+  <div class="callout"><div class="label">뒤에서 도는 방식</div><p>한마디는 단발 대답이 아니라 <b>관찰 → 계획 → 행위 → 관찰</b>을 도는 에이전틱 루프를 엽니다. 여우가 검색 서버를 거치지 않고 <b>내 폴더의 파일을 직접</b> 읽고 씁니다.</p></div>
 
   <h2><span class="tag">그래서 — 구조</span>방이 둘입니다</h2>
   <p>하나는 <b>‘나’를 담는 방</b>이에요. 사막여우 볼트라고 부릅니다. 석 달 여정 백 곡이 여기 쌓여요. 문법의 달에 서른세 곡, 논리에 서른세 곡, 수사에 서른네 곡. 오아시스도 밤하늘도 손글씨도 이 방에 남아요.</p>
