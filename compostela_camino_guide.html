@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 콤포스텔라 — 파트너 트랙 안내</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="디퍼 콤포스텔라 — 두 구간의 까미노">
+<meta property="og:description" content="여덟 번의 아침, 한 줄기 길. 9월 까미노 프리미티보, 10월 까미노 피스테라 — 전체 여정 안내.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/compostela_camino_guide.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/compostela_camino_guide_og.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="디퍼 콤포스텔라 — 두 구간의 까미노">
+<meta name="twitter:description" content="여덟 번의 아침, 한 줄기 길. 9월 까미노 프리미티보, 10월 까미노 피스테라 — 전체 여정 안내.">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/compostela_camino_guide_og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#081410;
+    --night-soft:#0C1E17;
+    --panel:rgba(16,36,28,.55);
+    --panel-line:rgba(217,179,108,.16);
+    --gold:#D9B36C;
+    --gold-deep:#B99450;
+    --cream:#F4F1E8;
+    --cream-mute:rgba(244,241,232,.64);
+    --cream-dim:rgba(244,241,232,.42);
+    --sage:#9FCDB4;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--night);
+    color:var(--cream);
+    font-family:'Noto Sans KR','맑은 고딕',sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Noto Serif KR','바탕',serif;}
+
+  /* ── 별 하늘 (고정 캔버스) ── */
+  #sky{
+    position:fixed; inset:0; z-index:0;
+    width:100%; height:100%;
+    pointer-events:none;
+  }
+  .page{position:relative; z-index:1;}
+
+  /* ── 히어로 ── */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:80px 24px 60px;
+    position:relative;
+    background:radial-gradient(ellipse 120% 80% at 50% -10%, rgba(20,48,37,.85) 0%, rgba(8,20,16,0) 60%);
+  }
+  .plaque{display:inline-block; margin-bottom:40px;}
+  .plaque img{height:32px; width:auto; display:block; opacity:.92;}
+  .kicker{
+    font-size:11.5px; letter-spacing:.5em; padding-left:.5em;
+    color:var(--gold); font-weight:500; margin-bottom:26px;
+  }
+  .hero h1{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:clamp(34px,7vw,52px); font-weight:600;
+    letter-spacing:.02em; margin-bottom:16px;
+  }
+  .hero .sub{
+    font-size:14px; color:var(--cream-mute);
+    letter-spacing:.08em; font-weight:300;
+    margin-bottom:56px;
+  }
+  .epigraph{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:clamp(16px,3.4vw,19px); font-weight:400;
+    color:var(--cream); line-height:2.1;
+    max-width:480px;
+  }
+  .epigraph-src{
+    margin-top:14px;
+    font-size:12px; color:var(--cream-dim);
+    letter-spacing:.06em;
+  }
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-cue .word{font-size:10.5px; letter-spacing:.4em; padding-left:.4em; color:var(--cream-dim);}
+  .scroll-cue .stem{
+    width:1px; height:44px;
+    background:linear-gradient(to bottom, rgba(217,179,108,.7), rgba(217,179,108,0));
+    overflow:hidden; position:relative;
+  }
+  .scroll-cue .stem::after{
+    content:""; position:absolute; left:0; top:-40%;
+    width:100%; height:40%;
+    background:var(--gold);
+    animation:cue-drop 2.6s ease-in-out infinite;
+  }
+  @keyframes cue-drop{
+    0%{top:-40%; opacity:0;}
+    30%{opacity:1;}
+    100%{top:110%; opacity:0;}
+  }
+
+  /* 히어로 등장 */
+  .hr-a{opacity:0; transform:translateY(14px); animation:hr-in 1.2s cubic-bezier(.22,.7,.3,1) forwards;}
+  .d1{animation-delay:.15s;} .d2{animation-delay:.45s;} .d3{animation-delay:.75s;}
+  .d4{animation-delay:1.05s;} .d5{animation-delay:1.6s;} .d6{animation-delay:2.4s;}
+  @keyframes hr-in{to{opacity:1; transform:translateY(0);}}
+
+  /* ── 공통 섹션 ── */
+  .sec{
+    max-width:760px; margin:0 auto;
+    padding:110px 24px 0;
+  }
+  .sec-kicker{
+    font-size:11px; letter-spacing:.44em; padding-left:.44em;
+    color:var(--gold); font-weight:500;
+    text-align:center; margin-bottom:16px;
+  }
+  .sec-title{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:clamp(24px,5vw,31px); font-weight:600;
+    text-align:center; margin-bottom:14px; letter-spacing:.01em;
+  }
+  .sec-sub{
+    text-align:center; font-size:13px; color:var(--cream-mute);
+    letter-spacing:.05em; margin-bottom:52px;
+  }
+  .steps-line{
+    font-family:'Noto Serif KR','바탕',serif;
+    text-align:center; font-size:14px; color:var(--sage);
+    letter-spacing:.04em; margin:-40px 0 52px;
+  }
+  .steps-line .arr{color:rgba(217,179,108,.5); margin:0 6px; font-family:'Noto Sans KR',sans-serif; font-size:12px;}
+
+  /* ── 도입 산문 ── */
+  .intro{max-width:520px; margin:0 auto;}
+  .intro p{
+    font-size:14.5px; color:var(--cream-mute); font-weight:300;
+    line-height:2.15; margin-bottom:26px;
+  }
+  .intro p strong{color:var(--cream); font-weight:500;}
+  .intro .latin{font-style:italic; color:var(--sage); letter-spacing:.03em;}
+  .theme-word{
+    text-align:center; margin:54px 0 10px;
+  }
+  .theme-word .en{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:clamp(26px,6vw,36px); font-weight:600;
+    color:var(--gold); letter-spacing:.08em;
+  }
+  .theme-word .ko{
+    margin-top:14px; font-size:14px; color:var(--cream-mute); line-height:2.1;
+    font-family:'Noto Serif KR','바탕',serif;
+  }
+
+  /* ── 길 지도 ── */
+  .map-wrap{
+    max-width:920px; margin:0 auto; padding:110px 18px 0;
+  }
+  .map-frame{
+    position:relative;
+    border:1px solid var(--panel-line);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(14,33,26,.5), rgba(8,20,16,.2));
+    padding:34px 10px 18px;
+    overflow:hidden;
+  }
+  .map-head{
+    text-align:center; margin-bottom:6px;
+  }
+  .map-head .t{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:17px; font-weight:600; color:var(--cream);
+  }
+  .map-head .s{font-size:12px; color:var(--cream-dim); margin-top:6px; letter-spacing:.05em;}
+  #camino-svg{width:100%; height:auto; display:block;}
+  .camino-base{fill:none; stroke:rgba(244,241,232,.10); stroke-width:1.4; stroke-dasharray:2 7; stroke-linecap:round;}
+  .camino-draw{fill:none; stroke:var(--gold); stroke-width:1.8; stroke-linecap:round;
+    filter:drop-shadow(0 0 5px rgba(217,179,108,.55));}
+  .wk-node{fill:rgba(244,241,232,.22); transition:fill .8s ease, filter .8s ease;}
+  .wk-node.lit{fill:var(--gold); filter:drop-shadow(0 0 7px rgba(217,179,108,.9));}
+  .end-star{fill:rgba(244,241,232,.16); transition:fill 1s ease, filter 1s ease;}
+  .end-star.lit{fill:var(--cream); filter:drop-shadow(0 0 6px rgba(244,241,232,.8));}
+  .walker{fill:var(--cream); filter:drop-shadow(0 0 8px rgba(217,179,108,1)); opacity:0; transition:opacity .5s;}
+  .walker.on{opacity:1;}
+  .map-label{
+    fill:var(--cream-mute); font-family:'Noto Sans KR','맑은 고딕',sans-serif;
+    font-size:15px; letter-spacing:.06em;
+  }
+  .map-label.gold{fill:var(--gold); font-family:'Noto Serif KR','바탕',serif; font-weight:600; font-size:17px;}
+  .map-label.dim{fill:var(--cream-dim); font-size:12.5px;}
+  .map-foot{
+    text-align:center; font-size:12px; color:var(--cream-dim);
+    padding:8px 20px 14px; letter-spacing:.04em; line-height:2;
+  }
+
+  /* ── 주차 카드 ── */
+  .weeks{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+  }
+  .wk{
+    border:1px solid var(--panel-line);
+    border-radius:16px;
+    background:var(--panel);
+    padding:30px 28px 24px;
+    position:relative;
+    transition:border-color .5s ease, transform .5s ease;
+  }
+  .wk:hover{border-color:rgba(217,179,108,.4); transform:translateY(-3px);}
+  .wk .no{
+    font-size:11px; letter-spacing:.34em; padding-left:.34em;
+    color:var(--gold); font-weight:500; margin-bottom:12px;
+  }
+  .wk h3{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:20px; font-weight:600; margin-bottom:6px; letter-spacing:.01em;
+  }
+  .wk .tag{
+    font-size:12.5px; color:var(--sage); margin-bottom:16px; letter-spacing:.03em;
+  }
+  .wk p{
+    font-size:13.5px; color:var(--cream-mute); line-height:2.05; margin-bottom:20px;
+  }
+  .wk .make{
+    border-top:1px solid rgba(244,241,232,.08);
+    padding-top:16px;
+    display:flex; gap:10px; align-items:baseline;
+  }
+  .wk .make .star{color:var(--gold); font-size:11px; flex:none; transform:translateY(-1px);}
+  .wk .make .lab{font-size:11px; color:var(--cream-dim); letter-spacing:.16em; flex:none; padding-top:2px;}
+  .wk .make .what{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:13.5px; color:var(--cream); font-weight:500; line-height:1.9;
+  }
+
+  /* ── 완주가 남기는 것 ── */
+  .keep-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px;}
+  .keep{
+    border:1px solid var(--panel-line); border-radius:16px;
+    background:var(--panel); padding:30px 28px;
+  }
+  .keep .kh{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:15px; font-weight:600; color:var(--gold); margin-bottom:18px;
+  }
+  .keep ul{list-style:none;}
+  .keep li{
+    font-size:13.5px; color:var(--cream-mute); line-height:2;
+    padding:7px 0 7px 22px; position:relative;
+    border-bottom:1px solid rgba(244,241,232,.06);
+  }
+  .keep li:last-child{border-bottom:none;}
+  .keep li::before{
+    content:"✦"; position:absolute; left:0; top:7px;
+    color:rgba(217,179,108,.65); font-size:10px;
+  }
+  .keep li em{font-style:normal; color:var(--cream); font-weight:400;}
+  .partner-note{
+    border:1px solid rgba(217,179,108,.3);
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(217,179,108,.07), rgba(217,179,108,.02));
+    padding:34px 30px;
+    text-align:center;
+  }
+  .partner-note .ph{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:17px; font-weight:600; color:var(--cream); margin-bottom:12px;
+  }
+  .partner-note p{
+    font-size:13.5px; color:var(--cream-mute); line-height:2.1;
+    max-width:460px; margin:0 auto;
+  }
+
+  /* ── 안내 ── */
+  .info{
+    border:1px solid var(--panel-line); border-radius:18px;
+    background:var(--panel); overflow:hidden;
+  }
+  .info-row{
+    display:flex; gap:24px;
+    padding:22px 30px;
+    border-bottom:1px solid rgba(244,241,232,.07);
+    align-items:baseline;
+  }
+  .info-row:last-child{border-bottom:none;}
+  .info-row .k{
+    flex:0 0 130px;
+    font-size:11.5px; color:var(--gold); letter-spacing:.14em; font-weight:500;
+    padding-top:3px;
+  }
+  .info-row .v{
+    font-size:14px; color:var(--cream); line-height:2; font-weight:300;
+  }
+  .info-row .v .note{display:block; font-size:12px; color:var(--cream-dim); margin-top:2px;}
+
+  /* ── 닫기 ── */
+  .close-sec{
+    text-align:center;
+    padding:150px 24px 70px;
+  }
+  .close-quote{
+    font-family:'Noto Serif KR','바탕',serif;
+    font-size:clamp(19px,4.4vw,25px); font-weight:500;
+    line-height:2.1; color:var(--cream);
+    max-width:520px; margin:0 auto 18px;
+  }
+  .close-src{font-size:12.5px; color:var(--cream-dim); letter-spacing:.08em; margin-bottom:90px;}
+  .foot{
+    border-top:1px solid rgba(244,241,232,.08);
+    padding-top:46px;
+    display:flex; flex-direction:column; align-items:center; gap:18px;
+  }
+  .foot img{height:24px; width:auto; opacity:.8;}
+  .foot .fl{font-size:11px; color:var(--cream-dim); letter-spacing:.24em; padding-left:.24em;}
+
+  /* ── 스크롤 리빌 ── */
+  body.js .rv{opacity:0; transform:translateY(26px);
+    transition:opacity 1.1s cubic-bezier(.22,.7,.3,1), transform 1.1s cubic-bezier(.22,.7,.3,1);}
+  body.js .rv.in{opacity:1; transform:translateY(0);}
+  body.js .rv.dl1{transition-delay:.12s;}
+  body.js .rv.dl2{transition-delay:.24s;}
+  body.js .rv.dl3{transition-delay:.36s;}
+
+  /* ── 반응형 ── */
+  @media(max-width:680px){
+    .weeks{grid-template-columns:1fr;}
+    .keep-grid{grid-template-columns:1fr;}
+    .sec{padding-top:88px;}
+    .map-wrap{padding-top:88px;}
+    .info-row{flex-direction:column; gap:6px; padding:20px 24px;}
+    .info-row .k{flex:none;}
+    .wk{padding:26px 22px 20px;}
+    .steps-line{font-size:12.5px;}
+    .steps-line .arr{margin:0 3px;}
+    .map-label{font-size:21px;}
+    .map-label.gold{font-size:24px;}
+    .map-label.dim{font-size:17px;}
+    .camino-base{stroke-width:2.2;}
+    .camino-draw{stroke-width:2.8;}
+    .map-frame{padding:26px 6px 12px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important; transition:none !important;}
+    body.js .rv{opacity:1; transform:none;}
+    .hr-a{opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+
+<div class="page">
+
+  <!-- ══ 히어로 ══ -->
+  <header class="hero">
+    <span class="plaque hr-a d1"><img alt="DEEPER" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADQCAYAAAB2gbhdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAo8SURBVHhe7dTBDisrDgDR+f+ffqMrzUhPZUgA07RzqZLOxgu3swj/+eeff/4jSTcKA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEwQQz+/vi//yvFgYTzOye+P//K4TBBDO7M74FPysMJpiZ8V34KWEwwczs3/GNKC8MJpiZteJbUVYYTDAz+xTfjHLCYIKZ2bf4bpQSBhPMzEbj+1FCGEwwM5uN78irwmCCmdlKfEteEwYTzMxW43vyijCYYGaWje/KUWEwwcxsR3xbjgmDCWZmu+L7ckQYTDAz2xnfmMeFwQQzs93xnXlUGEwwM3sivjWPCYMJZmZPxffmEWEwwczsyfjmbBcGE8zMnoxvznZhMMHM7On47mwVBhPMzE7Et2ebMJhgZnYqvj9bhMEEM7NT8f3ZIgwmmJmdjG9QWhhMMDM7Hd+hlDCYYGZ2Or5DKWEg6Rq/Gn/HsjCQdLVfiDcvCwNJ+p/K8dYlYSBJUDHeuCQMJKmjWrxvWhhI0geV4m3TwkCSBlSJd00JA0kaVCHeNCUMJGlChXjTsDCQpElvx3uGhYEkLXgz3jIsDCRpwZvxlmFhIEmL3oy3DAkDSUp4K94xJAwkKeGteMeQMJCkpLfiHV+FgSQlvRXv+CoMJGmDN+INX4WBJG3wRrzhqzCQpA3eiDd8FQaStMnp+P2vwkCSNjkdv/9VGEjSJm/EGz4KA0na5I14w0dhIEmbvBFv+CgMJGmTN+INH4WBJG10On7/ozCQpI1Ox+9/FAaStNHp+P2PwkCSNnkj3vBRGEjSJm/EGz4KA0na5I14w0dhIEmbnI7f/yoMJGmT0/H7X4WBJG1yOn7/qzCQpA3eiDd8FQaStMEb8YavwkCSNngj3vBVGEhS0lvxjq/CQJKS3og3DAkDSUp4K94xJAwkadGb8ZYhYSBJi96MtwwJA0la8Ga8ZVgYSNKkt+M9w8JAkiZUiDcNCwNJGlQh3jQlDCRpQJV415QwkKQvKsXbpoSBJH1QKd42LQwkqaFivHFaGEjSv1SNdy4JA0nia1Mw3rskDCRd6Zfi7cvCYIKZ2RvxLVoWBhPMzE7HdyglDCaYmZ2Mb1BaGEwwMzsZ36C0MJhgZnYqvj9bhMEEM7MT8e3ZJgwmmJmdiG/PNmEwwczs6fjubBUGE8zMnoxvznZhMMHM7Kn43jwiDCaYmT0R35rHhMEEM7Pd8Z15VBhMMDPbGd+Yx4XBBDOzXfF9OSIMJpiZ7YhvyzFhMMHMLBvflaPCYIKZWSa+KceFwQQzs9X4nrwiDCaYmc3Gd+RVYTDBzGwmviGvC4MJZmYj8e0oIwwmmJl9i+9GKWEwwcysF9+LksJggpkZ4ztRWhhMMDP7E9+GnxEGE8zs7vgm/JwwmGBmd8U34OeFwQQz+7vjf/6vEwYTzOz3+vd/l//p64SBJN0iDCTpFmEgSbcIA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEgSTdIgwk6RZhIEm3CANJukUYSNItwkCSbhEGknSLMJCkW4SBJN0iDBa8EW94QrV4X0+1eF/P6fj9jGrxvp7T8fuvC4MFb8d7dqkW7+upFu/reTPeMqtavK/nzXjLK8JgQaV4W0a1eF9PtXhfT4V406hq8b6eCvGmo8JgQbV436pq8b6eavG+nkrxtm+qxft6KsXbjgiDBVXjnbOqxft6qsX7eqrF+z6pFu/rqRbve1wYLKgcb51RLd7XUy3e11Mx3thTLd7XUzHe+KgwWFA93juqWryvp1q8r6dqvLOlWryvp2q88zFhsOAX4s0jqsX7eqrF+3oqx1upWryvp2q88zFhsOBX4t3fVIv39VSL9/VUjrdStXhfT+V46yPCYMEvxds/qRbv66kW7+upHu+tfDvv66ke790uDBb8Urz9k2rxvp5q8b6e6vHeyrfzvp7q8d7twmDBr8X7ezJx10mZuOukTNy1Yyfj7l3f4a6TMnHXjp2Mu7cLgwWZuKtnZ9zdk4m7TsrEXSdl4q6WHXHnjt3cdVIm7mrZEXduFQYLMnHXN7vi3pZM3HVSJu46KRN39WTjvh17ueukTNzVk437tgqDBZm4a8SOuLMlE3edlIm7TsrEXT3ZuG/HXu46KRN39WTjvq3CYEEm7hqVjftaMnHXSZm466RM3PVJJu56cucJmbjrk0zctVUYLMjEXTMycVdLhXjTiArxphGZuOuTTNy1Y+eueNOITNz1SSbu2ioMFmTirhnZuI8qxJtGVIg3jcjEXT3ZuG/X3h3xphGZuKsnG/dtFQYLMnHXjGzcRxXiTSMqxJtGZOKunmzct2vvjnjTiEzc1ZON+7YKgwWZuGtWJu6iCvGmERXiTSMycVfLjrhz5+5svGlEJu5q2RF3bhUGCzJx16xM3EUV4k0jKsSbRmTirl17/x33PvGNTLxpRCbuoh1x53ZhsCATd83KxF1UId40okK8aUT1eG+123nTiOrx3u3CYEEm7pqVibuoQrxpRIV404jq8d5qt/OmEdXjvduFwYJM3DUrE3dRhXjTiArxphGV461UId40onK89RFhsCATd83Ixn1UId40okK8aUTleCtViDeNqBxvfUQYLMjEXTOycR9ViDeNqBBvGlE13tlSId40omq88zFhsCATd43Kxn0tFeJNIyrEm0ZUjDf2VIg3jagYb3xUGCzIxF2jsnFfSybuOikTd51ULd73SSbuOqlavO9xYbAgE3eN2BF3tmTirpMycddJleJt32TirpMqxduOCIMFmbjrm11xb0sm7jopE3edVCHeNCoTd51UId50VBgsyMRdPTvj7p5M3HVSJu466c14y6xM3HVSlXjXMWGw4Nfi/T2ZuOukTNx10hvxhlWZuOukKvGuY8JgwS/F2z+pGG9sqRhvbMnEXadVjDe2ZNq560/cd0QYLPilePsnFeONLRXjjS2ZuOu0ivHGlkw7d/0/7nxcGCz4lXj3NxXjjS0V440tmbjrtIrxxpZM3JXd9yfue1wYLPiFePOIivHGlorxxpZM3HVaxXhjSybu2rHzT9z3qDBYUD3eO6pivLGlYryxJRN3nVYx3tiSibt27Px/3PmYMFhQOd46o2K8saVivLElE3edVjHe2JKJu3bt/RP3PSYMFlSNd86qGG9sqRhvbMnEXadVjDe2ZOIuysZ9jwiDBdXifasqxhtbKsYbWzJx12kV440tmbiLdsSd24XBgkrxtoyK8caWivHGlkzcdVrFeGNLJu5qycZ924XBgrfjPbtUjDe2VIw3tmTirtMqxhtbMnFXTzbu2yoMFrwRb3hCxXhjS8V4Y0sm7jqtYryxJRN39eyIO7cJA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEgSTdIgwk6Rb/BQ05MubHuYrjAAAAAElFTkSuQmCC"></span>
+    <div class="kicker hr-a d2">DEEPER COMPOSTELA</div>
+    <h1 class="hr-a d3">디퍼 콤포스텔라</h1>
+    <p class="sub hr-a d4">파트너 트랙 · 두 구간의 까미노 · 2026년 9월 — 10월</p>
+    <blockquote class="epigraph hr-a d5">
+      &ldquo;그리하여 우리는 밖으로 나와,<br>다시 별들을 보았다.&rdquo;
+      <div class="epigraph-src">— 단테, 『신곡』 지옥편 마지막 행</div>
+    </blockquote>
+    <div class="scroll-cue hr-a d6">
+      <span class="word">CAMINO</span>
+      <span class="stem"></span>
+    </div>
+  </header>
+
+  <!-- ══ 도입 ══ -->
+  <section class="sec">
+    <div class="sec-kicker rv">CAMPUS STELLAE</div>
+    <h2 class="sec-title rv">별들이 모이는 들판</h2>
+    <div class="sec-sub rv dl1">콤포스텔라라는 이름에 대하여</div>
+    <div class="intro">
+      <p class="rv">산티아고 순례길을 끝까지 걸은 사람이 받는 증서의 이름이 콤포스텔라입니다. <span class="latin">campus stellae</span>, 별들이 모이는 들판이라는 뜻의 전승을 가진 말이에요. 옛 순례자들은 은하수를 따라 서쪽 끝까지 걸었습니다.</p>
+      <p class="rv dl1">이 길도 그렇게 걷습니다. 혼자 짓고 혼자 파는 1인 기업가 여덟 명이 매주 한 번 모입니다. 각자의 사업에 붙는 도구를 직접 만들고 서로에게 보여줍니다.</p>
+    </div>
+    <div class="theme-word rv dl1">
+      <div class="en">breakthrough</div>
+      <div class="ko">이번 까미노의 주제입니다.<br>막혀 있던 자리 하나를 돌파해, 다시 별을 보는 것.</div>
+    </div>
+  </section>
+
+  <!-- ══ 길 지도 ══ -->
+  <section class="map-wrap" id="map-sec">
+    <div class="map-frame rv">
+      <div class="map-head">
+        <div class="t serif">여덟 번의 아침, 한 줄기 길</div>
+        <div class="s">스크롤을 내리면 길이 그려집니다</div>
+      </div>
+      <svg id="camino-svg" viewBox="0 0 900 430" role="img" aria-label="1구간 까미노 프리미티보 4주와 2구간 까미노 피스테라 4주가 이어진 길 지도">
+        <defs>
+          <symbol id="star4" viewBox="-10 -10 20 20">
+            <path d="M0,-9 L2.1,-2.1 L9,0 L2.1,2.1 L0,9 L-2.1,2.1 L-9,0 L-2.1,-2.1 Z"></path>
+          </symbol>
+        </defs>
+        <path id="camino-base" class="camino-base" d="M 52 372 C 160 372 190 300 280 292 C 372 284 400 336 490 318 C 574 301 590 220 668 190 C 740 162 770 120 828 92"></path>
+        <path id="camino-draw" class="camino-draw" d="M 52 372 C 160 372 190 300 280 292 C 372 284 400 336 490 318 C 574 301 590 220 668 190 C 740 162 770 120 828 92"></path>
+        <g id="nodes"></g>
+        <g id="endfield"></g>
+        <circle id="walker" class="walker" r="3.4" cx="52" cy="372"></circle>
+        <g id="labels"></g>
+      </svg>
+      <div class="map-foot">별 하나가 한 번의 아침입니다 · 길의 끝, 별이 모인 자리가 콤포스텔라</div>
+    </div>
+  </section>
+
+  <!-- ══ 1구간 ══ -->
+  <section class="sec">
+    <div class="sec-kicker rv">제1구간 · 9월</div>
+    <h2 class="sec-title rv">까미노 프리미티보</h2>
+    <div class="sec-sub rv dl1">가장 오래된 길 · 바이브코딩 4주</div>
+    <div class="steps-line rv dl1">맡겨본다 <span class="arr">→</span> 판을 짠다 <span class="arr">→</span> 자산으로 만든다 <span class="arr">→</span> 시연의 날</div>
+    <div class="weeks">
+      <article class="wk rv">
+        <div class="no">첫째 주</div>
+        <h3>맡겨본다</h3>
+        <div class="tag">바이브코딩을 몸으로</div>
+        <p>안전망 없이, 자연어 프롬프트만으로 내 사업의 작은 도구 하나를 만들어 봅니다. 다 못 만들어도 됩니다. 잘 된 순간과 막힌 순간을 적어 두는 것까지가 이날의 공부입니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">프롬프트만으로 만든, 내 사업의 작은 도구 한 개</span></div>
+      </article>
+      <article class="wk rv dl1">
+        <div class="no">둘째 주</div>
+        <h3>판을 짠다</h3>
+        <div class="tag">클로드가 내 사업을 알게 한다</div>
+        <p>왜 매번 처음부터 설명하고 있었나. 사업의 이름과 고객, 말투, 하지 않는 것을 담은 내 사업의 헌법을 씁니다. 만들기 전에 계획을 먼저 받아 읽는 법도 여기서 익힙니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">내 사업의 CLAUDE.md v1</span></div>
+      </article>
+      <article class="wk rv dl2">
+        <div class="no">셋째 주</div>
+        <h3>자산으로 만든다</h3>
+        <div class="tag">한 번 만들면 계속 쓰는 것</div>
+        <p>한 번 쓰는 말과 계속 쓰는 도구는 다릅니다. 매주 반복되는 업무 하나를 스킬로 만들고 같은 입력으로 세 번 돌려 흔들리는 자리를 고칩니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">내 반복 업무의 스킬 1개</span></div>
+      </article>
+      <article class="wk rv dl3">
+        <div class="no">넷째 주</div>
+        <h3>시연의 날</h3>
+        <div class="tag">증거를 남긴다</div>
+        <p>막힌 자리를 함께 풀어 마감합니다. 한 사람씩 자기 자동화를 라이브로 돌립니다. 남 앞에서 돌아가는 화면이 첫 증거가 됩니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">완성된 자동화 1개, 그리고 시연의 기억</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══ 2구간 ══ -->
+  <section class="sec">
+    <div class="sec-kicker rv">제2구간 · 10월</div>
+    <h2 class="sec-title rv">까미노 피스테라</h2>
+    <div class="sec-sub rv dl1">땅끝까지 걷는 길 · AX 사다리 4주</div>
+    <div class="steps-line rv dl1">사다리를 세운다 <span class="arr">→</span> 증거를 만든다 <span class="arr">→</span> 진단을 연습한다 <span class="arr">→</span> 첫 예약을 잡는다</div>
+    <div class="weeks">
+      <article class="wk rv">
+        <div class="no">다섯째 주</div>
+        <h3>사다리를 세운다</h3>
+        <div class="tag">내 도메인의 상품 한 장</div>
+        <p>진단 상품과 구축 3단을 한 장에 세웁니다. 이름은 내 도메인의 언어로 짓습니다. 근거를 말할 수 있는 숫자만 적되 막히는 칸은 비워 두어도 됩니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">내 도메인의 사다리 한 장 v1</span></div>
+      </article>
+      <article class="wk rv dl1">
+        <div class="no">여섯째 주</div>
+        <h3>증거를 만든다</h3>
+        <div class="tag">사례 0호와 명단</div>
+        <p>주장은 의심을 낳고 장면은 믿음을 낳습니다. 1구간에서 만든 자동화를 고객에게 보여줄 사례 0호로 정리합니다. 실제 돌아가는 화면은 60초로 담습니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">사례 0호 문서 1장 + 60초 화면</span></div>
+      </article>
+      <article class="wk rv dl2">
+        <div class="no">일곱째 주</div>
+        <h3>진단을 연습한다</h3>
+        <div class="tag">서로가 첫 손님</div>
+        <p>둘씩 짝지어 상대의 사업을 진단합니다. 듣고 다섯 칸을 채워 맡길 것의 목록을 소리 내어 건넵니다. 진단에서 제안으로 넘어가는 길도 여기서 몸에 익힙니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">진단 90분 리허설 완주 + 내 제안서 서식 v1</span></div>
+      </article>
+      <article class="wk rv dl3">
+        <div class="no">여덟째 주</div>
+        <h3>첫 예약을 잡는다</h3>
+        <div class="tag">콤포스텔라의 날</div>
+        <p>사다리 한 장을 최종본으로 다듬습니다. 한 사람씩 자기 사다리와 사례 0호, 첫 손님과 나눈 대화를 발표합니다. 여기까지 걸으면 완주입니다.</p>
+        <div class="make"><span class="star">✦</span><span class="lab">그날 만드는 것</span><span class="what">사다리 최종본 + 첫 진단 예약 (또는 예약 대화)</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══ 완주가 남기는 것 ══ -->
+  <section class="sec">
+    <div class="sec-kicker rv">COMPOSTELA</div>
+    <h2 class="sec-title rv">완주가 남기는 것</h2>
+    <div class="sec-sub rv dl1">콤포스텔라는 걸은 길의 기록입니다 · 완주는 볼트에 남은 증거로 확인합니다</div>
+    <div class="keep-grid">
+      <div class="keep rv">
+        <div class="kh">1구간을 걸은 사람의 볼트에는</div>
+        <ul>
+          <li><em>내 사업의 작은 도구</em> — 프롬프트만으로 만든 첫 결과물</li>
+          <li><em>내 사업의 CLAUDE.md</em> — 이후 모든 작업의 바닥</li>
+          <li><em>반복 업무의 스킬</em> — 한 번 만들어 계속 쓰는 자산</li>
+          <li><em>돌아가는 자동화 하나</em> — 그리고 시연의 기억</li>
+        </ul>
+      </div>
+      <div class="keep rv dl1">
+        <div class="kh">2구간을 걸은 사람의 볼트에는</div>
+        <ul>
+          <li><em>내 도메인의 사다리 한 장</em> — 진단 상품과 구축 3단</li>
+          <li><em>사례 0호</em> — 문서 1장과 60초 화면 증거</li>
+          <li><em>첫 유료 진단 예약</em> — 또는 예약 대화의 기록</li>
+          <li><em>아는 사람 10명의 명단</em> — 첫 손님이 나오는 자리</li>
+        </ul>
+      </div>
+    </div>
+    <div class="partner-note rv dl1">
+      <div class="ph">두 구간을 마친 디퍼님에게, 파트너의 길이 열립니다</div>
+      <p>살롱을 함께 운영하는 길, 그리고 자기 도메인의 AX 컨설턴트로 서는 길입니다. 자세한 이야기는 완주 뒤에 따로 나눕니다.</p>
+    </div>
+  </section>
+
+  <!-- ══ 안내 ══ -->
+  <section class="sec">
+    <div class="sec-kicker rv">GUIDE</div>
+    <h2 class="sec-title rv">걷기 전에 확인할 것</h2>
+    <div class="sec-sub rv dl1">일정 · 방식 · 참가비</div>
+    <div class="info rv dl1">
+      <div class="info-row">
+        <div class="k">1구간 일정</div>
+        <div class="v">9월 7일 개강 · 매주 월요일 오전 10:00–12:00 · 줌 · 총 4회<span class="note">8월 31일 월요일, 카톡방이 먼저 열립니다</span></div>
+      </div>
+      <div class="info-row">
+        <div class="k">2구간 일정</div>
+        <div class="v">10월 · 둘째 주 이후 개강 예정<span class="note">요일과 날짜는 1구간을 걸으며 함께 정합니다</span></div>
+      </div>
+      <div class="info-row">
+        <div class="k">한 번의 모임</div>
+        <div class="v">각자의 비즈니스 고민과 인사이트 나눔 → 퍼핀의 미니 강의 → 실습<span class="note">모든 실습에는 그날 완성하는 산출물이 있습니다</span></div>
+      </div>
+      <div class="info-row">
+        <div class="k">참가비</div>
+        <div class="v">구간당 25만 원</div>
+      </div>
+      <div class="info-row">
+        <div class="k">함께 걷는 사람</div>
+        <div class="v">확정된 여덟 명<span class="note">클로드 코드와 디퍼 OS를 이미 쓰고 있는 디퍼님들</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 닫기 ══ -->
+  <section class="close-sec">
+    <blockquote class="close-quote rv">&ldquo;춤추는 별을 낳으려면<br>내면에 혼돈을 지녀야 한다.&rdquo;</blockquote>
+    <div class="close-src rv dl1">— 니체</div>
+    <footer class="foot rv dl1">
+      <img alt="DEEPER" src="data:image/png;base64,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">
+      <div class="fl">DEEPER COMPOSTELA · 파트너 트랙 · 2026</div>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  document.body.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 별 하늘 ── */
+  var cv = document.getElementById('sky');
+  var cx = cv.getContext('2d');
+  var stars = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function seedStars(){
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(160, W * H / 9000));
+    stars = [];
+    for (var i = 0; i < n; i++){
+      var gold = Math.random() < 0.14;
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: gold ? (0.9 + Math.random() * 0.9) : (0.4 + Math.random() * 0.8),
+        base: 0.25 + Math.random() * 0.5,
+        amp: 0.15 + Math.random() * 0.3,
+        ph: Math.random() * Math.PI * 2,
+        sp: 0.3 + Math.random() * 0.9,
+        gold: gold
+      });
+    }
+  }
+
+  var meteor = null, nextMeteor = performance.now() + 6000 + Math.random() * 8000;
+
+  function drawSky(t){
+    cx.clearRect(0, 0, W, H);
+    for (var i = 0; i < stars.length; i++){
+      var s = stars[i];
+      var a = reduce ? s.base : s.base + s.amp * Math.sin(t / 1000 * s.sp + s.ph);
+      if (a < 0.04) a = 0.04;
+      cx.globalAlpha = a;
+      cx.fillStyle = s.gold ? '#D9B36C' : '#F4F1E8';
+      cx.beginPath();
+      cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      cx.fill();
+    }
+    cx.globalAlpha = 1;
+    if (!reduce){
+      if (!meteor && t > nextMeteor && window.scrollY < H * 0.8){
+        meteor = { x: W * (0.25 + Math.random() * 0.55), y: H * (0.06 + Math.random() * 0.18),
+                   vx: -(3.2 + Math.random() * 1.6), vy: 1.6 + Math.random() * 0.9, life: 1 };
+      }
+      if (meteor){
+        meteor.x += meteor.vx; meteor.y += meteor.vy; meteor.life -= 0.017;
+        if (meteor.life <= 0){ meteor = null; nextMeteor = t + 11000 + Math.random() * 9000; }
+        else{
+          var g = cx.createLinearGradient(meteor.x, meteor.y, meteor.x - meteor.vx * 16, meteor.y - meteor.vy * 16);
+          g.addColorStop(0, 'rgba(244,241,232,' + (0.85 * meteor.life) + ')');
+          g.addColorStop(1, 'rgba(244,241,232,0)');
+          cx.strokeStyle = g; cx.lineWidth = 1.1; cx.lineCap = 'round';
+          cx.beginPath();
+          cx.moveTo(meteor.x, meteor.y);
+          cx.lineTo(meteor.x - meteor.vx * 16, meteor.y - meteor.vy * 16);
+          cx.stroke();
+        }
+      }
+    }
+  }
+
+  seedStars();
+  if (reduce){
+    drawSky(0);
+  } else {
+    (function loop(t){
+      if (!document.hidden) drawSky(t);
+      requestAnimationFrame(loop);
+    })(0);
+  }
+  var rsT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rsT); rsT = setTimeout(function(){ seedStars(); if (reduce) drawSky(0); placeMap(); }, 180);
+  });
+
+  /* ── 스크롤 리빌 ── */
+  var rvEls = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting || e.boundingClientRect.bottom < 0){
+          e.target.classList.add('in'); io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    rvEls.forEach(function(el){ io.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('in'); });
+  }
+  /* IO가 있어도 이벤트가 안 오는 환경(숨은 탭·일부 웹뷰) 대비 — 화면 안에 든 것은 스크롤·타이머로도 켠다 */
+  function rvSweep(){
+    var vh = window.innerHeight || 800;
+    rvEls.forEach(function(el){
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.95 || r.bottom < 0) el.classList.add('in');
+    });
+  }
+  window.addEventListener('scroll', rvSweep, { passive: true });
+  window.addEventListener('resize', rvSweep);
+  setTimeout(rvSweep, 800);
+  setTimeout(rvSweep, 2500);
+
+  /* ── 길 지도 ── */
+  var path = document.getElementById('camino-draw');
+  var mapSec = document.getElementById('map-sec');
+  var walker = document.getElementById('walker');
+  var L = path.getTotalLength();
+  path.style.strokeDasharray = L;
+  path.style.strokeDashoffset = L;
+
+  var nodeFr = [0.055, 0.175, 0.295, 0.415, 0.565, 0.685, 0.805, 0.905];
+  var nodesG = document.getElementById('nodes');
+  var labelsG = document.getElementById('labels');
+  var endG = document.getElementById('endfield');
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var nodeEls = [], endStars = [];
+
+  function mkUse(x, y, sc, cls){
+    var u = document.createElementNS(SVGNS, 'use');
+    u.setAttribute('href', '#star4');
+    u.setAttribute('x', -10); u.setAttribute('y', -10);
+    u.setAttribute('width', 20); u.setAttribute('height', 20);
+    u.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + sc + ')');
+    u.setAttribute('class', cls);
+    return u;
+  }
+  function mkText(x, y, txt, cls, anchor){
+    var t = document.createElementNS(SVGNS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('class', 'map-label ' + (cls || ''));
+    t.setAttribute('text-anchor', anchor || 'middle');
+    t.textContent = txt;
+    return t;
+  }
+
+  function placeMap(){
+    nodesG.innerHTML = ''; labelsG.innerHTML = ''; endG.innerHTML = '';
+    nodeEls = []; endStars = [];
+    nodeFr.forEach(function(f, i){
+      var p = path.getPointAtLength(f * L);
+      var u = mkUse(p.x, p.y, 0.62, 'wk-node');
+      nodesG.appendChild(u); nodeEls.push(u);
+      var num = document.createElementNS(SVGNS, 'text');
+      num.setAttribute('x', p.x); num.setAttribute('y', p.y + (i % 2 === 0 ? -20 : 28));
+      num.setAttribute('class', 'map-label dim');
+      num.setAttribute('text-anchor', 'middle');
+      num.textContent = (i + 1);
+      labelsG.appendChild(num);
+    });
+    var p1 = path.getPointAtLength(0.235 * L);
+    labelsG.appendChild(mkText(p1.x, p1.y + 64, '까미노 프리미티보', 'gold'));
+    labelsG.appendChild(mkText(p1.x, p1.y + 94, '1구간 · 9월 · 바이브코딩', ''));
+    var p2 = path.getPointAtLength(0.735 * L);
+    labelsG.appendChild(mkText(p2.x, p2.y + 84, '까미노 피스테라', 'gold'));
+    labelsG.appendChild(mkText(p2.x, p2.y + 114, '2구간 · 10월 · AX 사다리', ''));
+    var pe = path.getPointAtLength(L);
+    var scatter = [[0,0,1],[ -22,-14,0.5],[20,-20,0.42],[-10,-34,0.36],[26,4,0.4],[8,-40,0.3],[-32,6,0.34]];
+    scatter.forEach(function(s){
+      var u = mkUse(pe.x + s[0], pe.y + s[1], s[2], 'end-star');
+      endG.appendChild(u); endStars.push(u);
+    });
+    labelsG.appendChild(mkText(pe.x + 6, pe.y + 44, '콤포스텔라', 'gold', 'end'));
+    labelsG.appendChild(mkText(pe.x + 6, pe.y + 72, '별들이 모이는 들판', 'dim', 'end'));
+    var ps = path.getPointAtLength(0);
+    labelsG.appendChild(mkText(ps.x - 4, ps.y + 34, '출발', 'dim', 'start'));
+  }
+  placeMap();
+
+  var lastP = -1;
+  function updateMap(){
+    var r = mapSec.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = (vh * 0.9 - r.top) / (r.height + vh * 0.45);
+    p = Math.max(0, Math.min(1, p));
+    if (reduce) p = 1;
+    if (Math.abs(p - lastP) < 0.001) return;
+    lastP = p;
+    path.style.strokeDashoffset = L * (1 - p);
+    var tip = path.getPointAtLength(p * L);
+    walker.setAttribute('cx', tip.x); walker.setAttribute('cy', tip.y);
+    walker.classList.toggle('on', p > 0.01 && p < 0.995);
+    nodeFr.forEach(function(f, i){
+      nodeEls[i].classList.toggle('lit', p >= f);
+    });
+    var done = p > 0.97;
+    endStars.forEach(function(u){ u.classList.toggle('lit', done); });
+  }
+
+  if (reduce){
+    updateMap();
+  } else {
+    var ticking = false;
+    function onScroll(){
+      if (!ticking){
+        ticking = true;
+        requestAnimationFrame(function(){ updateMap(); ticking = false; });
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateMap();
+  }
+})();
+</script>
+</body>
+</html>
