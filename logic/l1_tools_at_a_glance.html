@@ -3,580 +3,246 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>디퍼 살롱 · 논리 1회차 — 스킬 여덟</title>
-<!-- 카톡·SNS 링크 미리보기 (Open Graph) · og:image는 기수 카드 제작 후 추가 -->
+<title>논리 1회차 실습 — 내 스킬 하나 만들기</title>
 <meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/l1_tools_at_a_glance.html" />
-  <meta property="og:type" content="website" />
+<meta property="og:type" content="website" />
 <meta property="og:locale" content="ko_KR" />
 <meta property="og:site_name" content="디퍼 언브랜딩 살롱" />
-<meta property="og:title" content="디퍼 살롱 · 논리 1회차 — 스킬 여덟" />
-<meta property="og:description" content="뜻 · 받는 법 · 사용법 — skill-creator부터 /10x까지" />
+<meta property="og:title" content="논리 1회차 실습 — 내 스킬 하나 만들기" />
+<meta property="og:description" content="따라 하면 오늘 밤 안에 내 스킬 하나가 생긴다" />
 <meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
-<meta name="twitter:title" content="디퍼 살롱 · 논리 1회차 — 스킬 여덟" />
-<meta name="twitter:description" content="뜻 · 받는 법 · 사용법 — skill-creator부터 /10x까지" />
 <style>
   :root{
-    /* 코어 — DEEPER 비주얼 아이덴티티 v1 (디지털 트랙: 포인트 = 클레이 하나만) */
     --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22; --green-soft:#7DA890;
-    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF; --rule-strong:#C4BCA9;
-    --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF;
+    --ink:#1A1916; --ink-soft:#3E3C36; --ink-mute:#6E6A60;
     --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+    --ok:#2E6B4F;
     --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
     --sans:-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic','Noto Sans CJK KR',sans-serif;
+    --mono:'SF Mono','JetBrains Mono','Consolas','D2Coding',monospace;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{height:100%;}
-  body{background:var(--paper); color:var(--ink);
-    font-family:var(--serif); overflow:hidden; word-break:keep-all; overflow-wrap:break-word;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif);
+    word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased;
+    font-size:18px; line-height:1.85;
+    padding:clamp(1.4rem,4vw,3rem) clamp(.9rem,4vw,2rem) 6rem;}
   body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    opacity:.035; mix-blend-mode:multiply;
+    opacity:.03; mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+  .wrap{position:relative; z-index:1; max-width:44rem; margin:0 auto;}
 
-  .brandmark{position:fixed; top:1.4rem; left:1.5rem; z-index:8;
-    font-family:var(--sans); font-size:12px; font-weight:700;
-    letter-spacing:.32em; text-transform:uppercase; color:var(--clay-deep); pointer-events:none;
-    transition:color .5s ease;}
-  body.on-dark .brandmark{color:var(--clay-soft);}
+  .brand{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--clay-deep); margin-bottom:1.1rem;}
+  h1{font-size:clamp(27px,5.2vw,40px); line-height:1.28; letter-spacing:-.015em; margin-bottom:.7rem;}
+  h1 .em{color:var(--clay-deep);}
+  .lead{font-size:clamp(17px,2vw,20px); color:var(--ink-soft); line-height:1.8;}
+  .lead b{color:var(--ink);}
 
-  .deck{position:fixed; inset:0; z-index:1;}
-  .slide{position:absolute; inset:0; display:flex; overflow-y:auto; overflow-x:hidden;
-    opacity:0; visibility:hidden; transform:scale(.99);
-    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
-  .slide.active{opacity:1; visibility:visible; transform:none;}
-  .slide.invert{background:linear-gradient(168deg,var(--green-deepest) 0%,var(--green-deep) 48%,var(--green) 100%);
+  .goal{margin-top:1.5rem; border-radius:10px; padding:1.3rem 1.4rem;
+    background:linear-gradient(160deg,var(--green-deepest),var(--green-deep) 60%,var(--green));
     color:var(--paper);}
+  .goal .k{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--clay-soft); margin-bottom:.45rem;}
+  .goal p{font-size:20px; line-height:1.72;}
+  .goal p b{color:#fff;}
+  .goal .sm{display:block; margin-top:.5rem; font-size:16px; color:rgba(244,241,232,.8);}
 
-  .content{margin:auto; width:100%; max-width:50rem;
-    padding:5.5rem clamp(1.4rem,5vw,4rem);
-    display:flex; flex-direction:column; align-items:center; gap:1.2rem; text-align:center;}
+  .step{margin-top:2.6rem; border-top:2px solid var(--rule); padding-top:1.5rem;}
+  .no{display:flex; align-items:center; gap:.75rem; margin-bottom:.6rem;}
+  .no .num{font-family:var(--sans); font-weight:800; font-size:13px; letter-spacing:.06em;
+    background:var(--green-deep); color:var(--paper); border-radius:999px;
+    min-width:2.5rem; height:1.7rem; display:flex; align-items:center; justify-content:center;
+    flex:none; padding:0 .5rem;}
+  .no .tm{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--clay-deep);}
+  h2{font-size:clamp(22px,3.4vw,29px); line-height:1.38; letter-spacing:-.012em; margin-bottom:.55rem;}
+  h2 .em{color:var(--clay-deep);}
+  p+p{margin-top:.75rem;}
+  .why{color:var(--ink-soft);}
+  .why b{color:var(--ink);}
 
-  .kicker{font-family:var(--sans); font-size:12px; font-weight:600;
-    letter-spacing:.34em; text-transform:uppercase; color:var(--clay-deep);}
-  .slide.invert .kicker{color:var(--clay-soft);}
-  .num{font-family:var(--serif); font-weight:700; letter-spacing:.14em;}
+  .do{margin-top:.95rem;}
+  .do .cap{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.14em;
+    color:var(--clay-deep); margin-bottom:.4rem;}
+  .box{font-family:var(--mono); font-size:15px; line-height:1.75; white-space:pre-wrap;
+    background:var(--green-deepest); color:#EAE5D9; border-radius:8px;
+    padding:1rem 1.1rem; overflow-x:auto;}
+  .box .c{color:var(--clay-soft);}
+  .box.one{font-size:16px; padding:.8rem 1.05rem;}
 
-  .title{font-family:var(--serif); font-weight:700; letter-spacing:-.01em;
-    font-size:clamp(25px,4.4vw,36px); line-height:1.3;}
-  .title .em{color:var(--clay-deep);}
-  .slide.invert .title{color:var(--paper);}
-  .slide.invert .title .em{color:var(--clay-soft);}
+  .chk{margin-top:.9rem; border-left:4px solid var(--ok); background:rgba(46,107,79,.09);
+    border-radius:0 7px 7px 0; padding:.8rem 1rem;}
+  .chk .h{font-family:var(--sans); font-size:12px; font-weight:800; letter-spacing:.1em;
+    color:var(--ok); margin-bottom:.2rem;}
+  .chk p{font-size:16.5px; line-height:1.72; color:var(--ink-soft);}
+  .chk p b{color:var(--ink);}
+  .stuck{margin-top:.55rem; border-left:4px solid var(--clay); background:rgba(198,126,88,.1);
+    border-radius:0 7px 7px 0; padding:.8rem 1rem;}
+  .stuck .h{font-family:var(--sans); font-size:12px; font-weight:800; letter-spacing:.1em;
+    color:var(--clay-deep); margin-bottom:.2rem;}
+  .stuck p{font-size:16.5px; line-height:1.72; color:var(--ink-soft);}
+  .stuck p b{color:var(--ink);}
 
-  .latin{font-family:var(--serif); font-weight:400; font-style:italic;
-    color:var(--ink-mute); font-size:clamp(18px,2.2vw,22px); letter-spacing:.01em; line-height:1.5;}
-  .slide.invert .latin{color:var(--green-soft);}
+  .note{margin-top:.9rem; background:var(--surface); border:1px solid var(--rule);
+    border-radius:8px; padding:.85rem 1rem; font-size:16.5px; line-height:1.75; color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+  code{font-family:var(--mono); font-size:.88em; background:rgba(26,74,53,.09);
+    border:1px solid var(--rule); border-radius:4px; padding:.1rem .36rem; color:var(--green-deep);}
+  ul{margin:.6rem 0 0 1.15rem;} li{margin-bottom:.35rem; color:var(--ink-soft);}
+  li b{color:var(--ink);}
 
-  .body{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
-    font-family:var(--serif); font-weight:400; color:var(--ink-soft);
-    font-size:clamp(18px,1.4vw,22px); line-height:1.8;}
-  .slide.invert .body{color:rgba(244,241,232,.9);}
-  .body p{margin:0 0 1.1rem;}
-  .body p:last-child{margin:0;}
-  .body em{font-style:normal; color:var(--clay-deep); font-weight:700;}
-  .slide.invert .body em{color:var(--clay-soft);}
-  .body .strong{font-weight:700; color:var(--ink);}
-  .slide.invert .body .strong{color:var(--paper);}
-  .body .final{font-weight:700; text-align:center; color:var(--ink);
-    font-size:25px; line-height:1.62; margin-top:1.1rem;}
-  .slide.invert .body .final{color:var(--paper);}
-  .body .quote{font-weight:700; text-align:center; color:var(--ink);
-    font-size:25px; line-height:1.6;}
-  .slide.invert .body .quote{color:var(--paper);}
+  .later{display:flex; flex-direction:column; gap:.5rem; margin-top:1rem;}
+  .lt{border:1px solid var(--rule); border-left:3px solid var(--clay); border-radius:6px;
+    background:var(--surface); padding:.75rem .95rem;}
+  .lt .n2{font-family:var(--mono); font-weight:700; font-size:16.5px; color:var(--green-deep);}
+  .lt .d2{display:block; margin-top:.15rem; font-size:16px; line-height:1.7; color:var(--ink-soft);}
+  .lt .d2 b{color:var(--ink);}
 
-  /* 층·목록 */
-  .layers{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
-    display:flex; flex-direction:column; gap:.5rem;}
-  .layers .ly{border:1px solid var(--rule); border-left:3px solid var(--clay);
-    border-radius:4px; padding:.7rem .95rem; background:var(--surface);
-    display:flex; align-items:baseline; gap:.8rem;}
-  .slide.invert .layers .ly{border-color:rgba(244,241,232,.16); border-left-color:var(--clay-soft);
-    background:rgba(0,46,34,.42);}
-  .layers .nm{font-family:var(--serif); font-weight:700; color:var(--green);
-    font-size:22px; line-height:1.3; flex:none; min-width:6.4rem;}
-  .slide.invert .layers .nm{color:var(--paper);}
-  .layers .nm .h{display:block; font-family:var(--sans); font-size:12px; color:var(--ink-mute);
-    font-weight:600; letter-spacing:.18em; margin-top:.15rem;}
-  .slide.invert .layers .nm .h{color:var(--green-soft);}
-  .layers .ds{font-family:var(--serif); font-size:18px; line-height:1.7; color:var(--ink-soft);}
-  .slide.invert .layers .ds{color:rgba(244,241,232,.82);}
-  .layers .ds b{color:var(--clay-deep); font-weight:700;}
-  .slide.invert .layers .ds b{color:var(--clay-soft);}
-
-  /* 두 칸 대조 */
-  .duo{align-self:stretch; max-width:42rem; margin:.3rem auto 0;
-    display:grid; grid-template-columns:1fr 1fr; gap:.7rem; text-align:left;}
-  .duo .card{border:1px solid var(--rule); border-radius:8px; padding:1rem 1.05rem; background:var(--surface);}
-  .duo .card.hot{background:rgba(198,126,88,.12); border-color:var(--clay);}
-  .duo .lab{display:block; font-family:var(--sans); font-size:12px; font-weight:700;
-    letter-spacing:.22em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:.6rem;}
-  .duo p{font-family:var(--serif); font-size:18px; line-height:1.7; color:var(--ink-soft);}
-  .duo .card.hot p{color:var(--ink);}
-  .duo .note{display:block; margin-top:.6rem; font-family:var(--sans); font-size:12px;
-    letter-spacing:.1em; color:var(--ink-mute);}
-
-  /* 낱말 카드 */
-  .cards{align-self:stretch; max-width:42rem; margin:.3rem auto 0;
-    display:grid; grid-template-columns:1fr 1fr; gap:.5rem; text-align:left;}
-  .cards .cd{border:1px solid var(--rule); border-radius:4px; padding:.65rem .85rem; background:var(--surface);}
-  .slide.invert .cards .cd{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
-  .cards .w{display:block; font-family:var(--serif); font-weight:700; font-size:22px;
-    line-height:1.3; color:var(--green);}
-  .slide.invert .cards .w{color:var(--paper);}
-  .cards .m{display:block; margin-top:.2rem; font-family:var(--serif); font-size:18px;
-    line-height:1.55; color:var(--ink-mute);}
-  .slide.invert .cards .m{color:rgba(244,241,232,.75);}
-
-  /* 라인아트 */
-  .viz{width:clamp(120px,13vw,168px); height:clamp(120px,13vw,168px); color:var(--green); flex:none;}
-  .viz.wide{width:min(100%,clamp(260px,42vw,440px)); height:auto;}
-  .slide.invert .viz{color:var(--green-soft);}
-  .viz svg{width:100%; height:100%; overflow:visible; display:block;}
-  .viz .ac{color:var(--clay);}
-  .slide.invert .viz .ac{color:var(--clay-soft);}
-  .lbl{font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:.08em;
-    fill:currentColor; stroke:none; paint-order:normal; opacity:.8;}
-
-  .cover .viz{width:clamp(130px,15vw,196px); height:clamp(130px,15vw,196px);}
-  .cover .title{font-size:clamp(45px,6vw,58px); line-height:1.24;}
-  .logo{width:clamp(78px,8vw,100px); height:auto; display:block; margin:0 auto;}
-
-  /* 순차 등장 */
-  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
-  .slide.active .r{opacity:1; transform:none;}
-  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
-  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
-
-  .spin{transform-origin:center; animation:spin 26s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
-  @keyframes march{to{stroke-dashoffset:-60;}}
-  .marchl{stroke-dasharray:5 8; animation:march 3.6s linear infinite;}
-  .pulse{animation:pulse 3.4s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
-  .twinkle{animation:twinkle 4s ease-in-out infinite;}
-  @keyframes twinkle{0%,100%{opacity:.55; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
-  .orbit{transform-origin:center; animation:spin 8s linear infinite;}
-  .rise{animation:rise 4.4s ease-in-out infinite;}
-  @keyframes rise{0%,100%{transform:translateY(14px)}50%{transform:translateY(-14px)}}
-  .floatup{animation:floatup 4.6s ease-in-out infinite;}
-  @keyframes floatup{0%{transform:translateY(10px);opacity:0}22%{opacity:1}78%{opacity:1}100%{transform:translateY(-20px);opacity:0}}
-  .drop{animation:drop 3.8s ease-in-out infinite;}
-  @keyframes drop{0%{transform:translateY(-14px);opacity:0}25%{opacity:1}75%{opacity:1}100%{transform:translateY(16px);opacity:0}}
-  @media (prefers-reduced-motion:reduce){
-    .spin,.march,.marchl,.pulse,.twinkle,.orbit,.rise,.floatup,.drop{animation:none;}
-    .r{transition:none; opacity:1; transform:none;}
-  }
-
-  /* ── 와우 · 추가 움직임 (1회차) ───────────────────────── */
-  .viz.big{width:min(100%,clamp(280px,46vw,460px)); height:auto;}
-
-  .draw{stroke-dasharray:420; stroke-dashoffset:420; animation:draw 4.2s ease-in-out infinite;}
-  @keyframes draw{0%{stroke-dashoffset:420}40%{stroke-dashoffset:0}82%{stroke-dashoffset:0}100%{stroke-dashoffset:-420}}
-
-  .flow{stroke-dasharray:4 10; animation:flow 1.7s linear infinite;}
-  @keyframes flow{to{stroke-dashoffset:-42;}}
-
-  .travel{animation:travel 4.6s ease-in-out infinite;}
-  @keyframes travel{0%{transform:translateX(0);opacity:0}8%{opacity:1}
-    38%{transform:translateX(58px)}52%{transform:translateX(58px)}
-    84%{transform:translateX(116px);opacity:1}100%{transform:translateX(116px);opacity:0}}
-
-  .seq{opacity:.2; animation:seq 4.6s ease-in-out infinite;}
-  @keyframes seq{0%,6%{opacity:.2}16%,84%{opacity:1}100%{opacity:.2}}
-
-  .squish{transform-origin:center bottom; animation:squish 2.9s ease-in-out infinite;}
-  @keyframes squish{0%,100%{transform:scale(1,1)}34%{transform:scale(1.16,.8)}62%{transform:scale(.93,1.09)}}
-
-  .swap{animation:swapf 5.4s ease-in-out infinite;}
-  .swapb{animation:swapf 5.4s ease-in-out infinite; animation-direction:reverse;}
-  @keyframes swapf{0%,40%{opacity:1}52%,92%{opacity:0}100%{opacity:1}}
-
-  .settle{animation:settle 4.4s ease-in-out infinite;}
-  @keyframes settle{0%{transform:translateY(-30px);opacity:0}28%{transform:translateY(0);opacity:1}
-    86%{transform:translateY(0);opacity:1}100%{opacity:0}}
-
-  .sift{animation:sift 3.8s ease-in-out infinite;}
-  @keyframes sift{0%{transform:translateY(-22px);opacity:0}22%{opacity:1}
-    66%{transform:translateY(24px);opacity:1}100%{transform:translateY(56px);opacity:0}}
-
-  .grow{transform-origin:center bottom; animation:grow 4.6s ease-in-out infinite;}
-  @keyframes grow{0%{transform:scaleY(.04);opacity:0}30%{transform:scaleY(1);opacity:1}
-    88%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
-
-  .tick{stroke-dasharray:44; stroke-dashoffset:44; animation:tick 3.6s ease-in-out infinite;}
-  @keyframes tick{0%,12%{stroke-dashoffset:44}32%,86%{stroke-dashoffset:0}100%{stroke-dashoffset:44}}
-
-  .sway{transform-origin:center; animation:sway 3.4s ease-in-out infinite;}
-  @keyframes sway{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-5px)}}
-
-  .breathe{transform-origin:center; animation:breathe 4.6s ease-in-out infinite;}
-  @keyframes breathe{0%,100%{transform:scale(.94);opacity:.62}50%{transform:scale(1.06);opacity:1}}
-
-  .halo{transform-origin:center; animation:halo 4.8s ease-in-out infinite;}
-  @keyframes halo{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
-
-  @media (prefers-reduced-motion:reduce){
-    .draw,.flow,.travel,.seq,.squish,.swap,.swapb,.settle,.sift,.grow,.tick,.sway,.breathe,.halo{
-      animation:none; stroke-dashoffset:0; opacity:1; transform:none;}
-    .swapb{opacity:0;}
-  }
-
-  /* ── 표지 히어로 ─────────────────────────────── */
-  .cover.hero .content{max-width:52rem; gap:1rem; z-index:3; padding:6.5rem clamp(1.4rem,5vw,4rem) 5rem;
-    align-items:flex-start; text-align:left; position:relative;}
-  .cover.hero > .logo{position:absolute; top:1.5rem; right:1.7rem; z-index:6;
-    width:clamp(54px,5.4vw,72px); margin:0; opacity:.92;}
-  .cover.hero .kicker{color:var(--clay-soft); letter-spacing:.3em;}
-  .hero-title{font-family:var(--serif); font-weight:700; text-shadow:0 6px 34px rgba(0,26,18,.75);
-    font-size:clamp(42px,8.6vw,100px); line-height:1.05; letter-spacing:-.035em;
-    background:linear-gradient(96deg,#F4F1E8 6%,#EFE3D6 26%,#D4916C 54%,#9FC3AE 84%,#F4F1E8 100%);
-    background-size:230% 100%; -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; animation:sheen 11s ease-in-out infinite;}
-  .slide.invert .title.hero-title{color:transparent;}
-  @keyframes sheen{0%,100%{background-position:2% 50%}50%{background-position:98% 50%}}
-  .hero-rule{height:1px; width:0; margin:.5rem 0 .2rem; align-self:flex-start;
-    background:linear-gradient(90deg,var(--clay-soft),rgba(212,145,108,0));
-    animation:rulegrow 2.6s cubic-bezier(.16,.84,.34,1) .7s forwards;}
-  @keyframes rulegrow{to{width:min(28rem,66vw);}}
-  .hero-sub{font-family:var(--serif); font-style:italic; font-size:clamp(17px,2.2vw,24px);
-    color:var(--green-soft); letter-spacing:.01em;}
-  .veil{position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(101deg,#002E22 0%,rgba(0,46,34,.95) 30%,rgba(0,46,34,.55) 47%,rgba(0,46,34,0) 64%);}
-  .starfield{position:absolute; inset:0; z-index:2; pointer-events:none;}
-  .starfield svg{width:100%; height:100%; display:block;}
-  .mobius{position:absolute; left:76%; top:47%; z-index:0; pointer-events:none;
-    width:min(74vw,900px); transform:translate(-50%,-50%);
-    filter:drop-shadow(0 26px 46px rgba(0,20,14,.55));
-    animation:mobfloat 13s ease-in-out infinite;}
-  .mobius svg{width:100%; height:auto; display:block; overflow:visible;}
-  .mobius .mob-edge{stroke-dasharray:2400; stroke-dashoffset:2400;
-    animation:mobdraw 5.2s cubic-bezier(.2,.75,.3,1) .35s forwards;}
-  @keyframes mobfloat{0%,100%{transform:translate(-50%,-50%) rotate(-1.1deg) translateY(-8px)}
-    50%{transform:translate(-50%,-50%) rotate(1.1deg) translateY(8px)}}
-  @keyframes mobdraw{to{stroke-dashoffset:0}}
-  @media(max-width:600px){
-    .cover.hero .content{padding:5.2rem 1.2rem 4rem;}
-    .cover.hero > .logo{top:1rem; right:1.2rem; width:48px;}
-    .mobius{left:52%; top:64%; width:150vw; opacity:.62; filter:none;}
-    .veil{background:linear-gradient(184deg,#002E22 0%,rgba(0,46,34,.94) 38%,rgba(0,46,34,.3) 62%,rgba(0,46,34,0) 80%);}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .mobius{animation:none;} .mobius .mob-edge{animation:none; stroke-dashoffset:0;}
-    .hero-title{animation:none;} .hero-rule{animation:none; width:min(28rem,66vw);}
-  }
-
-  /* 도구 덱 전용 */
-  .mono{font-family:var(--mono,'SF Mono','Consolas','D2Coding',monospace);}
-  .toolname{font-family:'SF Mono','JetBrains Mono','Consolas','D2Coding',monospace;
-    font-size:clamp(30px,5.4vw,58px); font-weight:700; letter-spacing:-.02em; line-height:1.14;
-    color:var(--green-deep);}
-  .slide.invert .toolname{color:var(--paper);}
-  .toolname .sl{color:var(--clay-deep);}
-  .slide.invert .toolname .sl{color:var(--clay-soft);}
-  .pr{align-self:stretch; max-width:42rem; margin:.35rem auto 0; text-align:left;
-    font-family:'SF Mono','JetBrains Mono','Consolas','D2Coding',monospace;
-    font-size:clamp(13px,1.15vw,16px); line-height:1.72; white-space:pre-wrap;
-    background:var(--green-deepest); color:#E9E4D8; border-radius:8px;
-    padding:1rem 1.15rem; overflow-x:auto; border:1px solid rgba(244,241,232,.14);}
-  .slide.invert .pr{background:rgba(0,26,18,.55);}
-  .pr .c{color:var(--clay-soft);}
-  .chips{display:flex; gap:.4rem; flex-wrap:wrap; justify-content:center; margin-top:.1rem;}
-  .chip{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.1em;
-    padding:.28rem .6rem; border-radius:5px; border:1px solid;}
-  .chip.get{color:#8A4B2A; border-color:var(--clay); background:rgba(198,126,88,.15);}
-  .chip.make{color:var(--green-deep); border-color:var(--green-soft); background:rgba(125,168,144,.2);}
-  .chip.must{color:var(--paper); border-color:var(--green-deep); background:var(--green-deep);}
-  .slide.invert .chip.get{color:var(--clay-soft); background:rgba(198,126,88,.18);}
-  .slide.invert .chip.make{color:#BEDCCB; background:rgba(125,168,144,.16);}
-  .slide.invert .chip.must{color:var(--green-deepest); background:var(--green-soft); border-color:var(--green-soft);}
-  .five{align-self:stretch; max-width:44rem; margin:.3rem auto 0; text-align:left;
-    display:flex; flex-direction:column; gap:.42rem;}
-  .five .f{border:1px solid var(--rule); border-left:3px solid var(--clay); border-radius:5px;
-    padding:.62rem .9rem; background:var(--surface); display:flex; gap:.85rem; align-items:baseline;}
-  .slide.invert .five .f{border-color:rgba(244,241,232,.16); border-left-color:var(--clay-soft);
-    background:rgba(0,46,34,.42);}
-  .five .kk{font-family:'SF Mono','Consolas','D2Coding',monospace; font-weight:700;
-    font-size:17px; color:var(--green); flex:none; min-width:9.6rem;}
-  .slide.invert .five .kk{color:var(--paper);}
-  .five .vv{font-family:var(--serif); font-size:17px; line-height:1.65; color:var(--ink-soft);}
-  .slide.invert .five .vv{color:rgba(244,241,232,.85);}
-  .five .vv b{color:var(--clay-deep); font-weight:700;}
-  .slide.invert .five .vv b{color:var(--clay-soft);}
-  @media(max-width:600px){
-    .five .f{flex-direction:column; gap:.1rem; padding:.55rem .78rem;}
-    .five .kk{min-width:0; font-size:16px;}
-    .five .vv{font-size:15.5px;}
-    .pr{font-size:12.5px; padding:.8rem .85rem;}
-  }
-
-  /* 크롬 */
-  /* 아래로 넘치는 글이 하단 크롬과 부딪히지 않도록 바탕색으로 사그라든다 */
-  .deck::after{content:""; position:fixed; left:0; right:0; bottom:0; height:58px; z-index:6;
-    pointer-events:none; background:linear-gradient(to top, var(--paper) 38%, rgba(244,241,232,0) 100%);
-    transition:background .5s ease;}
-  body.on-dark .deck::after{background:linear-gradient(to top, var(--green) 38%, rgba(26,74,53,0) 100%);}
-
-  .progress{position:fixed; top:0; left:0; height:3px; width:0; background:var(--clay); z-index:9; transition:width .5s ease;}
-  .counter{position:fixed; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:7;
-    font-family:var(--serif); font-weight:700; font-size:14px; color:var(--ink-mute); letter-spacing:.18em;}
-  body.on-dark .counter{color:var(--green-soft);}
-  .nav{position:fixed; bottom:1rem; z-index:7; background:none; border:none; cursor:pointer;
-    color:var(--ink-mute); font-family:var(--serif); font-size:28px; line-height:1; padding:.35rem .7rem;
-    transition:color .2s, transform .2s;}
-  .nav:hover{color:var(--clay-deep); transform:scale(1.15);}
-  body.on-dark .nav{color:var(--green-soft);}
-  body.on-dark .nav:hover{color:var(--clay-soft);}
-  .nav.prev{right:4rem;} .nav.next{right:1.4rem;}
-  .hint{position:fixed; bottom:1.6rem; left:1.5rem; z-index:7;
-    font-family:var(--sans); font-size:12px; color:var(--ink-mute); letter-spacing:.12em; opacity:.75;}
-  body.on-dark .hint{color:var(--green-soft);}
-
-  @media(max-width:600px){
-    .hint{display:none;} .counter{bottom:.9rem; font-size:12px;}
-    .content{padding:3.6rem 1.2rem 3.4rem; gap:.75rem;}
-    .brandmark{top:1rem; left:1.1rem; font-size:11px; letter-spacing:.26em;}
-    .duo{grid-template-columns:1fr; gap:.5rem;}
-    .cards{grid-template-columns:1fr; gap:.35rem;}
-    .cards .cd{padding:.5rem .7rem;}
-    .cards .w{font-size:18px;}
-    .cards .m{font-size:16px; line-height:1.45; margin-top:.1rem;}
-    .layers{gap:.4rem;}
-    .layers .ly{flex-direction:column; gap:.15rem; padding:.58rem .8rem;}
-    .layers .nm{min-width:0; font-size:18px;}
-    .layers .nm .h{margin-top:.05rem;}
-    .layers .ds{line-height:1.62;}
-    .body p{margin-bottom:.85rem;}
-    .body .final,.body .quote{font-size:22px;}
-    .viz{width:clamp(96px,26vw,120px); height:clamp(96px,26vw,120px);}
-    .cover .viz{width:clamp(110px,30vw,140px); height:clamp(110px,30vw,140px);}
-    .nav{font-size:24px;} .nav.prev{right:3.4rem;} .nav.next{right:1rem;}
-    .viz.wide{width:100% !important;}
-  }
+  .out{margin-top:2.6rem; border-radius:10px; padding:1.5rem 1.45rem;
+    background:linear-gradient(160deg,var(--green-deepest),var(--green-deep) 60%,var(--green));
+    color:var(--paper);}
+  .out .k{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--clay-soft); margin-bottom:.45rem;}
+  .out p{font-size:18px; line-height:1.78;}
+  .out b{color:#fff;}
+  .out .sm{display:block; margin-top:.5rem; font-size:16px; color:rgba(244,241,232,.8);}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="progress" id="progress"></div>
-<div class="brandmark">디퍼 · DEEPER</div>
+  <p class="brand">디퍼 · 논리의 달 1회차 · 함께 하는 실습</p>
+  <h1>내 스킬 <span class="em">하나</span> 만들기</h1>
+  <p class="lead">스킬은 <b>내가 반복하는 일을 적어둔 규칙 한 장</b>이다. 한 번 적어두면 그다음부터 여우가 그 규칙대로 한다. 매번 처음부터 설명하지 않아도 된다.</p>
 
-<div class="deck" id="deck">
-  <!-- 01 표지 -->
-  <section class="slide active cover hero invert">
-    <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
-    <div class="mobius">
-      <svg viewBox="-167 -107 388 214" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs><path id="mobmid" d="M150.0 -0.0 L149.8 -3.7 L149.2 -7.4 L148.2 -11.0 L146.7 -14.6 L144.9 -18.2 L142.7 -21.8 L140.0 -25.2 L137.0 -28.6 L133.7 -32.0 L129.9 -35.2 L125.8 -38.4 L121.4 -41.4 L116.6 -44.3 L111.5 -47.1 L106.1 -49.8 L100.4 -52.3 L94.4 -54.7 L88.2 -57.0 L81.7 -59.1 L75.0 -61.0 L68.1 -62.7 L61.0 -64.3 L53.8 -65.7 L46.4 -67.0 L38.8 -68.0 L31.2 -68.9 L23.5 -69.6 L15.7 -70.0 L7.9 -70.3 L0.0 -70.4 L-7.9 -70.3 L-15.7 -70.0 L-23.5 -69.6 L-31.2 -68.9 L-38.8 -68.0 L-46.4 -67.0 L-53.8 -65.7 L-61.0 -64.3 L-68.1 -62.7 L-75.0 -61.0 L-81.7 -59.1 L-88.2 -57.0 L-94.4 -54.7 L-100.4 -52.3 L-106.1 -49.8 L-111.5 -47.1 L-116.6 -44.3 L-121.4 -41.4 L-125.8 -38.4 L-129.9 -35.2 L-133.7 -32.0 L-137.0 -28.6 L-140.0 -25.2 L-142.7 -21.8 L-144.9 -18.2 L-146.7 -14.6 L-148.2 -11.0 L-149.2 -7.4 L-149.8 -3.7 L-150.0 -0.0 L-149.8 3.7 L-149.2 7.4 L-148.2 11.0 L-146.7 14.6 L-144.9 18.2 L-142.7 21.8 L-140.0 25.2 L-137.0 28.6 L-133.7 32.0 L-129.9 35.2 L-125.8 38.4 L-121.4 41.4 L-116.6 44.3 L-111.5 47.1 L-106.1 49.8 L-100.4 52.3 L-94.4 54.7 L-88.2 57.0 L-81.7 59.1 L-75.0 61.0 L-68.1 62.7 L-61.0 64.3 L-53.8 65.7 L-46.4 67.0 L-38.8 68.0 L-31.2 68.9 L-23.5 69.6 L-15.7 70.0 L-7.9 70.3 L-0.0 70.4 L7.9 70.3 L15.7 70.0 L23.5 69.6 L31.2 68.9 L38.8 68.0 L46.4 67.0 L53.8 65.7 L61.0 64.3 L68.1 62.7 L75.0 61.0 L81.7 59.1 L88.2 57.0 L94.4 54.7 L100.4 52.3 L106.1 49.8 L111.5 47.1 L116.6 44.3 L121.4 41.4 L125.8 38.4 L129.9 35.2 L133.7 32.0 L137.0 28.6 L140.0 25.2 L142.7 21.8 L144.9 18.2 L146.7 14.6 L148.2 11.0 L149.2 7.4 L149.8 3.7 L150.0 0.0 L149.8 -3.7 L149.2 -7.4 L148.2 -11.0 L146.7 -14.6 L144.9 -18.2 L142.7 -21.8 L140.0 -25.2 L137.0 -28.6 L133.7 -32.0 L129.9 -35.2 L125.8 -38.4 L121.4 -41.4 L116.6 -44.3 L111.5 -47.1 L106.1 -49.8 L100.4 -52.3 L94.4 -54.7 L88.2 -57.0 L81.7 -59.1 L75.0 -61.0 L68.1 -62.7 L61.0 -64.3 L53.8 -65.7 L46.4 -67.0 L38.8 -68.0 L31.2 -68.9 L23.5 -69.6 L15.7 -70.0 L7.9 -70.3 L0.0 -70.4 L-7.9 -70.3 L-15.7 -70.0 L-23.5 -69.6 L-31.2 -68.9 L-38.8 -68.0 L-46.4 -67.0 L-53.8 -65.7 L-61.0 -64.3 L-68.1 -62.7 L-75.0 -61.0 L-81.7 -59.1 L-88.2 -57.0 L-94.4 -54.7 L-100.4 -52.3 L-106.1 -49.8 L-111.5 -47.1 L-116.6 -44.3 L-121.4 -41.4 L-125.8 -38.4 L-129.9 -35.2 L-133.7 -32.0 L-137.0 -28.6 L-140.0 -25.2 L-142.7 -21.8 L-144.9 -18.2 L-146.7 -14.6 L-148.2 -11.0 L-149.2 -7.4 L-149.8 -3.7 L-150.0 -0.0 L-149.8 3.7 L-149.2 7.4 L-148.2 11.0 L-146.7 14.6 L-144.9 18.2 L-142.7 21.8 L-140.0 25.2 L-137.0 28.6 L-133.7 32.0 L-129.9 35.2 L-125.8 38.4 L-121.4 41.4 L-116.6 44.3 L-111.5 47.1 L-106.1 49.8 L-100.4 52.3 L-94.4 54.7 L-88.2 57.0 L-81.7 59.1 L-75.0 61.0 L-68.1 62.7 L-61.0 64.3 L-53.8 65.7 L-46.4 67.0 L-38.8 68.0 L-31.2 68.9 L-23.5 69.6 L-15.7 70.0 L-7.9 70.3 L-0.0 70.4 L7.9 70.3 L15.7 70.0 L23.5 69.6 L31.2 68.9 L38.8 68.0 L46.4 67.0 L53.8 65.7 L61.0 64.3 L68.1 62.7 L75.0 61.0 L81.7 59.1 L88.2 57.0 L94.4 54.7 L100.4 52.3 L106.1 49.8 L111.5 47.1 L116.6 44.3 L121.4 41.4 L125.8 38.4 L129.9 35.2 L133.7 32.0 L137.0 28.6 L140.0 25.2 L142.7 21.8 L144.9 18.2 L146.7 14.6 L148.2 11.0 L149.2 7.4 L149.8 3.7 L150.0 0.0"/></defs>
-        <g class="mob-body"><polygon points="-6.8,52.7 -3.9,88.0 -0.0,87.1 -0.0,53.8" fill="#002A20"/><polygon points="-0.0,53.8 -0.0,87.1 3.9,86.1 6.8,54.7" fill="#002A20"/><polygon points="-13.5,51.6 -7.9,88.9 -3.9,88.0 -6.8,52.7" fill="#002A20"/><polygon points="6.8,54.7 3.9,86.1 7.7,85.0 13.7,55.5" fill="#002A20"/><polygon points="-20.1,50.4 -12.0,89.7 -7.9,88.9 -13.5,51.6" fill="#012B21"/><polygon points="13.7,55.5 7.7,85.0 11.5,83.9 20.6,56.2" fill="#012B21"/><polygon points="-26.7,49.0 -16.0,90.4 -12.0,89.7 -20.1,50.4" fill="#012B21"/><polygon points="20.6,56.2 11.5,83.9 15.2,82.6 27.5,56.8" fill="#012B21"/><polygon points="-33.1,47.6 -20.1,91.0 -16.0,90.4 -26.7,49.0" fill="#022C22"/><polygon points="27.5,56.8 15.2,82.6 18.9,81.4 34.4,57.2" fill="#022C22"/><polygon points="-39.5,46.0 -24.3,91.6 -20.1,91.0 -33.1,47.6" fill="#032D23"/><polygon points="34.4,57.2 18.9,81.4 22.5,80.0 41.3,57.6" fill="#032D23"/><polygon points="41.3,57.6 22.5,80.0 26.0,78.6 48.2,57.8" fill="#042E23"/><polygon points="-45.7,44.4 -28.4,92.1 -24.3,91.6 -39.5,46.0" fill="#042E23"/><polygon points="-51.9,42.7 -32.6,92.5 -28.4,92.1 -45.7,44.4" fill="#052F24"/><polygon points="48.2,57.8 26.0,78.6 29.4,77.2 55.1,58.0" fill="#052F24"/><polygon points="55.1,58.0 29.4,77.2 32.8,75.7 62.0,58.0" fill="#063025"/><polygon points="-57.9,40.8 -36.8,92.8 -32.6,92.5 -51.9,42.7" fill="#063025"/><polygon points="62.0,58.0 32.8,75.7 36.1,74.1 68.8,57.9" fill="#073127"/><polygon points="-63.8,38.9 -41.1,93.0 -36.8,92.8 -57.9,40.8" fill="#073127"/><polygon points="68.8,57.9 36.1,74.1 39.3,72.5 75.5,57.7" fill="#093328"/><polygon points="-69.5,36.9 -45.3,93.2 -41.1,93.0 -63.8,38.9" fill="#093328"/><polygon points="75.5,57.7 39.3,72.5 42.4,70.8 82.2,57.3" fill="#0A3429"/><polygon points="-75.1,34.9 -49.5,93.2 -45.3,93.2 -69.5,36.9" fill="#0A3429"/><polygon points="82.2,57.3 42.4,70.8 45.4,69.1 88.8,56.9" fill="#0C362A"/><polygon points="-80.6,32.7 -53.7,93.2 -49.5,93.2 -75.1,34.9" fill="#0C362A"/><polygon points="88.8,56.9 45.4,69.1 48.4,67.3 95.4,56.3" fill="#0D372C"/><polygon points="-85.8,30.5 -57.9,93.1 -53.7,93.2 -80.6,32.7" fill="#0D372C"/><polygon points="95.4,56.3 48.4,67.3 51.3,65.5 101.8,55.7" fill="#0F392D"/><polygon points="-90.9,28.2 -62.1,92.9 -57.9,93.1 -85.8,30.5" fill="#0F392D"/><polygon points="-95.9,25.9 -66.3,92.6 -62.1,92.9 -90.9,28.2" fill="#113B2F"/><polygon points="101.8,55.7 51.3,65.5 54.0,63.6 108.1,54.9" fill="#113B2F"/><polygon points="-100.6,23.4 -70.5,92.3 -66.3,92.6 -95.9,25.9" fill="#123C31"/><polygon points="108.1,54.9 54.0,63.6 56.7,61.7 114.4,54.0" fill="#123C31"/><polygon points="114.4,54.0 56.7,61.7 59.3,59.7 120.4,53.0" fill="#143E32"/><polygon points="-105.2,21.0 -74.6,91.8 -70.5,92.3 -100.6,23.4" fill="#143E32"/><polygon points="120.4,53.0 59.3,59.7 61.9,57.8 126.4,51.9" fill="#164034"/><polygon points="-109.6,18.4 -78.7,91.2 -74.6,91.8 -105.2,21.0" fill="#164034"/><polygon points="126.4,51.9 61.9,57.8 64.3,55.7 132.2,50.7" fill="#184236"/><polygon points="-113.7,15.8 -82.7,90.6 -78.7,91.2 -109.6,18.4" fill="#184236"/><polygon points="132.2,50.7 64.3,55.7 66.6,53.7 137.8,49.4" fill="#1A4438"/><polygon points="-117.7,13.2 -86.7,89.9 -82.7,90.6 -113.7,15.8" fill="#1A4438"/><polygon points="-121.5,10.5 -90.6,89.1 -86.7,89.9 -117.7,13.2" fill="#1C463A"/><polygon points="137.8,49.4 66.6,53.7 68.8,51.6 143.3,48.0" fill="#1C463A"/><polygon points="143.3,48.0 68.8,51.6 71.0,49.4 148.6,46.5" fill="#1E483C"/><polygon points="-125.1,7.8 -94.5,88.1 -90.6,89.1 -121.5,10.5" fill="#1E483C"/><polygon points="148.6,46.5 71.0,49.4 73.0,47.3 153.7,44.9" fill="#214B3E"/><polygon points="-128.4,5.1 -98.3,87.1 -94.5,88.1 -125.1,7.8" fill="#214B3E"/><polygon points="153.7,44.9 73.0,47.3 74.9,45.1 158.7,43.3" fill="#234D40"/><polygon points="-131.6,2.3 -102.0,86.1 -98.3,87.1 -128.4,5.1" fill="#234D40"/><polygon points="158.7,43.3 74.9,45.1 76.8,42.9 163.4,41.5" fill="#254F42"/><polygon points="-134.5,-0.5 -105.7,84.9 -102.0,86.1 -131.6,2.3" fill="#254F42"/><polygon points="163.4,41.5 76.8,42.9 78.5,40.6 167.9,39.7" fill="#275144"/><polygon points="-137.2,-3.3 -109.2,83.6 -105.7,84.9 -134.5,-0.5" fill="#275144"/><polygon points="-139.7,-6.1 -112.7,82.3 -109.2,83.6 -137.2,-3.3" fill="#2A5446"/><polygon points="167.9,39.7 78.5,40.6 80.2,38.4 172.2,37.8" fill="#2A5446"/><polygon points="172.2,37.8 80.2,38.4 81.7,36.1 176.3,35.8" fill="#2C5648"/><polygon points="-142.0,-9.0 -116.0,80.9 -112.7,82.3 -139.7,-6.1" fill="#2C5648"/><polygon points="176.3,35.8 81.7,36.1 83.2,33.8 180.1,33.7" fill="#2F594A"/><polygon points="-144.0,-11.8 -119.3,79.3 -116.0,80.9 -142.0,-9.0" fill="#2F594A"/><polygon points="180.1,33.7 83.2,33.8 84.5,31.4 183.7,31.6" fill="#315B4C"/><polygon points="-145.9,-14.7 -122.4,77.7 -119.3,79.3 -144.0,-11.8" fill="#315B4C"/><polygon points="183.7,31.6 84.5,31.4 85.8,29.1 187.1,29.4" fill="#335D4F"/><polygon points="-147.5,-17.6 -125.4,76.1 -122.4,77.7 -145.9,-14.7" fill="#335D4F"/><polygon points="187.1,29.4 85.8,29.1 86.9,26.7 190.2,27.2" fill="#366051"/><polygon points="-148.9,-20.4 -128.3,74.3 -125.4,76.1 -147.5,-17.6" fill="#366051"/><polygon points="190.2,27.2 86.9,26.7 88.0,24.3 193.1,24.9" fill="#386253"/><polygon points="-150.0,-23.3 -131.1,72.5 -128.3,74.3 -148.9,-20.4" fill="#386253"/><polygon points="-151.0,-26.1 -133.7,70.6 -131.1,72.5 -150.0,-23.3" fill="#3C6555"/><polygon points="193.1,24.9 88.0,24.3 88.9,21.9 195.7,22.5" fill="#3B6555"/><polygon points="-151.7,-28.9 -136.1,68.6 -133.7,70.6 -151.0,-26.1" fill="#3F6858"/><polygon points="195.7,22.5 88.9,21.9 89.8,19.5 198.1,20.1" fill="#3E6858"/><polygon points="198.1,20.1 89.8,19.5 90.5,17.1 200.1,17.7" fill="#406A5A"/><polygon points="-152.2,-31.7 -138.5,66.5 -136.1,68.6 -151.7,-28.9" fill="#416A5A"/><polygon points="200.1,17.7 90.5,17.1 91.2,14.7 202.0,15.2" fill="#436D5C"/><polygon points="-152.5,-34.5 -140.6,64.4 -138.5,66.5 -152.2,-31.7" fill="#456D5C"/><polygon points="202.0,15.2 91.2,14.7 91.7,12.3 203.5,12.8" fill="#456F5F"/><polygon points="-152.6,-37.2 -142.6,62.2 -140.6,64.4 -152.5,-34.5" fill="#476F5F"/><polygon points="203.5,12.8 91.7,12.3 92.2,9.8 204.7,10.2" fill="#487261"/><polygon points="-152.5,-39.9 -144.4,60.0 -142.6,62.2 -152.6,-37.2" fill="#4B7261"/><polygon points="204.7,10.2 92.2,9.8 92.5,7.4 205.7,7.7" fill="#4A7463"/><polygon points="-152.2,-42.6 -146.1,57.6 -144.4,60.0 -152.5,-39.9" fill="#4D7463"/><polygon points="205.7,7.7 92.5,7.4 92.8,4.9 206.4,5.1" fill="#4D7766"/><polygon points="-151.6,-45.2 -147.6,55.3 -146.1,57.6 -152.2,-42.6" fill="#517766"/><polygon points="206.4,5.1 92.8,4.9 92.9,2.5 206.9,2.6" fill="#4F7968"/><polygon points="-150.9,-47.8 -148.9,52.8 -147.6,55.3 -151.6,-45.2" fill="#547967"/><polygon points="206.9,2.6 92.9,2.5 93.0,0.0 207.0,0.0" fill="#527C6A"/><polygon points="-150.0,-50.3 -150.0,50.3 -148.9,52.8 -150.9,-47.8" fill="#587C69"/><polygon points="93.0,-0.0 207.0,-0.0 206.9,-2.6 92.9,-2.5" fill="#547E6D"/><polygon points="-148.9,-52.8 -150.9,47.8 -150.0,50.3 -150.0,-50.3" fill="#5B7E6C"/><polygon points="92.9,-2.5 206.9,-2.6 206.4,-5.1 92.8,-4.9" fill="#57816F"/><polygon points="-147.6,-55.3 -151.6,45.2 -150.9,47.8 -148.9,-52.8" fill="#5E816D"/><polygon points="92.8,-4.9 206.4,-5.1 205.7,-7.7 92.5,-7.4" fill="#598371"/><polygon points="-146.1,-57.6 -152.2,42.6 -151.6,45.2 -147.6,-55.3" fill="#61836F"/><polygon points="92.5,-7.4 205.7,-7.7 204.7,-10.2 92.2,-9.8" fill="#5C8673"/><polygon points="-144.4,-60.0 -152.5,39.9 -152.2,42.6 -146.1,-57.6" fill="#658571"/><polygon points="-142.6,-62.2 -152.6,37.2 -152.5,39.9 -144.4,-60.0" fill="#688773"/><polygon points="92.2,-9.8 204.7,-10.2 203.5,-12.8 91.7,-12.3" fill="#5E8876"/><polygon points="91.7,-12.3 203.5,-12.8 202.0,-15.2 91.2,-14.7" fill="#618B78"/><polygon points="-140.6,-64.4 -152.5,34.5 -152.6,37.2 -142.6,-62.2" fill="#6C8A75"/><polygon points="91.2,-14.7 202.0,-15.2 200.1,-17.7 90.5,-17.1" fill="#638D7A"/><polygon points="-138.5,-66.5 -152.2,31.7 -152.5,34.5 -140.6,-64.4" fill="#6F8B76"/><polygon points="90.5,-17.1 200.1,-17.7 198.1,-20.1 89.8,-19.5" fill="#66907C"/><polygon points="-136.1,-68.6 -151.7,28.9 -152.2,31.7 -138.5,-66.5" fill="#738E77"/><polygon points="89.8,-19.5 198.1,-20.1 195.7,-22.5 88.9,-21.9" fill="#68927E"/><polygon points="-133.7,-70.6 -151.0,26.1 -151.7,28.9 -136.1,-68.6" fill="#768F79"/><polygon points="88.9,-21.9 195.7,-22.5 193.1,-24.9 88.0,-24.3" fill="#6A9480"/><polygon points="-131.1,-72.5 -150.0,23.3 -151.0,26.1 -133.7,-70.6" fill="#78917A"/><polygon points="88.0,-24.3 193.1,-24.9 190.2,-27.2 86.9,-26.7" fill="#6C9682"/><polygon points="-128.3,-74.3 -148.9,20.4 -150.0,23.3 -131.1,-72.5" fill="#7B927B"/><polygon points="86.9,-26.7 190.2,-27.2 187.1,-29.4 85.8,-29.1" fill="#6F9984"/><polygon points="-125.4,-76.1 -147.5,17.6 -148.9,20.4 -128.3,-74.3" fill="#7F947C"/><polygon points="85.8,-29.1 187.1,-29.4 183.7,-31.6 84.5,-31.4" fill="#719B86"/><polygon points="-122.4,-77.7 -145.9,14.7 -147.5,17.6 -125.4,-76.1" fill="#81957D"/><polygon points="84.5,-31.4 183.7,-31.6 180.1,-33.7 83.2,-33.8" fill="#739D88"/><polygon points="-119.3,-79.3 -144.0,11.8 -145.9,14.7 -122.4,-77.7" fill="#84977E"/><polygon points="-116.0,-80.9 -142.0,9.0 -144.0,11.8 -119.3,-79.3" fill="#87987F"/><polygon points="83.2,-33.8 180.1,-33.7 176.3,-35.8 81.7,-36.1" fill="#759F8A"/><polygon points="81.7,-36.1 176.3,-35.8 172.2,-37.8 80.2,-38.4" fill="#77A18C"/><polygon points="-112.7,-82.3 -139.7,6.1 -142.0,9.0 -116.0,-80.9" fill="#899980"/><polygon points="80.2,-38.4 172.2,-37.8 167.9,-39.7 78.5,-40.6" fill="#79A38E"/><polygon points="-109.2,-83.6 -137.2,3.3 -139.7,6.1 -112.7,-82.3" fill="#8B9A81"/><polygon points="78.5,-40.6 167.9,-39.7 163.4,-41.5 76.8,-42.9" fill="#7BA590"/><polygon points="-105.7,-84.9 -134.5,0.5 -137.2,3.3 -109.2,-83.6" fill="#8E9B82"/><polygon points="76.8,-42.9 163.4,-41.5 158.7,-43.3 74.9,-45.1" fill="#7DA791"/><polygon points="-102.0,-86.1 -131.6,-2.3 -134.5,0.5 -105.7,-84.9" fill="#909C82"/><polygon points="74.9,-45.1 158.7,-43.3 153.7,-44.9 73.0,-47.3" fill="#7FA993"/><polygon points="-98.3,-87.1 -128.4,-5.1 -131.6,-2.3 -102.0,-86.1" fill="#929E83"/><polygon points="73.0,-47.3 153.7,-44.9 148.6,-46.5 71.0,-49.4" fill="#81AB95"/><polygon points="-94.5,-88.1 -125.1,-7.8 -128.4,-5.1 -98.3,-87.1" fill="#949F84"/><polygon points="71.0,-49.4 148.6,-46.5 143.3,-48.0 68.8,-51.6" fill="#82AC96"/><polygon points="-90.6,-89.1 -121.5,-10.5 -125.1,-7.8 -94.5,-88.1" fill="#959F85"/><polygon points="68.8,-51.6 143.3,-48.0 137.8,-49.4 66.6,-53.7" fill="#84AE98"/><polygon points="-86.7,-89.9 -117.7,-13.2 -121.5,-10.5 -90.6,-89.1" fill="#97A086"/><polygon points="66.6,-53.7 137.8,-49.4 132.2,-50.7 64.3,-55.7" fill="#86B099"/><polygon points="-82.7,-90.6 -113.7,-15.8 -117.7,-13.2 -86.7,-89.9" fill="#99A186"/><polygon points="-78.7,-91.2 -109.6,-18.4 -113.7,-15.8 -82.7,-90.6" fill="#9AA286"/><polygon points="64.3,-55.7 132.2,-50.7 126.4,-51.9 61.9,-57.8" fill="#87B19A"/><polygon points="-74.6,-91.8 -105.2,-21.0 -109.6,-18.4 -78.7,-91.2" fill="#9AA288"/><polygon points="61.9,-57.8 126.4,-51.9 120.4,-53.0 59.3,-59.7" fill="#89B29B"/><polygon points="59.3,-59.7 120.4,-53.0 114.4,-54.0 56.7,-61.7" fill="#8BB39C"/><polygon points="-70.5,-92.3 -100.6,-23.4 -105.2,-21.0 -74.6,-91.8" fill="#9CA488"/><polygon points="56.7,-61.7 114.4,-54.0 108.1,-54.9 54.0,-63.6" fill="#8CB49D"/><polygon points="-66.3,-92.6 -95.9,-25.9 -100.6,-23.4 -70.5,-92.3" fill="#9DA589"/><polygon points="54.0,-63.6 108.1,-54.9 101.8,-55.7 51.3,-65.5" fill="#8DB59E"/><polygon points="-62.1,-92.9 -90.9,-28.2 -95.9,-25.9 -66.3,-92.6" fill="#9DA58A"/><polygon points="51.3,-65.5 101.8,-55.7 95.4,-56.3 48.4,-67.3" fill="#8FB79E"/><polygon points="-57.9,-93.1 -85.8,-30.5 -90.9,-28.2 -62.1,-92.9" fill="#9FA78B"/><polygon points="48.4,-67.3 95.4,-56.3 88.8,-56.9 45.4,-69.1" fill="#91B79F"/><polygon points="-53.7,-93.2 -80.6,-32.7 -85.8,-30.5 -57.9,-93.1" fill="#9FA88C"/><polygon points="45.4,-69.1 88.8,-56.9 82.2,-57.3 42.4,-70.8" fill="#92B89F"/><polygon points="-49.5,-93.2 -75.1,-34.9 -80.6,-32.7 -53.7,-93.2" fill="#A0A98D"/><polygon points="42.4,-70.8 82.2,-57.3 75.5,-57.7 39.3,-72.5" fill="#93B8A0"/><polygon points="-45.3,-93.2 -69.5,-36.9 -75.1,-34.9 -49.5,-93.2" fill="#A0AA8E"/><polygon points="-41.1,-93.0 -63.8,-38.9 -69.5,-36.9 -45.3,-93.2" fill="#A0AB8F"/><polygon points="39.3,-72.5 75.5,-57.7 68.8,-57.9 36.1,-74.1" fill="#95B9A0"/><polygon points="-36.8,-92.8 -57.9,-40.8 -63.8,-38.9 -41.1,-93.0" fill="#A0AB90"/><polygon points="36.1,-74.1 68.8,-57.9 62.0,-58.0 32.8,-75.7" fill="#95B8A0"/><polygon points="32.8,-75.7 62.0,-58.0 55.1,-58.0 29.4,-77.2" fill="#97B89F"/><polygon points="-32.6,-92.5 -51.9,-42.7 -57.9,-40.8 -36.8,-92.8" fill="#A0AC91"/><polygon points="29.4,-77.2 55.1,-58.0 48.2,-57.8 26.0,-78.6" fill="#98B9A0"/><polygon points="-28.4,-92.1 -45.7,-44.4 -51.9,-42.7 -32.6,-92.5" fill="#A1AE92"/><polygon points="26.0,-78.6 48.2,-57.8 41.3,-57.6 22.5,-80.0" fill="#99B89F"/><polygon points="-24.3,-91.6 -39.5,-46.0 -45.7,-44.4 -28.4,-92.1" fill="#A0AE93"/><polygon points="22.5,-80.0 41.3,-57.6 34.4,-57.2 18.9,-81.4" fill="#9AB89F"/><polygon points="-20.1,-91.0 -33.1,-47.6 -39.5,-46.0 -24.3,-91.6" fill="#A0B094"/><polygon points="18.9,-81.4 34.4,-57.2 27.5,-56.8 15.2,-82.6" fill="#9BB89E"/><polygon points="-16.0,-90.4 -26.7,-49.0 -33.1,-47.6 -20.1,-91.0" fill="#A0B095"/><polygon points="15.2,-82.6 27.5,-56.8 20.6,-56.2 11.5,-83.9" fill="#9CB89E"/><polygon points="-12.0,-89.7 -20.1,-50.4 -26.7,-49.0 -16.0,-90.4" fill="#A0B297"/><polygon points="11.5,-83.9 20.6,-56.2 13.7,-55.5 7.7,-85.0" fill="#9DB79D"/><polygon points="-7.9,-88.9 -13.5,-51.6 -20.1,-50.4 -12.0,-89.7" fill="#A0B398"/><polygon points="7.7,-85.0 13.7,-55.5 6.8,-54.7 3.9,-86.1" fill="#9DB69C"/><polygon points="-3.9,-88.0 -6.8,-52.7 -13.5,-51.6 -7.9,-88.9" fill="#9FB499"/><polygon points="3.9,-86.1 6.8,-54.7 0.0,-53.8 0.0,-87.1" fill="#9EB59B"/><polygon points="0.0,-87.1 0.0,-53.8 -6.8,-52.7 -3.9,-88.0" fill="#9EB49A"/></g>
-        <path class="mob-edge" d="M207.0 -0.0 L207.0 -1.3 L206.9 -2.6 L206.7 -3.9 L206.4 -5.1 L206.1 -6.4 L205.7 -7.7 L205.3 -9.0 L204.7 -10.2 L204.2 -11.5 L203.5 -12.8 L202.8 -14.0 L202.0 -15.2 L201.1 -16.5 L200.1 -17.7 L199.1 -18.9 L198.1 -20.1 L196.9 -21.3 L195.7 -22.5 L194.4 -23.7 L193.1 -24.9 L191.7 -26.0 L190.2 -27.2 L188.7 -28.3 L187.1 -29.4 L185.5 -30.5 L183.7 -31.6 L182.0 -32.7 L180.1 -33.7 L178.2 -34.8 L176.3 -35.8 L174.3 -36.8 L172.2 -37.8 L170.1 -38.7 L167.9 -39.7 L165.7 -40.6 L163.4 -41.5 L161.0 -42.4 L158.7 -43.3 L156.2 -44.1 L153.7 -44.9 L151.2 -45.7 L148.6 -46.5 L146.0 -47.3 L143.3 -48.0 L140.6 -48.7 L137.8 -49.4 L135.0 -50.1 L132.2 -50.7 L129.3 -51.3 L126.4 -51.9 L123.4 -52.5 L120.4 -53.0 L117.4 -53.5 L114.4 -54.0 L111.3 -54.5 L108.1 -54.9 L105.0 -55.3 L101.8 -55.7 L98.6 -56.0 L95.4 -56.3 L92.1 -56.6 L88.8 -56.9 L85.6 -57.1 L82.2 -57.3 L78.9 -57.5 L75.5 -57.7 L72.2 -57.8 L68.8 -57.9 L65.4 -57.9 L62.0 -58.0 L58.5 -58.0 L55.1 -58.0 L51.7 -57.9 L48.2 -57.8 L44.8 -57.7 L41.3 -57.6 L37.9 -57.4 L34.4 -57.2 L30.9 -57.0 L27.5 -56.8 L24.0 -56.5 L20.6 -56.2 L17.1 -55.8 L13.7 -55.5 L10.2 -55.1 L6.8 -54.7 L3.4 -54.2 L0.0 -53.8 L-3.4 -53.3 L-6.8 -52.7 L-10.1 -52.2 L-13.5 -51.6 L-16.8 -51.0 L-20.1 -50.4 L-23.4 -49.7 L-26.7 -49.0 L-29.9 -48.3 L-33.1 -47.6 L-36.3 -46.8 L-39.5 -46.0 L-42.6 -45.2 L-45.7 -44.4 L-48.8 -43.5 L-51.9 -42.7 L-54.9 -41.8 L-57.9 -40.8 L-60.9 -39.9 L-63.8 -38.9 L-66.7 -38.0 L-69.5 -36.9 L-72.3 -35.9 L-75.1 -34.9 L-77.9 -33.8 L-80.6 -32.7 L-83.2 -31.6 L-85.8 -30.5 L-88.4 -29.4 L-90.9 -28.2 L-93.4 -27.0 L-95.9 -25.9 L-98.3 -24.7 L-100.6 -23.4 L-102.9 -22.2 L-105.2 -21.0 L-107.4 -19.7 L-109.6 -18.4 L-111.7 -17.1 L-113.7 -15.8 L-115.8 -14.5 L-117.7 -13.2 L-119.6 -11.9 L-121.5 -10.5 L-123.3 -9.2 L-125.1 -7.8 L-126.8 -6.5 L-128.4 -5.1 L-130.0 -3.7 L-131.6 -2.3 L-133.1 -0.9 L-134.5 0.5 L-135.9 1.9 L-137.2 3.3 L-138.5 4.7 L-139.7 6.1 L-140.9 7.6 L-142.0 9.0 L-143.0 10.4 L-144.0 11.8 L-145.0 13.3 L-145.9 14.7 L-146.7 16.1 L-147.5 17.6 L-148.2 19.0 L-148.9 20.4 L-149.5 21.8 L-150.0 23.3 L-150.5 24.7 L-151.0 26.1 L-151.4 27.5 L-151.7 28.9 L-152.0 30.3 L-152.2 31.7 L-152.4 33.1 L-152.5 34.5 L-152.6 35.8 L-152.6 37.2 L-152.6 38.6 L-152.5 39.9 L-152.4 41.2 L-152.2 42.6 L-151.9 43.9 L-151.6 45.2 L-151.3 46.5 L-150.9 47.8 L-150.5 49.1 L-150.0 50.3 L-149.5 51.6 L-148.9 52.8 L-148.3 54.0 L-147.6 55.3 L-146.9 56.4 L-146.1 57.6 L-145.3 58.8 L-144.4 60.0 L-143.6 61.1 L-142.6 62.2 L-141.6 63.3 L-140.6 64.4 L-139.6 65.5 L-138.5 66.5 L-137.3 67.6 L-136.1 68.6 L-134.9 69.6 L-133.7 70.6 L-132.4 71.5 L-131.1 72.5 L-129.7 73.4 L-128.3 74.3 L-126.9 75.2 L-125.4 76.1 L-123.9 76.9 L-122.4 77.7 L-120.9 78.6 L-119.3 79.3 L-117.7 80.1 L-116.0 80.9 L-114.4 81.6 L-112.7 82.3 L-111.0 83.0 L-109.2 83.6 L-107.5 84.3 L-105.7 84.9 L-103.9 85.5 L-102.0 86.1 L-100.2 86.6 L-98.3 87.1 L-96.4 87.7 L-94.5 88.1 L-92.6 88.6 L-90.6 89.1 L-88.7 89.5 L-86.7 89.9 L-84.7 90.2 L-82.7 90.6 L-80.7 90.9 L-78.7 91.2 L-76.6 91.5 L-74.6 91.8 L-72.5 92.0 L-70.5 92.3 L-68.4 92.4 L-66.3 92.6 L-64.2 92.8 L-62.1 92.9 L-60.1 93.0 L-57.9 93.1 L-55.8 93.2 L-53.7 93.2 L-51.6 93.2 L-49.5 93.2 L-47.4 93.2 L-45.3 93.2 L-43.2 93.1 L-41.1 93.0 L-38.9 92.9 L-36.8 92.8 L-34.7 92.6 L-32.6 92.5 L-30.5 92.3 L-28.4 92.1 L-26.4 91.8 L-24.3 91.6 L-22.2 91.3 L-20.1 91.0 L-18.1 90.7 L-16.0 90.4 L-14.0 90.0 L-12.0 89.7 L-9.9 89.3 L-7.9 88.9 L-5.9 88.5 L-3.9 88.0 L-2.0 87.6 L-0.0 87.1 L2.0 86.6 L3.9 86.1 L5.8 85.5 L7.7 85.0 L9.6 84.4 L11.5 83.9 L13.4 83.3 L15.2 82.6 L17.1 82.0 L18.9 81.4 L20.7 80.7 L22.5 80.0 L24.2 79.3 L26.0 78.6 L27.7 77.9 L29.4 77.2 L31.1 76.4 L32.8 75.7 L34.4 74.9 L36.1 74.1 L37.7 73.3 L39.3 72.5 L40.8 71.6 L42.4 70.8 L43.9 69.9 L45.4 69.1 L46.9 68.2 L48.4 67.3 L49.8 66.4 L51.3 65.5 L52.7 64.5 L54.0 63.6 L55.4 62.7 L56.7 61.7 L58.1 60.7 L59.3 59.7 L60.6 58.8 L61.9 57.8 L63.1 56.7 L64.3 55.7 L65.4 54.7 L66.6 53.7 L67.7 52.6 L68.8 51.6 L69.9 50.5 L71.0 49.4 L72.0 48.4 L73.0 47.3 L74.0 46.2 L74.9 45.1 L75.9 44.0 L76.8 42.9 L77.7 41.8 L78.5 40.6 L79.4 39.5 L80.2 38.4 L81.0 37.2 L81.7 36.1 L82.5 34.9 L83.2 33.8 L83.9 32.6 L84.5 31.4 L85.2 30.3 L85.8 29.1 L86.4 27.9 L86.9 26.7 L87.5 25.5 L88.0 24.3 L88.5 23.1 L88.9 21.9 L89.4 20.7 L89.8 19.5 L90.2 18.3 L90.5 17.1 L90.9 15.9 L91.2 14.7 L91.5 13.5 L91.7 12.3 L92.0 11.0 L92.2 9.8 L92.4 8.6 L92.5 7.4 L92.7 6.1 L92.8 4.9 L92.9 3.7 L92.9 2.5 L93.0 1.2 L93.0 0.0" stroke="#F4F1E8" stroke-width="1.6" stroke-opacity=".62" fill="none"/>
-        <path class="mob-edge" d="M93.0 -0.0 L93.0 -1.2 L92.9 -2.5 L92.9 -3.7 L92.8 -4.9 L92.7 -6.1 L92.5 -7.4 L92.4 -8.6 L92.2 -9.8 L92.0 -11.0 L91.7 -12.3 L91.5 -13.5 L91.2 -14.7 L90.9 -15.9 L90.5 -17.1 L90.2 -18.3 L89.8 -19.5 L89.4 -20.7 L88.9 -21.9 L88.5 -23.1 L88.0 -24.3 L87.5 -25.5 L86.9 -26.7 L86.4 -27.9 L85.8 -29.1 L85.2 -30.3 L84.5 -31.4 L83.9 -32.6 L83.2 -33.8 L82.5 -34.9 L81.7 -36.1 L81.0 -37.2 L80.2 -38.4 L79.4 -39.5 L78.5 -40.6 L77.7 -41.8 L76.8 -42.9 L75.9 -44.0 L74.9 -45.1 L74.0 -46.2 L73.0 -47.3 L72.0 -48.4 L71.0 -49.4 L69.9 -50.5 L68.8 -51.6 L67.7 -52.6 L66.6 -53.7 L65.4 -54.7 L64.3 -55.7 L63.1 -56.7 L61.9 -57.8 L60.6 -58.8 L59.3 -59.7 L58.1 -60.7 L56.7 -61.7 L55.4 -62.7 L54.0 -63.6 L52.7 -64.5 L51.3 -65.5 L49.8 -66.4 L48.4 -67.3 L46.9 -68.2 L45.4 -69.1 L43.9 -69.9 L42.4 -70.8 L40.8 -71.6 L39.3 -72.5 L37.7 -73.3 L36.1 -74.1 L34.4 -74.9 L32.8 -75.7 L31.1 -76.4 L29.4 -77.2 L27.7 -77.9 L26.0 -78.6 L24.2 -79.3 L22.5 -80.0 L20.7 -80.7 L18.9 -81.4 L17.1 -82.0 L15.2 -82.6 L13.4 -83.3 L11.5 -83.9 L9.6 -84.4 L7.7 -85.0 L5.8 -85.5 L3.9 -86.1 L2.0 -86.6 L0.0 -87.1 L-2.0 -87.6 L-3.9 -88.0 L-5.9 -88.5 L-7.9 -88.9 L-9.9 -89.3 L-12.0 -89.7 L-14.0 -90.0 L-16.0 -90.4 L-18.1 -90.7 L-20.1 -91.0 L-22.2 -91.3 L-24.3 -91.6 L-26.4 -91.8 L-28.4 -92.1 L-30.5 -92.3 L-32.6 -92.5 L-34.7 -92.6 L-36.8 -92.8 L-38.9 -92.9 L-41.1 -93.0 L-43.2 -93.1 L-45.3 -93.2 L-47.4 -93.2 L-49.5 -93.2 L-51.6 -93.2 L-53.7 -93.2 L-55.8 -93.2 L-57.9 -93.1 L-60.1 -93.0 L-62.1 -92.9 L-64.2 -92.8 L-66.3 -92.6 L-68.4 -92.4 L-70.5 -92.3 L-72.5 -92.0 L-74.6 -91.8 L-76.6 -91.5 L-78.7 -91.2 L-80.7 -90.9 L-82.7 -90.6 L-84.7 -90.2 L-86.7 -89.9 L-88.7 -89.5 L-90.6 -89.1 L-92.6 -88.6 L-94.5 -88.1 L-96.4 -87.7 L-98.3 -87.1 L-100.2 -86.6 L-102.0 -86.1 L-103.9 -85.5 L-105.7 -84.9 L-107.5 -84.3 L-109.2 -83.6 L-111.0 -83.0 L-112.7 -82.3 L-114.4 -81.6 L-116.0 -80.9 L-117.7 -80.1 L-119.3 -79.3 L-120.9 -78.6 L-122.4 -77.7 L-123.9 -76.9 L-125.4 -76.1 L-126.9 -75.2 L-128.3 -74.3 L-129.7 -73.4 L-131.1 -72.5 L-132.4 -71.5 L-133.7 -70.6 L-134.9 -69.6 L-136.1 -68.6 L-137.3 -67.6 L-138.5 -66.5 L-139.6 -65.5 L-140.6 -64.4 L-141.6 -63.3 L-142.6 -62.2 L-143.6 -61.1 L-144.4 -60.0 L-145.3 -58.8 L-146.1 -57.6 L-146.9 -56.4 L-147.6 -55.3 L-148.3 -54.0 L-148.9 -52.8 L-149.5 -51.6 L-150.0 -50.3 L-150.5 -49.1 L-150.9 -47.8 L-151.3 -46.5 L-151.6 -45.2 L-151.9 -43.9 L-152.2 -42.6 L-152.4 -41.2 L-152.5 -39.9 L-152.6 -38.6 L-152.6 -37.2 L-152.6 -35.8 L-152.5 -34.5 L-152.4 -33.1 L-152.2 -31.7 L-152.0 -30.3 L-151.7 -28.9 L-151.4 -27.5 L-151.0 -26.1 L-150.5 -24.7 L-150.0 -23.3 L-149.5 -21.8 L-148.9 -20.4 L-148.2 -19.0 L-147.5 -17.6 L-146.7 -16.1 L-145.9 -14.7 L-145.0 -13.3 L-144.0 -11.8 L-143.0 -10.4 L-142.0 -9.0 L-140.9 -7.6 L-139.7 -6.1 L-138.5 -4.7 L-137.2 -3.3 L-135.9 -1.9 L-134.5 -0.5 L-133.1 0.9 L-131.6 2.3 L-130.0 3.7 L-128.4 5.1 L-126.8 6.5 L-125.1 7.8 L-123.3 9.2 L-121.5 10.5 L-119.6 11.9 L-117.7 13.2 L-115.8 14.5 L-113.7 15.8 L-111.7 17.1 L-109.6 18.4 L-107.4 19.7 L-105.2 21.0 L-102.9 22.2 L-100.6 23.4 L-98.3 24.7 L-95.9 25.9 L-93.4 27.0 L-90.9 28.2 L-88.4 29.4 L-85.8 30.5 L-83.2 31.6 L-80.6 32.7 L-77.9 33.8 L-75.1 34.9 L-72.3 35.9 L-69.5 36.9 L-66.7 38.0 L-63.8 38.9 L-60.9 39.9 L-57.9 40.8 L-54.9 41.8 L-51.9 42.7 L-48.8 43.5 L-45.7 44.4 L-42.6 45.2 L-39.5 46.0 L-36.3 46.8 L-33.1 47.6 L-29.9 48.3 L-26.7 49.0 L-23.4 49.7 L-20.1 50.4 L-16.8 51.0 L-13.5 51.6 L-10.1 52.2 L-6.8 52.7 L-3.4 53.3 L-0.0 53.8 L3.4 54.2 L6.8 54.7 L10.2 55.1 L13.7 55.5 L17.1 55.8 L20.6 56.2 L24.0 56.5 L27.5 56.8 L30.9 57.0 L34.4 57.2 L37.9 57.4 L41.3 57.6 L44.8 57.7 L48.2 57.8 L51.7 57.9 L55.1 58.0 L58.5 58.0 L62.0 58.0 L65.4 57.9 L68.8 57.9 L72.2 57.8 L75.5 57.7 L78.9 57.5 L82.2 57.3 L85.6 57.1 L88.8 56.9 L92.1 56.6 L95.4 56.3 L98.6 56.0 L101.8 55.7 L105.0 55.3 L108.1 54.9 L111.3 54.5 L114.4 54.0 L117.4 53.5 L120.4 53.0 L123.4 52.5 L126.4 51.9 L129.3 51.3 L132.2 50.7 L135.0 50.1 L137.8 49.4 L140.6 48.7 L143.3 48.0 L146.0 47.3 L148.6 46.5 L151.2 45.7 L153.7 44.9 L156.2 44.1 L158.7 43.3 L161.0 42.4 L163.4 41.5 L165.7 40.6 L167.9 39.7 L170.1 38.7 L172.2 37.8 L174.3 36.8 L176.3 35.8 L178.2 34.8 L180.1 33.7 L182.0 32.7 L183.7 31.6 L185.5 30.5 L187.1 29.4 L188.7 28.3 L190.2 27.2 L191.7 26.0 L193.1 24.9 L194.4 23.7 L195.7 22.5 L196.9 21.3 L198.1 20.1 L199.1 18.9 L200.1 17.7 L201.1 16.5 L202.0 15.2 L202.8 14.0 L203.5 12.8 L204.2 11.5 L204.7 10.2 L205.3 9.0 L205.7 7.7 L206.1 6.4 L206.4 5.1 L206.7 3.9 L206.9 2.6 L207.0 1.3 L207.0 0.0" stroke="#F4F1E8" stroke-width="1.1" stroke-opacity=".3" fill="none"/>
-        <g fill="#D4916C"><path d="M0 -11.0 C0.8 -3.7, 3.7 -0.8, 11.0 0 C3.7 0.8, 0.8 3.7, 0 11.0 C-0.8 3.7, -3.7 0.8, -11.0 0 C-3.7 -0.8, -0.8 -3.7, 0 -11.0 Z"><animateMotion dur="26s" repeatCount="indefinite" rotate="auto"><mpath href="#mobmid"/></animateMotion></path></g>
-        <g fill="#F4F1E8" opacity=".75"><path d="M0 -7.0 C0.5 -2.4, 2.4 -0.5, 7.0 0 C2.4 0.5, 0.5 2.4, 0 7.0 C-0.5 2.4, -2.4 0.5, -7.0 0 C-2.4 -0.5, -0.5 -2.4, 0 -7.0 Z"><animateMotion dur="26s" begin="-13s" repeatCount="indefinite" rotate="auto"><mpath href="#mobmid"/></animateMotion></path></g>
-        <g fill="#9FC3AE" opacity=".55"><path d="M0 -5.5 C0.4 -1.9, 1.9 -0.4, 5.5 0 C1.9 0.4, 0.4 1.9, 0 5.5 C-0.4 1.9, -1.9 0.4, -5.5 0 C-1.9 -0.4, -0.4 -1.9, 0 -5.5 Z"><animateMotion dur="26s" begin="-6.5s" repeatCount="indefinite" rotate="auto"><mpath href="#mobmid"/></animateMotion></path></g>
-      </svg>
+  <div class="goal">
+    <p class="k">오늘 밤의 목표</p>
+    <p><b>1·2·3번만.</b> 그러면 내 스킬 하나가 생긴다.
+      <span class="sm">4번부터는 이번 주에 혼자, 하고 싶은 만큼만. 안 해도 이번 주 과제는 끝난 것이다.</span></p>
+  </div>
+
+  <!-- 1 -->
+  <div class="step">
+    <div class="no"><span class="num">1</span><span class="tm">5분 · 다 같이</span></div>
+    <h2>내가 <span class="em">세 번 넘게</span> 한 일 고르기</h2>
+    <p class="why">두 번은 우연이고, <b>세 번부터 패턴</b>이다. 패턴이라야 규칙으로 적을 것이 있다.</p>
+    <ul>
+      <li>블로그 글 초안을 늘 같은 틀로 잡는 일</li>
+      <li>수업 자료를 늘 같은 순서로 만드는 일</li>
+      <li>상담 기록을 정리해 다음 회차를 준비하는 일</li>
+      <li>주간 보고를 늘 같은 모양으로 쓰는 일</li>
+    </ul>
+    <p class="why" style="margin-top:.8rem">하나만 고른다. <b>지금 종이에 한 줄로 적는다.</b></p>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>"나는 ○○을 자주 한다"가 <b>한 문장</b>으로 적혔다.</p>
     </div>
-    <div class="veil"></div>
-    <div class="content">
-      <p class="kicker r r2">디퍼 언브랜딩 살롱 · 논리의 달 · 1회차</p>
-      <h1 class="title hero-title r r3">스킬 여덟</h1>
-      <div class="hero-rule"></div>
-      <p class="hero-sub r r4">뜻 · 받는 법 · 사용법</p>
-    </div>
-  </section>
+  </div>
 
-  <!-- 02 스킬이란 -->
-  <section class="slide">
-    <div class="content">
-      <div class="viz r r1">
-        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <g class="seq"><path d="M34 44 h30" stroke-opacity=".5"/></g>
-          <g class="seq" style="animation-delay:.3s"><path d="M34 60 h48" stroke-opacity=".5"/></g>
-          <g class="seq" style="animation-delay:.6s"><path d="M34 76 h36" stroke-opacity=".5"/></g>
-          <path class="flow" d="M96 60 h26" stroke-opacity=".6"/>
-          <rect x="126" y="84" width="44" height="36" rx="4" stroke-opacity=".85"/>
-          <path class="ac tick" d="M135 102 l8 9 l18 -19" stroke-width="3"/>
-        </svg>
-      </div>
-      <p class="kicker r r2">먼저</p>
-      <h2 class="title r r3">스킬은 <span class="em">규칙 한 장</span>이다</h2>
-      <div class="body r r4">
-        <p>내가 반복하는 일을 적어둔 파일 한 장. 그게 전부다.</p>
-        <p>지금까지는 매번 처음부터 설명했다. 다음 대화에서 또 설명했다. 세션은 백지니까.</p>
-        <p class="strong">한 번 적어두면, 그다음부터 여우가 그 규칙대로 한다.</p>
-      </div>
-    </div>
-  </section>
+  <!-- 2 -->
+  <div class="step">
+    <div class="no"><span class="num">2</span><span class="tm">15분 · 다 같이</span></div>
+    <h2>여우에게 <span class="em">그대로 붙여넣기</span></h2>
+    <p class="why">아무것도 설치하지 않아도 된다. <b>스킬은 파일 한 장이라, 여우가 그냥 써 준다.</b></p>
+    <p class="why">클로드를 열고 아래를 통째로 복사해 붙여넣는다. 주황색 자리 세 칸만 내 것으로 바꾼다.</p>
 
-  <!-- 03 A 묶음 표지 -->
-  <section class="slide invert">
-    <div class="content">
-      <p class="kicker r r1">A</p>
-      <h2 class="title r r2">받아서 <span class="em">쓰는 것</span> 넷</h2>
-      <div class="five r r3">
-        <div class="f"><span class="kk">skill-creator</span><span class="vv">스킬을 <b>지어 주는</b> 스킬</span></div>
-        <div class="f"><span class="kk">grill me</span><span class="vv">짓기 전에 <b>나를 캐묻는</b> 스킬</span></div>
-        <div class="f"><span class="kk">book-to-skill</span><span class="vv">책을 <b>내 선생으로</b> 바꾸는 스킬</span></div>
-        <div class="f"><span class="kk">/eli5</span><span class="vv"><b>다섯 살에게</b> 설명하듯 풀어 주는 스킬</span></div>
-      </div>
-    </div>
-  </section>
+    <div class="do">
+      <p class="cap">복사해서 붙여넣으세요</p>
+      <div class="box">내가 반복하는 일을 스킬 하나로 만들고 싶어.
 
-  <!-- 04 skill-creator 뜻·받는법 -->
-  <section class="slide">
-    <div class="content">
-      <p class="toolname r r1">skill-creator</p>
-      <div class="chips r r1"><span class="chip must">이번 주 필수</span><span class="chip get">받아야 함</span></div>
-      <div class="body r r2">
-        <p><em>뜻</em> — 스킬을 지어 주는 스킬. 내가 무엇을 반복하는지만 말하면 규칙 한 장으로 정리해 파일로 앉혀 준다. <span class="strong">스킬 문법을 몰라도 된다.</span></p>
-        <p><em>받는 법</em> — 클로드 코드에서 <span class="strong">/plugin</span> 을 치면 설치 패널이 열린다. 공식 목록 <span class="strong">claude-plugins-official</span> 에서 찾아 설치한다. 패널이 헷갈리면 아래를 그대로 넣는다.</p>
-      </div>
-      <div class="pr r r3">skill-creator 스킬을 설치하고 싶어. 클로드 공식 플러그인 목록에 있는 것으로.
-
-<span class="c">어디에 깔렸는지, 잘 됐는지 어떻게 확인하는지 알려줘.
-막히면 원인을 쉬운 말로. 내가 할 일은 한 번에 하나씩만.</span></div>
-    </div>
-  </section>
-
-  <!-- 05 skill-creator 사용법 -->
-  <section class="slide">
-    <div class="content">
-      <p class="kicker r r1">skill-creator · 사용법</p>
-      <h2 class="title r r2">세 번 넘게 한 일을 <span class="em">고른다</span></h2>
-      <div class="body r r3">
-        <p>두 번은 우연이고, <em>세 번부터 패턴</em>이다. 블로그 초안 잡기 · 수업 자료 만들기 · 상담 기록 정리 · 주간 보고 쓰기.</p>
-      </div>
-      <div class="pr r r4">내가 반복하는 일을 스킬 하나로 만들고 싶어.
-
-내가 반복하는 일: <span class="c">(한 줄로)</span>
-이 일을 할 때 내가 지키는 것: <span class="c">(아는 만큼만)</span>
+내가 반복하는 일: <span class="c">(1번에서 적은 한 줄)</span>
+이 일을 할 때 내가 지키는 것: <span class="c">(아는 만큼만. 없으면 비워도 돼)</span>
 결과가 어떤 모양이면 잘 된 건가: <span class="c">(한 줄로)</span>
 
-내가 안 적은 게 있으면 짚어서 <span class="c">한 번에 하나씩만</span> 물어봐.
-다 모이면 한 장으로 지어 보여주고, 저장은 내 승인을 받고.
+내가 안 적은 게 있으면 짚어서 한 번에 하나씩만 물어봐.
+다 모이면 스킬 한 장으로 지어서 보여주고, 저장은 내 승인을 받고 해줘.
+어디에 저장했는지, 앞으로 어떻게 부르면 되는지 알려줘.
 
-<span class="c">칭찬하는 상투구는 쓰지 마. 내가 쓴 말을 그대로 인용해서 짚어줘.
-말하지 않은 건 지어내지 마. 모르면 물어봐.</span></div>
+칭찬하는 상투구는 쓰지 마. 내가 쓴 말을 그대로 인용해서 짚어줘.
+내가 말하지 않은 건 지어내지 마. 모르면 물어봐.</div>
     </div>
-  </section>
 
-  <!-- 06 두 번 돌려보기 -->
-  <section class="slide invert">
-    <div class="content">
-      <div class="viz r r1">
-        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-          <g class="spin" style="transform-origin:100px 80px; animation-duration:14s">
-            <path d="M100 30 a50 50 0 1 1 -35 15" stroke-opacity=".7"/>
-            <path class="ac" d="M65 45 l-2 -14 l14 4" stroke-width="2.6"/>
-          </g>
-          <path class="ac tick" d="M82 80 l10 11 l26 -28" stroke-width="3.2"/>
-        </svg>
-      </div>
-      <p class="kicker r r2">지은 다음이 진짜다</p>
-      <h2 class="title r r3">같은 재료로 <span class="em">두 번</span></h2>
-      <div class="body r r4">
-        <p>두 번째가 다르게 나오면 실패가 아니다. <em>규칙이 아직 덜 적힌 것</em>이다. 무엇이 빠졌는지 물어서 채운다.</p>
-        <p class="final">한 번 통한 방법은 후보,<br>두 번 통해야 규칙.</p>
-      </div>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>여우가 <b>질문을 한두 개 하고</b>, 스킬 한 장을 보여준 뒤 <b>저장할지 묻는다.</b> 저장하면 어디에 넣었는지와 <b>앞으로 부를 이름</b>을 알려준다.</p>
     </div>
-  </section>
-
-  <!-- 07 grill me -->
-  <section class="slide">
-    <div class="content">
-      <p class="toolname r r1">grill me</p>
-      <div class="chips r r1"><span class="chip get">받아야 함</span><span class="chip make">직접 지어도 됨</span></div>
-      <div class="body r r2">
-        <p><em>뜻</em> — 짓기 전에 나를 캐묻는다. 설계의 갈래를 하나씩 내려가며 <span class="strong">한 번에 한 질문씩</span> 묻고, 질문마다 추천안을 함께 낸다. 합의 전에는 손대지 않는다.</p>
-        <p><em>사용법</em> — 이 달에 무언가를 지어보고 싶을 때. 웹사이트 하나, 앱 하나, 내 일이 도는 구조 하나. <span class="strong">바로 짓지 말고 먼저 캐물린다.</span></p>
-      </div>
-      <div class="pr r r3">grill me
-
-만들고 싶은 것: <span class="c">(한 줄로)</span></div>
-      <div class="body r r4">
-        <p class="strong">캐물리기가 곧 공리를 찾는 일이다 — 무엇은 절대 안 할 건가, 무엇이 되면 합격인가.</p>
-      </div>
+    <div class="stuck">
+      <p class="h">안 되면</p>
+      <p>질문 없이 길게만 답하면 — <code>한 번에 하나씩만 물어봐</code> 라고 한 번 더 말한다. 그래도 이상하면 <b>새 대화를 열고</b> 다시 붙여넣는다.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- 08 grill me 짓기 -->
-  <section class="slide">
-    <div class="content">
-      <p class="kicker r r1">grill me · 받는 대신 짓기</p>
-      <h2 class="title r r2">규칙 <span class="em">다섯 줄</span>이면 된다</h2>
-      <div class="pr r r3">"grill me"라고 부르면 동작하는 스킬을 하나 만들어줘. 이런 규칙으로.
+  <!-- 3 -->
+  <div class="step">
+    <div class="no"><span class="num">3</span><span class="tm">10분 · 다 같이</span></div>
+    <h2>만든 걸 <span class="em">두 번</span> 돌려 보기</h2>
+    <p class="why">지은 다음이 진짜다. 스킬은 지었다고 되는 게 아니라 <b>같은 재료에 같은 결과가 나와야</b> 규칙이다.</p>
+    <p class="why">2번에서 여우가 알려준 이름으로 불러 본다. 같은 재료로 <b>두 번</b>.</p>
 
-<span class="c">— 내 계획을 끝까지 캐물어, 서로 같은 그림을 갖게 될 때까지 인터뷰한다.
-— 설계의 갈래를 하나씩 내려가며, 앞 결정에 딸린 것부터 푼다.
-— 질문마다 네가 추천하는 답을 함께 낸다.
-— 한 번에 한 질문만. 답을 듣고 다음으로. 여러 개를 한꺼번에 묻지 않는다.
-— 합의되기 전에는 실제로 만들지 않는다.</span></div>
+    <div class="do">
+      <p class="cap">이렇게 불러 보세요</p>
+      <div class="box one"><span class="c">(여우가 알려준 스킬 이름)</span> 으로 이거 해줘.
+<span class="c">(재료 붙여넣기)</span></div>
     </div>
-  </section>
 
-  <!-- 09 book-to-skill -->
-  <section class="slide">
-    <div class="content">
-      <p class="toolname r r1">book-to-skill</p>
-      <div class="chips r r1"><span class="chip get">받아야 함</span></div>
-      <div class="body r r2">
-        <p><em>뜻</em> — 가진 책 파일(PDF·EPUB·DOCX)을 여우가 읽을 수 있는 형태로 정리해 둔다. 그 뒤로는 그 책에 대해 아무 때나 물을 수 있다.</p>
-      </div>
-      <div class="pr r r3">book-to-skill 스킬을 받아서 설치하고 싶어. 깃허브에 공개된 것으로.
-<span class="c">어디에 깔리는지 먼저 알려주고 진행해줘. 필요한 게 더 있으면 같이 챙겨줘.</span>
-
-<span class="c">— 설치 뒤 —</span>
-이 책을 스킬로 만들어줘. <span class="c">(파일 건네기)</span>
-<span class="c">앞으로 이렇게 물을 거야 — "○장 ○절, 다섯 살한테 설명하듯 풀어줘."</span></div>
-      <div class="body r r4">
-        <p class="strong">경계 — 내 책 파일로만, 나 혼자만. 본문이 든 물건이라 사막에도 강의실에도 올리지 않는다.</p>
-      </div>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>두 번 다 <b>비슷한 모양</b>으로 나온다.</p>
     </div>
-  </section>
+    <div class="stuck">
+      <p class="h">두 번째가 다르게 나오면</p>
+      <p>실패가 아니다. <b>규칙이 아직 덜 적힌 것</b>이다. 여우에게 <code>두 번이 달랐어. 규칙에서 뭐가 빠졌을까?</code> 라고 물어 채운다.</p>
+    </div>
+    <div class="note">
+      이 원리를 기억해 둔다 — <b>한 번 통한 방법은 후보, 두 번 통해야 규칙.</b> 아흐레째에 지을 하네스도 같은 원리로 굳는다.
+    </div>
+  </div>
 
-  <!-- eli5 -->
-  <section class="slide">
-    <div class="content">
-      <p class="toolname r r1">/eli5</p>
-      <div class="chips r r1"><span class="chip get">받아야 함</span></div>
-      <div class="body r r2">
-        <p><em>뜻</em> — 어려운 것을 <span class="strong">다섯 살에게 설명하듯</span> 풀어 준다. 요약이 아니라 풀이다. 이번 달 GEB처럼 막히는 대목 앞에서 부른다.</p>
-        <p><em>받는 법</em> — 클로드 <span class="strong">커뮤니티 마켓</span>에 올라와 있다.</p>
-      </div>
-      <div class="pr r r3">eli5 스킬을 받아서 설치하고 싶어.
+  <!-- 4 -->
+  <div class="step">
+    <div class="no"><span class="num">4</span><span class="tm">이번 주 · 혼자</span></div>
+    <h2>남이 만든 것도 <span class="em">받아 쓸 수 있다</span></h2>
+    <p class="why">직접 짓는 것 말고, 남이 만들어 올려둔 스킬을 받아 쓸 수도 있다. <b>받는 자리를 마켓이라고 부른다</b> — 앱스토어 같은 곳이다.</p>
+    <p class="why">가장 쉬운 것 하나만 해 본다. <b>어려운 글을 다섯 살에게 설명하듯 풀어 주는 스킬</b>이다.</p>
+
+    <div class="do">
+      <p class="cap">복사해서 붙여넣으세요</p>
+      <div class="box">eli5 스킬을 받아서 설치하고 싶어.
 클로드 커뮤니티 마켓(anthropics/claude-plugins-community)에 있는 것으로.
 
 <span class="c">어디에 깔리는지 먼저 알려주고 진행해줘.
-다 되면 어떻게 확인하는지도 알려줘.</span></div>
-      <div class="body r r4">
-        <p><em>사용법</em> — 막히는 대목을 그대로 주고 <span class="strong">/eli5</span> 라고 부른다.</p>
-      </div>
+다 되면 어떻게 부르는지 알려줘.
+막히면 원인을 쉬운 말로. 내가 할 일은 한 번에 하나씩만.</span></div>
     </div>
-  </section>
 
-  <!-- 10 B 묶음 -->
-  <section class="slide invert">
-    <div class="content">
-      <p class="kicker r r1">B · 이번 주 실습</p>
-      <h2 class="title r r2">직접 <span class="em">만들어 보기</span></h2>
-      <div class="five r r3">
-        <div class="f"><span class="kk">/steelman</span><span class="vv">내 주장의 <b>가장 강한 반대편</b>을 세운다 — 이길 수 없게 만든 상대로</span></div>
-        <div class="f"><span class="kk">/brutal</span><span class="vv">봐주지 않는다. <b>칭찬 없이</b> 약한 자리만</span></div>
-        <div class="f"><span class="kk">/what am i missing?</span><span class="vv">내가 <b>안 본 자리</b>를 찾아 준다</span></div>
-        <div class="f"><span class="kk">/10x</span><span class="vv">열 배로 키우면 <b>무엇이 먼저 부러지나</b></span></div>
-      </div>
-      <div class="body r r4">
-        <p class="strong">이 넷은 세상에 없다. 그래서 짓는다 — 규칙이 서너 줄뿐이라 그 자리에서 만들어진다.</p>
-      </div>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>설치가 끝났다고 알려준다. 이번 달 GEB에서 막히는 대목을 붙여넣고 불러 본다 — <b>요약이 아니라 풀이</b>가 나온다.</p>
     </div>
-  </section>
+    <div class="stuck">
+      <p class="h">안 되면</p>
+      <p><b>거기서 멈춰도 된다.</b> 설치는 컴퓨터마다 달라서 막히는 게 이상한 일이 아니다. 어디까지 해보다 막혔는지 한 줄로 적어 강의실에 올리면 된다. <b>막힌 자리도 기록이다.</b></p>
+    </div>
+  </div>
 
-  <!-- 11 짓는 법 -->
-  <section class="slide">
-    <div class="content">
-      <p class="kicker r r1">넷 다 같은 틀</p>
-      <h2 class="title r r2">「무엇을 하는가」와 <span class="em">「지킬 것」</span>만 바꾼다</h2>
-      <div class="pr r r3">"<span class="c">/steelman</span>"이라고 부르면 동작하는 스킬을 하나 만들어줘.
+  <!-- 5 -->
+  <div class="step">
+    <div class="no"><span class="num">5</span><span class="tm">이번 주 · 하고 싶은 만큼</span></div>
+    <h2>더 <span class="em">해 보고 싶다면</span></h2>
+    <p class="why">아래는 여유가 될 때. <b>하나도 안 해도 이번 주 과제는 끝난 것이다.</b></p>
+
+    <div class="later">
+      <div class="lt"><span class="n2">skill-creator</span><span class="d2"><b>받는 것.</b> 스킬을 더 잘 지어 주는 도구다. 2번을 여러 번 하게 되면 그때 받는다. 클로드 코드에서 <code>/plugin</code> 을 치면 설치 화면이 열린다.</span></div>
+      <div class="lt"><span class="n2">grill me</span><span class="d2"><b>받는 것.</b> 무언가를 짓기 전에 여우가 나를 캐묻게 한다. 한 번에 한 질문씩, 합의 전에는 손대지 않는다. 이 달에 웹사이트나 앱을 지어보고 싶다면 <b>짓기 전에</b> 이걸 먼저 한다.</span></div>
+      <div class="lt"><span class="n2">book-to-skill</span><span class="d2"><b>받는 것.</b> 내가 가진 책 파일을 여우가 읽을 수 있게 정리해 둔다. ⚠️ <b>내 책으로, 나 혼자만</b> — 본문이 들어가는 물건이라 누구에게도 나눠 주지 않는다.</span></div>
+      <div class="lt"><span class="n2">/steelman · /brutal · /what am i missing? · /10x</span><span class="d2"><b>짓는 것.</b> 이 넷은 마켓에 없다. 2번과 똑같은 방법으로 직접 만든다 — 규칙이 서너 줄뿐이다.</span></div>
+    </div>
+
+    <div class="do">
+      <p class="cap">넷 다 이 틀로 만들어진다 — 두 칸만 바꾸면 된다</p>
+      <div class="box">"<span class="c">/steelman</span>"이라고 부르면 동작하는 스킬을 하나 만들어줘.
 
 무엇을 하는가: <span class="c">내가 방금 한 주장의 가장 강한 반대편을 세운다.
 약한 반대가 아니라, 내가 이기기 어려운 반대로.</span>
@@ -586,102 +252,25 @@
 — 근거는 지어내지 않는다. 없으면 없다고 적는다.
 — 칭찬하는 상투구는 쓰지 않는다.
 — 끝에 한 줄 — 이 반대가 사실이면 내가 무엇을 고쳐야 하는가.</span></div>
-      <div class="body r r4">
-        <p class="final">넷이 다 손에 들어오면<br>그게 내 생각의 연장통이다.</p>
-      </div>
     </div>
-  </section>
+    <div class="note">
+      나머지 셋은 <b>「무엇을 하는가」와 「지킬 것」만 바꾼다.</b>
+      <ul>
+        <li><b>/brutal</b> — 봐주지 않는다. 칭찬 없이 약한 자리만 짚는다.</li>
+        <li><b>/what am i missing?</b> — 내가 안 본 자리를 찾아 준다. 답 말고 빠진 질문을.</li>
+        <li><b>/10x</b> — 지금 계획을 열 배로 키우면 무엇이 먼저 부러지는지 보여 준다.</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- 12 막히면 -->
-  <section class="slide">
-    <div class="content">
-      <div class="viz r r1">
-        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M40 118 h120" stroke-opacity=".35"/>
-          <g class="rise"><rect x="66" y="46" width="68" height="60" rx="5" stroke-opacity=".8"/>
-            <path d="M80 66 h40 M80 80 h26" stroke-opacity=".45" stroke-width="1.7"/></g>
-          <g class="twinkle" style="transform-origin:154px 44px">
-            <path class="ac" d="M154 32 C155.4 40, 158 43, 166 44 C158 45, 155.4 48, 154 56 C152.6 48, 150 45, 142 44 C150 43, 152.6 40, 154 32 Z" fill="currentColor" stroke="none"/>
-          </g>
-        </svg>
-      </div>
-      <p class="kicker r r2">막히면</p>
-      <h2 class="title r r3">거기서 <span class="em">멈춰도 된다</span></h2>
-      <div class="body r r4">
-        <p>받는 넷은 사막여우에 들어 있지 않다. 받아야 한다. 그래도 <em>스킬은 규칙을 적은 파일 한 장일 뿐이라</em> — 끝내 못 받으면 "이런 규칙으로 스킬 하나 만들어줘" 한마디로 같은 것을 지을 수 있다.</p>
-        <p class="strong">설치가 끝내 안 되면, 어디까지 해보다 막혔는지 한 줄로 적어 올리면 된다. 막힌 자리도 기록이다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 13 닫기 -->
-  <section class="slide invert">
-    <div class="content">
-      <div class="viz r r1">
-        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <g style="transform-origin:100px 100px;"><circle class="halo" cx="100" cy="100" r="40" stroke-opacity=".8"/></g>
-          <g style="transform-origin:100px 100px;"><circle class="halo" cx="100" cy="100" r="40" stroke-opacity=".8" style="animation-delay:1.6s"/></g>
-          <circle class="march" cx="100" cy="100" r="58" stroke-width="2.3" stroke-opacity=".5"/>
-          <g class="twinkle" style="transform-origin:100px 100px;">
-            <path class="ac" d="M100 70 C102 92, 108 98, 130 100 C108 102, 102 108, 100 130 C98 108, 92 102, 70 100 C92 98, 98 92, 100 70 Z" fill="currentColor" stroke="none"/>
-          </g>
-        </svg>
-      </div>
-      <p class="kicker r r2">이번 주 내는 것 · 둘째 칸의 몸통</p>
-      <h2 class="title r r3">스킬 하나와 <span class="em">한 줄</span></h2>
-      <div class="body r r4" style="text-align:center;">
-        <p class="final">내가 만든 스킬 하나와,<br>그걸 쓰고 돌아온 시간 한 줄.</p>
-      </div>
-      <p class="latin r r4" style="margin-top:.8rem;">A에서든 B에서든 하나면 된다 · 나눔은 긱어스 강의실에</p>
-    </div>
-  </section>
+  <div class="out">
+    <p class="k">이번 주 내는 것</p>
+    <p><b>내가 만든 스킬 하나</b>와, 그걸 쓰고 <b>돌아온 시간 한 줄.</b>
+      <span class="sm">"이번 주 여우에게 맡긴 일 — ○○○. 돌아온 시간 — ○○분."<br>
+      늘지 않았어도 그대로 적는다. 상승을 적는 자리가 아니라 내 기록으로 확인하는 자리다.<br>
+      나눔은 긱어스 강의실에.</span></p>
+  </div>
 
 </div>
-
-<div class="counter" id="counter">01 / 14</div>
-<button class="nav prev" id="prev" aria-label="이전">‹</button>
-<button class="nav next" id="next" aria-label="다음">›</button>
-<div class="hint">← → · 스페이스 이동</div>
-
-<script>
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const total = slides.length;
-  let i = 0;
-  const progress = document.getElementById('progress');
-  const counter = document.getElementById('counter');
-  const pad = n => String(n).padStart(2,'0');
-
-  function show(n){
-    i = Math.max(0, Math.min(total-1, n));
-    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
-    progress.style.width = (i/(total-1)*100) + '%';
-    counter.textContent = pad(i+1) + ' / ' + pad(total);
-    document.body.classList.toggle('on-dark', slides[i].classList.contains('invert'));
-  }
-  const next = ()=>show(i+1), prev = ()=>show(i-1);
-  document.getElementById('next').onclick = next;
-  document.getElementById('prev').onclick = prev;
-
-  window.addEventListener('keydown', e=>{
-    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
-    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
-    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
-  });
-  document.getElementById('deck').addEventListener('click', e=>{
-    if(e.target.closest('.nav')) return;
-    if(window.getSelection && String(window.getSelection())) return;
-    (e.clientX < window.innerWidth*0.28) ? prev() : next();
-  });
-  let x0=null,y0=null;
-  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
-  window.addEventListener('touchend', e=>{
-    if(x0===null) return;
-    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
-    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
-    x0=null;y0=null;
-  }, {passive:true});
-
-  show(0);
-</script>
 </body>
 </html>
