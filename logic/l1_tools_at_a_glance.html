@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>논리 1회차 · 이번 주 도구 네 개</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/l1_tools_at_a_glance.html" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 언브랜딩 살롱" />
+<meta property="og:title" content="논리 1회차 · 이번 주 도구 네 개" />
+<meta property="og:description" content="skill-creator · grill me · book-to-skill · custom — 한눈에" />
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
+<style>
+  :root{
+    --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22; --green-soft:#7DA890;
+    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF;
+    --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+    --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+    --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic','Noto Sans CJK KR',sans-serif;
+    --mono:'SF Mono','JetBrains Mono','Consolas','D2Coding',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif);
+    word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased;
+    padding:clamp(1.6rem,5vw,4rem) clamp(1rem,4vw,2rem) 4rem;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+  .wrap{position:relative; z-index:1; max-width:62rem; margin:0 auto;}
+
+  .brand{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.3em;
+    text-transform:uppercase; color:var(--clay-deep); margin-bottom:1.6rem;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.24; letter-spacing:-.01em; margin-bottom:.7rem;}
+  h1 .em{color:var(--clay-deep);}
+  .sub{font-size:clamp(16px,1.6vw,19px); color:var(--ink-soft); line-height:1.75; max-width:40rem;}
+
+  .divider{display:flex; align-items:center; gap:.9rem; margin:2.6rem 0 1.4rem;}
+  .divider .n{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--clay-deep); flex:none;}
+  .divider .l{flex:1; height:1px; background:var(--rule);}
+
+  /* 카드 */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:.9rem;}
+  .card{border:1px solid var(--rule); border-radius:10px; background:var(--surface);
+    padding:1.5rem 1.4rem 1.3rem; display:flex; flex-direction:column; gap:.75rem;
+    position:relative; overflow:hidden;}
+  .card::after{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--clay);}
+  .card .icon{width:76px; height:76px; color:var(--green);}
+  .card .icon svg{width:100%; height:100%; overflow:visible; display:block;}
+  .card .icon .ac{color:var(--clay);}
+  .tool{font-family:var(--mono); font-size:clamp(19px,2.3vw,25px); font-weight:700;
+    color:var(--green-deep); letter-spacing:-.01em; line-height:1.2;}
+  .what{font-size:17px; line-height:1.7; color:var(--ink-soft);}
+  .what b{color:var(--ink); font-weight:700;}
+  .say{font-family:var(--mono); font-size:14px; background:rgba(26,74,53,.07);
+    border:1px solid var(--rule); border-radius:5px; padding:.5rem .7rem; color:var(--green-deep);
+    align-self:flex-start; max-width:100%;}
+  .say .k{color:var(--ink-mute); font-family:var(--sans); font-size:11px;
+    letter-spacing:.14em; display:block; margin-bottom:.25rem;}
+  .badges{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:auto; padding-top:.5rem;}
+  .bg{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.08em;
+    padding:.28rem .55rem; border-radius:4px; border:1px solid;}
+  .bg.need{color:#8A4B2A; border-color:var(--clay); background:rgba(198,126,88,.13);}
+  .bg.have{color:var(--green-deep); border-color:var(--green-soft); background:rgba(125,168,144,.16);}
+  .bg.must{color:var(--paper); border-color:var(--green-deep); background:var(--green-deep);}
+
+  /* 설치 안내 띠 */
+  .note{margin-top:1.5rem; border:1px solid var(--clay); border-radius:10px;
+    background:rgba(198,126,88,.09); padding:1.2rem 1.3rem; display:flex; gap:1rem; align-items:flex-start;}
+  .note .mk{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.2em;
+    color:var(--clay-deep); flex:none; padding-top:.2rem;}
+  .note p{font-size:16px; line-height:1.78; color:var(--ink-soft);}
+  .note p+p{margin-top:.55rem;}
+  .note b{color:var(--ink); font-weight:700;}
+
+  /* 마무리 */
+  .out{margin-top:1.6rem; border-radius:10px; padding:1.6rem 1.5rem;
+    background:linear-gradient(160deg,var(--green-deepest),var(--green-deep) 55%,var(--green));
+    color:var(--paper); display:flex; gap:1.3rem; align-items:center;}
+  .out .star{width:56px; height:56px; flex:none; color:var(--green-soft);}
+  .out .star svg{width:100%; height:100%; display:block; overflow:visible;}
+  .out .star .ac{color:var(--clay-soft);}
+  .out .lb{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--clay-soft); margin-bottom:.4rem;}
+  .out .tx{font-size:18px; line-height:1.75;}
+  .out .tx b{color:#fff;}
+  .out .tx .sm{display:block; margin-top:.45rem; font-size:15px; color:rgba(244,241,232,.78);}
+
+  /* 움직임 */
+  .spin{transform-origin:center; animation:spin 24s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .flow{stroke-dasharray:4 9; animation:flow 1.7s linear infinite;}
+  @keyframes flow{to{stroke-dashoffset:-39;}}
+  .seq{opacity:.2; animation:seq 4.4s ease-in-out infinite;}
+  @keyframes seq{0%,7%{opacity:.2}17%,84%{opacity:1}100%{opacity:.2}}
+  .tick{stroke-dasharray:44; stroke-dashoffset:44; animation:tick 3.6s ease-in-out infinite;}
+  @keyframes tick{0%,12%{stroke-dashoffset:44}32%,86%{stroke-dashoffset:0}100%{stroke-dashoffset:44}}
+  .draw{stroke-dasharray:300; stroke-dashoffset:300; animation:draw 4.4s ease-in-out infinite;}
+  @keyframes draw{0%{stroke-dashoffset:300}42%{stroke-dashoffset:0}84%{stroke-dashoffset:0}100%{stroke-dashoffset:-300}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite; transform-origin:center;}
+  @keyframes twinkle{0%,100%{opacity:.6; transform:scale(.9)}50%{opacity:1; transform:scale(1.06)}}
+  .rise{animation:rise 4.2s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(6px)}50%{transform:translateY(-6px)}}
+  .sift{animation:sift 3.6s ease-in-out infinite;}
+  @keyframes sift{0%{transform:translateY(-16px);opacity:0}24%{opacity:1}
+    70%{transform:translateY(18px);opacity:1}100%{transform:translateY(40px);opacity:0}}
+  .pop{transform-origin:center; animation:pop 3.8s ease-in-out infinite;}
+  @keyframes pop{0%,100%{transform:scale(.9);opacity:.55}45%{transform:scale(1.08);opacity:1}}
+  @media (prefers-reduced-motion:reduce){
+    .spin,.flow,.seq,.tick,.draw,.twinkle,.rise,.sift,.pop{
+      animation:none; stroke-dashoffset:0; opacity:1; transform:none;}
+  }
+
+  @media(max-width:720px){
+    .grid{grid-template-columns:1fr;}
+    .card{padding:1.25rem 1.15rem 1.1rem;}
+    .card .icon{width:62px; height:62px;}
+    .out{flex-direction:column; align-items:flex-start; gap:.9rem;}
+    .note{flex-direction:column; gap:.5rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="brand">디퍼 · 논리의 달 1회차 · 이번 주 도구</p>
+  <h1>규칙을 <span class="em">짓는 연장</span> 네 개</h1>
+  <p class="sub">이 달의 주제는 규칙이다. 아흐레째의 하네스가 <b>무엇을 지키는가</b>라면, 이 넷은 <b>무엇을 어떻게 하는가</b>를 규칙으로 굳히는 연장이다.</p>
+
+  <div class="divider"><span class="n">Tools</span><span class="l"></span></div>
+
+  <div class="grid">
+
+    <!-- 01 skill-creator -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <g class="seq"><path d="M20 26 h22" stroke-opacity=".55"/></g>
+          <g class="seq" style="animation-delay:.3s"><path d="M20 40 h34" stroke-opacity=".55"/></g>
+          <g class="seq" style="animation-delay:.6s"><path d="M20 54 h26" stroke-opacity=".55"/></g>
+          <path class="flow" d="M60 40 h20" stroke-opacity=".6"/>
+          <rect x="60" y="58" width="30" height="26" rx="4" stroke-opacity=".85"/>
+          <path class="ac tick" d="M66 71 l6 7 l13 -14" stroke-width="3.4"/>
+        </svg>
+      </div>
+      <p class="tool">skill-creator</p>
+      <p class="what">세 번 넘게 한 일을 <b>규칙 한 장</b>으로. 다음부터 매번 설명하지 않는다.</p>
+      <p class="say"><span class="k">부르는 말</span>스킬 하나 만들어줘</p>
+      <div class="badges">
+        <span class="bg must">이번 주 필수</span>
+        <span class="bg need">받아야 함</span>
+      </div>
+    </div>
+
+    <!-- 02 grill me -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <circle cx="50" cy="50" r="30" stroke-opacity=".3" stroke-dasharray="3 8" class="spin" style="transform-origin:50px 50px"/>
+          <g class="pop"><path class="ac" d="M42 40 q0 -10 8 -10 q9 0 9 9 q0 7 -8 9 v5" stroke-width="3.4"/>
+            <circle class="ac" cx="51" cy="68" r="2.6" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="tool">grill me</p>
+      <p class="what">짓기 전에 <b>나를 캐묻게</b> 한다. 한 번에 하나씩, 합의 전엔 손대지 않는다.</p>
+      <p class="say"><span class="k">부르는 말</span>grill me</p>
+      <div class="badges">
+        <span class="bg need">받아야 함</span>
+      </div>
+    </div>
+
+    <!-- 03 book-to-skill -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <path d="M18 26 q16 -6 30 0 v44 q-14 -6 -30 0 Z" stroke-opacity=".8"/>
+          <path d="M82 26 q-16 -6 -34 0 v44 q18 -6 34 0 Z" stroke-opacity=".45"/>
+          <g class="sift"><circle class="ac" cx="50" cy="16" r="3" fill="currentColor" stroke="none"/></g>
+          <g class="sift" style="animation-delay:1.2s"><circle class="ac" cx="62" cy="16" r="2.4" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:50px 84px">
+            <path class="ac" d="M50 74 C51 80, 54 83, 61 84 C54 85, 51 88, 50 94 C49 88, 46 85, 39 84 C46 83, 49 80, 50 74 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="tool">book-to-skill</p>
+      <p class="what">어려운 책을 <b>내 선생으로</b>. "이 대목 다섯 살한테 설명하듯 풀어줘."</p>
+      <p class="say"><span class="k">경계</span>내 책 파일로만 · 나 혼자만 · 배포 금지</p>
+      <div class="badges">
+        <span class="bg need">받아야 함</span>
+      </div>
+    </div>
+
+    <!-- 04 custom -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <rect x="14" y="24" width="30" height="40" rx="4" stroke-opacity=".4" stroke-dasharray="4 6"/>
+          <g class="rise"><rect class="ac" x="56" y="30" width="30" height="40" rx="4" stroke-width="3.4"/>
+            <path class="ac" d="M64 44 h14 M64 54 h9" stroke-width="2.4" stroke-opacity=".7"/></g>
+          <path class="flow" d="M46 46 h8" stroke-opacity=".6"/>
+        </svg>
+      </div>
+      <p class="tool">custom</p>
+      <p class="what">남이 만든 스킬을 <b>내 결로</b> 고쳐 입힌다. 하네스가 잣대가 된다.</p>
+      <p class="say"><span class="k">잣대 파일</span>02-Logic/Harness/형식체계_v1.md</p>
+      <div class="badges">
+        <span class="bg have">도구 없이 가능</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <span class="mk">먼저</span>
+    <div>
+      <p><b>이 넷은 사막여우에 들어 있지 않다.</b> 따로 받아야 한다 — 받는 법은 살롱에서 화면으로 함께 본다. 혼자 헤매지 않아도 된다.</p>
+      <p>다만 <b>스킬 짓기 자체는 도구 없이도 된다.</b> 스킬은 규칙을 적은 파일 한 장일 뿐이라, 여우에게 <span class="say" style="display:inline; padding:.1rem .4rem; font-size:13px;">내가 반복하는 일을 스킬로 만들어줘</span> 라고만 해도 지어 준다. 연장은 그 일을 빠르게 할 뿐이다.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span class="n">Out</span><span class="l"></span></div>
+
+  <div class="out">
+    <div class="star">
+      <svg viewBox="0 0 100 100" fill="none">
+        <g class="twinkle" style="transform-origin:50px 50px">
+          <path class="ac" d="M50 18 C53 40, 60 47, 82 50 C60 53, 53 60, 50 82 C47 60, 40 53, 18 50 C40 47, 47 40, 50 18 Z" fill="currentColor"/>
+        </g>
+        <g class="twinkle" style="transform-origin:82px 22px; animation-delay:1.4s">
+          <path d="M82 14 C83 20, 85 22, 91 23 C85 24, 83 26, 82 32 C81 26, 79 24, 73 23 C79 22, 81 20, 82 14 Z" fill="currentColor" opacity=".55"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <p class="lb">이번 주 내는 것</p>
+      <p class="tx"><b>내가 만든 스킬 하나</b>와, 그걸 쓰고 <b>돌아온 시간 한 줄.</b>
+        <span class="sm">둘·셋·넷은 하고 싶은 만큼만. 하나도 안 해도 이번 주 과제는 끝난 것이다.<br>나눔은 긱어스 강의실에.</span></p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
