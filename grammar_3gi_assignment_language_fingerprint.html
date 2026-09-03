@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문법 2회차 과제 · 나의 언어 지문</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER · PROJECT B-612">
+<meta property="og:title" content="문법 2회차 과제 · 나의 언어 지문 — 여섯 층위로 나를 읽다">
+<meta property="og:description" content="글 여러 편을 한 번에, 로고테라피의 '나'까지 — 나만의 목소리를 발굴하는 더 깊은 프롬프트. 붙여넣기·파일 둘 다. 어떤 클로드에서도.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/grammar_3gi_assignment_language_fingerprint.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/grammar/og-grammar.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/grammar/og-grammar.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1A4A35;
+  --green-deep: #003D2C;
+  --green-deepest: #002E22;
+  --green-mid: #025D3C;
+  --green-soft: #7DA890;
+  --paper: #F4F1E8;
+  --surface: #EFEADD;
+  --rule: #D9D1BF;
+  --rule-strong: #C4BCA9;
+  --ink: #1A1916;
+  --ink-soft: #46443D;
+  --ink-mute: #6E6A60;
+  --clay: #C67E58;
+  --clay-deep: #B86D46;
+  --clay-soft: #D4916C;
+  --clay-tint: #F3E5DB;
+  --green-tint: #E6ECE4;
+  --on-green: #F4F1E8;
+  --on-green-mute: #9DBBA9;
+}
+body { word-break: keep-all; overflow-wrap: break-word;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.4; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--rule);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-grammar { background: var(--green-tint); color: var(--green); }
+.badge-task { background: var(--clay-tint); color: var(--clay-deep); }
+.dot { color: var(--rule-strong); }
+.meta-text { font-size: 12px; color: var(--ink-mute); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--ink-mute);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 64px 0 28px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--clay-deep);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.section-line { flex: 1; height: 1px; background: var(--rule); }
+.section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+p { color: var(--ink-soft); margin-bottom: 18px; font-size: 16px; line-height: 1.95; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+em { font-style: italic; color: var(--green-mid); font-weight: 500; }
+strong { font-weight: 500; color: var(--ink); }
+
+.callout {
+  padding: 22px 26px;
+  margin: 28px 0;
+  border-radius: 0 12px 12px 0;
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 15px; line-height: 1.9; margin: 0; }
+.callout-speaker { background: var(--surface); border-left: 2.5px solid var(--green); }
+.callout-speaker .callout-label { color: var(--green-mid); }
+.callout-speaker p { color: var(--ink-soft); }
+.callout-q { background: var(--clay-tint); border-left: 2.5px solid var(--clay); }
+.callout-q .callout-label { color: var(--clay-deep); }
+.callout-q p { color: #5a3a28; }
+
+/* 흐름 */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 8px 0 28px;
+  flex-wrap: wrap;
+}
+.flow-item {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+  flex: 1;
+  min-width: 96px;
+  line-height: 1.5;
+}
+.flow-item strong { color: var(--green); display: block; font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; margin-bottom: 4px; }
+.flow-arrow { font-family: 'DM Mono', monospace; color: var(--rule-strong); padding: 0 8px; font-size: 14px; }
+
+/* AI 프롬프트 박스 */
+.ai-box {
+  border-radius: 16px;
+  padding: 30px 26px;
+  margin-bottom: 22px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+.ai-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.ai-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: var(--green);
+}
+.ai-box p.ai-desc { font-size: 14.5px; line-height: 1.9; margin-bottom: 16px; color: var(--ink-soft); }
+.ai-variant-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--clay-deep);
+  margin: 18px 0 8px;
+  display: block;
+  font-weight: 500;
+}
+.ai-prompt-block {
+  border-radius: 0 8px 8px 0;
+  padding: 16px 18px 14px;
+  margin-bottom: 12px;
+  background: #FBF9F3;
+  position: relative;
+}
+.ai-prompt-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.ai-prompt-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.copy-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--clay-deep);
+  background: transparent;
+  border: 1px solid var(--clay-soft);
+  border-radius: 100px;
+  padding: 3px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.copy-btn:hover { background: var(--clay-tint); }
+.copy-btn.done { color: var(--green-mid); border-color: var(--green-soft); }
+.copy-src { font-size: 13px; line-height: 1.95; margin: 0; color: var(--ink-soft); white-space: pre-wrap; }
+.copy-src .q { color: var(--green-mid); font-weight: 500; }
+
+.box-a .ai-label { color: var(--green-mid); }
+.box-a .ai-prompt-block { border-left: 2.5px solid var(--green); }
+.box-a .ai-prompt-label { color: var(--green-mid); }
+.box-b .ai-label { color: var(--clay-deep); }
+.box-b .ai-prompt-block { border-left: 2.5px solid var(--clay); }
+.box-b .ai-prompt-label { color: var(--clay-deep); }
+
+.ai-note {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: rgba(26,74,53,0.06);
+  border-radius: 8px;
+}
+.ai-note p { font-size: 13px; color: var(--green-deep); margin: 0; line-height: 1.75; }
+
+/* 파일 주의 카드 */
+.file-card {
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 26px 24px;
+  background: var(--surface);
+  margin: 24px 0;
+}
+.file-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.file-card ul li { font-size: 14.5px; color: var(--ink-soft); padding-left: 20px; position: relative; line-height: 1.75; }
+.file-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--rule-strong); }
+.file-card ul li strong { color: var(--green); }
+
+/* 클로징 */
+.close-box {
+  background: var(--green-deep);
+  border-radius: 16px;
+  padding: 46px 38px;
+  text-align: center;
+  margin-top: 64px;
+}
+.close-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-soft);
+  margin-bottom: 20px;
+}
+.close-text {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--on-green);
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.close-task {
+  margin: 0 auto 8px;
+  max-width: 520px;
+  text-align: left;
+  background: rgba(244,241,232,0.06);
+  border: 1px solid rgba(157,187,169,0.3);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.close-task p { font-size: 13.5px; color: #d7e4d7; line-height: 1.9; margin-bottom: 10px; }
+.close-task p:last-child { margin-bottom: 0; }
+.close-task strong { color: var(--on-green); font-weight: 500; }
+
+.footnote { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.footnote p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 6px; line-height: 1.7; }
+
+@media (max-width: 600px) {
+  .page { padding: 56px 20px 100px; }
+  h1 { font-size: 28px; }
+  .section-title { font-size: 21px; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .close-box { padding: 38px 22px; }
+  .ai-prompt-head { flex-wrap: wrap; }
+}
+@media print { body { background: #fff; } .page { padding: 24px 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · PROJECT B-612</span>
+    <span class="sep">/</span>
+    <span>GRAMMAR · 문법</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT · 심화 과제</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-grammar">GRAMMAR</span>
+      <span class="dot">·</span>
+      <span class="badge badge-task">ASSIGNMENT</span>
+      <span class="dot">·</span>
+      <span class="meta-text">문법의 달 · 2회차 과제</span>
+    </div>
+    <h1>나의 언어 지문</h1>
+    <p class="subtitle">여섯 층위로 나를 읽다 — 글 여러 편에서 나만의 목소리를 발굴하는 더 깊은 프롬프트</p>
+    <div class="tags">
+      <span class="tag">언어지문</span>
+      <span class="tag">포지셔닝</span>
+      <span class="tag">로고테라피</span>
+      <span class="tag">원천텍스트</span>
+      <span class="tag">심화</span>
+    </div>
+  </header>
+
+  <p class="lead">1회차 세션의 'AI 실험 02 · 언어 감사'를 한 걸음 더 깊이 들어간 버전이에요. 다섯 층위에 <em>의미의 축</em> 하나를 더해 여섯 층위로, 그리고 마지막엔 내 문장 안에 이미 있던 한 문장을 되돌려받습니다.</p>
+
+  <p>볼트도, 특별한 설정도 필요 없어요. <strong>어떤 클로드에서든</strong> — 무료든 앱이든 웹 새 대화든 — 아래 세 개를 순서대로 넣으면 그대로 됩니다.</p>
+
+  <div class="callout callout-speaker">
+    <div class="callout-label">먼저, 지난번 아쉬웠던 그 지점</div>
+    <p>혹시 글을 여러 편 넣었는데 AI가 <strong>마지막 글 하나만</strong> 붙잡던가요? 글을 한 편씩 흘려 넣으면 방금 들어온 글로 초점이 쏠려서 그래요. 여우에게 먹여두면 이 문제가 아예 없습니다 — 볼트에 들어간 글은 전부 같은 무게로 남으니까요.</p>
+  </div>
+
+  <div class="section-divider">
+    <span class="section-num">HOW</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="section-title">여우에게 먹이고, 한 번에 묻기</div>
+
+  <div class="flow">
+    <div class="flow-item active"><strong>냠냠</strong>글을 볼트에 들이기</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item active"><strong>한 덩어리</strong>여섯 층위로 묻기</div>
+  </div>
+
+  <div class="ai-box box-a">
+    <div class="ai-label">여우 방식 · 이번 주 과제는 이걸로</div>
+    <h3>냠냠으로 들이고, 한 번에 묻기</h3>
+    <p class="ai-desc">밖에 흩어져 있던 글을 여우에게 먹입니다. 여우가 받아 적어 볼트에 들이면, 파일 형식 고민도 사라지고 순서에 초점이 쏠리는 일도 없습니다. <strong>그리고 한 번 들인 글은 다음 주에도 그다음 주에도 여우가 계속 읽습니다.</strong> 붙여넣기는 그때뿐이지만, 냠냠은 쌓입니다.</p>
+    <ol>
+      <li>클로드를 열고 <strong>"사막여우"</strong>라고 부릅니다.</li>
+      <li><strong>"냠냠"</strong>이라고 한 뒤 글을 건넵니다. 붙여넣은 글, 캡처, 손글씨 사진 — 무엇이든 됩니다. 3~5편을 차례로 먹이셔도 되고 한꺼번에 주셔도 됩니다.</li>
+      <li>다 들이고 나면 아래 프롬프트를 한 번에 붙여넣습니다.</li>
+    </ol>
+
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[전체 프롬프트 — 여우에게 한 번에]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">방금 냠냠으로 들인 내 글들을 읽고, 내 언어 지문을 찾아줘. `00-Daily`에 들어간 그 글들과 이미 있는 데일리노트·여정기록까지 함께, 하나의 묶음으로 봐줘. 어느 한 편에 치우치지 말고 전체를 한 사람의 목소리로 관통해서.
+
+20년간 1인 창작자의 퍼스널 브랜드를 설계해온 전략 컨설턴트의 눈으로 봐줘. 가장 강력한 포지셔닝은 '차별화'가 아니라 '가장 나다운 것의 발굴'에서 나온다는 원칙 위에서. 칭찬 말고 발견을.
+
+여섯 층위로 분석해줘.
+
+(1) 언어 지문 — 반복되는 단어·문장 구조·리듬. 의식했다기보다 자연히 배어난 것.
+(2) 세계관의 결 — 명시돼 있진 않지만 모든 문장 아래 흐르는 믿음·가치.
+(3) 니치 포지셔닝 — 이 목소리만 독점할 수 있는 좁고 깊은 자리.
+(4) 희석 신호 — 빌려온 표현, 나를 약하게 만드는 패턴. 문장을 인용해 짚어줘.
+(5) 원천 텍스트 후보 — 나만 쓸 수 있는 문장의 씨앗 세 개. 내 실제 단어를 하나 이상 살려서.
+(6) 의미의 축 — 이 글들을 관통하는 나의 '왜'. 글 속 근거로.
+
+[규율] 층위마다 내 실제 문장을 최소 하나 그대로 인용하고, 어느 글에서 온 말인지 적어줘. 글에 없는 것은 지어내지 말고 "여긴 자료가 더 필요하다"고 적어줘. 층위당 다섯 문장 이내 — 길이가 아니라 정확함이 신뢰를 만들어.
+
+[읽을 글이 적으면] 세 편이 안 되거나, 다 합쳐도 몇 문장뿐이면 억지로 여섯 층위를 채우지 말고 거기서 멈춰줘. 대신 지금 보이는 결 하나와, 어떤 글을 더 들이면 좋을지 세 가지를 말해줘.
+
+다 끝나면 (5)와 (6)을 `01-Grammar/Insights`에 심어줘. 이번 주 실험과 다음 회차의 재료로 쓸 거야.</p>
+    </div>
+
+    <div class="ai-note">
+      <p>손글씨 사진을 먹였다면, 여우가 옮겨 적은 것을 한 번 훑어봐 주세요. 잘못 읽은 글자가 있으면 그때 고쳐주시면 됩니다.</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <span class="section-num">ALT</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="section-title">볼트를 아직 안 쓰신다면 — 붙여넣기 세 단계</div>
+
+  <p>여우 설치가 아직이거나 다른 컴퓨터에서 하실 때는 이 길로 가시면 됩니다. 원리는 같습니다 — <strong>한 편씩 말고 한 번에 번호를 붙여</strong> 넣는 것.</p>
+
+  <!-- 1단계 -->
+  <div class="ai-box box-b">
+    <div class="ai-label">1단계 · 역할 설정</div>
+    <h3>먼저 이것만 붙여넣기</h3>
+    <p class="ai-desc">글을 주기 전에 AI에게 '어떤 눈으로 볼지'부터 심어둡니다. 여기서 "관통해서 보라 / 마지막에 치우치지 말라"를 미리 못 박아요.</p>
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[역할 설정 — 먼저 입력]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">당신은 20년간 1인 창작자와 전문가의 퍼스널 브랜드를 설계해온 전략 컨설턴트입니다. 당신이 찾은 원칙 하나 — 가장 강력한 포지셔닝은 '차별화'가 아니라 '가장 나다운 것의 발굴'에서 나온다. 그래서 당신의 분석은 칭찬이 아니라 발견입니다.
+
+잠시 후 제가 최근 쓴 글 3~5편을 한 번에, 각 글에 번호를 붙여 드립니다. 각 편을 따로 보지 말고 전체를 한 사람의 목소리로 관통해서 보세요. 마지막 글에 치우치지 말고, 여러 편에 공통으로 배어나오는 것에서 패턴을 찾으세요.
+
+지금은 설정만 확인하고 아직 분석하지 마세요. 준비되면 <span class="q">"네, 글을 주세요"</span>라고만 답해주세요.</p>
+    </div>
+  </div>
+
+  <!-- 2단계 -->
+  <div class="ai-box box-b">
+    <div class="ai-label">2단계 · 글을 한 번에</div>
+    <h3>글 넣기 — 두 가지 방법</h3>
+    <p class="ai-desc">핵심은 하나예요. <strong>한 편씩 말고 한 메시지에 다.</strong> 텍스트로 붙여넣든, 파일로 첨부하든 원리는 같습니다. 편한 쪽으로 고르세요.</p>
+
+    <span class="ai-variant-label">방법 A · 복사해서 붙여넣기</span>
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[글 붙여넣기]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">아래는 제가 최근 쓴 글들입니다. 하나의 묶음으로 봐주세요. (긴 글은 가장 나다운 대목 400~600자만 발췌해도 됩니다.)
+
+[글 1] ―――――
+(전체 또는 발췌)
+
+[글 2] ―――――
+…
+
+[글 3] ―――――
+…
+
+(글이 더 있으면 [글 4], [글 5]로 이어서)</p>
+    </div>
+
+    <span class="ai-variant-label">방법 B · 파일로 첨부</span>
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[파일 첨부와 함께]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">제 글을 파일로 드립니다. 아래 파일들을 하나의 묶음으로 봐주세요. 파일마다 한 편이고, 파일명 순서대로 [글 1], [글 2]…로 불러주세요.
+
+(파일 3~5개를 이 한 메시지에 모두 첨부)
+
+먼저 각 파일에서 글 본문만 알아보고 <span class="q">"글 N편 확인했습니다"</span>라고 한 줄로 답해주세요. 그다음 제가 분석을 요청하겠습니다.</p>
+    </div>
+    <div class="ai-note">
+      <p>파일도 <strong>한 개씩 말고 한 메시지에 다</strong> 첨부하세요. 한 개씩 올리면 마지막 파일로 초점이 쏠려요. 형식 주의사항은 아래 ‘파일로 할 때’를 봐주세요.</p>
+    </div>
+  </div>
+
+  <!-- 3단계 -->
+  <div class="ai-box box-a">
+    <div class="ai-label">3단계 · 분석 요청</div>
+    <h3>여섯 층위로, 그리고 나에게로</h3>
+    <p class="ai-desc">AI가 "네, 글을 주세요 / 글 N편 확인했습니다"라고 답하면, 이걸 넣으세요.</p>
+    <div class="ai-prompt-block">
+      <div class="ai-prompt-head">
+        <span class="ai-prompt-label">[분석 요청]</span>
+        <button class="copy-btn" type="button">복사</button>
+      </div>
+      <p class="copy-src">이제 글 전체를 여섯 층위로 분석해주세요.
+
+(1) 언어 지문 — 반복되는 단어·문장 구조·리듬. 의식했다기보다 자연히 배어난 것.
+(2) 세계관의 결 — 명시돼 있진 않지만 모든 문장 아래 흐르는 믿음·가치.
+(3) 니치 포지셔닝 — 이 목소리만 독점할 수 있는 좁고 깊은 자리. "이 사람만이 말할 수 있는 것".
+(4) 희석 신호 — 빌려온 표현, 자신을 약하게 만드는 패턴. 문장을 인용해 짚기.
+(5) 원천 텍스트 후보 — 이 사람만 쓸 수 있는 문장의 씨앗 세 개. 제 실제 단어를 하나 이상 살려서 직접 써주세요.
+(6) 의미의 축 — 이 글들을 관통하는 저의 '왜'. 제가 무엇을 위해 계속 쓰는지, 글 속 근거로.
+
+[규율] 층위마다 제 실제 문장을 최소 하나 그대로 인용해 근거로 삼으세요. 글에 없는 것은 지어내지 말고 "여긴 자료가 더 필요하다"고 적으세요. 층위당 다섯 문장 이내 — 길이가 아니라 정확함이 신뢰를 만듭니다.
+
+분석이 끝나면 세 가지로 마무리해주세요.
+① 제가 스스로는 발견하지 못했지만 제 문장 안에 이미 있던 한 문장을 골라 되돌려주고, 그것이 왜 저만의 것인지 두어 줄로.
+② 저를 한 줄로 세워주세요 — '~가 아니라 ~다' 같은 상투구 없이, 제가 실제로 쓴 단어로.
+③ 제 원천 텍스트를 캐는 데 도움이 될 질문 하나.</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <span class="section-num">FILES</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="section-title">파일로 할 때</div>
+
+  <div class="file-card">
+    <ul>
+      <li><strong>한 번에 첨부.</strong> 파일 3~5개를 한 메시지에 모두 붙이세요.</li>
+      <li><strong>잘 되는 형식.</strong> <strong>txt · docx(워드) · pdf</strong> — 어떤 클로드에서도 잘 읽혀요.</li>
+      <li><strong>한글(hwp)은 조심.</strong> 클로드가 못 여는 경우가 많아요 → 한글에서 <strong>PDF로 저장</strong>하거나, 안 되면 본문을 복사해 ‘방법 A’로.</li>
+      <li><strong>손글씨·글 사진(jpg·png).</strong> 첨부하면 눈으로 읽어요. 정확도를 위해 "먼저 <strong>옮겨 적어서 보여준 뒤</strong> 분석해줘"를 한 줄 붙이세요.</li>
+      <li><strong>파일이 안 붙는 클로드라면</strong>(구형·일부 무료 새 대화) 그냥 ‘방법 A’ 복붙으로. 글이 길면 가장 나다운 400~600자만 발췌해도 충분해요.</li>
+    </ul>
+  </div>
+
+  <div class="close-box">
+    <div class="close-label">그리고 남기기</div>
+    <p class="close-text">좋은 문장은 짜내는 게 아니라,<br>이미 내 글 안에 있던 것을 알아보는 일이에요.</p>
+    <div class="close-task">
+      <p>⑴ 마음에 남는 문장이 나오면 사막여우에게 <strong>"정리"</strong> — 씨앗으로 심어드려요.</p>
+      <p>⑵ 새로 알게 된 건 <strong>긱어스</strong>에 편하게 나눠주세요. 한 줄이어도 좋아요.</p>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <p>* 빅터 프랭클, 로고테라피 — 의미의 세 경로 (창조·경험·태도)</p>
+    <p>* 도널드 위니컷 — 진짜 자아(True Self)와 거짓 자아</p>
+    <p>* DEEPER UNBRANDING SALON · PROJECT B-612 — 문법의 달 2회차 과제</p>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var src = btn.closest('.ai-prompt-block').querySelector('.copy-src');
+    var text = src.innerText.replace(/​/g,'');
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent = '복사됨 ✓';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = '복사'; btn.classList.remove('done'); }, 1700);
+    }).catch(function(){
+      var r = document.createRange(); r.selectNodeContents(src);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  });
+});
+</script>
+</body>
+</html>
