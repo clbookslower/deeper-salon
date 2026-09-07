@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>논리 2회차 과제 — 세 개의 악보</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic/l2_three_scores.html" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 언브랜딩 살롱" />
+<meta property="og:title" content="논리 2회차 과제 — 세 개의 악보" />
+<meta property="og:description" content="하나의 주제를 세 번 옮기면, 비로소 악보가 된다" />
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/logic/og-logic.png" />
+<style>
+  :root{
+    --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22; --green-soft:#7DA890;
+    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF;
+    --ink:#1A1916; --ink-soft:#3E3C36; --ink-mute:#6E6A60;
+    --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+    --ok:#2E6B4F;
+    --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic','Noto Sans CJK KR',sans-serif;
+    --mono:'SF Mono','JetBrains Mono','Consolas','D2Coding',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif);
+    word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased;
+    font-size:18px; line-height:1.85;
+    padding:clamp(1.4rem,4vw,3rem) clamp(.9rem,4vw,2rem) 6rem;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.03; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+  .wrap{position:relative; z-index:1; max-width:44rem; margin:0 auto;}
+
+  .brand{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--clay-deep); margin-bottom:1.1rem;}
+  h1{font-size:clamp(27px,5.2vw,40px); line-height:1.28; letter-spacing:-.015em; margin-bottom:.7rem;}
+  h1 .em{color:var(--clay-deep);}
+  .lead{font-size:clamp(17px,2vw,20px); color:var(--ink-soft); line-height:1.8;}
+  .lead b{color:var(--ink);}
+
+  .goal{margin-top:1.5rem; border-radius:10px; padding:1.3rem 1.4rem;
+    background:linear-gradient(160deg,var(--green-deepest),var(--green-deep) 60%,var(--green));
+    color:var(--paper);}
+  .goal .k{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--clay-soft); margin-bottom:.45rem;}
+  .goal p{font-size:20px; line-height:1.72;}
+  .goal p b{color:#fff;}
+  .goal .sm{display:block; margin-top:.5rem; font-size:16px; color:rgba(244,241,232,.8);}
+
+  .step{margin-top:2.6rem; border-top:2px solid var(--rule); padding-top:1.5rem;}
+  .no{display:flex; align-items:center; gap:.75rem; margin-bottom:.6rem;}
+  .no .num{font-family:var(--sans); font-weight:800; font-size:13px; letter-spacing:.06em;
+    background:var(--green-deep); color:var(--paper); border-radius:999px;
+    min-width:2.5rem; height:1.7rem; display:flex; align-items:center; justify-content:center;
+    flex:none; padding:0 .5rem;}
+  .no .tm{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--clay-deep);}
+  h2{font-size:clamp(22px,3.4vw,29px); line-height:1.38; letter-spacing:-.012em; margin-bottom:.55rem;}
+  h2 .em{color:var(--clay-deep);}
+  p+p{margin-top:.75rem;}
+  .why{color:var(--ink-soft);}
+  .why b{color:var(--ink);}
+
+  .do{margin-top:.95rem;}
+  .do .cap{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.14em;
+    color:var(--clay-deep); margin-bottom:.4rem;}
+  .box{font-family:var(--mono); font-size:15px; line-height:1.75; white-space:pre-wrap;
+    background:var(--green-deepest); color:#EAE5D9; border-radius:8px;
+    padding:1rem 1.1rem; overflow-x:auto;}
+  .box .c{color:var(--clay-soft);}
+  .box.one{font-size:16px; padding:.8rem 1.05rem;}
+
+  .chk{margin-top:.9rem; border-left:4px solid var(--ok); background:rgba(46,107,79,.09);
+    border-radius:0 7px 7px 0; padding:.8rem 1rem;}
+  .chk .h{font-family:var(--sans); font-size:12px; font-weight:800; letter-spacing:.1em;
+    color:var(--ok); margin-bottom:.2rem;}
+  .chk p{font-size:16.5px; line-height:1.72; color:var(--ink-soft);}
+  .chk p b{color:var(--ink);}
+  .stuck{margin-top:.55rem; border-left:4px solid var(--clay); background:rgba(198,126,88,.1);
+    border-radius:0 7px 7px 0; padding:.8rem 1rem;}
+  .stuck .h{font-family:var(--sans); font-size:12px; font-weight:800; letter-spacing:.1em;
+    color:var(--clay-deep); margin-bottom:.2rem;}
+  .stuck p{font-size:16.5px; line-height:1.72; color:var(--ink-soft);}
+  .stuck p b{color:var(--ink);}
+
+  .note{margin-top:.9rem; background:var(--surface); border:1px solid var(--rule);
+    border-radius:8px; padding:.85rem 1rem; font-size:16.5px; line-height:1.75; color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+  code{font-family:var(--mono); font-size:.88em; background:rgba(26,74,53,.09);
+    border:1px solid var(--rule); border-radius:4px; padding:.1rem .36rem; color:var(--green-deep);}
+  ul{margin:.6rem 0 0 1.15rem;} li{margin-bottom:.35rem; color:var(--ink-soft);}
+  li b{color:var(--ink);}
+
+  .later{display:flex; flex-direction:column; gap:.5rem; margin-top:1rem;}
+  .lt{border:1px solid var(--rule); border-left:3px solid var(--clay); border-radius:6px;
+    background:var(--surface); padding:.75rem .95rem;}
+  .lt .n2{font-family:var(--mono); font-weight:700; font-size:16.5px; color:var(--green-deep);}
+  .lt .d2{display:block; margin-top:.15rem; font-size:16px; line-height:1.7; color:var(--ink-soft);}
+  .lt .d2 b{color:var(--ink);}
+
+  .out{margin-top:2.6rem; border-radius:10px; padding:1.5rem 1.45rem;
+    background:linear-gradient(160deg,var(--green-deepest),var(--green-deep) 60%,var(--green));
+    color:var(--paper);}
+  .out .k{font-family:var(--sans); font-size:11px; font-weight:700; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--clay-soft); margin-bottom:.45rem;}
+  .out p{font-size:18px; line-height:1.78;}
+  .out b{color:#fff;}
+  .out .sm{display:block; margin-top:.5rem; font-size:16px; color:rgba(244,241,232,.8);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <p class="brand">디퍼 · 논리의 달 2회차 · 이번 주 과제</p>
+  <h1>세 개의 <span class="em">악보</span></h1>
+  <p class="lead">악보는 <b>남이 따라 부를 수 있는 작은 틀</b>이다. 에세이가 아니다. 3~5단계의 구조, 혹은 주제 한 줄과 변주 규칙. 설명은 걷어내고 틀만 남긴다. 깊은 것을 남이 읽을 표면으로 옮기는 일, 이것이 전사다.</p>
+
+  <div class="goal">
+    <p class="k">이번 주의 최소선</p>
+    <p><b>각도 하나만 골라 악보 한 장.</b> 그러면 이번 주 과제는 끝난 것이다.
+      <span class="sm">셋 다 짓는 것은 더 하고 싶은 분께. 셋을 나란히 놓으면 관통하는 하나가 보인다 — 그것이 디퍼님의 카논 주제다.</span></p>
+  </div>
+
+  <!-- 1 -->
+  <div class="step">
+    <div class="no"><span class="num">1</span><span class="tm">5분</span></div>
+    <h2>고리에 <span class="em">주제를 통과</span>시키기</h2>
+    <p class="why">지난주에 지은 것은 하네스, 규칙의 집이다. 이번 주는 그 고리에 디퍼님의 주제를 통과시킨다. 문법의 달이 안으로 들어가는 일이었다면, 이번은 밖으로 나가는 일이다. <b>안에서 찾은 씨앗을, 밖이 읽을 수 있는 구조로 번역한다.</b></p>
+    <p class="why">준비물은 셋이다. 씨앗 문장 하나(불변량 후보), 볼트에 쌓인 것, 그리고 여우. 파일을 찾아 붙여넣지 않아도 된다. 클로드를 열고 <b>"사막여우"</b>라고 부르면 여우가 볼트를 스스로 읽는다.</p>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>씨앗 문장 <b>한 줄</b>이 적혔다. 없으면 비워 두어도 된다. 재료가 한 줄뿐이어도 머리말이 잠긴 것을 길어 올린다.</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="step">
+    <div class="no"><span class="num">2</span><span class="tm">공통 머리말</span></div>
+    <h2>먼저, <span class="em">머리말</span>을 붙인다</h2>
+    <p class="why">아래를 통째로 복사해 맨 앞에 붙인다. 주황색 자리만 내 것으로 바꾼다. 맨 끝 [각도] 자리에 3번의 셋 중 하나를 붙여 보낸다.</p>
+    <div class="do">
+      <p class="cap">복사해서 맨 앞에</p>
+      <div class="box">너는 디퍼OS의 기획 파트너다. 내 목소리를 알고, 재료가 짧고 흐릿해도 그 속의 단 하나의 주제를 찾아내는 데 능하다.
+
+[내 재료 — 먼저 볼트에서 직접 읽어라]
+· 00-Daily 의 데일리노트 전체 — 냠냠으로 들인 손글씨·모닝페이지 칸, 오아시스에서 비워낸 대답까지
+· 01-Grammar/Insights 의 씨앗 전부
+· 02-Logic/_여정기록 — 이 달 "안녕"으로 걸어온 Day별 내 문장들, 지난주에 지은 형식 체계 v1
+<span class="c">(볼트를 아직 쓰지 않는다면 이 목록 대신 최근 글 서너 편을 아래에 직접 붙여넣는다.)</span>
+씨앗 문장: <span class="c">(있으면 여기 — 없으면 비워 둔다)</span>
+
+[순서]
+1) 재료가 부실하면 잠재 주제를 3개 뽑고, 가장 정직한 하나를 골라. 무엇을 가정했는지 한 줄로 밝혀 — 내가 고치게.
+2) 그 주제에서 변하지 않는 핵(불변량)을 한 문장으로.
+3) 맨 아래 [각도] 지시대로 그 주제를 변형하라.
+4) 아래 형식으로 '악보'를 적어. 설명은 최소화.
+
+[악보 형식]
+· 주제 한 줄
+· 불변량 한 줄
+· 단계 3~5개 (동사로 시작, 처음 보는 사람도 그대로 따라 하게)
+· 변주 규칙 한 줄 (이 악보를 어떻게 변형해 반복할까)
+
+[분석의 규율]
+· 모든 항목마다 내 재료의 실제 문장을 최소 하나 그대로 인용해 근거로 삼아라. 인용한 말이 냠냠·씨앗·여정 중 어디에서 나왔는지 함께 적어라.
+· 내 글에 없는 말을 쓸 때는 "이건 내가 지은 이름"이라고 표시하라. 없는 것을 근거처럼 말하지 마라.
+· 읽을 글이 너무 적으면 악보를 지어내지 말고 거기서 멈춰라. 대신 지금 재료에서 보이는 결 하나와, 무엇을 더 쓰면 악보가 나올지 세 가지를 말해라.
+· 감탄·칭찬의 상투구는 쓰지 마라. 내 표현을 그대로 인용해 무엇이 살아 있는지 짚어라.
+
+점검: 처음 보는 사람이 그대로 연주할 수 있나? 모호하면 더 구체적으로 다시 써.
+
+[각도] <span class="c">← 아래 셋 중 하나를 여기에 붙인다</span></div>
+    </div>
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>여우가 <b>무엇을 가정했는지 한 줄</b> 밝히고, 불변량 한 줄 뒤에 <b>악보 형식 그대로</b> 적어 준다. 재료가 적으면 지어내지 않고 멈춰서 무엇을 더 쓰면 되는지 말한다.</p>
+    </div>
+    <div class="stuck">
+      <p class="h">안 되면</p>
+      <p>설명이 길고 악보가 안 나오면 <code>설명은 빼고 악보 형식만 다시 적어 주세요</code> 라고 한 번 더 말한다. 그래도 이상하면 <b>새 대화를 열고</b> 다시 붙여넣는다.</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="step">
+    <div class="no"><span class="num">3</span><span class="tm">각도 고르기</span></div>
+    <h2>세 각도 중 <span class="em">하나</span></h2>
+    <p class="why">한 주제를 어느 각도에서 옮길지 고른다. 하나면 된다. 나머지 둘은 하고 싶은 만큼.</p>
+
+    <div class="later">
+      <div class="lt"><span class="n2">I · 게 카논의 각도 — 거꾸로 세워라</span><span class="d2">앞으로 읽든 뒤로 읽든 똑같이 성립하는 한 가지를 찾는다. <b>그것이 불변량이다.</b></span></div>
+    </div>
+    <div class="do">
+      <p class="cap">[각도] 자리에 붙이기</p>
+      <div class="box one">[각도] 이 주제를 거꾸로 세워라. 결론을 맨 앞에 놓거나, 정반대 주장에서 출발해 끝까지 밀어 봐라. 앞으로 읽든 뒤로 읽든 똑같이 성립하는 한 가지 — 그것이 불변량이다. 그 불변량만으로 누구나 따라 할 악보를 지어라.</div>
+    </div>
+
+    <div class="later">
+      <div class="lt"><span class="n2">II · 무의 헌정의 각도 — 다른 영역으로 옮겨라</span><span class="d2">요리, 건축, 정원의 언어로 세 번 옮기고, 중학생에게 한 번 더 푼다. <b>모든 번역에 똑같이 떠오르는 규칙이 불변량이다.</b></span></div>
+    </div>
+    <div class="do">
+      <p class="cap">[각도] 자리에 붙이기</p>
+      <div class="box one">[각도] 이 주제를 전혀 다른 영역의 언어로 세 번 옮겨라 — 요리, 건축, 정원처럼. 그리고 중학교 2학년에게 설명하듯 한 번 더 풀어라. 이 모든 번역에 똑같이 떠오르는 규칙이 불변량이다. 그 규칙을, 다른 분야 사람이 제 일에 그대로 적용할 악보로 정리하라.</div>
+    </div>
+
+    <div class="later">
+      <div class="lt"><span class="n2">III · 카논의 각도 — 여러 목소리로 짜라</span><span class="d2">십 년 전의 나, 십 년 후의 나, 초심자, 나와 정반대인 사람. <b>네 목소리가 시차를 두고 포개지는 하나의 악보.</b></span></div>
+    </div>
+    <div class="do">
+      <p class="cap">[각도] 자리에 붙이기</p>
+      <div class="box one">[각도] 이 주제를 네 목소리로 변주하라 — 십 년 전의 나, 십 년 후의 나, 이 주제를 처음 만난 초심자, 나와 정반대인 사람. 네 목소리가 같은 주제를 어떻게 다르게 쥐는지 보이고, 그 넷이 시차를 두고 차례로 들어와 어긋나지 않고 포개지는 하나의 악보로 묶어라.</div>
+    </div>
+
+    <div class="chk">
+      <p class="h">이러면 통과</p>
+      <p>처음 보는 사람이 <b>그대로 연주할 수 있는 악보</b>가 한 장 나왔다. 설명이 아니라 단계가 적혀 있다.</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="step">
+    <div class="no"><span class="num">4</span><span class="tm">고리 돌리기</span></div>
+    <h2>한 번에 <span class="em">끝내지</span> 마라</h2>
+    <p class="why">여우가 비추면 디퍼님이 고른다. 고른 것을 볼트에 다시 적립하고, 한 번 더 돌린다. <b>악보는 다시 쓸 수 있을 때 살아 있다.</b> 한 번 쓰고 버리는 글이 아니라, 계속 변주를 낳는 틀.</p>
+    <div class="note">
+      이 원리를 기억해 둔다 — <b>세포는 안으로만 잠그면 고인다. 내어줄 때 고리는 돈다.</b> 악보를 강의실에 내는 일이 곧 고리를 한 바퀴 더 돌리는 일이다.
+    </div>
+  </div>
+
+  <div class="out">
+    <p class="k">이번 주 내는 것</p>
+    <p><b>악보 한 장</b>과 <b>두 줄.</b>
+      <span class="sm">불변량 한 줄 — 악보를 관통하는 단 하나. 셋을 지었다면 셋 모두를 관통하는 것.<br>
+      창발 한 줄 — 계획에 없었는데 솟아오른 것. 어느 악보에도 없었지만, 나란히 놓으니 보이는 것.<br>
+      나눔은 긱어스 강의실에.</span></p>
+  </div>
+
+</div>
+</body>
+</html>
