@@ -35,6 +35,9 @@ h1 { font-family: 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(28p
 .byline { font-size: 14px; color: #B9C7B5; margin-bottom: 22px; }
 .when { display: inline-block; border: 1px solid rgba(217,194,122,.55); border-radius: 100px; padding: 8px 18px; font-size: 15px; color: #F4F1E8; }
 .when b { font-weight: 500; color: #D9C27A; }
+.when.pdf { margin-left: 10px; text-decoration: none; border-color: rgba(217,194,122,.85); background: rgba(217,194,122,.10); transition: background .15s; }
+.when.pdf:hover { background: rgba(217,194,122,.22); }
+@media (max-width: 560px) { .when.pdf { margin-left: 0; margin-top: 10px; } }
 main { padding: 48px 24px 24px; }
 main .wrap p { font-size: 16.5px; color: #34413A; margin-bottom: 18px; }
 main .wrap p.lead { font-family: 'Noto Serif KR', serif; font-size: 18px; line-height: 1.9; color: #1F2A24; }
@@ -94,6 +97,7 @@ footer .sig { font-family: 'Noto Serif KR', serif; color: #1A4A35; font-size: 14
         <h1>게 카논 · 무의 헌정</h1>
         <p class="byline">더글러스 호프스태터 『괴델, 에셔, 바흐』 · 까치 개역판 pp.266–272 · pp.312–332</p>
         <span class="when"><b>9월 7일 월요일</b> · 밤 9:00 · 줌</span>
+        <a class="when pdf" href="https://geekus.kr/slowerdeeper/classroom/1074?lessonId=6568">본문 PDF · <b>긱어스 자료실</b> →</a>
       </div>
     </div>
   </div>
