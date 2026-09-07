@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>디퍼 콤포스텔라 1구간 · 1주차 — 재료를 캔다</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="디퍼 콤포스텔라 1기 · 1구간 1주차 — 재료를 캔다">
+<meta property="og:description" content="지식 자산 실사. 9월 7일 월요일 10:00 · 팔 수 있는 것을 가려내는 첫 시간 — 도구 하나 · 원석 목록 · 값 판정.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/compostela_w1_deck_2026-09-07.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/compostela_w1_deck_2026-09-07_og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="디퍼 콤포스텔라 1기 · 1구간 1주차 — 재료를 캔다">
+<meta name="twitter:description" content="지식 자산 실사. 9월 7일 월요일 10:00 · 팔 수 있는 것을 가려내는 첫 시간 — 도구 하나 · 원석 목록 · 값 판정.">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/compostela_w1_deck_2026-09-07_og.png">
+<style>
+  :root{
+    /* DEEPER 비주얼 아이덴티티 v1 (디지털 트랙: 포인트 = 클레이 하나만) */
+    --green:#1A4A35; --green-deep:#003D2C; --green-deepest:#002E22; --green-soft:#7DA890;
+    --paper:#F4F1E8; --surface:#EFEADD; --rule:#D9D1BF; --rule-strong:#C4BCA9;
+    --ink:#1A1916; --ink-soft:#46443D; --ink-mute:#6E6A60;
+    --clay:#C67E58; --clay-deep:#B86D46; --clay-soft:#D4916C;
+    --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic','Noto Sans CJK KR',sans-serif;
+    --mono:ui-monospace,'SFMono-Regular','Consolas','D2Coding',monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:var(--serif); overflow:hidden; word-break:keep-all; overflow-wrap:break-word;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.5rem; z-index:8;
+    font-family:var(--sans); font-size:12px; font-weight:700;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--clay-deep); pointer-events:none;
+    transition:color .5s ease;}
+  body.on-dark .brandmark{color:var(--clay-soft);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto; overflow-x:hidden;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:linear-gradient(168deg,var(--green-deepest) 0%,var(--green-deep) 48%,var(--green) 100%);
+    color:var(--paper);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.4rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.2rem; text-align:center;}
+  .content.wide{max-width:56rem;}
+
+  .kicker{font-family:var(--sans); font-size:12px; font-weight:600;
+    letter-spacing:.34em; text-transform:uppercase; color:var(--clay-deep);}
+  .slide.invert .kicker{color:var(--clay-soft);}
+
+  .title{font-family:var(--serif); font-weight:700; letter-spacing:-.01em;
+    font-size:clamp(25px,4.4vw,36px); line-height:1.3;}
+  .title .em{color:var(--clay-deep);}
+  .slide.invert .title{color:var(--paper);}
+  .slide.invert .title .em{color:var(--clay-soft);}
+
+  .latin{font-family:var(--serif); font-weight:400; font-style:italic;
+    color:var(--ink-mute); font-size:clamp(18px,2.2vw,22px); letter-spacing:.01em; line-height:1.5;}
+  .slide.invert .latin{color:var(--green-soft);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    font-family:var(--serif); font-weight:400; color:var(--ink-soft);
+    font-size:clamp(18px,1.4vw,22px); line-height:1.8;}
+  .slide.invert .body{color:rgba(244,241,232,.9);}
+  .body p{margin:0 0 1.1rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--clay-deep); font-weight:700;}
+  .slide.invert .body em{color:var(--clay-soft);}
+  .body .strong{font-weight:700; color:var(--ink);}
+  .slide.invert .body .strong{color:var(--paper);}
+  .body .final{font-weight:700; text-align:center; color:var(--ink);
+    font-size:25px; line-height:1.62; margin-top:1.1rem;}
+  .slide.invert .body .final{color:var(--paper);}
+  .body .quote{font-weight:700; text-align:center; color:var(--ink);
+    font-size:25px; line-height:1.6;}
+  .slide.invert .body .quote{color:var(--paper);}
+
+  /* 층 목록 */
+  .layers{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.5rem;}
+  .layers .ly{border:1px solid var(--rule); border-left:3px solid var(--clay);
+    border-radius:4px; padding:.7rem .95rem; background:var(--surface);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .slide.invert .layers .ly{border-color:rgba(244,241,232,.16); border-left-color:var(--clay-soft);
+    background:rgba(0,46,34,.42);}
+  .layers .nm{font-family:var(--serif); font-weight:700; color:var(--green);
+    font-size:22px; line-height:1.3; flex:none; min-width:6.4rem;}
+  .slide.invert .layers .nm{color:var(--paper);}
+  .layers .nm .h{display:block; font-family:var(--sans); font-size:12px; color:var(--ink-mute);
+    font-weight:600; letter-spacing:.18em; margin-top:.15rem;}
+  .slide.invert .layers .nm .h{color:var(--green-soft);}
+  .layers .ds{font-family:var(--serif); font-size:18px; line-height:1.7; color:var(--ink-soft);}
+  .slide.invert .layers .ds{color:rgba(244,241,232,.82);}
+  .layers .ds b{color:var(--clay-deep); font-weight:700;}
+  .slide.invert .layers .ds b{color:var(--clay-soft);}
+
+  /* 카드 2열 */
+  .cards{align-self:stretch; max-width:42rem; margin:.3rem auto 0;
+    display:grid; grid-template-columns:1fr 1fr; gap:.5rem; text-align:left;}
+  .cards.three{grid-template-columns:repeat(3,1fr);}
+  .cards .cd{border:1px solid var(--rule); border-radius:4px; padding:.65rem .85rem; background:var(--surface);}
+  .slide.invert .cards .cd{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .cards .w{display:block; font-family:var(--serif); font-weight:700; font-size:22px;
+    line-height:1.3; color:var(--green);}
+  .slide.invert .cards .w{color:var(--paper);}
+  .cards .m{display:block; margin-top:.2rem; font-family:var(--serif); font-size:18px;
+    line-height:1.55; color:var(--ink-mute);}
+  .slide.invert .cards .m{color:rgba(244,241,232,.75);}
+  .cards .cd.acc{border-left:3px solid var(--clay);}
+  .cards .cd.acc .w{color:var(--clay-deep);}
+  .slide.invert .cards .cd.acc .w{color:var(--clay-soft);}
+
+  /* 대조표 — 이렇게 말고 이렇게 */
+  .swap{align-self:stretch; max-width:44rem; margin:.3rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.5rem;}
+  .swap .row{display:grid; grid-template-columns:1fr auto 1.25fr; align-items:center; gap:.7rem;
+    border:1px solid var(--rule); border-radius:4px; background:var(--surface); padding:.6rem .8rem;}
+  .slide.invert .swap .row{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .swap .no{font-family:var(--serif); font-size:17px; line-height:1.5; color:var(--ink-mute);
+    text-decoration:line-through; text-decoration-color:var(--rule-strong); text-decoration-thickness:1px;}
+  .slide.invert .swap .no{color:rgba(244,241,232,.5);}
+  .swap .ar{font-family:var(--sans); font-size:14px; color:var(--clay); flex:none;}
+  .slide.invert .swap .ar{color:var(--clay-soft);}
+  .swap .yes{font-family:var(--serif); font-size:18px; line-height:1.55; color:var(--ink); font-weight:700;}
+  .slide.invert .swap .yes{color:var(--paper);}
+  @media(max-width:600px){
+    .swap .row{grid-template-columns:1fr; gap:.2rem;}
+    .swap .ar{display:none;}
+  }
+
+  /* A·B·C 판정 */
+  .abc{align-self:stretch; max-width:44rem; margin:.3rem auto 0; text-align:left;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:.55rem;}
+  .abc .g{border:1px solid var(--rule); border-radius:4px; background:var(--surface); padding:.85rem .9rem;
+    display:flex; flex-direction:column; gap:.35rem;}
+  .slide.invert .abc .g{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .abc .g.a{border-color:var(--clay); border-width:1.5px;}
+  .abc .lt{font-family:var(--serif); font-weight:700; font-size:34px; line-height:1; color:var(--green-soft);}
+  .abc .g.a .lt{color:var(--clay-deep);}
+  .slide.invert .abc .lt{color:rgba(125,168,144,.8);}
+  .slide.invert .abc .g.a .lt{color:var(--clay-soft);}
+  .abc .dd{font-family:var(--serif); font-size:18px; line-height:1.6; color:var(--ink-soft);}
+  .slide.invert .abc .dd{color:rgba(244,241,232,.82);}
+  .abc .dd b{color:var(--ink); font-weight:700;}
+  .slide.invert .abc .dd b{color:var(--paper);}
+  @media(max-width:600px){ .abc{grid-template-columns:1fr;} .abc .lt{font-size:26px;} }
+
+  /* 프롬프트 상자 */
+  .prompt{align-self:stretch; max-width:44rem; margin:.3rem auto 0; text-align:left;
+    border:1px solid var(--rule); border-left:3px solid var(--clay); border-radius:4px;
+    background:var(--surface); padding:.9rem 1rem;
+    font-family:var(--mono); font-size:14.5px; line-height:1.85; color:var(--ink-soft);
+    white-space:pre-wrap;}
+  .slide.invert .prompt{border-color:rgba(244,241,232,.16); border-left-color:var(--clay-soft);
+    background:rgba(0,46,34,.5); color:rgba(244,241,232,.86);}
+  .prompt b{color:var(--clay-deep); font-weight:700;}
+  .slide.invert .prompt b{color:var(--clay-soft);}
+  @media(max-width:600px){ .prompt{font-size:12.5px; line-height:1.75; padding:.7rem .8rem;} }
+
+  /* 진행 단계 */
+  .steps{align-self:stretch; max-width:44rem; margin:.3rem auto 0;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; text-align:left;}
+  .steps .sp{border:1px solid var(--rule); border-radius:4px; background:var(--surface); padding:.7rem .8rem;}
+  .slide.invert .steps .sp{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .steps .tm{font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.14em; color:var(--clay-deep);}
+  .slide.invert .steps .tm{color:var(--clay-soft);}
+  .steps .nmm{display:block; font-family:var(--serif); font-weight:700; font-size:19px; color:var(--green); margin-top:.2rem;}
+  .slide.invert .steps .nmm{color:var(--paper);}
+  .steps .mm{display:block; font-family:var(--serif); font-size:16px; line-height:1.5; color:var(--ink-mute); margin-top:.15rem;}
+  .slide.invert .steps .mm{color:rgba(244,241,232,.72);}
+  @media(max-width:760px){ .steps{grid-template-columns:1fr 1fr;} }
+
+  /* 크레덴시알 도장 */
+  .stamps{align-self:stretch; max-width:44rem; margin:.3rem auto 0;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem;}
+  .stamps .st{border:1px dashed var(--rule-strong);
+    border-radius:50% 50% 5px 5px / 14% 14% 5px 5px;
+    background:var(--surface); padding:.8rem .6rem .7rem; text-align:center;
+    display:flex; flex-direction:column; align-items:center; gap:.25rem;}
+  .slide.invert .stamps .st{border-color:rgba(244,241,232,.28); background:rgba(0,46,34,.42);}
+  .stamps .sn{font-family:var(--serif); font-weight:700; font-size:20px; color:var(--green-soft);}
+  .slide.invert .stamps .sn{color:rgba(125,168,144,.85);}
+  .stamps .sc{font-family:var(--serif); font-size:15px; line-height:1.45; color:var(--ink-mute);}
+  .slide.invert .stamps .sc{color:rgba(244,241,232,.7);}
+  .stamps .st.now{border-style:solid; border-color:var(--clay); border-width:1.5px;}
+  .stamps .st.now .sn{color:var(--clay-deep);}
+  .slide.invert .stamps .st.now .sn{color:var(--clay-soft);}
+  .stamps .st.now .sc{color:var(--ink-soft);}
+  .slide.invert .stamps .st.now .sc{color:rgba(244,241,232,.9);}
+  @media(max-width:600px){ .stamps{grid-template-columns:repeat(2,1fr);} .stamps .sn{font-size:17px;} .stamps .sc{font-size:13px;} }
+
+  /* 눈금 세 줄 */
+  .gauges{align-self:stretch; max-width:42rem; margin:.3rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;}
+  .gauges .gg{border:1px solid var(--rule); border-radius:4px; background:var(--surface);
+    padding:.7rem .95rem; display:flex; align-items:baseline; gap:.9rem;}
+  .slide.invert .gauges .gg{border-color:rgba(244,241,232,.16); background:rgba(0,46,34,.42);}
+  .gauges .gn{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--green); flex:none; min-width:5.4rem;}
+  .slide.invert .gauges .gn{color:var(--paper);}
+  .gauges .gv{font-family:var(--serif); font-size:17.5px; line-height:1.65; color:var(--ink-soft);}
+  .slide.invert .gauges .gv{color:rgba(244,241,232,.82);}
+  .gauges .gg.hot{border-left:3px solid var(--clay);}
+  .gauges .gg.hot .gn{color:var(--clay-deep);}
+  .slide.invert .gauges .gg.hot .gn{color:var(--clay-soft);}
+
+  /* 삽화 */
+  .viz{width:clamp(120px,13vw,168px); height:clamp(120px,13vw,168px); color:var(--green); flex:none;}
+  .viz.wide{width:min(100%,clamp(260px,42vw,440px)); height:auto;}
+  .slide.invert .viz{color:var(--green-soft);}
+  .viz svg{width:100%; height:100%; overflow:visible; display:block;}
+  .viz .ac{color:var(--clay);}
+  .slide.invert .viz .ac{color:var(--clay-soft);}
+  .lbl{font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:.08em;
+    fill:currentColor; stroke:none; opacity:.8;}
+
+  .cover .viz{width:clamp(130px,15vw,196px); height:clamp(130px,15vw,196px);}
+  .cover .title{font-size:clamp(45px,6vw,58px); line-height:1.24;}
+  .logo{width:clamp(78px,8vw,100px); height:auto; display:block; margin:0 auto;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+  .slide.active .r5{transition-delay:.60s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.6s linear infinite;}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.55; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(12px)}50%{transform:translateY(-12px)}}
+  .floatup{animation:floatup 4.6s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(12px);opacity:0}22%{opacity:1}78%{opacity:1}100%{transform:translateY(-22px);opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    .spin,.march,.marchl,.pulse,.twinkle,.rise,.floatup{animation:none;}
+    .r{transition:none; opacity:1; transform:none;}
+  }
+
+  .deck::after{content:""; position:fixed; left:0; right:0; bottom:0; height:58px; z-index:6;
+    pointer-events:none; background:linear-gradient(to top, var(--paper) 38%, rgba(244,241,232,0) 100%);
+    transition:background .5s ease;}
+  body.on-dark .deck::after{background:linear-gradient(to top, var(--green) 38%, rgba(26,74,53,0) 100%);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; width:0; background:var(--clay); z-index:9; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:var(--serif); font-weight:700; font-size:14px; color:var(--ink-mute); letter-spacing:.18em;}
+  body.on-dark .counter{color:var(--green-soft);}
+  .nav{position:fixed; bottom:1rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--ink-mute); font-family:var(--serif); font-size:28px; line-height:1; padding:.35rem .7rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--clay-deep); transform:scale(1.15);}
+  body.on-dark .nav{color:var(--green-soft);}
+  body.on-dark .nav:hover{color:var(--clay-soft);}
+  .nav.prev{right:4rem;} .nav.next{right:1.4rem;}
+  .hint{position:fixed; bottom:1.6rem; left:1.5rem; z-index:7;
+    font-family:var(--sans); font-size:12px; color:var(--ink-mute); letter-spacing:.12em; opacity:.75;}
+  body.on-dark .hint{color:var(--green-soft);}
+
+  @media(max-width:600px){
+    .hint{display:none;} .counter{bottom:.9rem; font-size:12px;}
+    .content{padding:3.6rem 1.2rem 3.4rem; gap:.75rem;}
+    .brandmark{top:1rem; left:1.1rem; font-size:11px; letter-spacing:.26em;}
+    .cards, .cards.three{grid-template-columns:1fr; gap:.35rem;}
+    .cards .cd{padding:.5rem .7rem;}
+    .cards .w{font-size:18px;}
+    .cards .m{font-size:16px; line-height:1.45; margin-top:.1rem;}
+    .layers{gap:.4rem;}
+    .layers .ly{flex-direction:column; gap:.15rem; padding:.58rem .8rem;}
+    .layers .nm{min-width:0; font-size:18px;}
+    .gauges .gg{flex-direction:column; gap:.15rem;}
+    .gauges .gn{min-width:0; font-size:18px;}
+    .body p{margin-bottom:.85rem;}
+    .body .final,.body .quote{font-size:22px;}
+    .viz{width:clamp(96px,26vw,120px); height:clamp(96px,26vw,120px);}
+    .cover .viz{width:clamp(110px,30vw,140px); height:clamp(110px,30vw,140px);}
+    .nav{font-size:24px;} .nav.prev{right:3.4rem;} .nav.next{right:1rem;}
+    .viz.wide{width:min(100%,285px) !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · 콤포스텔라</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · 표지 -->
+  <section class="slide active cover">
+    <div class="content">
+      <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
+      <div class="viz r r2">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 지층 세 겹 -->
+          <path d="M18 112 q40 -12 82 -6 q42 6 82 -8" stroke-opacity=".8"/>
+          <path d="M18 132 q40 -10 82 -5 q42 5 82 -7" stroke-opacity=".5"/>
+          <path d="M18 152 q40 -9 82 -4 q42 4 82 -6" stroke-opacity=".3"/>
+          <!-- 캐 올려지는 원석 -->
+          <g class="floatup" style="animation-delay:.2s">
+            <path class="ac" d="M100 76 L104 88 L116 92 L104 96 L100 108 L96 96 L84 92 L96 88 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:56px 60px; animation-delay:1.1s">
+            <path class="ac" d="M56 48 L59 57 L68 60 L59 63 L56 72 L53 63 L44 60 L53 57 Z" fill="currentColor" stroke="none" opacity=".75"/>
+          </g>
+          <g class="twinkle" style="transform-origin:150px 44px; animation-delay:2.2s">
+            <path class="ac" d="M150 34 L152.5 41.5 L160 44 L152.5 46.5 L150 54 L147.5 46.5 L140 44 L147.5 41.5 Z" fill="currentColor" stroke="none" opacity=".6"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r3">콤포스텔라 1기 · 1구간 까미노 프리미티보 · 1주차</p>
+      <h1 class="title r r4">재료를 캔다</h1>
+      <p class="latin r r5">지식 자산 실사 — 팔 수 있는 것을 가려내는 밤</p>
+    </div>
+  </section>
+
+  <!-- 02 · 오늘 손에 남는 것 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">오늘 · 9월 7일</p>
+      <h2 class="title r r2">두 시간 뒤 손에 <span class="em">셋</span>이 남습니다</h2>
+      <div class="cards three r r3">
+        <div class="cd"><span class="w">도구</span><span class="m">내 자료에서 원석을 캐 오는 장치 하나</span></div>
+        <div class="cd"><span class="w">목록</span><span class="m">그 도구가 채우기 시작한 원석 목록</span></div>
+        <div class="cd acc"><span class="w">값 판정</span><span class="m">캔 것마다 붙는 A · B · C</span></div>
+      </div>
+      <div class="body r r4">
+        <p>원석은 <em>내 자료에 반복해서 나오는 말</em>, <em>내가 만든 개념</em>, <em>실제로 겪은 일화</em>입니다. 요약하지 않고 원문 그대로 모읍니다.</p>
+        <p class="strong">100개는 도구가 채웁니다. 오늘 우리가 만드는 건 목록이 아니라 도구예요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 첫 나눔 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">10:00 — 10:20 · 첫 나눔</p>
+      <h2 class="title r r2">한 사람에 <span class="em">두 마디</span>씩</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">하나<span class="h">고민</span></span><span class="ds">이번 주 내 비즈니스에서 <b>가장 걸리는 것 한 가지</b>. 한 가지만요.</span></div>
+        <div class="ly"><span class="nm">둘<span class="h">기록</span></span><span class="ds">내 기록이 <b>어디에 흩어져 있나</b> — 한 줄로.</span></div>
+        <div class="ly"><span class="nm">셋<span class="h">장착</span></span><span class="ds">여섯 장치를 <b>달고 오셨는지</b> 한 줄로. 못 다신 분은 실습 앞에서 함께 답니다.</span></div>
+      </div>
+      <div class="body r r4">
+        <p>여기서 받아 적는 고민 목록을 <em>네 주 내내 옆에 둡니다.</em> 그날 실습이 어느 고민에 닿는지 짚어 드릴게요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · 4주 지도 -->
+  <section class="slide">
+    <div class="content wide">
+      <div class="viz wide r r1" style="width:min(100%,clamp(280px,52vw,520px));">
+        <svg viewBox="0 0 480 130" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path class="marchl" d="M40 78 H440" stroke-opacity=".35"/>
+          <!-- 1 캔다 -->
+          <g><circle class="ac" cx="60" cy="78" r="9" stroke-width="2.2"/><path class="ac" d="M60 78 v10" stroke-width="2.2"/></g>
+          <text class="lbl ac" x="60" y="106" text-anchor="middle">캔 다</text>
+          <text class="lbl" x="60" y="52" text-anchor="middle" opacity=".55">9/7</text>
+          <!-- 2 기둥 -->
+          <g><path d="M148 88 v-22 M138 66 h20" stroke-opacity=".8"/><circle cx="148" cy="78" r="9" stroke-opacity=".55"/></g>
+          <text class="lbl" x="148" y="106" text-anchor="middle" opacity=".8">기 둥 을  세 운 다</text>
+          <text class="lbl" x="148" y="52" text-anchor="middle" opacity=".45">9/21</text>
+          <!-- 3 하늘 짓기 -->
+          <g><circle cx="264" cy="78" r="9" stroke-opacity=".55"/>
+             <path d="M252 62 l12 -10 l12 10" stroke-opacity=".8"/></g>
+          <text class="lbl" x="264" y="106" text-anchor="middle" opacity=".8">하 늘 을  짓 는 다</text>
+          <text class="lbl" x="264" y="46" text-anchor="middle" opacity=".45">9/28</text>
+          <!-- 4 띄운다 -->
+          <g><circle cx="392" cy="78" r="9" stroke-opacity=".55"/>
+             <g class="rise"><path class="ac" d="M392 56 L395 64 L403 67 L395 70 L392 78 L389 70 L381 67 L389 64 Z" fill="currentColor" stroke="none"/></g></g>
+          <text class="lbl" x="392" y="106" text-anchor="middle" opacity=".8">하 늘 을  띄 운 다</text>
+          <text class="lbl" x="392" y="40" text-anchor="middle" opacity=".45">10/5</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">넉 주 동안</p>
+      <h2 class="title r r3">끝에 <span class="em">물건</span>이 남습니다</h2>
+      <div class="body r r4">
+        <p>문법의 달과 논리의 달에 우리는 클로드와 <em>대화</em>했어요. 묻고, 답을 받고, 글을 맡겼죠.</p>
+        <p class="strong">앞으로 넉 주는 다릅니다. 내 사업의 보이는 세컨드 브레인이 남아요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 세 겹 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">보이는 세컨드 브레인</p>
+      <h2 class="title r r2">이건 <span class="em">세 겹</span>입니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">지식 구조<span class="h">첫째</span></span><span class="ds">몇 해치 기록에서 주장·개념·사례를 골라 <b>무엇이 무엇에서 나왔는지</b> 이어 놓은 것. 값이 붙는 자리가 여기예요.</span></div>
+        <div class="ly"><span class="nm">탐색 화면<span class="h">둘째</span></span><span class="ds">그 구조를 <b>걸어 다니는 화면</b>. 별이 떠 있고, 누르면 그 말을 어디서 했는지 나옵니다.</span></div>
+        <div class="ly"><span class="nm">재생성<span class="h">셋째</span></span><span class="ds">자료가 늘면 <b>구조가 다시 서는 장치</b>. 한 번 만들고 끝나지 않아요.</span></div>
+      </div>
+      <div class="body r r4">
+        <p>디퍼님들 머릿속과 하드디스크에는 이미 몇 년치가 쌓여 있어요. 블로그에, 강의안에, 카톡에, 노션에, 볼트에. <span class="strong">그런데 꺼내 쓰지 못하죠. 본인도 자기 자산의 전모를 모릅니다.</span> 저도 그랬어요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · 밤하늘과 무엇이 다른가 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz wide r r1" style="width:min(100%,clamp(240px,38vw,400px));">
+        <svg viewBox="0 0 300 140" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 왼쪽: 한 주 -->
+          <rect x="20" y="30" width="96" height="76" rx="4" stroke-opacity=".6"/>
+          <g class="twinkle" style="transform-origin:52px 58px"><circle class="ac" cx="52" cy="58" r="2.6" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:84px 74px; animation-delay:1.4s"><circle class="ac" cx="84" cy="74" r="2.2" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:64px 90px; animation-delay:2.4s"><circle class="ac" cx="64" cy="90" r="2" fill="currentColor" stroke="none"/></g>
+          <text class="lbl" x="68" y="124" text-anchor="middle" opacity=".7">한 주</text>
+          <!-- 오른쪽: 몇 해 (쌓이는 층) -->
+          <path d="M184 100 h96 M188 88 h88 M192 76 h80 M196 64 h72" stroke-opacity=".45"/>
+          <path class="marchl" d="M200 52 h64" stroke-opacity=".3"/>
+          <g class="twinkle" style="transform-origin:232px 36px">
+            <path class="ac" d="M232 24 L235 33 L244 36 L235 39 L232 48 L229 39 L220 36 L229 33 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <text class="lbl ac" x="232" y="124" text-anchor="middle">몇 해</text>
+          <path d="M132 68 h32" stroke-opacity=".4"/><path d="M158 62 l8 6 l-8 6" stroke-opacity=".4"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">밤하늘을 이미 쓰고 계시죠</p>
+      <h2 class="title r r3">화면은 닮았어도<br><span class="em">뒤에 있는 게</span> 다릅니다</h2>
+      <div class="body r r4">
+        <p>밤하늘은 한 주를 비춰요. 매주 새로 뜨고, 그 주가 지나면 다음 밤하늘이 옵니다.</p>
+        <p class="strong">우리가 지을 건 몇 해치를 담는 구조물이에요. 쌓일수록 자랍니다.</p>
+        <p>밤하늘 뒤에는 한 주의 기록이 있고, 이것 뒤에는 <em>편집된 지식 구조</em>가 있어요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 그 오 분 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">어디에 쓰나</p>
+      <h2 class="title r r2">미팅 마지막 <span class="em">오 분</span>에<br>이 화면을 엽니다</h2>
+      <div class="body r r3">
+        <p>설명하던 것을 <em>보여주는 것</em>으로 바꾸는 거예요.</p>
+        <p class="strong">그 오 분이 곧 나만의 AX 전문성이 됩니다.</p>
+        <p>넷째 주에 그 오 분을 각본으로 만들어서 손에 쥐여 드릴게요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · 자산화 → 수익화 (그린) -->
+  <section class="slide invert">
+    <div class="content">
+      <p class="kicker r r1">두 구간의 축</p>
+      <h2 class="title r r2">1구간은 <span class="em">자산화</span>,<br>2구간은 <span class="em">수익화</span></h2>
+      <div class="body r r3">
+        <p>이번 넉 주는 <span class="strong">팔릴 물건을 세우는 데까지</span> 갑니다. 파는 법은 다음 구간이고요.</p>
+      </div>
+      <div class="body r r4" style="text-align:center;">
+        <p class="quote">그러니 이 방에서<br>넉 주 내내 물을 건 하나예요.<br><br>무엇에 값이 붙는가.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 검수할 수 있게 시키는 법 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="42" y="26" width="116" height="108" rx="4" stroke-opacity=".7"/>
+          <path d="M58 52 h60 M58 68 h74 M58 84 h52" stroke-opacity=".35" stroke-width="1.6"/>
+          <path class="ac" d="M58 106 l10 10 l20 -22" stroke-width="2.4"/>
+          <path d="M100 106 h44" stroke-opacity=".35" stroke-width="1.6"/>
+          <g class="twinkle" style="transform-origin:166px 34px">
+            <path class="ac" d="M166 24 L168.5 31.5 L176 34 L168.5 36.5 L166 44 L163.5 36.5 L156 34 L163.5 31.5 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">넉 달 동안 말을 걸어 오셨죠</p>
+      <h2 class="title r r3">오늘부터 <span class="em">검수할 수 있는 말</span>로 시킵니다</h2>
+      <div class="body r r4">
+        <p>결과를 눈으로 보고 「좋네」 하는 게 지금까지의 방식이었어요.</p>
+        <p class="strong">그런데 원석이 백 개, 삼백 개가 되면 눈으로 못 봅니다.</p>
+        <p>그러니 시키기 전에 정해요 — <em>무엇이 맞으면 통과인가.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 대조표 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">같은 일, 다른 주문</p>
+      <h2 class="title r r2">결과를 <span class="em">안 봐도 셀 수 있게</span></h2>
+      <div class="swap r r3">
+        <div class="row">
+          <span class="no">잘 정리해 줘</span><span class="ar">→</span>
+          <span class="yes">세 유형으로 나누고, 불분명한 건 별도 목록에 남겨</span>
+        </div>
+        <div class="row">
+          <span class="no">원문 그대로 뽑아 줘</span><span class="ar">→</span>
+          <span class="yes">한 줄마다 파일명과 위치를 달고, 원문과 글자가 다르면 표시해</span>
+        </div>
+        <div class="row">
+          <span class="no">자료를 다 읽어 줘</span><span class="ar">→</span>
+          <span class="yes">읽은 파일 수와 건너뛴 파일과 그 사유를 목록으로 남겨</span>
+        </div>
+      </div>
+      <div class="body r r4">
+        <p>앞의 말들은 <em>결과를 보고 나서야</em> 좋은지 알 수 있고, 뒤의 말들은 <span class="strong">결과를 안 봐도 셀 수 있어요.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 모름과 아님 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">하나 더</p>
+      <h2 class="title r r2">「모름」과 「아님」을<br><span class="em">나누세요</span></h2>
+      <div class="body r r3">
+        <p>값 판정할 때 확인 안 된 걸 「아니다」로 처리하면, <span class="strong">나중에 그 자리를 못 찾습니다.</span></p>
+        <p class="strong">모르는 건 모른다고 두게 하세요.</p>
+      </div>
+      <div class="layers r r4">
+        <div class="ly"><span class="nm">한 걸음<span class="h">방향</span></span><span class="ds">방향을 주고 <b>결과를 본다</b>.</span></div>
+        <div class="ly"><span class="nm">두 걸음<span class="h">형식</span></span><span class="ds">형식을 <b>지정한다</b>.</span></div>
+        <div class="ly"><span class="nm">세 걸음<span class="h">구조</span></span><span class="ds">구조의 약점을 짚는다 — <b>“이건 목록만 만드는 도구인데, 재료가 늘면 이어 붙는 장치로 바꿔 줘.”</b></span></div>
+      </div>
+      <div class="body r r4">
+        <p>한 번에 완벽한 주문을 쓰려고 하지 마세요. <em>셋째가 제일 중요해요.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 실사 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="36" y="34" width="60" height="82" rx="3" stroke-opacity=".7"/>
+          <rect x="52" y="46" width="60" height="82" rx="3" stroke-opacity=".5"/>
+          <rect x="68" y="58" width="60" height="82" rx="3" stroke-opacity=".85"/>
+          <path d="M82 78 h32 M82 92 h26 M82 106 h30" stroke-opacity=".35" stroke-width="1.5"/>
+          <circle class="ac" cx="150" cy="60" r="17" stroke-width="2.2"/>
+          <path class="ac" d="M162 72 l14 14" stroke-width="2.4"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">실사 — Due Diligence</p>
+      <h2 class="title r r3">장부를 다 열어<br><span class="em">무엇이 얼마나</span> 있는지 셉니다</h2>
+      <div class="body r r4">
+        <p>회사를 사고팔 때 하는 일이에요. 오늘 디퍼님이 자기 사업에 그걸 합니다.</p>
+        <p class="strong">디퍼님은 지금 자기가 가진 걸 정확히 모르세요.</p>
+        <p>저도 몰랐어요. 몇 년치를 다 열어 보고 나서야 알았습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 놓치는 자리 셋 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">자주 놓치는 자리</p>
+      <h2 class="title r r2">여기서 <span class="em">셋</span>을 빠뜨립니다</h2>
+      <div class="cards three r r3">
+        <div class="cd"><span class="w">오래된 것</span><span class="m">3년 전 블로그가 대개 제일 진합니다</span></div>
+        <div class="cd"><span class="w">상관없어 보이는 것</span><span class="m">일기와 독서 노트에 자기 언어가 가장 많아요</span></div>
+        <div class="cd"><span class="w">남이 안 볼 것</span><span class="m">강의 준비 메모 · 상담 기록 · 단톡방에 길게 쓴 답변</span></div>
+      </div>
+      <div class="body r r4">
+        <p class="final">빼기 전에 일단 다 올리세요.<br>값은 캐고 나서 매깁니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · 캐는 것 셋 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">채굴</p>
+      <h2 class="title r r2">캐는 것은 <span class="em">셋</span>입니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">반복되는 말<span class="h">패턴</span></span><span class="ds">자기도 모르게 <b>여러 해에 걸쳐 되풀이한</b> 문장.</span></div>
+        <div class="ly"><span class="nm">내가 만든 개념<span class="h">언어</span></span><span class="ds">남이 안 쓰는 <b>내 이름, 내 비유</b>.</span></div>
+        <div class="ly"><span class="nm">겪은 일화<span class="h">장면</span></span><span class="ds"><b>날짜와 사람과 장면</b>이 붙은 것.</span></div>
+      </div>
+      <div class="body r r4">
+        <p class="strong">요약하면 디퍼님 말투가 사라집니다. 매끈해지고, 누가 썼는지 지워져요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 규칙 하나 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <g class="twinkle" style="transform-origin:100px 56px">
+            <path class="ac" d="M100 40 L104.5 52 L116 56 L104.5 60 L100 72 L95.5 60 L84 56 L95.5 52 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <path class="marchl ac" d="M100 76 v22" stroke-opacity=".8"/>
+          <rect x="52" y="100" width="96" height="36" rx="4" stroke-opacity=".7"/>
+          <text class="lbl" x="100" y="122" text-anchor="middle" opacity=".75">파 일 명 · 위 치</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">규칙은 하나</p>
+      <h2 class="title r r3">원문 그대로,<br><span class="em">출처를 달아서</span></h2>
+      <div class="body r r4">
+        <p>어느 파일 몇 쪽에서 나왔는지 함께 적습니다. 나중에 별을 눌렀을 때 <span class="strong">이 출처가 따라 나와요.</span></p>
+        <p>고쳐 쓰고 싶은 유혹이 올 때, 출처가 있으면 손이 멈추기도 하고요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · A·B·C -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">오늘 한 가지를 더 합니다</p>
+      <h2 class="title r r2">캔 것마다 <span class="em">값</span>을 답니다</h2>
+      <div class="abc r r3">
+        <div class="g a"><span class="lt">A</span><span class="dd"><b>고객이 실제로 돈을 낸 적 있는 것</b><br>이 말을 해서 강의가 팔렸거나, 상담이 성사됐거나, 책이 나갔거나.</span></div>
+        <div class="g"><span class="lt">B</span><span class="dd"><b>고객이 물어본 적은 있는 것</b><br>아직 돈은 안 붙었는데 반응이 있었던 것.</span></div>
+        <div class="g"><span class="lt">C</span><span class="dd"><b>나만 아는 것</b><br>아무도 물어본 적 없는 것.</span></div>
+      </div>
+      <div class="body r r4">
+        <p class="final">목록만 있으면 그냥 창고예요.<br>값이 붙어야 자산이고요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · C를 지우지 마세요 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">한 가지 당부</p>
+      <h2 class="title r r2">C가 많다고<br><span class="em">실망하지 마세요</span></h2>
+      <div class="body r r3">
+        <p>C 중에 <em>다음 주에 기둥이 되는 것</em>이 있습니다. 지우지 말고 표만 다세요.</p>
+        <p class="strong">값 판정은 버리는 작업이 아니라 아는 작업이에요.</p>
+      </div>
+      <div class="body r r4" style="text-align:center;">
+        <p class="quote">오늘은 A가 몇 개인지<br>알고 돌아가는 게 중요해요.<br><br>그게 디퍼님이 지금<br>팔고 있는 것의 목록입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 · 오늘의 규칙 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 손으로 옮겨적기(X) vs 장치(O) -->
+          <circle class="ac" cx="100" cy="70" r="26" stroke-width="2.2"/>
+          <path class="ac march" d="M100 44 a26 26 0 0 1 0 52" stroke-opacity=".55"/>
+          <path d="M126 70 h22" stroke-opacity=".5"/><path d="M142 64 l8 6 l-8 6" stroke-opacity=".5"/>
+          <path d="M52 70 h-22" stroke-opacity=".5"/><path d="M46 64 l-8 6 l8 6" stroke-opacity=".5"/>
+          <g class="floatup"><circle class="ac" cx="168" cy="66" r="2.6" fill="currentColor" stroke="none"/></g>
+          <g class="floatup" style="animation-delay:1.6s"><circle class="ac" cx="178" cy="80" r="2.2" fill="currentColor" stroke="none"/></g>
+          <rect x="22" y="106" width="52" height="30" rx="3" stroke-opacity=".55"/>
+          <text class="lbl" x="48" y="126" text-anchor="middle" opacity=".7">자 료</text>
+          <rect x="126" y="106" width="52" height="30" rx="3" stroke-opacity=".55"/>
+          <text class="lbl ac" x="152" y="126" text-anchor="middle">원 석</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">오늘의 규칙 하나</p>
+      <h2 class="title r r3">도구를 <span class="em">손으로</span> 만들지 마세요</h2>
+      <div class="body r r4">
+        <p>원석을 손으로 옮겨 적지도 마시고요. 오늘 만드는 건 원석 목록 자체보다 <em>원석을 캐는 도구</em>예요.</p>
+        <p class="strong">한 번 쓰고 버리는 말 대신, 계속 쓰는 장치를 남깁니다. 자료가 늘면 다시 돌리면 되니까요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 · 크레덴시알 (그린) -->
+  <section class="slide invert">
+    <div class="content wide">
+      <p class="kicker r r1">크레덴시알 · Credencial</p>
+      <h2 class="title r r2">순례자는 <span class="em">도장</span>을 받으며 걷습니다</h2>
+      <div class="stamps r r3">
+        <div class="st now"><span class="sn">1</span><span class="sc">파이프라인이 돌고<br>출처가 100%</span></div>
+        <div class="st"><span class="sn">2</span><span class="sc">기둥 문장과<br>포지셔닝</span></div>
+        <div class="st"><span class="sn">3</span><span class="sc">구조와<br>탐색 화면</span></div>
+        <div class="st"><span class="sn">4</span><span class="sc">고객 앞<br>시연</span></div>
+        <div class="st"><span class="sn">5</span><span class="sc">사다리<br>한 장</span></div>
+        <div class="st"><span class="sn">6</span><span class="sc">사례 0호와<br>화면 증거</span></div>
+        <div class="st"><span class="sn">7</span><span class="sc">진단 90분<br>완주</span></div>
+        <div class="st"><span class="sn">8</span><span class="sc">첫 유료<br>진단</span></div>
+      </div>
+      <div class="body r r4">
+        <p class="strong">점수가 아니라 이진법입니다.</p>
+        <p>오늘 만들기로 한 게 볼트에 있으면 찍히고, 없으면 안 찍혀요. <em>잘 만들었는지는 안 물어봅니다.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 · 오늘의 도장 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">도장 1 · 오늘</p>
+      <h2 class="title r r2">파이프라인이 돌고<br>출처가 <span class="em">백 퍼센트</span></h2>
+      <div class="body r r3">
+        <p><span class="strong">개수는 안 셉니다.</span> 100개가 어려우면 폴더 하나로 줄이셔도 돼요.</p>
+        <p class="strong">대신 출처는 하나도 빠지면 안 됩니다 — 셋째 주에 그게 없으면 못 씁니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 · 세 눈금 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">도장 밑에 세 줄</p>
+      <h2 class="title r r2">합치지 <span class="em">않습니다</span></h2>
+      <div class="gauges r r3">
+        <div class="gg"><span class="gn">쌓인 것</span><span class="gv">볼트에 실제로 늘어난 것 — 원석·문장·파일.</span></div>
+        <div class="gg"><span class="gn">굳은 것</span><span class="gv">다시 계산하지 않아도 되게 <b>정해 놓은 것</b>.</span></div>
+        <div class="gg hot"><span class="gn">닿은 것</span><span class="gv">바깥 사람한테 <b>실제로 닿은 횟수</b> — 읽어 드린 것, 보여 드린 것, 여쭌 것, 팔린 것.</span></div>
+      </div>
+      <div class="body r r4">
+        <p>합친 점수는 올리려고 꾸미게 되거든요. <em>오늘 「닿은 것」은 0입니다.</em> 아직 아무 데도 안 나갔으니까요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 · 셋째 줄 (그린) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="34" y="34" width="72" height="96" rx="4" stroke-opacity=".55"/>
+          <path d="M96 34 v96" stroke-opacity=".35"/>
+          <circle cx="88" cy="84" r="2.6" fill="currentColor" stroke="none" opacity=".7"/>
+          <path class="marchl ac" d="M110 84 h44" stroke-width="2.2"/>
+          <g class="twinkle" style="transform-origin:168px 84px">
+            <path class="ac" d="M168 72 L171 81 L180 84 L171 87 L168 96 L165 87 L156 84 L165 81 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <text class="lbl" x="70" y="148" text-anchor="middle" opacity=".6">방  안</text>
+          <text class="lbl ac" x="168" y="148" text-anchor="middle">바  깥</text>
+        </svg>
+      </div>
+      <p class="kicker r r2">셋째 줄만 말씀드릴게요</p>
+      <h2 class="title r r3">앞의 두 줄은 <span class="em">방 안</span>에서도 늘어요</h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="quote">셋째 줄은<br>문을 열고 나가야만 늡니다.<br><br>여덟 주가 스터디로 끝날지<br>사업이 될지가<br>이 한 줄로 갈립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 · 실습 개관 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">10:45 — 11:40 · 실습 55분</p>
+      <h2 class="title r r2">세 단계로 갑니다</h2>
+      <div class="steps r r3">
+        <div class="sp"><span class="tm">10분</span><span class="nmm">실사표</span><span class="mm">내 자료가 어디에 얼마나 있나</span></div>
+        <div class="sp"><span class="tm">30분</span><span class="nmm">채굴 도구</span><span class="mm">원석을 캐 오는 장치 만들기</span></div>
+        <div class="sp"><span class="tm">15분</span><span class="nmm">첫 수확</span><span class="mm">돌려 보고 값 판정 열 줄</span></div>
+        <div class="sp"><span class="tm">—</span><span class="nmm">고르기</span><span class="mm">A 중 하나 — 나눔에서 읽을 문장</span></div>
+      </div>
+      <div class="body r r4">
+        <p class="strong">도구가 완벽하지 않아도 됩니다. 한 번이라도 원석을 뱉으면 오늘 목표 통과예요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24 · 1단계 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">1단계 · 10분</p>
+      <h2 class="title r r2">자산 실사표를 <span class="em">채웁니다</span></h2>
+      <div class="prompt r r3">파일 하나를 만듭니다 — <b>내하늘/00_자산실사표.md</b>
+
+| 어디 | 무엇이 | 얼마나 | 여기서 돈이 나온 적 | 넣을까 |
+|---|---|---|---|---|
+| 예) 볼트 03_강의안 | 2년치 강의 자료 | 40개쯤 | 있음 (강의 6회) | ○ |
+| [        ] | [        ] | [        ] | [        ] | [   ] |</div>
+      <div class="body r r4">
+        <p>빠뜨리기 쉬운 자리 — <em>오래된 블로그 · 일기 · 독서 노트 · 강의 준비 메모 · 상담 기록 · 단톡방에 길게 쓴 답변.</em></p>
+        <p class="strong">네 번째 칸이 오늘 새로 붙는 칸입니다. 비어 있어도 씁니다 — 어디가 비었는지가 정보예요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 25 · 2단계 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">2단계 · 30분</p>
+      <h2 class="title r r2">채굴 도구를 <span class="em">만듭니다</span></h2>
+      <div class="prompt r r3">나는 <b>[내 사업 한 줄 소개]</b>.
+<b>[     ]</b> 폴더의 글을 전부 읽고, 아래 세 가지를 원문 그대로 뽑아
+내하늘/01_원석목록.md 에 모아 주는 도구를 만들어 줘.
+
+1. 반복해서 나오는 말 — 여러 글에 되풀이되는 내 문장
+2. 내가 만든 개념 — 남이 안 쓰는 내 이름·내 비유
+3. 실제로 겪은 일화 — 날짜·사람·장면이 붙은 것
+
+규칙:
+- 요약하지 말고 원문 그대로. 고쳐 쓰지 말 것
+- 한 줄마다 출처를 단다 (파일명·위치)
+- 세 가지 중 무엇인지 표시한다
+- 재료를 더 넣고 다시 돌리면 목록에 이어 붙는다
+
+다 만들면, 내가 이 도구를 다음에 어떻게 다시 부르는지도 알려 줘.</div>
+      <div class="body r r4">
+        <p><span class="strong">내하늘 폴더에서 클로드 코드를 열고</span> 빈칸을 채워 말을 겁니다. 채팅창에도 같은 글을 올려 둘게요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 26 · 3단계 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">3단계 · 15분</p>
+      <h2 class="title r r2">돌려 보고 <span class="em">세 줄</span>만 확인합니다</h2>
+      <div class="cards three r r3">
+        <div class="cd"><span class="w">출처</span><span class="m">한 줄마다 붙었는가</span></div>
+        <div class="cd"><span class="w">원문</span><span class="m">고쳐지지 않았는가</span></div>
+        <div class="cd"><span class="w">밀도</span><span class="m">요약으로 뭉개지지 않았는가</span></div>
+      </div>
+      <div class="body r r4">
+        <p><span class="strong">30개쯤 나오면 오늘은 통과입니다.</span> 자료가 많으면 폴더 하나부터. 어긋난 대목만 클로드에게 말해 고칩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 27 · 값 판정 프롬프트 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">3단계 이어서 · 값 판정</p>
+      <h2 class="title r r2">손으로 매기지 말고 <span class="em">물어보게</span> 시킵니다</h2>
+      <div class="prompt r r3">01_원석목록.md 의 각 줄에 값 판정 칸을 하나 붙여 줘.
+
+A = 이 말을 해서 고객이 실제로 돈을 낸 적이 있다
+B = 고객이 물어본 적은 있다
+C = 아무도 물어본 적 없다
+
+- 나에게 한 줄씩 물어봐 줘. 내가 A/B/C로 답하면 그대로 적는다
+- <b>네가 짐작해서 매기지 말 것</b>
+- 먼저 열 줄만 하고 멈춰 줘</div>
+      <div class="body r r4">
+        <p class="strong">A/B/C는 디퍼님만 아세요. 여우는 못 맞힙니다.</p>
+        <p>짐작해서 매긴 판정은 <em>다음 주에 틀린 기둥으로 이어집니다.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 28 · 마지막 나눔 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M64 118 q36 -14 72 0" stroke-opacity=".4"/>
+          <rect x="70" y="60" width="60" height="42" rx="4" stroke-opacity=".65"/>
+          <path d="M84 76 h32 M84 88 h22" stroke-opacity=".35" stroke-width="1.5"/>
+          <g class="twinkle" style="transform-origin:100px 36px">
+            <path class="ac" d="M100 24 L103.5 33 L112 36 L103.5 39 L100 48 L96.5 39 L88 36 L96.5 33 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <path class="marchl ac" d="M100 52 v6" stroke-opacity=".7"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">11:40 — 11:52 · 마지막 나눔</p>
+      <h2 class="title r r3">A칸에서 <span class="em">하나씩</span><br>소리 내어 읽습니다</h2>
+      <div class="body r r4">
+        <p>마음에 드는 문장 말고, <span class="strong">돈이 붙은 적 있는 문장</span>으로요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 29 · 과제 -->
+  <section class="slide">
+    <div class="content wide">
+      <p class="kicker r r1">두 주 뒤 · 9월 21일(월)</p>
+      <h2 class="title r r2">셋입니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">하나<span class="h">채운다</span></span><span class="ds">원석을 <b>백 개 이상</b>으로. 손으로 적지 마시고, 오늘 만든 도구에 재료를 더 넣어 다시 돌리세요.</span></div>
+        <div class="ly"><span class="nm">둘<span class="h">매긴다</span></span><span class="ds">값 판정을 <b>끝까지</b>. 첫 감으로 매기시면 돼요. 다 매기면 <b>A가 몇 개인지 세어</b> 오세요.</span></div>
+        <div class="ly"><span class="nm">셋<span class="h">고른다</span></span><span class="ds">A 중에 <b>“이걸로 돈을 벌었다니 나도 좀 의외다”</b> 싶은 것 셋에 별표. 다음 주에 그 셋부터 시작합니다.</span></div>
+      </div>
+      <div class="body r r4">
+        <p>9월 14일은 제주 워크숍 주간이라 쉽니다. <em>두 주가 있어요.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 30 · 닫기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M100 152 v-46" stroke-opacity=".8"/>
+          <path d="M100 124 q-24 -6 -32 -30" stroke-opacity=".65"/>
+          <path d="M100 112 q24 -8 30 -32" stroke-opacity=".65"/>
+          <ellipse cx="100" cy="152" rx="36" ry="8" stroke-opacity=".3"/>
+          <g class="twinkle" style="transform-origin:100px 62px">
+            <path class="ac" d="M100 46 L104.5 58 L116 62 L104.5 66 L100 78 L95.5 66 L84 62 L95.5 58 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2">닫기 · 1구간 1주차</p>
+      <h2 class="title r r3">다음 주가 넉 주 중<br>제일 <span class="em">중요한</span> 시간이에요</h2>
+      <div class="body r r4" style="text-align:center;">
+        <p class="final">디퍼님 사업에서<br>남이 복제하지 못하는 자리를 정합니다.<br><br>재료가 얇으면 그 자리도 얇게 나와요.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1rem;">다음 밤 9월 21일 — 기둥을 세운다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 30</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    document.body.classList.toggle('on-dark', slides[i].classList.contains('invert'));
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
