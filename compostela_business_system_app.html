@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<title>내 비즈니스 시스템 — 디퍼 콤포스텔라 1기</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="내 비즈니스 시스템 — 콤포스텔라 1기">
+<meta property="og:description" content="열일곱 장을 한 장씩 넘기면 내 사업의 시스템이 한 장으로 남습니다. 퍼스널 MBA의 바닥 위에 캐고·세우고·짓고·여는 네 기둥.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/compostela_business_system_app.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/compostela_business_system_app_og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#4B3D78; --green-deep:#342A5C; --green-deepest:#241C42; --green-soft:#B9B0CF;
+    --paper:#F7F5F9; --surface:#EFECF4; --rule:#DED9E8; --rule-strong:#C8C1D8;
+    --ink:#1E1A2A; --ink-soft:#4B4659; --ink-mute:#78728A;
+    --clay:#6F60A8; --clay-deep:#5A4C92; --clay-soft:#C7BEDC;
+    --gold:#D4B972; --gold-deep:#B39A5C; --gold-soft:#EFE4C2; --mark:#F4ECC6;
+    --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
+    --sans:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Segoe UI','Malgun Gothic',sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif); word-break:keep-all; overflow-wrap:break-word;
+    -webkit-font-smoothing:antialiased; line-height:1.75; min-height:100vh;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.035; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");}
+  button{font-family:inherit; cursor:pointer;}
+  input,textarea,select{font-family:var(--sans); font-size:16px; color:var(--ink);}
+  input[type=text],textarea{width:100%; border:1px solid var(--rule-strong); border-radius:8px; background:#fff; padding:.6rem .75rem; line-height:1.55;}
+  input[type=text]:focus,textarea:focus{outline:2px solid var(--clay-soft); border-color:var(--clay);}
+  textarea{resize:vertical; min-height:3.2rem;}
+  input[type=number]{width:4.6rem; border:1px solid var(--rule-strong); border-radius:8px; background:#fff; padding:.45rem .5rem; text-align:center;}
+  code{font-family:var(--sans); font-size:.92em; background:var(--surface); padding:.05em .35em; border-radius:4px;}
+
+  /* ── 표지 ── */
+  .hero{position:relative; overflow:hidden; color:var(--paper);
+    background:linear-gradient(168deg,var(--green-deepest) 0%,var(--green-deep) 48%,var(--green) 100%);
+    padding:clamp(2.6rem,7vw,4.6rem) clamp(1.3rem,6vw,3rem) clamp(2.2rem,5vw,3rem);}
+  .stars{position:absolute; inset:0; pointer-events:none;}
+  .stars i{position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.75;}
+  .stars i.s{width:2px; height:2px; opacity:.45;}
+  .stars i.l{width:4px; height:4px; opacity:.9; box-shadow:0 0 10px 2px rgba(255,255,255,.45);}
+  .hero .in{position:relative; max-width:40rem; margin:0 auto;}
+  .hero .logo{width:88px; height:auto; display:block; margin-bottom:1.3rem;}
+  .kicker{font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:var(--clay-soft); margin-bottom:.45rem;}
+  .hero .sub{font-family:var(--sans); font-size:14px; color:var(--green-soft); letter-spacing:.05em; margin-bottom:1rem;}
+  .hero h1{font-weight:700; font-size:clamp(26px,6vw,42px); line-height:1.25; letter-spacing:-.01em;}
+  .hero h1 small{display:block; font-weight:400; font-size:clamp(16px,2.5vw,20px); color:var(--green-soft); margin-top:.5rem; letter-spacing:0;}
+  .hero p.lead{margin-top:1.3rem; font-size:clamp(15.5px,1.8vw,17.5px); color:rgba(247,245,249,.86); line-height:1.85;}
+  .hero .form{margin-top:1.5rem; display:flex; flex-direction:column; gap:.7rem;}
+  .hero label{font-family:var(--sans); font-size:13px; color:var(--green-soft); display:block; margin-bottom:.25rem;}
+  .hero input[type=text]{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.28); color:#fff;}
+  .hero input[type=text]::placeholder{color:rgba(255,255,255,.4);}
+  .hero input[type=text]:focus{outline:2px solid var(--gold); border-color:var(--gold);}
+  .hero .go{margin-top:.6rem; align-self:flex-start; background:var(--gold); color:var(--green-deepest); border:0; border-radius:999px; padding:.8rem 1.6rem; font-family:var(--sans); font-weight:700; font-size:15px; letter-spacing:.04em;}
+  .hero .go:hover{background:#E4CB8C;}
+  .hero .resume{font-family:var(--sans); font-size:13px; color:var(--green-soft); margin-top:.9rem;}
+  .hero .resume button{background:none; border:0; color:var(--gold); text-decoration:underline; font-size:13px; padding:0;}
+
+  /* ── 진행 레일 ── */
+  .rail{position:sticky; top:0; z-index:5; background:rgba(247,245,249,.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--rule);}
+  .rail .in{max-width:40rem; margin:0 auto; padding:.6rem clamp(1rem,4vw,1.6rem); display:flex; align-items:center; gap:.35rem; font-family:var(--sans);}
+  .rail .st{flex:1; display:flex; flex-direction:column; align-items:center; gap:.25rem; font-size:11px; color:var(--ink-mute); letter-spacing:.02em; background:none; border:0; padding:.2rem 0;}
+  .rail .st .dot{width:22px; height:22px; border-radius:50%; border:1.5px solid var(--rule-strong); display:grid; place-items:center; font-size:11px; color:var(--ink-mute); background:#fff; transition:all .2s;}
+  .rail .st.on{color:var(--green);} .rail .st.on .dot{border-color:var(--green); color:var(--green); font-weight:700;}
+  .rail .st.done .dot{background:var(--green); border-color:var(--green); color:#fff;}
+  .rail .st.stamp .dot{background:var(--gold); border-color:var(--gold-deep); color:var(--green-deepest);}
+  .rail .line{flex:0 0 10px; height:1px; background:var(--rule-strong); margin-bottom:1rem;}
+  .rail .cnt{font-size:11px; color:var(--ink-mute); white-space:nowrap; margin-left:.4rem; margin-bottom:1rem;}
+
+  /* ── 카드 ── */
+  main{position:relative; z-index:1; max-width:40rem; margin:0 auto; padding:1.6rem clamp(1rem,4vw,1.6rem) 6rem;}
+  .card{background:#fff; border:1px solid var(--rule); border-radius:14px; padding:clamp(1.3rem,4vw,2rem); box-shadow:0 6px 24px rgba(36,28,66,.06); animation:rise .28s ease;}
+  @keyframes rise{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+  .card .tag{font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--clay-deep);}
+  .card .tag span{color:var(--ink-mute); letter-spacing:.04em; text-transform:none; font-weight:400; margin-left:.5rem;}
+  .card h2{font-size:clamp(21px,3.4vw,26px); line-height:1.35; margin:.35rem 0 .5rem; font-weight:700;}
+  .card .why{color:var(--ink-soft); font-size:clamp(15.5px,1.8vw,17px); margin-bottom:1.2rem; line-height:1.8;}
+  .card .why b{color:var(--ink); font-weight:600;}
+  .src{font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); margin-top:1.2rem; padding-top:.8rem; border-top:1px dashed var(--rule);}
+
+  .row{display:flex; align-items:center; gap:.7rem; padding:.55rem 0; border-bottom:1px solid var(--rule); flex-wrap:wrap;}
+  .row:last-child{border-bottom:0;}
+  .row .lbl{flex:1 1 9rem; font-size:16px;}
+  .row .lbl small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); line-height:1.5;}
+  .row label.pl{display:flex; gap:.6rem; align-items:center; flex:1 1 9rem; cursor:pointer;}
+  .row label.pl input{accent-color:var(--green); width:18px; height:18px;}
+  .seg{display:inline-flex; border:1px solid var(--rule-strong); border-radius:999px; overflow:hidden; background:var(--surface);}
+  .seg button{border:0; background:none; padding:.4rem .8rem; font-family:var(--sans); font-size:13.5px; color:var(--ink-soft);}
+  .seg button.on{background:var(--green); color:#fff; font-weight:600;}
+  .seg button.on.warn{background:var(--gold-deep); color:#fff;}
+  .seg button.on.mute{background:var(--ink-mute); color:#fff;}
+
+  .verdict{margin-top:1.1rem; padding:1rem 1.1rem; border-radius:10px; background:linear-gradient(135deg,var(--green-deepest),var(--green-deep)); color:var(--paper); font-size:clamp(16px,1.9vw,18px); line-height:1.7; position:relative; padding-left:2.6rem;}
+  .verdict::before{content:"★"; position:absolute; left:1rem; top:1rem; color:var(--gold); font-size:18px; line-height:1;}
+  .verdict u{text-decoration:none; border-bottom:2px solid var(--gold); font-weight:700;}
+  .verdict small{display:block; font-family:var(--sans); font-size:13px; color:var(--green-soft); margin-top:.4rem; font-weight:400;}
+  .verdict.soft{background:var(--surface); color:var(--ink); border:1px solid var(--rule);}
+  .verdict.soft::before{color:var(--gold-deep);}
+  .verdict.soft small{color:var(--ink-mute);}
+
+  .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin:.4rem 0 .6rem;}
+  .chip{border:1px solid var(--rule-strong); background:#fff; border-radius:999px; padding:.42rem .85rem; font-family:var(--sans); font-size:14px; color:var(--ink-soft); line-height:1.3;}
+  .chip.on{background:var(--green); color:#fff; border-color:var(--green);}
+
+  .opt{display:flex; flex-direction:column; gap:.5rem; margin:.3rem 0 .8rem;}
+  .opt button{text-align:left; border:1px solid var(--rule-strong); background:#fff; border-radius:10px; padding:.7rem .9rem; font-family:var(--sans); font-size:14.5px; color:var(--ink); line-height:1.5;}
+  .opt button b{display:block; font-family:var(--serif); font-size:16px; margin-bottom:.1rem;}
+  .opt button small{color:var(--ink-mute); font-size:13px;}
+  .opt button.on{border-color:var(--green); background:var(--surface); box-shadow:inset 0 0 0 1px var(--green);}
+  .opt button.on b{color:var(--green);}
+
+  .fld{margin:.7rem 0;}
+  .fld label{display:block; font-family:var(--sans); font-size:13px; color:var(--ink-mute); margin-bottom:.3rem;}
+  .fld label b{color:var(--ink); font-weight:600;}
+  .hint{font-family:var(--sans); font-size:13px; color:var(--ink-mute); margin-top:.35rem; line-height:1.5;}
+  .hint.warn{color:var(--gold-deep);}
+
+  .slider{display:grid; grid-template-columns:1fr 2.6rem; gap:.3rem .8rem; align-items:center; padding:.55rem 0; border-bottom:1px solid var(--rule);}
+  .slider .q{font-size:15px; line-height:1.5;} .slider .q small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);}
+  .slider .v{font-family:var(--sans); font-weight:700; color:var(--green); text-align:right; font-size:18px; grid-row:span 2;}
+  .slider input[type=range]{width:100%; accent-color:var(--green);}
+  .sum{display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-top:1rem; font-family:var(--sans);}
+  .sum div{border:1px solid var(--rule); border-radius:8px; padding:.7rem .5rem; text-align:center; background:var(--surface); font-size:12.5px; color:var(--ink-soft); line-height:1.4;}
+  .sum div b{display:block; font-size:18px; color:var(--ink-mute); margin-bottom:.1rem;}
+  .sum div.on{background:var(--green); color:#fff; border-color:var(--green);} .sum div.on b{color:#fff;}
+
+  .abc{margin:.8rem 0 .2rem; padding:.8rem .9rem; border:1px solid var(--rule); border-radius:10px; background:var(--surface);}
+  .abc .k{font-family:var(--sans); font-weight:700; font-size:18px; color:var(--green); display:inline-block; width:1.6rem;}
+  .abc .k.b{color:var(--clay);} .abc .k.c{color:var(--ink-mute);}
+  .abc .desc{font-family:var(--sans); font-size:13px; color:var(--ink-mute); margin:-.1rem 0 .5rem;}
+  .abc input[type=text]{margin-bottom:.4rem;}
+  .abc input[type=text]:last-child{margin-bottom:0;}
+
+  .tri{display:grid; grid-template-columns:1fr; gap:.45rem; margin:.7rem 0; padding:.9rem; border:1px solid var(--rule); border-radius:10px; background:var(--surface);}
+  .tri .n{font-family:var(--sans); font-size:12px; color:var(--clay-deep); font-weight:700; letter-spacing:.1em;}
+  .tri .arrow{font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); text-align:center;}
+
+  .pillar{display:grid; grid-template-columns:1fr auto; gap:.5rem .7rem; align-items:center; padding:.7rem 0; border-bottom:1px solid var(--rule);}
+  .pillar:last-of-type{border-bottom:0;}
+  .pillar .t{font-size:16px; line-height:1.5; min-width:0;} .pillar .t small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); margin-top:.25rem;}
+  .pillar select{border:1px solid var(--rule-strong); border-radius:8px; padding:.35rem .5rem; background:#fff; font-size:13.5px;}
+  .add{margin-top:.6rem; background:none; border:1px dashed var(--rule-strong); border-radius:8px; padding:.5rem .9rem; font-family:var(--sans); font-size:13.5px; color:var(--clay-deep);}
+
+  .pos{padding:1rem 1.1rem; border-radius:10px; background:var(--surface); border:1px solid var(--rule); font-size:17px; line-height:2.1;}
+  .pos input[type=text]{display:inline-block; width:auto; min-width:7rem; max-width:100%; padding:.15rem .5rem; border:0; border-bottom:2px solid var(--clay); border-radius:0; background:transparent; font-family:var(--serif); font-size:17px; color:var(--green-deep); font-weight:600;}
+  .pos input[type=text]:focus{outline:none; border-bottom-color:var(--gold-deep);}
+
+  .checks{display:flex; flex-direction:column; gap:.55rem; margin:.7rem 0;}
+  .checks label{display:flex; gap:.7rem; align-items:flex-start; font-size:15.5px; line-height:1.55; cursor:pointer; padding:.6rem .8rem; border:1px solid var(--rule); border-radius:10px; background:#fff;}
+  .checks label.on{border-color:var(--green); background:var(--surface);}
+  .checks input{margin-top:.35rem; accent-color:var(--green); width:18px; height:18px; flex:0 0 18px;}
+  .checks small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);}
+  .stamp{display:flex; align-items:center; gap:1rem; margin-top:1rem; padding:1rem 1.1rem; border-radius:12px; border:1.5px dashed var(--rule-strong); background:#fff;}
+  .stamp .seal{width:64px; height:64px; flex:0 0 64px; border-radius:50%; border:2px solid var(--rule-strong); display:grid; place-items:center; font-family:var(--sans); font-size:11px; color:var(--ink-mute); text-align:center; line-height:1.2; transform:rotate(-8deg); transition:all .3s;}
+  .stamp.on{border-color:var(--gold-deep); background:var(--gold-soft);}
+  .stamp.on .seal{border-color:var(--green-deep); color:var(--green-deep); background:#fff; box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 4px var(--green-deep); font-weight:700;}
+  .stamp .txt{font-size:15px; line-height:1.55;} .stamp .txt small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute);}
+
+  .nav{display:flex; justify-content:space-between; align-items:center; gap:.8rem; margin-top:1.6rem;}
+  .nav button{border-radius:999px; padding:.7rem 1.3rem; font-family:var(--sans); font-size:14.5px; font-weight:600;}
+  .nav .prev{background:none; border:1px solid var(--rule-strong); color:var(--ink-soft);}
+  .nav .next{background:var(--green); border:1px solid var(--green); color:#fff;}
+  .nav .next:hover{background:var(--green-deep);}
+  .nav .skip{background:none; border:0; color:var(--ink-mute); font-size:13px; text-decoration:underline; padding:.4rem;}
+
+  /* ── 결과 한 장 ── */
+  .sheet{background:#fff; border:1px solid var(--rule); border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(36,28,66,.06); animation:rise .3s ease;}
+  .sheet .head{background:linear-gradient(168deg,var(--green-deepest),var(--green-deep) 60%,var(--green)); color:var(--paper); padding:1.6rem clamp(1.2rem,4vw,2rem); position:relative; overflow:hidden;}
+  .sheet .head h2{font-size:clamp(22px,4vw,30px); line-height:1.3; position:relative;}
+  .sheet .head h2 small{display:block; font-size:14px; font-weight:400; color:var(--green-soft); margin-top:.4rem; font-family:var(--sans);}
+  .sheet .head .biz{position:relative; margin-top:.9rem; font-size:16.5px; line-height:1.7; color:rgba(247,245,249,.9); border-left:2px solid var(--gold); padding-left:.8rem;}
+  .sheet .body{padding:1.4rem clamp(1.2rem,4vw,2rem) 1.8rem;}
+  .sheet h3{font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--clay-deep); margin:1.6rem 0 .6rem;}
+  .sheet h3:first-child{margin-top:0;}
+  .base{display:grid; grid-template-columns:1fr; gap:.45rem; font-family:var(--sans); font-size:14px;}
+  .base div{display:grid; grid-template-columns:6.4rem 1fr; gap:.6rem; padding:.5rem .7rem; border:1px solid var(--rule); border-radius:8px; background:var(--surface); line-height:1.5;}
+  .base div span{color:var(--ink-mute);} .base div b{font-weight:500; color:var(--ink);}
+  .base div b.hot{color:var(--gold-deep); font-weight:700;}
+
+  .four{display:grid; grid-template-columns:repeat(4,1fr); gap:.45rem;}
+  .four .col{border:1px solid var(--rule-strong); border-radius:10px; overflow:hidden; background:#fff; display:flex; flex-direction:column; min-width:0;}
+  .four .col .top{background:var(--green-deep); color:var(--paper); text-align:center; padding:.55rem .3rem; font-family:var(--sans); font-size:11.5px; letter-spacing:.1em;}
+  .four .col .top b{display:block; font-family:var(--serif); font-size:clamp(17px,3vw,22px); letter-spacing:0; margin-top:.05rem;}
+  .four .col .mid{padding:.6rem .55rem; font-size:13px; line-height:1.5; color:var(--ink); flex:1; border-bottom:1px solid var(--rule);}
+  .four .col .mid .e{color:var(--ink-mute); font-family:var(--sans); font-size:12px;}
+  .four .col .bot{padding:.45rem .55rem; font-family:var(--sans); font-size:11.5px; color:var(--ink-mute); text-align:center; background:var(--surface);}
+  .four .col .bot.on{color:var(--green-deep); font-weight:700; background:var(--gold-soft);}
+  .gauge{display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-top:.4rem;}
+  .gauge div{border:1px solid var(--rule); border-radius:10px; padding:.8rem .5rem; text-align:center; background:var(--surface); font-family:var(--sans); font-size:12.5px; color:var(--ink-soft);}
+  .gauge div b{display:block; font-size:24px; color:var(--green); line-height:1.1; margin-bottom:.25rem;}
+  .gauge div.zero b{color:var(--gold-deep);}
+  .read{font-size:clamp(16px,1.9vw,17.5px); line-height:1.85; color:var(--ink);}
+  .read p{margin:0 0 .8rem;}
+  .read p::before{content:"◦ "; color:var(--gold-deep);}
+  .todo{display:flex; flex-direction:column; gap:.4rem; font-family:var(--sans); font-size:14px;}
+  .todo div{display:grid; grid-template-columns:4.2rem 1fr; gap:.6rem; padding:.55rem .7rem; border-left:3px solid var(--clay); background:var(--surface); border-radius:0 8px 8px 0; line-height:1.5;}
+  .todo div span{color:var(--clay-deep); font-weight:700; font-size:12.5px;}
+  .script{padding:1rem 1.1rem; border-radius:10px; border:1px solid var(--rule); background:var(--surface); font-size:15.5px; line-height:1.8;}
+  .script ol{margin-left:1.2rem;} .script li::marker{color:var(--clay-deep); font-family:var(--sans); font-weight:700;}
+  .script .e{color:var(--ink-mute); font-family:var(--sans); font-size:13px;}
+  .acts{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem;}
+  .acts button{border-radius:999px; padding:.65rem 1.2rem; font-family:var(--sans); font-size:14px; font-weight:600; border:1px solid var(--green); background:var(--green); color:#fff;}
+  .acts button.ghost{background:none; color:var(--green);}
+  .acts button.danger{border-color:var(--rule-strong); color:var(--ink-mute); background:none;}
+  .toast{position:fixed; left:50%; bottom:1.4rem; transform:translateX(-50%); background:var(--green-deepest); color:#fff; padding:.6rem 1.1rem; border-radius:999px; font-family:var(--sans); font-size:13.5px; opacity:0; pointer-events:none; transition:opacity .25s; z-index:9;}
+  .toast.on{opacity:1;}
+
+  footer{position:relative; z-index:1; border-top:1px solid var(--rule); padding:1.6rem clamp(1rem,4vw,1.6rem) 2.4rem; max-width:40rem; margin:0 auto; font-family:var(--sans); font-size:12.5px; color:var(--ink-mute); line-height:1.7;}
+  footer img{width:60px; height:auto; display:block; margin-bottom:.7rem;}
+  footer p{margin:0 0 .3rem;}
+  [hidden]{display:none !important;}
+
+  @media (max-width:520px){
+    .four{grid-template-columns:repeat(2,1fr);}
+    .rail .st{font-size:10px;} .rail .line{flex-basis:4px;}
+    .base div{grid-template-columns:5.2rem 1fr;}
+    .pos{font-size:16px;} .pos input[type=text]{font-size:16px; min-width:5.5rem;}
+    .nav button{padding:.65rem 1rem; font-size:14px;}
+  }
+  @media print{
+    .rail,.nav,.acts,.hero .form,.toast{display:none !important;}
+    body{background:#fff;} .sheet{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+
+<section id="cover" class="hero">
+  <div class="stars" aria-hidden="true">
+    <i style="left:6%;top:14%"></i><i class="s" style="left:12%;top:62%"></i><i class="l" style="left:21%;top:28%"></i>
+    <i style="left:33%;top:80%"></i><i class="s" style="left:41%;top:18%"></i><i style="left:52%;top:46%"></i>
+    <i class="l" style="left:63%;top:22%"></i><i class="s" style="left:70%;top:70%"></i><i style="left:78%;top:38%"></i>
+    <i class="s" style="left:84%;top:12%"></i><i class="l" style="left:90%;top:58%"></i><i style="left:95%;top:84%"></i>
+    <i class="s" style="left:27%;top:52%"></i><i class="s" style="left:58%;top:88%"></i><i style="left:47%;top:8%"></i>
+  </div>
+  <div class="in">
+    <img class="logo" src="data:image/png;base64,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" alt="DEEPER">
+    <div class="kicker">Deeper Compostela</div>
+    <div class="sub">콤포스텔라 1기 · 1구간 · 곁에 두는 도구</div>
+    <h1>내 비즈니스 시스템<small>열일곱 장을 한 장씩 넘기면, 한 장이 남습니다</small></h1>
+    <p class="lead">점괘는 없습니다. 묻는 것은 전부 디퍼님 안에 이미 있던 것입니다. 『퍼스널 MBA』의 바닥 위에 네 주의 기둥을 세웁니다. 캡니다. 세웁니다. 짓습니다. 엽니다. 다 넘기면 내 사업의 시스템이 한 장으로 섭니다. 빈 칸은 빈 채로 두셔도 됩니다. 빈 자리가 다음에 할 일입니다.</p>
+    <div class="form">
+      <div><label for="nick">닉네임</label><input type="text" id="nick" placeholder="사막에서 쓰는 이름" autocomplete="off"></div>
+      <div><label for="biz">내 사업 한 줄</label><input type="text" id="biz" placeholder="예) 병원 원장들에게 AI 도입을 곁에서 돕는 사람" autocomplete="off"></div>
+      <button class="go" id="start">첫 장을 넘긴다</button>
+      <div class="resume" id="resume" hidden>이어서 볼 기록이 있습니다. <button id="resumeBtn">하던 자리로</button> · <button id="resetBtn">처음부터</button></div>
+    </div>
+  </div>
+</section>
+
+<div id="rail" class="rail" hidden><div class="in" id="railIn"></div></div>
+<main id="main" hidden></main>
+<div id="toast" class="toast"></div>
+
+<footer>
+  <img src="data:image/png;base64,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" alt="DEEPER">
+  <p>재료 · 콤포스텔라 1구간 강의안 네 편(지식 자산 실사 · 주장 추출과 포지셔닝 · 자산 구조화와 빌드 · 고객 앞 시연과 이관) + 조시 카우프만 『퍼스널 MBA』 서문·1장 「가치 창조」의 발행인 밑줄(사업의 다섯 부분 · 다섯 욕구 · 시장 평가 열 항목 · 가치의 열두 꼴 · 용병과 용사).</p>
+  <p>적은 것은 이 기기의 브라우저에만 남습니다. 어디로도 보내지 않습니다. 「볼트로 복사」로 내하늘 폴더에 옮겨 두세요.</p>
+  <p>디퍼 콤포스텔라 1기 · 1구간 곁 도구 · 2026-09-07 · 방 안에서만 봅니다.</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const KEY='compostela_bizsys_v1';
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nz=s=>String(s==null?'':s).trim().length>0;
+const josa=(w,a,b)=>{ const s=String(w||'').trim(); if(!s) return a; const ch=s[s.length-1]; const code=ch.charCodeAt(0); if(code<0xAC00||code>0xD7A3) return /[0-9]/.test(ch)?(('136780'.includes(ch))?a:b):a; return ((code-0xAC00)%28)?a:b; };
+const iga=w=>josa(w,'이','가'), eulreul=w=>josa(w,'을','를');
+
+/* ── 재료 ─────────────────────────────── */
+const PARTS=[
+  {k:'value',   n:'가치 창조', q:'사람들이 필요로 하는 것을 찾아 만들고 있나', miss:'취미'},
+  {k:'mkt',     n:'마케팅',   q:'사람들의 관심을 끌고 수요를 부르고 있나',   miss:'실패작'},
+  {k:'sales',   n:'판매',     q:'잠재 고객을 실제 구매 고객으로 바꾸고 있나', miss:'비영리'},
+  {k:'deliver', n:'가치 제공', q:'약속한 것을 전달해 고객을 확실히 만족시키나', miss:'사기'},
+  {k:'finance', n:'재무',     q:'사업이 이어질 만큼의 돈을 벌고 있나',       miss:'곧 닫는 문'},
+];
+const DRIVES=[
+  {k:'acq', n:'습득', d:'얻고 모으려는 마음 — 돈·지위·영향력'},
+  {k:'bond',n:'유대', d:'관계를 맺고 사랑받으려는 마음'},
+  {k:'learn',n:'학습',d:'호기심을 채우려는 마음 — 더 지혜로워지고 싶다'},
+  {k:'def', n:'방어', d:'나와 내 사람, 내 것을 지키려는 마음'},
+  {k:'feel',n:'감각', d:'새로운 감각·강한 감정·기대를 향한 마음'},
+];
+const MARKET=[
+  ['긴급도','사람들은 이것을 얼마나 절박하게 원하나'],
+  ['시장 규모','지금 이런 것을 사는 사람이 몇이나 되나'],
+  ['가격 잠재력','고객이 기꺼이 낼 가장 높은 값은 어느 정도인가'],
+  ['고객 획득 비용','새 고객 한 사람을 얻는 데 얼마나 드나 (적게 들수록 높은 점수)'],
+  ['가치 전달 비용','만들어 전달하는 데 얼마나 드나 (적게 들수록 높은 점수)'],
+  ['독창성','남이 따라 하기 얼마나 어려운가'],
+  ['시장진출 속도','만들어 팔기까지 얼마나 빠른가'],
+  ['선불 투자','팔기 전에 얼마를 넣어야 하나 (적을수록 높은 점수)'],
+  ['추가 판매','산 사람에게 건넬 둘째 상품이 있나'],
+  ['이어지는 힘','한 번 만든 뒤 추가 노력 없이 계속 팔리나'],
+];
+const FORMS=['상품','서비스','자원 공유','정기구독','재판매','임대','대리인','고객층 모집','대출','선택권','보험','자본'];
+const PLACES=[
+  ['blog','블로그 (오래된 것일수록)'],['lecture','강의안·강의 준비 메모'],['kakao','카톡·단톡방에 길게 쓴 답변'],
+  ['notion','노션·문서 도구'],['vault','볼트 (사막여우)'],['diary','일기'],['reading','독서 노트'],
+  ['consult','상담·미팅 기록'],['sns','SNS 글'],['etc','그 밖의 곳'],
+];
+const LEVELS=['그대로','보편의 말로','비공개'];
+const TYPES=[['pillar','기둥','목숨 걸고 지킬 주장'],['concept','개념','내가 만든 말·비유'],['practice','실천','내가 실제로 하는 방법·절차'],['case','사례','날짜와 장면이 붙은 일'],['root','뿌리','나에게 영향을 준 남의 것']];
+const LAYERS=[['structure','지식 구조','편집된 주장·개념·실천·사례·뿌리와 그 연결. 값의 명분'],['ui','탐색 인터페이스','고객 앞에서 여는 화면. 별을 누르면 원문과 출처가 뜬다'],['pipe','재생성 파이프라인','재료가 늘면 명령 한 마디로 구조가 다시 서는 장치']];
+
+/* ── 상태 ─────────────────────────────── */
+function fresh(){
+  return {
+    nick:'', biz:'', idx:0,
+    parts:{value:'',mkt:'',sales:'',deliver:'',finance:''},
+    drive:'', driveWhy:'',
+    market:[5,5,5,5,5,5,5,5,5,5],
+    forms:[],
+    merc:'', crus:'', rival:'', rivalGap:'',
+    places:{},
+    A:['','',''], B:['','',''], C:['','',''],
+    s1:{pipe:false,src:false},
+    dec:[{d:'',lost:'',kept:''},{d:'',lost:'',kept:''},{d:'',lost:'',kept:''}],
+    pillars:[],
+    pos:{who:'',what:'',diff:'',cost:''},
+    s2:{claude:false,read:false,reaction:''},
+    layers:{structure:'',ui:'',pipe:''},
+    counts:{pillar:'',concept:'',practice:'',case:'',root:''},
+    s3:{three:false,thin:false,keep:false},
+    sc:{center:'',p:['','',''],caseTxt:'',next:''},
+    s4:{open:false,grow:false,keepName:false,demo:false,first:''},
+  };
+}
+let S=fresh();
+try{ const raw=localStorage.getItem(KEY); if(raw){ const o=JSON.parse(raw); S=Object.assign(fresh(),o); } }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function get(p){ return p.split('.').reduce((o,k)=>o==null?undefined:o[k], S); }
+function set(p,v){ const ks=p.split('.'); let o=S; for(let i=0;i<ks.length-1;i++){ if(o[ks[i]]==null) o[ks[i]]={}; o=o[ks[i]]; } o[ks[ks.length-1]]=v; save(); }
+
+/* ── 계산 ─────────────────────────────── */
+function syncPillars(){ S.dec.forEach((d,i)=>{ const p=S.pillars.find(p=>p.src===i); if(nz(d.kept)){ if(!p) S.pillars.push({text:d.kept,lost:d.lost,level:'',src:i,edited:false}); else if(!p.edited){ p.text=d.kept; p.lost=d.lost; } } }); }
+function calc(){
+  syncPillars();
+  const missing=PARTS.filter(p=>S.parts[p.k]==='없다');
+  const unknown=PARTS.filter(p=>S.parts[p.k]==='모르겠다');
+  const answeredParts=PARTS.filter(p=>S.parts[p.k]);
+  const mSum=S.market.reduce((a,b)=>a+Number(b||0),0);
+  const mVerdict= mSum<=50?'생각을 바꿔야 한다':(mSum<=75?'수익은 나겠지만 큰 성공엔 큰 노력과 자원이 든다':'시장성이 높다. 전속력으로');
+  const A=S.A.filter(nz), B=S.B.filter(nz), C=S.C.filter(nz);
+  const placesOn=Object.keys(S.places).filter(k=>S.places[k]&&S.places[k].on);
+  const placesPaid=placesOn.filter(k=>S.places[k].paid);
+  const pillars=S.pillars.filter(p=>nz(p.text));
+  const pillarsPaid=pillars.filter(p=>nz(p.lost));
+  const pillarsLevel=pillars.filter(p=>p.level);
+  const posDone=nz(S.pos.who)&&nz(S.pos.what)&&nz(S.pos.diff);
+  const layersYes=LAYERS.filter(l=>S.layers[l[0]]==='있다').map(l=>l[0]);
+  const stars=Object.values(S.counts).reduce((a,b)=>a+Number(b||0),0);
+  const scP=S.sc.p.filter(nz);
+  const scDone=nz(S.sc.center)&&scP.length>=1&&nz(S.sc.caseTxt)&&nz(S.sc.next);
+  const stamp1=S.s1.pipe&&S.s1.src;
+  const stamp2=pillarsPaid.length>=3&&posDone&&S.s2.claude;
+  const stamp3=layersYes.length===3&&S.s3.three;
+  const stamp4=scDone&&S.s4.demo;
+  const reached=(S.s2.read?1:0)+(S.s4.demo?1:0);
+  const built=A.length+B.length+C.length+pillars.length+stars+(posDone?1:0)+(scDone?1:0);
+  const firm=pillarsLevel.length+(S.s2.claude?1:0)+['three','thin','keep'].filter(k=>S.s3[k]).length+['open','grow','keepName'].filter(k=>S.s4[k]).length;
+  return {missing,unknown,answeredParts,mSum,mVerdict,A,B,C,placesOn,placesPaid,pillars,pillarsPaid,pillarsLevel,posDone,layersYes,stars,scP,scDone,stamp1,stamp2,stamp3,stamp4,reached,built,firm};
+}
+function lowestMarket(){ const min=Math.min(...S.market.map(Number)); return MARKET.filter((m,i)=>Number(S.market[i])===min).map(m=>m[0]).join(' · '); }
+function marketVerdictHtml(c){ return `합계 <b>${c.mSum}</b>점 — ${c.mVerdict}.<small>가장 낮은 잣대 = ${lowestMarket()}. 점수를 올릴 자리가 아니라, 다음 인터뷰에서 물을 자리입니다.</small>`; }
+
+/* ── 장 (카드) ─────────────────────────────── */
+const STAGES=[
+  {k:'base',n:'바닥'},{k:'w1',n:'캔다'},{k:'w2',n:'세운다'},{k:'w3',n:'짓는다'},{k:'w4',n:'연다'},{k:'sheet',n:'한 장'},
+];
+function seg(path,opts,cls){ const cur=get(path); return `<div class="seg">${opts.map((o,i)=>`<button type="button" data-set="${path}" data-val="${esc(o)}" class="${cur===o?'on '+(cls?cls[i]:''):''}">${esc(o)}</button>`).join('')}</div>`; }
+function txt(path,ph,attrs){ return `<input type="text" data-bind="${path}" value="${esc(get(path))}" placeholder="${esc(ph||'')}" ${attrs||''}>`; }
+function area(path,ph){ return `<textarea data-bind="${path}" placeholder="${esc(ph||'')}">${esc(get(path))}</textarea>`; }
+function chk(path,label,small){ const on=!!get(path); return `<label class="${on?'on':''}"><input type="checkbox" data-check="${path}" ${on?'checked':''}><span>${label}${small?`<small>${small}</small>`:''}</span></label>`; }
+function stampBox(on,n,txt,small){ return `<div class="stamp ${on?'on':''}"><div class="seal">${on?`도장<br>${n}`:`도장 ${n}<br>아직`}</div><div class="txt">${txt}<small>${small}</small></div></div>`; }
+function abcBlock(k,cls,desc,ph){ return `<div class="abc"><span class="k ${cls}">${k}</span><span class="desc">${desc}</span>${[0,1,2].map(i=>txt(k+'.'+i, i===0?ph:'')).join('')}</div>`; }
+
+const CARDS=[
+ {st:'base', tag:'바닥 · 하나', title:'사업인가, 아직 아닌가',
+  why:`『퍼스널 MBA』는 사업을 다섯 가지가 <b>반복되는 과정</b>이라고 정의합니다. 다섯 중 하나라도 없으면 사업이 아니라 다른 무엇이 됩니다. 디퍼님의 것부터 재 봅니다. 모르는 자리는 모른다고 두세요. 그것도 정보입니다.`,
+  body(){ const c=calc(); let h=PARTS.map(p=>`<div class="row"><div class="lbl">${p.n}<small>${p.q}</small></div>${seg('parts.'+p.k,['있다','없다','모르겠다'],['','warn','mute'])}</div>`).join('');
+    if(c.answeredParts.length===5){
+      if(c.missing.length){ h+=`<div class="verdict">지금 디퍼님의 것은 <u>${c.missing.map(m=>m.miss).join(' · ')}</u>에 가깝습니다.<small>${c.missing.map(m=>`${m.n}${iga(m.n)} 없으면 ${m.miss}`).join(' · ')}. 부끄러울 일이 아닙니다. 어느 부분이 비었는지 안 것이 오늘의 수확입니다.</small></div>`; }
+      else if(c.unknown.length){ h+=`<div class="verdict soft">있는 것은 있고, 모르는 자리가 ${c.unknown.length}곳입니다.<small>${c.unknown.map(m=>m.n).join(' · ')}. 모른다는 건 아직 재 본 적이 없다는 뜻입니다. 1구간 안에 재게 됩니다.</small></div>`; }
+      else { h+=`<div class="verdict">다섯이 다 있습니다. 사업입니다.<small>이제 물을 것은 하나로 좁혀집니다. 무엇에 값이 붙는가.</small></div>`; }
+    }
+    return h+`<div class="src">『퍼스널 MBA』 1장 「모든 사업의 5가지 본질」 pp.92~93</div>`; }},
+ {st:'base', tag:'바닥 · 둘', title:'내 현장은 어느 마음을 채우나',
+  why:`사람에게는 다섯 가지 핵심 욕구가 있습니다. 성공한 사업은 그중 하나 이상을 <b>또렷하게</b> 채웁니다. 여럿을 고르고 싶어도 하나만 고르세요. 또렷할수록 상품이 매력을 가집니다.`,
+  body(){ return `<div class="opt">${DRIVES.map(d=>`<button type="button" data-set="drive" data-val="${d.k}" class="${S.drive===d.k?'on':''}"><b>${d.n} 욕구</b><small>${d.d}</small></button>`).join('')}</div>
+    <div class="fld"><label>왜 그 하나인가 — <b>한 줄</b></label>${txt('driveWhy','예) 내 고객은 안전을 산다. 잘못될까 봐 온다.')}</div>
+    <div class="src">『퍼스널 MBA』 1장 「인간의 다섯 가지 핵심 욕구」 pp.99~100</div>`; }},
+ {st:'base', tag:'바닥 · 셋', title:'시장을 잰다 — 열 가지 잣대',
+  why:`디퍼님이 지금 팔고 있거나 팔려는 <b>첫 오퍼 하나</b>를 떠올리고 0에서 10으로 매깁니다. 잘 모르겠으면 후하게보다 <b>까다롭게</b>. 합계가 판정을 냅니다.`,
+  body(){ const c=calc(); let h=MARKET.map((m,i)=>`<div class="slider"><div class="q">${m[0]}<small>${m[1]}</small></div><div class="v">${S.market[i]}</div><input type="range" min="0" max="10" step="1" value="${S.market[i]}" data-range="market.${i}"></div>`).join('');
+    const s=c.mSum;
+    h+=`<div class="sum"><div class="${s<=50?'on':''}"><b>~50</b>생각을 바꿔야 한다</div><div class="${s>50&&s<=75?'on':''}"><b>51~75</b>수익은 나겠지만 큰 노력이 든다</div><div class="${s>75?'on':''}"><b>76~</b>시장성이 높다. 전속력으로</div></div>
+    <div class="verdict soft" id="mv">${marketVerdictHtml(c)}</div>
+    <div class="src">『퍼스널 MBA』 1장 「시장을 평가하는 10가지 방법」 pp.103~105</div>`; return h; }},
+ {st:'base', tag:'바닥 · 넷', title:'값은 어떤 꼴로 받나',
+  why:`경제적 가치는 주로 <b>열두 가지 꼴</b>을 취합니다. 디퍼님이 지금 받는 꼴과, 앞으로 받고 싶은 꼴을 고릅니다. 둘까지.`,
+  body(){ return `<div class="chips">${FORMS.map((f,i)=>`<button type="button" class="chip ${S.forms.includes(i)?'on':''}" data-toggle="forms" data-val="${i}">${i+1} ${f}</button>`).join('')}</div>
+    <div class="hint">지금 서비스(2) 하나뿐이라면, 구독(4)·자원 공유(3)·상품(1) 중 어느 꼴이 붙을 수 있는지가 「이어지는 힘」의 답이 됩니다.</div>
+    <div class="src">『퍼스널 MBA』 1장 「가치의 12가지 표준 유형」 pp.111~112</div>`; }},
+ {st:'base', tag:'바닥 · 다섯', title:'왜 하는가 — 용병과 용사, 그리고 경쟁자',
+  why:`돈만 보고 시작하면 용병이 되어 금단지를 찾기 전에 지칩니다. 아이디어에 취하면 용사가 되어 손익을 못 봅니다. 둘 다 오래 못 갑니다. 그리고 경쟁자를 아는 가장 빠른 길은 <b>그의 고객이 되어 보는 것</b>입니다.`,
+  body(){ return `<div class="row"><div class="lbl">이 일을 돈이 아니어도 매일 하겠는가<small>아니라면 용병 쪽으로 기울어 있습니다</small></div>${seg('merc',['그렇다','아니다'],['','warn'])}</div>
+    <div class="row"><div class="lbl">이 일의 손익을 숫자로 본 적이 있는가<small>없다면 용사 쪽으로 기울어 있습니다</small></div>${seg('crus',['있다','없다'],['','warn'])}</div>
+    ${(S.merc&&S.crus)?`<div class="verdict soft">${S.merc==='아니다'&&S.crus==='없다'?'용병의 지침과 용사의 눈멂이 함께 있습니다. 시장 점수부터 다시 보세요.':S.merc==='아니다'?'용병 쪽입니다. 돈이 아니어도 반복하게 되는 행동이 무엇인지 먼저 찾으세요.':S.crus==='없다'?'용사 쪽입니다. 열정은 그대로 두고, 이 사업의 손익을 한 번은 숫자로 보세요.':'끌림도 있고 숫자도 봤습니다. 균형입니다.'}</div>`:''}
+    <div class="fld"><label>내가 경쟁자라 여기는 <b>한 사람</b></label>${txt('rival','이름 또는 닉네임 · 그가 파는 것')}</div>
+    <div class="fld"><label>그의 고객이 되어 보고 알게 된, <b>그가 채우지 못한 필요 한 줄</b></label>${txt('rivalGap','아직 안 사 봤으면 비워 두세요. 9/21까지의 숙제입니다')}</div>
+    <div class="src">『퍼스널 MBA』 1장 「용병의 규칙」 「용사의 규칙」 「경쟁의 숨은 이득」 pp.106~110</div>`; }},
+
+ {st:'w1', tag:'캔다 · 1주차', title:'내 지식 자산이 있는 곳',
+  why:`실사는 장부를 다 여는 일입니다. 자주 놓치는 자리가 셋. <b>오래된 것</b>(3년 전 블로그가 대개 제일 진합니다), <b>사업과 상관없어 보이는 것</b>(일기와 독서 노트에 자기 언어가 가장 많습니다), <b>남이 안 볼 거라 여긴 것</b>(강의 준비 메모·상담 기록·단톡방 긴 답변). 빼기 전에 일단 다 올리세요.`,
+  body(){ return PLACES.map(p=>{ const o=S.places[p[0]]||{on:false,paid:false}; return `<div class="row"><label class="pl"><input type="checkbox" data-check="places.${p[0]}.on" ${o.on?'checked':''}><span class="lbl">${p[1]}</span></label>${o.on?`<div class="seg"><button type="button" data-set="places.${p[0]}.paid" data-val="true" class="${o.paid?'on':''}">돈 나온 적 있음</button><button type="button" data-set="places.${p[0]}.paid" data-val="false" class="${o.paid?'':'on mute'}">없음</button></div>`:''}</div>`; }).join('')
+    +`<div class="hint">「돈이 나온 적」 칸이 이번 주 새로 붙는 칸입니다. 비어 있어도 씁니다. 어디가 비었는지가 정보입니다.</div>
+    <div class="src">1주차 강의안 「지식 자산 실사」 · 실습 1단계 자산 실사표</div>`; }},
+ {st:'w1', tag:'캔다 · 1주차', title:'값 판정 — A · B · C',
+  why:`캔 것을 그대로 두지 않고 세 칸으로 가릅니다. 목록만 있으면 창고고, 값이 붙어야 자산입니다. 지금 떠오르는 것만 셋씩. 백 개는 도구가 채웁니다.`,
+  body(){ const c=calc();
+    return abcBlock('A','','고객이 실제로 <b>돈을 낸 적</b> 있는 것. 이 말을 해서 강의가 팔렸거나, 상담이 성사됐거나','예) "…"라고 말해서 강의가 팔렸다')
+      +abcBlock('B','b','고객이 <b>물어본 적</b>은 있는 것. 돈은 아직, 반응은 있었던','')
+      +abcBlock('C','c','<b>나만 아는 것</b>. 아무도 물어본 적 없는','')
+      +`<div class="verdict ${c.A.length?'':'soft'}">A가 <b>${c.A.length}</b>개입니다.<small>${c.A.length===0?'흔한 자리입니다. 돈 말고, 사람이 고맙다고 한 적은요? 그것도 없으면 그대로 두세요. A가 0이라는 사실 자체가 다음 인터뷰의 재료입니다.':'이것이 디퍼님이 지금 팔고 있는 것의 목록입니다. C를 지우지 마세요. C 중에 다음 주 기둥이 나옵니다.'}</small></div>
+    <div class="src">1주차 강의안 · 값 판정표. 여우에게 시킬 때는 「네가 짐작해서 매기지 말 것」을 넣습니다</div>`; }},
+ {st:'w1', tag:'캔다 · 도장 1', title:'파이프라인이 도는가',
+  why:`도장은 점수가 아니라 <b>이진법</b>입니다. 만들기로 한 것이 볼트에 실재하면 찍히고, 아니면 안 찍힙니다. 개수는 묻지 않습니다. 출처만은 하나도 빠지면 안 됩니다. 셋째 주에 그게 없으면 못 씁니다.`,
+  body(){ const c=calc(); return `<div class="checks">${chk('s1.pipe','원석을 캐는 도구가 한 번이라도 돌아 <code>01_원석목록.md</code>를 채웠다','손으로 옮겨 적은 목록은 해당하지 않습니다')}${chk('s1.src','원석 한 줄마다 출처(파일명·위치)가 100% 붙어 있다','출처 없는 줄이 하나라도 있으면 아직')}</div>
+    ${stampBox(c.stamp1,'1',c.stamp1?'도장 1이 찍혔습니다.':'아직입니다. 폴더 하나로 줄여서라도 돌리면 찍힙니다.','눈금 — 쌓인 것: 원석 수 · A칸 수 / 닿은 것: 0 (아직 나가지 않았습니다)')}`; }},
+
+ {st:'w2', tag:'세운다 · 2주차', title:'손해인 줄 알면서도 그렇게 한 결정 셋',
+  why:`말은 값이 안 듭니다. 「정직이 중요합니다」는 누구나 씁니다. <b>대가를 치른 자리에만 진짜 주장이 있습니다.</b> 돈이든 시간이든 관계든 기회든, 실제로 잃은 것이 있는 결정을 셋. 정리하지 말고 떠오르는 대로.`,
+  body(){ return [0,1,2].map(i=>`<div class="tri"><div class="n">결정 ${['하나','둘','셋'][i]}</div>${area('dec.'+i+'.d','그때 무엇을 그렇게 했나')}<div class="arrow">그래서 잃은 것 ↓</div>${txt('dec.'+i+'.lost','돈 · 시간 · 관계 · 기회. 실제로 잃은 것')}<div class="arrow">그때 무엇을 지키려고 ↓</div>${txt('dec.'+i+'.kept','한 마디로. 이것이 기둥의 씨앗입니다')}</div>`).join('')
+    +`<div class="hint">「손해 본 결정이 없다」면 질문을 낮춥니다. 이득인 줄 알면서 안 한 일은요? 남들 다 하는데 나만 안 하는 게 있나요? 안 한 일에도 대가가 있습니다.</div>
+    <div class="src">2주차 강의안 「역추적」 · 짝 인터뷰 세 질문</div>`; }},
+ {st:'w2', tag:'세운다 · 2주차', title:'기둥, 그리고 공개 수위',
+  why:`앞 장의 「지키려던 것」이 기둥이 됩니다. 대가 칸이 비면 기둥이 아닙니다. 그리고 <b>어디까지 밖에 낼지</b>를 오늘 정합니다. 중심은 대개 사업 밖에 있습니다. 가장 깊은 것을 함부로 진열하지 않는 것이 이 일의 품격입니다.`,
+  body(){
+    if(!S.pillars.length) return `<div class="hint warn">앞 장에서 「지키려던 것」을 한 줄이라도 적으면 여기 기둥으로 올라옵니다.</div><button type="button" class="add" data-addpillar>기둥 한 줄 직접 추가</button>`;
+    return S.pillars.map((p,i)=>`<div class="pillar"><div class="t">${txt('pillars.'+i+'.text','기둥 문장',`data-edited="pillars.${i}"`)}<small>치른 대가 · ${nz(p.lost)?esc(p.lost):'(비었음. 기둥이 아닐 수 있습니다)'}</small></div><select data-bind="pillars.${i}.level"><option value="">공개 수위</option>${LEVELS.map(l=>`<option ${p.level===l?'selected':''}>${l}</option>`).join('')}</select></div>`).join('')
+    +`<button type="button" class="add" data-addpillar>기둥 한 줄 더</button>
+    <div class="hint">8개에서 15개가 목표지만 오늘은 셋이면 충분합니다. 억지로 채운 기둥이 3주차에 빈 별이 됩니다.</div>
+    <div class="src">2주차 강의안 · 실습 2 · 1단계 기둥 확정</div>`; }},
+ {st:'w2', tag:'세운다 · 2주차', title:'포지셔닝 한 문장',
+  why:`기둥이 여덟이어도 고객 앞에 내놓는 문장은 하나입니다. 기둥에 없는 말을 새로 지어 넣지 않습니다. 「남과 다른 점」 칸에 들어갈 자격은 하나. <b>베끼려면 같은 대가를 치러야 하는 것.</b>`,
+  body(){ const c=calc(); return `<div class="pos">나는 ${txt('pos.who','어떤 고객')}에게<br>${txt('pos.what','무엇')}을(를) 해 준다.<br>남과 다른 점: ${txt('pos.diff','기둥에서 나온 것')}</div>
+    <div class="fld"><label>이걸 베끼려면 상대는 <b>무엇을 치러야</b> 하나 — 한 줄</label>${txt('pos.cost','답이 없으면 그 문장은 아무나 쓸 수 있는 말입니다')}</div>
+    ${c.posDone?`<div class="verdict soft">소리 내어 읽어 보세요.<small>고객이 들었을 때 무슨 말인지 모르겠으면 쉬운 말로 바꿉니다. 뜻은 바꾸지 않습니다.</small></div>`:''}
+    <div class="src">2주차 강의안 · 실습 2 · 2단계</div>`; }},
+ {st:'w2', tag:'세운다 · 도장 2', title:'헌법에 들어갔는가, 밖에 나갔는가',
+  why:`기둥이 그대로 <b>내 사업 CLAUDE.md</b>의 뼈대가 됩니다. 기둥이 「하지 않는 것」을 정합니다. 그리고 포지셔닝 문장을 실제 고객 한 사람에게 읽어 드리면, 그때 「닿은 것」이 처음 0에서 움직입니다.`,
+  body(){ const c=calc(); return `<div class="checks">${chk('s2.claude','기둥과 포지셔닝이 내 사업 CLAUDE.md 안에 들어가 있다','공개 수위가 「비공개」인 기둥은 넣지 않습니다')}${chk('s2.read','포지셔닝 한 문장을 실제 고객 한 사람에게 읽어 드렸다','"요즘 제 일을 이렇게 정리하고 있어요" 정도면 됩니다')}</div>
+    ${S.s2.read?`<div class="fld"><label>상대의 <b>첫 반응 한 줄</b></label>${txt('s2.reaction','갸웃했다면 그 문장은 아직 안 된 겁니다. 고치는 건 함께')}</div>`:''}
+    ${stampBox(c.stamp2,'2',c.stamp2?'도장 2가 찍혔습니다.':`아직입니다. ${[c.pillarsPaid.length<3?'대가가 붙은 기둥 셋':'',!c.posDone?'포지셔닝 한 문장':'',!S.s2.claude?'헌법에 넣기':''].filter(Boolean).join(' · ')}가 남았습니다.`,'눈금 — 쌓인 것: 기둥 수 / 굳은 것: 헌법에 적힌 규칙 수 / 닿은 것: +1 (읽어 드린 것)')}`; }},
+
+ {st:'w3', tag:'짓는다 · 3주차', title:'세 겹 — 무엇이 있고 무엇이 없나',
+  why:`화면 한 장으로 끝내지 않습니다. 밤하늘은 한 주를 비추고 다음 주가 오면 사라집니다. 오늘 짓는 것은 몇 해치를 담고 <b>쌓일수록 자라는</b> 구조물입니다. 값이 붙는 자리는 화면이 아니라 <b>편집</b>입니다.`,
+  body(){ return LAYERS.map(l=>`<div class="row"><div class="lbl">${l[1]}<small>${l[2]}</small></div>${seg('layers.'+l[0],['있다','없다'],['','warn'])}</div>`).join('')
+    +`<div class="hint">「이거 밤하늘이랑 같은 거 아니에요?」 담는 시간이 다르고(한 주 / 몇 해치), 뒤에 있는 것이 다릅니다(한 주의 기록 / 3주간 편집한 지식 구조).</div>
+    <div class="src">3주차 강의안 「자산 구조화와 빌드」 · 세 겹</div>`; }},
+ {st:'w3', tag:'짓는다 · 3주차', title:'다섯 유형의 별',
+  why:`원석을 다섯 유형으로 나누고, 무엇이 무엇에서 나왔는지 잇고, 고객이 봐도 아는 이름을 붙입니다. 셋 중 <b>잇기</b>가 제일 값나갑니다. 클로드는 나누는 건 잘합니다. 무엇이 무엇에서 나왔는지는 디퍼님만 압니다. 지금 있는 대략의 수를 적습니다.`,
+  body(){ const c=calc(); return TYPES.map(t=>`<div class="row"><div class="lbl">${t[1]}<small>${t[2]}</small></div><input type="number" min="0" max="999" data-bind="counts.${t[0]}" value="${esc(S.counts[t[0]])}" placeholder="0"></div>`).join('')
+    +`<div class="verdict soft" id="starsV">별 <b>${c.stars}</b>개.<small>별 백 개짜리 하늘보다 <b>별 서른 개짜리 돌아가는 하늘</b>이 오늘의 목표입니다. 기둥 여덟에 개념과 사례를 조금 붙이면 서른이 됩니다.</small></div>
+    <div class="src">3주차 강의안 · 실습 1단계 구조 편집</div>`; }},
+ {st:'w3', tag:'짓는다 · 도장 3', title:'검증 — 생성은 빠르고 검증은 느리다',
+  why:`클로드는 몇 분 만에 화면을 냅니다. 확인은 훨씬 오래 걸립니다. 만드는 속도에 취해 확인을 건너뛰는 것이 이 세계의 함정입니다. <b>지어낸 별 하나가 하늘 전체의 신뢰를 무너뜨립니다.</b>`,
+  body(){ const c=calc(); return `<div class="checks">${chk('s3.three','같은 입력 세 번. 세 번 돌려도 결과가 흔들리지 않는다','흔들리는 자리를 찾았다면 그것이 오늘의 배움입니다')}${chk('s3.thin','얇은 재료로 한 번. 원석 서너 개뿐인 폴더에서 지어내지 않고 멈춘다','그럴듯한 별이 나왔다면 스킬을 고칩니다')}${chk('s3.keep','손으로 고친 이름과 연결이 다시 돌린 뒤에도 남아 있다','')}</div>
+    ${stampBox(c.stamp3,'3',c.stamp3?'도장 3이 찍혔습니다.':`아직입니다. ${[c.layersYes.length<3?'세 겹 갖추기':'',!S.s3.three?'같은 입력 세 번':''].filter(Boolean).join(' · ')}.`,'눈금 — 쌓인 것: 분류된 원석 · 연결 수 / 굳은 것: 첫 시도 통과율 / 닿은 것: +1 (시연 섭외 대화)')}`; }},
+
+ {st:'w4', tag:'연다 · 4주차', title:'오 분 각본 — 넉 줄',
+  why:`미팅이 끝나갈 때, 강의가 끝나갈 때, 마지막 오 분에 자기 화면을 엽니다. 설명하던 걸 <b>보여주는 것</b>으로 바꾸는 오 분. 넉 줄이면 됩니다. 값·조건의 언어는 오늘 각본에 없습니다. 그건 2구간의 것입니다.`,
+  body(){ const c=calc(); if(!nz(S.sc.center)&&c.posDone){ S.sc.center=`나는 ${S.pos.who}에게 ${S.pos.what}${eulreul(S.pos.what)} 해 준다. 남과 다른 점은 ${S.pos.diff}.`; save(); }
+    const pillarOpts=c.pillars.filter(p=>p.level!=='비공개').map(p=>p.text);
+    return `<div class="fld"><label><b>1. 중심 한 문장</b> — 포지셔닝 문장 그대로</label>${area('sc.center','')}</div>
+    <div class="fld"><label><b>2. 기둥 셋</b> — 화면에서 누를 별 셋. 하나마다 「지키느라 잃은 것」 한 마디</label>${[0,1,2].map(i=>`<div style="margin-bottom:.4rem">${pillarOpts.length?`<select data-bind="sc.p.${i}" style="width:100%;border:1px solid var(--rule-strong);border-radius:8px;padding:.5rem;background:#fff;font-size:14.5px"><option value="">기둥 ${i+1} 고르기</option>${pillarOpts.map(t=>`<option ${S.sc.p[i]===t?'selected':''}>${esc(t)}</option>`).join('')}</select>`:txt('sc.p.'+i,'기둥 '+(i+1))}</div>`).join('')}</div>
+    <div class="fld"><label><b>3. 사례 하나</b> — 날짜와 장면이 붙은 실제 일</label>${area('sc.caseTxt','언제, 누구와, 무슨 일이 있었나')}</div>
+    <div class="fld"><label><b>4. 다음 걸음 제안</b> — 이걸 보신 분과 무엇을 함께 할 수 있는지, 한 문장</label>${txt('sc.next','"이걸 보신 분과는 ___를 함께 할 수 있습니다". 여기서 멈춥니다')}</div>
+    <div class="hint">쓰고 나서 한 번 소리 내어 읽습니다. 오 분이 넘으면 기둥의 말을 줄이지 말고 <b>설명을 줄입니다.</b></div>
+    <div class="src">4주차 강의안 「고객 앞 시연과 이관」 · 시연 각본</div>`; }},
+ {st:'w4', tag:'연다 · 도장 4', title:'자립, 그리고 실제 한 사람 앞',
+  why:`오늘 진짜 물어야 할 것은 재생성 파이프라인이 <b>디퍼님 손에 있느냐</b>입니다. 누가 만들어 준 게 아니라 디퍼님이 만드셨으니 다음 달에도 다음 해에도 다시 세울 수 있습니다. 그리고 도장 4는 방 안 리허설로는 찍히지 않습니다.`,
+  body(){ const c=calc(); return `<div class="checks">${chk('s4.open','새 세션을 열고 명령 한 마디로 화면이 뜬다','')}${chk('s4.grow','새 재료를 폴더에 넣고 다시 부르면 별이 는다','')}${chk('s4.keepName','손으로 고친 별 이름이 다시 돌린 뒤에도 남아 있다','')}${chk('s4.demo','실제 고객 한 사람 앞에서 오 분 각본대로 열었다','미팅이든 강의든, 마지막 오 분에')}</div>
+    ${S.s4.demo?`<div class="fld"><label>고객의 <b>첫 마디 한 줄</b> — 디퍼님 자산의 첫 시장 반응</label>${txt('s4.first','')}</div>`:''}
+    ${stampBox(c.stamp4,'4',c.stamp4?'도장 4가 찍혔습니다. 1구간의 합이 여기서 정해집니다.':`아직입니다. ${[!c.scDone?'각본 넉 줄':'',!S.s4.demo?'실제 한 분 앞 시연 1건':''].filter(Boolean).join(' · ')}.`,'눈금 — 쌓인 것: 자산 한 벌 / 굳은 것: 넉 주 동안 규칙으로 올라간 수 / 닿은 것: +1')}`; }},
+];
+
+/* ── 결과 한 장 ─────────────────────────────── */
+function todos(c){
+  const t=[];
+  if(c.answeredParts.length<5) t.push(['바닥','사업의 다섯 부분을 끝까지 재기']);
+  if(!S.drive) t.push(['바닥','내 현장이 채우는 욕구 하나 고르기']);
+  if(!nz(S.rivalGap)) t.push(['9/21','경쟁자의 고객이 되어 하나 사 보고, 그가 못 채운 필요 한 줄']);
+  if(!c.stamp1) t.push(['1주차',S.s1.pipe?'원석 목록의 출처를 100% 붙이기':'채굴 도구를 만들어 한 번 돌리기. 폴더 하나로 줄여도 됩니다']);
+  if(c.A.length===0) t.push(['1주차','돈이 붙은 적 있는 말 하나 찾기. 없으면 「고맙다는 말」로 낮춰서']);
+  if(c.pillarsPaid.length<3) t.push(['2주차','손해인 줄 알면서 한 결정에서 기둥 셋 캐기. 짝에게 묻게 하기']);
+  if(c.pillars.length&&c.pillarsLevel.length<c.pillars.length) t.push(['2주차','기둥마다 공개 수위 정하기. 비워 두지 않습니다']);
+  if(!c.posDone) t.push(['2주차','포지셔닝 한 문장 채우기. 기둥에 있는 말로만']);
+  if(!S.s2.claude) t.push(['2주차','기둥을 내 사업 CLAUDE.md에 옮기고 사흘 실제로 쓰기']);
+  if(!S.s2.read) t.push(['2주차','포지셔닝 문장을 실제 고객 한 사람에게 읽어 드리기 → 닿은 것 +1']);
+  const lt={structure:'03_지식구조.json. 다섯 유형으로 나누고 손으로 잇기',ui:'my_sky.html. 파일 하나로 완결, 휴대폰에서도 열리게',pipe:'/내하늘 스킬. 재료가 늘면 명령 한 마디로 다시 서게'};
+  LAYERS.forEach(l=>{ if(S.layers[l[0]]!=='있다') t.push(['3주차',lt[l[0]]]); });
+  if(!S.s3.three) t.push(['3주차','같은 입력 세 번. 흔들리는 자리 찾기']);
+  if(!S.s3.thin) t.push(['3주차','얇은 재료로 한 번. 지어내면 스킬 고치기']);
+  if(!c.scDone) t.push(['4주차','오 분 각본 넉 줄 채우고 소리 내어 읽기']);
+  if(!S.s4.demo) t.push(['4주차','실제 고객 한 사람 앞에서 열기 → 닿은 것 +1 · 첫 마디 한 줄 적기']);
+  if(!t.length) t.push(['다음','사례 0호 네 줄을 볼트에 남기기. 재료가 늘 때마다 /내하늘을 부르기. 2구간은 10월에.']);
+  return t;
+}
+function sheet(){
+  const c=calc();
+  const nick=S.nick||'디퍼님';
+  const drive=DRIVES.find(d=>d.k===S.drive);
+  const partsLine=PARTS.map(p=>`${p.n} ${S.parts[p.k]==='있다'?'○':S.parts[p.k]==='없다'?'×':'?'}`).join(' · ');
+  const partsVerdict=c.answeredParts.length<5?'아직 다 재지 않았습니다':(c.missing.length?`지금은 ${c.missing.map(m=>m.miss).join('·')}에 가깝습니다`:(c.unknown.length?`모르는 자리 ${c.unknown.length}곳`:'다섯이 다 있습니다. 사업입니다'));
+  const formsLine=S.forms.length?S.forms.map(i=>FORMS[i]).join(' · '):'(아직 안 골랐습니다)';
+  const stance=(S.merc&&S.crus)?(S.merc==='아니다'&&S.crus==='없다'?'용병과 용사 사이에서 흔들림':S.merc==='아니다'?'용병 쪽':S.crus==='없다'?'용사 쪽':'균형'):'(아직)';
+  const read=[];
+  if(c.answeredParts.length===5){ read.push(c.missing.length?`다섯 부분 중 <b>${c.missing.map(m=>m.n).join('·')}</b>${iga(c.missing[c.missing.length-1].n)} 비어 있습니다. 1구간이 세우는 것은 가치 창조와 가치 제공입니다. 2구간은 마케팅·판매·재무입니다. 빈 자리가 어느 구간의 일인지 보입니다.`:`다섯 부분이 다 서 있습니다. 이제 이 한 장의 질문은 하나로 좁혀집니다. <b>무엇에 값이 붙는가.</b>`); }
+  if(drive) read.push(`${esc(nick)}의 현장이 채우는 마음은 <b>${drive.n}</b>입니다. ${nz(S.driveWhy)?`「${esc(S.driveWhy)}」 `:''}상품이 이 마음 하나를 얼마나 또렷이 겨누는지가 매력을 정합니다.`);
+  read.push(`시장 열 잣대 합계 <b>${c.mSum}</b>점. ${c.mVerdict}. 가장 낮은 잣대는 ${lowestMarket()}. 점수를 올릴 곳이 아니라 다음 인터뷰에서 물을 곳입니다.`);
+  if(c.A.length===0&&c.answeredParts.length) read.push(`A가 <b>0</b>입니다. 돈이 붙은 문장이 아직 없다는 뜻입니다. 그 사실이 2주차 인터뷰의 첫 재료입니다. 위로하지 않고 적어 둡니다.`);
+  else if(c.A.length) read.push(`돈이 붙은 적 있는 말이 <b>${c.A.length}</b>개. ${esc(nick)}${iga(nick)} 지금 팔고 있는 것의 목록입니다. C를 지우지 마세요.`);
+  const hidden=c.pillars.filter(p=>p.level==='비공개').length;
+  if(c.pillarsPaid.length) read.push(`대가를 치른 기둥이 <b>${c.pillarsPaid.length}</b>개 섰습니다. ${hidden?`그중 ${hidden}개는 비공개로 두셨습니다. 가장 깊은 것을 진열하지 않는 것이 이 일의 품격입니다.`:''}`);
+  if(c.posDone) read.push(`자리가 정해졌습니다. <b>「나는 ${esc(S.pos.who)}에게 ${esc(S.pos.what)}${eulreul(S.pos.what)} 해 준다. 남과 다른 점은 ${esc(S.pos.diff)}」</b>${nz(S.pos.cost)?` 베끼려면 ${esc(S.pos.cost)}${eulreul(S.pos.cost)} 치러야 합니다.`:' 베끼려면 무엇을 치러야 하는지는 아직 비어 있습니다.'}`);
+  if(c.layersYes.length===3) read.push(`세 겹이 다 있습니다. 화면이 아니라 뒤의 <b>편집</b>이 값입니다. 별 ${c.stars}개.`);
+  else if(c.layersYes.length) read.push(`세 겹 중 ${c.layersYes.length}겹입니다. 없는 겹은 ${LAYERS.filter(l=>S.layers[l[0]]!=='있다').map(l=>l[1]).join(' · ')}. 없는 것이 파이프라인이면 오늘 만든 게 사진 한 장으로 끝납니다.`);
+  if(c.scDone) read.push(`오 분 각본이 손에 있습니다. ${S.s4.demo?`실제 한 분 앞에서 열었고${nz(S.s4.first)?`, 첫 마디는 「${esc(S.s4.first)}」였습니다`:''}.`:'아직 방 안에서만 열었습니다. 한 달 안에 실제 자리에서 한 번.'}`);
+  read.push(`닿은 것이 <b>${c.reached}</b>입니다. 쌓인 것과 굳은 것은 방 안에서도 늘지만, 닿은 것은 <b>문을 열고 나가야만</b> 늡니다. ${c.reached===0?'여덟 주가 스터디로 끝날지 사업이 될지가 이 숫자 하나로 갈립니다.':'숫자가 움직였습니다. 이 방향입니다.'}`);
+  const todo=todos(c);
+  const col=(n,e,mid,on,bot)=>`<div class="col"><div class="top">${e}<b>${n}</b></div><div class="mid">${mid}</div><div class="bot ${on?'on':''}">${on?'도장 찍힘':bot}</div></div>`;
+  const li=a=>a.length?a.map(x=>`<div>${esc(x)}</div>`).join(''):'<div class="e">(비었음)</div>';
+  return `<div class="sheet">
+    <div class="head"><div class="stars" aria-hidden="true"><i class="l" style="left:80%;top:20%"></i><i class="s" style="left:60%;top:70%"></i><i style="left:92%;top:60%"></i><i class="s" style="left:70%;top:30%"></i></div>
+      <div class="kicker">${esc(nick)}의 비즈니스 시스템</div>
+      <h2>한 장<small>${new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'})} · 디퍼 콤포스텔라 1기 · 1구간</small></h2>
+      <div class="biz">${nz(S.biz)?esc(S.biz):'(내 사업 한 줄이 비어 있습니다)'}</div></div>
+    <div class="body">
+      <h3>바닥 — 퍼스널 MBA</h3>
+      <div class="base">
+        <div><span>다섯 부분</span><b class="${c.missing.length?'hot':''}">${partsLine}<br>${partsVerdict}</b></div>
+        <div><span>채우는 마음</span><b>${drive?drive.n+' 욕구':'(아직)'}${nz(S.driveWhy)?' · '+esc(S.driveWhy):''}</b></div>
+        <div><span>시장 열 잣대</span><b>${c.mSum}점 · ${c.mVerdict}</b></div>
+        <div><span>값의 꼴</span><b>${esc(formsLine)}</b></div>
+        <div><span>왜 하는가</span><b>${stance}${nz(S.rival)?' · 경쟁자 = '+esc(S.rival):''}${nz(S.rivalGap)?' · 못 채운 필요 = '+esc(S.rivalGap):''}</b></div>
+      </div>
+      <h3>네 기둥 — 캔다 · 세운다 · 짓는다 · 연다</h3>
+      <div class="four">
+        ${col('캔다','1주차',`<div class="e">자산 있는 곳 ${c.placesOn.length} · 돈 나온 곳 ${c.placesPaid.length}</div><div class="e" style="margin-top:.3rem">A ${c.A.length} · B ${c.B.length} · C ${c.C.length}</div>${li(c.A)}`,c.stamp1,'도장 1 아직')}
+        ${col('세운다','2주차',`<div class="e">기둥 ${c.pillars.length} (대가 붙은 것 ${c.pillarsPaid.length})</div>${li(c.pillars.filter(p=>p.level!=='비공개').map(p=>p.level==='보편의 말로'?p.text+' (보편의 말로)':p.text))}${c.posDone?`<div style="margin-top:.4rem;color:var(--green-deep);font-weight:600">나는 ${esc(S.pos.who)}에게 ${esc(S.pos.what)}${eulreul(S.pos.what)} 해 준다.<br>남과 다른 점: ${esc(S.pos.diff)}</div>`:'<div class="e">(포지셔닝 비었음)</div>'}`,c.stamp2,'도장 2 아직')}
+        ${col('짓는다','3주차',`<div class="e">세 겹 ${c.layersYes.length}/3 · 별 ${c.stars}</div>${TYPES.map(t=>`<div>${t[1]} ${esc(S.counts[t[0]]||0)}</div>`).join('')}`,c.stamp3,'도장 3 아직')}
+        ${col('연다','4주차',c.scDone?`<div>중심 · 기둥 ${c.scP.length} · 사례 · 다음 걸음</div><div class="e" style="margin-top:.3rem">${S.s4.demo?'실제 한 분 앞 시연 1건':'방 안에서만'}</div>`:'<div class="e">(각본 비었음)</div>',c.stamp4,'도장 4 아직')}
+      </div>
+      <h3>크레덴시알 — 세 눈금</h3>
+      <div class="gauge"><div><b>${c.built}</b>쌓인 것<br>실재하는 산출물</div><div><b>${c.firm}</b>굳은 것<br>규칙으로 올라간 것</div><div class="${c.reached?'':'zero'}"><b>${c.reached}</b>닿은 것<br>바깥 사람에게 닿은 횟수</div></div>
+      ${c.scDone?`<h3>오 분 각본</h3><div class="script"><ol><li>${esc(S.sc.center)}</li><li>${c.scP.map(esc).join(' / ')}</li><li>${esc(S.sc.caseTxt)}</li><li>${esc(S.sc.next)}</li></ol><div class="e" style="margin-top:.5rem">화면을 띄우고 10초 그냥 보여준 뒤에 1번을 읽습니다. 5번은 없습니다. 4번에서 멈춥니다.</div></div>`:''}
+      <h3>풀이</h3>
+      <div class="read">${read.map(r=>`<p>${r}</p>`).join('')}</div>
+      <h3>빈 자리 — 다음에 할 일</h3>
+      <div class="todo">${todo.map(t=>`<div><span>${t[0]}</span><div>${t[1]}</div></div>`).join('')}</div>
+      <div class="acts"><button type="button" data-copy>볼트로 복사 (마크다운)</button><button type="button" class="ghost" data-print>인쇄 · PDF</button><button type="button" class="ghost" data-goto="0">처음 장으로</button><button type="button" class="danger" data-reset>모두 지우고 새로</button></div>
+    </div></div>`;
+}
+function markdown(){
+  const c=calc(); const drive=DRIVES.find(d=>d.k===S.drive);
+  const L=[];
+  L.push(`# 내 비즈니스 시스템 — 한 장`, ``, `> ${S.nick||'디퍼님'} · ${new Date().toISOString().slice(0,10)} · 디퍼 콤포스텔라 1기 · 1구간`, `> 사업 한 줄: ${S.biz||'(비었음)'}`, ``);
+  L.push(`## 바닥 — 퍼스널 MBA`, ``, `| 무엇 | 답 |`, `|---|---|`);
+  L.push(`| 다섯 부분 | ${PARTS.map(p=>`${p.n} ${S.parts[p.k]||'?'}`).join(' · ')} |`);
+  L.push(`| 채우는 마음 | ${drive?drive.n+' 욕구':''} ${S.driveWhy||''} |`);
+  L.push(`| 시장 열 잣대 | ${c.mSum}점 — ${c.mVerdict} (${MARKET.map((m,i)=>`${m[0]} ${S.market[i]}`).join(', ')}) |`);
+  L.push(`| 값의 꼴 | ${S.forms.map(i=>FORMS[i]).join(' · ')} |`);
+  L.push(`| 용병/용사 | 돈이 아니어도 매일: ${S.merc||'?'} · 손익 본 적: ${S.crus||'?'} |`);
+  L.push(`| 경쟁자 | ${S.rival||''} — 못 채운 필요: ${S.rivalGap||''} |`, ``);
+  L.push(`## 캔다 — 1주차`, ``, `- 자산 있는 곳: ${c.placesOn.map(k=>PLACES.find(p=>p[0]===k)[1]+(S.places[k].paid?'(돈 나온 적 있음)':'')).join(' · ')||'(비었음)'}`);
+  L.push(`- A (돈 낸 적): ${c.A.join(' / ')||'(없음)'}`, `- B (물어본 적): ${c.B.join(' / ')||'(없음)'}`, `- C (나만 아는): ${c.C.join(' / ')||'(없음)'}`, `- 도장 1: ${c.stamp1?'찍힘':'아직'} (파이프라인 ${S.s1.pipe?'○':'×'} · 출처 100% ${S.s1.src?'○':'×'})`, ``);
+  L.push(`## 세운다 — 2주차`, ``, `### 손해인 줄 알면서 한 결정`);
+  S.dec.forEach((d,i)=>{ if(nz(d.d)||nz(d.kept)) L.push(`${i+1}. ${d.d||''} → 잃은 것: ${d.lost||''} → 지키려던 것: ${d.kept||''}`); });
+  L.push(``, `### 기둥`, `| # | 기둥 | 치른 대가 | 공개 수위 |`, `|---|---|---|---|`);
+  c.pillars.forEach((p,i)=>L.push(`| ${i+1} | ${p.text} | ${p.lost||''} | ${p.level||''} |`));
+  L.push(``, `### 포지셔닝`, `나는 ${S.pos.who||'[   ]'}에게 ${S.pos.what||'[   ]'}${eulreul(S.pos.what)} 해 준다. 남과 다른 점: ${S.pos.diff||'[   ]'}`, `베끼려면 치러야 할 것: ${S.pos.cost||''}`, ``);
+  L.push(`- 도장 2: ${c.stamp2?'찍힘':'아직'} (헌법 ${S.s2.claude?'○':'×'} · 읽어 드림 ${S.s2.read?'○':'×'}${S.s2.reaction?' — '+S.s2.reaction:''})`, ``);
+  L.push(`## 짓는다 — 3주차`, ``, `- 세 겹: 지식 구조 ${S.layers.structure||'?'} · 탐색 인터페이스 ${S.layers.ui||'?'} · 재생성 파이프라인 ${S.layers.pipe||'?'}`);
+  L.push(`- 별: ${TYPES.map(t=>`${t[1]} ${S.counts[t[0]]||0}`).join(' · ')} = ${c.stars}`);
+  L.push(`- 도장 3: ${c.stamp3?'찍힘':'아직'} (세 번 ${S.s3.three?'○':'×'} · 얇은 재료 ${S.s3.thin?'○':'×'} · 손질 보존 ${S.s3.keep?'○':'×'})`, ``);
+  L.push(`## 연다 — 4주차`, ``, `### 오 분 각본`, `1. 중심 한 문장: ${S.sc.center||''}`, `2. 기둥 셋: ${c.scP.join(' / ')}`, `3. 사례 하나: ${S.sc.caseTxt||''}`, `4. 다음 걸음 제안: ${S.sc.next||''}`, ``);
+  L.push(`- 자립: 뜬다 ${S.s4.open?'○':'×'} · 자란다 ${S.s4.grow?'○':'×'} · 이름 남는다 ${S.s4.keepName?'○':'×'}`, `- 도장 4: ${c.stamp4?'찍힘':'아직'} (실제 한 분 앞 시연 ${S.s4.demo?'○':'×'}${S.s4.first?' — 첫 마디: '+S.s4.first:''})`, ``);
+  L.push(`## 크레덴시알`, ``, `| 쌓인 것 | 굳은 것 | 닿은 것 |`, `|---|---|---|`, `| ${c.built} | ${c.firm} | ${c.reached} |`, ``);
+  L.push(`## 빈 자리`, ``);
+  todos(c).forEach(t=>L.push(`- [ ] ${t[0]} — ${t[1]}`));
+  L.push(``, `---`, `*재료: 콤포스텔라 1구간 강의안 4편 + 『퍼스널 MBA』 서문·1장 발행인의 밑줄. 이 파일은 내 볼트의 내하늘/ 폴더에 둡니다.*`);
+  return L.join('\n');
+}
+
+/* ── 렌더 ─────────────────────────────── */
+const $=s=>document.querySelector(s);
+const main=$('#main'), rail=$('#rail'), railIn=$('#railIn'), cover=$('#cover');
+function stageOf(i){ return i>=CARDS.length?'sheet':CARDS[i].st; }
+function renderRail(){
+  const c=calc(); const cur=stageOf(S.idx);
+  const stampOf={w1:c.stamp1,w2:c.stamp2,w3:c.stamp3,w4:c.stamp4};
+  const curStIdx=STAGES.findIndex(s=>s.k===cur);
+  railIn.innerHTML=STAGES.map((s,i)=>{ const first=s.k==='sheet'?CARDS.length:CARDS.findIndex(x=>x.st===s.k);
+    const cls=[s.k===cur?'on':'', i<curStIdx?'done':'', stampOf[s.k]?'stamp':''].join(' ');
+    return `<button type="button" class="st ${cls}" data-goto="${first}"><span class="dot">${stampOf[s.k]?'✓':i+1}</span><span>${s.n}</span></button>${i<STAGES.length-1?'<span class="line"></span>':''}`; }).join('')
+    +`<span class="cnt">${S.idx>=CARDS.length?'한 장':`${S.idx+1} / ${CARDS.length}`}</span>`;
+}
+function render(){
+  cover.hidden=true; rail.hidden=false; main.hidden=false;
+  renderRail();
+  if(S.idx>=CARDS.length){ main.innerHTML=sheet(); }
+  else { const k=CARDS[S.idx];
+    main.innerHTML=`<div class="card"><div class="tag">${k.tag}<span>${S.idx+1} / ${CARDS.length}</span></div><h2>${k.title}</h2><p class="why">${k.why}</p>${k.body()}
+      <div class="nav"><button type="button" class="prev" data-goto="${S.idx-1}" ${S.idx===0?'style="visibility:hidden"':''}>이전 장</button><span><button type="button" class="skip" data-goto="${S.idx+1}">비워 두고 넘김</button> <button type="button" class="next" data-goto="${S.idx+1}">${S.idx===CARDS.length-1?'한 장으로':'다음 장'}</button></span></div></div>`; }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'),1800); }
+
+/* ── 이벤트 ─────────────────────────────── */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-goto],[data-set],[data-toggle],[data-addpillar],[data-copy],[data-print],[data-reset]'); if(!b) return;
+  if(b.dataset.goto!==undefined){ S.idx=Math.max(0,Math.min(CARDS.length,Number(b.dataset.goto))); save(); render(); return; }
+  if(b.dataset.set){ let v=b.dataset.val; if(v==='true')v=true; if(v==='false')v=false;
+    if(b.dataset.set.startsWith('places.')){ const k=b.dataset.set.split('.')[1]; S.places[k]=S.places[k]||{on:true,paid:false}; S.places[k].paid=v; save(); } else set(b.dataset.set,v);
+    render(); return; }
+  if(b.dataset.toggle){ const i=Number(b.dataset.val); const arr=S[b.dataset.toggle]; const at=arr.indexOf(i); if(at>=0) arr.splice(at,1); else { if(arr.length>=2) arr.shift(); arr.push(i); } save(); render(); return; }
+  if(b.dataset.addpillar!==undefined){ S.pillars.push({text:'',lost:'',level:'',src:-1,edited:true}); save(); render(); return; }
+  if(b.dataset.copy!==undefined){ const md=markdown(); const fallback=()=>{ const ta=document.createElement('textarea'); ta.value=md; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); toast('복사했습니다. 볼트의 내하늘/ 폴더에 붙여 넣으세요'); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(md).then(()=>toast('복사했습니다. 볼트의 내하늘/ 폴더에 붙여 넣으세요'),fallback); } else fallback(); return; }
+  if(b.dataset.print!==undefined){ window.print(); return; }
+  if(b.dataset.reset!==undefined){ if(confirm('적은 것을 모두 지우고 처음부터 할까요? 되돌릴 수 없습니다.')){ S=fresh(); save(); cover.hidden=false; rail.hidden=true; main.hidden=true; $('#nick').value=''; $('#biz').value=''; $('#resume').hidden=true; window.scrollTo(0,0);} return; }
+});
+document.addEventListener('input',e=>{
+  const el=e.target;
+  if(el.dataset.bind){ let v=el.value; if(el.type==='number') v=v===''?'':Number(v); set(el.dataset.bind,v);
+    if(el.dataset.edited){ const p=get(el.dataset.edited); if(p){ p.edited=true; save(); } }
+    if(el.type==='number'){ const sv=$('#starsV'); if(sv){ sv.querySelector('b').textContent=calc().stars; } }
+    return; }
+  if(el.dataset.range){ set(el.dataset.range,Number(el.value)); const v=el.closest('.slider').querySelector('.v'); if(v) v.textContent=el.value;
+    const c=calc(); const card=el.closest('.card'); const sum=card.querySelector('.sum'); if(sum){ const s=c.mSum; [...sum.children].forEach((d,i)=>d.classList.toggle('on', i===0?s<=50:i===1?(s>50&&s<=75):s>75)); }
+    const mv=$('#mv'); if(mv) mv.innerHTML=marketVerdictHtml(c); return; }
+});
+document.addEventListener('change',e=>{
+  const el=e.target;
+  if(el.dataset.check){ if(el.dataset.check.startsWith('places.')){ const k=el.dataset.check.split('.')[1]; S.places[k]=S.places[k]||{on:false,paid:false}; S.places[k].on=el.checked; save(); } else set(el.dataset.check,el.checked); render(); return; }
+  if(el.tagName==='SELECT'&&el.dataset.bind){ set(el.dataset.bind,el.value); return; }
+});
+$('#nick').addEventListener('input',e=>set('nick',e.target.value));
+$('#biz').addEventListener('input',e=>set('biz',e.target.value));
+$('#start').addEventListener('click',()=>{ S.idx=0; save(); render(); });
+$('#resumeBtn').addEventListener('click',()=>render());
+$('#resetBtn').addEventListener('click',()=>{ if(confirm('적은 것을 모두 지우고 처음부터 할까요?')){ S=fresh(); save(); $('#nick').value=''; $('#biz').value=''; $('#resume').hidden=true; } });
+$('#nick').value=S.nick||''; $('#biz').value=S.biz||'';
+const touched=nz(S.biz)||Object.values(S.parts).some(Boolean)||S.A.some(nz)||S.pillars.length>0;
+if(touched) $('#resume').hidden=false;
+})();
+</script>
+</body>
+</html>
