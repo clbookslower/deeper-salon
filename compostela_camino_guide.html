@@ -21,16 +21,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --night:#081410;
-    --night-soft:#0C1E17;
-    --panel:rgba(16,36,28,.55);
-    --panel-line:rgba(217,179,108,.16);
-    --gold:#D9B36C;
-    --gold-deep:#B99450;
+    --night:#120E22;
+    --night-soft:#1F183A;
+    --panel:rgba(36,28,66,.55);
+    --panel-line:rgba(212,185,114,.16);
+    --gold:#D4B972;
+    --gold-deep:#B39A5C;
     --cream:#F4F1E8;
     --cream-mute:rgba(244,241,232,.64);
     --cream-dim:rgba(244,241,232,.42);
-    --sage:#9FCDB4;
+    --sage:#B9B0CF;
   }
   *{margin:0; padding:0; box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -61,7 +61,7 @@
     text-align:center;
     padding:80px 24px 60px;
     position:relative;
-    background:radial-gradient(ellipse 120% 80% at 50% -10%, rgba(20,48,37,.85) 0%, rgba(8,20,16,0) 60%);
+    background:radial-gradient(ellipse 120% 80% at 50% -10%, rgba(52,42,92,.85) 0%, rgba(18,14,34,0) 60%);
   }
   .plaque{display:inline-block; margin-bottom:40px;}
   .plaque img{height:32px; width:auto; display:block; opacity:.92;}
@@ -98,7 +98,7 @@
   .scroll-cue .word{font-size:10.5px; letter-spacing:.4em; padding-left:.4em; color:var(--cream-dim);}
   .scroll-cue .stem{
     width:1px; height:44px;
-    background:linear-gradient(to bottom, rgba(217,179,108,.7), rgba(217,179,108,0));
+    background:linear-gradient(to bottom, rgba(212,185,114,.7), rgba(212,185,114,0));
     overflow:hidden; position:relative;
   }
   .scroll-cue .stem::after{
@@ -143,7 +143,7 @@
     text-align:center; font-size:14px; color:var(--sage);
     letter-spacing:.04em; margin:-40px 0 52px;
   }
-  .steps-line .arr{color:rgba(217,179,108,.5); margin:0 6px; font-family:'Noto Sans KR',sans-serif; font-size:12px;}
+  .steps-line .arr{color:rgba(212,185,114,.5); margin:0 6px; font-family:'Noto Sans KR',sans-serif; font-size:12px;}
 
   /* ── 도입 산문 ── */
   .intro{max-width:520px; margin:0 auto;}
@@ -174,7 +174,7 @@
     position:relative;
     border:1px solid var(--panel-line);
     border-radius:18px;
-    background:linear-gradient(180deg, rgba(14,33,26,.5), rgba(8,20,16,.2));
+    background:linear-gradient(180deg, rgba(36,28,66,.5), rgba(18,14,34,.2));
     padding:34px 10px 18px;
     overflow:hidden;
   }
@@ -189,12 +189,12 @@
   #camino-svg{width:100%; height:auto; display:block;}
   .camino-base{fill:none; stroke:rgba(244,241,232,.10); stroke-width:1.4; stroke-dasharray:2 7; stroke-linecap:round;}
   .camino-draw{fill:none; stroke:var(--gold); stroke-width:1.8; stroke-linecap:round;
-    filter:drop-shadow(0 0 5px rgba(217,179,108,.55));}
+    filter:drop-shadow(0 0 5px rgba(212,185,114,.55));}
   .wk-node{fill:rgba(244,241,232,.22); transition:fill .8s ease, filter .8s ease;}
-  .wk-node.lit{fill:var(--gold); filter:drop-shadow(0 0 7px rgba(217,179,108,.9));}
+  .wk-node.lit{fill:var(--gold); filter:drop-shadow(0 0 7px rgba(212,185,114,.9));}
   .end-star{fill:rgba(244,241,232,.16); transition:fill 1s ease, filter 1s ease;}
   .end-star.lit{fill:var(--cream); filter:drop-shadow(0 0 6px rgba(244,241,232,.8));}
-  .walker{fill:var(--cream); filter:drop-shadow(0 0 8px rgba(217,179,108,1)); opacity:0; transition:opacity .5s;}
+  .walker{fill:var(--cream); filter:drop-shadow(0 0 8px rgba(212,185,114,1)); opacity:0; transition:opacity .5s;}
   .walker.on{opacity:1;}
   .map-label{
     fill:var(--cream-mute); font-family:'Noto Sans KR','맑은 고딕',sans-serif;
@@ -219,7 +219,7 @@
     position:relative;
     transition:border-color .5s ease, transform .5s ease;
   }
-  .wk:hover{border-color:rgba(217,179,108,.4); transform:translateY(-3px);}
+  .wk:hover{border-color:rgba(212,185,114,.4); transform:translateY(-3px);}
   .wk .no{
     font-size:11px; letter-spacing:.34em; padding-left:.34em;
     color:var(--gold); font-weight:500; margin-bottom:12px;
@@ -265,13 +265,13 @@
   .keep li:last-child{border-bottom:none;}
   .keep li::before{
     content:"✦"; position:absolute; left:0; top:7px;
-    color:rgba(217,179,108,.65); font-size:10px;
+    color:rgba(212,185,114,.65); font-size:10px;
   }
   .keep li em{font-style:normal; color:var(--cream); font-weight:400;}
   .partner-note{
-    border:1px solid rgba(217,179,108,.3);
+    border:1px solid rgba(212,185,114,.3);
     border-radius:16px;
-    background:linear-gradient(180deg, rgba(217,179,108,.07), rgba(217,179,108,.02));
+    background:linear-gradient(180deg, rgba(212,185,114,.07), rgba(212,185,114,.02));
     padding:34px 30px;
     text-align:center;
   }
@@ -619,7 +619,7 @@
       var a = reduce ? s.base : s.base + s.amp * Math.sin(t / 1000 * s.sp + s.ph);
       if (a < 0.04) a = 0.04;
       cx.globalAlpha = a;
-      cx.fillStyle = s.gold ? '#D9B36C' : '#F4F1E8';
+      cx.fillStyle = s.gold ? '#D4B972' : '#F4F1E8';
       cx.beginPath();
       cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       cx.fill();
