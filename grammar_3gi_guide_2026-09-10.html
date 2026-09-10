@@ -1,0 +1,130 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>문법 3회차 · 나의 독점적 관점 — 진행안</title><style>
+:root{--bg:#FAFAF7;--paper:#fff;--ink:#1A1916;--ink2:#5C584E;--ink3:#8F8A7E;
+--line:#E4DFD2;--core:#1A4A35;--gold:#B5731A;--wash:#F2EFE6;--say:#F4F7F3;--cue:#FDF6EA}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);line-height:1.75;
+font-family:'Malgun Gothic','Apple SD Gothic Neo','Segoe UI',sans-serif;
+padding:0 0 72px;word-break:keep-all;-webkit-text-size-adjust:100%}
+.top{background:var(--core);color:#F6F3EA;padding:26px 20px 22px;text-align:center}
+.top img{height:30px;width:auto;display:block;margin:0 auto 14px;opacity:.95}
+.top h1{font-size:21px;font-weight:800;letter-spacing:-.01em;line-height:1.45}
+.top .sub{font-size:12.5px;color:#B9CFC1;margin-top:9px;line-height:1.8}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+padding:20px 18px;margin:18px 0}
+h2{font-size:16.5px;font-weight:800;color:var(--core);margin:34px 0 12px;
+padding-bottom:8px;border-bottom:2px solid var(--core)}
+h3{font-size:15px;font-weight:800;margin:26px 0 10px;color:var(--ink)}
+h3 .t{color:var(--gold);font-family:Consolas,monospace;font-size:13px;margin-left:7px;font-weight:600}
+p{margin:9px 0;font-size:14.5px}
+ul,ol{margin:9px 0 9px 20px}li{font-size:14.5px;margin:5px 0}
+strong{font-weight:800}
+blockquote{background:var(--say);border-left:4px solid var(--core);border-radius:0 9px 9px 0;
+padding:14px 16px;margin:13px 0;font-size:14.5px;color:#20301f}
+blockquote p{margin:6px 0}
+blockquote::before{content:"말";display:inline-block;background:var(--core);color:#fff;
+font-size:10px;padding:1px 7px;border-radius:4px;margin-bottom:7px;letter-spacing:.1em}
+.cue{background:var(--cue);border:1px dashed var(--gold);border-radius:9px;
+padding:12px 14px;margin:13px 0;font-size:13.5px;color:#6b4a12}
+.cue::before{content:"진행";display:inline-block;background:var(--gold);color:#fff;
+font-size:10px;padding:1px 7px;border-radius:4px;margin-right:8px;letter-spacing:.1em}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:13px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:0}
+th{background:var(--wash);color:var(--core);font-weight:800;text-align:left;
+padding:9px 10px;border-bottom:2px solid var(--line);font-size:12.5px}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+code{background:var(--wash);border:1px solid var(--line);border-radius:4px;
+padding:1px 5px;font-family:Consolas,monospace;font-size:.92em}
+hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+.meta{background:var(--wash);border-radius:10px;padding:14px 16px;font-size:12.5px;
+color:var(--ink2);margin:18px 0}
+.meta b{color:var(--ink)}
+.meta div{margin:3px 0}
+footer{text-align:center;color:var(--ink3);font-size:11.5px;margin-top:44px;
+padding-top:18px;border-top:1px solid var(--line);line-height:2}
+footer .q{color:var(--core);font-size:13px;font-style:italic;margin-bottom:6px}
+
+@media(max-width:600px){
+ .tblwrap{overflow-x:visible}
+ table,tbody,tr,td{display:block;width:100%}
+ thead{display:none}
+ tr{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0;background:var(--paper)}
+ td{border:none;padding:4px 0;font-size:14px}
+ td:first-child{font-weight:800;color:var(--core);font-size:14.5px;
+   padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+}
+@media(max-width:520px){
+ .top h1{font-size:18px}.wrap{padding:0 12px}.card{padding:16px 14px}
+ p,li,blockquote{font-size:14px}table{font-size:12.5px}
+ th,td{padding:7px 8px}
+}
+</style>
+</head><body>
+<div class="top"><img src="data:image/png;base64,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" alt="DEEPER">
+<h1>문법 3회차 · 나의 독점적 관점</h1><div class="sub">디퍼 언브랜딩살롱 3기 — 문법의 달 3회차 · 60분 · 덱 7장 + 세션 파일 + 데일리 루틴</div></div>
+<div class="wrap"><div class="meta"><div>회차: 문법 3회차 · 나의 독점적 관점 (4회차 9/17 = 수료)</div><div>일시: 2026-09-10(목) 21:00–22:00 · 60분 (22:00부터 전 기수 인사이트 공유회 합류)</div><div>대상: 3기 · 두 주를 걸은 분들 · 언어 지문 과제를 한 분과 안 한 분이 섞여 있고, 씨앗 문장은 대부분 아직 한 줄이 없다고 가정 (인원·닉네임은 이 문서에 싣지 않는다)</div><div>관리: 마사</div><div>화면 자료: ①덱 7장 <code>grammar_3gi_deck_2026-09-10.html</code> · ②세션 <code>grammar_3gi_session03_exclusive_perspective.html</code> · ③데일리 루틴 <code>grammar_3gi_routine_autophagy.html</code> — 세 파일을 이어서 연다</div><div>상태: v1 — 2기 g3 세션·데일리 루틴을 3기판으로 표기 전환(요일을 목요일 기준으로 재배치) · 덱 7장 신설 · 여우 지형도 프롬프트 얇은 볼트 조건 실측 = 아래 「실측 기록」</div></div>
+<div class="cue"><strong>이 밤의 본질</strong>: 두 주 동안 캔 것 가운데 소화되지 않는 것(핵)을 가려내고, 씨앗 문장을 뿌리로 콘텐츠 나무의 첫 가지를 그린다. 세션은 오토파지(낡은 것을 먹어 새것을 짓는 순환)를 말하고, 실습에서 각자 살아낸 것 목록과 첫 문장을 쓴다.<br><strong>이 밤의 한 문장</strong>: "나에게서 다시 나에게로."<br><strong>화면 세 개</strong>: 덱으로 열고, 본편과 실습은 세션 파일, 과제는 덱 05로 돌아와서 말하고 루틴 문서는 D1만 잠깐 띄운다. 넘어가는 자리는 ③과 ⑤다.<br><strong>범위 메모</strong>: 22:00에 전 기수 공유회가 열린다 — 시간을 넘기지 않는다. <strong>지난 회차에는 강의가 60분을 다 써서 실습이 틀만 보고 끝났다.</strong> 오늘은 본편을 24분에서 끊고 ④ 실습 20분을 지킨다. ④는 줄이지 않는다.</div>
+<hr>
+<h2>이 밤이 성공했다면 — 모든 디퍼님이 이걸 품고 나간다</h2>
+<ul><li>"다시 원점에 서 있는 것 같다"는 감각이 퇴보가 아니라 소화가 진행 중이라는 신호임을 한 문장으로 말할 수 있다.</li><li>손으로 쓴 <strong>살아낸 것 목록(3~5줄)</strong>과 <strong>첫 문장 한 줄</strong>을 들고 나간다. 씨앗 문장이 없던 분도 지난주의 틀로 한 줄을 갖게 된다.</li><li>이번 주 새로 더하는 것이 <strong>지식 지형도 한 번</strong>뿐이라는 안심 — 오늘 쓴 것을 냠냠으로 들이고 프롬프트 한 번. 루틴은 하루씩, 되는 만큼.</li><li>첫 문장은 500자까지 불편한 채로 늘려 와도 된다는 것을 안다.</li></ul>
+<hr>
+<h2>타임라인 (60분 · 21:00 시작)</h2>
+<div class="tblwrap"><table><thead><tr><th>시간</th><th>분</th><th>단계</th><th>화면</th></tr></thead><tbody><tr><td>21:00–21:05</td><td>5</td><td><strong>① 열기 — 두 주를 걸으셨어요</strong></td><td>덱 01–02</td></tr><tr><td>21:05–21:07</td><td>2</td><td><strong>② 오늘의 흐름</strong></td><td>덱 03–04</td></tr><tr><td>21:07–21:31</td><td>24</td><td><strong>③ 본편 — 원점 · 오토파지 · 핵 · 나무 · 독자의 언어</strong> 🔄<strong>파일 ② 세션으로 전환</strong></td><td>세션 OPENING → MOVE 3</td></tr><tr><td>21:31–21:51</td><td>20</td><td><strong>④ 실습 — 자가포식 · 살아낸 것 · 콘텐츠 나무 · 첫 문장</strong></td><td>세션 PRACTICE</td></tr><tr><td>21:51–21:54</td><td>3</td><td><strong>⑤ 이번 주 과제 — 지식 지형도 + 데일리 루틴</strong> 🔄덱 05 → 파일 ③ 루틴 D1만 잠깐</td><td>덱 05 · 루틴 D1</td></tr><tr><td>21:54–21:57</td><td>3</td><td><strong>⑥ 이번 주 · 하나만 더</strong> 🔄덱으로 복귀</td><td>덱 06</td></tr><tr><td>21:57–22:00</td><td>3</td><td><strong>⑦ 닫기 — 한 바퀴 한마디</strong></td><td>덱 07</td></tr></tbody></table></div>
+<div class="cue">운영 메모 — ①에서 언어 지문 후기가 길어지면 두 분에서 끊는다. "나머지는 10시 공유회에서 들어요" 한 줄.<br>시간이 밀리면 ③의 MOVE 2(자가포식 패턴 여덟 줄)를 읽지 않고 "실습 Step 01에서 고르시면 돼요"로 넘긴다. MOVE 3의 잠깐 대화도 뺀다. <strong>④는 줄이지 않는다.</strong><br>세션 파일의 AI 실험 2종은 화면에서 열지 않는다. "세션 파일 끝에 있어요, 실험 01 하나만 해도 충분해요"로 끝낸다.</div>
+<hr>
+<h2>낱말 번역표 — 기술의 말 ↔ 살롱의 말</h2>
+<div class="tblwrap"><table><thead><tr><th>기술의 말</th><th>살롱의 말</th></tr></thead><tbody><tr><td>오토포이에시스(autopoiesis)</td><td><strong>자기생산</strong> — 살아 있는 것은 제 구조로 제 과정을 낳고, 그 과정이 다시 구조를 지킨다</td></tr><tr><td>오토파지(autophagy)</td><td><strong>낡은 것을 먹어 새것을 짓는 순환</strong> — 비울 때 깨어난다</td></tr><tr><td>우로보로스</td><td><strong>꼬리를 무는 뱀</strong> — 나에게서 나에게로</td></tr><tr><td>영원회귀</td><td><strong>같은 자리로 돌아온 것 같은 감각</strong> — 자리는 같고 몸이 다르다</td></tr><tr><td>핵(核)</td><td><strong>살아낸 것</strong> — 직접 겪어서 아는 것, 소화되지 않는 것</td></tr><tr><td>자가포식 목록</td><td>내 콘텐츠 활동에서 <strong>에너지를 소진시키는 패턴</strong> 다섯</td></tr><tr><td>콘텐츠 나무</td><td>씨앗 문장(뿌리) → 기둥 셋 → 가지 — <strong>하나를 깊이 써서 여러 형태로</strong></td></tr><tr><td>지식 지형도</td><td>여우가 두 주치를 읽고 그리는 <strong>깊은 곳·중간·발굴 대기의 지도</strong></td></tr><tr><td>파인만 기법</td><td>모르는 사람에게 설명할 수 없으면 <strong>아직 소화되지 않은 것</strong></td></tr><tr><td>독자의 언어</td><td><strong>오토파지 이전의 내 언어</strong> — 검색창에 치는 그 말</td></tr></tbody></table></div>
+<hr>
+<h2>진행 스크립트</h2>
+<h3>① 열기<span class="t">5분</span> — [덱 01–02]</h3>
+<blockquote><p>"두 주를 걸으셨어요. 노트는 며칠이나 펴셨는지, 밖의 글을 냠냠으로 들이셨는지, 여우가 언어 지문을 읽어 줬는지 — 손만 들어 주셔도 돼요.<br>지문을 받아 보신 분, 한 분만 여쭐게요. 여우가 짚은 것 중에 '이건 내 말이 맞다' 싶은 게 하나 있었나요.<br>씨앗 문장은 지난주에 틀만 봤죠. 한 줄 써 보신 분도, 아직인 분도 괜찮아요. 오늘은 그 한 줄이 어디까지 자랄 수 있는지를 봅니다."</p></blockquote>
+<div class="cue">언어 지문 후기는 두 분까지. 길게 받지 않는다. 지형도 과제가 오늘 걸리므로 "지문이 없어도 오늘 과제는 됩니다" 한 줄.<br>새옷(v1.8.1) 안 한 분이 있으면 여기서 붙잡지 않는다 — "사막방에 '여우 조용해요'라고만" 한 줄.</div>
+<h3>② 오늘의 흐름<span class="t">2분</span> — [덱 03–04]</h3>
+<blockquote><p>"오늘 밤은 넷으로 흘러요. 오토파지 — 핵 — 나무 — 독자의 언어. 이름만 듣고 가세요.<br>시작 전에 하나만 여쭤볼게요. 몇 년이 지났는데 비슷한 자리에 돌아와 있는 것 같은 감각, 아세요. 오늘 들어가는 곳이 거기예요."</p></blockquote>
+<div class="cue">여기서 화면을 세션 파일로 바꾼다. 질문에 답을 받지 않는다 — OPENING에서 받는다.</div>
+<h3>③ 본편 — 원점 · 오토파지 · 핵 · 나무 · 독자의 언어<span class="t">24분</span> 🔄 <strong>화면 = 파일 ② 세션</strong></h3>
+<div class="cue">다섯 단을 다 읽지 않는다. <strong>아래만 짚고 PRACTICE로 간다.</strong> 단마다 분 배정.</div>
+<div class="tblwrap"><table><thead><tr><th>단</th><th>분</th><th>진행자가 짚을 것</th></tr></thead><tbody><tr><td>OPENING 다시 원점에 서서</td><td>4</td><td>오프닝 질문 하나 — "원점에 서 있는 것 같은 감각" 두 분만 받는다. 니체의 영원회귀 한 줄: 반복 그 자체가 아니라 "이 순간을 무한히 반복해도 좋다고 말할 수 있는가". 돌아온 자리는 같아 보이지만 몸이 다르다</td></tr><tr><td>FRAME 오토포이에시스와 오토파지</td><td>7</td><td>우로보로스와 에셔 두 그림 — 에셔가 아들에게 쓴 편지 한 줄("봉인된 고리"). 마투라나·바렐라: 자기생산. 오스미: 낡은 것을 분해해 새것의 재료로. <strong>오토파지가 시작되는 조건</strong> 상자 — 결핍·압박이 조건, "분해는 이미 시작되었습니다". 12주 지도(문법=식별과 분해)는 한 줄로만</td></tr><tr><td>MOVE 1 이미 가진 것과 아직 소화 중인 것</td><td>5</td><td>두 열 표 — 왼쪽이 핵(살아낸 것), 오른쪽이 소화 중(막히는 곳). 파인만 기법 한 줄: 설명하다 막히는 곳이 아직 소화되지 않은 자리, 막힘을 쓰면 소화된다</td></tr><tr><td>MOVE 2 씨앗을 심기 전에</td><td>5</td><td>자가포식 패턴 여덟 줄은 <strong>읽지 않고</strong> "실습에서 고르시면 돼요". 콘텐츠 나무 도식 — 뿌리(씨앗 문장) → 기둥 셋 → 가지(사례·방법·내가 틀렸던 것). "많이 쓰는 게 아니라 하나를 깊이 써서 여러 형태로". 잠깐 대화는 뺀다</td></tr><tr><td>MOVE 3 독자의 언어</td><td>3</td><td>고수의 역설 한 줄 — 단순하게 말할 수 있는 것이 소화의 증거. "독자는 오토포이에시스를 검색하지 않는다. '내가 왜 자꾸 같은 실수를 반복하지'를 검색한다". 잠깐 대화는 시간 있으면 한 분만</td></tr></tbody></table></div>
+<div class="cue">아픈 대목(결핍·절박함)이 나오면 머문다. 위로의 상투구를 붙이지 않는다.<br>21:31에 무조건 PRACTICE로 넘어간다. 못 짚은 단은 "세션 파일에 있어요"로.</div>
+<h3>④ 실습 — 나에게서 나에게로 · 4단계<span class="t">20분</span> — [세션 PRACTICE]</h3>
+<blockquote><p>"손으로 씁니다. 잘 쓰려 하지 말고 빠르게. 씨앗 문장이 아직 없는 분은 지난주 틀로 한 줄만 먼저 — 나는 ___에게 ___을 제시하며 ___을 돕는 사람이다. 2분 드릴게요."</p></blockquote>
+<div class="tblwrap"><table><thead><tr><th>Step</th><th>분</th><th>무엇</th><th>진행자 말</th></tr></thead><tbody><tr><td>0</td><td>2</td><td>씨앗 문장 한 줄 (없는 분만)</td><td>"거칠어도 오늘의 버전이에요. 있는 분은 다시 한 번 읽어 두세요"</td></tr><tr><td>01 자가포식</td><td>3</td><td>에너지를 소진시키는 패턴 다섯</td><td>"세션 파일의 여덟 줄에서 골라도 되고, 내 것을 써도 돼요"</td></tr><tr><td>02 발굴</td><td>5</td><td>살아낸 것 다섯</td><td>"틀렸다가 고친 것, 아무도 안 알려줬지만 알게 된 것, 내 분야에서 사람들이 가장 많이 오해하는 것"</td></tr><tr><td>03 구조화</td><td>6</td><td>콘텐츠 나무 초안 — 기둥 셋, 기둥 하나에서 가지 다섯</td><td>"가지에 살아낸 것 목록을 이어 보세요"</td></tr><tr><td>04 시작</td><td>4</td><td>가장 불편한 가지로 첫 문장</td><td>"불편함이 오토파지가 아직 안 끝난 자리예요. 완성하지 마세요. 시작이 전부예요"</td></tr></tbody></table></div>
+<div class="cue">막히는 분: "나는 여기서 막혔다, 왜냐하면 —" 그대로 쓰게 한다. 이것도 콘텐츠.<br>오늘 쓴 것은 <strong>오늘 밤 냠냠</strong>으로 들이라고 한 번만 말한다 — 지형도 과제의 재료다.<br>실습 중 공유는 받지 않는다. ⑦ 닫기에서 한 바퀴.</div>
+<h3>⑤ 이번 주 과제 — 지식 지형도 + 데일리 루틴<span class="t">3분</span> 🔄 <strong>덱 05 → 파일 ③ 루틴 D1만 잠깐</strong></h3>
+<blockquote><p>"이번 주에 하나만 더해요. <strong>지식 지형도</strong>예요. 오늘 손으로 쓴 것 — 살아낸 것 목록, 나무 초안, 첫 문장 — 을 사진 한 장으로 냠냠하고, 세션 파일 끝의 프롬프트를 한 번에 붙여넣으세요. 여우가 두 주치를 읽고 무엇이 깊고 무엇이 발굴 대기인지 지형도로 그려 줘요.<br>글이 적으면 여우는 억지로 그리지 않고 멈춰요. 대신 지금 보이는 결 하나와 더 쓸 것 셋을 말해 줘요. 그것도 답이에요.<br>하루씩의 실천은 데일리 루틴 문서에 있어요. 오늘 밤 D1은 딱 하나 — 소화하고 싶은 패턴 하나를 정하는 거예요."</p></blockquote>
+<div class="cue">루틴 문서는 D1 카드만 보여주고 나머지는 읽지 않는다. 링크는 긱어스 강의실에 건다.<br>실험 02(독자의 언어)는 "하고 싶은 분만, 같은 대화에 이어서" 한 줄.<br>볼트를 아직 못 쓰는 분은 실험 01 상자 아래 「아직 볼트를 쓰지 않는 디퍼님은」 한 줄이 있다.</div>
+<h3>⑥ 이번 주 · 하나만 더<span class="t">3분</span> 🔄 덱으로 돌아온다 — [덱 06]</h3>
+<div class="tblwrap"><table><thead><tr><th>#</th><th>이번 주</th></tr></thead><tbody><tr><td>계속</td><td>아침 손글씨 → "냠냠" · 매일 "안녕" · 일요일 밤 "밤하늘"을 사막에</td></tr><tr><td>하나 더</td><td><strong>지식 지형도</strong> 한 번 — 오늘 쓴 것 냠냠 → 프롬프트 한 번</td></tr><tr><td>오늘 쓴 것</td><td>살아낸 것 목록 · 콘텐츠 나무 초안 · 첫 문장 → 긱어스 강의실 · <strong>첫 문장은 500자까지</strong> 불편한 채로</td></tr></tbody></table></div>
+<blockquote><p>"다 못 해도 손글씨 하나면 이번 주는 완주예요. 다음 밤이 문법의 마지막 밤이라, 오늘 쓴 첫 문장을 거기서 완성해요."</p></blockquote>
+<h3>⑦ 닫기 — 한 바퀴 한마디<span class="t">3분</span> — [덱 07]</h3>
+<blockquote><p>"한 분씩 한마디만요. 오늘 쓴 첫 문장이든, 남은 느낌이든.<br>상처, 살아낸 것들, 아무도 빼앗지 못한 시간. 그것으로만 쓸 수 있는 글이 있어요. '빛은 아름답고, 어둠은 더욱 아름답다' — 마크 헤이머의 문장이에요.<br>다음 밤 9월 17일은 <strong>씨앗에 이름을</strong> — 문법의 마지막 밤, 수료예요.<br>잠시 뒤 열 시에 전 기수 공유회가 이어져요. 그대로 계셔 주세요."</p></blockquote>
+<div class="cue">한 바퀴는 일곱 분 × 20초. 길어지면 "나머지는 공유회에서" 한 줄.</div>
+<hr>
+<h2>상황별 진행 대응</h2>
+<div class="tblwrap"><table><thead><tr><th>상황</th><th>대응</th></tr></thead><tbody><tr><td>씨앗 문장이 없다는 분이 대부분</td><td>실습 Step 0 2분으로 받는다. "거칠어도 오늘의 버전" — 그 이상 시간을 쓰지 않는다</td></tr><tr><td>언어 지문 과제를 아무도 안 했다</td><td>열기에서 후기를 받지 않고 넘어간다. 과제 안내에서 "지문이 없어도 지형도는 됩니다 — 여우가 있는 것만 읽어요"</td></tr><tr><td>"원점" 질문에 답이 길어진다</td><td>두 분에서 끊는다. "오늘 실습에서 쓰실 자리예요"</td></tr><tr><td>오토파지 생물학에 질문이 온다(암·노벨상 등)</td><td>세션 파일의 각주 한 줄로만. 의학 조언처럼 번지지 않게 — "비유예요"</td></tr><tr><td>실습에서 "살아낸 게 없는데요"</td><td>"크지 않아도 돼요. 아무도 안 알려줬지만 알게 된 작은 것 하나면 돼요"</td></tr><tr><td>첫 문장이 매끈한 마케팅 문구처럼 나온다</td><td>그날은 두고 간다. "가장 불편한 가지로 다시 한 줄" 한 번만 권한다</td></tr><tr><td>눈물이 난다</td><td>머문다. 다음 분으로 넘기지 않고 10초. 위로 문장 없이 "고맙습니다"</td></tr><tr><td>여우가 조용하다</td><td>세션 중에 붙잡지 않는다. "사막여우야, 새옷" 한마디 → 안 되면 사막방 "여우 조용해요" → 세션 뒤 맥가이버·별지기</td></tr><tr><td>파일 ②→덱→③ 전환이 엉킨다</td><td>미리 탭 셋을 띄워 둔다. 전환은 ③ 시작·⑤ 시작(덱→루틴)·⑥ 시작 세 번</td></tr><tr><td>22시가 가까워진다</td><td>⑥⑦을 합쳐 2분. 한 바퀴는 공유회로 미룬다</td></tr></tbody></table></div>
+<hr>
+<h2>이 밤이 남기는 것</h2>
+<ul><li>전원: 살아낸 것 목록 · 콘텐츠 나무 초안 · <strong>첫 문장 한 줄</strong> → 긱어스 강의실 (없던 분은 씨앗 문장 한 줄까지)</li><li>이번 주 최소선: 계속(손글씨·안녕·밤하늘) + <strong>지식 지형도 한 번</strong></li><li>진행자: 여우 조용한 분 명단 → 세션 뒤 맥가이버·별지기에게 넘긴다</li><li>다음 밤(9/17 4회차 · 수료)로 넘어가는 재료: 첫 문장(500자) + 지형도의 기둥 → <strong>씨앗에 이름을 — 내 프레임워크에 이름 붙이기, 세상의 언어로 번역하기</strong></li></ul>
+<hr>
+<h2>화면 세 개 — 공유 순서</h2>
+<div class="tblwrap"><table><thead><tr><th>순서</th><th>파일</th><th>언제</th></tr></thead><tbody><tr><td>①</td><td><code>grammar_3gi_deck_2026-09-10.html</code> (7장)</td><td>21:00 시작부터 ②까지, 그리고 ⑤ 시작·⑥⑦</td></tr><tr><td>②</td><td><code>grammar_3gi_session03_exclusive_perspective.html</code></td><td>③ 본편 · ④ 실습 (21:07–21:51)</td></tr><tr><td>③</td><td><code>grammar_3gi_routine_autophagy.html</code></td><td>⑤ 과제 소개 (21:52 전후 · D1 카드만)</td></tr></tbody></table></div>
+<hr>
+<h2>덱 7장 차례 — 진행 중 위치 확인용</h2>
+<div class="tblwrap"><table><thead><tr><th>#</th><th>슬라이드</th><th>단계</th></tr></thead><tbody><tr><td>01</td><td>나의 독점적 관점 (표지)</td><td>①</td></tr><tr><td>02</td><td>여우가 내 글을 읽어 주었나요</td><td>①</td></tr><tr><td>03</td><td>원점에서 콘텐츠 나무까지</td><td>②</td></tr><tr><td>04</td><td>여기서부터 세션 파일로 갑니다 (그린)</td><td>②→③</td></tr><tr><td>05</td><td>여우가 두 주치를 읽고 지형도를 그려요</td><td>⑤</td></tr><tr><td>06</td><td>하루씩, 비우고 핵을 남겨요</td><td>⑥</td></tr><tr><td>07</td><td>그것으로만 쓸 수 있는 글이 있어요</td><td>⑦</td></tr></tbody></table></div>
+<hr>
+<h2>실측 기록 — 여우 지형도 프롬프트 얇은 볼트 조건 (2026-09-10 저녁 · 마사)</h2>
+<p>배포 전 의무 실측(메모리 <code>feedback_salon_prompt_field_test</code>). 조건 = 손글씨 이틀치(각 두세 문장) + 여정기록 Day 1 한 줄 + 오늘 실습 메모 세 줄(씨앗 문장 "아직 안 씀"), Insights·오아시스·Raw-Text 비어 있음. 붙여넣기 경로로 2회.</p>
+<div class="tblwrap"><table><thead><tr><th>회</th><th>결과</th><th>판정</th></tr></thead><tbody><tr><td>1회</td><td>"아직 지형도를 그릴 만큼 쌓이지 않았다"로 멈춤 · 근거 인용 셋(냠냠 9/9·여정 Day 1·실습 첫 문장)에서 <strong>결 하나</strong>("틀린 자리를 보는 눈") · <strong>더 쓸 것 셋</strong>(씨앗 문장 심기·오아시스 한 번·9/8 걱정 풀기) · 지어낸 기둥·막대 없음</td><td>통과</td></tr><tr><td>2회</td><td>"열 문장 남짓"으로 분량을 세고 정지 규칙을 스스로 인용해 멈춤 · 같은 결 하나 · 셋(냠냠 5~7편·씨앗 문장 옮겨 적기·오아시스 한두 개) · 심기(<code>Insights</code>)는 도구가 없어 못 한다고 밝힘</td><td>통과</td></tr></tbody></table></div>
+<div class="cue">두 번 모두 볼트에 없는 장면을 만들지 않았고, "아직 안 씀"인 씨앗 문장을 후보 문장으로만 짚었다. 실측은 붙여넣기 경로(볼트 없이 자료를 본문에 붙임)라 <code>Insights</code> 심기는 검증 대상 밖 — 여우(볼트) 경로에서는 파일 쓰기가 된다.</div>
+<p>⏳ 실험 02(독자의 언어)는 2기 7/20 계보를 그대로 잇는다. 3기 얇은 조건 실측은 미실행.</p>
+<hr>
+<h2>4회차 전체 배치</h2>
+<div class="tblwrap"><table><thead><tr><th>회차</th><th>날짜</th><th>내용</th></tr></thead><tbody><tr><td>1회차</td><td>8/27(목)</td><td>OT + 원천 텍스트 — 특이점 · 여우 소개 · DX→AX · 도메인 · 나만이 쓸 수 있는 것</td></tr><tr><td>2회차</td><td>9/3(목)</td><td>목소리의 결 — 암묵지 · 특이점 지도 · 브랜드 씨앗 문장(틀) · 과제 = 언어 지문</td></tr><tr><td><strong>3회차</strong></td><td><strong>9/10(목)</strong></td><td><strong>나의 독점적 관점 — 오토파지 · 살아낸 것 · 콘텐츠 나무 · 과제 = 지식 지형도 + 데일리 루틴</strong></td></tr><tr><td>4회차</td><td>9/17(목)</td><td>씨앗에 이름을 — 명명 · 문법 수료</td></tr></tbody></table></div>
+<div class="cue">2기와 다른 점 셋. ①2기는 2주차에 씨앗 문장을 썼지만 3기 2회차는 틀만 보고 끝났다 — 세션 OPENING 문장과 실습 Step 03에 "아직 없으면 지난주 틀로 한 줄" 안전선을 넣었다. ②2기 루틴은 월요일 세션 기준 D1 월~D7 일이었다 — 3기는 목요일 세션이라 D1 목~D7 수로 옮기고, 밤하늘은 D4 일요일로 당겼다. ③"세 주가 쌓였다"는 "두 주"로 — 3기는 1회차가 OT를 겸해 볼트가 한 주 얇다. 프롬프트의 "작업 문법"(2기 1주차 산출물)은 3기에 없어 뺐다.<br>2기의 보조 문서 <code>g3_extra_autophagy_new_me</code>(1기 현장 기록 · 젠슨 황 책 소감)는 3기에 올리지 않는다 — 2기에서도 배포 판단이 보류된 채였고, 3기 리딩 자료는 『마침내 특이점이 시작된다』라 책이 다르다.</div>
+<hr>
+<div class="cue">v1. 2기 g3 세션·루틴 표기 전환(요일 재배치·두 주 기준) + 덱 7장 신설 + 얇은 볼트 실측. — 마사</div>
+<footer><div class="q">나에게서 다시 나에게로.</div>디퍼 언브랜딩살롱 3기 · 문법 3회차 · DEEPER · 진행용 강의안</footer></div></body></html>
