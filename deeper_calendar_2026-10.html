@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEPER 통합 캘린더 · 2026년 10월</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER · UNBRANDING SALON">
+<meta property="og:title" content="디퍼의 한 달 · 2026년 10월">
+<meta property="og:description" content="2기 수사 · 3기 논리 · 4기 문법 · 디퍼 리딩 여섯 밤 · 토요일 오프 번개. 이달의 책 여섯 권과 세 과정의 네 주.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/deeper_calendar_2026-10.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/calendar/og_2026-10.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/calendar/og_2026-10.png">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7; --card:#FFFFFF; --ink:#26251F; --ink-soft:#5C594F; --line:#E7E4DA;
+    --green:#1A4A35; --green-deep:#0D2B1E; --gold:#B5731A; --sage:#6E7F63; --night:#2C3A4A;
+    --gray:#8A857B; --cream-tint:#F4F1E8; --plum:#6B4E71; --clay:#C67E58; --moss:#3B6D11;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 64px;}
+  header{text-align:center;margin-bottom:36px;}
+  header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
+  h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
+  .subtitle{margin-top:10px;font-size:14px;color:var(--ink-soft);letter-spacing:.04em;line-height:1.9;}
+  .subtitle b{color:var(--green-deep);font-weight:700;}
+  .period{margin-top:4px;font-size:12.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
+  .rule{width:56px;height:1px;background:var(--gold);margin:22px auto 0;}
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:26px 0 36px;}
+  .legend .li{font-size:12.5px;color:var(--ink-soft);line-height:1.7;}
+  .legend b{color:var(--ink);font-weight:600;}
+  .dot{display:inline-block;vertical-align:middle;margin-right:7px;position:relative;top:-1px;width:9px;height:9px;border-radius:50%;}
+  .d-g{background:var(--green);} .d-o{background:var(--gold);} .d-s{background:var(--sage);} .d-p{background:var(--plum);} .d-c{background:var(--clay);} .d-m{background:var(--moss);}
+
+  .month{margin-bottom:44px;}
+  .month-name{font-size:16px;font-weight:700;color:var(--green-deep);letter-spacing:.1em;margin-bottom:4px;}
+  .month-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
+  .cal-scroll{overflow-x:auto;}
+  table.cal{width:100%;min-width:760px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
+  table.cal th{font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);padding:10px 6px;border-bottom:1px solid var(--line);background:var(--cream-tint);}
+  table.cal th.sat{color:#4A5A6E;} table.cal th.sun{color:#8A5A3A;}
+  table.cal td{vertical-align:top;border:1px solid var(--line);width:14.28%;min-height:104px;height:104px;padding:7px 7px 9px;}
+  .dnum{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  td.dim{background:#F5F4EF;} td.dim .dnum{color:#B9B4A8;} td.dim .ev{opacity:.55;}
+  td.other{background:#F5F4EF;} td.other .dnum{color:#C9C4B8;}
+  .ev{font-size:11.5px;line-height:1.4;margin-bottom:5px;padding:3px 6px 4px 8px;border-radius:2px;border-left:2.5px solid transparent;color:var(--ink);background:#FBFAF6;}
+  .ev .t{color:var(--gray);font-size:10.5px;}
+  .ev b{font-weight:600;}
+  .ev-g{border-left-color:var(--green);background:#F0F4F0;}
+  .ev-o{border-left-color:var(--gold);background:#F8F3E9;}
+  .ev-s{border-left-color:var(--sage);background:#F2F4EF;}
+  .ev-p{border-left-color:var(--plum);background:#F3EFF5;}
+  .ev-c{border-left-color:var(--clay);background:#FAF2EC;}
+  .ev-m{border-left-color:var(--moss);background:#EEF4E6;}
+  .hol{font-size:11px;letter-spacing:.02em;background:#8A5A3A;color:#FBF6EE;padding:3px 8px;border-radius:2px;margin-bottom:5px;}
+
+  .sec{margin:52px 0 0;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .sec h2{font-size:18px;font-weight:700;color:var(--green-deep);letter-spacing:.08em;}
+  .sec .lead{font-size:13px;color:var(--gray);}
+  .sec-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.9;max-width:720px;margin-bottom:22px;}
+  .books{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .book{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 18px 20px;display:flex;flex-direction:column;}
+  .book .when{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--sage);margin-bottom:12px;}
+  .book .when b{color:var(--green-deep);font-weight:600;}
+  .book .cover{width:100%;aspect-ratio:3/4;background:var(--cream-tint);border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .book .cover img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+  .book h3{font-size:16px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:4px;}
+  .book .bib{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.6;}
+  .book .scope{font-size:12px;color:var(--green-deep);background:#EEF3EE;display:inline-block;padding:2px 9px;border-radius:100px;margin-bottom:10px;align-self:flex-start;}
+  .book p{font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+
+  .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .course{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);border-radius:4px;padding:20px 20px 22px;}
+  .course.o{border-top-color:var(--gold);} .course.g{border-top-color:var(--green);} .course.p{border-top-color:var(--plum);}
+  .course .tag{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:6px;}
+  .course h3{font-size:17px;font-weight:700;color:var(--green-deep);line-height:1.4;margin-bottom:4px;}
+  .course .time{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.7;}
+  .course .time b{font-weight:600;color:var(--ink);}
+  .course .intro{font-size:13px;color:var(--ink-soft);line-height:1.85;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line);}
+  .wk{display:flex;gap:12px;margin-bottom:12px;}
+  .wk .n{flex:0 0 40px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--gray);padding-top:3px;line-height:1.5;}
+  .wk .b{flex:1;min-width:0;}
+  .wk .b b{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.5;}
+  .wk .b span{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.75;}
+  .course .foot{margin-top:6px;font-size:12px;color:var(--gray);line-height:1.7;}
+
+  .rhythm{background:var(--card);border:1px solid var(--line);padding:18px 22px;border-radius:3px;margin-top:40px;}
+  .rhythm h2{font-size:13.5px;font-weight:700;color:var(--green-deep);letter-spacing:.08em;margin-bottom:10px;}
+  .rhythm p{font-size:12.5px;color:var(--ink-soft);padding:2px 0;line-height:1.8;}
+  .rhythm b{color:var(--ink);font-weight:600;}
+  footer{text-align:center;margin-top:36px;padding-top:26px;border-top:1px solid var(--line);}
+  footer .quote{font-size:12.5px;color:var(--ink-soft);}
+  footer .team{margin-top:10px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
+
+  @media (max-width:900px){ .books,.courses{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:700px){
+    .wrap{padding:32px 16px 48px;}
+    h1{font-size:21px;} .subtitle{font-size:12.5px;}
+    .legend{flex-direction:column;align-items:flex-start;gap:8px;padding:0 4px;}
+    .cal-scroll{overflow-x:visible;}
+    table.cal, table.cal tbody, table.cal tr, table.cal td{display:block;width:100%;min-width:0;height:auto;min-height:0;}
+    table.cal thead{display:none;}
+    table.cal tr::before{content:attr(data-week);display:block;font-size:11px;letter-spacing:.12em;color:var(--gray);background:var(--cream-tint);padding:6px 12px;border-bottom:1px solid var(--line);font-family:"DM Mono",monospace;}
+    table.cal td{border:none;border-bottom:1px solid var(--line);padding:9px 12px 10px;}
+    table.cal td:not(:has(.ev)):not(:has(.hol)){display:none;}
+    td.other{display:none !important;}
+    .dnum{font-size:13px;margin-bottom:6px;} .ev{font-size:12.5px;}
+    td:nth-child(1) .dnum::after{content:" · 일";color:var(--gray);font-weight:400;}
+    td:nth-child(2) .dnum::after{content:" · 월";color:var(--gray);font-weight:400;}
+    td:nth-child(3) .dnum::after{content:" · 화";color:var(--gray);font-weight:400;}
+    td:nth-child(4) .dnum::after{content:" · 수";color:var(--gray);font-weight:400;}
+    td:nth-child(5) .dnum::after{content:" · 목";color:var(--gray);font-weight:400;}
+    td:nth-child(6) .dnum::after{content:" · 금";color:var(--gray);font-weight:400;}
+    td:nth-child(7) .dnum::after{content:" · 토";color:var(--gray);font-weight:400;}
+    .month-note{display:none;}
+    .books,.courses{grid-template-columns:1fr;gap:16px;}
+    .book .cover{aspect-ratio:auto;height:260px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="logo" src="logic/DEEPER_logo.png" alt="DEEPER">
+    <h1>디퍼의 한 달</h1>
+    <p class="subtitle">디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> &nbsp;·&nbsp; <b>3기 · 논리의 달</b> &nbsp;·&nbsp; <b>4기 · 문법의 달</b><br>디퍼 리딩 여섯 밤 &nbsp;·&nbsp; 토요일 오프 번개 &nbsp;·&nbsp; 디퍼 콤포스텔라 1기 완주</p>
+    <p class="period">2026. 10. 1 (THU) — 2026. 10. 31 (SAT)</p>
+    <div class="rule"></div>
+  </header>
+
+  <div class="legend">
+    <span class="li"><span class="dot d-p"></span>디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> — 월요일 밤 8시 · 9시부터 사막별 특강</span>
+    <span class="li"><span class="dot d-g"></span>디퍼 언브랜딩살롱 <b>3기 · 논리의 달</b> — 목요일 밤 9시 30분</span>
+    <span class="li"><span class="dot d-o"></span>디퍼 언브랜딩살롱 <b>4기 · 문법의 달</b> — 목요일 밤 8시</span>
+    <span class="li"><span class="dot d-s"></span><b>디퍼 리딩</b> — 전체 디퍼 함께 · 수요일 밤 9시 · 일요일 밤 9시</span>
+    <span class="li"><span class="dot d-m"></span><b>토요일 오프 번개</b> — 오후 2시 · 강남 이디야 커피랩 · 오는 사람이 오는 자리</span>
+    <span class="li"><span class="dot d-c"></span><b>디퍼 콤포스텔라 1기</b> — 1구간 완주</span>
+  </div>
+
+  <section class="month">
+    <div class="month-name">10월</div>
+    <div class="month-note">9월 마지막 며칠은 흐름을 보여드리려고 옅게 남겼습니다. 모든 세션은 줌이고, 링크는 당일 방에 올라옵니다.</div>
+    <div class="cal-scroll">
+    <table class="cal">
+      <thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th></tr></thead>
+      <tbody>
+        <tr data-week="9/27 – 10/3">
+          <td class="dim"><div class="dnum">9/27</div></td>
+          <td class="dim"><div class="dnum">9/28</div><div class="ev ev-c"><b>콤포스텔라 ③</b><br><span class="t">오전 10~12시</span></div></td>
+          <td class="dim"><div class="dnum">9/29</div></td>
+          <td class="dim"><div class="dnum">9/30</div></td>
+          <td><div class="dnum">10/1</div></td>
+          <td><div class="dnum">10/2</div></td>
+          <td><div class="dnum">10/3</div><div class="hol">개천절</div></td>
+        </tr>
+        <tr data-week="10/4 – 10/10">
+          <td><div class="dnum">10/4</div></td>
+          <td>
+            <div class="dnum">10/5</div>
+            <div class="hol">개천절 대체공휴일</div>
+            <div class="ev ev-c"><b>콤포스텔라 ④ · 1구간 완주</b><br><span class="t">오전 10~12시</span></div>
+            <div class="ev ev-p"><b>수사 1회차 · 선율 — 명명</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
+          </td>
+          <td><div class="dnum">10/6</div></td>
+          <td>
+            <div class="dnum">10/7</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ①</b><br>『스케일링 시대』<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/8</div>
+            <div class="ev ev-o"><b>4기 문법 1회차 · 개강</b><br><span class="t">밤 8~9:30 · 줌 — 30일 여정 시작</span></div>
+            <div class="ev ev-g"><b>3기 논리 1회차 · 개강</b><br><span class="t">밤 9:30~11시 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/9</div><div class="hol">한글날</div></td>
+          <td><div class="dnum">10/10</div><div class="ev ev-m"><b>오프 번개</b><br><span class="t">오후 2시 · 강남 이디야 커피랩</span></div></td>
+        </tr>
+        <tr data-week="10/11 – 10/17">
+          <td>
+            <div class="dnum">10/11</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ②</b><br>『오뒷세이아』 제5·6권<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/12</div>
+            <div class="ev ev-p"><b>수사 2회차 · 변주 — 채널</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
+          </td>
+          <td><div class="dnum">10/13</div></td>
+          <td>
+            <div class="dnum">10/14</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ③</b><br>『기계가 언어를 사용한다는 것에 대한 인문학적 사유』<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/15</div>
+            <div class="ev ev-o"><b>4기 문법 2회차</b><br><span class="t">밤 8~9:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 2회차</b><br><span class="t">밤 9:30~11시 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/16</div></td>
+          <td><div class="dnum">10/17</div><div class="ev ev-m"><b>오프 번개</b><br><span class="t">오후 2시 · 강남 이디야 커피랩</span></div></td>
+        </tr>
+        <tr data-week="10/18 – 10/24">
+          <td><div class="dnum">10/18</div></td>
+          <td>
+            <div class="dnum">10/19</div>
+            <div class="ev ev-p"><b>수사 3회차 · 일관성 — 편집</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
+          </td>
+          <td><div class="dnum">10/20</div></td>
+          <td>
+            <div class="dnum">10/21</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ④</b><br>『지능 파산』<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/22</div>
+            <div class="ev ev-o"><b>4기 문법 3회차</b><br><span class="t">밤 8~9:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 3회차</b><br><span class="t">밤 9:30~11시 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/23</div></td>
+          <td><div class="dnum">10/24</div><div class="ev ev-m"><b>오프 번개</b><br><span class="t">오후 2시 · 강남 이디야 커피랩</span></div></td>
+        </tr>
+        <tr data-week="10/25 – 10/31">
+          <td>
+            <div class="dnum">10/25</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ⑤</b><br>『오뒷세이아』 제7·8권<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/26</div>
+            <div class="ev ev-p"><b>수사 4회차 · 하모니 — 매니페스토 · 종강</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강 · 끝 30분, 이수자가 여는 방 소개</span></div>
+          </td>
+          <td><div class="dnum">10/27</div></td>
+          <td>
+            <div class="dnum">10/28</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ⑥</b><br>『우리는 왜 무엇인가 해야 할까』<br><span class="t">밤 9~10:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/29</div>
+            <div class="ev ev-o"><b>4기 문법 4회차 · 수료</b><br><span class="t">밤 8~9:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 4회차 · 종강</b><br><span class="t">밤 9:30~11시 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/30</div></td>
+          <td><div class="dnum">10/31</div><div class="ev ev-m"><b>오프 번개</b><br><span class="t">오후 2시 · 강남 이디야 커피랩</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>이달의 책 — 디퍼 리딩 여섯 밤</h2><span class="lead">수요일 밤 9시 · 일요일 밤 9시 · 90분 · 전체 디퍼</span></div>
+    <p class="sec-desc">9월에 『마침내 특이점이 시작된다』와 『생각하는 기계』로 기계 쪽을 읽었으니, 10월은 사람 쪽으로 돌아옵니다. 만드는 사람들의 속기록에서 시작해 기계의 말, 맡기면 사라지는 것, 그래도 왜 하는가로 내려옵니다. 사이사이 일요일엔 오뒷세우스가 집으로 가는 길을 두 권씩 걷습니다. 읽은 만큼 오시면 됩니다. 사실을 다지고, 해석을 나누고, 마지막 몇 분에 각자의 평가를 남기는 소크라테스식 세미나입니다.</p>
+    <div class="books">
+
+      <div class="book">
+        <div class="when"><b>10/7 (수)</b> · 리딩 ①</div>
+        <div class="cover"><img src="calendar/cover_scaling.jpg" alt="스케일링 시대 표지"></div>
+        <h3>스케일링 시대</h3>
+        <div class="bib">드와르케시 파텔 · 개빈 리치 엮음 · 노승영 옮김 · 인사이트 · 396쪽</div>
+        <span class="scope">범위 — 아모데이 · 수츠케버 인터뷰 두 편</span>
+        <p>AI를 만드는 사람들이 마이크 앞에서 "우리도 아직 모른다"고 말하는 순간을 읽습니다. 데이터와 연산을 더 넣으면 왜 똑똑해지는지, 만든 사람도 답을 못 합니다. 9월에 읽은 『생각하는 기계』의 다음 장입니다. 두 편만 읽으면 되니, 처음 오시는 분은 이 밤부터.</p>
+      </div>
+
+      <div class="book">
+        <div class="when"><b>10/11 (일)</b> · 리딩 ②</div>
+        <div class="cover"><img src="calendar/cover_odyssey.jpg" alt="오뒷세이아 표지"></div>
+        <h3>오뒷세이아 제5·6권</h3>
+        <div class="bib">호메로스 · 천병희 옮김 · 숲</div>
+        <span class="scope">칼립소의 섬 · 나우시카아</span>
+        <p>네 권 동안 아들 텔레마코스가 아버지를 찾아 떠났고, 이제야 오뒷세우스가 무대에 나옵니다. 칼립소의 섬에서 뗏목을 엮고, 바다에 던져지고, 낯선 해변에서 한 소녀에게 발견됩니다. 집으로 가는 길이 여기서 시작됩니다.</p>
+      </div>
+
+      <div class="book">
+        <div class="when"><b>10/14 (수)</b> · 리딩 ③</div>
+        <div class="cover"><img src="calendar/cover_machine_language.jpg" alt="기계가 언어를 사용한다는 것에 대한 인문학적 사유 표지"></div>
+        <h3>기계가 언어를 사용한다는 것에 대한 인문학적 사유</h3>
+        <div class="bib">마크 코켈버그 · 데이비드 J. 건켈 · 신동숙 옮김 · 손화철 감수 · 생각이음 · 260쪽</div>
+        <span class="scope">통독</span>
+        <p>기계가 문장을 만들 때 그것을 "말한다"고 불러도 되는가. 의미를 모르는 기계와 나누는 대화는 무엇인가. 문법의 달이 언어에서 시작하는 이유를, 기술철학자 둘이 260쪽으로 묻습니다. 이달 가장 읽기 쉬운 철학책입니다.</p>
+      </div>
+
+      <div class="book">
+        <div class="when"><b>10/21 (수)</b> · 리딩 ④</div>
+        <div class="cover"><img src="calendar/cover_intelligence_bankrupt.jpg" alt="지능 파산 표지"></div>
+        <h3>지능 파산</h3>
+        <div class="bib">한소원 · 바다출판사 · 264쪽</div>
+        <span class="scope">통독</span>
+        <p>검색과 요약과 판단을 맡길수록 나에게서 무엇이 빠져나가는가. 심리학자가 AI가 일상에 들어온 다섯 해를 관찰하고 씁니다. 편리함이 생각하는 습관까지 지우는지, 불편하지만 피하기 어려운 물음입니다. AI를 매일 쓰는 사람이 AI를 계속 쓰기 위해 읽는 책입니다.</p>
+      </div>
+
+      <div class="book">
+        <div class="when"><b>10/25 (일)</b> · 리딩 ⑤</div>
+        <div class="cover"><img src="calendar/cover_odyssey.jpg" alt="오뒷세이아 표지"></div>
+        <h3>오뒷세이아 제7·8권</h3>
+        <div class="bib">호메로스 · 천병희 옮김 · 숲</div>
+        <span class="scope">알키노오스의 궁전 · 데모도코스의 노래</span>
+        <p>이름을 감춘 손님으로 궁전에 앉은 오뒷세우스는, 가인 데모도코스가 트로이아의 이야기를 노래하자 얼굴을 가리고 웁니다. 자기 이야기를 남이 노래할 때 사람에게 무엇이 일어나는가. 수사의 달 마지막 주와 나란히 읽습니다.</p>
+      </div>
+
+      <div class="book">
+        <div class="when"><b>10/28 (수)</b> · 리딩 ⑥</div>
+        <div class="cover"><img src="calendar/cover_why_do.jpg" alt="우리는 왜 무엇인가 해야 할까 표지"></div>
+        <h3>우리는 왜 무엇인가 해야 할까</h3>
+        <div class="bib">고쿠분 고이치로 · 박영대 옮김 · 유유 · 220쪽</div>
+        <span class="scope">통독</span>
+        <p>해야 한다는 감각이 넘칠 때 공허가 옵니다. 모든 행동에 목적과 성과를 요구하는 사회에서, 하는 과정 자체가 나를 만든다는 말을 철학자가 천천히 풀어 갑니다. 수사의 달을 마친 이틀 뒤, 한 달을 닫는 책입니다. 220쪽, 하루 저녁이면 읽힙니다.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>세 과정, 네 주</h2><span class="lead">문법 → 논리 → 수사 · 한 달에 한 걸음</span></div>
+    <p class="sec-desc">트리비움의 세 단계가 10월에 나란히 걷습니다. 4기는 첫 달인 문법을, 3기는 두 번째 달인 논리를, 2기는 마지막 달인 수사를 걷습니다. 같은 사막에서 선배와 후배가 함께 있습니다.</p>
+    <div class="courses">
+
+      <div class="course o">
+        <div class="tag">GRAMMAR · 4기</div>
+        <h3>문법의 달 — 원천을 캔다</h3>
+        <div class="time"><b>목요일 밤 8시 ~ 9시 30분</b> · 10/8 · 15 · 22 · 29 · 줌</div>
+        <div class="intro">내 컴퓨터에 사는 세컨브레인 「사막여우」와 30일을 걷습니다. 손으로 쓰고, 여우에게 먹이고, 나만 볼 수 있는 각도를 찾습니다. 마지막 밤, 씨앗에 이름을 붙입니다.</div>
+        <div class="wk"><div class="n">10/8</div><div class="b"><b>마침내 특이점이 시작된다</b><span>사막여우와 첫 인사. 왜 손으로 쓰는지, 내 도메인이 어디인지. 이번 주 할 일은 셋뿐입니다.</span></div></div>
+        <div class="wk"><div class="n">10/15</div><div class="b"><b>목소리의 결</b><span>문체는 기교가 아니라 살아온 방식의 흔적. 손으로 쓴 세 줄과 씨앗 문장 초고 한 줄. 언어 지문 하나.</span></div></div>
+        <div class="wk"><div class="n">10/22</div><div class="b"><b>나의 독점적 관점</b><span>다시 원점 같은 감각은 소화가 진행 중이라는 신호. 살아낸 것 목록과 첫 문장. 지식 지형도 한 번.</span></div></div>
+        <div class="wk"><div class="n">10/29</div><div class="b"><b>씨앗에 이름을 — 수료</b><span>개념어 하나, 은유 하나, 한 문장. 30초 피치를 입으로. 수료 선물 「내 목소리」 「나의 사막」은 33일을 다 걸은 날 열립니다.</span></div></div>
+      </div>
+
+      <div class="course g">
+        <div class="tag">LOGIC · 3기</div>
+        <h3>논리의 달 — 나의 시스템을 짓는다</h3>
+        <div class="time"><b>목요일 밤 9시 30분 ~ 11시</b> · 10/8 · 15 · 22 · 29 · 줌</div>
+        <div class="intro">문법에서 캔 재료로 내 일을 알고 내 결로 움직이는 AI 비서를 세웁니다. 프롬프트와 컨텍스트가 기본기, 그 위에 규칙책과 고리. 마지막 주, 악보 한 장이 손에 남습니다. 매주 『괴델, 에셔, 바흐』 한 대목을 함께 읽습니다.</div>
+        <div class="wk"><div class="n">10/8</div><div class="b"><b>기호는 어떻게 의미가 되는가</b><span>내 비서의 첫 규칙, 공리(시스템 프롬프트). GEB 서론과 1장.</span></div></div>
+        <div class="wk"><div class="n">10/15</div><div class="b"><b>글이 일이 되도록</b><span>누구를 위해 움직이는가, 독자(페르소나)와 첫 고리. GEB 게 카논과 무의 헌정.</span></div></div>
+        <div class="wk"><div class="n">10/22</div><div class="b"><b>나를 베끼지 말고 나를 낳아라</b><span>자라는 고리. IP 지도와 오퍼 초안. GEB 애연가의 사색과 위대한 게로다.</span></div></div>
+        <div class="wk"><div class="n">10/29</div><div class="b"><b>악보로 돌아오는 밤 — 종강</b><span>대화를 멈추고 고리를 설계한다. 악보 한 장(하네스). GEB 패턴과 나무늘보 카논.</span></div></div>
+        <div class="foot">3기는 지금 걷는 사막(나미브 · 도도 · 영크크) 그대로 이어집니다.</div>
+      </div>
+
+      <div class="course p">
+        <div class="tag">RHETORIC · 2기</div>
+        <h3>수사의 달 — 내 말로 부른다</h3>
+        <div class="time"><b>월요일 밤 8시 ~ 9시</b> 퍼핀 · <b>9시 ~ 10시 30분</b> 사막별 특강 · 10/5 · 12 · 19 · 26 · 줌</div>
+        <div class="intro">이름을 짓고, 채널을 열고, 나답지 않은 문장을 지우고, 매니페스토를 낭독합니다. 김정운 『에디톨로지』를 한 부씩 읽으며 창조가 편집임을 몸으로 확인합니다. 9시부터는 사막마다 별지기님이 자기 색으로 여는 특강입니다.</div>
+        <div class="wk"><div class="n">10/5</div><div class="b"><b>선율 — 명명</b><span>내가 서 있을 자리. 분더카머(경이의 방)를 둘러보고 으뜸음과 이름을 찾습니다. 『에디톨로지』 프롤로그와 1부.</span></div></div>
+        <div class="wk"><div class="n">10/12</div><div class="b"><b>변주 — 채널</b><span>내 목소리가 사는 자리. 작게 소리 내고 첫 발행. 『에디톨로지』 2부.</span></div></div>
+        <div class="wk"><div class="n">10/19</div><div class="b"><b>일관성 — 편집</b><span>목차와 초고 조립. 나답지 않은 문장 지우기. 『에디톨로지』 3부와 에필로그.</span></div></div>
+        <div class="wk"><div class="n">10/26</div><div class="b"><b>하모니 — 매니페스토 · 종강</b><span>다섯에서 일곱 줄의 매니페스토와 낭독. 끝 30분, 이수한 별지기님들이 여는 방을 소개합니다.</span></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rhythm">
+    <h2>날마다 · 주마다 — 한 달의 리듬</h2>
+    <p><b>매일</b> — 모닝페이지, 긱어스에 인증 · 사막여우와 안녕 · 오아시스 · 냠냠, 사막방에 인증</p>
+    <p><b>매주 1회</b> — 아티스트 데이트, 사막방에 인증</p>
+    <p><b>토요일 오후 2시</b> — 오프 번개, 강남 이디야 커피랩. 예약도 신청도 없습니다. 오는 사람이 오는 자리, 커피는 각자. 등록 전이라도 얼굴 보러 오셔도 됩니다.</p>
+    <p><b>긱어스 AI 실험실</b> — 해 본 것을 [분류] 붙여 올리고, 질문은 댓글로. 밤 모임 없이 평소에 나눕니다.</p>
+  </div>
+
+  <footer>
+    <p class="quote">"춤추는 별을 낳으려면 내면에 혼돈을 지녀야 한다."</p>
+    <p class="team">NIETZSCHE · DEEPER · 2026. 10</p>
+  </footer>
+
+</div>
+</body>
+</html>
