@@ -25,7 +25,10 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--paper);color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
-  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 64px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 64px;}
+  .hero{margin:0 -24px 40px;max-height:380px;overflow:hidden;}
+  .hero img{width:100%;height:auto;display:block;}
+  @media (max-width:700px){ .hero{margin:0 -16px 28px;max-height:220px;} }
   header{text-align:center;margin-bottom:36px;}
   header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
   h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
@@ -129,10 +132,11 @@
 <body>
 <div class="wrap">
 
+  <div class="hero"><img src="calendar/fox_02_banner.jpg" alt="곁의 사막여우"></div>
   <header>
     <img class="logo" src="logic/DEEPER_logo.png" alt="DEEPER">
     <h1>디퍼의 한 달</h1>
-    <p class="subtitle">디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> &nbsp;·&nbsp; <b>3기 · 논리의 달</b> &nbsp;·&nbsp; <b>4기 · 문법의 달</b><br>디퍼 리딩 여섯 밤 &nbsp;·&nbsp; 토요일 오프 번개 &nbsp;·&nbsp; 디퍼 콤포스텔라 1기 완주</p>
+    <p class="subtitle">디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> &nbsp;·&nbsp; <b>3기 · 논리의 달</b> &nbsp;·&nbsp; <b>4기 · 문법의 달</b><br>디퍼 리딩 여섯 밤 &nbsp;·&nbsp; 토요일 오프 번개 &nbsp;·&nbsp; <b>디퍼 콤포스텔라 1기</b> 1구간 완주 → 2구간 피스테라</p>
     <p class="period">2026. 10. 1 (THU) — 2026. 10. 31 (SAT)</p>
     <div class="rule"></div>
   </header>
@@ -143,7 +147,7 @@
     <span class="li"><span class="dot d-o"></span>디퍼 언브랜딩살롱 <b>4기 · 문법의 달</b> — 목요일 밤 8시</span>
     <span class="li"><span class="dot d-s"></span><b>디퍼 리딩</b> — 전체 디퍼 함께 · 수요일 밤 9시 · 일요일 밤 9시</span>
     <span class="li"><span class="dot d-m"></span><b>토요일 오프 번개</b> — 오후 2시 · 강남 이디야 커피랩 · 오는 사람이 오는 자리</span>
-    <span class="li"><span class="dot d-c"></span><b>디퍼 콤포스텔라 1기</b> — 1구간 완주</span>
+    <span class="li"><span class="dot d-c"></span><b>디퍼 콤포스텔라 1기</b> — 비즈니스 트랙 · 월요일 오전 · 1구간 프리미티보 완주 → 2구간 피스테라</span>
   </div>
 
   <section class="month">
@@ -167,7 +171,7 @@
           <td>
             <div class="dnum">10/5</div>
             <div class="hol">개천절 대체공휴일</div>
-            <div class="ev ev-c"><b>콤포스텔라 ④ · 1구간 완주</b><br><span class="t">오전 10~12시</span></div>
+            <div class="ev ev-c"><b>콤포스텔라 ④ · 1구간 프리미티보 완주</b><br><span class="t">오전 10~12시</span></div>
             <div class="ev ev-p"><b>수사 1회차 · 선율 — 명명</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
           </td>
           <td><div class="dnum">10/6</div></td>
@@ -190,6 +194,7 @@
           </td>
           <td>
             <div class="dnum">10/12</div>
+            <div class="ev ev-c"><b>콤포스텔라 ⑤ · 2구간 피스테라 시작</b><br><span class="t">오전 10~12시</span></div>
             <div class="ev ev-p"><b>수사 2회차 · 변주 — 채널</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
           </td>
           <td><div class="dnum">10/13</div></td>
@@ -209,6 +214,7 @@
           <td><div class="dnum">10/18</div></td>
           <td>
             <div class="dnum">10/19</div>
+            <div class="ev ev-c"><b>콤포스텔라 ⑥</b><br><span class="t">오전 10~12시</span></div>
             <div class="ev ev-p"><b>수사 3회차 · 일관성 — 편집</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강</span></div>
           </td>
           <td><div class="dnum">10/20</div></td>
@@ -231,6 +237,7 @@
           </td>
           <td>
             <div class="dnum">10/26</div>
+            <div class="ev ev-c"><b>콤포스텔라 ⑦</b><br><span class="t">오전 10~12시</span></div>
             <div class="ev ev-p"><b>수사 4회차 · 하모니 — 매니페스토 · 종강</b><br><span class="t">밤 8시 · 줌 — 9시부터 사막별 특강 · 끝 30분, 이수자가 여는 방 소개</span></div>
           </td>
           <td><div class="dnum">10/27</div></td>
@@ -349,9 +356,31 @@
         <div class="wk"><div class="n">10/5</div><div class="b"><b>선율 — 명명</b><span>내가 서 있을 자리. 분더카머(경이의 방)를 둘러보고 으뜸음과 이름을 찾습니다. 『에디톨로지』 프롤로그와 1부.</span></div></div>
         <div class="wk"><div class="n">10/12</div><div class="b"><b>변주 — 채널</b><span>내 목소리가 사는 자리. 작게 소리 내고 첫 발행. 『에디톨로지』 2부.</span></div></div>
         <div class="wk"><div class="n">10/19</div><div class="b"><b>일관성 — 편집</b><span>목차와 초고 조립. 나답지 않은 문장 지우기. 『에디톨로지』 3부와 에필로그.</span></div></div>
-        <div class="wk"><div class="n">10/26</div><div class="b"><b>하모니 — 매니페스토 · 종강</b><span>다섯에서 일곱 줄의 매니페스토와 낭독. 끝 30분, 이수한 별지기님들이 여는 방을 소개합니다.</span></div></div>
+        <div class="wk"><div class="n">10/26</div><div class="b"><b>하모니 — 매니페스토 · 종강</b><span>다섯에서 일곱 줄의 매니페스토와 낭독. 끝 30분, 콤포스텔라를 걷는 별지기님들이 여는 방을 소개합니다.</span></div></div>
       </div>
 
+    </div>
+  </section>
+
+
+  <section class="sec">
+    <div class="sec-head"><h2>디퍼 콤포스텔라 1기 — 두 구간</h2><span class="lead">비즈니스 트랙 · 월요일 오전 10시 · 여덟 분</span></div>
+    <p class="sec-desc">살롱을 완주한 별지기님들과 2기 세 분이 걷는 길입니다. 문법·논리·수사가 나를 캐고 세우고 부르는 달이라면, 콤포스텔라는 그것을 <b>나만의 AX 전문성</b>으로 바꾸는 길입니다. 1구간 프리미티보에서 보이는 세컨드 브레인 한 벌과 사례 0호를 만들었고, 2구간 피스테라에서는 그것으로 수익화의 첫 건을 냅니다. 10월 월요일 밤 사막별 특강과 종강 밤의 「이수자가 여는 방」은 이분들이 여는 자리입니다.</p>
+    <div class="courses">
+      <div class="course" style="border-top-color:var(--clay)">
+        <div class="tag">COMPOSTELA · 1구간 · CAMINO PRIMITIVO</div>
+        <h3>자산화 — 보이는 세컨드 브레인</h3>
+        <div class="time"><b>9/7 · 9/21 · 9/28 · 10/5</b> · 월요일 오전 10~12시 · 줌</div>
+        <div class="intro">내 일의 판단 기준을 꺼내 포트폴리오 세컨브레인으로 세우고, 5분 시연 각본과 사례 0호까지. 10월 5일, 여덟 분이 1구간을 완주합니다.</div>
+        <div class="wk"><div class="n">①~④</div><div class="b"><b>프리미티보를 걷다</b><span>원천을 자산으로 · 시연 각본 · 사례 0호 · 완주</span></div></div>
+      </div>
+      <div class="course" style="border-top-color:var(--clay)">
+        <div class="tag">COMPOSTELA · 2구간 · CAMINO FISTERRA</div>
+        <h3>수익화 — 첫 건을 낸다</h3>
+        <div class="time"><b>10/12 · 10/19 · 10/26 · 11/2</b> · 월요일 오전 10~12시 · 줌</div>
+        <div class="intro">1구간에서 세운 자산으로 시장을 마주합니다. 면밀하게 시장성을 살펴 사업을 진단하고, 첫 고객과 첫 수익화까지. 땅끝 피스테라에서 별을 봅니다.</div>
+        <div class="wk"><div class="n">⑤~⑧</div><div class="b"><b>피스테라를 걷다</b><span>시장성 진단 · 오퍼 · 첫 고객 · 11월 2일 완주</span></div></div>
+      </div>
     </div>
   </section>
 
