@@ -18,7 +18,7 @@
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
-  /* 기본 = 다크. 라이트 팔레트는 아래 prefers-color-scheme: light 분기에 그대로 보존했다. */
+  /* 이 판은 언제나 다크다. 라이트 팔레트는 deeper_calendar_2026-10_light.html 에 있다. */
   :root{
     color-scheme:dark;
     --bg:linear-gradient(180deg,#0A2117 0%,#0D2B1E 34%,#123726 100%);
@@ -37,33 +37,13 @@
     --img-border:rgba(244,241,232,.9); --cover-bg:rgba(244,241,232,.10);
     --cover-shadow:0 6px 18px rgba(0,0,0,.45);
   }
-  @media (prefers-color-scheme: light){
-    :root{
-      color-scheme:light;
-      --bg:#FAFAF7;
-      --paper:#FAFAF7; --card:#FFFFFF; --card-solid:#FFFFFF;
-      --ink:#26251F; --ink-soft:#5C594F; --line:#E7E4DA;
-      --green:#1A4A35; --green-deep:#0D2B1E; --gold:#B5731A; --gold-bright:#B5731A;
-      --sage:#6E7F63; --night:#2C3A4A; --gray:#8A857B; --cream-tint:#F4F1E8;
-      --plum:#6B4E71; --clay:#C67E58; --moss:#3B6D11; --star:#C9A227;
-      --sat:#4A5A6E; --sun:#8A5A3A;
-      --dim-bg:#F5F4EF; --dim-num:#B9B4A8; --other-num:#C9C4B8;
-      --ev-bg:#FBFAF6;
-      --ev-g:#F0F4F0; --ev-o:#F8F3E9; --ev-s:#F2F4EF;
-      --ev-p:#F3EFF5; --ev-c:#FAF2EC; --ev-m:#EEF4E6; --ev-star:#FAF5E3;
-      --hol-bg:#8A5A3A; --hol-fg:#FBF6EE; --scope-bg:#EEF3EE;
-      --img-border:#E7E4DA; --cover-bg:#F4F1E8;
-      --cover-shadow:0 6px 18px rgba(0,0,0,.12);
-    }
-  }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--bg);background-attachment:fixed;color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px 64px;}
   html,body{max-width:100%;overflow-x:hidden;}
   .hero{position:relative;margin:0 -24px 40px;overflow:hidden;}
-  .hero img{width:100%;height:auto;display:block;aspect-ratio:1080/560;object-fit:cover;object-position:50% 40%;}
+  .hero img{width:100%;height:auto;display:block;aspect-ratio:1080/560;object-fit:cover;object-position:50% 74%;}
   .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,33,23,.30) 0%,rgba(10,33,23,0) 32%,rgba(10,33,23,.60) 84%,#0D2B1E 100%);}
-  @media (prefers-color-scheme: light){ .hero::after{background:linear-gradient(180deg,rgba(13,43,30,.10) 0%,rgba(13,43,30,0) 42%,rgba(250,250,247,.60) 88%,#FAFAF7 100%);} }
   @media (max-width:700px){ .hero{margin:0 -16px 28px;} .hero img{aspect-ratio:1080/760;} }
   /* 절 머리 이미지 띠 */
   .band{position:relative;margin:0 0 22px;border-radius:6px;overflow:hidden;}
@@ -74,13 +54,10 @@
   .band .band-t .lead{font-size:13px;color:#D8DFCE;text-shadow:0 1px 8px rgba(0,0,0,.65);}
   @media (max-width:700px){ .band img{aspect-ratio:1080/440;} .band .band-t{padding:0 16px 14px;} .band .band-t h2{font-size:16px;} .band .band-t .lead{font-size:12px;} }
   /* 절 사이 얇은 띠 */
-  .grain{height:72px;margin:46px 0;border-radius:4px;background:url("calendar/astra_grain.jpg") center 42%/cover no-repeat;opacity:.5;}
-  @media (prefers-color-scheme: light){ .grain{opacity:.72;} }
+  .grain{height:84px;margin:46px 0;border-radius:4px;background:url("calendar/astra_grain.jpg") center 50%/cover no-repeat;}
   @media (max-width:700px){ .grain{height:54px;margin:34px 0;} }
   header{text-align:center;margin-bottom:36px;}
   header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
-  header img.logo-light{display:none;}
-  @media (prefers-color-scheme: light){ header img.logo-dark{display:none;} header img.logo-light{display:inline-block;} }
   h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
   .subtitle{margin-top:10px;font-size:14px;color:var(--ink-soft);letter-spacing:.04em;line-height:1.9;}
   .subtitle b{color:var(--green-deep);font-weight:700;}
@@ -202,8 +179,7 @@
 
   <div class="hero"><img src="calendar/astra_hero.jpg" alt="밤의 서재, 책상 곁 의자에 앉아 창밖을 보는 사막여우와 노트를 쓰는 사람"></div>
   <header>
-    <img class="logo logo-dark" src="logic/DEEPER_logo_white.png" alt="DEEPER">
-    <img class="logo logo-light" src="logic/DEEPER_logo.png" alt="">
+    <img class="logo" src="logic/DEEPER_logo_white.png" alt="DEEPER">
     <h1>디퍼의 한 달</h1>
     <p class="subtitle">디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> &nbsp;·&nbsp; <b>3기 · 논리의 달</b> &nbsp;·&nbsp; <b>4기 · 문법의 달</b><br><b>별지기 살롱</b> 월요일 21:00~22:30 &nbsp;·&nbsp; 디퍼 리딩 여섯 밤 &nbsp;·&nbsp; 일요일 오프 번개 두 번 &nbsp;·&nbsp; <b>디퍼 콤포스텔라 1기</b> 1구간 완주 → 2구간 피스테라</p>
     <p class="period">2026. 10. 1 (THU) — 2026. 10. 31 (SAT)</p>
@@ -216,7 +192,7 @@
     <span class="li"><span class="dot d-g"></span>디퍼 언브랜딩살롱 <b>3기 · 논리의 달</b> — 목요일 <b>21:30~23:00</b></span>
     <span class="li"><span class="dot d-o"></span>디퍼 언브랜딩살롱 <b>4기 · 문법의 달</b> — 목요일 <b>20:00~21:30</b></span>
     <span class="li"><span class="dot d-s"></span><b>디퍼 리딩</b> — 전체 디퍼 함께 · 수요일 <b>21:00~22:30</b> · 일요일 <b>21:00~22:30</b></span>
-    <span class="li"><span class="dot d-m"></span><b>일요일 오프 번개</b> — 10/4 · 10/18 <b>14:00부터 · 끝 시간 없음</b> · 강남 이디야 커피랩 · 한 달에 두 번, 얼굴을 보는 날</span>
+    <span class="li"><span class="dot d-m"></span><b>일요일 오프 번개</b> — 10/4 · 10/18 <b>13:00~17:00</b> · 강남 이디야 커피랩 · 한 달에 두 번, 얼굴을 보는 날</span>
     <span class="li"><span class="dot d-c"></span><b>디퍼 콤포스텔라 1기</b> — 월요일 <b>10:00~12:00</b> · 비즈니스 트랙 · 1구간 프리미티보 완주 → 2구간 피스테라</span>
   </div>
 
@@ -242,7 +218,7 @@
           <td><div class="dnum">10/3</div><div class="hol">개천절</div></td>
         </tr>
         <tr data-week="10/4 – 10/10">
-          <td><div class="dnum">10/4</div><div class="ev ev-m"><b>오프 번개 ①</b><br><span class="t">14:00부터 · 끝 시간 없음 · 강남 이디야 커피랩</span></div></td>
+          <td><div class="dnum">10/4</div><div class="ev ev-m"><b>오프 번개 ①</b><br><span class="t">13:00~17:00 · 강남 이디야 커피랩</span></div></td>
           <td>
             <div class="dnum">10/5</div>
             <div class="hol">개천절 대체공휴일</div>
@@ -288,7 +264,7 @@
           <td><div class="dnum">10/17</div></td>
         </tr>
         <tr data-week="10/18 – 10/24">
-          <td><div class="dnum">10/18</div><div class="ev ev-m"><b>오프 번개 ②</b><br><span class="t">14:00부터 · 끝 시간 없음 · 강남 이디야 커피랩</span></div></td>
+          <td><div class="dnum">10/18</div><div class="ev ev-m"><b>오프 번개 ②</b><br><span class="t">13:00~17:00 · 강남 이디야 커피랩</span></div></td>
           <td>
             <div class="dnum">10/19</div>
             <div class="ev ev-c"><b>콤포스텔라 ⑥</b><br><span class="t">10:00~12:00</span></div>
@@ -446,7 +422,7 @@
 
 
   <section class="sec">
-    <div class="band"><img src="calendar/astra_compostela.jpg" alt="책상 앞 의자에 앉은 사막여우와 비어 있는 맞은편 의자">
+    <div class="band"><img style="object-position:50% 8%" src="calendar/astra_compostela.jpg" alt="책상 앞 의자에 앉은 사막여우와 비어 있는 맞은편 의자">
       <div class="band-t"><h2>디퍼 콤포스텔라 1기 — 두 구간</h2><span class="lead">비즈니스 트랙 · 월요일 10:00~12:00 · 여덟 분</span></div></div>
     <p class="sec-desc">살롱을 완주한 별지기님들과 2기 세 분이 걷는 길입니다. 문법·논리·수사가 나를 캐고 세우고 부르는 달이라면, 콤포스텔라는 그것을 <b>나만의 AX 전문성</b>으로 바꾸는 길입니다. 1구간 프리미티보에서 보이는 세컨드 브레인 한 벌과 사례 0호를 만들었고, 2구간 피스테라에서는 그것으로 수익화의 첫 건을 냅니다. 10월 월요일 21:00~22:30 별지기 살롱은 이분들이 여는 자리입니다.</p>
     <div class="courses">
@@ -471,10 +447,10 @@
 
   <div class="rhythm">
     <h2>날마다 · 주마다 — 한 달의 리듬</h2>
-    <img src="calendar/astra_rhythm.jpg" alt="등불 아래 책상과 사막여우" style="width:100%;height:auto;display:block;aspect-ratio:1080/230;object-fit:cover;object-position:50% 46%;border-radius:4px;margin:4px 0 14px;opacity:.9">
+    <img src="calendar/astra_rhythm.jpg" alt="등불 아래 책상과 사막여우" style="width:100%;height:auto;display:block;aspect-ratio:1080/230;object-fit:cover;object-position:50% 46%;border-radius:4px;margin:4px 0 14px">
     <p><b>매일</b> — 모닝페이지, 긱어스에 인증 · 사막여우와 안녕 · 오아시스 · 냠냠, 사막방에 인증</p>
     <p><b>매주 1회</b> — 아티스트 데이트, 사막방에 인증</p>
-    <p><b>일요일 14:00부터 · 끝 시간 없음 · 10/4 · 10/18</b> — 오프 번개, 강남 이디야 커피랩. 한 달에 두 번, 화면 밖에서 만나는 날입니다. 제주에서, 지방에서 기차를 타고 오시는 분들이 있어요. 노트북 하나 들고 오셔서 서로의 사막여우를 보여 주세요. 줌에서 한 달 걸은 이야기가 그 자리에서 다음 한 달의 힘이 됩니다. 오후 두 시부터 문이 열려 있습니다.</p>
+    <p><b>일요일 13:00~17:00 · 10/4 · 10/18</b> — 오프 번개, 강남 이디야 커피랩. 한 달에 두 번, 화면 밖에서 만나는 날입니다. 제주에서, 지방에서 기차를 타고 오시는 분들이 있어요. 노트북 하나 들고 오셔서 서로의 사막여우를 보여 주세요. 줌에서 한 달 걸은 이야기가 그 자리에서 다음 한 달의 힘이 됩니다. 오후 한 시부터 다섯 시까지 문이 열려 있습니다.</p>
     <p><b>월요일 21:00~22:30</b> — 별지기 살롱. 사막마다 별지기님이 자기 색으로 엽니다.</p>
     <p><b>긱어스 AI 실험실</b> — 해 본 것을 [분류] 붙여 올리고, 질문은 댓글로. 밤 모임 없이 평소에 나눕니다.</p>
     <p class="cta"><a href="https://forms.gle/iLTRCPrx9DA7G41AA" target="_blank" rel="noopener">4기 문법의 달 신청하기 →</a></p>
