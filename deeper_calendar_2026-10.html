@@ -96,7 +96,7 @@
   .month-name{font-size:16px;font-weight:700;color:var(--green-deep);letter-spacing:.1em;margin-bottom:4px;}
   .month-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
   .lightlink{margin-top:22px;font-size:11.5px;letter-spacing:.06em;font-family:"DM Mono",monospace;}
-  .lightlink a{color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line);}
+  .lightlink a{display:inline-block;min-height:44px;line-height:44px;padding:0 12px;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line);}
   .cal-scroll{overflow-x:auto;}
   table.cal{width:100%;min-width:760px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
   table.cal td{background:transparent;}
@@ -133,6 +133,15 @@
   .book .bib{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.6;}
   .book .scope{font-size:12px;color:var(--ink);background:var(--scope-bg);display:inline-block;padding:2px 9px;border-radius:100px;margin-bottom:10px;align-self:flex-start;}
   .book p{font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+  /* 누를 수 있는 것 — 손가락 44px */
+  .book h3 a{color:inherit;text-decoration:none;display:inline-block;padding:11px 0;border-bottom:1px solid var(--line);}
+  .book h3{margin-bottom:0;}
+  .book h3 a:hover{border-bottom-color:var(--gold);}
+  .cta{margin-top:14px;}
+  .cta a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--line);border-radius:100px;
+    font-size:13px;letter-spacing:.02em;color:var(--gold);text-decoration:none;background:var(--card);}
+  .cta a:hover{border-color:var(--gold);}
+  .rhythm .cta{margin-top:12px;}
 
   .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .course{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);border-radius:4px;padding:20px 20px 22px;}
@@ -337,7 +346,7 @@
       <div class="book">
         <div class="when"><b>10/7 (수) 21:00~22:30</b> · 리딩 ①</div>
         <div class="cover"><img src="calendar/cover_scaling.jpg" alt="스케일링 시대 표지"></div>
-        <h3>스케일링 시대</h3>
+        <h3><a href="https://www.yes24.com/product/goods/194907391" target="_blank" rel="noopener">스케일링 시대</a></h3>
         <div class="bib">드와르케시 파텔 · 개빈 리치 엮음 · 노승영 옮김 · 인사이트 · 396쪽</div>
         <span class="scope">범위 — 아모데이 · 수츠케버 인터뷰 두 편</span>
         <p>AI를 만드는 사람들이 마이크 앞에서 "우리도 아직 모른다"고 말하는 순간을 읽습니다. 데이터와 연산을 더 넣으면 왜 똑똑해지는지, 만든 사람도 답을 못 합니다. 9월에 읽은 『생각하는 기계』의 다음 장입니다. 두 편만 읽으면 되니, 처음 오시는 분은 이 밤부터.</p>
@@ -346,7 +355,7 @@
       <div class="book">
         <div class="when"><b>10/11 (일) 21:00~22:30</b> · 리딩 ②</div>
         <div class="cover"><img src="calendar/cover_odyssey.jpg" alt="오뒷세이아 표지"></div>
-        <h3>오뒷세이아 제5·6권</h3>
+        <h3><a href="https://www.yes24.com/product/goods/2148271" target="_blank" rel="noopener">오뒷세이아 제5·6권</a></h3>
         <div class="bib">호메로스 · 천병희 옮김 · 숲</div>
         <span class="scope">칼립소의 섬 · 나우시카아</span>
         <p>네 권 동안 아들 텔레마코스가 아버지를 찾아 떠났고, 이제야 오뒷세우스가 무대에 나옵니다. 칼립소의 섬에서 뗏목을 엮고, 바다에 던져지고, 낯선 해변에서 한 소녀에게 발견됩니다. 집으로 가는 길이 여기서 시작됩니다.</p>
@@ -355,7 +364,7 @@
       <div class="book">
         <div class="when"><b>10/14 (수) 21:00~22:30</b> · 리딩 ③</div>
         <div class="cover"><img src="calendar/cover_machine_language.jpg" alt="기계가 언어를 사용한다는 것에 대한 인문학적 사유 표지"></div>
-        <h3>기계가 언어를 사용한다는 것에 대한 인문학적 사유</h3>
+        <h3><a href="https://www.yes24.com/product/goods/188188392" target="_blank" rel="noopener">기계가 언어를 사용한다는 것에 대한 인문학적 사유</a></h3>
         <div class="bib">마크 코켈버그 · 데이비드 J. 건켈 · 신동숙 옮김 · 손화철 감수 · 생각이음 · 260쪽</div>
         <span class="scope">통독</span>
         <p>기계가 문장을 만들 때 그것을 "말한다"고 불러도 되는가. 의미를 모르는 기계와 나누는 대화는 무엇인가. 문법의 달이 언어에서 시작하는 이유를, 기술철학자 둘이 260쪽으로 묻습니다. 이달 가장 읽기 쉬운 철학책입니다.</p>
@@ -364,7 +373,7 @@
       <div class="book">
         <div class="when"><b>10/21 (수) 21:00~22:30</b> · 리딩 ④</div>
         <div class="cover"><img src="calendar/cover_intelligence_bankrupt.jpg" alt="지능 파산 표지"></div>
-        <h3>지능 파산</h3>
+        <h3><a href="https://www.yes24.com/product/goods/193928899" target="_blank" rel="noopener">지능 파산</a></h3>
         <div class="bib">한소원 · 바다출판사 · 264쪽</div>
         <span class="scope">통독</span>
         <p>검색과 요약과 판단을 맡길수록 나에게서 무엇이 빠져나가는가. 심리학자가 AI가 일상에 들어온 다섯 해를 관찰하고 씁니다. 편리함이 생각하는 습관까지 지우는지, 불편하지만 피하기 어려운 물음입니다. AI를 매일 쓰는 사람이 AI를 계속 쓰기 위해 읽는 책입니다.</p>
@@ -373,7 +382,7 @@
       <div class="book">
         <div class="when"><b>10/25 (일) 21:00~22:30</b> · 리딩 ⑤</div>
         <div class="cover"><img src="calendar/cover_odyssey.jpg" alt="오뒷세이아 표지"></div>
-        <h3>오뒷세이아 제7·8권</h3>
+        <h3><a href="https://www.yes24.com/product/goods/2148271" target="_blank" rel="noopener">오뒷세이아 제7·8권</a></h3>
         <div class="bib">호메로스 · 천병희 옮김 · 숲</div>
         <span class="scope">알키노오스의 궁전 · 데모도코스의 노래</span>
         <p>이름을 감춘 손님으로 궁전에 앉은 오뒷세우스는, 가인 데모도코스가 트로이아의 이야기를 노래하자 얼굴을 가리고 웁니다. 자기 이야기를 남이 노래할 때 사람에게 무엇이 일어나는가. 수사의 달 마지막 주와 나란히 읽습니다.</p>
@@ -382,13 +391,14 @@
       <div class="book">
         <div class="when"><b>10/28 (수) 21:00~22:30</b> · 리딩 ⑥</div>
         <div class="cover"><img src="calendar/cover_hyperlink.jpg" alt="하이퍼링크 표지"></div>
-        <h3>하이퍼링크</h3>
+        <h3><a href="https://www.yes24.com/product/goods/192472888" target="_blank" rel="noopener">하이퍼링크</a></h3>
         <div class="bib">민구홍 · 안그라픽스 · 227쪽</div>
         <span class="scope">통독</span>
         <p>웹페이지의 파란 밑줄에서 출발해, 링크를 세계를 읽고 쓰고 연결하는 하나의 방식으로 봅니다. 문서와 문서만이 아니라 기억과 기록, 질문과 검색, 저자와 독자가 이어지는 과정입니다. 생성형 AI가 문장을 대신 만들어 주는 시대일수록 무엇을 연결하고 어떤 맥락을 만들 것인지는 사람의 몫입니다. 옵시디언 링크로 세컨드 브레인을 짓는 우리와 곧장 닿습니다. 수사의 달을 마친 이틀 뒤, 한 달을 연결로 닫습니다.</p>
       </div>
 
     </div>
+    <p class="cta"><a href="https://geekus.kr/slowerdeeper/classroom/1126" target="_blank" rel="noopener">긱어스 리딩 강의실 — 지난 회차 기록 →</a></p>
   </section>
 
   <section class="sec">
@@ -406,6 +416,7 @@
         <div class="wk"><div class="n">10/15</div><div class="b"><b>목소리의 결</b><span>문체는 기교가 아니라 살아온 방식의 흔적. 손으로 쓴 세 줄과 씨앗 문장 초고 한 줄. 언어 지문 하나.</span></div></div>
         <div class="wk"><div class="n">10/22</div><div class="b"><b>나의 독점적 관점</b><span>다시 원점 같은 감각은 소화가 진행 중이라는 신호. 살아낸 것 목록과 첫 문장. 지식 지형도 한 번.</span></div></div>
         <div class="wk"><div class="n">10/29</div><div class="b"><b>씨앗에 이름을 — 수료</b><span>개념어 하나, 은유 하나, 한 문장. 30초 피치를 입으로. 수료 선물 「내 목소리」 「나의 사막」은 여정을 다 걸은 날 열립니다.</span></div></div>
+        <p class="cta"><a href="https://forms.gle/iLTRCPrx9DA7G41AA" target="_blank" rel="noopener">4기 문법의 달 신청하기 →</a></p>
       </div>
 
       <div class="course g">
@@ -467,6 +478,7 @@
     <p><b>일요일 14:00부터 · 끝 시간 없음 · 10/4 · 10/18</b> — 오프 번개, 강남 이디야 커피랩. 한 달에 두 번, 화면 밖에서 만나는 날입니다. 제주에서, 지방에서 기차를 타고 오시는 분들이 있어요. 노트북 하나 들고 오셔서 서로의 사막여우를 보여 주세요. 줌에서 한 달 걸은 이야기가 그 자리에서 다음 한 달의 힘이 됩니다. 오후 두 시부터 문이 열려 있습니다.</p>
     <p><b>월요일 21:00~22:30</b> — 별지기 살롱. 나미브 · 도도 · 영크크, 사막마다 별지기님이 자기 색으로 엽니다. 2기는 필참이고 3기·4기 디퍼님은 원하시면 합류하십니다. 10/26은 끝 30분에 이수자가 여는 방을 소개합니다.</p>
     <p><b>긱어스 AI 실험실</b> — 해 본 것을 [분류] 붙여 올리고, 질문은 댓글로. 밤 모임 없이 평소에 나눕니다.</p>
+    <p class="cta"><a href="https://forms.gle/iLTRCPrx9DA7G41AA" target="_blank" rel="noopener">4기 문법의 달 신청하기 →</a></p>
   </div>
 
   <footer>
