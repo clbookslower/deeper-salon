@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEEPER 통합 캘린더 · 2026년 10월</title>
+<title>DEEPER 통합 캘린더 · 2026년 10월 · 라이트 판</title>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DEEPER · UNBRANDING SALON">
 <meta property="og:title" content="디퍼의 한 달 · 2026년 10월">
@@ -16,77 +16,29 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/calendar/og_2026-10.png">
 <meta name="robots" content="noindex">
+<link rel="canonical" href="https://clbookslower.github.io/deeper-salon/deeper_calendar_2026-10.html">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
-  /* 기본 = 다크. 라이트 팔레트는 아래 prefers-color-scheme: light 분기에 그대로 보존했다. */
   :root{
-    color-scheme:dark;
-    --bg:linear-gradient(180deg,#0A2117 0%,#0D2B1E 34%,#123726 100%);
-    --paper:#0D2B1E; --card:rgba(23,62,43,.62); --card-solid:#153A29;
-    --ink:#F4F1E8; --ink-soft:#C9D3C1; --line:rgba(244,241,232,.16);
-    --green:#3E9A6B; --green-deep:#EDE7D8; --gold:#E0A33E; --gold-bright:#E8C766;
-    --sage:#9DB289; --night:#8FA6BE; --gray:#94A691; --cream-tint:rgba(244,241,232,.07);
-    --plum:#A88CB0; --clay:#E09A70; --moss:#7FC23A;
-    --sat:#8FA6BE; --sun:#D09A72;
-    --dim-bg:rgba(0,0,0,.24); --dim-num:#6E8272; --other-num:#5A6E5F;
-    --ev-bg:rgba(244,241,232,.05);
-    --ev-g:rgba(62,154,107,.15); --ev-o:rgba(224,163,62,.15); --ev-s:rgba(157,178,137,.14);
-    --ev-p:rgba(168,140,176,.16); --ev-c:rgba(224,154,112,.15); --ev-m:rgba(127,194,58,.14);
-    --hol-bg:#7A4B2E; --hol-fg:#F6E9DC; --scope-bg:rgba(62,154,107,.18);
-    --img-border:rgba(244,241,232,.9); --cover-bg:rgba(244,241,232,.10);
-    --cover-shadow:0 6px 18px rgba(0,0,0,.45);
-  }
-  @media (prefers-color-scheme: light){
-    :root{
-      color-scheme:light;
-      --bg:#FAFAF7;
-      --paper:#FAFAF7; --card:#FFFFFF; --card-solid:#FFFFFF;
-      --ink:#26251F; --ink-soft:#5C594F; --line:#E7E4DA;
-      --green:#1A4A35; --green-deep:#0D2B1E; --gold:#B5731A; --gold-bright:#B5731A;
-      --sage:#6E7F63; --night:#2C3A4A; --gray:#8A857B; --cream-tint:#F4F1E8;
-      --plum:#6B4E71; --clay:#C67E58; --moss:#3B6D11;
-      --sat:#4A5A6E; --sun:#8A5A3A;
-      --dim-bg:#F5F4EF; --dim-num:#B9B4A8; --other-num:#C9C4B8;
-      --ev-bg:#FBFAF6;
-      --ev-g:#F0F4F0; --ev-o:#F8F3E9; --ev-s:#F2F4EF;
-      --ev-p:#F3EFF5; --ev-c:#FAF2EC; --ev-m:#EEF4E6;
-      --hol-bg:#8A5A3A; --hol-fg:#FBF6EE; --scope-bg:#EEF3EE;
-      --img-border:#E7E4DA; --cover-bg:#F4F1E8;
-      --cover-shadow:0 6px 18px rgba(0,0,0,.12);
-    }
+    --paper:#FAFAF7; --card:#FFFFFF; --ink:#26251F; --ink-soft:#5C594F; --line:#E7E4DA;
+    --green:#1A4A35; --green-deep:#0D2B1E; --gold:#B5731A; --sage:#6E7F63; --night:#2C3A4A;
+    --gray:#8A857B; --cream-tint:#F4F1E8; --plum:#6B4E71; --clay:#C67E58; --moss:#3B6D11;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);background-attachment:fixed;color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
+  body{background:var(--paper);color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px 64px;}
-  html,body{max-width:100%;overflow-x:hidden;}
-  .hero{position:relative;margin:0 -24px 40px;overflow:hidden;}
-  .hero img{width:100%;height:auto;display:block;aspect-ratio:1080/560;object-fit:cover;object-position:50% 40%;}
-  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,33,23,.30) 0%,rgba(10,33,23,0) 32%,rgba(10,33,23,.60) 84%,#0D2B1E 100%);}
-  @media (prefers-color-scheme: light){ .hero::after{background:linear-gradient(180deg,rgba(13,43,30,.10) 0%,rgba(13,43,30,0) 42%,rgba(250,250,247,.60) 88%,#FAFAF7 100%);} }
-  @media (max-width:700px){ .hero{margin:0 -16px 28px;} .hero img{aspect-ratio:1080/760;} }
-  /* 절 머리 이미지 띠 */
-  .band{position:relative;margin:0 0 22px;border-radius:6px;overflow:hidden;}
-  .band img{width:100%;height:auto;display:block;aspect-ratio:1080/300;object-fit:cover;}
-  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,23,.16) 0%,rgba(10,33,23,.52) 58%,rgba(10,33,23,.90) 100%);}
-  .band .band-t{position:absolute;left:0;right:0;bottom:0;padding:0 24px 18px;z-index:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
-  .band .band-t h2{font-size:18px;font-weight:700;letter-spacing:.08em;color:#F4F1E8;text-shadow:0 1px 10px rgba(0,0,0,.6);}
-  .band .band-t .lead{font-size:13px;color:#D8DFCE;text-shadow:0 1px 8px rgba(0,0,0,.65);}
-  @media (max-width:700px){ .band img{aspect-ratio:1080/440;} .band .band-t{padding:0 16px 14px;} .band .band-t h2{font-size:16px;} .band .band-t .lead{font-size:12px;} }
-  /* 절 사이 얇은 띠 */
-  .grain{height:72px;margin:46px 0;border-radius:4px;background:url("calendar/astra_grain.jpg") center 42%/cover no-repeat;opacity:.5;}
-  @media (prefers-color-scheme: light){ .grain{opacity:.72;} }
-  @media (max-width:700px){ .grain{height:54px;margin:34px 0;} }
+  .hero{margin:0 -24px 40px;max-height:380px;overflow:hidden;}
+  .hero img{width:100%;height:auto;display:block;}
+  @media (max-width:700px){ .hero{margin:0 -16px 28px;max-height:220px;} }
   header{text-align:center;margin-bottom:36px;}
   header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
-  header img.logo-light{display:none;}
-  @media (prefers-color-scheme: light){ header img.logo-dark{display:none;} header img.logo-light{display:inline-block;} }
   h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
   .subtitle{margin-top:10px;font-size:14px;color:var(--ink-soft);letter-spacing:.04em;line-height:1.9;}
   .subtitle b{color:var(--green-deep);font-weight:700;}
   .period{margin-top:4px;font-size:12.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
-  .rule{width:56px;height:1px;background:var(--gold-bright);margin:22px auto 0;}
+  .rule{width:56px;height:1px;background:var(--gold);margin:22px auto 0;}
   .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:26px 0 36px;}
-  .legend .li{font-size:12.5px;color:var(--ink-soft);line-height:1.7;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:5px 15px;}
+  .legend .li{font-size:12.5px;color:var(--ink-soft);line-height:1.7;}
   .legend b{color:var(--ink);font-weight:600;}
   .dot{display:inline-block;vertical-align:middle;margin-right:7px;position:relative;top:-1px;width:9px;height:9px;border-radius:50%;}
   .d-g{background:var(--green);} .d-o{background:var(--gold);} .d-s{background:var(--sage);} .d-p{background:var(--plum);} .d-c{background:var(--clay);} .d-m{background:var(--moss);}
@@ -94,27 +46,24 @@
   .month{margin-bottom:44px;}
   .month-name{font-size:16px;font-weight:700;color:var(--green-deep);letter-spacing:.1em;margin-bottom:4px;}
   .month-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
-  .lightlink{margin-top:22px;font-size:11.5px;letter-spacing:.06em;font-family:"DM Mono",monospace;}
-  .lightlink a{color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line);}
   .cal-scroll{overflow-x:auto;}
   table.cal{width:100%;min-width:760px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
-  table.cal td{background:transparent;}
   table.cal th{font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);padding:10px 6px;border-bottom:1px solid var(--line);background:var(--cream-tint);}
-  table.cal th.sat{color:var(--sat);} table.cal th.sun{color:var(--sun);}
+  table.cal th.sat{color:#4A5A6E;} table.cal th.sun{color:#8A5A3A;}
   table.cal td{vertical-align:top;border:1px solid var(--line);width:14.28%;min-height:104px;height:104px;padding:7px 7px 9px;}
   .dnum{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
-  td.dim{background:var(--dim-bg);} td.dim .dnum{color:var(--dim-num);} td.dim .ev{opacity:.55;}
-  td.other{background:var(--dim-bg);} td.other .dnum{color:var(--other-num);}
-  .ev{font-size:11.5px;line-height:1.4;margin-bottom:5px;padding:3px 6px 4px 8px;border-radius:2px;border-left:2.5px solid transparent;color:var(--ink);background:var(--ev-bg);}
+  td.dim{background:#F5F4EF;} td.dim .dnum{color:#B9B4A8;} td.dim .ev{opacity:.55;}
+  td.other{background:#F5F4EF;} td.other .dnum{color:#C9C4B8;}
+  .ev{font-size:11.5px;line-height:1.4;margin-bottom:5px;padding:3px 6px 4px 8px;border-radius:2px;border-left:2.5px solid transparent;color:var(--ink);background:#FBFAF6;}
   .ev .t{color:var(--gray);font-size:10.5px;}
   .ev b{font-weight:600;}
-  .ev-g{border-left-color:var(--green);background:var(--ev-g);}
-  .ev-o{border-left-color:var(--gold);background:var(--ev-o);}
-  .ev-s{border-left-color:var(--sage);background:var(--ev-s);}
-  .ev-p{border-left-color:var(--plum);background:var(--ev-p);}
-  .ev-c{border-left-color:var(--clay);background:var(--ev-c);}
-  .ev-m{border-left-color:var(--moss);background:var(--ev-m);}
-  .hol{display:inline-block;font-size:11px;letter-spacing:.02em;background:var(--hol-bg);color:var(--hol-fg);padding:3px 8px;border-radius:2px;margin-bottom:5px;}
+  .ev-g{border-left-color:var(--green);background:#F0F4F0;}
+  .ev-o{border-left-color:var(--gold);background:#F8F3E9;}
+  .ev-s{border-left-color:var(--sage);background:#F2F4EF;}
+  .ev-p{border-left-color:var(--plum);background:#F3EFF5;}
+  .ev-c{border-left-color:var(--clay);background:#FAF2EC;}
+  .ev-m{border-left-color:var(--moss);background:#EEF4E6;}
+  .hol{font-size:11px;letter-spacing:.02em;background:#8A5A3A;color:#FBF6EE;padding:3px 8px;border-radius:2px;margin-bottom:5px;}
 
   .sec{margin:52px 0 0;}
   .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
@@ -125,11 +74,11 @@
   .book{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 18px 20px;display:flex;flex-direction:column;}
   .book .when{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--sage);margin-bottom:12px;}
   .book .when b{color:var(--green-deep);font-weight:600;}
-  .book .cover{width:100%;aspect-ratio:3/4;background:var(--cover-bg);border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .book .cover img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block;box-shadow:var(--cover-shadow);}
+  .book .cover{width:100%;aspect-ratio:3/4;background:var(--cream-tint);border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .book .cover img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block;box-shadow:0 6px 18px rgba(0,0,0,.12);}
   .book h3{font-size:16px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:4px;}
   .book .bib{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.6;}
-  .book .scope{font-size:12px;color:var(--ink);background:var(--scope-bg);display:inline-block;padding:2px 9px;border-radius:100px;margin-bottom:10px;align-self:flex-start;}
+  .book .scope{font-size:12px;color:var(--green-deep);background:#EEF3EE;display:inline-block;padding:2px 9px;border-radius:100px;margin-bottom:10px;align-self:flex-start;}
   .book p{font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
 
   .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
@@ -156,15 +105,14 @@
   footer .team{margin-top:10px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
   footer .slogan{margin-top:26px;font-size:16px;color:var(--green-deep);letter-spacing:.02em;line-height:1.8;}
   footer .finis{margin-top:34px;font-size:15px;color:var(--green-deep);letter-spacing:.04em;line-height:1.9;}
-  footer .finis em{font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;font-style:italic;font-size:22px;color:var(--gold-bright);}
+  footer .finis em{font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;font-style:italic;font-size:22px;color:var(--gold);}
   footer .finis span{font-size:12px;color:var(--gray);}
 
   @media (max-width:900px){ .books,.courses{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:700px){
     .wrap{padding:32px 16px 48px;}
     h1{font-size:21px;} .subtitle{font-size:12.5px;}
-    .legend{flex-direction:column;align-items:stretch;gap:8px;padding:0;}
-    .legend .li{width:100%;border-radius:8px;padding:8px 12px;}
+    .legend{flex-direction:column;align-items:flex-start;gap:8px;padding:0 4px;}
     .cal-scroll{overflow-x:visible;}
     table.cal, table.cal tbody, table.cal tr, table.cal td{display:block;width:100%;min-width:0;height:auto;min-height:0;}
     table.cal thead{display:none;}
@@ -189,10 +137,9 @@
 <body>
 <div class="wrap">
 
-  <div class="hero"><img src="calendar/astra_hero.jpg" alt="밤의 서재, 책상 곁 의자에 앉아 창밖을 보는 사막여우와 노트를 쓰는 사람"></div>
+  <div class="hero"><img src="calendar/fox_02_banner.jpg" alt="곁의 사막여우"></div>
   <header>
-    <img class="logo logo-dark" src="logic/DEEPER_logo_white.png" alt="DEEPER">
-    <img class="logo logo-light" src="logic/DEEPER_logo.png" alt="">
+    <img class="logo" src="logic/DEEPER_logo.png" alt="DEEPER">
     <h1>디퍼의 한 달</h1>
     <p class="subtitle">디퍼 언브랜딩살롱 <b>2기 · 수사의 달</b> &nbsp;·&nbsp; <b>3기 · 논리의 달</b> &nbsp;·&nbsp; <b>4기 · 문법의 달</b><br>디퍼 리딩 여섯 밤 &nbsp;·&nbsp; 일요일 오프 번개 두 번 &nbsp;·&nbsp; <b>디퍼 콤포스텔라 1기</b> 1구간 완주 → 2구간 피스테라</p>
     <p class="period">2026. 10. 1 (THU) — 2026. 10. 31 (SAT)</p>
@@ -210,7 +157,7 @@
 
   <section class="sec" style="margin-top:0">
     <div class="sec-head"><h2>한 장으로 보기</h2><span class="lead">길게 눌러 저장하시면 휴대폰에서도 한눈에</span></div>
-    <a href="calendar/month_grid_2026-10.png" target="_blank" rel="noopener"><img src="calendar/month_grid_2026-10.png" alt="2026년 10월 디퍼 달력 한 장" style="width:100%;height:auto;display:block;border:1px solid var(--img-border);border-radius:4px;margin-bottom:44px"></a>
+    <a href="calendar/month_grid_2026-10.png" target="_blank" rel="noopener"><img src="calendar/month_grid_2026-10.png" alt="2026년 10월 디퍼 달력 한 장" style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;margin-bottom:44px"></a>
   </section>
 
   <section class="month">
@@ -322,8 +269,7 @@
   </section>
 
   <section class="sec">
-    <div class="band"><img src="calendar/astra_books.jpg" alt="등불이 켜진 밤의 서가">
-      <div class="band-t"><h2>이달의 책 — 디퍼 리딩 여섯 밤</h2><span class="lead">수요일 밤 9시~10시 30분 · 일요일 밤 9시~10시 30분 · 전체 디퍼</span></div></div>
+    <div class="sec-head"><h2>이달의 책 — 디퍼 리딩 여섯 밤</h2><span class="lead">수요일 밤 9시~10시 30분 · 일요일 밤 9시~10시 30분 · 전체 디퍼</span></div>
     <p class="sec-desc">9월에 『마침내 특이점이 시작된다』와 『생각하는 기계』로 기계 쪽을 읽었으니, 10월은 사람 쪽으로 돌아옵니다. 만드는 사람들의 속기록에서 시작해 기계의 말, 맡기면 사라지는 것, 내 방의 링크로 내려옵니다. 사이사이 일요일엔 오뒷세우스가 집으로 가는 길을 두 권씩 걷습니다. 읽은 만큼 오시면 됩니다. 사실을 다지고, 해석을 나누고, 마지막 몇 분에 각자의 평가를 남기는 소크라테스식 세미나입니다.</p>
     <div class="books">
 
@@ -385,8 +331,7 @@
   </section>
 
   <section class="sec">
-    <div class="band"><img src="calendar/astra_courses.jpg" alt="책상에서 노트와 화면을 나란히 두고 일하는 사람, 곁에 엎드린 사막여우">
-      <div class="band-t"><h2>세 과정, 네 주</h2><span class="lead">문법 → 논리 → 수사 · 한 달에 한 걸음</span></div></div>
+    <div class="sec-head"><h2>세 과정, 네 주</h2><span class="lead">문법 → 논리 → 수사 · 한 달에 한 걸음</span></div>
     <p class="sec-desc">트리비움의 세 단계가 10월에 나란히 걷습니다. 4기는 첫 달인 문법을, 3기는 두 번째 달인 논리를, 2기는 마지막 달인 수사를 걷습니다. 같은 사막에서 선배와 후배가 함께 있습니다.</p>
     <div class="courses">
 
@@ -429,8 +374,7 @@
 
 
   <section class="sec">
-    <div class="band"><img src="calendar/astra_compostela.jpg" alt="책상 앞 의자에 앉은 사막여우와 비어 있는 맞은편 의자">
-      <div class="band-t"><h2>디퍼 콤포스텔라 1기 — 두 구간</h2><span class="lead">비즈니스 트랙 · 월요일 오전 10시 · 여덟 분</span></div></div>
+    <div class="sec-head"><h2>디퍼 콤포스텔라 1기 — 두 구간</h2><span class="lead">비즈니스 트랙 · 월요일 오전 10시 · 여덟 분</span></div>
     <p class="sec-desc">살롱을 완주한 별지기님들과 2기 세 분이 걷는 길입니다. 문법·논리·수사가 나를 캐고 세우고 부르는 달이라면, 콤포스텔라는 그것을 <b>나만의 AX 전문성</b>으로 바꾸는 길입니다. 1구간 프리미티보에서 보이는 세컨드 브레인 한 벌과 사례 0호를 만들었고, 2구간 피스테라에서는 그것으로 수익화의 첫 건을 냅니다. 10월 월요일 밤 사막별 특강과 종강 밤의 「이수자가 여는 방」은 이분들이 여는 자리입니다.</p>
     <div class="courses">
       <div class="course" style="border-top-color:var(--clay)">
@@ -450,11 +394,8 @@
     </div>
   </section>
 
-  <div class="grain" role="presentation"></div>
-
   <div class="rhythm">
     <h2>날마다 · 주마다 — 한 달의 리듬</h2>
-    <img src="calendar/astra_rhythm.jpg" alt="등불 아래 책상과 사막여우" style="width:100%;height:auto;display:block;aspect-ratio:1080/230;object-fit:cover;object-position:50% 46%;border-radius:4px;margin:4px 0 14px;opacity:.9">
     <p><b>매일</b> — 모닝페이지, 긱어스에 인증 · 사막여우와 안녕 · 오아시스 · 냠냠, 사막방에 인증</p>
     <p><b>매주 1회</b> — 아티스트 데이트, 사막방에 인증</p>
     <p><b>일요일 오후 2시 · 10/4 · 10/18</b> — 오프 번개, 강남 이디야 커피랩. 한 달에 두 번, 화면 밖에서 만나는 날입니다. 제주에서, 지방에서 기차를 타고 오시는 분들이 있어요. 노트북 하나 들고 오셔서 서로의 사막여우를 보여 주세요. 줌에서 한 달 걸은 이야기가 그 자리에서 다음 한 달의 힘이 됩니다. 오후 두 시부터 문이 열려 있습니다.</p>
@@ -466,7 +407,7 @@
     <p class="team">NIETZSCHE · DEEPER · 2026. 10</p>
     <p class="slogan">가장 인간적인 방법으로 특이점을 건너가는 사람들</p>
     <p class="finis"><em>Per aspera ad astra.</em><br><span>돌길을 걸어 별들에게로 — 세네카 『광란의 헤르쿨레스』에서 온 라틴 경구</span></p>
-    <p class="lightlink"><a href="deeper_calendar_2026-10_light.html">라이트 판으로 보기 →</a></p>
+    <p class="team" style="margin-top:18px"><a href="deeper_calendar_2026-10.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)">다크 판으로 보기 →</a></p>
   </footer>
 
 </div>
