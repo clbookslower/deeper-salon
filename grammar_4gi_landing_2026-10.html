@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4기 문법의 달 · 10/8 개강 — 디퍼 언브랜딩 살롱</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER · UNBRANDING SALON">
+<meta property="og:title" content="4기 · 문법의 달 · 10월 8일 목요일 밤 20:00 개강">
+<meta property="og:description" content="세컨브레인의 첫 삽을 뜨는 한 달. 손으로 쓰고, 여우에게 먹이고, 나만 볼 수 있는 각도를 찾고, 마지막 밤에 씨앗에 이름을 붙입니다. 신청 마감 10월 5일 월요일.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/grammar_4gi_landing_2026-10.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/calendar/og_grammar_4gi_2026-10.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/calendar/og_grammar_4gi_2026-10.png">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+  /* 팔레트와 결은 2기 수사·3기 논리 안내를 그대로 승계한다. 새 색을 들이지 않는다. */
+  :root{
+    color-scheme:dark;
+    --bg:linear-gradient(180deg,#0A2117 0%,#0D2B1E 34%,#123726 100%);
+    --paper:#0D2B1E; --card:rgba(23,62,43,.62); --card-solid:#153A29;
+    --ink:#F4F1E8; --ink-soft:#C9D3C1; --line:rgba(244,241,232,.16);
+    --green:#3E9A6B; --green-deep:#EDE7D8; --gold:#E0A33E; --gold-bright:#E8C766;
+    --sage:#9DB289; --gray:#94A691; --cream-tint:rgba(244,241,232,.07);
+    --star:#E8C766; --moss:#7FC23A; --plum:#A88CB0;
+    --img-border:rgba(244,241,232,.9);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{background:var(--bg);background-attachment:fixed;color:var(--ink);
+    font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 64px;}
+
+  .hero{position:relative;margin:0 -24px 0;overflow:hidden;}
+  .hero img{width:100%;height:auto;display:block;aspect-ratio:1080/430;object-fit:cover;object-position:58% 50%;}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(10,33,23,.34) 0%,rgba(10,33,23,0) 30%,rgba(10,33,23,.68) 80%,#0D2B1E 100%);}
+  header{text-align:center;margin:-6px 0 42px;}
+  header img.logo{height:32px;width:auto;display:inline-block;margin-bottom:18px;}
+  .eyebrow{display:block;font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;}
+  h1{font-size:30px;font-weight:700;letter-spacing:.04em;color:var(--green-deep);line-height:1.45;}
+  .hero-line{margin-top:14px;font-size:15px;color:var(--ink-soft);line-height:1.95;}
+  .period{margin-top:12px;font-size:12.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
+  .rule{width:56px;height:1px;background:var(--gold-bright);margin:22px auto 0;}
+  @media (max-width:700px){ .hero{margin:0 -16px 0;} .hero img{aspect-ratio:1080/560;} h1{font-size:23px;} .wrap{padding:0 16px 48px;} }
+
+  section{margin-top:58px;}
+  .label{display:block;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--gray);margin-bottom:10px;}
+  h2{font-size:20px;font-weight:700;color:var(--green-deep);letter-spacing:.04em;line-height:1.5;margin-bottom:18px;}
+  h3{font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.5;}
+  p.body{font-size:15px;color:var(--ink-soft);line-height:2.0;margin-bottom:18px;}
+  p.body:last-child{margin-bottom:0;}
+  p.body b{color:var(--ink);font-weight:600;}
+  p.pull{font-size:15.5px;color:var(--green-deep);line-height:2.0;margin-bottom:18px;
+    padding-left:16px;border-left:2px solid var(--gold);}
+
+  /* 원천에서 씨앗까지 — 순수 CSS·SVG, 외부 스크립트·이미지 없음 */
+  .trailbox{margin:4px auto 0;max-width:400px;}
+  .trailbox svg{width:100%;height:auto;display:block;}
+  .trail{stroke-dasharray:5 9;animation:trailflow 24s linear infinite;}
+  @keyframes trailflow{from{stroke-dashoffset:0;}to{stroke-dashoffset:-420;}}
+  .seedglow{animation:breathe 6s ease-in-out infinite;transform-origin:62px 56px;}
+  @keyframes breathe{0%,100%{opacity:.35;}50%{opacity:.85;}}
+  @media (prefers-reduced-motion:reduce){ .trail,.seedglow{animation:none;} }
+  .trail-cap{margin-top:14px;text-align:center;font-size:12.5px;color:var(--gray);line-height:1.9;}
+
+  .wk{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--green);
+    border-radius:4px;padding:20px 22px 22px;margin-bottom:16px;}
+  .wk .when{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.12em;color:var(--gold);margin-bottom:7px;}
+  .wk h3{margin-bottom:10px;}
+  .wk>p{font-size:14px;color:var(--ink-soft);line-height:1.95;margin-bottom:15px;}
+  .wk dl{border-top:1px dashed var(--line);padding-top:14px;}
+  .wk dt{font-size:11px;letter-spacing:.14em;color:var(--sage);font-family:"DM Mono",monospace;margin-bottom:5px;}
+  .wk dd{font-size:13.5px;color:var(--ink-soft);line-height:1.95;margin-bottom:14px;}
+  .wk dd:last-child{margin-bottom:0;}
+  .wk dd b{color:var(--ink);font-weight:600;}
+
+  .box{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 22px;}
+  .box p{font-size:14px;color:var(--ink-soft);line-height:2.0;}
+  .box p+p{margin-top:12px;}
+  .box b{color:var(--ink);font-weight:600;}
+
+  ul.pts{list-style:none;margin-top:16px;}
+  ul.pts li{position:relative;padding:11px 0 11px 22px;font-size:14px;color:var(--ink-soft);
+    line-height:1.95;border-bottom:1px solid var(--line);}
+  ul.pts li:last-child{border-bottom:none;}
+  ul.pts li::before{content:"";position:absolute;left:2px;top:22px;width:5px;height:5px;
+    border-radius:50%;background:var(--gold);opacity:.85;}
+  ul.pts li b{color:var(--ink);font-weight:600;}
+  ul.pts li .n{font-family:"DM Mono",monospace;color:var(--gold);font-size:12.5px;margin-right:7px;}
+  .subhead{margin-top:22px;font-size:13px;letter-spacing:.06em;color:var(--sage);font-weight:600;}
+
+  .cardimg{display:block;width:100%;height:auto;border:1px solid var(--img-border);border-radius:4px;}
+
+  table.glance{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
+  table.glance th,table.glance td{text-align:left;vertical-align:top;padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.95;}
+  table.glance th{width:104px;color:var(--sage);font-weight:600;white-space:nowrap;}
+  table.glance td{color:var(--ink-soft);}
+  table.glance td b{color:var(--ink);font-weight:600;}
+  table.glance tr:last-child th,table.glance tr:last-child td{border-bottom:none;}
+  .mono{font-family:"DM Mono",monospace;letter-spacing:.02em;color:var(--ink);}
+  @media (max-width:560px){
+    table.glance,table.glance tbody,table.glance tr,table.glance th,table.glance td{display:block;width:100%;}
+    table.glance th{border-bottom:none;padding:14px 16px 0;}
+    table.glance td{padding:4px 16px 14px;}
+  }
+
+  .btnrow{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;}
+  a.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;
+    border-radius:100px;font-size:15px;letter-spacing:.02em;text-decoration:none;
+    background:var(--gold);color:#241A06;border:1px solid var(--gold);font-weight:600;}
+  a.btn:hover{background:var(--gold-bright);border-color:var(--gold-bright);}
+  a.btn.ghost{background:var(--card);color:var(--gold);border-color:var(--line);font-weight:400;}
+  a.btn.ghost:hover{border-color:var(--gold);}
+  .cta-box{margin-top:44px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:32px 22px 34px;text-align:center;}
+  .cta-box h2{margin-bottom:12px;}
+  .cta-box p{font-size:14.5px;color:var(--ink-soft);line-height:2.0;}
+  .cta-box .btnrow{justify-content:center;}
+  .cta-box .after{margin-top:18px;font-size:13px;color:var(--gray);}
+
+  .free div{font-size:14px;color:var(--ink-soft);line-height:1.95;padding:13px 0;border-bottom:1px solid var(--line);}
+  .free div:last-child{border-bottom:none;}
+  .free b{color:var(--ink);font-weight:600;}
+  .free .sub{display:block;font-size:12.5px;color:var(--gray);margin-top:2px;}
+  .free a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);
+    display:inline-block;min-height:40px;line-height:40px;}
+
+  .notes{margin-top:16px;}
+  .notes a{display:block;color:var(--gold);text-decoration:none;font-size:13.5px;line-height:1.7;
+    padding:12px 0;border-bottom:1px solid var(--line);}
+  .notes a:last-child{border-bottom:none;}
+  .notes a .n{font-family:"DM Mono",monospace;font-size:12px;color:var(--sage);margin-right:8px;}
+
+  footer{text-align:center;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);}
+  footer img.logo{height:26px;width:auto;display:inline-block;margin-bottom:16px;}
+  footer .quote{font-size:13px;color:var(--ink-soft);line-height:1.9;}
+  footer .team{margin-top:12px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;line-height:2.0;}
+  footer .finis{margin-top:26px;font-size:14px;color:var(--green-deep);letter-spacing:.04em;line-height:1.9;}
+  footer .finis em{font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;font-style:italic;font-size:20px;color:var(--gold-bright);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero"><img src="calendar/astra_rhythm.jpg" alt="밤의 책상 곁 의자에 앉아 이쪽을 보는 사막여우, 등 뒤로 등불과 책장"></div>
+
+  <header>
+    <img class="logo" src="logic/DEEPER_logo_white.png" alt="DEEPER">
+    <span class="eyebrow">UNBRANDING SALON · 4GI · GRAMMAR</span>
+    <h1>4기 · 문법의 달</h1>
+    <p class="hero-line">내 이름으로 된 자산 한 뼘을 짓는 첫 달</p>
+    <p class="period">2026. 10. 8 — 10. 29 · THU 20:00</p>
+    <div class="rule"></div>
+  </header>
+
+  <section style="margin-top:44px">
+    <span class="label">01 · 안내</span>
+    <h2>내 것이 있어야 한다는 것</h2>
+    <p class="body">얼마 전 G20 자리에서 젠슨 황이 한 대담을 봤어요. 그가 가장 오래 말한 건 기술이 아니라 사람 쪽이었어요. AI 시대에 각자가 힘을 쏟아야 할 곳은 자기만의 자산을 쌓는 일이라는 것. 남이 만든 도구를 잘 쓰는 것으로는 부족하고, 그 도구가 읽을 내 것이 있어야 한다는 것.</p>
+    <p class="pull">디퍼는 그 「내 것」을 세컨브레인이라 불러요.</p>
+    <p class="body">세컨브레인은 메모 앱이 아니에요. 내가 오래 해 온 일에서 나만 아는 판단 기준, 손으로 쓴 아침의 문장, 반복해서 나에게 돌아오는 업무의 순서. 그것들을 내 컴퓨터 안에 내 언어로 쌓은 방이에요. 그 방을 읽는 AI가 사막여우예요. <b>범용 AI는 내 현장을 몰라요. 내 현장을 아는 AI만 나를 밀어올려요.</b></p>
+    <p class="body">4기 문법의 달은 그 방의 첫 삽이에요. 한 달 동안 손으로 쓰고, 여우에게 먹이고, 나만 볼 수 있는 각도를 찾아요. 마지막 밤, 씨앗에 이름을 붙여요. 그때 남는 것은 강의 노트가 아니라, 내 이름으로 된 자산 한 뼘이에요.</p>
+  </section>
+
+  <section>
+    <span class="label">02 · 이 달의 모양</span>
+    <h2>원천에서 씨앗까지</h2>
+    <p class="body">이번 모집은 나를 탐구하고 나의 언어와 판단 기준을 정리하는 '문법' 과정입니다. 4기는 목요일 밤, 온라인으로 함께 걷습니다.</p>
+    <div class="trailbox">
+      <svg viewBox="0 0 360 390" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="손으로 쓴 아침에서 냠냠, 목소리의 결, 나만의 각도를 지나 씨앗에 이름까지 다섯 걸음이 모래 언덕을 따라 위로 이어지는 길">
+        <!-- 모래 언덕 -->
+        <g fill="none" stroke="#E0A33E" stroke-opacity=".17" stroke-width="1">
+          <path d="M0,342 C70,318 128,352 200,330 C266,310 316,332 360,320"/>
+          <path d="M0,258 C62,236 120,268 190,246 C258,226 312,248 360,236"/>
+          <path d="M0,174 C66,152 124,184 196,162 C262,142 314,164 360,152"/>
+          <path d="M0,92 C60,72 122,102 192,80 C258,60 312,82 360,70"/>
+        </g>
+        <!-- 4점 스파클 -->
+        <g fill="#E8C766" fill-opacity=".55">
+          <path d="M300,44 q0,-9 0,-9 0,9 9,9 -9,0 -9,9 0,-9 -9,-9 9,0 9,-9Z"/>
+          <path d="M256,206 q0,-6 0,-6 0,6 6,6 -6,0 -6,6 0,-6 -6,-6 6,0 6,-6Z"/>
+          <path d="M324,272 q0,-6 0,-6 0,6 6,6 -6,0 -6,6 0,-6 -6,-6 6,0 6,-6Z"/>
+          <path d="M28,120 q0,-6 0,-6 0,6 6,6 -6,0 -6,6 0,-6 -6,-6 6,0 6,-6Z"/>
+        </g>
+        <!-- 길 -->
+        <path d="M52,352 C60,320 86,308 86,275 C86,242 54,235 54,202 C54,169 88,162 88,129 C88,96 62,89 62,56"
+              fill="none" stroke="#E0A33E" stroke-opacity=".3" stroke-width="1.4" stroke-linecap="round"/>
+        <path class="trail" d="M52,352 C60,320 86,308 86,275 C86,242 54,235 54,202 C54,169 88,162 88,129 C88,96 62,89 62,56"
+              fill="none" stroke="#E8C766" stroke-opacity=".85" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- 다섯 걸음 -->
+        <g fill="#E8C766">
+          <circle cx="52" cy="352" r="4"/>
+          <circle cx="86" cy="275" r="4"/>
+          <circle cx="54" cy="202" r="4"/>
+          <circle cx="88" cy="129" r="4"/>
+        </g>
+        <!-- 다섯째 걸음 — 트는 씨앗 -->
+        <circle class="seedglow" cx="62" cy="56" r="13" fill="#E8C766" fill-opacity=".22"/>
+        <circle cx="62" cy="56" r="4.6" fill="#E8C766"/>
+        <g fill="none" stroke="#7FC23A" stroke-width="1.5" stroke-linecap="round">
+          <path d="M62,52 C62,42 56,36 49,34"/>
+          <path d="M62,52 C62,44 68,39 75,38"/>
+        </g>
+        <!-- 이름 -->
+        <g font-family="'Noto Serif KR','Malgun Gothic',serif" fill="#F4F1E8" font-size="14.5">
+          <text x="120" y="348">손으로 쓴 아침</text>
+          <text x="120" y="271">냠냠</text>
+          <text x="120" y="198">목소리의 결</text>
+          <text x="120" y="125">나만의 각도</text>
+          <text x="120" y="52">씨앗에 이름</text>
+        </g>
+        <g font-family="'Noto Serif KR','Malgun Gothic',serif" fill="#94A691" font-size="11.5">
+          <text x="120" y="366">공책 세 줄</text>
+          <text x="120" y="289">여우에게 먹이기</text>
+          <text x="120" y="216">내 언어 지문</text>
+          <text x="120" y="143">살아낸 것과 지형도</text>
+          <text x="120" y="70">개념어 하나</text>
+        </g>
+      </svg>
+    </div>
+    <p class="trail-cap">한 달 뒤 여우가 읽는 글은 그동안 나에게서만 나온 문장입니다.<br>같은 도구를 써도 재료가 다르면 돌아오는 답이 달라집니다.</p>
+  </section>
+
+  <section>
+    <span class="label">03 · 네 밤</span>
+    <h2>어떻게 걷나요</h2>
+    <p class="body">오래 해온 일에는 나만 아는 경험과 판단 기준이 쌓여 있습니다. 디퍼 언브랜딩 살롱에서는 내가 어떤 사람이고, 어떤 방식으로 일하고 싶은지부터 살펴봅니다.</p>
+
+    <div class="wk">
+      <p class="when">10 / 08 (THU) · WEEK 01</p>
+      <h3>마침내 특이점이 시작된다</h3>
+      <p>여우와 인사하고, 그 자리에서 첫 삽을 뜹니다. 소개와 첫 걸음이 한 밤에 있습니다.</p>
+      <dl>
+        <dt>그 밤에 손에 남는 것</dt>
+        <dd><b>내 컴퓨터 안에 자리 잡은 사막여우, 그리고 첫 「안녕」</b> — 왜 손으로 쓰는지, 내 도메인이 어디쯤인지도 한 번 짚어 봅니다.</dd>
+        <dt>함께 하는 것</dt>
+        <dd>Claude Code 설치와 사막여우 세팅. 코딩이 처음이어도 괜찮습니다. 가입과 설치는 함께 진행합니다.</dd>
+        <dt>그 주의 실습</dt>
+        <dd><b>아침 손글씨와 냠냠 · 매일 안녕 · 일요일 밤하늘.</b> 이번 주 할 일은 셋뿐입니다.</dd>
+      </dl>
+    </div>
+
+    <div class="wk">
+      <p class="when">10 / 15 (THU) · WEEK 02</p>
+      <h3>목소리의 결</h3>
+      <p>첫 주에 캔 것이 어디서 왔는지 봅니다. 가장 깊은 목소리는 가장 아픈 경험에서 옵니다.</p>
+      <dl>
+        <dt>그 밤에 손에 남는 것</dt>
+        <dd><b>손으로 쓴 세 줄과 씨앗 문장 초고 한 줄</b> — 힘들었던 시간, 거기서 알게 된 것, 돕고 싶은 사람.</dd>
+        <dt>함께 하는 것</dt>
+        <dd>목소리의 결은 기교가 아니라 살아온 방식의 흔적이라는 것. 그리고 나의 특이점 지도를 그려 봅니다.</dd>
+        <dt>그 주의 실습</dt>
+        <dd><b>언어 지문 하나.</b> 밖에 써둔 글 서너 편을 냠냠으로 들이고 프롬프트 한 번. 새로 더하는 것은 이것 하나입니다.</dd>
+      </dl>
+    </div>
+
+    <div class="wk">
+      <p class="when">10 / 22 (THU) · WEEK 03</p>
+      <h3>나의 독점적 관점</h3>
+      <p>두 주 동안 캔 것 가운데 소화되지 않는 것을 가려냅니다. 씨앗 문장을 뿌리로, 콘텐츠 나무의 첫 가지를 그립니다.</p>
+      <dl>
+        <dt>그 밤에 손에 남는 것</dt>
+        <dd><b>살아낸 것 목록 서너 줄과 첫 문장 한 줄</b> — 거칠어도 오늘의 버전. 500자까지 불편한 채로 늘려 와도 됩니다.</dd>
+        <dt>함께 하는 것</dt>
+        <dd>오토파지 — 낡은 것을 먹어 새것을 짓는 순환. 다시 원점에 선 것 같은 감각이 소화가 진행 중이라는 신호라는 것.</dd>
+        <dt>그 주의 실습</dt>
+        <dd><b>지식 지형도 한 번.</b> 오늘 손으로 쓴 것을 냠냠으로 들이면, 여우가 두 주치를 읽고 무엇이 깊고 무엇이 아직 땅속인지 그려 줍니다.</dd>
+      </dl>
+    </div>
+
+    <div class="wk">
+      <p class="when">10 / 29 (THU) · WEEK 04 · 수료</p>
+      <h3>씨앗에 이름을</h3>
+      <p>세 밤 동안 캔 것을 이름 하나로 묶고, 그 이름을 독자의 언어로 건넵니다. 이 밤이 문법 수료입니다.</p>
+      <dl>
+        <dt>그 밤에 손에 남는 것</dt>
+        <dd><b>개념어 하나, 은유 하나, 한 문장</b> — 누구를 위해 · 무엇을 · 어떻게. 그리고 30초 피치를 한 번은 입으로 말해 봅니다.</dd>
+        <dt>함께 하는 것</dt>
+        <dd>아우라의 이동, 오병이어, 이름이 붙는 순간 잡을 수 있게 된다는 것. 그리고 내 말을 독자의 말로 옮기는 자리.</dd>
+        <dt>그 주의 실습</dt>
+        <dd><b>이름과 한 문장 · 30초 피치 · 첫 글 500자.</b> 서른세 걸음을 다 걸으면 그 기록에서 『내 목소리』(내 문체 정의서)와 『나의 사막』(한 달의 실측 한 장)이 지어집니다.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">04 · 사막여우</span>
+    <h2>내 컴퓨터에 사는 세컨브레인</h2>
+    <p class="body">사막여우가 한 달 동안 하는 일은 셋입니다. 아침에 손으로 쓴 문장을 사진으로 찍어 먹이고, 하루 하나의 샘 앞에서 한 질문에 답하고, 서른세 걸음을 하루 한 걸음씩 걷습니다.</p>
+    <p class="body">사막여우와 함께 내 기록을 읽고 질문을 주고받으며, 내가 중요하게 여기는 것을 말과 글로 정리합니다. 이 기록이 쌓이면 AI가 읽을 '내 것'이 생깁니다. 반복되는 업무 하나를 여우에게 건네는 일은 그다음 달입니다.</p>
+
+    <p class="subhead">이런 분들과 함께하고 싶어요</p>
+    <ul class="pts">
+      <li>자기 경험을 나만의 언어와 자산으로 남기고 싶은 분</li>
+      <li>내가 직접 챙겨야만 돌아가는 업무를 줄이고 싶은 분</li>
+      <li>나의 경험과 판단 기준을 AI가 참고할 수 있도록 정리하고 싶은 분</li>
+      <li>AI 도구 설치와 코딩이 낯설어서 시작부터 같이 걸을 사람이 필요한 분</li>
+    </ul>
+
+    <p class="subhead">함께 실습할 내용</p>
+    <ul class="pts">
+      <li><span class="n">①</span>Claude Code 설치와 사막여우(내 컴퓨터에 사는 세컨브레인) 세팅</li>
+      <li><span class="n">②</span>아침 손글씨 세 줄 — 여우에게 먹이고 내 언어 지문 찾기</li>
+      <li><span class="n">③</span>살아낸 것 목록과 지식 지형도 — 내 도메인이 어디인지</li>
+      <li><span class="n">④</span>씨앗에 이름 붙이기 — 개념어 하나, 은유 하나, 한 문장</li>
+      <li>서른세 걸음을 다 걸으면 그 기록에서 <b>『내 목소리』</b>(내 문체 정의서)와 <b>『나의 사막』</b>(한 달의 실측 한 장)이 지어집니다.</li>
+      <li>여우가 읽는 기록은 살롱이 끝난 뒤에도 <b>내 노트북 안의 폴더에 파일로</b> 남습니다.</li>
+    </ul>
+
+    <div class="box" style="margin-top:22px">
+      <p>1기를 수료한 햇살 님이 남긴 말입니다.<br>「디퍼 문법 과정 4주를 지나며 제 안의 원천을 먼저 발견했고, 'AI의 한계는 내가 정한다'는 것도 알게 되었어요.」</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">05 · 한 장으로</span>
+    <h2>4기 문법의 달 · 카드</h2>
+    <img class="cardimg" src="calendar/form_card_4gi_2026-10.png" alt="4기 문법의 달 안내 카드 — 목요일 밤 20시, 10월 8일 15일 22일 29일 네 밤, 신청 마감 10월 5일 월요일">
+    <div class="btnrow">
+      <a class="btn ghost" href="https://clbookslower.github.io/deeper-salon/deeper_calendar_2026-10.html">10월 전체 일정 보기 →</a>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">06 · 한눈에 보기</span>
+    <h2>문법의 달 안내</h2>
+    <table class="glance">
+      <tr><th>네 밤</th><td><b>10월 8일 · 15일 · 22일 · 29일</b> · 목요일</td></tr>
+      <tr><th>시간</th><td>밤 <b>20:00 – 21:30</b> · 줌 라이브 세미나 4회</td></tr>
+      <tr><th>참여</th><td><b>필참</b> — 네 밤은 함께 앉는 자리입니다</td></tr>
+      <tr><th>진행</th><td>이경선(퍼핀)</td></tr>
+      <tr><th>이어서</th><td>같은 밤 <b>21:30</b>부터는 3기 논리의 달이 이어집니다. 문법을 마치면 다음 달, 그 자리로 갑니다.</td></tr>
+      <tr><th>준비물</th><td>개인 노트북(Windows·Mac) · Claude 유료 구독(참가비와 별도로 각자 결제)<br>가입과 설치는 함께 진행합니다.</td></tr>
+      <tr><th>참가비</th><td><b>290,000원</b><br>지인이나 이전 기수 디퍼님의 소개로 오시면 2만 원을 덜어 <b>270,000원</b>이에요.<br>소개하신 분께는 디퍼 리딩 책 중 한 권을 선물로 드립니다.</td></tr>
+      <tr><th>입금 계좌</th><td>국민은행 <span class="mono">640401-04-330210</span><br>예금주: 이**(클래식북스)<br>신청서를 내신 뒤 입금해 주시면 등록이 확정됩니다.</td></tr>
+      <tr><th>신청 마감</th><td><b>10월 5일 (월)</b> — 입금 순으로 확정합니다. 정원이 차면 그날 마감합니다.<br>개강(10/8) 전 취소는 전액 돌려드립니다.</td></tr>
+      <tr><th>상담</th><td><b>등록 전 20분 무료 1:1 줌상담</b><br>반복해서 나에게 돌아오는 업무 하나를 살펴보고, AI 에이전트에게 어디까지 맡겨볼지 함께 정합니다. 무료 상담은 입금 없이 신청하시면 됩니다.</td></tr>
+      <tr><th>문의</th><td>인스타그램 @clbook.slower</td></tr>
+    </table>
+  </section>
+
+  <div class="cta-box">
+    <span class="label">첫 번째 달</span>
+    <h2>내 방 안에서 태어나요</h2>
+    <p>내가 한 명 더 있었으면 했던 일,<br>그 사람은 밖에 없어요.</p>
+    <div class="btnrow"><a class="btn" href="https://forms.gle/iLTRCPrx9DA7G41AA">등록하기 →</a><a class="btn ghost" href="https://clbookslower.github.io/deeper-salon/deeper_calendar_2026-10.html">10월 캘린더 →</a></div>
+    <p class="after">10월 5일 월요일까지 모집하며, 입금 순으로 확정합니다.</p>
+  </div>
+
+  <section>
+    <span class="label">07 · 곁의 자리</span>
+    <h2>가장 인간적인 방법으로 특이점을 건너가는 사람들</h2>
+    <p class="body">디퍼는 커뮤니티입니다. 도구를 배우는 자리는 한 달이지만, 사람과 책과 서로의 현장이 있는 자리는 문법을 마친 뒤에도 이어집니다. 등록이 확정된 날부터 이 자리들에 함께합니다. 디퍼 방으로 초대해 드리고, 줌 링크는 그 방에서 받습니다.</p>
+    <div class="box free">
+      <div><b>자율 참여 · 디퍼 리딩</b> — 수요일 밤 21:00 · 일요일 밤 21:00~22:30<span class="sub">전 기수가 한 책을 읽고 소크라테스식 세미나로 묻습니다. 사실을 다지고, 해석을 나누고, 마지막 몇 분에 각자의 평가를 남깁니다. 읽은 만큼 오시면 됩니다. · <a href="https://clbookslower.github.io/deeper-salon/deeper_calendar_2026-10.html">10월 전체 일정 →</a></span></div>
+      <div><b>자율 참여 · 월요일 밤 별지기 살롱</b> — 21:00~22:30<span class="sub">1기를 수료한 별지기님들이 각자의 현장에서 AI로 굴리고 있는 것을 화면 그대로 보여 줍니다. 4기도 원하시면 들어오실 수 있습니다.</span></div>
+      <div><b>자율 참여 · 일요일 오프 번개</b> — 13:00~17:00 · 10/4 · 10/18<span class="sub">강남 이디야 커피랩. 화면 밖에서 얼굴을 보는 날입니다. 노트북 하나 들고 오셔서 서로의 사막여우를 보여 주세요.</span></div>
+    </div>
+    <p class="body" style="margin-top:22px">같은 한 달을 걸어도 각자의 여우가 내놓는 답은 각자를 닮습니다.</p>
+
+    <p class="subhead">먼저 걸은 사람의 기록</p>
+    <p class="body" style="margin-top:8px;font-size:13.5px">2기 참여자 투게더님이 남긴 기록입니다.</p>
+    <div class="notes">
+      <a href="https://blog.naver.com/dreamsasa/224334446068"><span class="n">①</span>사막여우를 만났다</a>
+      <a href="https://blog.naver.com/dreamsasa/224379633906"><span class="n">②</span>한 달을 두 마디로 걸었다 — 안녕, 그리고 오아시스</a>
+      <a href="https://blog.naver.com/dreamsasa/224382409147"><span class="n">③</span>아무도 안 보라고 쓴 글을, 여우한테 먹였다</a>
+      <a href="https://blog.naver.com/dreamsasa/224384447269"><span class="n">④</span>AI 글쓰기 실험, AI가 분석한 나의 암묵지</a>
+    </div>
+
+    <div class="box" style="margin-top:22px">
+      <p>1기를 걸은 단무지 님이 남긴 말입니다.<br>「지금은 디퍼를 만나지 못했다면 나는 도대체 어떤 삶을 살고 있었을까 하는 일종의 아찔한 감정을 느낍니다.」</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">08 · 진행</span>
+    <h2>이경선</h2>
+    <div class="box">
+      <p>도서출판 클북·슬로어 대표</p>
+      <p>생각학교ASK를 설립하고, 인문고전 대안학교 운영과 작가 양성 교육, 작가 커뮤니티 활동을 이어왔습니다. 지금은 클로드 에이전트 팀과 출판사를 운영하고, 살롱 1기부터 3기까지 디퍼님들과 사막여우를 세웠습니다. <b>사막여우는 제가 제 일에 쓰려고 먼저 지은 것입니다.</b> 자기 언어로 쓰고 일하는 사람들과 함께합니다.</p>
+    </div>
+    <div class="btnrow"><a class="btn" href="https://forms.gle/iLTRCPrx9DA7G41AA">4기 신청하기 →</a></div>
+  </section>
+
+  <footer>
+    <img class="logo" src="logic/DEEPER_logo_white.png" alt="DEEPER">
+    <p class="quote">"춤추는 별을 낳으려면 내면에 혼돈을 지녀야 한다."</p>
+    <p class="team">NIETZSCHE · DEEPER · 2026. 10<br>프로젝트 B-612 지원팀 · clbook.slower@gmail.com</p>
+    <p class="finis"><em>Per aspera ad astra.</em></p>
+  </footer>
+
+</div>
+</body>
+</html>
