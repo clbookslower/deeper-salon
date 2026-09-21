@@ -233,8 +233,8 @@
     body{background:#fff;} .sheet{box-shadow:none;}
   }
 </style>
-</head>
-<body>
+<style id="current-20260921-style">.current-20260921{max-width:1120px;margin:10px auto;padding:11px 18px;border:1px solid #a994cf;background:#f7f2e7;color:#241c42;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.55;box-sizing:border-box;font-size:13px}.current-20260921 p{margin:0}.current-20260921 a{color:#4b3d78;font-weight:700}@media(max-width:700px){.current-20260921{margin:6px;padding:10px 13px}}</style></head>
+<body><section class="current-20260921" aria-label="2026년 9월 21일 개정 안내"><p><b>9/21 개정</b> · 현재 실행은 고슴도치와 Codex 또는 Claude Code 하나로 시작합니다. <a href="compostella-os/week-02/">최신 설치·2주차 안내</a> · <a href="compostella-os/leadership/">한국어 리더십 출발 점검</a></p></section>
 
 <section id="cover" class="hero">
   <div class="stars" aria-hidden="true">
@@ -462,8 +462,8 @@ const CARDS=[
     ${c.posDone?`<div class="verdict soft">소리 내어 읽어 보세요.<small>고객이 들었을 때 무슨 말인지 모르겠으면 쉬운 말로 바꿉니다. 뜻은 바꾸지 않습니다.</small></div>`:''}
     <div class="src">2주차 강의안 · 실습 2 · 2단계</div>`; }},
  {st:'w2', tag:'세운다 · 도장 2', title:'헌법에 들어갔는가, 밖에 나갔는가',
-  why:`기둥이 그대로 <b>내 사업 CLAUDE.md</b>의 뼈대가 됩니다. 기둥이 「하지 않는 것」을 정합니다. 그리고 포지셔닝 문장을 실제 고객 한 사람에게 읽어 드리면, 그때 「닿은 것」이 처음 0에서 움직입니다.`,
-  body(){ const c=calc(); return `<div class="checks">${chk('s2.claude','기둥과 포지셔닝이 내 사업 CLAUDE.md 안에 들어가 있다','공개 수위가 「비공개」인 기둥은 넣지 않습니다')}${chk('s2.read','포지셔닝 한 문장을 실제 고객 한 사람에게 읽어 드렸다','"요즘 제 일을 이렇게 정리하고 있어요" 정도면 됩니다')}</div>
+  why:`기둥이 그대로 <b>내 사업 기준 기록</b>의 뼈대가 됩니다. 기둥이 「하지 않는 것」을 정합니다. 그리고 포지셔닝 문장을 실제 고객 한 사람에게 읽어 드리면, 그때 「닿은 것」이 처음 0에서 움직입니다.`,
+  body(){ const c=calc(); return `<div class="checks">${chk('s2.claude','기둥과 포지셔닝이 내 사업 기준 기록 안에 들어가 있다','공개 수위가 「비공개」인 기둥은 넣지 않습니다')}${chk('s2.read','포지셔닝 한 문장을 실제 고객 한 사람에게 읽어 드렸다','"요즘 제 일을 이렇게 정리하고 있어요" 정도면 됩니다')}</div>
     ${S.s2.read?`<div class="fld"><label>상대의 <b>첫 반응 한 줄</b></label>${txt('s2.reaction','갸웃했다면 그 문장은 아직 안 된 겁니다. 고치는 건 함께')}</div>`:''}
     ${stampBox(c.stamp2,'2',c.stamp2?'도장 2가 찍혔습니다.':`아직입니다. ${[c.pillarsPaid.length<3?'대가가 붙은 기둥 셋':'',!c.posDone?'포지셔닝 한 문장':'',!S.s2.claude?'헌법에 넣기':''].filter(Boolean).join(' · ')}가 남았습니다.`,'눈금 — 쌓인 것: 기둥 수 / 굳은 것: 헌법에 적힌 규칙 수 / 닿은 것: +1 (읽어 드린 것)')}`; }},
 
@@ -510,7 +510,7 @@ function todos(c){
   if(c.pillarsPaid.length<3) t.push(['2주차','손해인 줄 알면서 한 결정에서 기둥 셋 캐기. 짝에게 묻게 하기']);
   if(c.pillars.length&&c.pillarsLevel.length<c.pillars.length) t.push(['2주차','기둥마다 공개 수위 정하기. 비워 두지 않습니다']);
   if(!c.posDone) t.push(['2주차','포지셔닝 한 문장 채우기. 기둥에 있는 말로만']);
-  if(!S.s2.claude) t.push(['2주차','기둥을 내 사업 CLAUDE.md에 옮기고 사흘 실제로 쓰기']);
+  if(!S.s2.claude) t.push(['2주차','기둥을 내 사업 기준 기록에 옮기고 사흘 실제로 쓰기']);
   if(!S.s2.read) t.push(['2주차','포지셔닝 문장을 실제 고객 한 사람에게 읽어 드리기 → 닿은 것 +1']);
   const lt={structure:'03_지식구조.json. 다섯 유형으로 나누고 손으로 잇기',ui:'my_sky.html. 파일 하나로 완결, 휴대폰에서도 열리게',pipe:'/내하늘 스킬. 재료가 늘면 명령 한 마디로 다시 서게'};
   LAYERS.forEach(l=>{ if(S.layers[l[0]]!=='있다') t.push(['3주차',lt[l[0]]]); });
