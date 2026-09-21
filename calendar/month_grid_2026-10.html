@@ -1,0 +1,260 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>DEEPER October 2026</title><style>
+  /* 이 판은 언제나 다크다. 라이트 팔레트는 deeper_calendar_2026-10_light.html 에 있다. */
+  :root{
+    color-scheme:dark;
+    --bg:linear-gradient(180deg,#0A2117 0%,#0D2B1E 34%,#123726 100%);
+    --paper:#0D2B1E; --card:rgba(23,62,43,.62); --card-solid:#153A29;
+    --ink:#F4F1E8; --ink-soft:#C9D3C1; --line:rgba(244,241,232,.16);
+    --green:#3E9A6B; --green-deep:#EDE7D8; --gold:#E0A33E; --gold-bright:#E8C766;
+    --sage:#9DB289; --night:#8FA6BE; --gray:#94A691; --cream-tint:rgba(244,241,232,.07);
+    --plum:#A88CB0; --clay:#E09A70; --moss:#7FC23A; --star:#E8C766;
+    --sat:#8FA6BE; --sun:#D09A72;
+    --dim-bg:rgba(0,0,0,.24); --dim-num:#6E8272; --other-num:#5A6E5F;
+    --ev-bg:rgba(244,241,232,.05);
+    --ev-g:rgba(62,154,107,.15); --ev-o:rgba(224,163,62,.15); --ev-s:rgba(157,178,137,.14);
+    --ev-p:rgba(168,140,176,.16); --ev-c:rgba(224,154,112,.15); --ev-m:rgba(127,194,58,.14);
+    --ev-star:rgba(232,199,102,.16);
+    --hol-bg:#7A4B2E; --hol-fg:#F6E9DC; --scope-bg:rgba(62,154,107,.18);
+    --img-border:rgba(244,241,232,.9); --cover-bg:rgba(244,241,232,.10);
+    --cover-shadow:0 6px 18px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);background-attachment:fixed;color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 64px;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  .hero{position:relative;margin:0 -24px 40px;overflow:hidden;}
+  .hero img{width:100%;height:auto;display:block;aspect-ratio:1080/560;object-fit:cover;object-position:50% 74%;}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,33,23,.30) 0%,rgba(10,33,23,0) 32%,rgba(10,33,23,.60) 84%,#0D2B1E 100%);}
+  @media (max-width:700px){ .hero{margin:0 -16px 28px;} .hero img{aspect-ratio:1080/760;} }
+  /* 절 머리 이미지 띠 */
+  .band{position:relative;margin:0 0 22px;border-radius:6px;overflow:hidden;}
+  .band img{width:100%;height:auto;display:block;aspect-ratio:1080/300;object-fit:cover;}
+  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,23,.16) 0%,rgba(10,33,23,.52) 58%,rgba(10,33,23,.90) 100%);}
+  .band .band-t{position:absolute;left:0;right:0;bottom:0;padding:0 24px 18px;z-index:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .band .band-t h2{font-size:18px;font-weight:700;letter-spacing:.08em;color:#F4F1E8;text-shadow:0 1px 10px rgba(0,0,0,.6);}
+  .band .band-t .lead{font-size:13px;color:#D8DFCE;text-shadow:0 1px 8px rgba(0,0,0,.65);}
+  @media (max-width:700px){ .band img{aspect-ratio:1080/440;} .band .band-t{padding:0 16px 14px;} .band .band-t h2{font-size:16px;} .band .band-t .lead{font-size:12px;} }
+  /* 절 사이 얇은 띠 */
+  .grain{height:84px;margin:46px 0;border-radius:4px;background:url("calendar/astra_grain.jpg") center 50%/cover no-repeat;}
+  @media (max-width:700px){ .grain{height:54px;margin:34px 0;} }
+  header{text-align:center;margin-bottom:36px;}
+  header img.logo{height:34px;width:auto;display:inline-block;margin-bottom:18px;}
+  h1{font-size:26px;font-weight:700;letter-spacing:.06em;color:var(--green-deep);}
+  .subtitle{margin-top:10px;font-size:14px;color:var(--ink-soft);letter-spacing:.04em;line-height:1.9;}
+  .subtitle b{color:var(--green-deep);font-weight:700;}
+  .period{margin-top:4px;font-size:12.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
+  .rule{width:56px;height:1px;background:var(--gold-bright);margin:22px auto 0;}
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:26px 0 36px;}
+  .legend .li{font-size:12.5px;color:var(--ink-soft);line-height:1.7;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:5px 15px;}
+  .legend b{color:var(--ink);font-weight:600;}
+  .dot{display:inline-block;vertical-align:middle;margin-right:7px;position:relative;top:-1px;width:9px;height:9px;border-radius:50%;}
+  .d-g{background:var(--green);} .d-o{background:var(--gold);} .d-s{background:var(--sage);} .d-p{background:var(--plum);} .d-c{background:var(--clay);} .d-m{background:var(--moss);} .d-star{background:var(--star);}
+
+  .month{margin-bottom:44px;}
+  .month-name{font-size:16px;font-weight:700;color:var(--green-deep);letter-spacing:.1em;margin-bottom:4px;}
+  .month-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
+  .lightlink{margin-top:22px;font-size:11.5px;letter-spacing:.06em;font-family:"DM Mono",monospace;}
+  .lightlink a{display:inline-block;min-height:44px;line-height:44px;padding:0 12px;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line);}
+  .cal-scroll{overflow-x:auto;}
+  table.cal{width:100%;min-width:760px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
+  table.cal td{background:transparent;}
+  table.cal th{font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);padding:10px 6px;border-bottom:1px solid var(--line);background:var(--cream-tint);}
+  table.cal th.sat{color:var(--sat);} table.cal th.sun{color:var(--sun);}
+  table.cal td{vertical-align:top;border:1px solid var(--line);width:14.28%;min-height:104px;height:104px;padding:7px 7px 9px;}
+  .dnum{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  td.dim{background:var(--dim-bg);} td.dim .dnum{color:var(--dim-num);} td.dim .ev{opacity:.55;}
+  td.other{background:var(--dim-bg);} td.other .dnum{color:var(--other-num);}
+  .ev{font-size:11.5px;line-height:1.4;margin-bottom:5px;padding:3px 6px 4px 8px;border-radius:2px;border-left:2.5px solid transparent;color:var(--ink);background:var(--ev-bg);}
+  .ev .t{color:var(--gray);font-size:10.5px;}
+  .ev b{font-weight:600;}
+  .ev-g{border-left-color:var(--green);background:var(--ev-g);}
+  .ev-o{border-left-color:var(--gold);background:var(--ev-o);}
+  .ev-s{border-left-color:var(--sage);background:var(--ev-s);}
+  .ev-p{border-left-color:var(--plum);background:var(--ev-p);}
+  .ev-c{border-left-color:var(--clay);background:var(--ev-c);}
+  .ev-m{border-left-color:var(--moss);background:var(--ev-m);}
+  .ev-star{border-left-color:var(--star);background:var(--ev-star);}
+  .hol{display:inline-block;font-size:11px;letter-spacing:.02em;background:var(--hol-bg);color:var(--hol-fg);padding:3px 8px;border-radius:2px;margin-bottom:5px;}
+
+  .sec{margin:52px 0 0;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .sec h2{font-size:18px;font-weight:700;color:var(--green-deep);letter-spacing:.08em;}
+  .sec .lead{font-size:13px;color:var(--gray);}
+  .sec-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.9;max-width:720px;margin-bottom:22px;}
+  .books{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .book{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 18px 20px;display:flex;flex-direction:column;}
+  .book .when{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--sage);margin-bottom:12px;}
+  .book .when b{color:var(--green-deep);font-weight:600;}
+  .book .cover{width:100%;aspect-ratio:3/4;background:var(--cover-bg);border-radius:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .book .cover img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block;box-shadow:var(--cover-shadow);}
+  .book h3{font-size:16px;font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:4px;}
+  .book .bib{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.6;}
+  .book .scope{font-size:12px;color:var(--ink);background:var(--scope-bg);display:inline-block;padding:2px 9px;border-radius:100px;margin-bottom:10px;align-self:flex-start;}
+  .book p{font-size:13.5px;color:var(--ink-soft);line-height:1.85;}
+  /* 누를 수 있는 것 — 손가락 44px */
+  .book h3 a{color:inherit;text-decoration:none;display:inline-block;padding:11px 0;border-bottom:1px solid var(--line);}
+  .book h3{margin-bottom:0;}
+  .book h3 a:hover{border-bottom-color:var(--gold);}
+  .cta{margin-top:14px;}
+  .cta a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--line);border-radius:100px;
+    font-size:13px;letter-spacing:.02em;color:var(--gold);text-decoration:none;background:var(--card);}
+  .cta a:hover{border-color:var(--gold);}
+  .rhythm .cta{margin-top:12px;}
+
+  .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .course{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);border-radius:4px;padding:20px 20px 22px;}
+  .course.o{border-top-color:var(--gold);} .course.g{border-top-color:var(--green);} .course.p{border-top-color:var(--plum);}
+  .course .tag{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:6px;}
+  .course h3{font-size:17px;font-weight:700;color:var(--green-deep);line-height:1.4;margin-bottom:4px;}
+  .course .time{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;line-height:1.7;}
+  .course .time b{font-weight:600;color:var(--ink);}
+  .course .intro{font-size:13px;color:var(--ink-soft);line-height:1.85;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--line);}
+  .wk{display:flex;gap:12px;margin-bottom:12px;}
+  .wk .n{flex:0 0 40px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--gray);padding-top:3px;line-height:1.5;}
+  .wk .b{flex:1;min-width:0;}
+  .wk .b b{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.5;}
+  .wk .b span{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.75;}
+  .course .foot{margin-top:6px;font-size:12px;color:var(--gray);line-height:1.7;}
+
+  .rhythm{background:var(--card);border:1px solid var(--line);padding:18px 22px;border-radius:3px;margin-top:40px;}
+  .rhythm h2{font-size:13.5px;font-weight:700;color:var(--green-deep);letter-spacing:.08em;margin-bottom:10px;}
+  .rhythm p{font-size:12.5px;color:var(--ink-soft);padding:2px 0;line-height:1.8;}
+  .rhythm b{color:var(--ink);font-weight:600;}
+  footer{text-align:center;margin-top:36px;padding-top:26px;border-top:1px solid var(--line);}
+  footer .quote{font-size:12.5px;color:var(--ink-soft);}
+  footer .team{margin-top:10px;font-size:11.5px;color:var(--gray);letter-spacing:.1em;font-family:"DM Mono",monospace;}
+  footer .slogan{margin-top:26px;font-size:16px;color:var(--green-deep);letter-spacing:.02em;line-height:1.8;}
+  footer .finis{margin-top:34px;font-size:15px;color:var(--green-deep);letter-spacing:.04em;line-height:1.9;}
+  footer .finis em{font-family:"Cormorant Garamond","EB Garamond",Georgia,serif;font-style:italic;font-size:22px;color:var(--gold-bright);}
+  footer .finis span{font-size:12px;color:var(--gray);}
+
+  @media (max-width:900px){ .books,.courses{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:700px){
+    .wrap{padding:32px 16px 48px;}
+    h1{font-size:21px;} .subtitle{font-size:12.5px;}
+    .legend{flex-direction:column;align-items:stretch;gap:8px;padding:0;}
+    .legend .li{width:100%;border-radius:8px;padding:8px 12px;}
+    .cal-scroll{overflow-x:visible;}
+    table.cal, table.cal tbody, table.cal tr, table.cal td{display:block;width:100%;min-width:0;height:auto;min-height:0;}
+    table.cal thead{display:none;}
+    table.cal tr::before{content:attr(data-week);display:block;font-size:11px;letter-spacing:.12em;color:var(--gray);background:var(--cream-tint);padding:6px 12px;border-bottom:1px solid var(--line);font-family:"DM Mono",monospace;}
+    table.cal td{border:none;border-bottom:1px solid var(--line);padding:9px 12px 10px;}
+    table.cal td:not(:has(.ev)):not(:has(.hol)){display:none;}
+    td.other{display:none !important;}
+    .dnum{font-size:13px;margin-bottom:6px;} .ev{font-size:12.5px;}
+    td:nth-child(1) .dnum::after{content:" · 일";color:var(--gray);font-weight:400;}
+    td:nth-child(2) .dnum::after{content:" · 월";color:var(--gray);font-weight:400;}
+    td:nth-child(3) .dnum::after{content:" · 화";color:var(--gray);font-weight:400;}
+    td:nth-child(4) .dnum::after{content:" · 수";color:var(--gray);font-weight:400;}
+    td:nth-child(5) .dnum::after{content:" · 목";color:var(--gray);font-weight:400;}
+    td:nth-child(6) .dnum::after{content:" · 금";color:var(--gray);font-weight:400;}
+    td:nth-child(7) .dnum::after{content:" · 토";color:var(--gray);font-weight:400;}
+    .month-note{display:none;}
+    .books,.courses{grid-template-columns:1fr;gap:16px;}
+    .book .cover{aspect-ratio:auto;height:260px;}
+  }
+body{padding:32px;margin:0;width:1200px;max-width:none;background:#12291f} .cal{width:100%;margin:20px 0} .cal td{height:160px} h1{font-size:40px;margin:0} .sheet-head{display:flex;align-items:center;justify-content:space-between;color:#f4f1e8} .sheet-head img{width:95px;height:auto;background:#f4f1e8} .sheet-note{color:#d8c8a7;font-size:19px;margin:16px 0}</style><body><div class="sheet-head"><h1>DEEPER · 2026.10</h1><img src="../logic/DEEPER_logo.png" alt="DEEPER"></div><table class="cal">
+      <thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th></tr></thead>
+      <tbody>
+        <tr data-week="9/27 – 10/3">
+          <td class="dim"><div class="dnum">9/27</div></td>
+          <td class="dim"><div class="dnum">9/28</div><div class="ev ev-c"><b>콤포스텔라 ③</b><br><span class="t">10:00~12:00</span></div></td>
+          <td class="dim"><div class="dnum">9/29</div></td>
+          <td class="dim"><div class="dnum">9/30</div></td>
+          <td><div class="dnum">10/1</div></td>
+          <td><div class="dnum">10/2</div></td>
+          <td><div class="dnum">10/3</div><div class="hol">개천절</div></td>
+        </tr>
+        <tr data-week="10/4 – 10/10">
+          <td><div class="dnum">10/4</div><div class="hol">연휴 · 오프 모임 쉽니다</div></td>
+          <td>
+            <div class="dnum">10/5</div>
+            <div class="hol">개천절 대체공휴일</div>
+            <div class="ev ev-c"><b>콤포스텔라 휴강</b><br><span class="t">10/12부터 한 주씩 순연</span></div>
+            <div class="ev ev-p"><b>2기 수사 1회차 · 선율 — 명명</b><br><span class="t">20:00~21:00 · 퍼핀 · 줌</span></div>
+            <div class="ev ev-star"><b>별지기 살롱</b><br><span class="t">21:00~22:30</span></div>
+          </td>
+          <td><div class="dnum">10/6</div></td>
+          <td>
+            <div class="dnum">10/7</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ①</b><br>『스케일링 시대』<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/8</div>
+            <div class="ev ev-o"><b>4기 문법 1회차 · 개강</b><br><span class="t">20:00~21:30 · 줌 — 여정 시작</span></div>
+            <div class="ev ev-g"><b>3기 논리 1회차 · 개강</b><br><span class="t">21:30~23:00 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/9</div><div class="hol">한글날</div></td>
+          <td><div class="dnum">10/10</div></td>
+        </tr>
+        <tr data-week="10/11 – 10/17">
+          <td>
+            <div class="dnum">10/11</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ②</b><br>『오뒷세이아』 제5·6권<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/12</div>
+            <div class="ev ev-c"><b>콤포스텔라 ④ · 1구간 프리미티보 완주</b><br><span class="t">10:00~12:00</span></div>
+            <div class="ev ev-p"><b>2기 수사 2회차 · 변주 — 채널</b><br><span class="t">20:00~21:00 · 퍼핀 · 줌</span></div>
+            <div class="ev ev-star"><b>별지기 살롱</b><br><span class="t">21:00~22:30</span></div>
+          </td>
+          <td><div class="dnum">10/13</div></td>
+          <td>
+            <div class="dnum">10/14</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ③</b><br>『기계가 언어를 사용한다는 것에 대한 인문학적 사유』<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/15</div>
+            <div class="ev ev-o"><b>4기 문법 2회차</b><br><span class="t">20:00~21:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 2회차</b><br><span class="t">21:30~23:00 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/16</div></td>
+          <td><div class="dnum">10/17</div></td>
+        </tr>
+        <tr data-week="10/18 – 10/24">
+          <td><div class="dnum">10/18</div><div class="ev ev-m"><b>오프 번개</b><br><span class="t">13:00~17:00 · 강남 이디야 커피랩</span></div></td>
+          <td>
+            <div class="dnum">10/19</div>
+            <div class="ev ev-c"><b>콤포스텔라 ⑤ · 2구간 피스테라 시작</b><br><span class="t">10:00~12:00</span></div>
+            <div class="ev ev-p"><b>2기 수사 3회차 · 일관성 — 편집</b><br><span class="t">20:00~21:00 · 퍼핀 · 줌</span></div>
+            <div class="ev ev-star"><b>별지기 살롱</b><br><span class="t">21:00~22:30</span></div>
+          </td>
+          <td><div class="dnum">10/20</div></td>
+          <td>
+            <div class="dnum">10/21</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ④</b><br>『지능 파산』<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/22</div>
+            <div class="ev ev-o"><b>4기 문법 3회차</b><br><span class="t">20:00~21:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 3회차</b><br><span class="t">21:30~23:00 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/23</div></td>
+          <td><div class="dnum">10/24</div></td>
+        </tr>
+        <tr data-week="10/25 – 10/31">
+          <td>
+            <div class="dnum">10/25</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ⑤</b><br>『오뒷세이아』 제7·8권<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/26</div>
+            <div class="ev ev-c"><b>콤포스텔라 ⑥</b><br><span class="t">10:00~12:00</span></div>
+            <div class="ev ev-p"><b>2기 수사 4회차 · 하모니 — 매니페스토 · 종강</b><br><span class="t">20:00~21:00 · 퍼핀 · 줌</span></div>
+            <div class="ev ev-star"><b>별지기 살롱</b><br><span class="t">21:00~22:30</span></div>
+          </td>
+          <td><div class="dnum">10/27</div></td>
+          <td>
+            <div class="dnum">10/28</div>
+            <div class="ev ev-s"><b>디퍼 리딩 ⑥</b><br>『시대예보: 수고인류의 시간』<br><span class="t">21:00~22:30 · 전체 디퍼</span></div>
+          </td>
+          <td>
+            <div class="dnum">10/29</div>
+            <div class="ev ev-o"><b>4기 문법 4회차 · 수료</b><br><span class="t">20:00~21:30 · 줌</span></div>
+            <div class="ev ev-g"><b>3기 논리 4회차 · 종강</b><br><span class="t">21:30~23:00 · 줌</span></div>
+          </td>
+          <td><div class="dnum">10/30</div></td>
+          <td><div class="dnum">10/31</div></td>
+        </tr>
+      </tbody>
+    </table></body></html>
