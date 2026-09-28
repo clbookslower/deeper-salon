@@ -437,6 +437,348 @@
         "content": [
           {
             "type": "text",
+            "text": "12주 번들 — 월요일 아침에 고슴도치가 묻습니다"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "12주 번들은 매주 그 주의 안내·계약·참조 세 파일을 대표님 작업 폴더에 만드는 꾸러미입니다. 새 앱을 까는 일은 없고, 이미 있는 파일은 덮지 않습니다."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "그 주에 처음 고슴도치를 부르실 때, 이번 주 번들이 아직 없으면 한 번 여쭙습니다. 요일이 월요일이 아니어도 그 주의 첫 대화면 묻습니다. 고슴도치가 먼저 연락드리지는 않습니다. 고르실 것은 셋입니다."
+          }
+        ]
+      },
+      {
+        "type": "bulletList",
+        "content": [
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "이번 주 것만 받기"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "남은 주를 전부 미리 받기"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "나중에 받기 — 그 주에는 다시 묻지 않습니다"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "미리 받아 두신 주차는 그 주가 와야 열립니다. 그 주가 오면 고슴도치가 함께 엽니다. 번들을 받은 것만으로 크레덴시알이 찍히지는 않습니다."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "언제든 이렇게 부르셔도 됩니다."
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "\"고슴도치, 이번 주 번들 설치\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "\"고슴도치, 남은 주 전부 미리\""
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "\"고슴도치, 번들 상태\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "「번들 상태」는 어느 주를 받았고 어느 주가 아직 잠겨 있는지 알려 드립니다. 주마다 남는 것은 이렇습니다."
+          }
+        ]
+      },
+      {
+        "type": "bulletList",
+        "content": [
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "1 방향 — 내 사업의 최소 전담팀과 첫 임무 · 역할 하나를 골라 업무 견본 한 건을 함께 검수합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2 고유 판단 — 판단 기준서와 사례 연결 · 직접 고친 사례에서 기준을 뽑아 새 사례에 적용합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "3 고객 — 고객 근거표와 조사 공간 · 실제 문의와 웹 조사를 나눠 가설과 반례를 남깁니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "4 약속 — 상품 설명·견본·구매 전 증거·문의 동선 · 약속마다 납품물과 완료 조건을 맞춰 직접 열어 봅니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "5 여력 — 내 장부·재정 화면·시간 기록 · 예제 장부를 맞춘 뒤 실제 거래 한 건을 대조합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "6 조직 — 시험해 본 팀 구성과 분담표 · 같은 업무를 혼자와 나눠서 해 보고 검수 시간을 비교합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "7 위임 — 업무별 권한표와 중단표 · 범위 밖 요청이 아무것도 바꾸지 않는지 시험합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "8 반복 — 반복 업무 절차와 재개 기록 · 같은 요청 두 번과 멈춘 요청이 중복 없이 이어지는지 봅니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "9 시장 — 3·4주 반응의 분석과 다음 실험 · 같은 기간·같은 분모로 문의부터 거래까지 읽습니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "10 신뢰 — 중요 오류 사례와 검수 절차 · 오류를 고치고 이전 성공 사례를 다시 검사합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "11 축적 — 고친 규칙의 판과 평가 기록 · 쓰지 않은 사례로 전후 품질·비용을 비교합니다"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "12 계승 — 넘겨줄 자산 묶음과 다음 90일 계획 · 다른 실행자에게 낯선 업무를 맡겨 빠진 것을 봅니다"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "외부 도구는 필요할 때만 후보로 안내합니다. 자동으로 설치하지 않습니다."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "0.6.16 새옷부터 됩니다. 새옷이 열리면 따로 알려 드립니다."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "attrs": {
+          "level": 2
+        },
+        "content": [
+          {
+            "type": "text",
             "text": "자료"
           }
         ]
