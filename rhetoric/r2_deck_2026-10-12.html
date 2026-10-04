@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>디퍼 살롱 2기 · 수사의 달 2회차 — 지속 가능한 나</title>
+<!-- 카톡·SNS 링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="디퍼 살롱" />
+<meta property="og:title" content="디퍼 살롱 2기 · 수사의 달 2회차 — 지속 가능한 나" />
+<meta property="og:description" content="내 목소리가 오래 살 자리를 고르는 밤 — 2026.10.12 · 변주" />
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png" />
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric/r2_deck_2026-10-12.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric/og-rhetoric.png" />
+<meta name="twitter:title" content="디퍼 살롱 2기 · 수사의 달 2회차 — 지속 가능한 나" />
+<meta name="twitter:description" content="내 목소리가 오래 살 자리를 고르는 밤 — 2026.10.12 · 변주" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C2A47; --navy-deep:#141F36; --navy-soft:#22335A;
+    --cream:#F6F1E7; --cream-dim:#CFC7B6;
+    --gold:#C2943A; --gold-soft:#D9B26A;
+    --line:rgba(246,241,231,.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{background:linear-gradient(175deg,var(--navy-deep) 0%,var(--navy) 45%,var(--navy-soft) 100%);
+    color:var(--cream); word-break:keep-all; overflow-wrap:break-word;
+    font-family:"Noto Serif KR", ui-serif, Georgia, serif; overflow:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.05; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+
+  .brandmark{position:fixed; top:1.4rem; left:1.6rem; z-index:8;
+    font-family:"Noto Sans KR",sans-serif; font-size:.64rem; font-weight:700;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft);}
+
+  .deck{position:fixed; inset:0; z-index:1;}
+  .slide{position:absolute; inset:0; display:flex; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:scale(.99);
+    transition:opacity .6s ease, transform .6s ease, visibility .6s;}
+  .slide.active{opacity:1; visibility:visible; transform:none;}
+  .slide.invert{background:linear-gradient(170deg,#CB9E45 0%,var(--gold) 55%,#AC8130 100%); color:var(--navy-deep);}
+
+  .content{margin:auto; width:100%; max-width:50rem;
+    padding:5.5rem clamp(1.5rem,5vw,4rem);
+    display:flex; flex-direction:column; align-items:center; gap:1.25rem; text-align:center;}
+
+  .kicker{font-family:"Noto Sans KR",sans-serif; font-size:clamp(.6rem,1.3vw,.74rem);
+    font-weight:500; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-soft);}
+  .slide.invert .kicker{color:rgba(20,31,54,.75);}
+  .num{font-family:"Cormorant Garamond",serif; font-style:italic; letter-spacing:.1em;}
+
+  .title{font-family:"Noto Serif KR",serif; font-weight:700; letter-spacing:-.005em;
+    font-size:clamp(1.55rem,3.9vw,2.5rem); line-height:1.35;}
+  .title .em{color:var(--gold-soft);}
+  .slide.invert .title{color:var(--navy-deep);}
+  .slide.invert .title .em{color:var(--cream); text-decoration:underline; text-underline-offset:.18em; text-decoration-thickness:2px;}
+
+  .latin{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:400;
+    color:var(--cream-dim); font-size:clamp(.95rem,2.2vw,1.25rem); letter-spacing:.02em;}
+  .slide.invert .latin{color:rgba(20,31,54,.66);}
+
+  .body{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    font-family:"Noto Serif KR",serif; font-weight:400; color:var(--cream);
+    font-size:clamp(.98rem,1.5vw,1.22rem); line-height:1.95; letter-spacing:.004em;}
+  .slide.invert .body{color:rgba(20,31,54,.93);}
+  .body p{margin:0 0 1.05rem;}
+  .body p:last-child{margin:0;}
+  .body em{font-style:normal; color:var(--gold-soft); font-weight:600;}
+  .slide.invert .body em{color:var(--navy-deep); font-weight:700;}
+  .body .strong{font-weight:700; color:var(--gold-soft);}
+  .slide.invert .body .strong{color:var(--navy-deep);}
+  .body .final{font-weight:700; text-align:center; font-size:1.18em; line-height:1.7; margin-top:1.2rem;}
+  .body .cite{display:block; margin-top:.4rem; font-family:"Noto Sans KR",sans-serif; font-size:.72rem; color:var(--cream-dim); letter-spacing:.08em; text-align:right;}
+  .slide.invert .body .cite{color:rgba(20,31,54,.6);}
+
+  .layers{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    display:flex; flex-direction:column; gap:.55rem;}
+  .layers .ly{border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px;
+    padding:.72rem 1rem; background:rgba(20,31,54,.5);
+    display:flex; align-items:baseline; gap:.8rem;}
+  .layers .nm{font-family:"Noto Serif KR",serif; font-weight:700; color:var(--gold-soft);
+    font-size:clamp(.98rem,1.5vw,1.16rem); flex:none; min-width:6.2rem;}
+  .layers .nm .h{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.52em; color:var(--cream-dim); font-weight:400; letter-spacing:.18em;}
+  .layers .ds{font-family:"Noto Serif KR",serif; font-size:clamp(.85rem,1.2vw,1rem); line-height:1.65; color:var(--cream-dim);}
+  .layers .ds b{color:var(--cream); font-weight:700;}
+
+  .viz{width:clamp(108px,12vw,160px); height:clamp(108px,12vw,160px); color:var(--gold-soft); flex:none;}
+  .slide.invert .viz{color:var(--navy-deep);}
+  .viz svg{width:100%; height:100%; overflow:visible;}
+  .cover .viz{width:clamp(120px,15vw,190px); height:clamp(120px,15vw,190px);}
+  .cover .title{font-size:clamp(1.85rem,5.2vw,3.3rem); line-height:1.28;}
+  .cover .logo{width:clamp(74px,8vw,96px); height:auto; display:block; margin:0 auto;}
+
+  .r{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);}
+  .slide.active .r{opacity:1; transform:none;}
+  .slide.active .r1{transition-delay:.10s}.slide.active .r2{transition-delay:.22s}
+  .slide.active .r3{transition-delay:.34s}.slide.active .r4{transition-delay:.48s}
+
+  .spin{transform-origin:center; animation:spin 26s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .march{stroke-dasharray:6 9; animation:march 2.6s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-60;}}
+  .marchl{stroke-dasharray:5 8; animation:march 3.4s linear infinite;}
+  .pulse{animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .twinkle{animation:twinkle 4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.5; transform:scale(.92)}50%{opacity:1; transform:scale(1.05)}}
+  .orbit{transform-origin:center; animation:spin 7s linear infinite;}
+  .rise{animation:rise 4.4s ease-in-out infinite;}
+  @keyframes rise{0%,100%{transform:translateY(20px)}50%{transform:translateY(-20px)}}
+  .floatup{animation:floatup 4.2s ease-in-out infinite;}
+  @keyframes floatup{0%{transform:translateY(14px);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translateY(-26px);opacity:0}}
+
+  .duo{align-self:stretch; max-width:42rem; margin:.4rem auto 0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem; text-align:left;}
+  .duo .card{border:1px solid var(--line); border-radius:6px; padding:1rem 1.1rem; background:rgba(20,31,54,.5);}
+  .duo .card.hot{background:rgba(194,148,58,.16); border-color:var(--gold);}
+  .duo .lab{display:block; font-family:"Noto Sans KR",sans-serif; font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:.55rem;}
+  .duo ul{list-style:none; display:flex; flex-direction:column; gap:.42rem;}
+  .duo li{font-family:"Noto Serif KR",serif; font-size:clamp(.84rem,1.2vw,1rem); line-height:1.55; color:var(--cream-dim); padding-left:.85rem; position:relative;}
+  .duo .card.hot li{color:var(--cream);}
+  .duo li::before{content:"—"; position:absolute; left:0; color:var(--gold);}
+
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--gold); z-index:7; transition:width .5s ease;}
+  .counter{position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:7;
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; color:var(--cream-dim); letter-spacing:.15em;}
+  .nav{position:fixed; bottom:1.2rem; z-index:7; background:none; border:none; cursor:pointer;
+    color:var(--cream-dim); font-family:"Cormorant Garamond",serif; font-size:1.8rem; padding:.4rem .8rem;
+    transition:color .2s, transform .2s;}
+  .nav:hover{color:var(--gold-soft); transform:scale(1.15);}
+  .nav.prev{right:4.2rem;} .nav.next{right:1.6rem;}
+  .hint{position:fixed; bottom:1.7rem; left:1.6rem; z-index:7;
+    font-family:"Noto Sans KR",sans-serif; font-size:.6rem; color:var(--cream-dim); letter-spacing:.12em; opacity:.7;}
+  @media(max-width:600px){ .hint{display:none;} .counter{bottom:1rem;} .content{padding:4.5rem 1.4rem;}
+    .duo{grid-template-columns:1fr;} .layers .ly{flex-direction:column; gap:.2rem;} }
+  .body .cmd{font-family:"Noto Sans KR",sans-serif; font-weight:700; color:var(--gold-soft);}
+  .slide.invert .body .cmd{color:var(--navy-deep);}
+  .layers .min{margin-left:auto; flex:none; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-soft); font-size:1.05em; padding-left:.6rem;}
+  @media(max-width:600px){ .layers .min{margin-left:0; padding-left:0;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="brandmark">디퍼 · DEEPER</div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide active cover">
+    <div class="content">
+      <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
+      <p class="kicker r r2">2기 · 수사의 달 2회차 · 2026.10.12</p>
+      <h1 class="title r r3">지속 가능한 나 —<br><span class="em">나는 어디에서 보는가</span></h1>
+      <p class="latin r r4">Variatio — 선율은 그대로, 형태만 바꿉니다</p>
+      <p class="kicker r r4" style="margin-top:.6rem;">디퍼 언브랜딩 살롱 · 둘째 소절 · 변주</p>
+    </div>
+  </section>
+
+  <!-- 02 · 열기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="50" cy="105" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="110" cy="105" r="4" fill="currentColor" stroke="none"/>
+          <path class="marchl" d="M50 105 h56" stroke-opacity=".6"/>
+          <path class="march" d="M110 105 q30 -6 52 -40" stroke-opacity=".85"/>
+          <g class="twinkle" style="transform-origin:170px 52px;"><path d="M170 35 Q170 52 187 52 Q170 52 170 69 Q170 52 153 52 Q170 52 170 35 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">열기</p>
+      <h2 class="title r r3">지난주, 문을 열고 이름을 굴렸습니다</h2>
+      <div class="body r r4">
+        <p>첫 주는 선율이었습니다. 수사의 문을 열고, 씨앗에 있는 말로 이름을 굴려 보았습니다.</p>
+        <p>이번 주의 물음은 그다음입니다. <em>이 노래를 오래 부를 수 있을까요.</em></p>
+        <p class="strong">오래 부르려면 부를 자리를 먼저 골라야 합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · 오늘 밤 60분 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">오늘 밤 · 60분</p>
+      <h2 class="title r r2">일곱 걸음으로 갑니다</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">앞의 넷</span>
+          <ul>
+            <li>열기 · 5분</li>
+            <li>관점은 편집이다 · 8분</li>
+            <li>잘하는 것 말고, 자연스러운 것 · 5분</li>
+            <li>가장 작은 발행 단위 · 8분</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">뒤의 셋</span>
+          <ul>
+            <li>방 돌리기 · 10분</li>
+            <li>실습, 자리의 공기 · 17분</li>
+            <li>닫기 · 7분</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">이어서 인사이트 공유회가 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · 관점의 발견 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M100 120 V70"/>
+          <path d="M100 70 C100 50 60 52 50 36 M100 70 C100 50 140 52 150 36"/>
+          <circle cx="50" cy="30" r="6"/><circle cx="150" cy="30" r="6"/>
+          <circle cx="100" cy="124" r="6" fill="currentColor" stroke="none"/>
+          <circle cx="50" cy="30" r="2.5" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 관점의 발견</p>
+      <h2 class="title r r3">여섯 세기 전, 피렌체에서</h2>
+      <div class="body r r4">
+        <p>15세기 피렌체에서 브루넬레스키의 실험과 알베르티의 이론이 <em>한 사람이 한 자리에서 보는 시점</em>을 그림의 원리로 삼았습니다. 원근법입니다.</p>
+        <p>김정운은 『에디톨로지』 2부에서 그 원근법을 선택된 하나의 편집으로 읽습니다.</p>
+        <p class="strong">관점이 발명된 것이라면, 내 관점은 내가 다시 고를 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 니체 (GOLD) -->
+  <section class="slide invert">
+    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="march" d="M40 140 q20 -30 44 -44 q28 -16 44 -48" stroke-opacity=".8"/>
+          <circle cx="40" cy="140" r="5" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:132px 44px;"><path d="M132 25 Q132 44 151 44 Q132 44 132 63 Q132 44 113 44 Q132 44 132 25 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 니체 · 관점주의</p>
+      <h2 class="title r r3">"사실이란 없다.<br><span class="em">오직 해석만이 있을 뿐"</span></h2>
+      <div class="body r r4">
+        <p>니체는 이것을 관점주의라 불렀습니다. 어디에도 서지 않은 눈은 없습니다.<span class="cite">니체, 유고(1886~87)</span></p>
+        <p>남의 피드를 오래 보면 지칩니다. 남이 고른 자리에서 나를 재게 되기 때문입니다.</p>
+        <p class="strong">내가 설 자리를 스스로 고르면, 남의 그림 속 크기에 덜 흔들립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · 변주 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:100px 80px;">
+            <circle cx="100" cy="80" r="44" stroke-opacity=".5" stroke-dasharray="4 7"/>
+            <circle cx="100" cy="36" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="144" cy="80" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="56" cy="80" r="4" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 67 Q100 80 113 80 Q100 80 100 93 Q100 80 87 80 Q100 80 100 67 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 변주</p>
+      <h2 class="title r r3">선율은 그대로, 형태만 바뀝니다</h2>
+      <div class="body r r4">
+        <p>바흐의 골드베르크 변주곡은 아리아 하나로 시작해 서른 개의 변주를 지나 처음의 아리아로 돌아옵니다.</p>
+        <p>이름과 피치가 아리아라면, 이번 주에는 그 아리아가 <em>살 집</em>을 고릅니다.</p>
+        <p class="strong">잘하는 형식보다, 힘을 빼도 나오는 형식을 고릅니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 채널을 고르는 세 물음 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">분별</p>
+      <h2 class="title r r2">채널을 고르는 세 물음</h2>
+      <div class="body r r3">
+        <p>① <span class="strong">자연스러운가요?</span> 잘해 보이는 자리와 오래 설 자리를 나란히 놓고 봅니다.</p>
+        <p>② <span class="strong">가장 작은 단위로 낼 수 있나요?</span> 일주일에 한 번, 지치지 않을 크기여야 합니다.</p>
+        <p>③ <span class="strong">나의 단 한 사람이 거기 있나요?</span> 악보에 적으신 그분이 머무는 곳인지 봅니다.</p>
+      </div>
+      <div class="body r r4" style="text-align:center;">
+        <p class="strong">채널은 형식과 자리를 곱한 것입니다. 표는 세션 03에 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · 가장 작은 발행 단위 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 작게 소리내기</p>
+      <h2 class="title r r2">이번 주에는 <span class="em">완성보다 발행</span>이 먼저입니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">단위<span class="h">UNIT</span></span><span class="ds">일주일에 한 번, 지치지 않고 낼 수 있는 <b>가장 작은 크기</b>를 정합니다.</span></div>
+        <div class="ly"><span class="nm">발행<span class="h">PUBLISH</span></span><span class="ds">그 크기로 <b>한 번</b> 바깥에 내보냅니다.</span></div>
+        <div class="ly"><span class="nm">마음<span class="h">AFTER</span></span><span class="ds">내보낸 뒤의 마음을 한 줄 적습니다. <b>못 내보냈으면 막힌 자리를 적습니다.</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 방 돌리기 -->
+  <section class="slide">
+    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="28" width="120" height="104" rx="3" stroke-opacity=".65"/>
+          <line x1="40" y1="63" x2="160" y2="63" stroke-opacity=".4"/>
+          <line x1="40" y1="97" x2="160" y2="97" stroke-opacity=".4"/>
+          <line x1="80" y1="28" x2="80" y2="132" stroke-opacity=".4"/>
+          <line x1="120" y1="28" x2="120" y2="132" stroke-opacity=".4"/>
+          <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 67 Q100 80 113 80 Q100 80 100 93 Q100 80 87 80 Q100 80 100 67 Z" fill="currentColor" stroke="none"/></g>
+          <circle cx="60" cy="45" r="3" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="140" cy="114" r="3" fill="currentColor" stroke="none" class="pulse" style="animation-delay:1.4s"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · 방 돌리기 · 10분</p>
+      <h2 class="title r r3">발행할 거리가 없는 날, 방을 돌립니다</h2>
+      <div class="body r r4">
+        <p>여우에게 <span class="cmd">분더카머</span>. 다섯 차원이 한 번에 펼쳐집니다.</p>
+        <p>이번 주에는 <em>감정의 결</em>과 <em>독자의 문제 순</em>, 두 대목을 먼저 읽습니다. 사이에서 나온 한 문장은 화면 맨 끝에 있습니다.</p>
+        <p class="strong">여우가 따로 묻지 않아도, 문장이 마음에 오면 「저장」. 이번 주는 석 장까지입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 실습 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">실습 · 17분</p>
+      <h2 class="title r r2">자리의 공기, 그리고 한 단위</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">쓰기<span class="h">8분</span></span><span class="ds">내가 가장 나다운 자리를 <b>한 장면</b>으로 씁니다. 빛, 소리, 시간대.</span></div>
+        <div class="ly"><span class="nm">한 줄<span class="h">2분</span></span><span class="ds">「나의 한 단위는 ___이다.」</span></div>
+        <div class="ly"><span class="nm">나눔<span class="h">7분</span></span><span class="ds">원하시는 분만 읽습니다. 피드백 없이 듣습니다.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 걸음과 달력 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <p class="kicker r r1">걸음과 달력</p>
+      <h2 class="title r r2">여우의 걸음은 <span class="em">하루에 하나</span>입니다</h2>
+      <div class="body r r3">
+        <p>10월 5일에 문을 열고 하루 한 걸음씩 걸으셨다면, 이름과 피치를 확정하는 걸음이 내일쯤 옵니다.</p>
+        <p>채널을 선언하고 첫 발행을 담는 걸음은 다음 주 화요일쯤입니다. 다음 살롱보다 하루 뒤입니다.</p>
+        <p class="strong">그래서 이번 주의 발행은 여우의 걸음을 기다리지 않고 먼저 합니다. 걸음이 밀린 날에는 하루에 두 걸음 걸으셔도 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 이번 주 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1">이번 주</p>
+      <h2 class="title r r2">이것 하나만 해 오셔도 됩니다</h2>
+      <div class="body r r3">
+        <p class="final" style="margin-top:0;">가장 작은 단위로,<br><span class="strong">한 번</span> 내보냅니다.</p>
+      </div>
+      <div class="body r r4">
+        <p>시간이 더 있으시면 과제 페이지의 여섯 가지로 가 보세요. 읽기는 두 권입니다 — 『에디톨로지』 2부, 『분더카머』 「검은 숲, 동어반복, 흰 숲」부터 「전령사의 꿈」까지.</p>
+        <p>내보낸 뒤의 마음 한 줄과 카드 한 장은 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 닫기 -->
+  <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
+          <g class="twinkle" style="transform-origin:100px 100px;"><path d="M100 72 Q100 100 128 100 Q100 100 100 128 Q100 100 72 100 Q100 100 100 72 Z" fill="currentColor" stroke="none"/></g>
+          <g class="orbit" style="transform-origin:100px 100px;"><circle cx="100" cy="44" r="4.5" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">수사의 달 2회차 · 지속 가능한 나</p>
+      <h2 class="title r r3">내 자리에서,<br><span class="em">한 조각씩 오래</span></h2>
+      <div class="body r r4" style="text-align:center;">
+        <p>자연스러운 형식과 나다운 자리를 고르고, 가장 작은 한 조각을 내보냅니다.</p>
+        <p class="final">다음 밤은 10월 19일 월요일 저녁 8시,<br>셋째 소절 일관성입니다.</p>
+      </div>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">이어서 인사이트 공유회가 있습니다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 13</div>
+<button class="nav prev" id="prev" aria-label="이전">‹</button>
+<button class="nav next" id="next" aria-label="다음">›</button>
+<div class="hint">← → · 스페이스 이동</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let i = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const pad = n => String(n).padStart(2,'0');
+
+  function show(n){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,k)=>{ s.classList.toggle('active', k===i); if(k===i) s.scrollTop = 0; });
+    progress.style.width = (i/(total-1)*100) + '%';
+    counter.textContent = pad(i+1) + ' / ' + pad(total);
+    counter.style.color = slides[i].classList.contains('invert') ? 'rgba(20,31,54,.75)' : 'var(--cream-dim)';
+  }
+  const next = ()=>show(i+1), prev = ()=>show(i-1);
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+
+  window.addEventListener('keydown', e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
+  });
+  document.getElementById('deck').addEventListener('click', e=>{
+    if(e.target.closest('.nav')) return;
+    if(window.getSelection && String(window.getSelection())) return;
+    (e.clientX < window.innerWidth*0.28) ? prev() : next();
+  });
+  let x0=null,y0=null;
+  window.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
+    x0=null;y0=null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>

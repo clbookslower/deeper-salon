@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DEEPER UNBRANDING SALON">
 <meta property="og:title" content="수사 4주차 과제 — 매니페스토 · 별을 보는 사흘">
-<meta property="og:description" content="Day 24–30 걸음 · 매니페스토 낭독 · 별 문장 고르기 · 약속 한 줄 나눔 — 여정의 마지막 과제">
+<meta property="og:description" content="약속의 첫 줄 · 모인 카드 · 개념어 후보 하나 · 이어지는 걸음">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -267,6 +267,40 @@ blockquote cite {
   .task { grid-template-columns: 38px 1fr; }
 }
 @media print { .page { padding: 24px 0; } }
+
+/* ══ 얹기 — 경이의 방 · 인사이트 열 장 ══ */
+.toc-item .min { margin-left:auto; font-family:'DM Mono',monospace; font-size:10.5px; color:#bbb; flex-shrink:0; padding-left:10px; }
+.toc-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:12.5px; color:#777; line-height:1.75; }
+.ten { border:1px solid #C8DFC0; background:#F5F8F2; border-radius:14px; padding:28px 26px; margin:34px 0; }
+.ten-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#7a9c7b; margin-bottom:12px; }
+.ten h3 { font-family:'Noto Serif KR',serif; font-size:19px; font-weight:400; color:#2C3B2D; margin-bottom:12px; line-height:1.5; }
+.ten p { font-size:14px; color:#3a5a3a; line-height:1.9; margin-bottom:10px; }
+.ten p:last-child { margin-bottom:0; }
+.ten ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin:6px 0 12px; }
+.ten ul li { font-size:14px; color:#3a5a3a; padding-left:18px; position:relative; line-height:1.8; }
+.ten ul li::before { content:'4'; position:absolute; left:0; color:#b9d2b0; }
+.ten-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:16px 0 14px; }
+.ten-cell { background:#fff; border:1px solid #d8e6d2; border-radius:10px; padding:12px 10px; text-align:center; }
+.ten-cell .tw { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:#7a9c7b; margin-bottom:6px; }
+.ten-cell .tc { font-family:'Noto Serif KR',serif; font-size:20px; color:#2C3B2D; line-height:1.2; }
+.ten-cell .tn { font-size:11.5px; color:#6b7f68; margin-top:4px; line-height:1.5; }
+.card-shape { font-family:'DM Mono',monospace; background:#fff; border:1px solid #d8e6d2; border-radius:8px; padding:14px 16px; font-size:12px; color:#4a5a48; line-height:1.95; margin:14px 0 4px; overflow-x:auto; }
+.books { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:24px 0; }
+.book { border:1px solid #E0C68F; background:#FBF3E2; border-radius:12px; padding:18px 18px; }
+.book .bk { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#854F0B; margin-bottom:8px; }
+.book .bt { font-family:'Noto Serif KR',serif; font-size:16px; color:#5a3800; line-height:1.5; margin-bottom:6px; }
+.book .bs { font-size:13px; color:#6a4a10; line-height:1.75; }
+.rhythm5 { border:1px solid #e8e8e8; border-radius:14px; padding:24px 24px; margin:28px 0; background:#fafafa; }
+.rhythm5 .r5-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.rhythm5 ol { list-style:none; counter-reset:r5; display:flex; flex-direction:column; gap:9px; }
+.rhythm5 ol li { counter-increment:r5; font-size:14px; color:#444; line-height:1.8; padding-left:30px; position:relative; }
+.rhythm5 ol li::before { content:counter(r5); position:absolute; left:0; top:1px; width:20px; height:20px; border-radius:50%; background:#2C3B2D; color:#f0ece4; font-family:'DM Mono',monospace; font-size:11px; display:flex; align-items:center; justify-content:center; }
+.rhythm5 .r5-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:13px; color:#666; line-height:1.85; }
+.handoff { border-left:2.5px solid #2C3B2D; background:rgba(44,59,45,0.05); border-radius:0 10px 10px 0; padding:18px 20px; margin:30px 0 0; }
+.handoff .hl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#7a9c7b; margin-bottom:9px; }
+.handoff p { font-size:13.5px; color:#3a5a3a; line-height:1.85; margin-bottom:8px; }
+.handoff p:last-child { margin-bottom:0; }
+@media (max-width:600px) { .ten-grid { grid-template-columns:repeat(2,1fr); } .books { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -289,18 +323,30 @@ blockquote cite {
       <span class="meta-text">수사의 달 · 4주차 과제 · 마지막 과제</span>
     </div>
     <h1>내 매니페스토를 부르는 한 주</h1>
-    <p class="subtitle">Day 24–30 · 매니페스토 · 별을 보는 사흘</p>
+    <p class="subtitle">매니페스토의 첫 줄 · 모인 카드를 나란히 · 개념어 후보 하나 · 그리고 이어지는 걸음</p>
   </header>
 
-  <p class="lead">이번 주는 읽을 범위가 없습니다. 모은 것을 부르는 주입니다. 과제는 다섯 개 — 전부 짧고, 전부 디퍼님의 말로 하는 일입니다.</p>
+  <p class="lead">이번 주는 읽을 범위가 없습니다. 모은 것을 부르는 주입니다. 과제는 일곱 개 — 전부 짧고, 전부 디퍼님의 말로 하는 일입니다. 종강 뒤에도 걸음은 이어집니다. 걸음이 닿는 날에 하나씩 하시면 됩니다.</p>
+
+  <div class="rhythm5">
+    <div class="r5-label">먼저, 하루의 순서 · 다섯 걸음 · 이십 분쯤</div>
+    <ol>
+      <li><strong>냠냠</strong> — 아침에 손으로 쓴 글을 사진으로 찍어 여우에게 <span class="cmd">냠냠</span>.</li>
+      <li><strong>안녕</strong> — <span class="cmd">안녕</span> 하면 오늘의 걸음 하나. 초고 조립을 지나 매니페스토로 가는 걸음입니다.</li>
+      <li><strong>오아시스</strong> — 벗고 싶은 날엔 <span class="cmd">오아시스</span>. 물음 하나, 한 줄. <em>안 가도 되는 날이 있습니다.</em></li>
+      <li><strong>분더카머</strong> — 여우에게 <span class="cmd">분더카머</span>. 마지막 주에는 그동안 저장한 카드만 따로 모아 봅니다.</li>
+      <li><strong>정리</strong> — 오늘의 답도, 오아시스의 한 줄도 — 마음에 남았으면 <span class="cmd">정리</span>. 두 카드 사이에서 나온 문장이 마음에 오면 <span class="cmd">저장</span>.</li>
+    </ol>
+    <div class="r5-foot">커리큘럼은 이번 주로 닫히지만 이 다섯 걸음은 닫히지 않습니다. 수료 뒤에도 그대로 삽니다.</div>
+  </div>
 
   <div class="task-list">
 
     <div class="task">
       <div class="tno">1</div>
       <div class="tbody">
-        <h3>매일 "안녕" — Day 24부터 30까지 <span class="when">매일 · 10분</span></h3>
-        <p>사막여우와 마지막 일곱 걸음을 걷습니다. 두려움의 이름, 듣고 싶은 반응, 별이 되는 장면, 3개월 뒤의 나, 단 하나의 약속 — 그리고 그 답들이 매니페스토 초안(Day 29)과 확정(Day 30)으로 모입니다. 세션의 AI 실험으로 초안을 미리 지어 두셨다면, 그 초안을 걸음에 가져가셔도 됩니다.</p>
+        <h3>매일 "안녕" — 매니페스토로 가는 걸음 <span class="when">매일 · 10분</span></h3>
+        <p>사막여우와 걸음을 이어 갑니다. 하루 한 걸음이면 초고 조립이 종강 무렵에, 매니페스토 확정은 여드레쯤 뒤에 옵니다. 두려움의 이름, 듣고 싶은 답장 한 문장, 오래 남은 한 줄, 석 달 뒤의 하루, 앞으로 1년 지킬 약속 하나 — 그리고 그 답들이 매니페스토 초안과 확정으로 모입니다. 세션의 AI 실험으로 초안을 미리 지어 두셨다면, 그 초안을 걸음에 가져가셔도 됩니다.</p>
         <p>밀린 날이 있어도 괜찮습니다. 여정은 날짜가 아니라 디퍼님의 속도로 갑니다.</p>
       </div>
     </div>
@@ -308,35 +354,68 @@ blockquote cite {
     <div class="task">
       <div class="tno">2</div>
       <div class="tbody">
-        <h3>매니페스토 낭독 <span class="when">확정한 뒤 · 5분</span></h3>
-        <p>확정한 매니페스토를 소리 내어 두 번 읽습니다. 입에 안 붙는 줄이 있다면 — 그 자리가 남의 말이 섞인 자리입니다. 내 단어로 바꾸거나, 지웁니다. 끝까지 내 말로.</p>
+        <h3>분더카머 — 마지막 한 번, 열 장만 따로 <span class="when">주중 · 15분</span></h3>
+        <p>여우에게 <span class="cmd">지금까지 받은 사이의 경이만 모아 줘</span>라고 청하세요. 저장해 둔 종합 씨앗만 따로 나란히 놓입니다. 석 주 동안 한 장씩 따로 받았던 것들이 처음으로 한자리에 섭니다. 여우가 다르게 받으면 같은 말을 한 번 더 건넵니다. 열 장이 못 되어도 됩니다.</p>
+        <p>이어서 <span class="cmd">이 카드들만으로 한 번 더 돌려 줘</span> — 모인 카드만 다시 놓습니다. 한자리에 모이면 그 사이에서 또 한 문장이 옵니다. 문장이 마음에 오면 <span class="cmd">저장</span>.</p>
       </div>
     </div>
 
     <div class="task">
       <div class="tno">3</div>
       <div class="tbody">
-        <h3>별 문장 고르기 <span class="when">별을 보는 사흘 · Day 33</span></h3>
-        <p>이 여정 전체에서 <strong>별 문장</strong> 하나를 고릅니다 — 백 일의 걸음 중 가장 나였던 한 줄. 하모니의 날, 사막여우가 네 가지를 나란히 놓아 줄 거예요: 문법 첫 문장 · 의미의 축 · 악보 · 매니페스토. 고른 별 문장은 여정기록 맨 위에 걸립니다.</p>
+        <h3>카드 한 장, 그리고 개념어 후보 하나 <span class="when">주중 · 20분</span></h3>
+        <p><strong>카드 한 장</strong> — 방금 저장한 사이의 경이 한 줄. 강의실 과제 댓글에는 문장과 「사이:」 줄을 옮겨 적습니다.</p>
+        <p><strong>개념어 후보 하나.</strong> 모인 카드를 관통하는 이름 후보를 하나 적어 둡니다. 서로 다른 두 카드에서 낱말 하나씩을 가져와 붙입니다. 정의서 네 줄은 매니페스토를 확정하는 걸음에서 여우가 청하고, 여정기록에 받아 적습니다.</p>
+        <div class="card-shape">개념어 — ____<br>
+        뜻 세 줄 — ____<br>
+        두 낱말이 온 카드 두 장 — "…"(날짜) / "…"(날짜)<br>
+        이 낱말로 다시 읽으면 달라 보이는 것 하나 — ____</div>
+        <p><strong>낱말은 반드시 내 카드 안에 있던 말로, 서로 다른 두 카드에서 하나씩.</strong> 새로 만든 소리는 안 됩니다. 초고를 조립하는 날 고르신 <em>배열의 차원 이름</em>이 있으시면 그 이름이 첫 후보입니다. 3주에 이름을 못 받으셨으면 지금 여우에게 "배열의 이름 후보 셋 줘"라고 청하셔도 됩니다. 열 장이 못 되어도 됩니다 — 넉 장이면 넉 장을 관통하는 낱말로.</p>
       </div>
     </div>
 
     <div class="task">
       <div class="tno">4</div>
       <div class="tbody">
-        <h3>사막에 한 줄 나누기 <span class="when">사막 · 단톡방</span></h3>
-        <p>매니페스토에서 한 줄을 골라 사막(단톡방)에 나눠 주세요. 전문이 아니어도 됩니다 — 한 줄이면 충분합니다. 서로의 약속이 모이면, 그게 우리의 돌림노래입니다.</p>
+        <h3>매니페스토, 그리고 카드들의 머리말 <span class="when">걸음이 닿는 날 · 10분</span></h3>
+        <p>살롱에서 쓴 약속의 첫 줄에서 시작합니다. 걸음에서 초안이 지어지고 확정되면, 그 매니페스토를 소리 내어 두 번 읽습니다. 입에 안 붙는 줄이 있다면 — 그 자리가 남의 말이 섞인 자리입니다. 내 단어로 바꾸거나, 지웁니다. 끝까지 내 말로.</p>
+        <p>그리고 <strong>매니페스토를 열 장 앞에 놓습니다.</strong> 다섯에서 일곱 줄의 선언이 머리말이 되고, 그 뒤에 카드들이 놓입니다. 약속이 먼저고 증거가 뒤입니다. 초고를 쓰시는 분에게는 열 장이 장의 씨앗이 되고, 초고가 아직 조립 전이신 분에게는 그 자체로 한 벌이 됩니다.</p>
       </div>
     </div>
 
     <div class="task">
       <div class="tno">5</div>
       <div class="tbody">
-        <h3>백 일의 기록, 금고에 <span class="when">수료 즈음 · 한 마디</span></h3>
-        <p>사막여우에게 <span class="cmd">백업</span> 한 마디 — 백 일의 기록 전부가 금고(GitHub)에 보관됩니다. 이 여정 전체가 디퍼님의 자산입니다.</p>
+        <h3>낭독 — 두 가지를 소리 내어 <span class="when">별을 보는 사흘</span></h3>
+        <p><strong>하나</strong> — 매니페스토. 최종 교정자는 입입니다.</p>
+        <p><strong>둘</strong> — 이번 달에 읽은 두 권 가운데 <strong>가장 오래 남은 한 대목</strong>. 『에디톨로지』의 한 줄이어도, 『분더카머』의 한 꼭지에서 주운 한 문장이어도 됩니다. 이번 주는 읽기가 없습니다 — 대신 남은 것을 소리 내어 봅니다.</p>
       </div>
     </div>
 
+    <div class="task">
+      <div class="tno">6</div>
+      <div class="tbody">
+        <h3>별 문장 고르기 <span class="when">별을 보는 사흘</span></h3>
+        <p>이 여정 전체에서 <strong>별 문장</strong> 하나를 고릅니다 — 백 일의 걸음 중 가장 나였던 한 줄. 하모니의 날, 사막여우가 네 가지를 나란히 놓아 줄 거예요: 문법 첫 문장 · 의미의 축 · 악보 · 매니페스토. 고른 별 문장은 여정기록 맨 위에 걸립니다.</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="tno">7</div>
+      <div class="tbody">
+        <h3>강의실에 나누고, 금고에 담기 <span class="when">강의실 댓글</span></h3>
+        <p><strong>강의실 과제 댓글에 올리는 것 둘</strong> — 약속의 첫 줄(확정하신 날 한 줄 더) · 개념어 후보와 뜻 한 줄. 전문이 아니어도 됩니다. 마지막 "밤하늘" 한 장은 사막에 올려 주세요.</p>
+        <p><strong>인사이트 공유회에 들고 갈 것</strong> — 넉 주에 만든 것 가운데 하나. 새로 만들지 않습니다. 청하시면 내놓고, 아니면 품고만 계셔도 됩니다.</p>
+        <p><strong>백 일의 기록, 금고에</strong> — 사막여우에게 <span class="cmd">백업</span> 한 마디. 백 일의 기록 전부가 금고(GitHub)에 보관됩니다. 이 여정 전체가 디퍼님의 자산입니다.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="handoff">
+    <div class="hl">마무리 두 줄</div>
+    <p><strong>걸음을 다 걸으신 날 손에 남는 것</strong> — 매니페스토 한 줄, 개념어 후보 하나, 별 문장 하나. 셋 다 짧습니다.</p>
+    <p><strong>못 하셨으면</strong> — 여우에게 이렇게 말해 주세요. <em>"개념어가 안 떠올라요. 지금까지 받은 사이의 경이만 모아 줘."</em> 여우가 저장한 카드를 나란히 놓습니다. 거기서 자꾸 나오는 낱말을 눈으로 찾아보세요. 못 고르신 채로 수료하셔도 됩니다.</p>
   </div>
 
   <div class="criteria">
@@ -350,7 +429,7 @@ blockquote cite {
   </div>
 
   <div class="rhythm">
-    <p>리듬은 그대로 — 아침 모닝페이지는 <span class="cmd">냠냠</span>, 마음에 남는 문장은 <span class="cmd">정리</span>, 일요일 밤 한 주 돌아보기는 <span class="cmd">밤하늘</span>. 글감이 마르면 언제든 <span class="cmd">분더카머</span> — 분더카머를 한 바퀴 돌립니다.</p>
+    <p>리듬은 그대로 — 아침 모닝페이지는 <span class="cmd">냠냠</span>, 벗고 싶은 날엔 <span class="cmd">오아시스</span>, 마음에 남는 문장은 <span class="cmd">정리</span>, 일요일 밤 한 주 돌아보기는 <span class="cmd">밤하늘</span>. 글감이 마르면 언제든 <span class="cmd">분더카머</span> — 방을 한 바퀴 돌립니다. 이 다섯 걸음은 수료 뒤에도 그대로 삽니다.</p>
   </div>
 
   <blockquote>
@@ -361,19 +440,18 @@ blockquote cite {
   <p>다음 주차 과제는 없습니다. 수사가 마지막 달입니다. 이후는 커리큘럼이 아니라 삶 — 매일의 작은 발행, 아침의 "안녕", 벗고 싶은 날의 "오아시스", 그리고 평생 도는 분더카머로 언제든 돌아올 수 있습니다.</p>
 
   <div class="close-box">
-    <div class="close-label">그리고, 수료식</div>
+    <div class="close-label">그리고, 수료</div>
     <p class="close-text">
-      책을 덮고, 서로를 펼치는 날.<br>
-      오프라인에서 얼굴을 마주합니다.
+      걸음은 이어집니다.
     </p>
     <p class="close-sub">
-      가장 나다운 노래 한 소절씩 —<br>
-      빈 한 소절은 서로에게. 자리의 안내는 사막에서 드립니다.
+      수료의 자리는 따로 알려 드립니다.
     </p>
   </div>
 
   <div class="footnote">
     <div class="logo-line"><img src="https://clbookslower.github.io/deeper-salon/os/DEEPER_logo.png" alt="DEEPER" onerror="this.style.display='none'"></div>
+    <p>* 읽기 — 이번 주는 없습니다. 두 권(김정운 『에디톨로지』 · 윤경희 『분더카머』) 가운데 가장 오래 남은 한 대목을 낭독합니다.</p>
     <p>* 이 과제는 디퍼 언브랜딩 살롱 · 수사의 달 4주차 세션 「하모니 — 매니페스토 · 함께 부르기」와 함께 갑니다.</p>
   </div>
 
