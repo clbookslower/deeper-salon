@@ -143,6 +143,18 @@
   .slide.invert .body .cmd{color:var(--navy-deep);}
   .layers .min{margin-left:auto; flex:none; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-soft); font-size:1.05em; padding-left:.6rem;}
   @media(max-width:600px){ .layers .min{margin-left:0; padding-left:0;} }
+  /* 1280x720에서 넘치는 장만 죈다(글은 그대로) */
+  @media(min-width:601px){
+    .slide.fit .content{padding-top:2.3rem !important; padding-bottom:2.9rem !important;}
+    .slide.fit .viz{width:78px; height:78px;}
+    .slide.fit .body p{margin-bottom:.62rem;}
+    .slide.fit .body{line-height:1.66; font-size:.95em;}
+    .slide.fit .title{margin-bottom:.2rem;}
+    .slide.fit .layers .ly{padding-top:.5rem; padding-bottom:.5rem;}
+    .slide.fit2 .viz{display:none;}
+    .slide.fit2 .body{font-size:.9em; line-height:1.6;}
+    .slide.fit .task pre{max-height:15.5rem; overflow-y:auto; line-height:1.7; padding:.8rem 1.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -158,7 +170,7 @@
       <img class="logo r r1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADQCAYAAAB2gbhdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAo8SURBVHhe7dTBDisrDgDR+f+ffqMrzUhPZUgA07RzqZLOxgu3swj/+eeff/4jSTcKA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEwQQz+/vi//yvFgYTzOye+P//K4TBBDO7M74FPysMJpiZ8V34KWEwwczs3/GNKC8MJpiZteJbUVYYTDAz+xTfjHLCYIKZ2bf4bpQSBhPMzEbj+1FCGEwwM5uN78irwmCCmdlKfEteEwYTzMxW43vyijCYYGaWje/KUWEwwcxsR3xbjgmDCWZmu+L7ckQYTDAz2xnfmMeFwQQzs93xnXlUGEwwM3sivjWPCYMJZmZPxffmEWEwwczsyfjmbBcGE8zMnoxvznZhMMHM7On47mwVBhPMzE7Et2ebMJhgZnYqvj9bhMEEM7NT8f3ZIgwmmJmdjG9QWhhMMDM7Hd+hlDCYYGZ2Or5DKWEg6Rq/Gn/HsjCQdLVfiDcvCwNJ+p/K8dYlYSBJUDHeuCQMJKmjWrxvWhhI0geV4m3TwkCSBlSJd00JA0kaVCHeNCUMJGlChXjTsDCQpElvx3uGhYEkLXgz3jIsDCRpwZvxlmFhIEmL3oy3DAkDSUp4K94xJAwkKeGteMeQMJCkpLfiHV+FgSQlvRXv+CoMJGmDN+INX4WBJG3wRrzhqzCQpA3eiDd8FQaStMnp+P2vwkCSNjkdv/9VGEjSJm/EGz4KA0na5I14w0dhIEmbvBFv+CgMJGmTN+INH4WBJG10On7/ozCQpI1Ox+9/FAaStNHp+P2PwkCSNnkj3vBRGEjSJm/EGz4KA0na5I14w0dhIEmbnI7f/yoMJGmT0/H7X4WBJG1yOn7/qzCQpA3eiDd8FQaStMEb8YavwkCSNngj3vBVGEhS0lvxjq/CQJKS3og3DAkDSUp4K94xJAwkadGb8ZYhYSBJi96MtwwJA0la8Ga8ZVgYSNKkt+M9w8JAkiZUiDcNCwNJGlQh3jQlDCRpQJV415QwkKQvKsXbpoSBJH1QKd42LQwkqaFivHFaGEjSv1SNdy4JA0nia1Mw3rskDCRd6Zfi7cvCYIKZ2RvxLVoWBhPMzE7HdyglDCaYmZ2Mb1BaGEwwMzsZ36C0MJhgZnYqvj9bhMEEM7MT8e3ZJgwmmJmdiG/PNmEwwczs6fjubBUGE8zMnoxvznZhMMHM7Kn43jwiDCaYmT0R35rHhMEEM7Pd8Z15VBhMMDPbGd+Yx4XBBDOzXfF9OSIMJpiZ7YhvyzFhMMHMLBvflaPCYIKZWSa+KceFwQQzs9X4nrwiDCaYmc3Gd+RVYTDBzGwmviGvC4MJZmYj8e0oIwwmmJl9i+9GKWEwwcysF9+LksJggpkZ4ztRWhhMMDP7E9+GnxEGE8zs7vgm/JwwmGBmd8U34OeFwQQz+7vjf/6vEwYTzOz3+vd/l//p64SBJN0iDCTpFmEgSbcIA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEgSTdIgwk6RZhIEm3CANJukUYSNItwkCSbhEGknSLMJCkW4SBJN0iDBa8EW94QrV4X0+1eF/P6fj9jGrxvp7T8fuvC4MFb8d7dqkW7+upFu/reTPeMqtavK/nzXjLK8JgQaV4W0a1eF9PtXhfT4V406hq8b6eCvGmo8JgQbV436pq8b6eavG+nkrxtm+qxft6KsXbjgiDBVXjnbOqxft6qsX7eqrF+z6pFu/rqRbve1wYLKgcb51RLd7XUy3e11Mx3thTLd7XUzHe+KgwWFA93juqWryvp1q8r6dqvLOlWryvp2q88zFhsOAX4s0jqsX7eqrF+3oqx1upWryvp2q88zFhsOBX4t3fVIv39VSL9/VUjrdStXhfT+V46yPCYMEvxds/qRbv66kW7+upHu+tfDvv66ke790uDBb8Urz9k2rxvp5q8b6e6vHeyrfzvp7q8d7twmDBr8X7ezJx10mZuOukTNy1Yyfj7l3f4a6TMnHXjp2Mu7cLgwWZuKtnZ9zdk4m7TsrEXSdl4q6WHXHnjt3cdVIm7mrZEXduFQYLMnHXN7vi3pZM3HVSJu46KRN39WTjvh17ueukTNzVk437tgqDBZm4a8SOuLMlE3edlIm7TsrEXT3ZuG/HXu46KRN39WTjvq3CYEEm7hqVjftaMnHXSZm466RM3PVJJu56cucJmbjrk0zctVUYLMjEXTMycVdLhXjTiArxphGZuOuTTNy1Y+eueNOITNz1SSbu2ioMFmTirhnZuI8qxJtGVIg3jcjEXT3ZuG/X3h3xphGZuKsnG/dtFQYLMnHXjGzcRxXiTSMqxJtGZOKunmzct2vvjnjTiEzc1ZON+7YKgwWZuGtWJu6iCvGmERXiTSMycVfLjrhz5+5svGlEJu5q2RF3bhUGCzJx16xM3EUV4k0jKsSbRmTirl17/x33PvGNTLxpRCbuoh1x53ZhsCATd83KxF1UId40okK8aUT1eG+123nTiOrx3u3CYEEm7pqVibuoQrxpRIV404jq8d5qt/OmEdXjvduFwYJM3DUrE3dRhXjTiArxphGV461UId40onK89RFhsCATd83Ixn1UId40okK8aUTleCtViDeNqBxvfUQYLMjEXTOycR9ViDeNqBBvGlE13tlSId40omq88zFhsCATd43Kxn0tFeJNIyrEm0ZUjDf2VIg3jagYb3xUGCzIxF2jsnFfSybuOikTd51ULd73SSbuOqlavO9xYbAgE3eN2BF3tmTirpMycddJleJt32TirpMqxduOCIMFmbjrm11xb0sm7jopE3edVCHeNCoTd51UId50VBgsyMRdPTvj7p5M3HVSJu466c14y6xM3HVSlXjXMWGw4Nfi/T2ZuOukTNx10hvxhlWZuOukKvGuY8JgwS/F2z+pGG9sqRhvbMnEXadVjDe2ZNq560/cd0QYLPilePsnFeONLRXjjS2ZuOu0ivHGlkw7d/0/7nxcGCz4lXj3NxXjjS0V440tmbjrtIrxxpZM3JXd9yfue1wYLPiFePOIivHGlorxxpZM3HVaxXhjSybu2rHzT9z3qDBYUD3eO6pivLGlYryxJRN3nVYx3tiSibt27Px/3PmYMFhQOd46o2K8saVivLElE3edVjHe2JKJu3bt/RP3PSYMFlSNd86qGG9sqRhvbMnEXadVjDe2ZOIuysZ9jwiDBdXivasqxhtbKsYbWzJx12kV440tmbiLdsSd24XBgkrxtoyK8caWivHGlkzcdVrFeGNLJu5qycZ924XBgrfjPbtUjDe2VIw3tmTirtMqxhtbMnFXTzbu2yoMFrwRb3hCxXhjS8V4Y0sm7jqtYryxJRN39eyIO7cJA0m6RRhI0i3CQJJuEQaSdIswkKRbhIEk3SIMJOkWYSBJtwgDSbpFGEjSLcJAkm4RBpJ0izCQpFuEgSTdIgwk6Rb/BQ05MubHuYrjAAAAAElFTkSuQmCC" alt="DEEPER">
       <p class="kicker r r2">2기 · 수사의 달 4주차 · 2026.10.26</p>
       <h1 class="title r r3">함께 부르기 —<br><span class="em">단 하나의 약속</span></h1>
-      <p class="latin r r4">Harmonia — 각자의 한 줄이 모여 한 노래가 됩니다</p>
+      <p class="latin r r4">L'amor che move il sole e l'altre stelle<br>해와 다른 별들을 움직이는 사랑</p>
       <p class="kicker r r4" style="margin-top:.6rem;">디퍼 언브랜딩 살롱 · 마지막 소절 · 하모니</p>
     </div>
   </section>
@@ -178,9 +190,9 @@
       <p class="kicker r r2">열기</p>
       <h2 class="title r r3">세 소절을 지나, 마지막 밤입니다</h2>
       <div class="body r r4">
-        <p>이름을 굴렸고, 작게 소리를 냈고, 방을 정돈해 목차를 세웠습니다.</p>
+        <p>선율의 주에 이름을 굴리고 으뜸음을 골랐습니다. 변주의 주에 소실점을 돌려 작게 소리를 냈고, 일관성의 주에 방을 정돈해 목차를 세웠습니다.</p>
         <p>오늘은 읽을 범위가 없습니다. 지금까지 모은 것을 소리 내어 부릅니다.</p>
-        <p class="strong">오늘 밤 여는 물음입니다. 발행 버튼 앞에서 나를 멈추게 하는 것에 이름을 붙인다면, 무엇일까요.</p>
+        <p class="strong">오늘 밤의 물음은 둘입니다. 발행 버튼 앞에서 나를 멈추게 하는 것에 이름을 붙인다면 무엇일까요. 그리고 끝까지 지킬 한 줄은 무엇일까요.</p>
       </div>
     </div>
   </section>
@@ -203,8 +215,8 @@
         <div class="card hot">
           <span class="lab">뒤의 넷</span>
           <ul>
-            <li>모인 카드와 개념어 후보 · 12분</li>
-            <li>네 가지를 나란히 · 7분</li>
+            <li>인사이트 카드와 개념어 후보 · 12분</li>
+            <li>트리비움 한 바퀴 · 7분</li>
             <li>실습, 약속의 첫 줄 · 12분</li>
             <li>닫기 · 4분</li>
           </ul>
@@ -238,16 +250,52 @@
     </div>
   </section>
 
-  <!-- 05 · 매니페스토 -->
+  <!-- 04b · 두려움의 이름들 (1기 종강 덱 복원) -->
   <section class="slide">
     <div class="content">
+      <p class="kicker r r1"><span class="num">I</span> · 하모니 · 발행을 막는 것</p>
+      <h2 class="title r r2">두려움에 이름을 붙이면</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">안개일 때</span>
+          <ul>
+            <li>「그냥, 아직인 것 같아서」</li>
+            <li>「뭔가 부족한 느낌이 들어서」</li>
+            <li>「때가 되면 하려고」</li>
+            <li>「조금만 더 다듬고 나서」</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">이름 붙였을 때</span>
+          <ul>
+            <li>잘 쓰는 사람이 이미 많다는 두려움</li>
+            <li>아는 사람이 볼까 봐 — 들킴의 두려움</li>
+            <li>이게 나로 굳을까 봐 — 고정의 두려움</li>
+            <li>아무도 안 읽을까 봐 — 침묵의 두려움</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p class="strong">이름 없는 두려움은 안개처럼 큽니다. 이름이 붙으면 다룰 수 있는 크기가 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 매니페스토 -->
+  <section class="slide">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
       <p class="kicker r r1"><span class="num">II</span> · 매니페스토</p>
       <h2 class="title r r2">단 하나의 약속, <span class="em">다섯에서 일곱 줄</span></h2>
+      <div class="body r r3" style="text-align:center;">
+        <p>한가운데에 단 하나의 약속이 서고, 나머지 줄이 떠받칩니다. 더 길어지면 다짐의 목록이 됩니다. 짓는 길은 셋입니다.</p>
+      </div>
       <div class="layers r r3">
-        <div class="ly"><span class="nm">길이<span class="h">01</span></span><span class="ds">다섯에서 일곱 줄. 한가운데에 약속 하나가 섭니다.</span></div>
-        <div class="ly"><span class="nm">낱말<span class="h">02</span></span><span class="ds">내가 실제로 쓴 말로 씁니다.</span></div>
-        <div class="ly"><span class="nm">크기<span class="h">03</span></span><span class="ds">크게 말하기보다 정확하게 말합니다.</span></div>
-        <div class="ly"><span class="nm">소리<span class="h">04</span></span><span class="ds">소리 내어 읽어 입에 붙어야 합니다.</span></div>
+        <div class="ly"><span class="nm">재료<span class="h">캐기</span></span><span class="ds"><b>석 달의 기록에서만</b> 캡니다 — 발행을 망설이게 한 두려움, 단 한 사람, 오래 남은 한 줄, 끝까지 지키고 싶은 것. 빌려 온 좋은 말은 한 줄도 필요하지 않습니다.</span></div>
+        <div class="ly"><span class="nm">짓기<span class="h">5–7줄</span></span><span class="ds">줄마다 <b>내가 실제로 쓴 낱말</b>이 하나는 살아 있게 씁니다. 「누구나 · 무조건 · N배」를 경계하고, 크게 말하기보다 정확하게 말합니다.</span></div>
+        <div class="ly"><span class="nm">낭독<span class="h">다듬기</span></span><span class="ds">마지막 교정은 <b>입</b>이 합니다. 소리 내어 두 번 읽고, 걸리는 줄의 빌려 온 낱말을 내 낱말로 바꾸거나 지웁니다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">남기는 기준은 하나입니다. 이 줄을 석 달 뒤에도 내 입으로 읽을 수 있는가.</p>
       </div>
     </div>
   </section>
@@ -267,7 +315,33 @@
       <div class="body r r4">
         <p>소리 내어 두 번 읽습니다. 혀가 걸리는 줄, 숨이 어색하게 끊기는 줄에 표시합니다.</p>
         <p>그 줄에서 빌려 온 낱말을 찾아 내 낱말로 바꾸거나, 지웁니다.</p>
-        <p class="strong">석 달 뒤에도 내 입으로 읽을 수 있는 줄만 남깁니다.</p>
+        <p class="strong">석 달 뒤에도 내 입으로 읽을 수 있는 줄만 남깁니다. 다섯 줄이 일곱 줄보다 나은 경우가 많습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06b · 매니페스토 · 갱신 (1기 종강 덱 복원) -->
+  <section class="slide fit fit2">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:100px 80px;">
+            <circle cx="100" cy="80" r="44" stroke-opacity=".5" stroke-dasharray="4 7"/>
+            <circle cx="100" cy="36" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="144" cy="80" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="56" cy="80" r="4" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 67 Q100 80 113 80 Q100 80 100 93 Q100 80 87 80 Q100 80 100 67 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 매니페스토 · 갱신</p>
+      <h2 class="title r r3">부를수록 자라는 약속</h2>
+      <div class="body r r4">
+        <p>걸음에서 확정하는 판은 첫 판입니다. 석 달에 한 번 소리 내어 되읽습니다. 입에 붙지 않게 된 줄이 갱신의 자리입니다. 그사이 쌓인 씨앗과 발행에서 더 정확해진 내 낱말을 가져와 바꾸거나 지웁니다.</p>
+        <p>악보와 나란히 놓고 조성을 맞춥니다. 어긋나 있으면 매니페스토를 고칠 차례일 수도, 악보를 다시 볼 차례일 수도 있습니다.</p>
+        <p>갱신할 수 있다는 사실이 고정의 두려움을 풀어 줍니다. 판이 몇 번 바뀌어도 으뜸음은 남습니다. 지난 판과 새 판을 거꾸로 읽어도 같은 목소리가 들리면, 약속은 깊어진 것입니다.</p>
+        <p class="strong">매니페스토는 계속 부르는 노래입니다. 이 노래는 부를수록 자랍니다.</p>
       </div>
     </div>
   </section>
@@ -287,8 +361,8 @@
           <circle cx="140" cy="114" r="3" fill="currentColor" stroke="none" class="pulse" style="animation-delay:1.4s"/>
         </svg>
       </div>
-      <p class="kicker r r2"><span class="num">III</span> · 모인 카드를 나란히</p>
-      <h2 class="title r r3">그동안 저장한 카드를 한자리에 놓습니다</h2>
+      <p class="kicker r r2"><span class="num">III</span> · 인사이트 카드를 나란히</p>
+      <h2 class="title r r3">그동안 저장한 종합 씨앗을 한자리에 놓습니다</h2>
       <div class="body r r4">
         <p>여우에게 이렇게 청합니다. <span class="cmd">지금까지 받은 사이의 경이만 모아 줘</span></p>
         <p>열 장이 못 되어도 됩니다. 넉 장이면 넉 장을 놓습니다. 아직 한 장도 없으시면 오늘 「분더카머」 한 번으로 첫 장을 받습니다. 여우가 다르게 받으면 같은 말을 한 번 더 건넵니다.</p>
@@ -304,29 +378,32 @@
       <h2 class="title r r2">오늘은 <span class="em">후보 하나</span>까지입니다</h2>
       <div class="body r r3">
         <p>서로 다른 두 카드에서 낱말 하나씩을 가져와 붙입니다. 한 카드의 구절을 통째로 옮기면 인용이 됩니다.</p>
-        <p>초고를 조립한 뒤 고르신 배열의 이름이 있으면, 그것이 첫 후보입니다. 못 받으셨으면 지금 여우에게 청하셔도 됩니다.</p>
+        <p>초고 v0를 조립한 뒤 고르신 배열의 차원 이름, 곧 메타언어가 있으면 그것이 첫 후보입니다. 못 받으셨으면 지금 여우에게 청하셔도 됩니다.</p>
         <p class="strong">정의서 네 줄은 매니페스토를 확정하는 걸음에서 여우와 함께 씁니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 09 · 네 가지를 나란히 -->
-  <section class="slide">
+  <!-- 09 · 트리비움 한 바퀴 -->
+  <section class="slide fit">
     <div class="content">
-      <p class="kicker r r1"><span class="num">IV</span> · 네 가지를 나란히</p>
-      <h2 class="title r r2">걸음을 다 걸으신 날, <span class="em">넷</span>이 나란히 놓입니다</h2>
+      <p class="kicker r r1"><span class="num">IV</span> · 대수렴 · 트리비움 한 바퀴</p>
+      <h2 class="title r r2">트리비움의 완성 — 걸음을 다 걸으신 날, <span class="em">넷</span>이 나란히 놓입니다</h2>
       <div class="layers r r3">
-        <div class="ly"><span class="nm">첫 문장<span class="h">문법</span></span><span class="ds">문법의 달 첫날에 쓴 한 줄.</span></div>
-        <div class="ly"><span class="nm">의미의 축<span class="h">문법</span></span><span class="ds">세 가지 답을 관통한 한 문장.</span></div>
-        <div class="ly"><span class="nm">악보<span class="h">논리</span></span><span class="ds">공리, 단 한 사람, 안 할 것.</span></div>
-        <div class="ly"><span class="nm">매니페스토<span class="h">수사</span></span><span class="ds">끝까지 지키고 싶은 단 하나의 약속.</span></div>
+        <div class="ly"><span class="nm">첫 문장<span class="h">문법 · 재료</span></span><span class="ds">문법의 달 첫날에 길어 올린 한 줄.</span></div>
+        <div class="ly"><span class="nm">의미의 축<span class="h">문법 · 의미</span></span><span class="ds">세 가지 답을 관통한 한 문장.</span></div>
+        <div class="ly"><span class="nm">악보<span class="h">논리 · 구조</span></span><span class="ds">공리, 단 한 사람, 안 할 것.</span></div>
+        <div class="ly"><span class="nm">매니페스토<span class="h">수사 · 발화</span></span><span class="ds">끝까지 지키고 싶은 단 하나의 약속.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">문법 첫날의 거칠고 어색한 문장이 이미 약속의 씨앗을 품고 있었습니다. 처음의 문장이 한 옥타브 위에서 다시 들립니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 10 · 단테 (GOLD) -->
   <section class="slide invert">
-    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
@@ -337,8 +414,9 @@
       <p class="kicker r r2">수렴 · 단테</p>
       <h2 class="title r r3">세 편은 모두 <span class="em">별</span>로 끝납니다</h2>
       <div class="body r r4">
-        <p>『신곡』의 지옥편, 연옥편, 천국편은 저마다 「별」이라는 낱말로 끝납니다. 디퍼의 세 달도 달마다 별을 보는 사흘로 끝납니다.</p>
-        <p class="strong">이 달의 사흘에는 백 일 가운데 가장 나였던 한 줄을 골라 여정기록 맨 위에 겁니다.</p>
+        <p>단테는 백 곡의 노래를 세 편으로 지었습니다. 지옥을 지나 나오며 "다시 별들을 보았다." 연옥의 꼭대기에서 "별들로 오를 준비가 되어." 천국의 마지막 행은 "해와 다른 별들을 움직이는 사랑." 세 편이 모두 「별」이라는 낱말로 끝납니다.<span class="cite">단테, 『신곡』</span></p>
+        <p>디퍼의 세 달도 달마다 별을 보는 사흘로 끝납니다. 이 달의 사흘에는 백 일 가운데 가장 나였던 한 줄을 골라 여정기록 맨 위에 겁니다.</p>
+        <p class="strong">내 것이 누군가에게 닿아 그 사람의 별이 되는 순간이 옵니다. 별이 별을 낳습니다.</p>
       </div>
     </div>
   </section>
@@ -387,9 +465,34 @@
     </div>
   </section>
 
-  <!-- 14 · 닫기 -->
+  <!-- 13b · 커리큘럼 다음의 커리큘럼 (1기 종강 덱 복원) -->
   <section class="slide">
-    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+    <div class="content" style="padding-top:3.2rem; padding-bottom:3.2rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="spin" style="transform-origin:100px 80px;">
+            <circle cx="100" cy="80" r="44" stroke-opacity=".5" stroke-dasharray="4 7"/>
+            <circle cx="100" cy="36" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="144" cy="80" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="56" cy="80" r="4" fill="currentColor" stroke="none"/>
+          </g>
+          <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 67 Q100 80 113 80 Q100 80 100 93 Q100 80 87 80 Q100 80 100 67 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2">남은 걸음 · 각자의 속도로</p>
+      <h2 class="title r r3">커리큘럼 다음의 커리큘럼</h2>
+      <div class="body r r4">
+        <p>남은 걸음은 각자의 속도로 걷습니다. 초고 v0에서 매니페스토, 별을 보는 사흘까지입니다. 날짜에 쫓기지 않습니다. 확정한 매니페스토 한 줄은 강의실 댓글로 나눠 주세요. 서로의 약속이 모이면 그것이 우리의 돌림노래입니다.</p>
+        <p>커리큘럼은 끝나지만 도구는 곁에 남습니다. 아침이 오면 「안녕」, 글감이 마르면 「분더카머」, 벗고 싶은 날엔 「오아시스」, 한 주의 끝엔 「밤하늘」. 그리고 가장 작은 단위로 계속 발행합니다.</p>
+        <p class="strong">커리큘럼이라기보다, 그냥 사는 방식입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · 닫기 -->
+  <section class="slide fit fit2">
+    <div class="content" style="padding-top:3.4rem; padding-bottom:3.4rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle class="march" cx="100" cy="100" r="56" stroke-width="2.4"/>
@@ -400,16 +503,17 @@
       <p class="kicker r r2">수사의 달 4주차 · 함께 부르기</p>
       <h2 class="title r r3">책을 덮고,<br><span class="em">서로를 펼칩니다</span></h2>
       <div class="body r r4" style="text-align:center;">
+        <p>"사막이 아름다운 건, 어딘가에 우물을 감추고 있기 때문이야."<span class="cite" style="text-align:center;">생텍쥐페리, 『어린 왕자』</span></p>
         <p>커리큘럼은 오늘로 닫힙니다. 「안녕」과 「오아시스」와 「분더카머」는 그대로 남습니다.</p>
         <p class="final">가장 작은 단위로,<br>계속 내보내시면 됩니다.</p>
       </div>
-      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">이어서 인사이트 공유회가 있습니다.</p>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">Da capo — 끝나는 자리에서, 처음의 노래를 다시 부릅니다. 이어서 인사이트 공유회가 있습니다.</p>
     </div>
   </section>
 
 </div>
 
-<div class="counter" id="counter">01 / 14</div>
+<div class="counter" id="counter">01 / 17</div>
 <button class="nav prev" id="prev" aria-label="이전">‹</button>
 <button class="nav next" id="next" aria-label="다음">›</button>
 <div class="hint">← → · 스페이스 이동</div>

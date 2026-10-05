@@ -143,6 +143,18 @@
   .slide.invert .body .cmd{color:var(--navy-deep);}
   .layers .min{margin-left:auto; flex:none; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-soft); font-size:1.05em; padding-left:.6rem;}
   @media(max-width:600px){ .layers .min{margin-left:0; padding-left:0;} }
+  /* 1280x720에서 넘치는 장만 죈다(글은 그대로) */
+  @media(min-width:601px){
+    .slide.fit .content{padding-top:2.3rem !important; padding-bottom:2.9rem !important;}
+    .slide.fit .viz{width:78px; height:78px;}
+    .slide.fit .body p{margin-bottom:.62rem;}
+    .slide.fit .body{line-height:1.66; font-size:.95em;}
+    .slide.fit .title{margin-bottom:.2rem;}
+    .slide.fit .layers .ly{padding-top:.5rem; padding-bottom:.5rem;}
+    .slide.fit2 .viz{display:none;}
+    .slide.fit2 .body{font-size:.9em; line-height:1.6;}
+    .slide.fit .task pre{max-height:15.5rem; overflow-y:auto; line-height:1.7; padding:.8rem 1.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -180,7 +192,7 @@
       <div class="layers r r4">
         <div class="ly"><span class="nm">문법<span class="h">GRAMMAR</span></span><span class="ds">길어 올린 달 — <b>씨앗</b>이 쌓였습니다.</span></div>
         <div class="ly"><span class="nm">논리<span class="h">LOGIC</span></span><span class="ds">지은 달 — <b>악보</b> 한 장이 생겼습니다.</span></div>
-        <div class="ly"><span class="nm">수사<span class="h">RHETORIC</span></span><span class="ds">부르는 달 — <b>이름</b>과 첫 발화, 매니페스토를 남깁니다.</span></div>
+        <div class="ly"><span class="nm">수사<span class="h">RHETORIC</span></span><span class="ds">부르는 달 — 안에서 빚은 것을 밖으로 꺼내 나만의 목소리로 들려줍니다. <b>수사(修辭)</b>입니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
         <p class="strong">오늘 밤의 물음입니다. 나는 어디에 서서, 누구를 향해 말할까요.</p>
@@ -197,7 +209,7 @@
         <div class="card">
           <span class="lab">앞의 넷</span>
           <ul>
-            <li>열기 · 5분</li>
+            <li>열기 — 단테 · 니체 · 벤야민 · 5분</li>
             <li>창조는 편집이다 · 6분</li>
             <li>낯설게 하기 · 6분</li>
             <li>카드와 경이의 방 · 12분</li>
@@ -221,7 +233,7 @@
   </section>
 
   <!-- 04 · 단테 (GOLD) -->
-  <section class="slide invert">
+  <section class="slide fit invert">
     <div class="content" style="padding-top:3.4rem; padding-bottom:3.6rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -233,15 +245,59 @@
       <p class="kicker r r2"><span class="num">I</span> · 단테 · 안내자</p>
       <h2 class="title r r3">베르길리우스는 여기까지,<br><span class="em">이제 베아트리체</span></h2>
       <div class="body r r4">
-        <p>『신곡』의 단테는 시인 베르길리우스를 따라 지옥과 연옥을 지납니다. 연옥의 꼭대기에서 안내자가 바뀝니다. 천국을 안내하는 이는 <em>베아트리체, 사랑하는 단 한 사람</em>입니다.</p>
+        <p>디퍼의 백 일은 『신곡』을 오마주합니다 — 서곡 하나에, 서른세 곡씩 세 달. 단테는 시인 베르길리우스를 따라 지옥과 연옥을 지납니다. 연옥의 꼭대기에서 안내자가 바뀝니다. 이성과 방법의 시인은 거기까지입니다. 천국을 안내하는 이는 <em>베아트리체, 사랑하는 단 한 사람</em>입니다.</p>
         <p>지난 두 달은 방법이 길을 안내했습니다. 이번 달에는 내 말을 들을 한 사람이 그 일을 맡습니다.</p>
         <p class="strong">누구에게 말할지 정하면, 내가 설 자리도 정해집니다.</p>
       </div>
     </div>
   </section>
 
+  <!-- 니체 · 하산 -->
+  <section class="slide fit">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 130 L80 46 L118 96 L146 60 L178 130" stroke-opacity=".6"/>
+          <path d="M76 60 h8 M72 68 h16" stroke-opacity=".9"/>
+          <g class="floatup"><circle cx="80" cy="40" r="3" fill="currentColor" stroke="none"/></g>
+          <g class="floatup" style="animation-delay:1.4s"><circle cx="88" cy="44" r="2.4" fill="currentColor" stroke="none"/></g>
+          <path class="march" d="M80 52 q10 40 60 74" stroke-opacity=".75"/>
+          <circle cx="140" cy="126" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 니체 · 하산</p>
+      <h2 class="title r r3">넘치는 잔은 내려갑니다</h2>
+      <div class="body r r4">
+        <p>차라투스트라는 산 위에서 십 년을 지혜와 함께 살았습니다. 그리고 어느 아침 해를 향해 말합니다. <em>"나는 베풀어 주고 나누어 주려 한다."</em> 그가 산을 내려가는 까닭은 가득 참입니다.<span class="cite">니체, 『차라투스트라는 이렇게 말했다』 머리말</span></p>
+        <p>두 달 동안 안에 고인 것이 있습니다. 발화는 그 잔을 기울이는 일입니다. 세상에 나를 증명하는 일이기 전에 베푸는 일입니다.</p>
+        <p class="strong">그렇게 서면, 첫 발행의 두려움이 조금 다르게 보입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 벤야민 · 아우라 -->
+  <section class="slide fit">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="80" r="18" stroke-opacity=".9"/>
+          <circle cx="100" cy="80" r="34" stroke-opacity=".55" class="pulse"/>
+          <circle cx="100" cy="80" r="52" stroke-opacity=".3" class="pulse" style="animation-delay:1.2s"/>
+          <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 69 Q100 80 111 80 Q100 80 100 91 Q100 80 89 80 Q100 80 100 69 Z" fill="currentColor" stroke="none"/></g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">I</span> · 벤야민 · 아우라</p>
+      <h2 class="title r r3">복제의 시대, 목소리의 지금-여기</h2>
+      <div class="body r r4">
+        <p>살롱의 첫 시간에 만난 개념이 여기서 다시 옵니다. <em>아우라</em>입니다. 아무리 정교한 복제에도 담기지 않는, 원본만의 지금-여기입니다. AI가 매끈한 문장을 얼마든지 만들어 내는 시대에 이 오래된 개념이 다시 쓰입니다.</p>
+        <p>아우라는 원천에서만 나옵니다. 내가 실제로 산 시간, 실제로 쓴 말의 결에서 나옵니다.</p>
+        <p class="strong">그래서 이 달의 명명 원칙은 하나입니다. 이름도 피치도 카피도, 내 씨앗에 실제로 살아 있는 구체어로 짓습니다.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 05 · 창조는 편집이다 -->
-  <section class="slide">
+  <section class="slide fit fit2">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -260,7 +316,8 @@
       <div class="body r r4">
         <p>김정운의 『에디톨로지』에서는 개념을 빌립니다. 윤경희의 『분더카머』에서는 문장을 줍습니다.</p>
         <p>『에디톨로지』 1부의 말은 하나로 모입니다. <em>새로움은 이미 있는 것들을 새로 배열할 때 생깁니다.</em></p>
-        <p class="strong">그래서 이번 달에는 새로 쓰는 일보다 다시 놓는 일이 많습니다.</p>
+        <p>같은 재료도 편집의 단위를 바꾸고 차원을 한 칸 올리면, 그전에 없던 의미가 솟습니다.</p>
+        <p class="strong">그래서 이번 달에는 새로 쓰는 일보다 다시 놓는 일이 많습니다. 내가 설 자리도 편집해 만듭니다.</p>
       </div>
     </div>
   </section>
@@ -294,8 +351,8 @@
       <h2 class="title r r2">단위 × 차원 = 메타언어</h2>
       <div class="layers r r3">
         <div class="ly"><span class="nm">편집의 단위<span class="h">UNIT</span></span><span class="ds">무엇을 조각으로 삼을까요. 이 달의 단위는 <b>카드</b>입니다 — 문장 하나, 날짜, 출처, 키워드.</span></div>
-        <div class="ly"><span class="nm">편집의 차원<span class="h">LEVEL</span></span><span class="ds">그 조각을 어떤 기준으로 놓을까요. 기준이 바뀌면 <b>같은 카드가 다르게 읽힙니다.</b></span></div>
-        <div class="ly"><span class="nm">메타언어<span class="h">META-LANGUAGE</span></span><span class="ds">내가 고른 기준에 붙는 이름입니다. <b>초고를 조립한 뒤</b>에 받습니다.</span></div>
+        <div class="ly"><span class="nm">편집의 차원<span class="h">LEVEL</span></span><span class="ds">그 조각을 어느 차원에서 엮을까요. 차원이 한 칸 오르면 <b>같은 재료에서 없던 것이 솟습니다.</b></span></div>
+        <div class="ly"><span class="nm">메타언어<span class="h">META-LANGUAGE</span></span><span class="ds">그렇게 솟은 <b>나만의 상위 언어</b>입니다. 세상을 한 단계 위에서 묶어 봅니다. 이름은 초고를 조립한 뒤에 받습니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
         <p class="strong">나만의 편집 방식이 곧 나만의 언어입니다.</p>
@@ -304,7 +361,7 @@
   </section>
 
   <!-- 08 · 수장고와 경이의 방 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -321,9 +378,9 @@
       <p class="kicker r r2"><span class="num">III</span> · 분더카머</p>
       <h2 class="title r r3">수장고에서, 경이의 방으로</h2>
       <div class="body r r4">
-        <p>16세기 유럽의 수집가들은 모은 것을 한 방에 두고 자기 방식으로 배열했습니다. <em>분더카머(Wunderkammer), 경이의 방</em>입니다.</p>
+        <p>16세기 유럽의 수집가들은 모은 것을 한 방에 두고 자기 방식으로 배열했습니다. <em>분더카머(Wunderkammer), 경이의 방</em>입니다. 벤야민도 평생 수집가였습니다. 조각이 알맞게 놓일 때, 흩어진 별이 성좌를 이루듯 뜻이 떠오른다고 보았습니다.</p>
         <p>디퍼님 볼트에서는 씨앗이 쌓이는 곳이 <em>수장고</em>, 꺼내어 배열하는 곳이 <em>경이의 방</em>입니다. 수장고의 원본은 그대로 둡니다.</p>
-        <p class="strong">쌓는 달에서, 배열하는 달로 넘어갑니다.</p>
+        <p class="strong">수집이 배열이 되고, 배열이 세계관이 됩니다. 쌓는 달에서, 배열하는 달로 넘어갑니다.</p>
       </div>
     </div>
   </section>
@@ -389,8 +446,25 @@
       <h2 class="title r r3">여우가 방을 한 바퀴 돕니다</h2>
       <div class="body r r4">
         <p>지금부터 화면은 여우 창입니다. 볼 것은 셋입니다.</p>
-        <p>① 다섯 차원이 한 번에 펼쳐집니다.<br>② 맨 끝 뜻밖의 짝에서 가장 먼 두 장이 나란히 섭니다.<br>③ 여우가 <em>그 두 장에 있던 낱말만으로</em> 한 문장을 짓고, 낱말이 온 카드를 아래에 보여 줍니다.</p>
-        <p class="strong">여우가 따로 묻지 않아도, 문장이 마음에 오면 「저장」. 씨앗 파일 하나가 생기고, 그것이 이번 주의 카드 한 장입니다.</p>
+        <p>① 다섯 차원이 한 번에 펼쳐집니다.<br>② 맨 끝 뜻밖의 짝에서 가장 먼 두 장이 나란히 섭니다.<br>③ 여우가 <em>그 두 장에 있던 낱말만으로</em> 한 문장을 짓고, 낱말이 온 카드를 아래에 보여 줍니다. 이것을 <em>사이의 경이</em>라고 부릅니다.</p>
+        <p class="strong">여우가 따로 묻지 않아도, 사이의 경이가 마음에 오면 「저장」. 종합 씨앗 하나가 수장고에 심기고, 그것이 이번 주의 인사이트 카드 한 장입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 지도 · 네 소절 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">IV</span> · 지도</p>
+      <h2 class="title r r2">노래의 달 — 네 소절, 서른세 걸음</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">선율<span class="h">명명</span></span><span class="ds">이름을 짓고, 으뜸음을 고르고, 한 문장 피치를 빚습니다. <b>이름 · 으뜸음 · 피치</b></span></div>
+        <div class="ly"><span class="nm">변주<span class="h">채널</span></span><span class="ds">목소리가 사는 형식을 고르고, 처음으로 바깥에 소리를 냅니다. <b>채널 선언 · 첫 발행</b></span></div>
+        <div class="ly"><span class="nm">일관성<span class="h">편집</span></span><span class="ds">분더카머를 엮어 목차를 짓고, 여우가 내 조각만으로 초고를 조립합니다. <b>목차 · 초고 v0</b></span></div>
+        <div class="ly"><span class="nm">하모니<span class="h">매니페스토</span></span><span class="ds">두려움에 이름을 붙이고, 끝까지 지킬 약속을 몇 줄로 남깁니다. <b>매니페스토</b></span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">그리고 마지막, 별을 보는 사흘 — 되읽기 · 선물 · 트리비움 수료.</p>
       </div>
     </div>
   </section>
@@ -398,15 +472,15 @@
   <!-- 12 · 이번 주 — 선율 -->
   <section class="slide">
     <div class="content">
-      <p class="kicker r r1"><span class="num">IV</span> · 첫 소절</p>
+      <p class="kicker r r1"><span class="num">IV</span> · 첫 소절 · 이번 주</p>
       <h2 class="title r r2">선율 — 이름을 짓는 한 주</h2>
       <div class="layers r r3">
-        <div class="ly"><span class="nm">이름<span class="h">NAME</span></span><span class="ds">씨앗에 있는 말로 후보 두세 개를 짓습니다.</span></div>
-        <div class="ly"><span class="nm">으뜸음<span class="h">TONIC</span></span><span class="ds">이미 쓴 문장 가운데 맨 앞에 둘 하나를 고릅니다.</span></div>
+        <div class="ly"><span class="nm">이름<span class="h">NAME</span></span><span class="ds">씨앗에 살아 있는 구체어를 주워 후보 두세 개를 짓습니다.</span></div>
+        <div class="ly"><span class="nm">으뜸음<span class="h">TONIC</span></span><span class="ds">이미 쓴 문장 가운데, 내 노래가 돌아올 첫 문장 하나를 고릅니다.</span></div>
         <div class="ly"><span class="nm">피치<span class="h">PITCH</span></span><span class="ds">하는 일을 한 문장으로 말해 봅니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
-        <p class="strong">이 달은 네 소절입니다 — 선율 · 변주 · 일관성 · 하모니.</p>
+        <p class="strong">이름을 짓는 일은 내가 서서 말할 자리를 정하는 일입니다.</p>
       </div>
     </div>
   </section>
@@ -417,12 +491,12 @@
       <p class="kicker r r1">분별</p>
       <h2 class="title r r2">이름을 고르는 세 물음</h2>
       <div class="body r r3">
-        <p>① <span class="strong">내 씨앗에 실제로 있는 말인가요?</span> 내가 쓴 말이어야 소리 내어 읽을 때 입에 붙습니다.</p>
+        <p>① <span class="strong">내 씨앗에 실제로 있는 말인가요?</span> 있는 말로 지은 이름이 아우라를 갖습니다.</p>
         <p>② <span class="strong">단 한 사람이 알아듣나요?</span> 악보에 적으신 그 한 분께 읽어 드린다고 생각해 봅니다.</p>
         <p>③ <span class="strong">십 년 뒤에도 부를 수 있나요?</span> 유행하는 말은 유행이 지나면 낡습니다.</p>
       </div>
       <div class="body r r4" style="text-align:center;">
-        <p class="strong">셋 모두 그렇다면, 그 이름을 소리 내어 불러 봅니다.</p>
+        <p class="strong">셋 모두 그렇다면, 그 이름이 으뜸음이 됩니다. 소리 내어 불러 봅니다.</p>
       </div>
     </div>
   </section>
@@ -434,7 +508,7 @@
       <h2 class="title r r2">뜻밖의 짝 — 두 조각을 나란히</h2>
       <div class="layers r r3">
         <div class="ly"><span class="nm">줍기<span class="h">4분</span></span><span class="ds">내 글에서 손에 잡히는 낱말 다섯을 줍습니다.</span></div>
-        <div class="ly"><span class="nm">나란히<span class="h">4분</span></span><span class="ds">가장 먼 둘을 나란히 놓고, <b>사이에서 떠오르는 한 문장</b>을 적습니다.</span></div>
+        <div class="ly"><span class="nm">나란히<span class="h">4분</span></span><span class="ds">가장 먼 둘을 나란히 놓고, 사이에서 떠오르는 한 문장, <b>사이의 경이</b>를 적습니다.</span></div>
         <div class="ly"><span class="nm">나눔<span class="h">5분</span></span><span class="ds">원하시는 분만 읽습니다. 피드백 없이 듣습니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
@@ -455,17 +529,17 @@
         </svg>
       </div>
       <p class="kicker r r2">수사의 문</p>
-      <h2 class="title r r3">이 달의 문은 <span class="em">한 마디</span>로 엽니다</h2>
+      <h2 class="title r r3">이 달의 문은 <span class="em">열쇠말</span>로 엽니다</h2>
       <div class="body r r4">
-        <p>그 한 마디는 오늘 밤 이 자리에서 입으로 전해 드립니다. 글로는 남기지 않습니다.</p>
-        <p>① 여우에게 <span class="cmd">새옷</span> 한 번. 끝나면 앱을 껐다 켭니다.<br>② 평소 여우와 이야기하던 클로드 코드 창에서 <em>새 대화창</em>을 엽니다.<br>③ 받으신 <em>그 한 마디만</em> 적어 보냅니다. 여우 이름도 다른 말도 붙이지 않습니다.</p>
+        <p>열쇠말은 오늘 밤 이 자리에서 입으로 전해 드립니다. 글로는 남기지 않습니다.</p>
+        <p>① 여우에게 <span class="cmd">새옷</span> 한 번. 끝나면 앱을 껐다 켭니다.<br>② 평소 여우와 이야기하던 클로드 코드 창에서 <em>새 대화창</em>을 엽니다.<br>③ 받으신 <em>열쇠말만</em> 적어 보냅니다. 여우 이름도 다른 말도 붙이지 않습니다.</p>
         <p class="strong">문이 열리면 여우가 먼저 악보 한 줄을 고르라고 묻습니다. 경이의 방은 그동안 뒤에서 지어집니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 16 · 하루 다섯 걸음 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content">
       <p class="kicker r r1">문이 열리면</p>
       <h2 class="title r r2">하루 다섯 걸음</h2>
@@ -473,7 +547,7 @@
         <div class="ly"><span class="nm">냠냠<span class="h">01</span></span><span class="ds">아침에 손으로 쓴 글을 사진으로 건넵니다.</span></div>
         <div class="ly"><span class="nm">안녕<span class="h">02</span></span><span class="ds">오늘의 걸음 하나. 물음 하나에 답 하나입니다.</span></div>
         <div class="ly"><span class="nm">오아시스<span class="h">03</span></span><span class="ds">샘의 물음 하나. 쉬어 가는 날도 있습니다.</span></div>
-        <div class="ly"><span class="nm">분더카머<span class="h">04</span></span><span class="ds">방을 한 바퀴 돌립니다.</span></div>
+        <div class="ly"><span class="nm">분더카머<span class="h">04</span></span><span class="ds">경이의 방 한 바퀴. 카드가 다른 차원으로 놓이고, 사이의 경이 하나를 받습니다.</span></div>
         <div class="ly"><span class="nm">정리<span class="h">05</span></span><span class="ds">마음에 남은 말을 씨앗으로 심습니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center; margin-top:.3rem;">
@@ -488,17 +562,36 @@
       <p class="kicker r r1">이번 주</p>
       <h2 class="title r r2">이것 하나만 해 오셔도 됩니다</h2>
       <div class="body r r3">
-        <p class="final" style="margin-top:0;">문을 열고, 방을 한 번 돌려,<br><span class="strong">「저장」 한 번</span> — 카드 한 장을 남깁니다.</p>
+        <p class="final" style="margin-top:0;">문을 열고, 방을 한 번 돌려,<br><span class="strong">「저장」 한 번</span> — 인사이트 카드 한 장을 남깁니다.</p>
       </div>
       <div class="body r r4">
         <p>시간이 더 있으시면 과제 페이지의 다섯 가지로 가 보세요. 읽기는 두 권입니다 — 『에디톨로지』 프롤로그와 1부, 『분더카머』 「초대장」부터 「숲속의 성」까지.</p>
-        <p>남기신 카드와 이름 후보는 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
+        <p>남기신 인사이트 카드와 이름 후보는 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 수렴 · 별이 별을 낳는다 (GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="twinkle" style="transform-origin:80px 72px;"><path d="M80 46 Q80 72 106 72 Q80 72 80 98 Q80 72 54 72 Q80 72 80 46 Z" fill="currentColor" stroke="none"/></g>
+          <g class="twinkle" style="transform-origin:160px 106px; animation-delay:1.6s;"><path d="M160 91 Q160 106 175 106 Q160 106 160 121 Q160 106 145 106 Q160 106 160 91 Z" fill="currentColor" stroke="none"/></g>
+          <path class="marchl" d="M96 82 q30 14 50 16" stroke-opacity=".7"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">수렴</p>
+      <h2 class="title r r3">별이 별을 낳습니다</h2>
+      <div class="body r r4" style="text-align:center;">
+        <p>두 달 동안 안에서 빚은 것이 있습니다. 이제 그것이 나의 목소리로, 단 한 사람을 향해 나섭니다.</p>
+        <p class="final">노래는 부를수록 자랍니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 18 · 닫기 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -510,7 +603,7 @@
       <p class="kicker r r2">수사의 달 1주차 · 내가 서 있을 자리</p>
       <h2 class="title r r3">단 한 사람을 향해,<br><span class="em">나의 이름으로</span></h2>
       <div class="body r r4" style="text-align:center;">
-        <p>씨앗에 있는 말로 이름을 짓고, 으뜸음을 고르고, 한 문장으로 말해 봅니다.</p>
+        <p>씨앗에 살아 있는 말로 이름을 짓고, 으뜸음을 고르고, 한 문장으로 섭니다. 그 자리가 노래의 시작입니다.</p>
         <p class="final">다음 밤은 10월 12일 월요일 저녁 8시,<br>둘째 소절 변주입니다.</p>
       </div>
       <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">이어서 인사이트 공유회가 있습니다.</p>
@@ -519,7 +612,7 @@
 
 </div>
 
-<div class="counter" id="counter">01 / 18</div>
+<div class="counter" id="counter">01 / 22</div>
 <button class="nav prev" id="prev" aria-label="이전">‹</button>
 <button class="nav next" id="next" aria-label="다음">›</button>
 <div class="hint">← → · 스페이스 이동</div>

@@ -143,6 +143,18 @@
   .slide.invert .body .cmd{color:var(--navy-deep);}
   .layers .min{margin-left:auto; flex:none; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-soft); font-size:1.05em; padding-left:.6rem;}
   @media(max-width:600px){ .layers .min{margin-left:0; padding-left:0;} }
+  /* 1280x720에서 넘치는 장만 죈다(글은 그대로) */
+  @media(min-width:601px){
+    .slide.fit .content{padding-top:2.3rem !important; padding-bottom:2.9rem !important;}
+    .slide.fit .viz{width:78px; height:78px;}
+    .slide.fit .body p{margin-bottom:.62rem;}
+    .slide.fit .body{line-height:1.66; font-size:.95em;}
+    .slide.fit .title{margin-bottom:.2rem;}
+    .slide.fit .layers .ly{padding-top:.5rem; padding-bottom:.5rem;}
+    .slide.fit2 .viz{display:none;}
+    .slide.fit2 .body{font-size:.9em; line-height:1.6;}
+    .slide.fit .task pre{max-height:15.5rem; overflow-y:auto; line-height:1.7; padding:.8rem 1.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -180,7 +192,7 @@
       <div class="body r r4">
         <p>첫 주에 이름을 굴렸고, 둘째 주에 작게 한 번 소리를 냈습니다.</p>
         <p>이번 주에는 새로 쓰지 않습니다. 이미 쓴 것을 다시 놓습니다.</p>
-        <p class="strong">방이 목차가 되고, 목차가 초고의 뼈대가 됩니다.</p>
+        <p class="strong">흩어진 씨앗이 분더카머가 되고, 분더카머가 목차가 되고, 목차가 초고 v0가 됩니다.</p>
       </div>
     </div>
   </section>
@@ -216,8 +228,8 @@
   </section>
 
   <!-- 04 · '나'도 편집이다 -->
-  <section class="slide">
-    <div class="content">
+  <section class="slide fit">
+    <div class="content" style="padding-top:3.2rem; padding-bottom:3.2rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle cx="46" cy="46" r="4" fill="currentColor" stroke="none"/>
@@ -233,16 +245,17 @@
       <p class="kicker r r2"><span class="num">I</span> · 에디톨로지 3부</p>
       <h2 class="title r r3">'나'도 편집입니다</h2>
       <div class="body r r4">
-        <p>『에디톨로지』 3부는 '나'를 기억이 편집된 결과로 봅니다. 기억은 꺼낼 때마다 다시 짜입니다.</p>
+        <p>『에디톨로지』 3부는 편집의 칼끝을 가장 가까운 곳으로 돌립니다. '개인'이라는 개념부터가 편집되어 태어났고, 3부는 지금 내가 믿는 '나'를 <em>기억이 편집된 서사</em>로 봅니다. 기억은 꺼낼 때마다 다시 짜입니다.</p>
+        <p>이 말은 이번 주의 허락이 됩니다. 나다움은 발췌하고 연결하고 배열하는 손에서 단단해집니다.</p>
         <p>3부 마지막 장의 제목은 <em>「책은 끝까지 읽는 것이 아니다」</em>입니다. 씨앗도 전부 다시 읽지 않습니다. 발췌하고, 배열합니다.</p>
-        <p class="strong">편집하는 손이 나를 짓습니다.</p>
+        <p class="strong">편집하는 손이 곧 나를 짓는 손입니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 05 · 게 카논 (GOLD) -->
-  <section class="slide invert">
-    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+  <section class="slide fit invert">
+    <div class="content" style="padding-top:3.4rem; padding-bottom:3.4rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path class="march" d="M40 140 q20 -30 44 -44 q28 -16 44 -48" stroke-opacity=".8"/>
@@ -253,9 +266,56 @@
       <p class="kicker r r2"><span class="num">I</span> · 게 카논</p>
       <h2 class="title r r3">거꾸로 읽어도<br><span class="em">무너지지 않습니다</span></h2>
       <div class="body r r4">
-        <p>바흐의 『음악의 헌정』에 게 카논이 있습니다. 한 선율을 앞에서, 같은 선율을 뒤에서부터 함께 연주해도 하나의 음악이 됩니다.</p>
-        <p>읽는 분은 내가 쓴 순서대로 읽지 않습니다. 어느 글로 들어와도 같은 사람의 목소리가 들리면, 그것이 일관성입니다.</p>
-        <p class="strong">헷갈릴 때는 악보에 비추어 봅니다.</p>
+        <p>논리의 달에 만난 『괴델, 에셔, 바흐』의 게 카논입니다. 바흐의 『음악의 헌정』에 담긴 곡으로, 한 선율을 앞에서, 같은 선율을 뒤에서부터 함께 연주해도 하나의 음악이 됩니다.</p>
+        <p>읽는 분은 내가 쓴 순서대로 읽지 않습니다. 어느 글로 들어와도 같은 사람의 목소리가 들릴 때 언어가 단단합니다. 그것이 <em>일관성</em>입니다.</p>
+        <p class="strong">판정 기준은 논리의 달에 지은 악보입니다. 악보에서 벗어난 소리는 아무리 좋아도 남의 노래입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05b · 분별 — 일관성이 향하는 곳 (1기 종강 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">I</span> · 분별</p>
+      <h2 class="title r r2">일관성이 향하는 곳</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">향하지 않는 곳</span>
+          <ul>
+            <li>같은 말의 반복</li>
+            <li>한 가지 형식만 고집하기</li>
+            <li>실수 없는 매끈함</li>
+            <li>변하지 않겠다는 다짐</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">향하는 곳</span>
+          <ul>
+            <li>변주가 아무리 달라도 하나인 으뜸음</li>
+            <li>거꾸로 읽어도 유지되는 목소리</li>
+            <li>3년 전 글과 어제 글이 같은 사람</li>
+            <li>악보에서 벗어나지 않는 소리</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p class="strong">잠깐 대화 · 3분 — 첫 글과 최근 글을 나란히 놓고 거꾸로 읽습니다. 같은 목소리가 들리나요.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05c · 배열이 편집이고, 편집이 창조다 (1기 종강 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 분더카머에서 초고까지</p>
+      <h2 class="title r r2">배열이 편집이고, 편집이 창조입니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">수장고<span class="h">씨앗</span></span><span class="ds">매일 길어 올린 씨앗이 쌓이는 곳입니다. <b>그대로 둡니다.</b> 정돈하다 지우고 싶어져도 씨앗은 건드리지 않습니다.</span></div>
+        <div class="ly"><span class="nm">전시실<span class="h">분더카머</span></span><span class="ds">살아 있는 카드를 꺼내 배열하는 곳입니다. 한 칸을 옮기면 방 전체의 뜻이 달라집니다. <b>배열의 최종 손은 디퍼님.</b></span></div>
+        <div class="ly"><span class="nm">목차<span class="h">초고 v0</span></span><span class="ds">읽는 분이 들어오는 방의 순서입니다. 장 제목은 <b>원천의 실제 문장 결</b>로 짓습니다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">카드 × 배열의 결 = 메타언어 — 내 초고가 무엇의 차원으로 짜였는가.</p>
       </div>
     </div>
   </section>
@@ -282,16 +342,16 @@
       <p class="kicker r r1"><span class="num">II</span> · 한 줄의 공식</p>
       <h2 class="title r r2">단위 × 차원 = 메타언어</h2>
       <div class="body r r3">
-        <p>첫 주에 만난 공식입니다. 초고를 조립한 뒤, 여우에게 배열에 붙일 <em>이름 후보 셋</em>을 청합니다.</p>
-        <p>이름은 서로 다른 두 카드에서 낱말 하나씩을 가져와 붙여 짓고, 낱말이 온 카드를 함께 보여 줍니다.</p>
-        <p class="strong">고르신 이름을 여정기록에 한 줄로 적어 둡니다. 마지막 주에 다시 씁니다.</p>
+        <p>첫 주에 만난 공식입니다. 같은 카드라도 차원이 한 칸 오르면 그전에 없던 것이 솟습니다. 그 솟은 배열의 원리가 <em>메타언어</em>, 세상을 한 단계 위에서 묶어 보는 나만의 상위 언어입니다.</p>
+        <p>초고 v0를 조립한 뒤, 여우에게 배열의 차원에 붙일 <em>이름 후보 셋</em>을 청합니다. 이름은 서로 다른 두 카드에서 낱말 하나씩을 가져와 짓고, 낱말이 온 카드를 함께 보여 줍니다.</p>
+        <p class="strong">고르신 이름이 디퍼님의 메타언어입니다. 여정기록에 한 줄로 적어 둡니다. 마지막 주에 내가 낳은 개념어의 후보가 됩니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 08 · 뺄셈 -->
-  <section class="slide">
-    <div class="content">
+  <section class="slide fit fit2">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
           <path d="M100 120 V70"/>
@@ -304,9 +364,10 @@
       <p class="kicker r r2"><span class="num">III</span> · 뺄셈</p>
       <h2 class="title r r3">지우고 남는 것이 목소리입니다</h2>
       <div class="body r r4">
-        <p>이번 주의 퇴고는 덜어내는 손입니다. 쓴 글 한 편을 골라, 나답지 않은 문장을 지웁니다.</p>
-        <p>빌려 온 표현, 유행에 맞춰 끼워 넣은 말, 확신 없이 붙인 과장이 지울 후보입니다. 표는 세션 05에 있습니다.</p>
-        <p class="strong">잠깐 대화 · 3분 — 「이 정도면 됐다」의 선을 한 문장으로.</p>
+        <p>이번 주의 퇴고는 뺄셈입니다. 더 잘 쓰려는 손을 내려놓고, 쓴 글 한 편에서 나답지 않은 문장을 지웁니다.</p>
+        <p>빌려 온 표현, 유행에 맞춰 끼워 넣은 말, 확신 없이 붙인 과장, 눈치를 보며 늘어난 설명 — 문법의 달에 만난 <em>희석 신호</em>를 지웁니다. 표는 세션 05에 있습니다.</p>
+        <p>"가장 중요한 것은 눈에 보이지 않아." 눈에 띄려고 얹은 것을 걷어내면 목소리가 남습니다.<span class="cite">생텍쥐페리, 『어린 왕자』</span></p>
+        <p class="strong">잠깐 대화 · 3분 — 「이 정도면 됐다」의 선을 한 문장으로. 어디를 펼쳐 읽어도 내 목소리가 유지되면 내보낼 수 있습니다.</p>
       </div>
     </div>
   </section>
@@ -321,11 +382,33 @@
         <div class="ly"><span class="nm">빈 방<span class="h">02</span></span><span class="ds">재료가 없는 장은 <b>[비어 있는 방]</b>으로 남깁니다.</span></div>
         <div class="ly"><span class="nm">승인<span class="h">03</span></span><span class="ds">목차와 배치 계획을 먼저 보고, <b>승인한 뒤에</b> 조립합니다.</span></div>
       </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">완성보다 조립이 목적입니다. 다듬기는 그다음 퇴고와 Book-to-Brand의 몫입니다. [비어 있는 방]은 다음에 쓸 글의 지도입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09b · 초고 v0 곁에 — 인사이트 열 장 (세션 원본 복원) -->
+  <section class="slide">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
+      <p class="kicker r r1"><span class="num">III</span> · 초고 v0 곁에 하나 더 · Insight Ten</p>
+      <h2 class="title r r2">인사이트 카드, <span class="em">이번 주 석 장</span></h2>
+      <div class="body r r3">
+        <p>초고 v0는 수집의 결과입니다. 여우가 엮기만 하니, 초고에 들어가는 문장은 전부 이미 있던 문장입니다. 그 곁에 하나 더 남깁니다. 이 달에 그전에 없던 것이 태어나는 자리, <em>사이의 경이</em>에서 나온 인사이트 카드입니다.</p>
+      </div>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">1주 · 2주<span class="h">두 장 · 석 장</span></span><span class="ds">걸어온 자리.</span></div>
+        <div class="ly"><span class="nm">3주<span class="h">석 장</span></span><span class="ds">방을 정돈하면서, 차원을 바꾸면서, 목차를 놓으면서.</span></div>
+        <div class="ly"><span class="nm">4주<span class="h">두 장</span></span><span class="ds">매니페스토, 그리고 내가 낳은 개념어 하나.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">열 장이 못 되어도 됩니다. 이번 주가 한 장이면 한 장으로 갑니다.</p>
+      </div>
     </div>
   </section>
 
   <!-- 10 · 방 돌리기 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -343,7 +426,8 @@
       <h2 class="title r r3">이번 주에는 <span class="em">뜻밖의 짝</span>을 먼저 읽습니다</h2>
       <div class="body r r4">
         <p>여우에게 <span class="cmd">분더카머</span>. 다섯 차원이 한 번에 펼쳐집니다. 맨 끝에 가장 먼 두 장이 나란히 놓입니다.</p>
-        <p class="strong">여우가 따로 묻지 않아도, 문장이 마음에 오면 「저장」. 이번 주는 석 장까지입니다.</p>
+        <p>여우가 그 두 장의 낱말로 한 문장을 짓습니다. 사이의 경이입니다. 조각과 조각 사이에서 새 씨앗이 태어납니다.</p>
+        <p class="strong">여우가 따로 묻지 않아도, 사이의 경이가 마음에 오면 「저장」. 종합 씨앗으로 수장고에 심깁니다. 이번 주는 석 장까지입니다.</p>
       </div>
     </div>
   </section>
@@ -355,7 +439,7 @@
       <h2 class="title r r2">뜻밖의 짝 — 카드 두 장</h2>
       <div class="layers r r3">
         <div class="ly"><span class="nm">고르기<span class="h">3분</span></span><span class="ds">서로 가장 멀어 보이는 <b>두 장</b>을 고릅니다.</span></div>
-        <div class="ly"><span class="nm">쓰기<span class="h">5분</span></span><span class="ds">나란히 놓고, 사이에서 떠오르는 <b>한 문장</b>을 적습니다.</span></div>
+        <div class="ly"><span class="nm">쓰기<span class="h">5분</span></span><span class="ds">나란히 놓고, 사이에서 떠오르는 한 문장, <b>사이의 경이</b>를 적습니다.</span></div>
         <div class="ly"><span class="nm">나눔<span class="h">7분</span></span><span class="ds">원하시는 분만 읽습니다. 피드백 없이 듣습니다.</span></div>
       </div>
     </div>
@@ -384,13 +468,13 @@
       </div>
       <div class="body r r4">
         <p>시간이 더 있으시면 과제 페이지의 여섯 가지로 가 보세요. 읽기는 두 권입니다 — 『에디톨로지』 3부와 에필로그, 『분더카머』 「생성의 벽장」부터 「덧」까지.</p>
-        <p>가제 한 줄과 카드 한 장은 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
+        <p>가제 한 줄과 인사이트 카드 한 장은 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
       </div>
     </div>
   </section>
 
   <!-- 14 · 닫기 -->
-  <section class="slide">
+  <section class="slide fit fit2">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -402,7 +486,8 @@
       <p class="kicker r r2">수사의 달 3주차 · 나다운 언어로 단단하게</p>
       <h2 class="title r r3">새로 쓰지 않고,<br><span class="em">다시 놓습니다</span></h2>
       <div class="body r r4" style="text-align:center;">
-        <p>방을 정돈하고, 순서를 정하고, 나답지 않은 문장을 지웁니다.</p>
+        <p>방을 정돈하고, 순서를 정하고, 나답지 않은 문장을 지웁니다. 배열이 편집이고, 편집이 창조입니다.</p>
+        <p>한 칸을 옮기면 분더카머 전체가 달라집니다. 배열의 최종 손은 디퍼님입니다.</p>
         <p class="final">다음 밤은 10월 26일 월요일 저녁 8시,<br>마지막 소절 하모니입니다.</p>
       </div>
       <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">이어서 인사이트 공유회가 있습니다.</p>
@@ -411,7 +496,7 @@
 
 </div>
 
-<div class="counter" id="counter">01 / 14</div>
+<div class="counter" id="counter">01 / 17</div>
 <button class="nav prev" id="prev" aria-label="이전">‹</button>
 <button class="nav next" id="next" aria-label="다음">›</button>
 <div class="hint">← → · 스페이스 이동</div>

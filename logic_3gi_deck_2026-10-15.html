@@ -310,6 +310,18 @@
     .nav{font-size:24px;} .nav.prev{right:3.4rem;} .nav.next{right:1rem;}
     .viz.wide{width:100% !important;}
   }
+  /* 1280x720에서 넘치는 장만 죈다(글은 그대로) */
+  @media(min-width:601px){
+    .slide.fit .content{padding-top:2rem !important; padding-bottom:2.6rem !important;}
+    .slide.fit .viz{width:84px; height:84px;}
+    .slide.fit .body p{margin-bottom:.6rem;}
+    .slide.fit .body{line-height:1.62;}
+    .slide.fit .layers .ly{padding-top:.5rem; padding-bottom:.5rem;}
+    .slide.fit .layers .ds, .slide.fit .duo p{line-height:1.55;}
+    .slide.fit2 .viz{display:none;}
+    .slide.fit2 .body, .slide.fit2 .layers .ds, .slide.fit2 .duo p, .slide.fit2 .cards .m{font-size:16px;}
+    .slide.fit2 .title{font-size:clamp(1.4rem,2.6vw,2rem);}
+  }
 </style>
 </head>
 <body>
@@ -384,7 +396,7 @@
       <h2 class="title r r3">여드레를 걸으셨습니다</h2>
       <div class="body r r4">
         <p>지난주 밤에 논리의 문을 열었습니다. 하루 한 걸음씩 걸으셨다면 내일쯤 형식 체계 v1을 짓습니다. 공리 셋과 변환 규칙 셋입니다.</p>
-        <p>그다음 걸음부터 여우는 다른 것을 묻습니다. 이야기를 가장 먼저 들려 드리고 싶은 한 사람, 그분이 자주 하시는 말, 만나기 전과 뒤의 마음.</p>
+        <p>그다음 걸음부터 여우는 다른 것을 묻습니다. 이야기를 가장 먼저 들려 드리고 싶은 단 한 사람의 얼굴, 그분이 자주 하시는 말, 만나기 전과 뒤의 마음, 내 것과 그분의 문제가 겹치는 자리.</p>
         <p class="strong">오늘 밤은 그 걸음에 앞서, 대응이라는 낱말을 먼저 만납니다.</p>
       </div>
     </div>
@@ -415,13 +427,13 @@
       <h2 class="title r r3">체계는 아직 <span class="em">아무것도 뜻하지 않습니다</span></h2>
       <div class="body r r4">
         <p>지난주에 뜻은 규칙을 따라 움직이는 동안 안에서 생긴다고 했습니다. 오늘은 그다음입니다. 안에서 생긴 뜻이 바깥에 읽히려면, 안의 구조와 바깥의 구조가 같은 모양으로 포개져야 합니다.</p>
-        <p>호프스태터는 그 포개짐을 <em>이소모피즘</em>이라 부릅니다. 의미는 내 것과 누군가의 문제가 맞닿는 자리에서 태어납니다.</p>
+        <p>호프스태터는 그 포개짐을 <em>이소모피즘</em>이라 부릅니다. 의미는 텍스트 안에 있지 않습니다. 내 것과 누군가의 문제가 맞닿는 자리에서 태어납니다.</p>
         <p class="strong">이 주 내내 쓸 낱말입니다.</p>
       </div>
     </div>
   </section>
   <!-- 04 · 게 카논 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -437,14 +449,14 @@
       <p class="kicker r r2">강의 · 게 카논</p>
       <h2 class="title r r3">거꾸로 읽어도 <span class="em">나인 글</span></h2>
       <div class="body r r4">
-        <p>바흐의 게 카논은 한 선율을 앞에서부터, 같은 선율을 뒤에서부터 함께 연주해도 어울리는 곡입니다. 글에도 그런 결이 있습니다. 어느 쪽에서 읽어도 같은 사람인 글입니다.</p>
-        <p>검열 없이 쏟아낸 글이 그렇습니다. 모닝페이지가 정직했다면, 거기 적힌 목소리는 어느 방향으로 읽어도 디퍼님입니다.</p>
-        <p class="final">일이 되려면 먼저 진짜여야 합니다.</p>
+        <p>바흐의 게 카논은 한 선율을 앞에서부터, 같은 선율을 뒤에서부터 함께 연주해도 어울리는 곡입니다. 글에도 그런 결이 있습니다. 거꾸로 읽어도 자기 자신인 글입니다. 검열관 없이 쏟아낸 글이라야 앞과 뒤가 같습니다.</p>
+        <p>그 <em>자기일관성</em>이 곧 진정성입니다. 모닝페이지가 정직했다면, 거기 적힌 목소리는 어느 방향으로 읽어도 디퍼님입니다.</p>
+        <p class="final">일이 되려면 먼저 진짜여야 합니다.<br>진짜 목소리만이 베껴지지 않습니다.</p>
       </div>
     </div>
   </section>
   <!-- 05 · 게 카논의 구조 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content" style="padding-top:2.6rem; padding-bottom:2.6rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -463,18 +475,18 @@
       <p class="kicker r r2">강의 · 게 카논 · 읽는 법</p>
       <h2 class="title r r3">대화가 <span class="em">제 구조</span>를 말합니다</h2>
       <div class="layers r r4">
-        <div class="ly"><span class="nm">뒤집힘<span class="h">RETROGRADE</span></span><span class="ds">아킬레스와 거북의 대사가 한가운데를 지나면 <b>거꾸로 되짚히며 서로 바뀝니다.</b></span></div>
-        <div class="ly"><span class="nm">축<span class="h">PIVOT</span></span><span class="ds">그 한가운데에 <b>게가 들어옵니다.</b> 바흐 『음악의 헌정』의 게 카논, 에셔의 판화 「게 카논」이 같은 자리에 겹칩니다.</span></div>
-        <div class="ly"><span class="nm">형식=내용<span class="h">FORM IS CONTENT</span></span><span class="ds">대화는 게 카논에 <b>관해</b> 말하면서 게 카논<b>으로</b> 되어 있습니다.</span></div>
+        <div class="ly"><span class="nm">뒤집힘<span class="h">RETROGRADE</span></span><span class="ds">아킬레스와 거북의 대사가 한가운데를 지나면 <b>거꾸로 되짚히며 서로 바뀝니다.</b> 앞에서 아킬레스가 한 말을 뒤에서 거북이 합니다.</span></div>
+        <div class="ly"><span class="nm">축<span class="h">PIVOT</span></span><span class="ds">그 한가운데에 <b>게가 들어옵니다.</b> 게는 뒤로 걷는 짐승입니다. 바흐 『음악의 헌정』의 게 카논, 에셔의 판화 「게 카논」이 같은 자리에 겹칩니다.</span></div>
+        <div class="ly"><span class="nm">형식=내용<span class="h">FORM IS CONTENT</span></span><span class="ds">대화는 게 카논에 <b>관해</b> 말하면서 동시에 게 카논<b>으로</b> 되어 있습니다. 읽는 이는 절반을 지나서야 눈치챕니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center;">
-        <p class="strong">무엇을 말하는가와 어떻게 되어 있는가가 하나인 글은 베끼기 어렵습니다.</p>
+        <p class="strong">무엇을 말하는가와 어떻게 되어 있는가가 하나일 때, 그 글은 베낄 수 없습니다.</p>
       </div>
     </div>
   </section>
   <!-- 06 · 음악의 헌정 -->
   <section class="slide">
-    <div class="content">
+    <div class="content" style="padding-top:4.6rem; padding-bottom:4.6rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <g class="breathe" style="transform-origin:46px 65px;"><path class="ac" d="M46 49 C47.12 59.56, 51.44 63.88, 62 65 C51.44 66.12, 47.12 70.44, 46 81 C44.88 70.44, 40.56 66.12, 30 65 C40.56 63.88, 44.88 59.56, 46 49 Z" fill="currentColor" stroke="none" /></g>
@@ -492,14 +504,14 @@
       <p class="kicker r r2">강의 · 음악의 헌정</p>
       <h2 class="title r r3">하나의 주제, <span class="em">여러 변주</span></h2>
       <div class="body r r4">
-        <p>프리드리히 대왕이 바흐에게 주제 하나를 건넸습니다. 바흐는 그 한 줄로 카논과 푸가를 여러 곡 지어 바쳤습니다. 『음악의 헌정』입니다.</p>
-        <p>디퍼님의 씨앗 문장이 그 주제입니다. 일이 된다는 것은 하나의 주제를 거듭 변주하는 일입니다.</p>
-        <p class="strong">콘텐츠 나무의 가지는 같은 뿌리에서 나옵니다.</p>
+        <p>프리드리히 대왕이 바흐에게 주제 하나를 건넸습니다. 바흐는 그 한 줄로 카논과 푸가를 여러 곡 지어 바쳤습니다. 『음악의 헌정』입니다. 하나의 주제가 여러 변주를 낳습니다.</p>
+        <p>디퍼님의 씨앗 문장이 그 주제입니다. 일이 된다는 것은 매번 새것을 짜내는 일이기보다, 하나의 주제를 거듭 변주하는 일입니다.</p>
+        <p class="strong">콘텐츠 나무의 모든 가지가 같은 뿌리에서 나옵니다.</p>
       </div>
     </div>
   </section>
   <!-- 07 · 무의 헌정 (그린) -->
-  <section class="slide invert">
+  <section class="slide invert fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -509,16 +521,16 @@
         </svg>
       </div>
       <p class="kicker r r2">강의 · 무의 헌정</p>
-      <h2 class="title r r3">진짜는 <span class="em">겉에 드러나지 않습니다</span></h2>
+      <h2 class="title r r3">진짜는 <span class="em">깊이 숨습니다</span></h2>
       <div class="body r r4">
-        <p>선불교의 공안은 겉만 봐서는 진짜인지 알 수 없습니다. 호프스태터의 MU 수수께끼도 그렇습니다. 규칙을 아무리 들여다봐도 MU에 닿을 수 있는지는 좀처럼 드러나지 않습니다.</p>
-        <p>디퍼님의 모닝페이지도 처음에는 엉킨 끈 한 뭉치처럼 보입니다.</p>
-        <p class="final">가치는 그 안에 있습니다.<br>아직 겉으로 올라오지 않았을 뿐입니다.</p>
+        <p>선불교의 공안은 묻습니다. 이 화두는 진짜인가. 표면만 봐서는 알 수 없습니다. 호프스태터의 MU 수수께끼도 그렇습니다. 규칙을 아무리 들여다봐도 MU에 닿을 수 있는지는 좀처럼 드러나지 않습니다. 진위는 분명히 있는데, 아주 깊이 숨어 있습니다.</p>
+        <p>디퍼님의 모닝페이지도 그렇습니다. 검열관 없이 쏟아낸 세 쪽은 엉킨 끈 한 뭉치처럼 보입니다.</p>
+        <p class="final">가치는 그 안에 있습니다.<br>아직 표면으로 떠오르지 않았을 뿐입니다.</p>
       </div>
     </div>
   </section>
   <!-- 08 · 무의 헌정 · 판별 (그린) -->
-  <section class="slide invert">
+  <section class="slide invert fit">
     <div class="content" style="padding-top:2.6rem; padding-bottom:2.6rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -534,17 +546,17 @@
       <p class="kicker r r2">강의 · 무의 헌정 · 읽는 법</p>
       <h2 class="title r r3">무(無)는 <span class="em">되물음</span>입니다</h2>
       <div class="layers r r4">
-        <div class="ly"><span class="nm">조주의 무<span class="h">JOSHU</span></span><span class="ds">개에게도 불성이 있습니까. 조주는 <b>무</b>라 했습니다. <b>질문의 틀을 되물린 것</b>입니다.</span></div>
-        <div class="ly"><span class="nm">공안의 진위<span class="h">GENUINE?</span></span><span class="ds">거북은 아킬레스에게 공안 여럿을 들려주며 진짜인지 묻습니다. <b>겉만 보고는 가릴 수 없습니다.</b></span></div>
-        <div class="ly"><span class="nm">끈으로 옮기기<span class="h">STRINGS</span></span><span class="ds">공안을 끈으로 옮겨 접어 보는 거북의 방법은, <b>어떤 문장이 정리인지 가리는 절차</b>와 같은 물음입니다.</span></div>
+        <div class="ly"><span class="nm">조주의 무<span class="h">JOSHU</span></span><span class="ds">개에게도 불성이 있습니까. 조주는 <b>무</b>라 했습니다. 있다도 없다도 아닙니다. <b>질문의 틀 자체를 되물린 것</b>입니다.</span></div>
+        <div class="ly"><span class="nm">공안의 진위<span class="h">GENUINE?</span></span><span class="ds">거북은 아킬레스에게 공안 여럿을 들려주며 묻습니다. 이것은 진짜 공안인가. <b>겉만 보고는 가릴 수 없습니다.</b></span></div>
+        <div class="ly"><span class="nm">끈으로 옮기기<span class="h">STRINGS</span></span><span class="ds">공안을 끈으로 옮기고 접어 보면 진짜와 가짜가 가려진다는 거북의 방법입니다. 형식 체계에서 <b>어떤 문장이 정리인지 가리는 절차</b>와 같은 물음입니다.</span></div>
       </div>
       <div class="body r r4" style="text-align:center;">
-        <p class="strong">진위는 분명히 있습니다. 각도를 바꿔야 보입니다.</p>
+        <p class="strong">진위는 분명히 있습니다. 다만 표면에 없습니다. 각도를 바꾸는 사람에게 떠오릅니다.</p>
       </div>
     </div>
   </section>
   <!-- 09 · 번역 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content" style="padding-top:2.8rem; padding-bottom:2.8rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -560,17 +572,18 @@
         </svg>
       </div>
       <p class="kicker r r2">강의 · 번역</p>
-      <h2 class="title r r3">각도를 바꾸면 <span class="em">보입니다</span></h2>
+      <h2 class="title r r3">각도를 바꾸면, <span class="em">떠오릅니다</span></h2>
       <div class="body r r4">
-        <p>호프스태터의 답은 다시 보기입니다. MU 수수께끼의 답은 글자 I의 개수를 셋으로 나눠 보는 순간 드러납니다. 깊이 있던 것을 겉으로 옮기는 일, 그것이 번역입니다. 번역에는 늘 두 쪽이 있습니다.</p>
+        <p>호프스태터의 답은 다시 보기입니다. 더 쌓는 대신, 같은 정보를 보는 방식을 바꿔 다시 정리합니다. MU 수수께끼의 답은 글자 I의 개수를 셋으로 나눠 보는 순간 표면으로 떠오릅니다. 엉켜 보이던 끈도 한 각도에서 보면 규칙이 드러납니다.</p>
+        <p>복잡함은 자리를 바꾸면 단순해집니다. 깊이 숨은 것을 표면으로 전사하는 일, 그것이 번역입니다. 번역에는 늘 두 쪽이 있습니다.</p>
       </div>
       <div class="duo r r4">
         <div class="card">
-          <span class="lab">내 것 · 경험</span>
-          <p>내가 살아낸 것. 모닝페이지, 씨앗 문장, 통했던 장면.</p>
+          <span class="lab">내 것 · 경험 도메인</span>
+          <p>내가 살아낸 것. 모닝페이지 세 쪽, 씨앗 문장, 통했던 장면.</p>
         </div>
         <div class="card hot">
-          <span class="lab">그분의 문제</span>
+          <span class="lab">그분의 문제 · 문제 도메인</span>
           <p>그분이 한숨 섞어 자주 하시는 말. 만나기 전의 마음과 뒤의 마음.</p>
           <span class="note">둘이 겹치는 구조 — 그 자리가 이소모피즘입니다</span>
         </div>
@@ -578,7 +591,7 @@
     </div>
   </section>
   <!-- 10 · 기획은 번역이다 -->
-  <section class="slide">
+  <section class="slide fit fit2">
     <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -595,18 +608,18 @@
       <p class="kicker r r2">강의 · 콘텐츠가 되는 자리</p>
       <h2 class="title r r3">기획은 <span class="em">번역</span>입니다</h2>
       <div class="layers r r4">
-        <div class="ly"><span class="nm">기획자<span class="h">TRANSLATOR</span></span><span class="ds">숨은 구조가 겉으로 드러나는 <b>각도를 찾는 사람</b>입니다.</span></div>
-        <div class="ly"><span class="nm">불변량<span class="h">INVARIANT</span></span><span class="ds">겉이 아무리 바뀌어도 변하지 않는 것. MU에서는 I의 개수가 셋으로 나뉘지 않는다는 사실입니다.</span></div>
-        <div class="ly"><span class="nm">전사<span class="h">TRANSCRIPTION</span></span><span class="ds">가치는 그대로 두고 겉만 바꿉니다. <b>이름, 형식, 채널이 모두 전사입니다.</b></span></div>
+        <div class="ly"><span class="nm">기획자<span class="h">TRANSLATOR</span></span><span class="ds">정보를 더 쌓기보다, 숨은 구조가 표면으로 솟는 <b>각도를 찾는 사람</b>입니다. 깊이 숨은 의미를 독자가 단번에 받을 표면으로 옮깁니다.</span></div>
+        <div class="ly"><span class="nm">불변량<span class="h">INVARIANT</span></span><span class="ds">표면이 아무리 바뀌어도 한 번도 변하지 않은 것. MU에서는 I의 개수가 셋으로 나뉘지 않는다는 사실입니다. <b>그 불변량이 곧 숨은 질서입니다.</b></span></div>
+        <div class="ly"><span class="nm">전사<span class="h">TRANSCRIPTION</span></span><span class="ds">가치는 그대로 두고 표면만 바꿉니다. <b>이름, 가격, 형식, 채널이 모두 전사입니다.</b></span></div>
       </div>
       <div class="body r r4" style="text-align:center;">
-        <p class="strong">디퍼님의 불변량을, 받는 분이 읽을 수 있는 겉으로 옮깁니다.</p>
+        <p class="strong">제품은 디퍼님의 불변량을 고객이 읽을 수 있는 표면으로 전사한 것입니다.</p>
       </div>
     </div>
   </section>
   <!-- 11 · 화면과 구조 -->
-  <section class="slide">
-    <div class="content" style="padding-top:1.4rem; padding-bottom:1.4rem;">
+  <section class="slide fit">
+    <div class="content" style="padding-top:0rem; padding-bottom:0rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <rect x="30" y="22" width="110" height="70" rx="6" stroke-opacity=".7"/>
@@ -624,23 +637,21 @@
         </svg>
       </div>
       <p class="kicker r r2">강의 · 화면과 구조</p>
-      <h2 class="title r r3">문법은 넘어도 <span class="em">구조는 남습니다</span></h2>
+      <h2 class="title r r3">문법은 넘어도 <span class="em">구조는 못 넘습니다</span></h2>
       <div class="body r r4">
         <p>취리히 연방공대 연구진이 대학생 백 명에게 코드 없이 말로만 앱을 짓게 했습니다. 글쓰기 실력도 성과와 관련이 있었지만, 컴퓨터 과학 성취와의 관련이 더 컸습니다.</p>
       </div>
-      <p class="latin r r4" style="font-size:14px; margin:.2rem 0 .6rem;">Thorgeirsson · Weidmann · Su, ETH Zürich, CHI 2026 (N=100 · CS r=.39 · 글쓰기 r=.29)</p>
-      <div class="body r r4">
-        <p>여기서부터는 우리의 풀이입니다.</p>
-      </div>
+      <p class="latin r r4" style="font-size:13px; margin:0 0 .1rem;">Thorgeirsson · Weidmann · Su, ETH Zürich, CHI 2026 (N=100 · CS r=.39 · 글쓰기 r=.29)</p>
+      <p class="r r4" style="font-size:15px; margin:0;">여기서부터는 우리의 풀이입니다.</p>
       <div class="duo r r4">
         <div class="card">
           <span class="lab">화면만 보는 사람</span>
-          <p>매끄러운 화면을 보고 다 됐다고 여깁니다. <b>어디를 물어야 할지 모릅니다.</b></p>
+          <p>매끄러운 화면을 보고 다 됐다고 여깁니다. 안에서 무엇이 무너졌는지 <b>어디를 물어야 할지 모릅니다.</b></p>
         </div>
         <div class="card hot">
           <span class="lab">구조를 묻는 사람</span>
-          <p>규칙을 아는 사람은 <b>어디가 어긋났는지 압니다.</b></p>
-          <span class="note">논리의 달에는 구조를 묻는 연습을 합니다</span>
+          <p>규칙을 아는 사람만이 <b>어디가 어긋났는지 압니다.</b> 문법은 프롬프트로 넘지만, 구조를 보는 눈은 넘겨지지 않습니다.</p>
+          <span class="note">논리의 달이 하는 일입니다 — 전경보다 배경을 묻습니다</span>
         </div>
       </div>
     </div>
@@ -701,12 +712,12 @@
       <h2 class="title r r3">기계는 <span class="em">이렇게</span> 읽습니다</h2>
       <div class="body r r4">
         <p>입력은 한꺼번에 층을 통과합니다. 출력은 한 토큰씩 나와 다시 입력 끝에 붙습니다. 앞부분은 매번 같아서, 기계는 그 부분을 <em>캐시</em>에 기억해 두고 다시 계산하지 않습니다.</p>
-        <p class="strong">앞이 같아야 기억이 듭니다.</p>
+        <p class="strong">읽히는 쪽은 싸고 빠릅니다. 만드는 쪽이 느리고 비쌉니다. 앞이 같아야 기억이 듭니다.</p>
       </div>
     </div>
   </section>
   <!-- 13 · 여우에게 말하는 법 -->
-  <section class="slide">
+  <section class="slide fit fit2">
     <div class="content" style="padding-top:2.8rem; padding-bottom:2.8rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -723,16 +734,19 @@
       </div>
       <p class="kicker r r2">강의 · 여우에게 말하는 법</p>
       <h2 class="title r r3">한 번에, <span class="em">앞에 고정</span>, 뒤에 변주</h2>
+      <div class="body r r4">
+        <p>기계는 입력을 한꺼번에 읽고 출력을 한 토큰씩 만듭니다. 앞에서부터 같은 부분은 기억해 두고 다시 계산하지 않습니다. 이것이 캐시입니다.</p>
+      </div>
       <div class="layers r r4">
-        <div class="ly"><span class="nm">한 번에<span class="h">ONE BLOCK</span></span><span class="ds">재료·규칙·부탁을 한 덩이로 줍니다.</span></div>
-        <div class="ly"><span class="nm">앞에 고정<span class="h">PREFIX</span></span><span class="ds">바뀌지 않는 것(볼트 재료, 규율, 목소리 기준)을 맨 앞에 둡니다.</span></div>
-        <div class="ly"><span class="nm">뒤에 변주<span class="h">SUFFIX</span></span><span class="ds">오늘 바뀌는 지시는 맨 끝에 둡니다. 과제의 [각도] 한 줄이 그 자리입니다.</span></div>
-        <div class="ly"><span class="nm">필요한 것만<span class="h">NO MORE</span></span><span class="ds">관계없는 재료는 뺍니다.</span></div>
+        <div class="ly"><span class="nm">한 번에<span class="h">ONE BLOCK</span></span><span class="ds">재료·규칙·부탁을 <b>한 덩이로</b> 줍니다. 조금씩 흘리면 매 턴 앞을 다시 읽고, 앞의 말은 흐려집니다.</span></div>
+        <div class="ly"><span class="nm">앞에 고정<span class="h">PREFIX</span></span><span class="ds">바뀌지 않는 것(볼트 재료 · 분석의 규율 · 목소리 기준)을 <b>맨 앞에</b> 둡니다. 같은 머리말을 다시 쓰면 다음부터 싸고 빨라집니다.</span></div>
+        <div class="ly"><span class="nm">뒤에 변주<span class="h">SUFFIX</span></span><span class="ds">오늘 바뀌는 지시는 맨 끝에 둡니다. 과제의 [각도] 한 줄이 그 자리입니다. 앞은 주제, 뒤는 변주 — 카논의 꼴입니다.</span></div>
+        <div class="ly"><span class="nm">필요한 것만<span class="h">NO MORE</span></span><span class="ds">길다고 좋아지지 않습니다. 관계없는 재료는 주의를 흩습니다. 이 주의 재료만 읽게 합니다.</span></div>
       </div>
     </div>
   </section>
   <!-- 14 · 다음 걸음 -->
-  <section class="slide">
+  <section class="slide fit">
     <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 112" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -750,14 +764,14 @@
       <p class="kicker r r2">강의 · 다음 걸음</p>
       <h2 class="title r r3">형식 체계 다음에, 여우는 <span class="em">세 가지</span>를 묻습니다</h2>
       <div class="layers r r4">
-        <div class="ly"><span class="nm">단 한 사람<span class="h">READER</span></span><span class="ds">이야기를 가장 먼저 들려 드리고 싶은 한 사람. <b>3년 전의 나도 좋은 독자입니다.</b></span></div>
-        <div class="ly"><span class="nm">변환<span class="h">CHANGE</span></span><span class="ds">그분이 디퍼님을 만나기 전의 마음과, 만나고 돌아가는 길의 마음.</span></div>
-        <div class="ly"><span class="nm">대응<span class="h">MAP</span></span><span class="ds">왼쪽에 내가 겪은 일, 오른쪽에 그분이 지금 겪는 일. <b>겹치는 자리가 이소모피즘입니다.</b></span></div>
+        <div class="ly"><span class="nm">단 한 사람<span class="h">READER</span></span><span class="ds">번역에는 받는 사람이 있습니다. 얼굴이 떠오르는 한 사람, 이야기를 가장 먼저 들려 드리고 싶은 분입니다. <b>3년 전의 나도 훌륭한 독자입니다.</b></span></div>
+        <div class="ly"><span class="nm">변환<span class="h">CHANGE</span></span><span class="ds">만나기 전의 마음에서 만나고 돌아가는 길의 마음으로. <b>그분을 변하게 만드는 순간이 곧 내 콘텐츠의 자리입니다.</b></span></div>
+        <div class="ly"><span class="nm">대응<span class="h">MAP</span></span><span class="ds">왼쪽에 내 것, 오른쪽에 그분의 문제. <b>겹치는 구조가 이소모피즘</b>이고, 그분이 걸려 넘어질 말이 발견의 자리입니다.</span></div>
       </div>
     </div>
   </section>
   <!-- 15 · 자기를 비추는 고리 (그린) -->
-  <section class="slide invert">
+  <section class="slide invert fit fit2">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
@@ -775,14 +789,14 @@
       <p class="kicker r r2">강의 · 자기를 비추는 고리</p>
       <h2 class="title r r3">짓지 않고, <span class="em">자라게</span></h2>
       <div class="body r r4">
-        <p>여우와 쓰는 볼트는 자기를 가리키는 고리입니다. 내 모닝페이지를 여우가 읽고, 여우가 읽은 것을 내게 돌려주고, 나는 거기에 한 줄을 더합니다. 그 한 줄이 다시 재료가 됩니다.</p>
-        <p>자기를 만들며 자기를 유지하는 일을 <em>자기생성</em>이라 부릅니다.</p>
-        <p class="strong">안에만 두면 고리가 멈춥니다. 내어줄 때 고리가 돕니다.</p>
+        <p>여기서 글이 몸을 얻습니다. 게 카논이 거꾸로 읽어도 자기 자신이듯, 여우와 쓰는 볼트는 자기를 가리키는 고리입니다. 내 모닝페이지를 여우가 읽고, 여우가 읽은 것을 내게 돌려주고, 나는 거기에 한 줄을 더합니다. 그 한 줄이 다시 재료가 됩니다.</p>
+        <p>보통의 기록은 선형으로 쌓이다 멈춥니다. 이 고리는 복리로 돕니다. 모닝페이지 한 장이 한 세포입니다. 벽돌처럼 쌓이기보다 세포처럼 스스로를 만들며 갱신합니다. 자기를 만들며 자기를 유지하는 일, <em>자기생성</em>입니다.</p>
+        <p class="strong">세포는 안으로만 잠그면 고입니다. 내어줄 때 고리는 돕니다. 내어줄 때, 나는 나를 다시 만듭니다.</p>
       </div>
     </div>
   </section>
-  <!-- 16 · 카논으로 적기 -->
-  <section class="slide">
+  <!-- 16 · 푸가로 적기 -->
+  <section class="slide fit">
     <div class="content">
       <div class="viz wide r r1">
         <svg viewBox="0 0 300 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -798,10 +812,11 @@
           <text class="lbl" x="280" y="118" text-anchor="end">CANON</text>
         </svg>
       </div>
-      <p class="kicker r r2">강의 · 카논으로 적기</p>
+      <p class="kicker r r2">강의 · 푸가로 적기</p>
       <h2 class="title r r3">여럿이 <span class="em">이어 부를 수 있게</span></h2>
       <div class="body r r4">
-        <p>겉으로 올라온 주제는 아직 한 사람의 선율입니다. 기획의 마지막은 그것을 악보로 적는 일입니다. 카논처럼, 한 사람이 낸 주제를 다음 사람이 이어받을 수 있게 적습니다.</p>
+        <p>표면으로 떠오른 주제는 아직 한 사람의 선율입니다. 기획의 마지막은 그것을 악보로 적는 일입니다. 카논처럼, 한 사람이 낸 주제를 다음 사람이 시차를 두고 이어받도록 적습니다. 잘 적힌 악보는 누구든 제 자리에서 같은 주제를 변주하게 합니다.</p>
+        <p>프레임워크도, 템플릿도, 방법론도 모두 악보입니다. 디퍼님의 주제를 남이 제 목소리로 부르게 옮긴 것입니다. 한 선율이 푸가가 될 때, 콘텐츠는 손을 떠나 스스로 퍼집니다.</p>
         <p class="strong">오늘 과제 「세 개의 악보」가 그 연습입니다.</p>
       </div>
     </div>
@@ -870,7 +885,7 @@
       <p class="kicker r r2">닫기 · 논리의 달 2주차</p>
       <h2 class="title r r3">의미는 <span class="em">대응에서 옵니다</span></h2>
       <div class="body r r4" style="text-align:center;">
-        <p class="final">하나의 주제를 고리에 실으면,<br>글이 일이 됩니다.</p>
+        <p class="final">하나의 진실한 주제를 고리에 실으면,<br>글은 스스로 자라 일이 됩니다.</p>
       </div>
       <p class="latin r r4" style="margin-top:1rem;">다음 밤은 10월 22일 목요일 밤 9시 30분, 자라는 고리입니다.</p>
     </div>

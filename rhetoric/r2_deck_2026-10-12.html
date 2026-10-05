@@ -143,6 +143,30 @@
   .slide.invert .body .cmd{color:var(--navy-deep);}
   .layers .min{margin-left:auto; flex:none; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-soft); font-size:1.05em; padding-left:.6rem;}
   @media(max-width:600px){ .layers .min{margin-left:0; padding-left:0;} }
+  .task{align-self:stretch; max-width:42rem; margin:.4rem auto 0; text-align:left;
+    border:1px solid var(--gold); border-radius:10px; overflow:hidden;
+    background:rgba(20,31,54,.62);}
+  .task .head{display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:.8rem 1.2rem; border-bottom:1px solid rgba(194,148,58,.35);}
+  .task .head b{font-family:"Noto Sans KR",sans-serif; font-size:.72rem; letter-spacing:.22em; color:var(--gold-soft); font-weight:700;}
+  .task button{font-family:"Noto Sans KR",sans-serif; font-size:.72rem; letter-spacing:.1em;
+    color:var(--gold-soft); background:transparent; border:1px solid var(--gold);
+    border-radius:6px; padding:5px 13px; cursor:pointer; transition:all .2s;}
+  .task button:hover{background:var(--gold); color:var(--navy-deep);}
+  .task pre{padding:1.2rem 1.3rem 1.4rem; white-space:pre-wrap; word-break:keep-all; overflow-wrap:break-word;
+    font-family:"Noto Sans KR",sans-serif; font-size:clamp(.8rem,1.1vw,.9rem); line-height:1.95; color:var(--cream);}
+  /* 1280x720에서 넘치는 장만 죈다(글은 그대로) */
+  @media(min-width:601px){
+    .slide.fit .content{padding-top:2.3rem !important; padding-bottom:2.9rem !important;}
+    .slide.fit .viz{width:78px; height:78px;}
+    .slide.fit .body p{margin-bottom:.62rem;}
+    .slide.fit .body{line-height:1.66; font-size:.95em;}
+    .slide.fit .title{margin-bottom:.2rem;}
+    .slide.fit .layers .ly{padding-top:.5rem; padding-bottom:.5rem;}
+    .slide.fit2 .viz{display:none;}
+    .slide.fit2 .body{font-size:.9em; line-height:1.6;}
+    .slide.fit .task pre{max-height:13.5rem; overflow-y:auto; line-height:1.7; padding:.8rem 1.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -158,7 +182,7 @@
       <img class="logo r r1" src="data:image/png;base64,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" alt="DEEPER">
       <p class="kicker r r2">2기 · 수사의 달 2주차 · 2026.10.12</p>
       <h1 class="title r r3">지속 가능한 나 —<br><span class="em">나는 어디에서 보는가</span></h1>
-      <p class="latin r r4">Variatio — 선율은 그대로, 형태만 바꿉니다</p>
+      <p class="latin r r4">Ontologia — 있는 것들의 지도</p>
       <p class="kicker r r4" style="margin-top:.6rem;">디퍼 언브랜딩 살롱 · 둘째 소절 · 변주</p>
     </div>
   </section>
@@ -178,9 +202,9 @@
       <p class="kicker r r2">열기</p>
       <h2 class="title r r3">지난주, 문을 열고 이름을 굴렸습니다</h2>
       <div class="body r r4">
-        <p>첫 주는 선율이었습니다. 수사의 문을 열고, 씨앗에 있는 말로 이름을 굴려 보았습니다.</p>
+        <p>첫 주는 선율이었습니다. 수사의 문을 열고, 씨앗에 살아 있는 말로 이름을 굴려 보았습니다. 내가 서서 말할 자리를 정하는 일이었습니다.</p>
         <p>이번 주의 물음은 그다음입니다. <em>이 노래를 오래 부를 수 있을까요.</em></p>
-        <p class="strong">오래 부르려면 부를 자리를 먼저 골라야 합니다.</p>
+        <p class="strong">같은 세상을, 나는 어디에서 보는가. 답은 자리에 있습니다.</p>
       </div>
     </div>
   </section>
@@ -195,7 +219,7 @@
           <span class="lab">앞의 넷</span>
           <ul>
             <li>열기 · 5분</li>
-            <li>관점은 편집이다 · 8분</li>
+            <li>관점은 편집이다 — 소실점 · 온톨로지 · 8분</li>
             <li>잘하는 것 말고, 자연스러운 것 · 5분</li>
             <li>가장 작은 발행 단위 · 8분</li>
           </ul>
@@ -215,9 +239,31 @@
     </div>
   </section>
 
-  <!-- 04 · 관점의 발견 -->
-  <section class="slide">
+  <!-- 04 · 매듭 — 관점은 발명되었다 (1기 덱 복원) -->
+  <section class="slide fit">
     <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M30 130 L110 40 L190 130" stroke-opacity=".7"/>
+          <path d="M55 130 L110 40 L165 130" stroke-opacity=".45"/>
+          <path d="M80 130 L110 40 L140 130" stroke-opacity=".3"/>
+          <circle cx="110" cy="40" r="5" fill="currentColor" stroke="none" class="pulse"/>
+          <line x1="24" y1="130" x2="196" y2="130" stroke-opacity=".6"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">매듭 · 에디톨로지 2부에서 건진 것</p>
+      <h2 class="title r r3">관점은 발명되었습니다</h2>
+      <div class="body r r4">
+        <p>우리가 '객관'이라 배운 원근법은, <em>소실점</em> 하나를 찍고 세계를 그 한 점으로 정렬한 편집이었습니다. 세계를 한 자리에서 전부 거두려는 통제 강박이기도 했습니다. 하나의 시점이 오백 년 동안 사실로 통했습니다.</p>
+        <p>방이 바뀌면 마음이 바뀌고, 진열이 바뀌면 값이 바뀝니다. 보는 눈도, 서는 자리도 편집의 산물입니다.</p>
+        <p class="strong">우리는 한 번도 스스로 고른 적 없는 소실점으로 평생을 보아 왔는지 모릅니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · 관점의 발견 -->
+  <section class="slide fit fit2">
+    <div class="content" style="padding-top:3.4rem; padding-bottom:3.4rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
           <path d="M100 120 V70"/>
@@ -230,16 +276,45 @@
       <p class="kicker r r2"><span class="num">I</span> · 관점의 발견</p>
       <h2 class="title r r3">여섯 세기 전, 피렌체에서</h2>
       <div class="body r r4">
-        <p>15세기 피렌체에서 브루넬레스키의 실험과 알베르티의 이론이 <em>한 사람이 한 자리에서 보는 시점</em>을 그림의 원리로 삼았습니다. 원근법입니다.</p>
-        <p>김정운은 『에디톨로지』 2부에서 그 원근법을 선택된 하나의 편집으로 읽습니다.</p>
-        <p class="strong">관점이 발명된 것이라면, 내 관점은 내가 다시 고를 수 있습니다.</p>
+        <p>퍼스펙티브(perspective)는 라틴어 페르스피케레(perspicere), '꿰뚫어 본다'에서 온 말입니다. 15세기 피렌체에서 브루넬레스키의 실험과 알베르티의 이론이 <em>한 사람이 한 자리에서 보는 시점</em>을 그림의 원리로 삼았습니다. 원근법입니다.</p>
+        <p>꿰뚫어 보려는 눈은 소실점 하나에 세계를 남김없이 정렬합니다. 이 발명 위에 '보는 나'가 태어났고, 데카르트의 합리성과 '객관'이라는 믿음이 지어졌습니다. 김정운은 『에디톨로지』 2부에서 그 원근법을 선택된 하나의 편집으로 읽습니다. 뒷날 세잔의 사과와 피카소의 얼굴이 단일 관점의 지배를 무너뜨렸습니다.</p>
+        <p class="strong">관점은 발명되었습니다. 발명된 것은 다시 발명할 수 있습니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 05 · 니체 (GOLD) -->
-  <section class="slide invert">
-    <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
+  <!-- 06 · 두 가게 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">I</span> · 두 가게</p>
+      <h2 class="title r r2">백화점과 편집숍</h2>
+      <div class="duo r r3">
+        <div class="card">
+          <span class="lab">백화점 · 남이 짠 분류표</span>
+          <ul>
+            <li>여성복 3층, 잡화 1층 — 표준 분류가 자리를 정합니다</li>
+            <li>그 지도 위에 놓이면 비슷한 물건 곁에서 비교됩니다</li>
+            <li>값은 분류가 정합니다</li>
+          </ul>
+        </div>
+        <div class="card hot">
+          <span class="lab">편집숍 · 주인의 안목</span>
+          <ul>
+            <li>같은 물건도 주인의 배열 안에서 다른 뜻을 얻습니다</li>
+            <li>사람들은 그 안목을 사러 옵니다</li>
+            <li>배열 자체가 값이 됩니다</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.4rem;">
+        <p class="strong">나는 지금 누구의 분류표 위에 진열되어 있을까요.<br>플랫폼의 카테고리, 남이 붙인 직함, 알고리즘의 진열대.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · 니체 (GOLD) -->
+  <section class="slide fit fit2 invert">
+    <div class="content" style="padding-top:3.4rem; padding-bottom:3.4rem;">
       <div class="viz r r1">
         <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path class="march" d="M40 140 q20 -30 44 -44 q28 -16 44 -48" stroke-opacity=".8"/>
@@ -250,15 +325,245 @@
       <p class="kicker r r2"><span class="num">I</span> · 니체 · 관점주의</p>
       <h2 class="title r r3">"사실이란 없다.<br><span class="em">오직 해석만이 있을 뿐"</span></h2>
       <div class="body r r4">
-        <p>니체는 이것을 관점주의라 불렀습니다. 어디에도 서지 않은 눈은 없습니다.<span class="cite">니체, 유고(1886~87)</span></p>
-        <p>남의 피드를 오래 보면 지칩니다. 남이 고른 자리에서 나를 재게 되기 때문입니다.</p>
-        <p class="strong">내가 설 자리를 스스로 고르면, 남의 그림 속 크기에 덜 흔들립니다.</p>
+        <p>니체는 이것을 관점주의라 불렀습니다. 세계는 보는 자리마다 다르게 태어나고, 어디에도 서지 않은 눈은 없습니다. 니체는 이 말을 힘으로 썼습니다. 해석하는 자리를 스스로 고르는 힘입니다.<span class="cite">니체, 유고(1886~87)</span></p>
+        <p>남의 피드를 오래 보면 지칩니다. 남의 소실점으로 나를 재게 되기 때문입니다. 남의 원근법 안에서는 누구나 소실점에서 멀어질수록 작아집니다.</p>
+        <p class="strong">지속 가능한 나는 좌표에서 옵니다. 내 소실점을 가진 사람은 남의 그림 속 크기에 덜 흔들립니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 06 · 변주 -->
+  <!-- 08 · 온톨로지 — 있는 것들의 지도 (1기 덱 복원) -->
   <section class="slide">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="80" r="52" stroke-opacity=".4"/>
+          <path d="M100 28 v104 M48 80 h104" stroke-opacity=".35"/>
+          <circle cx="100" cy="80" r="6" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="136" cy="52" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="64" cy="108" r="4" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 온톨로지</p>
+      <h2 class="title r r3">있는 것들의 지도</h2>
+      <div class="body r r4">
+        <p><em>온톨로지(ontology), 존재론</em>. 서양 사유의 첫 물음에서 온 말입니다. 아리스토텔레스는 존재를 존재로서 물었습니다. 무엇이 있는가, 무엇이 무엇에 속하는가, 서로 어떻게 이어지는가.</p>
+        <p class="strong">세계를 부르는 방식에 대한 학문입니다. 이천 년이 지나, 같은 물음이 데이터의 언어로 돌아왔습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · 온톨로지를 이루는 셋 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 데이터의 말로</p>
+      <h2 class="title r r2">온톨로지를 이루는 셋</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">개체<span class="h">ENTITY</span></span><span class="ds">이 세계에 무엇이 있는가 — 사람, 사건, 문장, 개념. <b>이름 붙일 수 있는 낱낱.</b></span></div>
+        <div class="ly"><span class="nm">관계<span class="h">RELATION</span></span><span class="ds">그것들이 서로 어떻게 이어지는가. <b>뜻은 낱낱의 사이에서 생깁니다.</b></span></div>
+        <div class="ly"><span class="nm">의미<span class="h">MEANING</span></span><span class="ds">그 이음을 해석하는 규칙. 이 층이 있어야 <b>데이터가 읽히는 세계</b>가 됩니다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">지도 없는 데이터는 창고입니다. 지도를 얻은 데이터가 세계가 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · 도식 — 같은 점, 다른 세계 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">II</span> · 도식</p>
+      <h2 class="title r r2">같은 점, 다른 세계</h2>
+      <div class="r r3" style="width:100%; max-width:40rem; margin:.4rem auto 0;">
+        <svg viewBox="0 0 760 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+          
+          <rect x="30" y="34" width="230" height="190" rx="10" stroke="rgba(246,241,231,.28)" stroke-width="1.5"/>
+          <g fill="#D9B26A">
+            <circle cx="90" cy="96" r="5" opacity=".8"/>
+            <circle cx="180" cy="79" r="5" opacity=".8"/>
+            <circle cx="228" cy="146" r="5" opacity=".8"/>
+            <circle cx="120" cy="176" r="5" opacity=".8"/>
+            <circle cx="190" cy="200" r="5" opacity=".8"/>
+            <circle cx="98" cy="133" r="5" opacity=".8"/>
+          </g>
+          <text x="145" y="256" text-anchor="middle" fill="#CFC7B6" font-family="Noto Sans KR, sans-serif" font-size="15" font-weight="700">데이터 — 흩어진 씨앗</text>
+          <text x="145" y="280" text-anchor="middle" fill="rgba(207,199,182,.6)" font-family="Noto Sans KR, sans-serif" font-size="12">창고</text>
+          
+          <line x1="288" y1="129" x2="448" y2="129" stroke="#C2943A" stroke-width="2.4" stroke-linecap="round" class="march"/>
+          <path d="M440 121 l12 8 l-12 8" stroke="#C2943A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="370" y="102" text-anchor="middle" fill="#D9B26A" font-family="Noto Serif KR, serif" font-size="19" font-weight="700">온톨로지</text>
+          <text x="370" y="160" text-anchor="middle" fill="#CFC7B6" font-family="Noto Sans KR, sans-serif" font-size="13">개체 · 관계 · 의미</text>
+          
+          <rect x="500" y="34" width="230" height="190" rx="10" stroke="rgba(194,148,58,.6)" stroke-width="1.5"/>
+          <g stroke="#C2943A" stroke-width="1.4" opacity=".75">
+            <line x1="560" y1="96" x2="650" y2="79"/>
+            <line x1="650" y1="79" x2="698" y2="146"/>
+            <line x1="560" y1="96" x2="568" y2="133"/>
+            <line x1="568" y1="133" x2="590" y2="176"/>
+            <line x1="590" y1="176" x2="660" y2="200"/>
+            <line x1="650" y1="79" x2="590" y2="176" stroke-dasharray="3 5" opacity=".5"/>
+          </g>
+          <g fill="#D9B26A">
+            <circle cx="560" cy="96" r="5"/>
+            <circle cx="698" cy="146" r="5"/>
+            <circle cx="590" cy="176" r="5"/>
+            <circle cx="660" cy="200" r="5"/>
+            <circle cx="568" cy="133" r="5"/>
+          </g>
+          <g class="twinkle" style="transform-origin:650px 79px;">
+            <path d="M650 62.2 Q650 79.2 667 79.2 Q650 79.2 650 96.2 Q650 79.2 633 79.2 Q650 79.2 650 62.2 Z" fill="#D9B26A"/>
+          </g>
+          <text x="615" y="256" text-anchor="middle" fill="#F6F1E7" font-family="Noto Sans KR, sans-serif" font-size="15" font-weight="700">세계 — 나의 별자리</text>
+          <text x="615" y="280" text-anchor="middle" fill="rgba(217,178,106,.85)" font-family="Noto Sans KR, sans-serif" font-size="12">의미</text>
+        </svg>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.2rem;">
+        <p class="strong">점은 그대로입니다. 선이 별자리를 만듭니다.<br>디퍼 OS의 하루하루가 이 선을 긋는 일입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · 보르헤스 · 푸코 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content" style="padding-top:3.2rem; padding-bottom:3.2rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="30" width="120" height="100" rx="4" stroke-opacity=".6"/>
+          <line x1="40" y1="63" x2="160" y2="63" stroke-opacity=".45"/>
+          <line x1="40" y1="96" x2="160" y2="96" stroke-opacity=".45"/>
+          <line x1="100" y1="30" x2="100" y2="130" stroke-opacity=".45"/>
+          <circle cx="70" cy="46" r="3.5" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="130" cy="112" r="3.5" fill="currentColor" stroke="none" class="twinkle"/>
+          <circle cx="130" cy="79" r="3.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 보르헤스 · 푸코</p>
+      <h2 class="title r r3">분류가 다르면, 세계가 다릅니다</h2>
+      <div class="body r r4">
+        <p>보르헤스가 지어낸 옛 중국 백과사전은 동물을 이렇게 나눕니다. 황제에게 속한 것, 향유를 바른 것, 길들여진 것, 멀리서 보면 파리처럼 보이는 것. 푸코는 이 분류를 읽다가 『말과 사물』을 시작했습니다.<span class="cite">보르헤스, 「존 윌킨스의 분석적 언어」 · 푸코, 『말과 사물』 서문</span></p>
+        <p>우리가 자연스럽다고 믿는 분류표도 하나의 발명입니다. 어떤 온톨로지를 갖느냐가 어떤 세계에 사느냐를 정합니다.</p>
+        <p class="strong">온톨로지는 기술 문서이기 전에 하나의 관점입니다. 백화점의 분류표가 남의 온톨로지라면, 편집숍은 주인의 온톨로지가 공간이 된 곳입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · 왜 지금 온톨로지인가 (1기 덱 복원) -->
+  <section class="slide fit">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 170" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="100" cy="46" r="26" stroke-opacity=".8"/>
+          <path class="pulse" d="M88 44 q6 -8 12 0 q6 8 12 0" stroke-opacity=".7"/>
+          <g class="marchl" stroke-opacity=".6">
+            <path d="M86 66 L56 104"/><path d="M100 72 L100 112"/><path d="M114 66 L144 104"/>
+          </g>
+          <g stroke-opacity=".75">
+            <line x1="56" y1="110" x2="100" y2="118"/><line x1="100" y1="118" x2="144" y2="110"/><line x1="56" y1="110" x2="80" y2="142"/><line x1="100" y1="118" x2="80" y2="142"/><line x1="144" y1="110" x2="122" y2="144"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="56" cy="110" r="4.5" stroke="none"/><circle cx="100" cy="118" r="4.5" stroke="none"/><circle cx="144" cy="110" r="4.5" stroke="none"/><circle cx="80" cy="142" r="4.5" stroke="none"/><circle cx="122" cy="144" r="4.5" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">II</span> · 지금, AI</p>
+      <h2 class="title r r3">왜 지금 온톨로지인가</h2>
+      <div class="body r r4">
+        <p>AI는 세상의 거의 모든 언어를 배웠습니다. 그런데 '우리 회사'의 세계, '나'의 세계는 모릅니다. 그래서 매끄럽게 틀립니다.</p>
+        <p>기업들은 흩어진 데이터 위에 <em>개체 · 관계 · 의미</em>의 층을 입힙니다. 조직의 세계를 옮겨 적은 지도입니다. AI 에이전트는 그 지도 위에서 판단하고 실행합니다. 지식그래프를 AI에 잇는 흐름도 같은 이야기입니다.</p>
+        <p>모델은 갈수록 흔해지고 비슷해집니다. AI가 똑똑해질수록, 그 똑똑함을 내 세계에 접지시키는 지도의 값이 오릅니다.</p>
+        <p class="strong">기업들이 조직의 온톨로지를 짓는 동안, 우리는 나의 온톨로지를 짓습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · 우리는 이미 온톨로지를 짓고 있다 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">III</span> · 디퍼 OS</p>
+      <h2 class="title r r2">우리는 이미 온톨로지를 짓고 있습니다</h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">씨앗<span class="h">= 개체</span></span><span class="ds">매일 아침 길어 올리는 문장 하나하나. <b>이름 붙은 낱낱이 지도의 별이 됩니다.</b></span></div>
+        <div class="ly"><span class="nm">축과 악보<span class="h">= 관계</span></span><span class="ds">문법의 달에 세운 의미의 축, 논리의 달에 지은 악보. <b>별과 별을 잇는 선과 규칙.</b></span></div>
+        <div class="ly"><span class="nm">분더카머<span class="h">= 관점의 방</span></span><span class="ds">카드를 걸고, 돌리고, 뜻밖의 짝을 만나는 방. <b>관점이 공간이 된 자리.</b></span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">「안녕」 한 걸음마다, 나의 지도에 별이 하나 놓입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · 16세기의 개인 온톨로지 (1기 덱 복원) -->
+  <section class="slide">
+    <div class="content" style="padding-top:3.2rem; padding-bottom:3.2rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="28" width="120" height="104" rx="3" stroke-opacity=".65"/>
+          <line x1="40" y1="63" x2="160" y2="63" stroke-opacity=".4"/>
+          <line x1="40" y1="97" x2="160" y2="97" stroke-opacity=".4"/>
+          <line x1="80" y1="28" x2="80" y2="132" stroke-opacity=".4"/>
+          <line x1="120" y1="28" x2="120" y2="132" stroke-opacity=".4"/>
+          <g class="spin" style="transform-origin:100px 80px;">
+            <path d="M100 69.4 Q100 81.6 112.2 81.6 Q100 81.6 100 93.8 Q100 81.6 87.8 81.6 Q100 81.6 100 69.4 Z" fill="currentColor" stroke="none"/>
+          </g>
+          <circle cx="60" cy="45" r="3" fill="currentColor" stroke="none" class="pulse"/>
+          <path class="twinkle" d="M140 112 l4 4 M144 112 l-4 4" stroke-opacity=".8" style="transform-origin:142px 114px;"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · 분더카머</p>
+      <h2 class="title r r3">16세기의 개인 온톨로지</h2>
+      <div class="body r r4">
+        <p>박물관의 표준 분류가 생기기 전, 수집가들은 한 방에 세계를 모았습니다. 산호와 해골, 천문 기구와 먼 땅의 진기한 물건. <em>분더카머, 경이의 방</em>입니다.</p>
+        <p>이 방의 값어치는 배열에 있었습니다. 분류표 대신 수집가 자신의 연상으로 놓인 자리입니다. 한 칸을 옮기면 방 전체의 뜻이 달라졌습니다. 편집숍의 원형이고, 디퍼 OS의 원형입니다.</p>
+        <p class="strong">수집이 배열이 되고, 배열이 세계관이 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · 모델은 누구에게나 같다 (1기 덱 복원 · GOLD) -->
+  <section class="slide fit invert">
+    <div class="content" style="padding-top:3rem; padding-bottom:3rem;">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="60" cy="75" r="26" stroke-opacity=".55"/>
+          <circle cx="160" cy="75" r="26" stroke-opacity=".55"/>
+          <g class="marchl"><path d="M86 75 h48"/></g>
+          <g class="twinkle" style="transform-origin:160px 75px;">
+            <path d="M160 60.3 Q160 75.9 175.6 75.9 Q160 75.9 160 91.5 Q160 75.9 144.4 75.9 Q160 75.9 160 60.3 Z" fill="currentColor" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · AI 시대의 셈법</p>
+      <h2 class="title r r3">모델은 누구에게나 같습니다</h2>
+      <div class="body r r4">
+        <p>같은 AI를 쓰는데 답이 다르다면, 그 차이는 재료와 지도에서 옵니다. 볼트에 쌓인 나의 데이터, 그 데이터를 잇는 나의 관점입니다.</p>
+        <p>데이터에서 의미를 길어 올리고, 의미에서 통찰을 꺼내는 일. 이 달 내내 우리가 하는 수사가 그 작업입니다.</p>
+        <p>첫 주의 벤야민이 여기서 돌아옵니다. 복제의 시대에도 복제되지 않는 지금-여기, <em>아우라</em>. 문장은 복제될 수 있습니다. 한 사람이 수십 년 살아낸 시간의 배열은 복제되지 않습니다.</p>
+        <p class="strong">온톨로지는 데이터로 지은 아우라입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · 복리 (1기 덱 복원) -->
+  <section class="slide fit">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="march" d="M100 80 m-14 0 a14 14 0 1 1 14 14 a28 28 0 1 1 -28 -28 a42 42 0 1 1 42 42 a56 56 0 1 1 -56 -56" stroke-opacity=".8"/>
+          <circle cx="100" cy="80" r="4" fill="currentColor" stroke="none" class="pulse"/>
+        </svg>
+      </div>
+      <p class="kicker r r2"><span class="num">III</span> · 복리</p>
+      <h2 class="title r r3">지도는 자랄수록 깊어집니다</h2>
+      <div class="body r r4">
+        <p>온톨로지는 하루아침에 서지 않습니다. 씨앗이 하나 더해질 때마다 그을 수 있는 선이 늘고, 선이 늘수록 다음 씨앗이 앉을 자리가 많아집니다. <em>복리</em>는 거기서 생깁니다.</p>
+        <p>오늘 하루의 씨앗은 효율로 보이지 않습니다. 방이 자랄수록 같은 질문에 더 깊은 답이 나옵니다. 글도, 책도, 강의도 이 방에서 꺼냅니다.</p>
+        <p class="strong">퍼스널 OS는 도구이기 전에, 나의 세계를 부르는 방식입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · 변주 -->
+  <section class="slide fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -272,46 +577,49 @@
           <g class="twinkle" style="transform-origin:100px 80px;"><path d="M100 67 Q100 80 113 80 Q100 80 100 93 Q100 80 87 80 Q100 80 100 67 Z" fill="currentColor" stroke="none"/></g>
         </svg>
       </div>
-      <p class="kicker r r2"><span class="num">II</span> · 변주</p>
+      <p class="kicker r r2"><span class="num">IV</span> · 변주</p>
       <h2 class="title r r3">선율은 그대로, 형태만 바뀝니다</h2>
       <div class="body r r4">
-        <p>바흐의 골드베르크 변주곡은 아리아 하나로 시작해 서른 개의 변주를 지나 처음의 아리아로 돌아옵니다.</p>
-        <p>이름과 피치가 아리아라면, 이번 주에는 그 아리아가 <em>살 집</em>을 고릅니다.</p>
-        <p class="strong">잘하는 형식보다, 힘을 빼도 나오는 형식을 고릅니다.</p>
+        <p>바흐의 골드베르크 변주곡은 아리아 하나로 시작해 서른 개의 변주를 지나 처음의 아리아로 돌아옵니다. 선율은 한 번도 바뀌지 않습니다. 형태만 바뀝니다. 논리의 달에 만난 바흐입니다.</p>
+        <p>이름과 피치가 아리아라면, 이번 주에는 그 아리아가 <em>살 집</em>을 고릅니다. 잘하는 형식보다, 힘을 빼도 나오는 형식을 고릅니다.</p>
+        <p class="strong">오래 가는 사람은 한 선율을 변주합니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 07 · 채널을 고르는 세 물음 -->
+  <!-- 18 · 채널 — 목소리가 사는 형식 -->
+  <section class="slide">
+    <div class="content">
+      <p class="kicker r r1"><span class="num">IV</span> · 이번 주 · 작게 소리내기</p>
+      <h2 class="title r r2">채널 — <span class="em">목소리가 사는 형식</span></h2>
+      <div class="layers r r3">
+        <div class="ly"><span class="nm">형식<span class="h">FORM</span></span><span class="ds">글인가 말인가, 긴 호흡인가 짧은 호흡인가. 내 목소리가 <b>자연스럽게 사는 형식</b>을 찾습니다.</span></div>
+        <div class="ly"><span class="nm">단위<span class="h">UNIT</span></span><span class="ds">지치지 않을 <b>가장 작은 발행 단위</b>를 정합니다. 크게 한 번보다, 작게 오래.</span></div>
+        <div class="ly"><span class="nm">첫 발행<span class="h">PUBLISH</span></span><span class="ds">이번 주 안에 아주 작게 <b>한 번</b> 바깥에 소리를 냅니다. 내보낸 뒤의 마음을 한 줄 적습니다.</span></div>
+      </div>
+      <div class="body r r4" style="text-align:center; margin-top:.3rem;">
+        <p class="strong">이번 주에는 완성보다 발행이 먼저입니다. 못 내보냈으면 막힌 자리를 적습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 · 채널을 고르는 세 물음 -->
   <section class="slide">
     <div class="content">
       <p class="kicker r r1">분별</p>
       <h2 class="title r r2">채널을 고르는 세 물음</h2>
       <div class="body r r3">
-        <p>① <span class="strong">자연스러운가요?</span> 잘해 보이는 자리와 오래 설 자리를 나란히 놓고 봅니다.</p>
-        <p>② <span class="strong">가장 작은 단위로 낼 수 있나요?</span> 일주일에 한 번, 지치지 않을 크기여야 합니다.</p>
-        <p>③ <span class="strong">나의 단 한 사람이 거기 있나요?</span> 악보에 적으신 그분이 머무는 곳인지 봅니다.</p>
+        <p>① <span class="strong">자연스러운가요?</span> 잘해 보이는 자리와 오래 설 자리를 나란히 놓고, 오래 설 쪽으로 갑니다.</p>
+        <p>② <span class="strong">가장 작은 단위로 낼 수 있나요?</span> 한 번의 대작보다, 지치지 않는 한 조각입니다.</p>
+        <p>③ <span class="strong">나의 단 한 사람이 거기 있나요?</span> 채널은 무대이기 전에, 악보에 적으신 그분이 앉아 있는 자리입니다.</p>
       </div>
       <div class="body r r4" style="text-align:center;">
-        <p class="strong">채널은 형식과 자리를 곱한 것입니다. 표는 세션 03에 있습니다.</p>
+        <p class="strong">셋 다 그렇다면, 그곳이 내 목소리가 살 집입니다. 채널은 형식과 자리를 곱한 것이고, 표는 세션 03에 있습니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 08 · 가장 작은 발행 단위 -->
-  <section class="slide">
-    <div class="content">
-      <p class="kicker r r1"><span class="num">II</span> · 작게 소리내기</p>
-      <h2 class="title r r2">이번 주에는 <span class="em">완성보다 발행</span>이 먼저입니다</h2>
-      <div class="layers r r3">
-        <div class="ly"><span class="nm">단위<span class="h">UNIT</span></span><span class="ds">일주일에 한 번, 지치지 않고 낼 수 있는 <b>가장 작은 크기</b>를 정합니다.</span></div>
-        <div class="ly"><span class="nm">발행<span class="h">PUBLISH</span></span><span class="ds">그 크기로 <b>한 번</b> 바깥에 내보냅니다.</span></div>
-        <div class="ly"><span class="nm">마음<span class="h">AFTER</span></span><span class="ds">내보낸 뒤의 마음을 한 줄 적습니다. <b>못 내보냈으면 막힌 자리를 적습니다.</b></span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 09 · 방 돌리기 -->
+  <!-- 20 · 방 돌리기 -->
   <section class="slide">
     <div class="content" style="padding-top:4rem; padding-bottom:4rem;">
       <div class="viz r r1">
@@ -326,17 +634,59 @@
           <circle cx="140" cy="114" r="3" fill="currentColor" stroke="none" class="pulse" style="animation-delay:1.4s"/>
         </svg>
       </div>
-      <p class="kicker r r2"><span class="num">III</span> · 방 돌리기 · 10분</p>
+      <p class="kicker r r2"><span class="num">IV</span> · 방 돌리기 · 10분</p>
       <h2 class="title r r3">발행할 거리가 없는 날, 방을 돌립니다</h2>
       <div class="body r r4">
         <p>여우에게 <span class="cmd">분더카머</span>. 다섯 차원이 한 번에 펼쳐집니다.</p>
-        <p>이번 주에는 <em>감정의 결</em>과 <em>독자의 문제 순</em>, 두 대목을 먼저 읽습니다. 사이에서 나온 한 문장은 화면 맨 끝에 있습니다.</p>
-        <p class="strong">여우가 따로 묻지 않아도, 문장이 마음에 오면 「저장」. 이번 주는 석 장까지입니다.</p>
+        <p>이번 주에는 <em>감정의 결</em>과 <em>독자의 문제 순</em>, 두 차원을 먼저 읽습니다. 사이의 경이는 화면 맨 끝에 있습니다.</p>
+        <p class="strong">여우가 따로 묻지 않아도, 사이의 경이가 마음에 오면 「저장」. 종합 씨앗으로 수장고에 심기고, 그 한 알이 인사이트 카드 한 장입니다. 이번 주는 석 장까지입니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 10 · 실습 -->
+  <!-- 21 · 과제 — 소실점 회전 (1기 덱 복원) -->
+  <section class="slide fit">
+    <div class="content" style="padding-top:3rem; padding-bottom:3.4rem;">
+      <p class="kicker r r1">과제 · 분더카머를 온톨로지로</p>
+      <h2 class="title r r2">소실점 회전 — 방을 세 번 돌립니다</h2>
+      <div class="body r r3" style="text-align:center;">
+        <p>문법과 논리의 과제는 안을 향했습니다. 수사의 과제는 밖에서 끝납니다.<br>같은 카드로 서는 자리를 세 번 바꿉니다 — 나의 자리, 단 한 사람의 자리, 채널의 자리.<br>아래 프롬프트를 그대로 복사해 여우에게 건넵니다.</p>
+      </div>
+      <div class="task r r3">
+        <div class="head">
+          <b>PROMPT · 소실점 회전</b>
+          <button onclick="copyPrompt(this)">복사하기</button>
+        </div>
+        <pre id="ontoPrompt">사막여우님, 제 분더카머의 소실점을 옮겨 주세요.
+제 방의 카드는 지금 저의 연상으로 배열되어 있습니다. 오늘은 같은 카드로, 서는 자리를 세 번 바꾸려 합니다.
+
+첫 바퀴 — 나의 소실점.
+   카드를 전부 읽고 지금 방의 별자리를 그려 주세요.
+   별자리마다 이름 하나(반드시 제가 쓴 말에서), 가장 많은 선이 모이는 중심 별 하나를 알려 주세요.
+
+두 번째 바퀴 — 단 한 사람의 소실점.
+   제 악보에 적힌 단 한 사람의 자리에서, 그분의 문제에서부터 카드를 다시 배열해 주세요.
+   · 그분에게 가장 먼저 보이는 카드 3장 — 왜 그 카드인지, 그분의 말로
+   · 저에게는 귀했지만 그분에게는 보이지 않는 카드 — 그것도 숨기지 말고
+   · 이 배열이 그분에게 건네는 첫 문장 하나
+
+세 번째 바퀴 — 채널의 소실점.
+   제가 고른 채널의 형식(길이·호흡·말투)으로 카드를 다시 배열해 주세요.
+   · 그 형식에서 가장 살아나는 카드 3장, 형식에 눌려 죽는 카드 1장
+   · 그 채널에 올릴 첫 조각의 제목과 첫 문장 — 반드시 제 원문의 결로
+
+다 돌고 나면 — 세 바퀴 내내 자리가 흔들리지 않은 카드를 알려 주세요.
+그것이 어느 소실점에서도 무너지지 않는 저의 불변량입니다.
+
+지키는 선 — 제 글에 없는 과장은 쓰지 않습니다. 후보는 여우님이 내고, 선택은 제가 합니다.</pre>
+      </div>
+      <div class="body r r4" style="text-align:center;">
+        <p class="strong">세 번째 바퀴에서 나온 첫 조각이 이번 주의 첫 발행이 됩니다.<br>논리의 달에 배운 불변량이 소실점 회전을 견디고 여기서 돌아옵니다.<br>불변량 한 줄과 발행한 자리 하나는 강의실 댓글로 나눕니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 · 실습 -->
   <section class="slide">
     <div class="content">
       <p class="kicker r r1">실습 · 17분</p>
@@ -349,7 +699,7 @@
     </div>
   </section>
 
-  <!-- 11 · 걸음과 달력 (GOLD) -->
+  <!-- 23 · 걸음과 달력 (GOLD) -->
   <section class="slide invert">
     <div class="content">
       <p class="kicker r r1">걸음과 달력</p>
@@ -362,7 +712,7 @@
     </div>
   </section>
 
-  <!-- 12 · 이번 주 -->
+  <!-- 24 · 이번 주 -->
   <section class="slide">
     <div class="content">
       <p class="kicker r r1">이번 주</p>
@@ -372,13 +722,40 @@
       </div>
       <div class="body r r4">
         <p>시간이 더 있으시면 과제 페이지의 여섯 가지로 가 보세요. 읽기는 두 권입니다 — 『에디톨로지』 2부, 『분더카머』 「검은 숲, 동어반복, 흰 숲」부터 「전령사의 꿈」까지.</p>
-        <p>내보낸 뒤의 마음 한 줄과 카드 한 장은 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
+        <p>내보낸 뒤의 마음 한 줄과 인사이트 카드 한 장은 <em>긱어스 강의실 댓글</em>로 나눕니다. 주말의 밤하늘 한 장만 사막방에 올립니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 13 · 닫기 -->
-  <section class="slide">
+  <!-- 25 · 수렴 — 같은 별, 다른 별자리 (1기 덱 복원 · GOLD) -->
+  <section class="slide invert">
+    <div class="content">
+      <div class="viz r r1">
+        <svg viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <g class="marchl" stroke-opacity=".7">
+            <path d="M40 120 L90 50"/><path d="M90 50 L150 84"/><path d="M150 84 L190 34"/>
+          </g>
+          <g stroke-opacity=".28">
+            <path d="M40 120 L150 84"/><path d="M90 50 L190 34"/>
+          </g>
+          <circle cx="40" cy="120" r="5" fill="currentColor" stroke="none"/>
+          <g class="twinkle" style="transform-origin:90px 50px;"><circle cx="90" cy="50" r="5" fill="currentColor" stroke="none"/></g>
+          <circle cx="150" cy="84" r="5" fill="currentColor" stroke="none" class="pulse"/>
+          <circle cx="190" cy="34" r="5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="kicker r r2">수렴</p>
+      <h2 class="title r r3">같은 별, 다른 별자리</h2>
+      <div class="body r r4" style="text-align:center;">
+        <p>같은 별들도 잇는 선이 다르면 다른 별자리가 됩니다. 관점이 좌표를 주고, 온톨로지가 그 좌표를 지도로 만들고, 지도가 나를 오래 걷게 합니다.</p>
+        <p>문법에서 별을 캤고, 논리에서 선 긋는 법을 배웠습니다. 수사에서는 그 별자리를 하늘에 겁니다.</p>
+        <p class="final">지도를 가진 사람이 오래 걷습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 26 · 닫기 -->
+  <section class="slide fit">
     <div class="content">
       <div class="viz r r1">
         <svg viewBox="0 0 200 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -388,18 +765,18 @@
         </svg>
       </div>
       <p class="kicker r r2">수사의 달 2주차 · 지속 가능한 나</p>
-      <h2 class="title r r3">내 자리에서,<br><span class="em">한 조각씩 오래</span></h2>
+      <h2 class="title r r3">내 소실점에서,<br><span class="em">한 조각씩 오래</span></h2>
       <div class="body r r4" style="text-align:center;">
-        <p>자연스러운 형식과 나다운 자리를 고르고, 가장 작은 한 조각을 내보냅니다.</p>
+        <p>남의 분류표에서 내려와 내 방의 배열로 섭니다. 지도를 들고, 가장 작은 한 조각을 이번 주에 내보냅니다.</p>
         <p class="final">다음 밤은 10월 19일 월요일 저녁 8시,<br>셋째 소절 일관성입니다.</p>
       </div>
-      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">이어서 인사이트 공유회가 있습니다.</p>
+      <p class="latin r r4" style="margin-top:1.1rem; opacity:.82;">Aria da capo — 변주가 끝나면 처음의 노래가 돌아옵니다. 이어서 인사이트 공유회가 있습니다.</p>
     </div>
   </section>
 
 </div>
 
-<div class="counter" id="counter">01 / 13</div>
+<div class="counter" id="counter">01 / 26</div>
 <button class="nav prev" id="prev" aria-label="이전">‹</button>
 <button class="nav next" id="next" aria-label="다음">›</button>
 <div class="hint">← → · 스페이스 이동</div>
@@ -429,7 +806,7 @@
     else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(total-1); }
   });
   document.getElementById('deck').addEventListener('click', e=>{
-    if(e.target.closest('.nav')) return;
+    if(e.target.closest('.nav,.task')) return;
     if(window.getSelection && String(window.getSelection())) return;
     (e.clientX < window.innerWidth*0.28) ? prev() : next();
   });
@@ -441,6 +818,15 @@
     if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); }
     x0=null;y0=null;
   }, {passive:true});
+
+  function copyPrompt(btn){
+    var text=document.getElementById('ontoPrompt').innerText;
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent='복사되었습니다';
+      setTimeout(function(){btn.textContent='복사하기';},2000);
+    });
+  }
+  window.copyPrompt = copyPrompt;
 
   show(0);
 </script>
