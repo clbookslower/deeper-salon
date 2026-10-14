@@ -167,6 +167,31 @@ html.settled .constel .st{opacity:1!important;transform:none!important;animation
   .names li.k{color:#ffe9b8;border-color:rgba(216,185,123,.8);background:rgba(216,185,123,.12)}
 }
 
+
+/* ---------- membership ---------- */
+.mem{padding:10px 0 20px}
+.mem__in{position:relative;border-radius:var(--radius);background:var(--paper-2);border:1px solid var(--line);box-shadow:var(--shadow);padding:40px 32px 34px;overflow:hidden}
+.mem__in::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--forest))}
+.mem__head{max-width:700px}
+.mem__head h2{margin:12px 0 6px}
+.mem__head .sub{color:var(--sub);margin:0 0 18px;font-size:16px}
+.mem__body p{font-size:15.5px;margin:0 0 12px}
+.mem__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;margin-top:8px;align-items:start}
+.facts{margin:0;padding:0;list-style:none;border:1px solid var(--line);border-radius:14px;background:#fff}
+.facts li{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:12px 16px;border-bottom:1px dashed var(--line);font-size:15px}
+.facts li:last-child{border-bottom:0}
+.facts b{color:var(--gold);font-weight:500;font-size:12.5px;letter-spacing:.1em;padding-top:3px}
+.sched{margin:18px 0 0;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,#1f4d44,#2f6b5f);color:#fff}
+.sched h3{margin:0 0 8px;font-family:'Noto Serif KR',serif;font-weight:600;font-size:16px;letter-spacing:.02em;color:var(--gold-2)}
+.sched ul{margin:0;padding:0;list-style:none}
+.sched li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:6px 0;font-size:14.5px;border-bottom:1px solid rgba(255,255,255,.12)}
+.sched li:last-child{border-bottom:0}
+.sched li span:first-child{color:var(--gold-2);font-family:'Noto Serif KR',serif}
+.mem__cta{margin-top:26px;text-align:center}
+.btn--gold{background:var(--gold);color:#1b2326;box-shadow:0 14px 34px rgba(185,151,91,.35)}
+.btn--gold:hover{box-shadow:0 22px 44px rgba(185,151,91,.42)}
+.mem__note{margin:14px 0 0;color:var(--sub);font-size:13.5px}
+@media (max-width:820px){.mem__in{padding:28px 18px 26px}.mem__grid{grid-template-columns:1fr;gap:18px}}
 </style>
 </head>
 <body>
@@ -234,6 +259,47 @@ html.settled .constel .st{opacity:1!important;transform:none!important;animation
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     <p class="addr rv d1">책방 기억의 숲 · 부산광역시 기장군 기장읍 기장대로 82</p>
+  </section>
+
+  <section class="mem">
+    <div class="mem__in">
+      <div class="mem__head rv">
+        <div class="eyebrow">DEEPER MEMBERSHIP · 11월 시작</div>
+        <h2>디퍼 멤버십 11월 시작</h2>
+        <p class="sub">살롱을 마친 뒤에도 목요일 밤의 자리는 그대로 남습니다.</p>
+      </div>
+      <div class="mem__grid">
+        <div class="mem__body rv d1">
+          <p>2기 디퍼님은 10월 26일에 수사의 달을, 3기 디퍼님은 10월 29일에 논리의 달을 마칩니다. 그 뒤에도 디퍼님들이 목요일 밤 9시 줌에 그대로 오실 수 있도록 11월 1일부터 디퍼 멤버십을 엽니다. 살롱을 마친 분도, 시즌을 쉬어 가는 분도 같은 자리에서 이어 가시면 돼요.</p>
+          <p>멤버가 되시면 목요일 밤에 한 달 동안 디퍼 리딩 두 번과 인사이트 공유회 두 번을 함께하시고, 매달 한 번 빌더하우스 모임에도 오십니다. 멤버 방에도 계속 머무실 수 있어요. 매달 열쇠말과 함께 꾸러미를 보내 드리고, 그 꾸러미에는 최신 시스템 엔지니어링으로 설계를 담아 계속 드리겠습니다.</p>
+          <p>11월 새옷에는 세계 무대에서 검증된 설계를 담았습니다. Y Combinator 대표 개리 탄이 공개한 세컨브레인 설계와, 실리콘밸리 스타트업들이 쓰는 엔지니어링 스택에서 뽑은 설계 셋입니다. 앞으로 매달, 바깥에서 확인한 설계 한 가지를 디퍼님의 사막여우에 옮겨 드립니다.</p>
+          <div class="sched">
+            <h3>11월 목요일 밤 9시 · 줌</h3>
+            <ul>
+              <li><span>11월 5일</span><span>디퍼 리딩 — 『오뒷세이아』 9·10권</span></li>
+              <li><span>11월 12일</span><span>인사이트 공유회</span></li>
+              <li><span>11월 19일</span><span>디퍼 리딩 — 『넥서스』 3부</span></li>
+              <li><span>11월 26일</span><span>인사이트 공유회</span></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="rv d2">
+          <ul class="facts">
+            <li><b>시작</b><span>11월 1일</span></li>
+            <li><b>값</b><span>월 29,000원 · 매달 이체</span></li>
+            <li><b>목요일 밤</b><span>9시 줌 · 한 달에 디퍼 리딩 두 번, 인사이트 공유회 두 번</span></li>
+            <li><b>매달</b><span>빌더하우스 모임 한 번 · 열쇠말과 함께 꾸러미 · 멤버 방</span></li>
+            <li><b>첫 꾸러미</b><span>사막여우 새옷 · 10월 25일(일)까지 신청하신 분께 · 입금 확인 다음날 zip 파일을 카톡으로</span></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="mem__cta rv">
+        <a class="btn btn--gold" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">멤버십 신청
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="mem__note">10월 25일(일)까지 신청하시면 첫 꾸러미로 사막여우 새옷을 받으십니다.</p>
+      </div>
+    </div>
   </section>
 </main>
 
