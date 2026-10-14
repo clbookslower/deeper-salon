@@ -103,13 +103,12 @@ html.settled .hero h1 .l span{transform:none!important;animation:none!important}
 @keyframes pulse2{0%,100%{box-shadow:0 0 0 4px rgba(216,185,123,.25),0 0 14px rgba(255,233,184,.9)}50%{box-shadow:0 0 0 9px rgba(216,185,123,.08),0 0 22px rgba(255,233,184,1)}}
 .tl__date{margin:16px 0 10px;font-family:'Noto Serif KR',serif;font-size:16px;color:var(--gold-2);letter-spacing:.02em}
 .tl__date small{display:block;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.55);font-family:'Noto Sans KR',sans-serif}
-.tl__cover{position:relative;width:118px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.15) inset;transform:perspective(600px) rotateY(-10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1);animation:floaty 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
+.tl__cover{position:relative;width:118px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.15) inset;transform:perspective(600px) rotateY(-10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .tl__item:hover .tl__cover{transform:perspective(600px) rotateY(0) rotateX(0) scale(1.04)}
-@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -6px}}
 .tl__cover img{width:100%;height:auto;display:block}
 .tl__shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:shine 4.5s ease-in-out infinite;animation-delay:calc(1s + var(--i)*.6s)}
 @keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.tl__tile{position:relative;width:118px;aspect-ratio:3/4;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45);transform:perspective(600px) rotateY(10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1);animation:floaty 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
+.tl__tile{position:relative;width:118px;aspect-ratio:3/4;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45);transform:perspective(600px) rotateY(10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .tl__item:hover .tl__tile{transform:perspective(600px) rotateY(0) rotateX(0) scale(1.04)}
 .tl__tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .tl__tileveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,0) 55%,rgba(15,26,30,.75))}
