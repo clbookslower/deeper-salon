@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>겨자씨 OS — 킹덤브레인 설치·사용 가이드</title>
+<meta name="description" content="한 폴더에 AI 다섯 식구를 모시는 겨자씨 OS. 설치 순서와 매일 쓰는 말, 새 판 받는 법을 한 장에 담았습니다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER">
+<meta property="og:title" content="겨자씨 OS — 킹덤브레인 설치·사용 가이드">
+<meta property="og:description" content="한 폴더에 AI 다섯 식구를 모십니다. 설치부터 매일 쓰는 말, 새 판 받는 법까지 한 장에.">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/mustardseed/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/mustardseed/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="겨자씨 OS — 킹덤브레인 설치·사용 가이드">
+<meta name="twitter:description" content="한 폴더에 AI 다섯 식구를 모십니다. 설치부터 매일 쓰는 말, 새 판 받는 법까지 한 장에.">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/mustardseed/og.png">
+<style>
+  :root { --green:#1A4A35; --cream:#FAF6EF; --ink:#2B2B28; --line:#E3DCCE; --accent:#3E6B54; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:var(--cream); color:var(--ink); line-height:1.75; }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 24px 80px; }
+  .logo { display:block; margin:0 auto 8px; width:120px; }
+  .kicker { text-align:center; font-size:13px; letter-spacing:.18em; color:var(--accent); margin-bottom:20px; }
+  h1 { font-size:26px; color:var(--green); text-align:center; line-height:1.4; margin-bottom:12px; word-break:keep-all; }
+  .lead { text-align:center; font-size:15px; color:#5A5A54; margin-bottom:28px; word-break:keep-all; }
+  h2 { font-size:19px; color:var(--green); margin:52px 0 14px; padding-top:24px; border-top:1px solid var(--line); word-break:keep-all; scroll-margin-top:12px; }
+  h3 { font-size:16px; color:var(--green); margin:28px 0 10px; word-break:keep-all; }
+  p, li { font-size:15px; word-break:keep-all; overflow-wrap:anywhere; }
+  p { margin:8px 0; }
+  ul, ol { padding-left:22px; margin:10px 0 16px; }
+  li { margin-bottom:6px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:16px 0; }
+  .tree { font-family:Consolas,Menlo,monospace; font-size:13px; background:#F4EFE4; border-radius:10px; padding:16px 18px; overflow-x:auto; white-space:pre; line-height:1.6; }
+  .note { background:#F4EFE4; border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:14px 18px; margin:16px 0; font-size:14px; word-break:keep-all; overflow-wrap:anywhere; }
+  .warn { border-left-color:#A9552F; }
+  .promptbox { position:relative; background:#22322B; color:#EDE8DC; border-radius:12px; padding:20px 20px 18px; margin:14px 0 26px; font-size:13.5px; line-height:1.8; white-space:pre-wrap; word-break:break-word; font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; }
+  .promptbox.short { padding-right:84px; }
+  .copybtn { position:absolute; top:12px; right:12px; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:6px 14px; font-size:12px; cursor:pointer; }
+  .copybtn:active { opacity:.7; }
+  .where { display:inline-block; font-size:12.5px; color:var(--green); background:#E7EFE9; border-radius:6px; padding:3px 10px; margin:6px 0 0; word-break:keep-all; }
+  .steps li { margin-bottom:10px; }
+  .footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--line); text-align:center; font-size:13px; color:#8A8578; }
+  .tbl { width:100%; overflow-x:auto; margin:12px 0 20px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { border:1px solid var(--line); padding:8px 12px; text-align:left; vertical-align:top; word-break:keep-all; overflow-wrap:break-word; }
+  td code { word-break:break-all; }
+  th { background:#F4EFE4; color:var(--green); }
+  code { font-family:Consolas,Menlo,monospace; font-size:.9em; background:#F1EBDF; border-radius:4px; padding:1px 5px; word-break:break-all; }
+  .toc { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 22px; margin:20px 0 8px; }
+  .toc ol { columns:2; column-gap:28px; margin:6px 0 0; }
+  .toc li { font-size:14px; margin-bottom:4px; break-inside:avoid; }
+  .toc a, .wrap a { color:var(--accent); }
+  @media (max-width:520px) {
+    .wrap { padding:32px 16px 64px; }
+    h1 { font-size:22px; }
+    h2 { font-size:18px; }
+    .toc ol { columns:1; }
+    .card { padding:16px 16px; }
+    .tree { font-size:12px; padding:14px 12px; }
+    table { font-size:13px; }
+    th, td { padding:6px 7px; }
+    .promptbox { padding:46px 16px 16px; }
+    .promptbox.short { padding:46px 16px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <img class="logo" src="DEEPER_logo.png" alt="DEEPER">
+  <div class="kicker">MUSTARD SEED OS · KINGDOM BRAIN</div>
+  <h1>겨자씨 OS<br>킹덤브레인 설치·사용 가이드</h1>
+  <p class="lead">대표님의 컴퓨터 한 폴더에 AI 다섯 식구를 모십니다.<br>설치부터 매일 쓰는 말, 새 판 받는 법까지 이 한 장에 담았습니다.</p>
+
+  <div class="note"><b>이 자료는 누가 보는가</b> — 겨자씨 OS를 설치한 분과 설치를 돕는 분.</div>
+  <div class="note">이 안내는 <b>컴퓨터 브라우저</b>에서 열어 주세요. 카톡으로 받으셨다면 링크를 「나에게 보내기」로 옮겨 컴퓨터에서 여시면 복사 버튼이 잘 듣습니다.</div>
+
+  <nav class="toc" aria-label="목차">
+    <b>차례</b>
+    <ol>
+      <li><a href="#what">겨자씨 OS는 무엇인가</a></li>
+      <li><a href="#family">한 집 다섯 식구</a></li>
+      <li><a href="#tree">폴더 한 그루</a></li>
+      <li><a href="#install">설치 — 두 번 클릭과 대화</a></li>
+      <li><a href="#words">외울 말 열 마디</a></li>
+      <li><a href="#rhythm">킹덤 비즈니스 라이프스타일</a></li>
+      <li><a href="#kb">킹덤빌더와 HTM 공식 자료</a></li>
+      <li><a href="#new">새 에이전트 만드는 법</a></li>
+      <li><a href="#loop">쓸수록 자라는 자리</a></li>
+      <li><a href="#guard">지키는 것</a></li>
+      <li><a href="#codex">코덱스에서도</a></li>
+      <li><a href="#update">새옷 세 갈래</a></li>
+      <li><a href="#stuck">막히면</a></li>
+      <li><a href="#faq">자주 묻는 것 다섯</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what">1. 겨자씨 OS는 무엇인가</h2>
+  <p><b>겨자씨 OS는 킹덤빌더 한 분의 컴퓨터에 심는 AI 운영 체계입니다.</b> 폴더 하나에 기억 담당, 중심 담당, 일손, 정비사, 큐티 동반자를 함께 모십니다.</p>
+  <p>세컨브레인은 대표님의 기록과 자료와 결정을 한 폴더에 모아 두는 방식입니다. AI는 그 폴더를 읽고 대표님의 맥락 안에서 일합니다. 이 안내에서는 그 폴더를 기억의 집이라 부릅니다. 겨자씨 OS는 그 집에 <b>킹덤브레인</b>이라는 이름을 붙였습니다. 대표님이 오늘 남기신 한 줄을 내일의 에이전트가 읽고 이어서 일합니다.</p>
+  <p>중심은 <b>고슴도치</b>가 맡습니다. 고슴도치는 대표님의 정체성과 사업가로서의 철학, 신념, 삶의 태도를 운영원칙 한 장에 적습니다. 적는 말은 모두 대표님의 말입니다. 고슴도치는 모든 사업 판단을 그 한 장에 비춰 봅니다.</p>
+  <p><b>전담팀</b>은 사업체마다 따로 섭니다. 각 팀은 맡은 사업 하나만 배가하고 확장합니다. 다른 사업체의 자료는 읽지 않습니다. 방향을 바꾸거나 보류하거나 넓히는 결정은 고슴도치가 운영원칙에 비춰 대표님께 가져옵니다.</p>
+  <div class="tree">대표님
+ ├─ 고슴도치 ─ 운영원칙 한 장 · 사업 지도
+ │   ├─ 사막여우 ─ 기억
+ │   ├─ 본업 전담팀 ─ 본업만
+ │   ├─ 사업체 B 전담팀 ─ B만
+ │   └─ 맥가이버 ─ 설치·정비
+ └─ 킹덤빌더 ─ 큐티 (직접 부름)</div>
+  <p>대표님은 <b>고슴도치에게 말씀하시면 됩니다.</b> 고슴도치가 기억은 사막여우에게, 일은 전담팀에게, 세팅은 맥가이버에게 맡깁니다. 큐티는 킹덤빌더를 직접 부르십니다.</p>
+
+  <h2 id="family">2. 한 집 다섯 식구</h2>
+  <div class="tbl"><table>
+    <tr><th>자리</th><th>이름</th><th>하는 일</th><th>부르는 말</th></tr>
+    <tr><td>기억</td><td><b>사막여우</b></td><td>데일리노트, 하루 한 질문, 한 주 별자리, 볼트 백업</td><td>안녕</td></tr>
+    <tr><td>중심</td><td><b>고슴도치</b></td><td>운영원칙과 사업 지도를 듭니다. 말을 받아 맞는 손에 맡깁니다. 경영실과 까미노도 엽니다</td><td>고슴도치 경영실</td></tr>
+    <tr><td>일손</td><td><b>전담팀</b></td><td>사업체마다 섭니다. 그 사업의 조사·제안·반복 절차를 맡습니다</td><td>팀의 이름</td></tr>
+    <tr><td>정비사</td><td><b>맥가이버</b></td><td>설치·복구·옵시디언·깃헙·새옷·새 에이전트 세팅</td><td>맥가이버</td></tr>
+    <tr><td>큐티</td><td><b>킹덤빌더</b></td><td>HTM의 오늘 큐티 글을 먼저 띄웁니다. 이어서 한 절씩 필사·묵상·동행일지·중보로 이어 갑니다</td><td>킹덤빌더</td></tr>
+  </table></div>
+  <p>이름과 호칭은 대표님이 정하십니다. 기본 호칭은 「대표님」입니다. 바꾸고 싶으시면 <code>_겨자씨/이름표.md</code>의 「지금」 칸을 고치고 「이름표 바꿨어」라고 말씀해 주세요. 맥가이버가 정의·명단·배차표·기억을 함께 옮깁니다. 이름이 바뀌어도 하는 일은 같습니다.</p>
+
+  <h2 id="tree">3. 폴더 한 그루</h2>
+  <p>설치가 끝나면 컴퓨터에 이런 폴더가 섭니다. 매일 여는 폴더는 <code>C:\kingdombrain</code> 하나입니다. 옵시디언도 이 폴더를 볼트로 엽니다.</p>
+  <div class="tree">C:\kingdombrain\   킹덤브레인
+├─ CLAUDE.md      집 규칙
+├─ AGENTS.md      코덱스용 같은 규칙
+├─ .claude\       에이전트·스킬·관문
+├─ _겨자씨\       설치 재료·기준 자료
+├─ _고슴도치\     고슴도치 본체
+├─ 경영실\        운영원칙·사업 지도
+├─ 사업\          사업체마다 카드 한 장
+├─ 일터\          명단·배차표·일지
+├─ 골방\          큐티 기록
+├─ _금고\         재정·계약 원본
+└─ 00-Daily\ …    사막여우의 방들</div>
+  <ul>
+    <li><b>깃헙 금고에 올라가지 않는 폴더</b> — <code>_고슴도치</code>, <code>골방</code>, <code>_금고</code>, <code>_겨자씨/원본</code>, 이름이 <code>_민감_</code>으로 시작하는 파일. <code>.gitignore</code>가 거릅니다.</li>
+    <li><code>_겨자씨</code>는 설치 재료입니다. 새옷 때 다시 쓰니 지우지 않고 두시기를 권합니다.</li>
+    <li>사업체가 늘면 고슴도치가 <code>사업</code> 아래에 그 사업체 폴더와 카드 한 장을 만듭니다.</li>
+  </ul>
+
+  <h2 id="install">4. 설치 — 두 번 클릭과 대화</h2>
+  <p>설치는 파일 하나를 두 번 눌러 시작합니다. 그다음 대화창에 프롬프트를 한 칸씩 붙입니다. ⓪으로 엽니다. ①부터 ⑤까지 다섯 칸을 지나 ⑥으로 점검합니다.</p>
+  <div class="note"><b>이번 설치에서 터미널은 열지 않습니다.</b> 모든 프롬프트는 클로드 데스크톱 앱의 Code 탭 대화창에 붙입니다. 열쇠나 비밀번호가 든 줄은 이 안내에 없습니다.</div>
+
+  <h3>준비 — 대표님 손</h3>
+  <div class="card"><ol class="steps">
+    <li>Claude Pro 이상을 구독해 주세요. 그리고 클로드 데스크톱 앱에 로그인해 주세요. 로그인은 대표님이 직접 하십니다.</li>
+    <li><code>C:\kingdombrain</code> 폴더를 만들고 받으신 꾸러미 zip을 그 안에 풉니다. 풀고 나면 바로 아래에 <code>_겨자씨</code>, <code>.claude</code>, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>.gitignore</code>가 보여야 합니다.</li>
+    <li>폴더가 한 겹 더 생겼다면(<code>kingdombrain\kingdombrain</code>) 안쪽 내용을 바깥으로 옮겨 주세요.</li>
+  </ol></div>
+  <p>클로드 코드가 처음이시면 <a href="../os/claude_code_install_guide.html">클로드 코드 설치와 Code 탭 Local 여는 법</a>을 먼저 보시면 좋습니다.</p>
+
+  <h3>두 번 클릭 — 설치_시작.cmd</h3>
+  <p><code>C:\kingdombrain\_겨자씨\설치_시작.cmd</code>를 두 번 눌러 주세요. 이 파일이 차례로 하는 일은 다음과 같습니다.</p>
+  <ol>
+    <li>클로드 코드가 깔려 있는지 확인합니다.</li>
+    <li>없는 앱만 설치합니다. Node.js, Git, GitHub CLI, 옵시디언. 있는 앱은 건너뜁니다.</li>
+    <li>사막여우를 꾸러미 안 사본에서 설치합니다.</li>
+    <li>고슴도치를 <code>_고슴도치</code> 폴더에 풉니다. 구역 이름은 「경영실」입니다.</li>
+    <li>겨자씨 층을 놓습니다. 이미 있는 파일은 덮지 않습니다.</li>
+    <li>단계별 결과를 <code>_겨자씨\설치_상태.md</code>에 적습니다.</li>
+  </ol>
+  <div class="note">설치 승인 창이 뜨면 「예」를 눌러 주세요. 실패한 줄이 있어도 끝까지 갑니다. 끝나면 클로드 앱을 완전히 껐다 켜 주세요(작업표시줄 트레이의 클로드까지). 그다음 Code 탭에서 Local을 고르고 <code>C:\kingdombrain</code>을 엽니다.</div>
+
+  <h3>⓪ 시작</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>_겨자씨/설치_시작.md를 읽고 그 순서대로 저와 함께 설치해 주세요. 0단계 점검부터. 한 단계가 끝날 때마다 한 줄로 알리고, 제가 할 일을 말해 주세요.</div>
+  <p>클로드가 점검 결과를 한 줄씩 알립니다. 「실패」 줄이 있으면 먼저 그 줄을 말합니다. 그 뒤로는 단계마다 설치를 돕는 분이 할 일을 짚어 줍니다.</p>
+
+  <h3>① 사막여우</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>/deeper-os:setup
+
+이 폴더가 제 볼트(킹덤브레인)입니다. 시작해도 됩니다. 지금 쓰는 노트는 없으니 없는 것만 새로 만들어 주세요.
+이 집은 사막여우·고슴도치·역할 팀이 한 폴더에 함께 삽니다. 「일 폴더로 보인다」고 물으시면 답은 「여기에 짓습니다」입니다. _겨자씨 폴더와 .claude 폴더는 그대로 두세요.
+루트 CLAUDE.md는 이미 있습니다. 덮지 말고, 여우의 호칭·소개·간단 명령어 블록을 맨 끝 「사막여우가 덧붙이는 자리」 아래에 덧붙여 주세요. 합치는 데 동의합니다. 「총괄은 별도 일 폴더에」 같은 줄은 「이 집은 한 폴더에 함께 산다 — 여우는 기억, 고슴도치는 총괄」로 바꿔 적어 주세요.
+깃헙 백업은 뒤에 따로 연결합니다. 이번에는 건너뛰고 끝에 「백업은 아직」 한 줄만 남겨 주세요.
+진행은 한국어 한 줄씩. 끝나면 「안녕」이라고 부르면 무엇이 열리는지 한 줄로 알려 주세요.</div>
+  <p>세팅이 끝나면 한 번 불러 봅니다.</p>
+  <div class="promptbox short"><button class="copybtn" onclick="copyPrompt(this)">복사</button>안녕</div>
+  <p>화면에 「스킬 실행됨 … desertfox」가 뜨고 오늘 데일리노트가 생기면 통과입니다.</p>
+
+  <h3>② 고슴도치 확인</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>고슴도치, 설치_시작.cmd가 _고슴도치 폴더에 콤포스텔라를 설치해 두었습니다. hedgehog-door를 지나 설치 상태와 판 번호를 확인해 주세요. 볼트는 이 폴더, 구역 이름은 「경영실」입니다. 사막여우의 폴더는 건드리지 말아 주세요. 결과는 세 줄로.</div>
+  <p>세 줄을 받으면 이어서 붙입니다.</p>
+  <div class="promptbox short"><button class="copybtn" onclick="copyPrompt(this)">복사</button>업데이트됐어?</div>
+
+  <h3>③ 경영실·운영원칙·전담팀</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox short"><button class="copybtn" onclick="copyPrompt(this)">복사</button>고슴도치 경영실</div>
+  <p>여권과 오늘 할 일 둘이 나오면 이어서 붙입니다.</p>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>고슴도치, _겨자씨/설치_시작.md 3단계를 해 주세요. 먼저 운영원칙 한 장을 한 번에 하나씩 여쭤 제 말 그대로 적어 주세요. 그다음 제가 운영하는 사업체 이름을 전부(본업 먼저) 여쭤 사업 폴더와 사업 지도를 만들어 주세요. 본업에 대한 사전 문답은 한 번에 하나씩, 경계표 세 칸을 보여 주시고, 본업 전담팀 역할 이름 후보(셋까지)를 보여 주시면 제가 고르겠습니다. 정의 파일은 맥가이버가 새-에이전트 절차로 지어 주세요. 돈·대외 발송·삭제는 어느 역할에도 넣지 마세요. 마지막에 첫 업무 한 건을 실제로 돌려 보여 주세요.</div>
+  <p>이 칸이 가장 깁니다. 고슴도치는 운영원칙을 여섯 칸으로 여쭙습니다. 나는 누구인가, 사업가로서 믿는 것, 삶의 태도, 지킬 것, 하지 않을 것, 시작·멈춤 기준. 대표님이 하신 말 그대로 적습니다.</p>
+  <p>첫 전담팀은 본업에만, 셋까지 세웁니다. 마지막에 대표님이 첫 업무 결과를 보시고 「됐다」나 「아니다」로 답해 주세요. 그 한 마디를 팀이 기억합니다.</p>
+
+  <h3>④ 킹덤빌더</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox short"><button class="copybtn" onclick="copyPrompt(this)">복사</button>킹덤빌더</div>
+  <p>오늘의 큐티 글이 뜨면 이어서 붙입니다.</p>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>첫 절부터 한 절씩 띄워 주세요.</div>
+  <p>킹덤빌더는 골방이 깃헙 금고에 실리지 않는다고 한 줄 알려 드립니다.</p>
+
+  <h3>⑤ 옵시디언·깃헙</h3>
+  <p>이 칸 앞에는 대표님 손이 두 번 갑니다.</p>
+  <ol>
+    <li>옵시디언을 열고 「Open folder as vault」로 <code>C:\kingdombrain</code>을 고릅니다. 볼트 이름은 킹덤브레인입니다.</li>
+    <li>깃헙 계정을 만듭니다. 맥가이버가 <code>gh auth login --web</code>을 실행하면 브라우저가 열리고 여덟 자리 코드가 뜹니다. 코드 입력과 깃헙 로그인은 대표님이 브라우저에서 직접 하십니다. 비밀번호는 클로드에게 알리지 않습니다. 터미널은 열지 않습니다(이 흐름은 첫 설치 때 실측합니다).</li>
+  </ol>
+  <p style="font-size:13px; color:#6A665C;">브라우저 흐름이 안 열리면 설치를 돕는 분이 터미널에서 같은 명령을 한 번 칩니다.</p>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>여우야, 세팅 때 미룬 깃헙 비공개 저장소 백업을 지금 연결해 줘. 저장소 이름은 kingdombrain-vault, 비공개로. 올리기 전에 .gitignore에 _고슴도치/ · 골방/ · _금고/ · _민감_ 줄이 있는지 확인하고, 올라갈 파일 목록을 먼저 보여 줘. 첫 백업이 올라가면 한 줄로 알려 줘.</div>
+
+  <h3>⑥ 끝 점검</h3>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain · 새 대화</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>_겨자씨/설치_시작.md 6단계 끝 점검을 해 주세요. 마지막 보고 다섯 줄로.</div>
+  <p>다섯 줄은 이렇게 옵니다. 여우 판, 고슴도치 판(운영원칙·사업 지도를 적었는지), 본업 전담팀 이름, 첫 업무 검수, 남은 것.</p>
+  <div class="note">설치를 돕는 분께 — 같은 프롬프트 묶음이 꾸러미 안 <code>_겨자씨\프롬프트_붙여넣기.txt</code>에도 있습니다. 중간에 끊기면 그 칸의 프롬프트를 다시 붙이시면 됩니다. 클로드는 이미 된 것을 건너뜁니다.</div>
+
+  <h2 id="words">5. 외울 말 열 마디</h2>
+  <div class="tbl"><table>
+    <tr><th>누구에게</th><th>말</th><th>무엇이 열리나</th></tr>
+    <tr><td>사막여우</td><td><b>안녕</b></td><td>오늘 한 걸음(데일리노트)</td></tr>
+    <tr><td>사막여우</td><td><b>오아시스</b></td><td>하루 한 질문</td></tr>
+    <tr><td>사막여우</td><td><b>밤하늘</b></td><td>한 주를 별자리 한 장으로</td></tr>
+    <tr><td>사막여우</td><td><b>백업</b></td><td>볼트를 깃헙 금고에</td></tr>
+    <tr><td>고슴도치</td><td><b>고슴도치 경영실</b></td><td>새 대화를 여는 말 · 여권과 오늘 할 일 둘</td></tr>
+    <tr><td>고슴도치</td><td><b>까미노</b></td><td>지금까지를 전부 남기기</td></tr>
+    <tr><td>고슴도치</td><td><b>저장해줘</b></td><td>백업·세이브·까미노 가운데 맞는 하나</td></tr>
+    <tr><td>고슴도치</td><td><b>주간 정비</b></td><td>일주일에 한 번, 배운 것 정리</td></tr>
+    <tr><td>맥가이버</td><td><b>새옷 입혀줘</b> · <b>새 에이전트 만들자</b></td><td>업데이트 · 역할 하나 세우기</td></tr>
+    <tr><td>킹덤빌더</td><td><b>킹덤빌더</b> · <b>큐티 하자</b></td><td>오늘의 큐티 글과 한 절씩 필사</td></tr>
+  </table></div>
+  <p>「새옷」 한 마디만 하시면 사막여우가 자기 새옷을 봅니다. 셋을 다 보려면 「새옷 입혀줘」라고 말씀해 주세요. 누가 어떤 말을 받는지는 <code>일터/_배차표.md</code>에 있습니다.</p>
+
+  <h2 id="rhythm">6. 킹덤 비즈니스 라이프스타일 — 하루와 한 주</h2>
+  <div class="card"><p><b>대표는 고슴도치와 대화하며 경영한다. 고슴도치는 대표의 중심(정체성·철학·신념·삶의 태도)을 지키고, 전담팀이 사업체마다 일을 배가한다. 아침은 말씀으로, 기억은 여우에게, 일은 팀에게, 판단은 운영원칙에.</b></p></div>
+  <h3>하루</h3>
+  <div class="tbl"><table>
+    <tr><th>때</th><th>말</th><th>누가</th><th>남는 것</th></tr>
+    <tr><td>아침 처음</td><td><b>킹덤빌더</b></td><td>킹덤빌더</td><td>HTM 오늘 큐티 글 링크, 한 절 필사, 묵상 한 마디, 중보 기도. 기록은 <code>골방</code>에(금고에 안 올라감)</td></tr>
+    <tr><td>아침</td><td><b>안녕</b></td><td>사막여우</td><td>오늘 데일리노트와 한 걸음</td></tr>
+    <tr><td>아침</td><td><b>오아시스</b></td><td>사막여우</td><td>하루 한 질문(비우기)에 대한 대표님의 답</td></tr>
+    <tr><td>아침</td><td><b>냠냠</b></td><td>사막여우</td><td>아침 손글씨·메모(사진이나 글)를 여우가 읽고 볼트에 적은 기록</td></tr>
+    <tr><td>낮</td><td><b>고슴도치 경영실</b></td><td>고슴도치 → 전담팀</td><td>여권, 오늘 할 일 둘, 운영원칙에 비춘 판단 한 줄, 팀에 맡긴 일과 검수 한 줄</td></tr>
+    <tr><td>하루 끝</td><td><b>까미노</b> · <b>저장해줘</b></td><td>고슴도치</td><td>오늘 경영실 기록. 「저장해줘」면 맞는 저장 하나</td></tr>
+  </table></div>
+  <p><b>아침.</b> 대표님이 「킹덤빌더」라고 부르십니다. 킹덤빌더가 HTM의 오늘 #하나님의하루 글을 먼저 띄웁니다. 대표님은 한 절을 옮겨 적고 묵상 한 마디를 남기십니다. 그날 기도할 분이 있으면 중보 기도로 이어 갑니다. 이어서 「안녕」을 부르시면 사막여우가 오늘 데일리노트를 엽니다. 「오아시스」로 하루 한 질문에 답하십니다. 손으로 쓴 아침 메모가 있으면 사진을 찍어 「냠냠」과 함께 건네십니다.</p>
+  <p><b>낮.</b> 대표님이 「고슴도치 경영실」을 여십니다. 고슴도치가 여권과 오늘 할 일 둘을 드립니다. 판단이 필요한 일에는 운영원칙 한 장의 어느 줄에 비춰 보았는지 한 줄로 밝힙니다. 사업체의 일은 대표님이 그 사업체 전담팀을 이름으로 직접 부르셔서 맡기십니다. 여러 사업체가 얽히거나 방향을 정할 일이면 고슴도치에게 가져가십니다. 결과를 받으시면 「됐다」나 「아니다」로 답해 주세요. 팀은 그 답을 다음 일의 기준으로 적어 둡니다.</p>
+  <p><b>저녁.</b> 대표님이 「까미노」라고 하시면 고슴도치가 오늘 경영실 기록을 남깁니다. 무엇을 저장할지 고르기 어려우시면 「저장해줘」 한 마디로 충분합니다. 고슴도치가 백업·세이브·까미노 가운데 맞는 것을 고릅니다. 올라갈 파일 목록도 먼저 보여 드립니다.</p>
+  <h3>한 주와 한 달</h3>
+  <div class="tbl"><table>
+    <tr><th>때</th><th>말</th><th>누가</th><th>남는 것</th></tr>
+    <tr><td>주말</td><td><b>밤하늘</b></td><td>사막여우</td><td>한 주의 기록을 모은 별자리 한 장</td></tr>
+    <tr><td>주말</td><td><b>주간 정비</b></td><td>고슴도치</td><td>배운 것과 낡은 규칙의 정리. 대표님이 정할 일은 세 건 이하</td></tr>
+    <tr><td>한 달에 한 번</td><td><b>에이전트 회의 하자</b></td><td>사막여우 ↔ 전담팀</td><td><code>일터/_회의록/</code>의 세 칸 — 여우의 브리핑, 총괄의 반영, 팀의 답례</td></tr>
+  </table></div>
+  <h3>재정 다섯 칸</h3>
+  <p>고슴도치는 대표님의 수입을 다섯 칸으로 나눠 보여 드립니다. 설치 때 함께 정하는 기본 비율은 십일조 10%, 헌금 5%, 저축 20%, 투자 20%, 생활비 45%입니다. 대표님이 바꾸실 수 있습니다. 고슴도치는 나눈 표를 보여 드릴 뿐 돈을 옮기지 않습니다. 실제 장부와 금액은 <code>_금고</code>에 둡니다. 고슴도치는 그 위치만 기억합니다.</p>
+  <p>첫 주에는 셋만 하셔도 됩니다. 아침 「안녕」 한 번, 하루 한 번 「고슴도치 경영실」, 전담팀에 일 한 건 맡기고 「됐다/아니다」.</p>
+
+  <h2 id="kb">7. 킹덤빌더 — HTM 공식 자료가 기준</h2>
+  <p>킹덤빌더와 고슴도치가 기준으로 삼는 자료는 헤븐리터치 미니스트리(HTM)의 공식 자료입니다. HTM은 손기철 장로가 대표로 있는 초교파 선교 단체입니다. 공식 홈페이지는 스스로를 「말씀과 삶과 신앙이 일치되는 킹덤빌더를 세우고 세상으로 파송」하는 단체라고 소개합니다.</p>
+  <div class="tbl"><table>
+    <tr><th>자료</th><th>무엇이 있나</th></tr>
+    <tr><td><a href="https://www.instagram.com/heavenly_touch_m/" target="_blank" rel="noopener">인스타그램 heavenly_touch_m</a></td><td>매일 묵상 시리즈 #하나님의하루. 킹덤빌더가 아침마다 여는 곳입니다</td></tr>
+    <tr><td><a href="https://www.youtube.com/@HTM0691" target="_blank" rel="noopener">유튜브 @HTM0691</a></td><td>「손기철장로 말씀치유집회」 공식 채널. 매주 화요일 저녁 7시 30분 생중계</td></tr>
+    <tr><td><a href="https://www.heavenlytouch.kr" target="_blank" rel="noopener">홈페이지 heavenlytouch.kr</a></td><td>HTM 소개, 화요말씀치유집회, 킹덤빌더스쿨 안내</td></tr>
+    <tr><td><a href="https://www.heavenlytouch.kr/book" target="_blank" rel="noopener">HTM 도서 목록</a></td><td>『말씀대로 말하라』(규장, 2019)를 비롯한 손기철 장로의 저서</td></tr>
+  </table></div>
+  <h3>킹덤빌더가 하는 일</h3>
+  <ol>
+    <li>부르시면 먼저 오늘의 #하나님의하루 게시물을 찾아 링크·말씀 구절·짧은 요지를 띄웁니다.</li>
+    <li>글을 가져오지 못하면 「오늘 글을 가져오지 못했습니다」 한 줄과 링크만 드립니다. 지어내지 않습니다.</li>
+    <li>그다음 한 절씩 필사, 묵상 대화, 동행일지, 중보로 이어 갑니다. 성경 본문은 개역한글판이며 한 글자도 바꾸지 않습니다.</li>
+    <li>동행일지에는 게시물 링크와 머문 구절 한 줄만 남깁니다. 글 전문은 옮겨 적지 않습니다.</li>
+  </ol>
+  <h3>말하는 결</h3>
+  <p>킹덤빌더는 『말씀대로 말하라』의 공식 소개와 목차에서 확인된 원칙만 태도로 입습니다. 말보다 마음을 먼저 여쭙습니다. 말씀 구절은 바꾸지 않고 그대로 읽어 드립니다. 「긍정의 말로 바꾸세요」 같은 처방으로 줄이지 않습니다. 책 본문은 인용하지 않습니다.</p>
+  <p>설교를 인용할 때는 실제로 가져온 영상의 자막이나 설명에서만 합니다. 영상 제목과 회차를 함께 적습니다. 기억에서 끌어낸 설교 요약은 쓰지 않습니다. 기준 자료를 열지 못한 날은 「기준 자료를 열지 못해 제 말은 일반적인 묵상입니다」라고 먼저 밝힙니다.</p>
+  <h3>고슴도치의 경영 코칭</h3>
+  <p>고슴도치도 같은 기준 위에서 코칭합니다. 본업과 사람과 비전, 그리고 휴식의 리듬을 먼저 살핍니다. 확장은 그 위에 놓습니다. 기준 파일에서 확인된 문장만 기준으로 씁니다. 확인되지 않은 교리나 주장은 말하지 않습니다.</p>
+  <div class="note">기준 파일 두 장은 <code>_겨자씨/기준/</code>에 있습니다. HTM 자료를 통째로 내려받아 쌓지 않습니다. 링크로 찾아 필요할 때 한 편씩 엽니다. 인스타그램이 로그인 창을 띄우면 클로드는 로그인하지 않습니다. 로그인이 필요하면 대표님이 직접 하십니다.</div>
+
+  <h2 id="new">8. 새 에이전트 만드는 법</h2>
+  <p>대표님은 고슴도치에게 이름과 맡길 일을 말씀하시면 됩니다. 고슴도치가 그 말을 맥가이버에게 넘깁니다. 맥가이버는 정의 파일부터 기억 자리·일지 자리·명단까지 짓습니다.</p>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 폴더 C:\kingdombrain</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>고슴도치, ○○ 사업에 새 에이전트를 하나 세우고 싶습니다. 이름은 ○○, 맡길 일은 ○○입니다. 맥가이버에게 새 에이전트 절차로 지어 달라고 해 주세요.</div>
+  <h3>맥가이버가 여쭙는 것 셋</h3>
+  <ol>
+    <li>어느 사업체의 손인가. 사업 지도에 없는 사업체면 고슴도치가 먼저 지도와 카드를 만듭니다.</li>
+    <li>그 사업체에서 요즘 손이 가장 많이 가는 일 한 문장.</li>
+    <li>역할 이름. 정하기 어려우시면 하는 일에서 이름을 가져와 알려 드립니다.</li>
+  </ol>
+  <h3>맥가이버가 짓는 것</h3>
+  <ol>
+    <li>정의 파일 <code>.claude/agents/&lt;사업체&gt;_&lt;역할&gt;.md</code>. 기억 규율과 일지 규칙이 들어 있습니다.</li>
+    <li><code>일터/_명단.md</code>에 한 줄, <code>일터/_배차표.md</code>에 한 줄.</li>
+    <li>5분 안에 끝나는 첫 일 하나. 대표님이 결과를 보시고 「됐다/아니다」로 답하십니다.</li>
+    <li>검수 한 줄 — 「무엇을 · PASS/조건부/FAIL · 근거」.</li>
+  </ol>
+  <div class="note warn">어느 역할에도 넣지 않는 일 셋 — 돈(결제·송금·견적 확정), 대외 발송(메일·문자·게시), 삭제. 이 셋은 사람 손입니다. 사막여우·고슴도치·맥가이버·킹덤빌더라는 이름은 이미 임자가 있습니다.</div>
+
+  <h2 id="loop">9. 쓸수록 자라는 자리</h2>
+  <p>에이전트는 일을 마칠 때마다 배운 것을 정해진 자리에 적습니다. 대표님이 쓰실수록 다음 대화의 에이전트가 그 기록을 읽고 시작합니다. 이 순환을 학습 고리라고 부릅니다.</p>
+  <div class="tbl"><table>
+    <tr><th>자리</th><th>누가</th><th>무엇을</th></tr>
+    <tr><td>각자의 기억</td><td>모든 에이전트</td><td>자기 기억 파일을 40줄 안으로 씁니다. 두 번 이상 통한 방법만 「굳은 규칙」으로 올립니다. 됐다고 적을 때는 무엇으로 확인했는지 함께 적습니다</td></tr>
+    <tr><td><code>일터/일지/</code></td><td>일한 에이전트</td><td>자기 일지는 자기가 씁니다. 남의 일지를 대신 쓰지 않습니다</td></tr>
+    <tr><td><code>일터/프롬프트_라이브러리.md</code></td><td>팀</td><td>두 번 통한 방법을 모아 둡니다</td></tr>
+    <tr><td><code>일터/_하네스.md</code></td><td>팀</td><td>결과물이 서랍에 들어가기 전 지나는 세 문 — 분류, 민감정보, 품질</td></tr>
+    <tr><td>주간 정비</td><td>고슴도치</td><td>민감정보 의심, 하네스 위반, 조건이 지난 규칙, 중복을 차례로 봅니다. 같은 교훈이 세 번이면 정의를 고칠 초안을 냅니다</td></tr>
+    <tr><td>에이전트 회의</td><td>사막여우·고슴도치·팀</td><td><code>일터/_회의록/</code>에 세 칸 — 여우의 브리핑, 총괄의 반영, 팀의 답례</td></tr>
+  </table></div>
+  <h3>저장 세 마디</h3>
+  <ul>
+    <li><b>백업</b> — 사막여우가 볼트 전체를 깃헙 금고에 올립니다.</li>
+    <li><b>세이브</b> — 일터·정의·명단을 남깁니다.</li>
+    <li><b>까미노</b> — 고슴도치가 경영실을 남깁니다.</li>
+  </ul>
+  <p>「저장해줘」 한 마디면 고슴도치가 셋 가운데 고릅니다. 올리기 전에는 올라갈 파일 목록을 보여 드립니다. 깃헙에 올라가지 않았으면 「백업 완료」라고 말하지 않습니다.</p>
+  <p>에이전트 회의는 「에이전트 회의 하자」로 엽니다. 사막여우는 「회의 브리핑」으로 자기 칸만 씁니다. 답례 칸에서는 사람 이름과 금액과 날짜를 걷어 냅니다.</p>
+
+  <h2 id="guard">10. 지키는 것</h2>
+  <h3>금고</h3>
+  <p><code>_금고</code>는 재정 장부와 계약과 개인정보 원본을 두는 자리입니다. 에이전트는 이 폴더의 위치만 기억하고 내용을 일지·기억·대화 요약에 옮겨 적지 않습니다. 필요한 숫자가 있으면 대표님이 그때 열어 알려 주십니다.</p>
+  <h3>관문</h3>
+  <p>대표님이 확인하시기 전에는 에이전트가 바깥 상태를 바꾸지 못하게, 관문 스크립트가 다음 넷을 막습니다.</p>
+  <ul>
+    <li><code>git push</code> — 깃헙으로 내보내기</li>
+    <li><code>git add -A</code> — 무엇이 담기는지 모르는 채 담기</li>
+    <li><code>git reset --hard</code> — 작업물 되돌리기</li>
+    <li><code>git clean -f</code> — 파일 소리 없이 지우기</li>
+  </ul>
+  <p>깃헙에 올릴 때는 에이전트가 올라갈 파일 목록을 먼저 보여 드립니다. 대표님이 확인하시면 대화창에 느낌표로 시작하는 한 줄을 직접 넣으시도록 안내합니다. 관문은 파이썬 스크립트입니다. 파이썬이 없는 컴퓨터라면 설치 스크립트가 그 사실을 <code>설치_상태.md</code>에 적습니다. 맥가이버는 그 줄을 보고 파이썬 설치를 권합니다.</p>
+  <h3>열쇠 원칙</h3>
+  <p>에이전트는 비밀번호·열쇠·토큰을 묻지도 넣지도 않습니다. 「터미널에 직접 쳐 주세요」라는 말을 들으시면 고장이 아니라 원칙입니다. 그 줄은 대표님이 직접 넣으십니다.</p>
+  <h3>사람의 이름</h3>
+  <p>고객·교우·직원의 실명과 사정과 연락처는 파일에도 대화에도 넣지 않습니다. 중보명단에는 이름이 들어갑니다. 그래서 큐티 기록이 있는 <code>골방</code>은 깃헙 금고에 올라가지 않습니다.</p>
+  <h3>사람 손에 남는 일</h3>
+  <p>돈을 보내는 일, 메일·문자를 보내는 일, 지우는 일은 에이전트가 하지 않습니다. 초안까지 만들고 보내는 손은 대표님입니다.</p>
+
+  <h2 id="codex">11. 코덱스에서도</h2>
+  <p>같은 폴더를 코덱스(Codex)에서 여셔도 됩니다. 루트의 <code>AGENTS.md</code>는 <code>CLAUDE.md</code>와 내용이 같은 코덱스용 규칙입니다.</p>
+  <ul>
+    <li>코덱스는 <code>.claude/agents</code>의 정의 파일을 역할 문서로 읽고 그 역할로 답합니다.</li>
+    <li>코덱스가 에이전트를 따로 띄우지 못하는 경우가 있습니다. 그때 코덱스는 「역할 문서를 읽고 답했다」와 「따로 실행했다」를 나눠 알립니다.</li>
+    <li>스킬은 <code>.agents/skills</code>에서 읽습니다. 이 폴더는 <code>.claude/skills</code>와 연결되어 있습니다.</li>
+  </ul>
+  <p>매일 쓰시는 자리는 클로드 데스크톱 앱 Code 탭을 기본으로 권합니다. 설치와 점검도 Code 탭 기준으로 짜여 있습니다.</p>
+
+  <h2 id="update">12. 새옷 세 갈래</h2>
+  <p>새 판을 받는 일을 새옷이라 부릅니다. 루트에서 「새옷 입혀줘」라고 말씀하시면 맥가이버가 셋을 차례로 보고 결과를 따로 한 줄씩 알립니다. 하나가 막혀도 나머지는 끝까지 갑니다.</p>
+  <div class="tbl"><table>
+    <tr><th>갈래</th><th>맥가이버가 보는 것</th><th>지금</th></tr>
+    <tr><td>사막여우</td><td>플러그인 판 번호</td><td>꾸러미 안 사본에서 왔습니다. 새 판은 새 꾸러미로 받습니다</td></tr>
+    <tr><td>고슴도치</td><td><code>_고슴도치</code>의 판 번호</td><td>새옷 꾸러미가 따로 있어야 온라인으로 받습니다. 없으면 지금 판 그대로입니다</td></tr>
+    <tr><td>겨자씨 층</td><td>정의·스킬·템플릿 파일을 설치 기록과 대조</td><td>대표님이 고친 파일은 덮지 않습니다. 새 판은 그 곁에 <code>.new</code>로 둡니다</td></tr>
+  </table></div>
+  <p>새 판은 설치를 도운 분이 새 꾸러미로 드립니다. 받으시면 <code>_겨자씨</code> 폴더의 <code>새옷_함께입기.cmd</code>를 두 번 누르시거나 「새옷 입혀줘」라고 말씀해 주세요. 끝나면 클로드 앱을 껐다 켜고 새 대화를 여십시오.</p>
+
+  <h2 id="stuck">13. 막히면</h2>
+  <ol class="steps">
+    <li>「맥가이버, ○○이 안 돼요」라고 화면에 보이는 글자 그대로 말씀해 주세요. 맥가이버가 한 번에 하나씩 여쭙고 함께 봅니다.</li>
+    <li>설치가 중간에 멈췄으면 <code>_겨자씨</code> 폴더의 <code>고슴도치_시작.cmd</code>를 두 번 누르세요. 남은 단계부터 이어 갑니다.</li>
+    <li>같은 자리에서 두 번 막히면 멈추고 다섯 줄을 받아 주세요. 화면 한 장(캡처)과 함께 설치를 도운 분께 보내시면 됩니다.</li>
+  </ol>
+  <span class="where">붙여넣는 곳 — Code 탭 대화창 · 막힌 대화 그대로</span>
+  <div class="promptbox"><button class="copybtn" onclick="copyPrompt(this)">복사</button>맥가이버, 같은 자리에서 두 번 막혔습니다. 여기서 멈추고 다섯 줄로 정리해 주세요. 된 것 · 남은 것 · 시도 횟수 · 마지막 결과 · 제가 정해야 할 것.</div>
+  <h3>다시 깔기 전에 볼 것</h3>
+  <div class="tbl"><table>
+    <tr><th>이럴 때</th><th>먼저 볼 것</th></tr>
+    <tr><td>사막여우가 안 깨어납니다</td><td>화면에 「스킬 실행됨 … desertfox」가 뜨는지. 안 뜨면 플러그인이 안 올라온 것입니다</td></tr>
+    <tr><td>에이전트 이름을 불러도 반응이 없습니다</td><td>클로드 코드를 <code>C:\kingdombrain</code>에서 열었는지</td></tr>
+    <tr><td>판이 옛것 같습니다</td><td>플러그인의 <code>plugin.json</code> 안 <code>version</code>. 폴더 이름은 판 번호가 아닙니다</td></tr>
+    <tr><td>관문이 아무것도 막지 않습니다</td><td>파이썬이 깔려 있는지</td></tr>
+  </table></div>
+
+  <h2 id="faq">14. 자주 묻는 것 다섯</h2>
+  <div class="card">
+    <h3>사업체가 하나 더 늘었습니다</h3>
+    <p>고슴도치에게 사업체 이름을 말씀해 주세요. 고슴도치가 <code>사업</code> 폴더에 카드 한 장을 만들고 사업 지도에 한 줄을 더합니다. 그 사업의 전담팀은 「새 에이전트 만들자」로 세웁니다. 새 팀은 그 사업만 맡습니다.</p>
+    <h3>클로드가 터미널을 열라고 합니다</h3>
+    <p>고장이 아닙니다. 비밀번호나 열쇠가 든 줄은 에이전트가 대신 넣지 않습니다. 안내받은 그 줄만 대표님이 직접 넣으시면 됩니다.</p>
+    <h3>백업·세이브·까미노가 헷갈립니다</h3>
+    <p>「저장해줘」 한 마디면 충분합니다. 고슴도치가 맞는 것을 고릅니다. 둘 이상이 겹치면 한 번 여쭙습니다. 결과는 기록·커밋·올리기 세 줄로 따로 알려 드립니다.</p>
+    <h3>킹덤빌더가 오늘 글을 못 가져왔다고 합니다</h3>
+    <p>인스타그램이 로그인 창을 띄운 날입니다. 킹덤빌더는 글을 지어내지 않고 링크를 드립니다. 링크를 눌러 직접 보신 뒤 「첫 절부터 한 절씩 띄워 주세요」라고 이어 가시면 됩니다.</p>
+    <h3>옵시디언에서도 보이나요</h3>
+    <p>네. 옵시디언이 <code>C:\kingdombrain</code>을 볼트로 열기 때문에 데일리노트, 운영원칙, 사업 카드, 에이전트 정의를 모두 옵시디언에서 읽고 고치실 수 있습니다.</p>
+  </div>
+
+  <div class="footer">
+    <img src="DEEPER_logo.png" alt="DEEPER" style="width:80px; display:block; margin:0 auto 12px;">
+    겨자씨 OS v0.1 · © 2026 DEEPER
+  </div>
+</div>
+<script>
+function copyPrompt(btn){
+  var box = btn.parentElement.cloneNode(true);
+  box.querySelector('.copybtn').remove();
+  var text = box.textContent.trim();
+  function ok(){ btn.textContent = '복사됨'; setTimeout(function(){ btn.textContent = '복사'; }, 2000); }
+  function fallback(){
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, ta.value.length);
+      var done = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (done) { ok(); return; }
+    } catch (e) {}
+    btn.textContent = '길게 눌러 직접 복사'; setTimeout(function(){ btn.textContent = '복사'; }, 3000);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(ok).catch(fallback);
+  } else { fallback(); }
+}
+</script>
+</body>
+</html>
