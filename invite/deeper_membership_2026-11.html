@@ -38,6 +38,7 @@ img{display:block;max-width:100%}a{color:inherit}
 section{padding:60px 0 10px}
 h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em;margin:0 0 6px}
 .sub{color:var(--sub);margin:0 0 22px;font-size:15.5px}
+.callout{font-family:'Noto Serif KR',serif;font-size:clamp(18px,2.4vw,21px);font-weight:600;line-height:1.55;color:var(--ink);margin:4px 0 22px;padding:14px 18px;border-left:3px solid var(--gold);background:var(--paper-2);border-radius:0 12px 12px 0}
 p{margin:0 0 12px;font-size:15.5px}
 .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:start}
 .card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
@@ -78,6 +79,10 @@ html.settled .hero h1 .l span{transform:none!important;animation:none!important}
 .why{padding:64px 0 10px}
 .why__head{max-width:720px;margin:0 auto 26px;text-align:center}
 .why__head .sub{margin:0}
+.why__head .eyebrow{font-size:14px;padding:6px 14px;border:1px solid rgba(216,185,123,.6);border-radius:999px;color:var(--gold);margin-bottom:12px}
+.why__head h2{font-size:clamp(26px,4vw,36px);margin-bottom:10px}
+.why__big{font-family:'Noto Serif KR',serif;font-size:clamp(18px,2.6vw,22px);font-weight:600;color:var(--gold);margin:0 0 10px;letter-spacing:-.01em}
+.why__big::before{content:"";display:block;width:36px;height:2px;background:var(--gold);margin:0 auto 14px}
 .why__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .why__card{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px 20px;box-shadow:0 8px 24px rgba(27,35,38,.06);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
 .why__card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(27,35,38,.12)}
@@ -102,13 +107,13 @@ html.settled .hero h1 .l span{transform:none!important;animation:none!important}
 .tl__dot{position:absolute;left:50%;top:-4px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 3px rgba(216,185,123,.18)}
 .tl__date{margin:16px 0 10px;font-family:'Noto Serif KR',serif;font-size:16px;color:var(--gold-2);letter-spacing:.02em}
 .tl__date small{display:block;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.55);font-family:'Noto Sans KR',sans-serif}
-.tl__cover{position:relative;width:118px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.15) inset;transform:perspective(600px) rotateY(-10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.tl__item:hover .tl__cover{transform:perspective(600px) rotateY(0) rotateX(0) scale(1.04)}
+.tl__cover{position:relative;width:118px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.15) inset;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tl__item:hover 
 .tl__cover img{width:100%;height:auto;display:block}
 .tl__shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:shine 4.5s ease-in-out infinite;animation-delay:calc(1s + var(--i)*.6s)}
 @keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.tl__tile{position:relative;width:118px;aspect-ratio:3/4;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45);transform:perspective(600px) rotateY(10deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.tl__item:hover .tl__tile{transform:perspective(600px) rotateY(0) rotateX(0) scale(1.04)}
+.tl__tile{position:relative;width:118px;aspect-ratio:3/4;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 18px 36px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tl__item:hover 
 .tl__tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .tl__tileveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,0) 55%,rgba(15,26,30,.75))}
 .tl__tiletxt{position:absolute;left:0;right:0;bottom:10px;padding:0 8px;font-size:8.5px;letter-spacing:.18em;color:var(--gold-2)}
@@ -158,8 +163,9 @@ html.settled .tl__line{transform:scaleX(1)!important}html.settled .tl__item{opac
 
   <section class="why">
     <div class="why__head rv">
-      <div class="eyebrow">PERSONAL AI · 내 지능을 내가 갖는다는 것</div>
-      <h2>내 지능은 내 컴퓨터에 있어야 합니다</h2>
+      <div class="eyebrow">PERSONAL AI</div>
+      <h2>내 지능을 내가 갖는다는 것</h2>
+      <p class="why__big">내 지능은 내 컴퓨터에 있어야 합니다</p>
       <p class="sub">읽고 생각하고 판단한 것이 남의 서버가 아니라 디퍼님 손안의 세컨브레인에 쌓입니다.</p>
     </div>
     <div class="why__grid">
@@ -188,7 +194,7 @@ html.settled .tl__line{transform:scaleX(1)!important}html.settled .tl__item{opac
   <section class="grid">
     <div>
       <h2 class="rv">멤버가 되시면</h2>
-      <p class="sub rv d1">살롱을 마친 분도, 시즌을 쉬어 가는 분도 같은 자리에서 이어 가시면 돼요.</p>
+      <p class="callout rv d1">살롱을 마친 분도, 시즌을 쉬어 가는 분도<br>같은 자리에서 이어 가시면 돼요.</p>
       <p class="rv d1">목요일 밤에 한 달 동안 디퍼 리딩 두 번과 인사이트 공유회 두 번을 함께하시고, 멤버 방에도 계속 머무실 수 있어요. 매달 열쇠말과 함께 꾸러미를 보내 드리고, 그 꾸러미에는 최신 시스템 엔지니어링으로 설계를 담아 드리겠습니다.</p>
       <p class="rv d1">11월 새옷에는 세계 무대에서 검증된 설계를 담았습니다. Y Combinator 대표 개리 탄이 공개한 세컨브레인 설계와, 실리콘밸리 스타트업들이 쓰는 엔지니어링 스택에서 뽑은 설계 셋을 사막여우에 최적화되도록 다듬어 담았습니다. 앞으로 매달, 바깥에서 확인한 설계 한 가지를 사막여우에 맞게 옮겨 드립니다.</p>
             <div class="tl rv d2">
@@ -204,7 +210,7 @@ html.settled .tl__line{transform:scaleX(1)!important}html.settled .tl__item{opac
             <span class="tl__dot"></span>
             <div class="tl__date">11월 12일<small>목</small></div>
             <div class="tl__tile"><img src="insight-reel-a.jpg" alt="인사이트 공유회"><div class="tl__tileveil"></div><div class="tl__tiletxt">INSIGHT SHARING</div></div>
-            <div class="tl__txt"><span class="tl__kind">인사이트 공유회</span><b>서로의 별을 봅니다</b><span>한 분 5분씩</span></div>
+            <div class="tl__txt"><span class="tl__kind">인사이트 공유회</span><b>서로의 별을 봅니다</b><span>함께 AI를 공부하는 이유</span></div>
           </article>
           <article class="tl__item tl__item--book" style="--i:2">
             <span class="tl__dot"></span>
@@ -216,7 +222,7 @@ html.settled .tl__line{transform:scaleX(1)!important}html.settled .tl__item{opac
             <span class="tl__dot"></span>
             <div class="tl__date">11월 26일<small>목</small></div>
             <div class="tl__tile"><img src="insight-reel-b.jpg" alt="인사이트 공유회"><div class="tl__tileveil"></div><div class="tl__tiletxt">INSIGHT SHARING</div></div>
-            <div class="tl__txt"><span class="tl__kind">인사이트 공유회</span><b>보여 준 것은 남기고</b><span>막힌 것은 물어 주세요</span></div>
+            <div class="tl__txt"><span class="tl__kind">인사이트 공유회</span><b>보여 준 것은 남기고</b><span>막힌 것은 함께 풀어가요</span></div>
           </article>
         </div>
       </div>
