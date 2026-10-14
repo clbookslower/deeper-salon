@@ -107,6 +107,12 @@ h2 + .sub{color:var(--sub);margin:0 0 22px;font-size:15px}
   .rv{opacity:1;transform:none}
   .hero__img{transform:none}
 }
+
+/* ---------- settle fallback (애니메이션이 멈춘 환경에서도 글이 보이게) ---------- */
+html.settled .hero h1 .l span{transform:none!important;animation:none!important}
+html.settled .hero p.lead,html.settled .meta,html.settled .scroll{opacity:1!important;animation:none!important}
+html.settled .eyebrow::before{transform:none!important;animation:none!important}
+html.settled .hero__img{animation:none!important;filter:none!important}
 </style>
 </head>
 <body>
@@ -169,6 +175,11 @@ h2 + .sub{color:var(--sub);margin:0 0 22px;font-size:15px}
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){io.observe(e)});
+  setTimeout(function(){
+    document.documentElement.classList.add('settled');
+    var vh=innerHeight||800;
+    els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<vh*1.05&&r.bottom>0)e.classList.add('in');});
+  },2600);
   var img=document.querySelector('.hero__img');
   if(img && !matchMedia('(prefers-reduced-motion: reduce)').matches){
     var ticking=false;
