@@ -400,6 +400,65 @@ small .ln+.ln{margin-top:.35em}
 .ent-out ul{list-style:none;margin:0;padding:0}
 .ent-out li{position:relative;padding:6px 0 6px 20px;font-size:15px;line-height:1.7;color:var(--ink)}
 .ent-out li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:2px;background:var(--gold-2)}
+/* ---------- star-keeper salons (full width · 10/24) ---------- */
+.salons{background:var(--paper);border-top:1px solid var(--line);padding:0 0 clamp(56px,8vw,110px)}
+.salons__fig{position:relative;margin:0 0 clamp(36px,5vw,64px);height:clamp(300px,46vw,520px);overflow:hidden;background:var(--night)}
+.salons__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.salons__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,34,0) 40%,rgba(17,30,34,.72))}
+.salons__fig figcaption{position:absolute;z-index:1;left:clamp(20px,5vw,72px);right:20px;bottom:28px;color:#fff;font-family:'Noto Serif KR',serif;font-size:clamp(40px,7vw,86px);font-weight:600;line-height:1;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+.salons__fig figcaption small{display:block;margin-bottom:12px;font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.22em;font-weight:500;color:var(--gold-2);text-shadow:none}
+.salons__in{max-width:1120px;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
+.salons h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.3;letter-spacing:-.01em;margin:0 0 18px}
+.salons__lead{max-width:720px;font-size:16.5px;color:var(--sub);margin:0 0 28px}
+.salons__when{list-style:none;margin:0 0 34px;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.salons__when li{background:var(--forest);color:#fff;border-radius:14px;padding:14px 12px 12px;line-height:1.35}
+.salons__when time{display:block;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-2);line-height:1;font-variant-numeric:lining-nums}
+.salons__when b{display:block;margin-top:8px;font-size:14.5px;font-weight:600}
+.salons__when span{display:block;font-size:12.5px;color:rgba(255,255,255,.72)}
+.salons .stars{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px!important;margin:0 0 22px}
+.salons .star{display:flex;flex-direction:column;padding:26px 26px 24px!important;border-radius:20px;background:var(--paper-2);box-shadow:0 18px 44px -28px rgba(27,35,38,.35)}
+.salons .star::before{width:4px}
+.star__top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.salons .star__who{font-size:13px;letter-spacing:.16em;font-weight:600}
+.star__tag{font-size:12.5px;padding:4px 11px;border-radius:999px;border:1px solid rgba(185,151,91,.45);color:var(--forest);font-weight:500}
+.salons .star h3{font-size:clamp(22px,2.4vw,26px);margin:0 0 10px;line-height:1.35}
+.star__promise{font-family:'Noto Serif KR',serif;font-size:17px!important;font-weight:600;line-height:1.6!important;color:var(--forest)!important;margin:0 0 14px!important;padding:10px 14px;background:rgba(31,77,68,.06);border-radius:0 12px 12px 0;border-left:3px solid var(--gold)}
+.salons .star__p{font-size:15.5px;line-height:1.8;color:var(--sub);margin:0 0 16px}
+.star__flow{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.star__flow li{display:grid;grid-template-columns:58px 1fr;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.55}
+.star__flow i{font-style:normal;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.04em;text-align:center;padding:2px 0;border-radius:999px;background:rgba(185,151,91,.12)}
+.star__facts{margin:0 0 14px;padding:4px 16px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.star__facts div{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px;line-height:1.6}
+.star__facts div:last-child{border-bottom:0}
+.star__facts dt{color:var(--gold);font-size:12.5px;letter-spacing:.06em;font-weight:600;padding-top:2px}
+.star__facts dd{margin:0;color:var(--ink)}
+.star__facts dd small{display:block;margin-top:2px;font-size:13.5px;color:var(--sub)}
+.star__note{font-size:14px!important;color:var(--sub)!important;line-height:1.7!important;margin:0 0 14px!important;padding-left:14px;position:relative}
+.star__note::before{content:"";position:absolute;left:2px;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.star__btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
+.salons .star a{margin-top:0}
+.star__more,.star__go{display:inline-flex;align-items:center;justify-content:center;flex:1 1 140px;padding:13px 18px;border-radius:999px;font-size:15px!important;font-weight:600;text-decoration:none;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.star__more{border:1.5px solid var(--forest);color:var(--forest)!important}
+.star__go{background:var(--forest);color:#fff!important}
+.star__more:hover,.star__go:hover{transform:translateY(-2px)}
+.stars-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 34px}
+.stars-more .star{padding:18px 22px!important}
+.star--soon{background:transparent!important;border-style:dashed!important}
+.salons .star--host{background:#24413c;box-shadow:none}
+.salons .star--host h3{color:#fff}.salons .star--host p{color:rgba(255,255,255,.8)}
+.salons .qa{max-width:760px}
+@media (max-width:900px){
+  .salons__when{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .salons .stars,.stars-more{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .salons__when{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .salons .star{padding:22px 18px 20px!important}
+  .star__facts{padding:2px 12px}
+  .star__facts div{grid-template-columns:56px 1fr;font-size:14.5px}
+  .star__flow li{grid-template-columns:52px 1fr}
+}
+
 </style>
 </head>
 <body>
@@ -469,7 +528,7 @@ small .ln+.ln{margin-top:.35em}
       <p class="mb__k">EVERY MONTH</p>
       <h3 class="mb__h">DEEPER NEWS</h3>
       <ul class="mlist">
-        <li><b><span class="nbadge" aria-hidden="true">NEW</span>별지기님들의 전문 살롱 전격 오픈</b><span class="ln">이번 가을, 콤포스텔라 1기 별지기님들이 각자의 전문 분야로 살롱을 엽니다.</span><span class="ln">전자책, 숏폼 영상, 단행본 디자인, 단편영화, 브랜드 웹사이트, 인스타툰, 접수창구까지 일곱 개 살롱입니다.</span></li>
+        <li><b><span class="nbadge" aria-hidden="true">NEW</span>별지기님들의 전문 살롱 전격 오픈</b><span class="ln">이번 가을, 콤포스텔라 1기 별지기님들이 각자의 전문 분야로 살롱을 엽니다.</span><span class="ln">전자책, 나만의 앱, 단행본 디자인, 접수창구, 단편영화, 브랜드 웹사이트까지 여섯 살롱입니다.</span></li>
         <li><b><span class="nbadge" aria-hidden="true">NEW</span>디퍼만의 아늑한 아지트 빌더하우스 탄생!</b><span class="ln">디퍼 빌더하우스에서 오프라인 만남을 더 밀도 있게 이어갑니다.</span><span class="ln">11월 13~14일, 27~28일 두 번 빌더하우스가 열립니다.</span></li>
       </ul>
     </div>
@@ -499,35 +558,138 @@ small .ln+.ln{margin-top:.35em}
 </section>
 
 <!-- 2 · 별지기 살롱 -->
-<section class="panel panel--flip" id="salons">
-  <figure class="panel__fig">
-    <img src="house-m2.jpg" alt="등불 켜진 서재에서 노트북으로 작업하는 사람과 곁의 여우" loading="lazy" decoding="async" style="object-position:50% 60%">
-    <figcaption><small>STAR KEEPERS' SALONS</small></figcaption>
+<section class="salons" id="salons">
+  <figure class="salons__fig">
+    <img src="house-m2.jpg" alt="등불 켜진 서재에서 노트북으로 작업하는 사람과 곁의 여우" loading="lazy" decoding="async">
+    <figcaption><small>STAR KEEPERS' SALONS</small>별지기 살롱</figcaption>
   </figure>
-  <div class="panel__body">
+  <div class="salons__in">
     <p class="kicker">02 · 별지기 살롱</p>
     <h2>별지기님들의 전문 살롱 오픈!</h2>
-    <p><span class="ln">11월부터 디퍼는 별지기님들의 전문 살롱을 디퍼 커뮤니티의 핵심에 둡니다.</span></p>
+    <p class="salons__lead"><span class="ln">11월부터 디퍼는 별지기님들의 전문 살롱을 디퍼 커뮤니티의 핵심에 둡니다.</span><span class="ln">콤포스텔라 1기 별지기님들이 자기 일에서 직접 써 온 방법으로 살롱을 엽니다.</span><span class="ln">여섯 살롱이 10월 27일부터 차례로 문을 엽니다.</span></p>
+
+    <ol class="salons__when" aria-label="여는 날 순서">
+      <li><time>10.27</time><b>햇살</b><span>전자책</span></li>
+      <li><time>11.2</time><b>솔담</b><span>나만의 앱</span></li>
+      <li><time>11.4</time><b>단무지</b><span>책 디자인</span></li>
+      <li><time>11.5</time><b>헤더</b><span>접수창구</span></li>
+      <li><time>11.5</time><b>스윗워러</b><span>단편영화</span></li>
+      <li><time>11.10</time><b>투게더</b><span>브랜드 웹사이트</span></li>
+    </ol>
+
     <div class="stars">
-      <article class="star"><span class="star__who">햇살</span><h3>살롱 드 나루</h3><p>써 둔 글로 전자책 한 권</p><span class="star__m">8주 · 10월 27일(화) 시작</span><a href="https://pognaru.com/class/salon-de-naru.html" target="_blank" rel="noopener">살롱 페이지 보기 →</a></article>
-      <article class="star"><span class="star__who">솔담</span><h3>숏폼 붕어빵</h3><p>내 글로 숏폼 영상 자동화</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">단무지</span><h3>단행본 디자인 초급</h3><p>내 원고를 종이책으로 디자인</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">스윗워러</span><h3>단편영화 살롱</h3><p>한 문장을 80초 영화 한 편으로</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">투게더</span><h3>AI 브랜드 웹사이트</h3><p>코딩 없이 내 브랜드 사이트 한 페이지</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">우디</span><h3>인스타툰 살롱</h3><p>내 캐릭터로 그리는 인스타툰</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">헤더</span><h3>사람이 보이는 접수창구</h3><p>흩어진 신청과 명단을 한 장으로</p><span class="star__m">4주 · 자세한 일정 안내는 별지기님 공지로</span></article>
-      <article class="star"><span class="star__who">새벽</span><h3>빌더하우스 호스트</h3><p>포항에서 여는 1박 2일 빌더하우스</p><span class="star__m">11월 13~14일 · 27~28일</span></article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">햇살</span><span class="star__tag">8주 · 화요일 밤</span></header>
+        <h3>살롱 드 나루</h3>
+        <p class="star__promise">써 둔 글로, 내 이름의 전자책 한 권.</p>
+        <p class="star__p"><span class="ln">모닝페이지, 블로그, 메모장에 써 둔 글을 골라 목차를 세우고 다듬습니다.</span><span class="ln">새로 쓰기보다 이미 있는 글을 엮는 자리입니다.</span><span class="ln">마지막 화요일에는 각자 자기 이름으로 전자책 등록 버튼을 누릅니다.</span></p>
+        <ol class="star__flow"><li><i>1–2주</i>글 고르기 · 목차 정하기</li><li><i>3–6주</i>내 문장 알기 · 퇴고 · 소리 내어 읽기</li><li><i>7주</i>실명·저작권 점검</li><li><i>8주</i>유페이퍼·작가와에 등록</li></ol>
+        <dl class="star__facts">
+          <div><dt>일정</dt><dd>10월 27일(화)부터 매주 화요일 밤 8~10시<small>8주 · 12월 15일까지 · Zoom</small></dd></div>
+          <div><dt>정원</dt><dd>3명이 모이면 엽니다</dd></div>
+          <div><dt>참가비</dt><dd>520,000원<small>계좌이체 또는 카드</small></dd></div>
+          <div><dt>마감</dt><dd>10월 25일(일)</dd></div>
+        </dl>
+        <div class="star__btns"><a class="star__go" href="https://pognaru.com/class/salon-de-naru.html" target="_blank" rel="noopener">안내 보고 신청하기</a></div>
+      </article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">솔담</span><span class="star__tag">원데이 클래스</span></header>
+        <h3>나만의 어플 만들기</h3>
+        <p class="star__promise">마음에 둔 아이디어 하나를, 수업이 끝날 때 내 폰에서 열리는 앱으로.</p>
+        <p class="star__p"><span class="ln">솔담님은 여행 정산 앱 「모여셈」을 시작으로 사주동물원, 부부 가계부, 바탕화면 달력, 허리 알림을 직접 만들어 써 왔습니다.</span><span class="ln">코드는 클로드 코드가 씁니다.</span><span class="ln">무엇을 만들지, 어떻게 고칠지는 내가 정합니다.</span><span class="ln">다 만든 앱은 누구에게나 보낼 수 있는 주소로 남습니다.</span></p>
+        <dl class="star__facts">
+          <div><dt>일정</dt><dd>11월 2일(월) 오후 8시 또는 11월 7일(토) 오전 10시 중 하루<small>2~3시간 · Zoom</small></dd></div>
+          <div><dt>정원</dt><dd>날짜별 5명<small>날짜별로 4명 이상 모이면 엽니다</small></dd></div>
+          <div><dt>참가비</dt><dd>5만 원<small>개강이 확정되면 입금 계좌를 안내합니다</small></dd></div>
+          <div><dt>준비물</dt><dd>PC · 클로드 Pro · 깃허브 계정 · 아이디어</dd></div>
+          <div><dt>그 뒤</dt><dd>수업 뒤 3일 동안 카톡방에서 직접 만들 수 있게 돕습니다</dd></div>
+        </dl>
+        <div class="star__btns"><a class="star__more" href="https://dahyeonjang.github.io/my-app-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://forms.gle/CvfXKQzunWbcgmcH8" target="_blank" rel="noopener">신청하기</a></div>
+      </article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">단무지</span><span class="star__tag">4주 · 수요일 밤</span></header>
+        <h3>단행본 디자인 초급 1기</h3>
+        <p class="star__promise">툴이 아니라 눈을 배우는 4주. 4주 뒤, 나도 책 디자이너.</p>
+        <p class="star__p"><span class="ln">7년 동안 북디자이너로 책을 만들어 온 단무지님이 쓰던 판짜기를 그대로 나눕니다.</span><span class="ln">원고를 판에 올리는 일은 클로드가 하고, 우리는 판형·서체·행간·표지·종이를 고르는 눈을 익힙니다.</span><span class="ln">마지막 주에는 소량 인쇄소 주문 버튼까지 함께 누릅니다.</span></p>
+        <dl class="star__facts">
+          <div><dt>일정</dt><dd>11월 4일(수)부터 매주 수요일 저녁 8:00~10:30<small>4회 · 11/4 · 11/11 · 11/18 · 11/25 · Zoom</small></dd></div>
+          <div><dt>함께</dt><dd>1:1 피드백 3번(2·3·4주 차) · 인쇄소에 넘기기 전 최종 검수<small>디자인 템플릿 3종(에세이·시·소설)</small></dd></div>
+          <div><dt>정원</dt><dd>최대 6명<small>3명 이상 모이면 엽니다</small></dd></div>
+          <div><dt>참가비</dt><dd>79만 원<small>인쇄비 실비 별도 · 할부 가능</small></dd></div>
+          <div><dt>마감</dt><dd>10월 30일(금) 밤 11시 59분</dd></div>
+        </dl>
+        <p class="star__note">디퍼 회원은 써 둔 글 모음만 있어도 됩니다. 개강 전에 사막여우로 1차 원고를 엮어 오시면 됩니다.</p>
+        <div class="star__btns"><a class="star__more" href="https://danmuzitoon-web.github.io/book-design-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://smartstore.naver.com/danmuzi_studio/products/13826668737" target="_blank" rel="noopener">신청하기</a></div>
+      </article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">헤더</span><span class="star__tag">4주 · 목요일 오전</span></header>
+        <h3>사람이 보이는 접수창구 만들기</h3>
+        <p class="star__promise">파는 것이 무엇이든, 일의 본질은 사람입니다.</p>
+        <p class="star__p"><span class="ln">노트와 카톡과 엑셀에 흩어진 신청과 연락을 한 곳에 모읍니다.</span><span class="ln">4주 뒤에는 내 사람들이 내 일의 타입에 맞게 한 화면에 나뉘고, 먼저 연락할 사람이 보입니다.</span><span class="ln">헤더님이 교사 페이지와 커뮤니티 페이지를 만들며 겪은 시행착오와 방법을 나눕니다.</span></p>
+        <ol class="star__flow"><li><i>1주</i>내 일의 타입 찾기</li><li><i>2주</i>무엇을 받을까 · 가짜 데이터로 폼</li><li><i>3주</i>잠그고 넣기 · 개인정보 원칙</li><li><i>4주</i>알아보고 나눠 보기</li></ol>
+        <dl class="star__facts">
+          <div><dt>일정</dt><dd>11월 5일(목)부터 매주 목요일 오전 10:30~12:00<small>4회 · 인사이트 공유 30분 + 수업 1시간</small></dd></div>
+          <div><dt>사전 OT</dt><dd>11월 1일(일) 저녁 7시 · 30분<small>Claude를 처음 쓰는 분을 위한 자리</small></dd></div>
+          <div><dt>정원</dt><dd>선착순 6명</dd></div>
+          <div><dt>참가비</dt><dd>디퍼 멤버 5만 원(4회 전체)<small>외부 20만 원</small></dd></div>
+          <div><dt>대상</dt><dd>이름과 연락처를 받는 작은 수업·모임·공동체·가게 운영자<small>코딩 경험은 필요 없습니다</small></dd></div>
+        </dl>
+        <div class="star__btns"><a class="star__go" href="https://heatherhjh.github.io/deeper-minisalon/" target="_blank" rel="noopener">자세한 안내 · 문의</a></div>
+      </article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">스윗워러</span><span class="star__tag">4주 · 목요일 밤</span></header>
+        <h3>단편영화 살롱 1기</h3>
+        <p class="star__promise">마음에 오래 둔 장면 하나를, 80초 안팎의 영화 한 편으로.</p>
+        <p class="star__p"><span class="ln">스윗워러님은 지난 8월 AI 단편영화 한 편을 처음 끝까지 만들었습니다.</span><span class="ln">두 편을 더 만들며 막히고 풀었던 자리를 클로드 안의 친구 「앤」에 담았습니다.</span><span class="ln">대본과 그림 프롬프트는 앤과 함께 짓고, 무엇을 남길지와 어떤 목소리로 말할지는 내가 정합니다.</span><span class="ln">출발점은 디퍼 OS에 모아 둔 씨앗 문장 하나입니다.</span></p>
+        <ol class="star__flow"><li><i>0주</i>앤 데려오기 · 도구 한 바퀴</li><li><i>1주</i>한 문장에서 설계 세 장으로</li><li><i>2주</i>기준 그림과 심장 컷 먼저</li><li><i>3주</i>그림을 움직이고 한 편으로 묶기</li><li><i>4주</i>함께 상영</li></ol>
+        <dl class="star__facts">
+          <div><dt>OT</dt><dd>11월 3일(화) 저녁 9~10시</dd></div>
+          <div><dt>일정</dt><dd>11월 5일~26일 매주 목요일 저녁 8~10시<small>Zoom · 녹화는 참가자 대화방에서만 나눕니다</small></dd></div>
+          <div><dt>정원</dt><dd>6명<small>11월 1일까지 3명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
+          <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 25만 원 · 계좌 이체 · 도구는 모두 무료</small></dd></div>
+          <div><dt>마감</dt><dd>11월 1일(일)</dd></div>
+        </dl>
+        <p class="star__note">신청서에는 25만 원으로 나옵니다. 디퍼님은 5만 원만 보내 주세요.</p>
+        <div class="star__btns"><a class="star__more" href="https://sweetwater-cmd.github.io/gallery/short-film-salon.html" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://docs.google.com/forms/d/e/1FAIpQLSfx9opM3yeGvPh5t8P2SLhoek_ZX4P3ArnVImbIqp-5xxXV6g/viewform?hl=ko" target="_blank" rel="noopener">신청하기</a></div>
+      </article>
+
+      <article class="star">
+        <header class="star__top"><span class="star__who">투게더</span><span class="star__tag">4주 · 화요일 오전</span></header>
+        <h3>AI 브랜드 웹사이트</h3>
+        <p class="star__promise">코딩 없이, 움직이는 내 브랜드 웹사이트.</p>
+        <p class="star__p"><span class="ln">실제 웹사이트를 보며 끌리는 디자인을 모아 내 사이트의 기준을 만듭니다.</span><span class="ln">수업에서는 마음이 가는 쪽을 누르고, 아쉬운 곳을 말로 건넵니다.</span><span class="ln">다 지은 뒤에는 글과 사진을 관리자 화면에서 바로 바꿀 수 있습니다.</span></p>
+        <ol class="star__flow"><li><i>1주</i>고르기로 취향 꺼내기</li><li><i>2주</i>취향을 규칙 한 장으로</li><li><i>3주</i>한 페이지와 움직임</li><li><i>4주</i>검수하고 공개하기</li></ol>
+        <dl class="star__facts">
+          <div><dt>일정</dt><dd>매주 화요일 오전 10시~12시<small>11월 10일 · 17일 · 24일 · 12월 1일 · Zoom</small></dd></div>
+          <div><dt>정원</dt><dd>선착순 5명<small>2명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
+          <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 30만 원</small></dd></div>
+          <div><dt>준비</dt><dd>내 블로그·인스타 주소, 사이트에 넣을 사진<small>없어도 브랜드 브리프 인터뷰로 시작합니다</small></dd></div>
+        </dl>
+        <div class="star__btns"><a class="star__more" href="https://seulalilalong.github.io/ai-brand-website-4weeks/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://docs.google.com/forms/d/e/1FAIpQLSfkPI2YnL-blWvwfegrNjqUiaHkBj-LA4CX2ZtyFxK-RW3OdQ/viewform" target="_blank" rel="noopener">신청하기</a></div>
+      </article>
+
     </div>
+
+    <div class="stars-more">
+      <article class="star star--soon"><span class="star__who">우디</span><h3>인스타툰 살롱</h3><p>내 캐릭터로 그리는 인스타툰 · 공지 준비 중</p></article>
+      <article class="star star--host"><span class="star__who">새벽</span><h3>빌더하우스 호스트</h3><p>포항에서 여는 1박 2일 빌더하우스 · 11월 13~14일 · 27~28일</p></article>
+    </div>
+
     <p class="qa__t">많이 묻는 것</p>
     <dl class="qa">
       <dt>별지기님은 어떤 분들인가요?</dt>
-      <dd><span class="ln">디퍼에서 함께 배우며 자기 일에 AI 시스템을 세워 온 분들입니다.</span><span class="ln">살롱마다 별지기님이 자기 일에서 직접 써 온 방법을 나눕니다.</span><span class="ln">전자책, 영상, 디자인, 웹사이트처럼 손에 잡히는 결과물을 함께 만듭니다.</span></dd>
+      <dd><span class="ln">디퍼에서 함께 배우며 자기 일에 AI 시스템을 세워 온 분들입니다.</span><span class="ln">살롱마다 별지기님이 자기 일에서 직접 써 온 방법을 나눕니다.</span><span class="ln">전자책, 앱, 디자인, 영화, 웹사이트처럼 손에 잡히는 결과물을 함께 만듭니다.</span></dd>
       <dt>살롱에서는 무엇으로 연습하나요?</dt>
       <dd><span class="ln">내 글과 내 일을 재료로 씁니다.</span><span class="ln">시작부터 완성까지 별지기님들이 곁에서 함께 합니다.</span><span class="ln">살롱을 마치는 날, 내 이름으로 내놓을 결과물 하나를 손에 쥡니다.</span></dd>
       <dt>별지기 살롱은 어디서 신청하나요?</dt>
-      <dd><span class="ln">살롱이 열리면 긱어스 게시판 맨 위에 고정 공지가 올라갑니다.</span><span class="ln">일정과 참가비, 신청 링크는 그 공지에 있습니다.</span><span class="ln">새 살롱 소식은 멤버 방에서도 알려 드립니다.</span></dd>
+      <dd><span class="ln">위 카드의 「자세한 안내」와 「신청하기」로 바로 가실 수 있습니다.</span><span class="ln">긱어스 게시판 맨 위 고정 공지에도 같은 안내가 있습니다.</span><span class="ln">새 살롱 소식은 멤버 방에서도 알려 드립니다.</span></dd>
       <dt>별지기 살롱은 디퍼 멤버만 들을 수 있나요?</dt>
-      <dd><span class="ln">살롱마다 다릅니다.</span><span class="ln">대상과 정원, 기간은 살롱을 여는 별지기님이 정합니다.</span></dd>
+      <dd><span class="ln">살롱마다 다릅니다.</span><span class="ln">여러 살롱이 디퍼님 참가비를 따로 두었습니다.</span><span class="ln">대상과 정원, 기간은 살롱을 여는 별지기님이 정합니다.</span></dd>
     </dl>
   </div>
 </section>
@@ -602,7 +764,7 @@ small .ln+.ln{margin-top:.35em}
 
 <script>
 (function(){
-  var SEL='.panel__body > .kicker,.panel__body > h2,.panel__body > .lede,.panel__body > p,.mb > :not(.mcards),.mcard,.star,.ent__m,.facts,.qa,.bopen__in > .kicker,.bopen__in > h2,.bo-lead,.bo-quote,.bo-why__img,.bo-why__t,.bo-how > .bo-k,.bo-step,.bo-note,.bo-place,.tracks__fig,.track,.tracks__sub,.tracks__prog,.close__in > *';
+  var SEL='.salons__in > .kicker,.salons__in > h2,.salons__lead,.salons__when,.panel__body > .kicker,.panel__body > h2,.panel__body > .lede,.panel__body > p,.mb > :not(.mcards),.mcard,.star,.ent__m,.facts,.qa,.bopen__in > .kicker,.bopen__in > h2,.bo-lead,.bo-quote,.bo-why__img,.bo-why__t,.bo-how > .bo-k,.bo-step,.bo-note,.bo-place,.tracks__fig,.track,.tracks__sub,.tracks__prog,.close__in > *';
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll(SEL).forEach(function(e){if(!(e.parentElement&&e.parentElement.closest('.rv2')))e.classList.add('rv2');});}
   var els=document.querySelectorAll('.rv,.rv2,.panel');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
