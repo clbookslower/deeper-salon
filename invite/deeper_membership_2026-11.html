@@ -534,6 +534,21 @@ small .ln+.ln{margin-top:.35em}
   .pt__card{padding:24px 20px 22px}
   .pt__facts div{grid-template-columns:62px 1fr}
 }
+
+/* ---------- membership · monthly meetups (10/24) ---------- */
+.meet-dates{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.meet-dates span{display:inline-flex;flex-direction:column;gap:2px;padding:12px 18px;border-radius:14px;background:var(--forest);color:#fff;font-size:14px;line-height:1.4}
+.meet-dates small{font-size:12.5px;color:rgba(255,255,255,.7)}
+.meet-dates i{font-style:normal;font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;color:var(--gold-2)}
+
+.fam{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0 8px}
+.fam__c{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:10px 10px 12px;overflow:hidden}
+.fam__img{margin:0 0 10px;height:150px;border-radius:10px;overflow:hidden;background:#17282a;display:flex;align-items:center;justify-content:center}
+.fam__img img{height:100%;width:auto;object-fit:contain;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.fam__img--wide img{width:100%;height:100%;object-fit:cover;object-position:0% 50%;box-shadow:none}
+.fam__d{margin:0 0 2px!important;font-size:12.5px!important;font-weight:600;letter-spacing:.04em;color:var(--gold)}
+.fam__c h4{margin:0;font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;line-height:1.45}
+@media (max-width:420px){.fam__img{height:120px}}
 </style>
 </head>
 <body>
@@ -580,6 +595,18 @@ small .ln+.ln{margin-top:.35em}
     <p class="kicker">01 · DEEPER MEMBERSHIP</p>
     <h2>내 지능은<br>내 컴퓨터에<small>디퍼 멤버십 · 월 29,000원 · 2026년 11월부터</small></h2>
     <p class="lede"><span class="ln">살롱이 끝나도 사막여우와 그동안의 기록은 내 컴퓨터에 남습니다.</span><span class="ln">프론티어 AI 모델이 새로 나오는 간격은 점점 짧아지고 있습니다.</span><span class="ln">디퍼 멤버십은 새 모델에 맞춘 사막여우를 매달 받는 일입니다.</span></p>
+    <div class="mb mb--meet">
+      <p class="mb__k">TOGETHER · DEEPER FAMILY DAY</p>
+      <h3 class="mb__h">디퍼 패밀리 데이 · 11월 월요일 밤</h3>
+      <p><span class="ln">11월 월요일 밤마다 디퍼 패밀리 모두가 함께 모입니다.</span><span class="ln">멤버십 멤버와 살롱 참여자 누구나 오실 수 있고, 별도 비용은 없습니다.</span><span class="ln">시간은 모두 밤 9시 ~ 10시 30분입니다.</span></p>
+      <div class="fam">
+        <article class="fam__c"><figure class="fam__img fam__img--wide"><img src="insight-share-2026-11.jpg" alt="DEEPER 인사이트 공유회 그림 · 보여 준 것은 남기고, 막힌 것은 물어 주세요" loading="lazy" decoding="async"></figure><p class="fam__d">11월 9일(월)</p><h4>인사이트 공유회</h4></article>
+        <article class="fam__c"><figure class="fam__img"><img src="cover_dual_brain.jpg" alt="『듀얼 브레인』 표지" loading="lazy" decoding="async"></figure><p class="fam__d">11월 16일(월)</p><h4>『듀얼 브레인』 토론</h4></article>
+        <article class="fam__c"><figure class="fam__img fam__img--wide"><img src="insight-share-2026-11.jpg" alt="DEEPER 인사이트 공유회 그림 · 보여 준 것은 남기고, 막힌 것은 물어 주세요" loading="lazy" decoding="async"></figure><p class="fam__d">11월 23일(월)</p><h4>인사이트 공유회</h4></article>
+        <article class="fam__c"><figure class="fam__img"><img src="../calendar/cover_odyssey.jpg" alt="『오뒷세이아』 표지" loading="lazy" decoding="async"></figure><p class="fam__d">11월 30일(월)</p><h4>『오뒷세이아』 리딩</h4></article>
+      </div>
+      <p class="mb__note">모임 링크는 모임 전에 알려 드립니다.</p>
+    </div>
     <div class="mb">
       <p class="mb__k">WHY · PERSONAL AI</p>
       <p class="mb__p"><span class="ln">철학자 앤디 클라크와 데이비드 차머스는 1998년 논문 「The Extended Mind」(Analysis 58권 1호)에서 이렇게 썼습니다.</span><span class="ln">수첩에 적어 두고 꺼내 쓰는 기억도 그 사람의 마음에 속합니다.</span><span class="ln">사막여우가 읽는 기록은 디퍼님의 로컬 컴퓨터에 저장됩니다.</span></p>
@@ -917,7 +944,7 @@ small .ln+.ln{margin-top:.35em}
 
 <script>
 (function(){
-  var SEL='.pt__in > .kicker,.pt__in > h2,.pt__lede,.pt__stuck li,.pt__steps li,.pt__chips,.pt__card,.eff,.salons__in > .kicker,.salons__in > h2,.salons__lead,.salons__when,.panel__body > .kicker,.panel__body > h2,.panel__body > .lede,.panel__body > p,.mb > :not(.mcards),.mcard,.star,.ent__m,.facts,.qa,.bopen__in > .kicker,.bopen__in > h2,.bo-lead,.bo-quote,.bo-why__img,.bo-why__t,.bo-how > .bo-k,.bo-step,.bo-note,.bo-place,.tracks__fig,.track,.tracks__sub,.tracks__prog,.close__in > *';
+  var SEL='.fam__c,.pt__in > .kicker,.pt__in > h2,.pt__lede,.pt__stuck li,.pt__steps li,.pt__chips,.pt__card,.eff,.salons__in > .kicker,.salons__in > h2,.salons__lead,.salons__when,.panel__body > .kicker,.panel__body > h2,.panel__body > .lede,.panel__body > p,.mb > :not(.mcards),.mcard,.star,.ent__m,.facts,.qa,.bopen__in > .kicker,.bopen__in > h2,.bo-lead,.bo-quote,.bo-why__img,.bo-why__t,.bo-how > .bo-k,.bo-step,.bo-note,.bo-place,.tracks__fig,.track,.tracks__sub,.tracks__prog,.close__in > *';
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll(SEL).forEach(function(e){if(!(e.parentElement&&e.parentElement.closest('.rv2')))e.classList.add('rv2');});}
   var els=document.querySelectorAll('.rv,.rv2,.panel');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
