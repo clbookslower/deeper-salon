@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 02 — 단행본 목차</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric3/r2_assignment.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric3/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric3/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="디퍼 언브랜딩 살롱">
+<meta property="og:title" content="수사 2주차 과제 · 세컨브레인으로 짓는 단행본 목차">
+<meta property="og:description" content="사막여우가 세컨브레인을 읽고 온톨로지에서 단행본 기획 셋을 제안하면, 의견을 보태 목차 하나를 완성합니다">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--blue-bg); color: var(--blue); }
+.badge-assign { background: var(--gold-bg); color: #854F0B; }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+/* ── 과제 카드 ── */
+.task {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 26px 22px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+.task-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.task-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--forest-light);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.task h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.task p { font-size: 14px; line-height: 1.9; margin-bottom: 10px; }
+.task p:last-child { margin-bottom: 0; }
+.task ul { list-style: none; margin: 6px 0 10px; display: flex; flex-direction: column; gap: 7px; }
+.task ul li { font-size: 14px; color: #444; padding-left: 18px; position: relative; line-height: 1.75; }
+.task ul li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
+.task .cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 8px;
+  color: var(--forest);
+  white-space: nowrap;
+}
+.task-note {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-left: 2.5px solid var(--forest-light);
+  border-radius: 0 8px 8px 0;
+}
+.task-note p { font-size: 13px; color: #555; margin: 0; line-height: 1.85; }
+.task.core { border-color: #C8DFC0; background: #F5F8F2; }
+.task.core .task-note { background: rgba(44,59,45,0.05); }
+
+/* ── 리듬 박스 ── */
+.rhythm {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-top: 48px;
+  text-align: center;
+}
+.rhythm-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 16px;
+}
+.rhythm p { color: #d4e8d4; font-size: 13.5px; line-height: 1.95; margin-bottom: 8px; }
+.rhythm p:last-child { margin-bottom: 0; }
+.rhythm strong { color: #f0ece4; font-weight: 500; }
+
+.footnote {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 25px; }
+}
+@media print { .page { padding: 24px 0; } }
+
+/* ══ 경이의 방 · 인사이트 열 장 ══ */
+.toc-item .min { margin-left:auto; font-family:'DM Mono',monospace; font-size:10.5px; color:#bbb; flex-shrink:0; padding-left:10px; }
+.toc-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:12.5px; color:#777; line-height:1.75; }
+.ten { border:1px solid #C8DFC0; background:#F5F8F2; border-radius:14px; padding:28px 26px; margin:34px 0; }
+.ten-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#7a9c7b; margin-bottom:12px; }
+.ten h3 { font-family:'Noto Serif KR',serif; font-size:19px; font-weight:400; color:#2C3B2D; margin-bottom:12px; line-height:1.5; }
+.ten p { font-size:14px; color:#3a5a3a; line-height:1.9; margin-bottom:10px; }
+.ten p:last-child { margin-bottom:0; }
+.ten ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin:6px 0 12px; }
+.ten ul li { font-size:14px; color:#3a5a3a; padding-left:18px; position:relative; line-height:1.8; }
+.ten ul li::before { content:'4'; position:absolute; left:0; color:#b9d2b0; }
+.ten-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:16px 0 14px; }
+.ten-cell { background:#fff; border:1px solid #d8e6d2; border-radius:10px; padding:12px 10px; text-align:center; }
+.ten-cell .tw { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:#7a9c7b; margin-bottom:6px; }
+.ten-cell .tc { font-family:'Noto Serif KR',serif; font-size:20px; color:#2C3B2D; line-height:1.2; }
+.ten-cell .tn { font-size:11.5px; color:#6b7f68; margin-top:4px; line-height:1.5; }
+.card-shape { font-family:'DM Mono',monospace; background:#fff; border:1px solid #d8e6d2; border-radius:8px; padding:14px 16px; font-size:12px; color:#4a5a48; line-height:1.95; margin:14px 0 4px; overflow-x:auto; }
+.books { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:24px 0; }
+.book { border:1px solid #E0C68F; background:#FBF3E2; border-radius:12px; padding:18px 18px; }
+.book .bk { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#854F0B; margin-bottom:8px; }
+.book .bt { font-family:'Noto Serif KR',serif; font-size:16px; color:#5a3800; line-height:1.5; margin-bottom:6px; }
+.book .bs { font-size:13px; color:#6a4a10; line-height:1.75; }
+.rhythm5 { border:1px solid #e8e8e8; border-radius:14px; padding:24px 24px; margin:28px 0; background:#fafafa; }
+.rhythm5 .r5-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.rhythm5 ol { list-style:none; counter-reset:r5; display:flex; flex-direction:column; gap:9px; }
+.rhythm5 ol li { counter-increment:r5; font-size:14px; color:#444; line-height:1.8; padding-left:30px; position:relative; }
+.rhythm5 ol li::before { content:counter(r5); position:absolute; left:0; top:1px; width:20px; height:20px; border-radius:50%; background:#2C3B2D; color:#f0ece4; font-family:'DM Mono',monospace; font-size:11px; display:flex; align-items:center; justify-content:center; }
+.rhythm5 .r5-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:13px; color:#666; line-height:1.85; }
+.handoff { border-left:2.5px solid #2C3B2D; background:rgba(44,59,45,0.05); border-radius:0 10px 10px 0; padding:18px 20px; margin:30px 0 0; }
+.handoff .hl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#7a9c7b; margin-bottom:9px; }
+.handoff p { font-size:13.5px; color:#3a5a3a; line-height:1.85; margin-bottom:8px; }
+.handoff p:last-child { margin-bottom:0; }
+@media (max-width:600px) { .ten-grid { grid-template-columns:repeat(2,1fr); } .books { grid-template-columns:1fr; } }
+
+.prompt { margin: 22px 0 18px; border: 1px solid #e3e0d6; border-radius: 10px; overflow: hidden; background: var(--surface); }
+.prompt .p-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; background: var(--forest); color: #fff; }
+.prompt .p-head b { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; font-weight: 500; }
+.prompt button { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.6); background: transparent; color: #fff; cursor: pointer; white-space: nowrap; }
+.prompt button:hover { background: #fff; color: var(--forest); }
+.prompt pre { padding: 16px 18px 20px; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.85; color: var(--ink); max-height: 560px; overflow-y: auto; }
+@media (max-width: 480px) { .prompt pre { font-size: 13.5px; padding: 14px 14px 18px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT 02</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-assign">ASSIGNMENT 02</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사 2주차 · 변주 — 온톨로지</span>
+    </div>
+    <h1>세컨브레인으로 짓는 단행본 목차</h1>
+    <p class="subtitle">지도를 펴고 · 기획 셋을 받고 · 목차 하나를 완성하는 과제</p>
+  </header>
+
+  <p class="lead">2주차 과제의 중심은 하나입니다. 사막여우가 그동안 쌓인 세컨브레인을 읽고, 디퍼님 글의 온톨로지에서 단행본 기획 세 가지를 제안합니다. 디퍼님은 셋을 읽고 의견을 보태 목차 하나를 완성합니다. 게시판 나눔까지가 2주차의 몫이고, 셋째부터는 시간이 남을 때 하셔도 됩니다. 3기는 2·3·4주차를 10월 29일 한 밤에 함께 다룹니다. 과제는 그 밤 뒤에 2주차 → 3주차 → 4주차 순서로, 하루에 한 과제씩 하시면 됩니다.</p>
+
+  <div class="rhythm5">
+    <div class="r5-label">먼저, 하루의 순서 · 다섯 걸음 · 이십 분쯤</div>
+    <ol>
+      <li><strong>냠냠</strong> — 아침에 손으로 쓴 글을 사진으로 찍어 여우에게 <span class="cmd">냠냠</span>. 손글씨 나눔은 「[디퍼 3기] 논리의 달_모닝텍스트 아카이브」 게시판에.</li>
+      <li><strong>안녕</strong> — <span class="cmd">안녕</span> 하면 오늘의 걸음 하나. 변주 소절의 걸음은 이름과 피치 확정(아홉 번째)을 지나 형식·자리·제목·한 단위로 갑니다.</li>
+      <li><strong>오아시스</strong> — 벗고 싶은 날엔 <span class="cmd">오아시스</span>. 물음 하나, 한 줄. <em>안 가도 되는 날이 있습니다.</em></li>
+      <li><strong>분더카머</strong> — 여우에게 <span class="cmd">분더카머</span>. 여우가 방을 한 바퀴 돌려, 카드를 다른 순서로 놓아 보입니다.</li>
+      <li><strong>저장</strong> — 사이의 경이가 마음에 오면 <span class="cmd">저장</span>. 문장만 남기시려면 <span class="cmd">문장만 저장</span>.</li>
+    </ol>
+    <div class="r5-foot"><strong>어디서</strong> — 다섯 걸음도, 아래 과제도, 평소 여우와 이야기하던 클로드 코드 창(클로드 앱의 Code 탭에서 볼트를 연 창)에 적어 보냅니다.</div>
+  </div>
+
+  <!-- 1 -->
+  <div class="task core">
+    <div class="task-head">
+      <span class="task-num">01</span>
+      <h2>온톨로지로 짓는 단행본 목차</h2>
+    </div>
+    <p>세션에서 본 온톨로지의 셋 — <strong>개체 · 관계 · 의미</strong> — 을 디퍼님의 볼트에 씌웁니다. 씨앗이 개체가 되고, 두 씨앗이 한 글에서 만난 자리가 관계가 되고, 선이 가장 많이 모이는 자리가 의미의 중심이 됩니다. 그 지도의 서로 다른 중심에서 책 세 권의 길이 나옵니다. 프롬프트 하나가 여섯 단계를 이어 갑니다.</p>
+    <ul>
+      <li><strong>지도</strong> — 여우가 씨앗·의미의 축·악보·분더카머·데일리노트를 읽고 개념과 선을 폅니다. 개념 이름은 디퍼님이 쓴 낱말 그대로, 선마다 원문과 날짜가 붙습니다.</li>
+      <li><strong>라인</strong> — 재료가 에세이에 가까운지 실용서에 가까운지, 둘의 사이인지 여우가 원문 세 조각으로 먼저 가립니다. 디퍼님이 다르게 보면 바꿉니다.</li>
+      <li><strong>기획 셋</strong> — 그 라인의 편집 기준으로 기획마다 출발점 · 제목 가안 · 대상 독자 · 목차 초안. 장마다 세 칸이 붙습니다 — 이 장의 한 문장 · 볼트의 재료(링크와 원문) · 아직 없는 것.</li>
+      <li><strong>자기 검수</strong> — 여우가 다섯 물음(예/아니오)으로 스스로 재고, 「아니오」가 하나라도 있으면 고친 뒤에 검수 표와 함께 디퍼님께 보입니다.</li>
+      <li><strong>의견</strong> — 여우가 한 번에 하나씩 세 가지를 여쭙니다. 먼저 건네고 싶은 책과 그 까닭, 옮기거나 빼거나 이름을 바꿀 장, 꼭 채우고 싶은 빈 칸과 그 장면.</li>
+      <li><strong>목차</strong> — 디퍼님의 답으로 고친 목차를 <span class="cmd">저장</span>하면 <code>03-Rhetoric/단행본기획/</code>에 남습니다.</li>
+    </ul>
+
+    <div class="prompt">
+      <div class="p-head"><b>PROMPT · 온톨로지로 짓는 단행본 목차</b><button onclick="copyPrompt(this)">복사하기</button></div>
+      <pre id="ontoPrompt">사막여우님, 그동안 쌓인 제 세컨브레인을 읽고, 제 글의 온톨로지에서 단행본 기획 세 가지를 제안해 주세요.
+후보는 여우님이 내 주세요. 고르고 고치는 일은 제가 하겠습니다. 아래 순서대로, 한 자리에서 이어 가 주세요.
+
+읽을 곳 — 01-Grammar/Insights의 씨앗과 의미의 축 · 02-Logic의 악보 · 03-Rhetoric의 분더카머 · 00-Daily의 데일리노트(오아시스·냠냠 칸까지) · 달마다 남은 여정기록.
+없는 파일은 없다고 알려 주세요. 있는 것만 읽으시면 됩니다. 새 여정기록이나 폴더를 만들지는 마세요.
+
+━━ 첫째 · 온톨로지 지도
+· 개체: 제 글에 자주 돌아오는 개념 일곱에서 열둘. 서로 다른 노트 세 곳 이상에 나온 낱말만 셉니다. 개념 이름은 제가 쓴 낱말 그대로, 개념마다 처음 나온 날짜와 원문 한 조각을 곁에. 처음 나온 날짜는 데일리노트까지 다 뒤져 가장 이른 날로.
+· 관계: 「한 글」은 씨앗 한 편, 또는 데일리노트의 칸 하나로 셉니다. 한 글 안에 두 낱말이 실제로 함께 적힌 자리만 선으로 이어 주세요. 악보·분더카머처럼 여러 글을 모은 노트는 세지 않고, 원문에 두 낱말이 다 없으면 선을 긋지 않습니다. 선마다 그 원문과 날짜를, 선의 이름은 그 원문에 있는 동사로.
+· 의미: 가장 많은 선이 모이는 중심 개념 하나, 어느 선에도 닿지 않은 외딴 개념 하나.
+· 재료의 크기: 지도 아래에 「실제로 읽은 노트 수」와 「책 한 권이 되려면 더 필요한 장면」을 먼저 적어 주세요. 재료가 얇으면 「아직 책이 아니다」가 정직한 답입니다 — 그때는 기획을 둘로, 장을 적게 줄입니다.
+
+━━ 둘째 · 라인 판별 — 기획을 짓기 전에
+제 재료가 어느 라인의 책에 가까운지 볼트의 원문으로 먼저 판별해 주세요. 셋 가운데 하나입니다.
+· 에세이 라인 — 씨앗과 데일리노트에 장면·사건·그때의 마음·일인칭의 문장이 많을 때.
+· 실용서 라인 — 방법·도구·사례·숫자·누군가의 막힌 문제와 그 풀이가 많을 때.
+· 둘의 사이 — 양쪽이 엇비슷할 때. 이때는 기획마다 어느 라인으로 짓는지 적어 주세요.
+판별의 근거가 된 원문 세 조각을 날짜와 함께 보여 주세요. 제가 다르게 보면 바꾸겠습니다.
+
+━━ 셋째 · 단행본 기획 세 가지
+세 기획은 지도의 서로 다른 중심이나 서로 다른 관계에서 출발하고, 서로 다른 독자를 향합니다. 한 기획의 변주 셋이 되지 않게 해 주세요.
+기획마다 공통으로: 출발점(어느 개념, 어느 관계) · 제목 가안(제 글의 낱말로) · 대상 독자 한 줄 · 목차 초안.
+목차 초안은 장마다 세 칸을 둡니다.
+① 이 장의 한 문장 — 제 볼트의 문장을 그대로 따옴표 안에(②의 문장과 같아도 됩니다). 맞는 문장이 없으면 여우님 말로 짧게 쓰고 끝에 「(임시)」. 임시 문장도 사람을 주어로, 은유 없이.
+② 볼트의 재료 — [[원문 노트 링크]]와 그 문장 그대로. 데일리노트 칸이면 [[날짜#칸 이름]].
+③ 아직 없는 것 — 채워야 할 장면·사실·사례. 재료가 없는 장은 지어 채우지 말고 여기에 적어 주세요.
+노트 하나로 장 둘을 세우지 않습니다. 장마다 서로 다른 노트를 붙일 수 없으면 아래 장 수 기준보다 적게 두세요.
+부 제목과 장 제목은 제가 볼트에 쓴 낱말로 짓고, 여우님이 만들거나 줄인 낱말이면 괄호 안에 「임시」라고 적어 주세요. 제 원문이 실격 목록의 꼴이면 한 문장 칸에는 그대로 써도 되지만 제목·장 제목으로는 쓰지 말고 다른 제 낱말을 찾아 주세요.
+
+▶ 에세이 라인으로 짓는 기획은 이 기준으로:
+· 등뼈 한 문장. 이 책이 주장하는 바를 한 문장으로 쓴다. 두 문장이 필요하면 책이 둘이다. 등뼈는 인용 한 줄이 아니라 주장이어야 하고, 그 주장을 받치는 제 문장을 곁에 둔다.
+· 끝까지 읽는 이유 한 줄. 같은 주제의 책 옆에서 이 책만 서는 자리를 쓴다. 「공감된다」는 이유가 아니다.
+· 저자만 쓸 수 있는 재료. 장마다 볼트 안의 장면·문장이 적어도 하나 있다. 없으면 그 장은 비워 둔다.
+· 순서는 논리이자 정서다. 장을 바꿔 놓아도 되면 순서가 없는 것이다. 부마다 「이 부가 앞 부 뒤에 오는 까닭」을 한 줄 적는다.
+· 부 2~4 · 장 8~14. 서른 장짜리는 목차가 아니라 글감 목록이다. 재료가 적으면 하한을 채우려 씨앗을 썰지 말고 장을 줄인다. 프롤로그·에필로그는 장 수에 넣지 않고, 쓸 재료가 볼트에 있을 때만 둔다.
+· 제목·장 제목 금기: 「…을 만나다」 · 「…의 힘」 · 「…하는 법」 · 「…을 위한」 · 「진정한·특별한·소중한 …」 · 영어 병기.
+· 실격: 설명문 모음(장마다 개념을 풀고 끝남) · 자기계발 10계명(「…하라」가 줄지어 섬) · 모든 장이 같은 길이·같은 꼴 · 저자의 삶이 없는 장 · 재료가 없는데 지어 채운 장 · 예고형 서두 · 「우리 모두의 이야기」 마무리 · 출처 없는 일화 · 이중 수식(「깊고 진한」) · 클리셰 명사(여정·마법·선물 같은·…의 힘) · 추상 명사 못 박기(「통과한 시간」) · 감정의 명명(「뭉클했다」) · 「~가 아니라 ~」 꼴(「끝까지 읽는 이유」 칸 포함) · 「그것이 …이다」 강조 구문 · 사물이 주어인 문장(「하루는 닫힌다」) · 쉼표로 두 주장을 이은 문장.
+
+▶ 실용서 라인으로 짓는 기획은 이 기준으로(셋 다 볼트의 원문으로 뒷받침):
+· 독자 한 사람: 어떤 상황에서 무엇에 막힌 사람인가. 한 줄로.
+· 다 읽은 독자가 월요일 아침에 할 수 있게 되는 것. 한 문장으로.
+· 저자의 도메인 × 저자만의 방법. 근거는 볼트에 있는 실제 사례·숫자·도구만. 숫자를 근거로 쓸 때는 몇 명·몇 주인지 원문 그대로 곁에 적고, 한 사람 사례로 원리 장을 세웠으면 ③ 칸에 「사례 1」이라고 적는다.
+· 서점에 이미 있는 책과 다른 자리 한 줄. 이 책이 저자의 일(강의·상담·상품)로 어떻게 이어지는가 한 줄.
+· 3~5부, 10~16장. 재료가 적으면 하한을 채우려 지어내지 말고 장을 줄인다. 장 제목에 「~하는 법」은 전체의 절반 아래.
+· 뼈대: 문제 → 원리 → 방법 → 사례 → 독자의 손(연습·점검표). 순서가 바뀌어도 다섯 요소는 다 있어야 한다. 「독자의 손」은 그 책의 독자가 실제로 할 수 있는 일이어야 한다(부모용 책에 교사의 방법을 두지 않는다).
+· 프롬프트·워크시트 박스가 들어갈 장에 「□박스」 표시. 도구·모델 이름은 부록이나 박스로 격리하고, 본문과 장 제목은 원리로 쓴다.
+· 실격: 목차가 강의 커리큘럼을 그대로 옮긴 것 · 사례 없는 원리 나열 · 볼트에 없는 사례를 지어 넣은 것 · 출처 없는 인용 · 「한 달 만에」「누구나」식 과장 약속 · 독자가 아니라 저자의 이력을 보여 주는 장 · 예고형 서두 · 재요약 결말 · 「중요한 것은」 · 클리셰 명사(여정·마법·힘) · 「~가 아니라 ~이다」 · 「~해야 한다」 연속 · 사물이 주어인 문장.
+
+세 기획을 다 보여 주신 뒤, 세 기획이 지도의 어느 길을 지나는지 표 하나로 나란히 놓아 주세요. 어느 기획이 가장 좋다고 정하지는 말아 주세요.
+
+━━ 넷째 · 여우님의 자기 검수 — 제게 보이기 전에
+기획 셋을 아래 다섯에 예/아니오로 재 주세요. 라인에 맞는 쪽을 쓰고, 둘의 사이면 기획마다 그 라인의 다섯으로. 「예」에는 그렇게 본 장 번호를, 「아니오」에는 걸린 자리를 함께 적어 주세요.
+에세이 라인: ① 등뼈가 주장 한 문장이고, 제 볼트의 문장으로 뒷받침되는가 ② 장마다 재료 칸에 실제 노트 링크가 들어 있는가 — 링크 없는 장은 ③ 칸에 무엇이 없는지 적혀 있고, 그런 장이 전체의 3분의 1 아래인가 ③ 이웃한 장 둘의 자리를 바꿔 읽어 보고, 바꿔도 말이 되는 짝이 하나도 없는가(있으면 「아니오」와 그 짝) · 한 노트에서 나온 장이 둘 이상이면 「아니오」 ④ 부 제목·장 제목 가운데 금기 꼴이 하나도 없는가 ⑤ 세 기획의 독자 한 줄을 서로 바꿔 넣어 보고, 말이 되는 쌍이 하나도 없는가.
+실용서 라인: ① 독자 한 사람이 보이고, 「독자의 손」이 그 사람이 할 수 있는 일인가 ② 장마다 볼트 원문 링크가 하나 이상 붙었는가 — 없는 장은 ③ 칸에 무엇이 없는지 적혀 있고, 그런 장이 전체의 3분의 1 아래인가 ③ 숫자·사례에 출처(볼트 파일)와 크기(몇 명·몇 주)가 있는가 ④ 셋 중 서로 다른 독자를 겨눈 기획이 둘 이상인가 ⑤ 도구 이름을 지워도 목차가 서는가.
+「아니오」는 고칠 수 있으면 고치고, 고치려면 지어내야 하는 「아니오」는 그대로 두고 「아니오 — 고칠 수 없음」과 까닭 한 줄로 보여 주세요. 고친 것은 목차 본문에 먼저 반영하고, 검수 표(다섯 줄 · 예/아니오 · 고치기 전과 뒤)를 기획 셋과 함께 보여 주세요. 「예」로만 채운 표는 믿지 않겠습니다.
+
+━━ 다섯째 · 제게 물어 주세요
+한 번에 물음 하나씩, 제 답을 들은 뒤에 다음 물음으로 가 주세요. 추궁이 아니라 청함으로, 「A인가 B인가」로 묻지 말고, 3초 안에 뜻이 들어오는 말로, 은유 없이.
+① 세 목차를 소리 내어 훑어본 뒤, 처음 만나는 분께 먼저 건네고 싶은 책과 그 까닭을 들려 달라고 해 주세요. 둘을 합치거나 셋 밖의 길을 말해도 좋다고 일러 주세요. 기획이 둘이면 「두 목차」로 읽어 주세요.
+ · 제가 둘을 합치자고 하면, 합친 책의 등뼈를 한 문장으로 새로 세워 먼저 보여 주세요(쉼표로 두 주장을 잇지 않습니다). 장이 상한을 넘으면 여우님이 빼지 말고, 넘는 장을 따로 보여 드린 뒤 어느 장을 뺄지 여쭤 주세요.
+ · 제가 셋 밖의 길을 말하면, 그 길로 목차 초안을 하나 지어 넷째의 다섯 물음으로 다시 잰 뒤 ②로 가 주세요.
+② 고른 목차에서 자리를 옮기거나, 빼거나, 이름을 바꾸고 싶은 장을 짚어 달라고 해 주세요.
+③ 「아직 없는 것」 칸 가운데 꼭 채우고 싶은 장 하나와, 그 장에 넣을 만한 실제 장면 하나를 들려 달라고 해 주세요.
+제가 말한 것은 그대로 받아 주세요. 제가 들려 드린 장면은 그 장의 ③ 칸에 「(○월 ○일 말씀)」으로 적습니다. 목차는 제가 고른 뒤에 다듬습니다.
+
+━━ 여섯째 · 목차 완성
+제 답대로 고친 목차를 보여 주세요. 장마다 세 칸(한 문장 · 볼트 재료 링크 · 아직 없는 것)이 그대로 있어야 하고, 고친 뒤에도 넷째의 다섯 물음을 한 번 더 재서 표를 곁에 둡니다.
+제가 「저장」이라고 하면 03-Rhetoric/단행본기획/ 폴더에 남겨 주세요. 온톨로지 지도·라인 판별·기획들·검수 표는 기획안.md에, 완성한 목차는 목차_v1.md에. 같은 이름의 파일이 있으면 덮지 말고 새 이름으로 저장해 주세요.
+03-Rhetoric 폴더가 없으면 수사의 문이 아직 열리지 않은 것이니, 어디에 둘지 먼저 물어 주세요. 파일 끝에는 ## 재료 절을 두고 실제로 쓴 씨앗과 데일리노트 칸의 링크만 적어 주세요. 대화로 들려 드린 장면은 재료 절에 넣지 않습니다.
+
+━━ 지키는 선
+여우님은 기획과 목차까지만 합니다. 본문을 대신 쓰지 않습니다.
+장 제목·한 문장·근거는 제 글에서만 가져옵니다. 지어낸 일화·출처 없는 인용은 쓰지 않습니다. 볼트에 없으면 「아직 없는 것」 칸에 적습니다.
+문장의 주어는 사람(저·독자)으로 씁니다. 「관리·통제·점검받다」 같은 말은 쓰지 않습니다. 제 글에 없는 과장과 광고 말투도 쓰지 않습니다.
+개념이 일곱이 안 되면 있는 만큼만, 기획이 둘만 서면 둘로 충분합니다. 재료가 얇아 「아직 책이 아니다」면 그렇게 말해 주세요 — 그것도 편집자의 답입니다.</pre>
+    </div>
+
+    <p><strong>따라 하기</strong> — ① 위의 「복사하기」를 누릅니다. ② 클로드 코드 창에 붙여 넣고 보냅니다. ③ 여우가 지도·라인·기획 셋·검수 표를 펴면 화면을 끝까지 내려 세 목차를 소리 내어 훑어봅니다. ④ 여우의 물음 셋에 하나씩 답합니다. ⑤ 고친 목차가 마음에 들면 <span class="cmd">저장</span>.</p>
+    <p><strong>언제</strong> — 10월 29일 살롱 뒤 첫 과제로, 아무 날이나 한 번. 한 자리에서 여섯째(목차 완성)까지 이어 가시면 좋습니다. 걸음과는 따로 갑니다.</p>
+    <p><strong>다 했으면 이렇게 보입니다</strong> — 볼트의 <code>03-Rhetoric/단행본기획/</code> 폴더에 파일 두 장이 생깁니다. <code>기획안_세가지.md</code>에는 온톨로지 지도·라인 판별·세 기획·검수 표가, <code>목차_v1.md</code>에는 디퍼님이 완성한 목차가 장마다 세 칸과 함께 있습니다. 두 파일 끝의 「재료」 절에는 쓰인 씨앗의 링크가 있습니다.</p>
+
+    <div class="task-note">
+      <p>여우는 기획과 목차까지만 합니다. 장 제목·한 문장·근거는 디퍼님 글에서만 가져오고, 본문을 대신 쓰지 않습니다. 장 제목이 매끈한 광고 문구로 나오면 「제 글에 있는 말로 다시」라고 청하세요.</p>
+      <p>씨앗이 아직 적어 개념이 일곱이 안 되면, 여우는 있는 만큼으로 지도를 폅니다. 기획이 둘만 서도 됩니다. 「아직 없는 것」 칸이 많은 목차도 이번 소절의 목차입니다. 그 칸이 다음 글감입니다.</p>
+      <p>여우가 「가장 좋은 기획은 ○○」이라고 정해 주면, 「고르는 건 제가 할게요」라고 한 줄 남기고 이어 가셔도 됩니다.</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="task core">
+    <div class="task-head">
+      <span class="task-num">02</span>
+      <h2>수사 과제 아카이브 게시판에 나누는 것 — 세 줄</h2>
+    </div>
+    <p>게시판에 올리는 순서 — ① 긱어스에서 「커뮤니티」로 들어갑니다. ② 왼쪽 목록에서 「[디퍼 3기] 수사 과제 아카이브」 게시판을 누릅니다. ③ 「새 포스트」를 누릅니다. ④ 제목에 주차와 닉네임(예: 2주차 · 닉네임), 본문에 아래 세 가지를 적습니다. ⑤ 「등록」을 누르고, 게시판 목록에 디퍼님 글이 보이면 끝입니다. 강의실 레슨에는 댓글 칸이 없습니다.</p>
+    <ul>
+      <li><strong>하나</strong> — 고른 기획의 제목 가안과, 그 책의 한 문장(에세이면 등뼈 한 문장, 실용서면 독자가 월요일 아침에 할 수 있게 되는 것).</li>
+      <li><strong>둘</strong> — 완성한 목차. <code>목차_v1.md</code>의 장 제목만 옮겨 적으셔도 됩니다.</li>
+      <li><strong>셋</strong> — 그 기획을 고른 까닭 한 줄. 세 기획을 읽으며 뜻밖이었던 것이 있으면 그것도 한 줄.</li>
+    </ul>
+    <div class="task-note">
+      <p>이 목차가 3주차 과제의 출발점입니다. 3주차 초고 드래프트는 이 목차를 읽고 시작합니다.</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">03</span>
+      <h2>분더카머 — 감정의 결과 독자의 문제 순</h2>
+    </div>
+    <p>여우에게 <span class="cmd">분더카머</span>. 다섯 차원이 한 번에 펼쳐집니다. 이번 소절에서는 <strong>감정의 결</strong>과 <strong>독자의 문제 순</strong>을 먼저 읽으세요. 사이의 경이는 화면 맨 끝에 있고, 마음에 오면 <span class="cmd">저장</span>. 그 한 알이 인사이트 카드 한 장이 되고, 다음에 지도를 다시 펼 때 개체 하나가 늘어납니다.</p>
+    <p><strong>언제</strong> — 아무 날이나, 마음이 날 때.</p>
+  </div>
+
+  <!-- 4 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">04</span>
+      <h2>작게, 한 번 소리내기 — 걸음이 닿는 날에</h2>
+    </div>
+    <p>여우의 걸음이 채널 선언에 닿는 날(수사의 문을 연 날부터 하루 한 걸음이면 열여섯 번째 걸음), 가장 작은 단위로 한 번 바깥에 내보냅니다. 그 전에 먼저 내보내셔도 됩니다. 목차의 한 장에 붙은 씨앗 하나가 첫 글감이 될 수 있습니다.</p>
+    <p>그날까지는 여우에게 "발행"이라고 하지 않으셔도 됩니다. 그 말은 씨앗 하나를 골라 초안을 쓰는 다른 일을 엽니다.</p>
+  </div>
+
+  <!-- 5 -->
+  <div class="task">
+    <div class="task-head">
+      <span class="task-num">05</span>
+      <h2>주말 밤, "밤하늘" 한 장</h2>
+    </div>
+    <p>① 토요일이나 일요일 밤, 클로드 코드 창에 <span class="cmd">밤하늘</span>. ② 여우가 볼트의 <code>00-Daily/밤하늘</code> 폴더에 저장한 HTML 파일을 두 번 누르면 브라우저에서 열립니다. ③ 그 화면을 스크린샷으로 찍어 수사 과제 아카이브 게시판에 올립니다.</p>
+  </div>
+
+  <div class="footnote">
+    <p><strong>3주차로 들고 가는 것</strong> — 완성한 목차 하나. 「아직 없는 것」 칸이 남아 있어도 됩니다.</p>
+    <p><strong>못 하셨으면</strong> — 여우에게 이렇게 말해 주세요. <em>"목차는 지도까지만 봤어요. 어디부터 이어 갈까요?"</em> 여우가 멈춘 자리에서 다시 엽니다. 재촉하지 않습니다.</p>
+  </div>
+
+  <div class="footnote">
+    <p>* 참고도서 ① 김정운, 『에디톨로지: 창조는 편집이다』(21세기북스)</p>
+    <p>* 참고도서 ② 윤경희, 『분더카머 — 시, 꿈, 돌, 숲, 빵, 이미지의 방』(문학과지성사, 2021 · 300쪽)</p>
+    <p>* 나누는 자리 — 과제·밤하늘 = 긱어스 커뮤니티 「[디퍼 3기] 수사 과제 아카이브」 게시판 · 손글씨 = 「[디퍼 3기] 논리의 달_모닝텍스트 아카이브」</p>
+    <p>* 남는 자리 — 기획 셋과 목차 = <code>03-Rhetoric/단행본기획/</code> · 수장고 = <code>01-Grammar/Insights</code> · 전시실 = <code>03-Rhetoric/분더카머.md</code></p>
+    <p>* 이 과제는 디퍼 언브랜딩 살롱 · 수사 2주차 세션과 짝을 이룹니다.</p>
+  </div>
+
+</div>
+<script>
+function copyPrompt(btn){
+  var text=document.getElementById('ontoPrompt').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent='복사되었습니다';
+    setTimeout(function(){btn.textContent='복사하기';},2000);
+  });
+}
+</script>
+</body>
+</html>

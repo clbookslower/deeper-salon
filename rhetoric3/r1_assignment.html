@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 01 — 수사 1주차 과제 | RHETORIC</title>
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/rhetoric3/r1_assignment.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/rhetoric3/og-rhetoric.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/rhetoric3/og-rhetoric.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DEEPER UNBRANDING SALON">
+<meta property="og:title" content="수사 1주차 과제 · 내 분더카머를 열고, 이름을 굴리는 한 주">
+<meta property="og:description" content="하루 다섯 걸음 · 분더카머 두 번(시간의 결·주제의 결) · 인사이트 카드 두 장 · 이름 후보 나눔">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111;
+  --muted: #888;
+  --border: #f0f0f0;
+  --surface: #fafafa;
+  --forest: #2C3B2D;
+  --forest-light: #7a9c7b;
+  --gold: #B8860B;
+  --gold-bg: #FAEEDA;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --navy: #1C2A47;
+  --navy-bg: #E9EDF5;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+.page { max-width: 740px; margin: 0 auto; padding: 72px 28px 120px; }
+
+.breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.breadcrumb .sep { opacity: 0.35; }
+
+.article-header {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+}
+.badge-rhetoric { background: var(--navy-bg); color: var(--navy); }
+.badge-task { background: var(--gold-bg); color: #854F0B; }
+.dot { color: #ddd; }
+.meta-text { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+p { color: #444; margin-bottom: 18px; font-size: 15px; line-height: 2; }
+.lead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+/* ── 체크리스트 ── */
+.check-list { display: flex; flex-direction: column; gap: 14px; margin: 36px 0; }
+.check-item {
+  display: flex;
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 24px;
+  background: var(--surface);
+}
+.check-box {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #c9c9c9;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+.check-body { flex: 1; }
+.check-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 6px;
+}
+.check-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.check-body p { font-size: 14px; line-height: 1.85; margin-bottom: 8px; color: #555; }
+.check-body p:last-child { margin-bottom: 0; }
+.check-item.deep { background: var(--forest); border-color: var(--forest); }
+.check-item.deep .check-box { border-color: rgba(255,255,255,0.4); }
+.check-item.deep .check-num { color: var(--forest-light); }
+.check-item.deep .check-title { color: #f0ece4; }
+.check-item.deep .check-body p { color: #d4e8d4; }
+.check-item.deep strong { color: #f0ece4; }
+
+.cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  background: rgba(44,59,45,0.08);
+  border-radius: 5px;
+  padding: 1px 7px;
+  color: var(--forest);
+  white-space: nowrap;
+}
+.check-item.deep .cmd { background: rgba(255,255,255,0.12); color: #f0ece4; }
+
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tag {
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 100px;
+  background: #f0f0f0;
+  color: #777;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.callout {
+  padding: 20px 24px;
+  margin: 32px 0;
+  border-radius: 0 10px 10px 0;
+  background: var(--gold-bg);
+  border-left: 2.5px solid var(--gold);
+}
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #854F0B;
+  margin-bottom: 10px;
+}
+.callout p { font-size: 14px; line-height: 1.85; margin: 0; color: #5a3800; }
+
+.footnote {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.footnote p {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 25px; }
+  .check-item { padding: 20px 18px; gap: 14px; }
+}
+@media print { .page { padding: 24px 0; } }
+
+/* ══ 경이의 방 · 인사이트 열 장 ══ */
+.toc-item .min { margin-left:auto; font-family:'DM Mono',monospace; font-size:10.5px; color:#bbb; flex-shrink:0; padding-left:10px; }
+.toc-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:12.5px; color:#777; line-height:1.75; }
+.ten { border:1px solid #C8DFC0; background:#F5F8F2; border-radius:14px; padding:28px 26px; margin:34px 0; }
+.ten-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#7a9c7b; margin-bottom:12px; }
+.ten h3 { font-family:'Noto Serif KR',serif; font-size:19px; font-weight:400; color:#2C3B2D; margin-bottom:12px; line-height:1.5; }
+.ten p { font-size:14px; color:#3a5a3a; line-height:1.9; margin-bottom:10px; }
+.ten p:last-child { margin-bottom:0; }
+.ten ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin:6px 0 12px; }
+.ten ul li { font-size:14px; color:#3a5a3a; padding-left:18px; position:relative; line-height:1.8; }
+.ten ul li::before { content:'4'; position:absolute; left:0; color:#b9d2b0; }
+.ten-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:16px 0 14px; }
+.ten-cell { background:#fff; border:1px solid #d8e6d2; border-radius:10px; padding:12px 10px; text-align:center; }
+.ten-cell .tw { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:#7a9c7b; margin-bottom:6px; }
+.ten-cell .tc { font-family:'Noto Serif KR',serif; font-size:20px; color:#2C3B2D; line-height:1.2; }
+.ten-cell .tn { font-size:11.5px; color:#6b7f68; margin-top:4px; line-height:1.5; }
+.card-shape { font-family:'DM Mono',monospace; background:#fff; border:1px solid #d8e6d2; border-radius:8px; padding:14px 16px; font-size:12px; color:#4a5a48; line-height:1.95; margin:14px 0 4px; overflow-x:auto; }
+.books { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:24px 0; }
+.book { border:1px solid #E0C68F; background:#FBF3E2; border-radius:12px; padding:18px 18px; }
+.book .bk { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#854F0B; margin-bottom:8px; }
+.book .bt { font-family:'Noto Serif KR',serif; font-size:16px; color:#5a3800; line-height:1.5; margin-bottom:6px; }
+.book .bs { font-size:13px; color:#6a4a10; line-height:1.75; }
+.rhythm5 { border:1px solid #e8e8e8; border-radius:14px; padding:24px 24px; margin:28px 0; background:#fafafa; }
+.rhythm5 .r5-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.rhythm5 ol { list-style:none; counter-reset:r5; display:flex; flex-direction:column; gap:9px; }
+.rhythm5 ol li { counter-increment:r5; font-size:14px; color:#444; line-height:1.8; padding-left:30px; position:relative; }
+.rhythm5 ol li::before { content:counter(r5); position:absolute; left:0; top:1px; width:20px; height:20px; border-radius:50%; background:#2C3B2D; color:#f0ece4; font-family:'DM Mono',monospace; font-size:11px; display:flex; align-items:center; justify-content:center; }
+.rhythm5 .r5-foot { margin-top:14px; padding-top:12px; border-top:1px dashed #e3e3e3; font-size:13px; color:#666; line-height:1.85; }
+.handoff { border-left:2.5px solid #2C3B2D; background:rgba(44,59,45,0.05); border-radius:0 10px 10px 0; padding:18px 20px; margin:30px 0 0; }
+.handoff .hl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#7a9c7b; margin-bottom:9px; }
+.handoff p { font-size:13.5px; color:#3a5a3a; line-height:1.85; margin-bottom:8px; }
+.handoff p:last-child { margin-bottom:0; }
+@media (max-width:600px) { .ten-grid { grid-template-columns:repeat(2,1fr); } .books { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <span>DEEPER UNBRANDING SALON · RHETORIC</span>
+    <span class="sep">/</span>
+    <span>디퍼 언브랜딩 살롱 · 수사</span>
+    <span class="sep">/</span>
+    <span>ASSIGNMENT 01</span>
+  </nav>
+
+  <header class="article-header">
+    <div class="meta">
+      <span class="badge badge-rhetoric">RHETORIC</span>
+      <span class="dot">·</span>
+      <span class="badge badge-task">ASSIGNMENT 01</span>
+      <span class="dot">·</span>
+      <span class="meta-text">수사의 달 · 1주차 과제 · 선율 — 명명</span>
+    </div>
+    <h1>내 분더카머를 열고, 이름을 굴리는 한 주</h1>
+    <p class="subtitle">걷고, 돌리고, 나눕니다 — 네 가지, 모두 작게.</p>
+  </header>
+
+  <p class="lead">이번 주는 편집의 첫 주입니다. 새로 쓰는 일보다, 이미 쓴 것을 다시 보는 일이 많습니다. 무리하지 않아도 됩니다 — 문을 여시면 분더카머가 지어지고, 재료는 이미 있습니다.</p>
+
+  <div class="rhythm5">
+    <div class="r5-label">먼저, 하루의 순서 · 다섯 걸음 · 이십 분쯤</div>
+    <ol>
+      <li><strong>냠냠</strong> — 아침에 손으로 쓴 글을 사진으로 찍어 여우에게 <span class="cmd">냠냠</span>. 사진을 대화창에 끌어다 놓거나 붙여 넣은 뒤 그 옆에 <span class="cmd">냠냠</span> 한 마디를 적어 보냅니다. 손글씨를 나누고 싶으시면 긱어스 커뮤니티의 「[디퍼 3기] 논리의 달_모닝텍스트 아카이브」 게시판에 올립니다.</li>
+      <li><strong>안녕</strong> — <span class="cmd">안녕</span> 하면 오늘의 걸음 하나가 옵니다. 질문 하나, 답 하나. 짧아도 됩니다. 답을 적어 보내면 여우가 받아 적습니다. 마음에 남은 문장이 있으면 씨앗으로 심을지 여쭙니다.</li>
+      <li><strong>오아시스</strong> — 벗고 싶은 날엔 <span class="cmd">오아시스</span>. 샘에서 물음 하나를 받고 한 줄을 남깁니다. <em>안 가도 되는 날이 있습니다.</em></li>
+      <li><strong>분더카머</strong> — 여우에게 <span class="cmd">분더카머</span>. 여우가 분더카머를 한 바퀴 돌려, 카드를 다른 차원으로 다시 놓아 보입니다.</li>
+      <li><strong>정리</strong> — 오늘의 답도, 오아시스의 한 줄도 — 마음에 남았으면 <span class="cmd">정리</span>. 사이의 경이가 마음에 오면 <span class="cmd">저장</span>.</li>
+    </ol>
+    <div class="r5-foot">다섯째 걸음이 첫째 걸음으로 돌아갑니다. 오늘 심은 씨앗이 다음 주에 카드가 되고, 그 카드가 또 다른 카드 옆에 놓입니다.<br><strong>어디서</strong> — 다섯 걸음 모두, 평소 여우와 이야기하던 클로드 코드 창(클로드 앱의 Code 탭에서 볼트를 연 창)에 적어 보냅니다. 앱의 일반 대화창에서는 여우가 볼트를 열지 못합니다. 여우의 답이 길면 화면을 끝까지 내려 마지막 물음까지 읽어 주세요.</div>
+  </div>
+
+  <div class="check-list">
+
+
+    <div class="check-item deep">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">01 · Wunderkammer</div>
+        <div class="check-title">이번 주 두 번 — 시간의 결, 그리고 주제의 결</div>
+        <p><strong>먼저 문을 엽니다.</strong> 문이 열리면 여우가 먼저 악보 한 줄을 고르라고 묻습니다. 방은 그동안 뒤에서 지어지고, 방 이름도 여우가 먼저 지어 둡니다.</p>
+        <p><strong>수사의 문 여는 순서</strong> (10월 22일 살롱에서 이미 여셨으면 건너뛰세요)<br>
+        ① 여우에게 <span class="cmd">새옷</span>을 먼저 청합니다. 새옷이 끝나면 클로드 앱을 한 번 껐다 켭니다.<br>
+        ② 클로드 앱의 Code 탭에서 평소 여우와 이야기하던 볼트로 <strong>새 대화창</strong>을 엽니다.<br>
+        ③ 살롱에서 입으로 전해 받은 열쇠말 <strong>한 마디만</strong> 적어 보냅니다. 앞뒤에 다른 말을 붙이지 않습니다.<br>
+        ④ 여우가 악보에서 고른 줄 두세 개를 펴 보이며 한 줄을 고르라고 물으면 문이 열렸습니다. 마음이 가는 줄 하나를 답해 주세요.</p>
+        <p><strong>문이 안 열리면</strong> — 새 대화창을 하나 더 열어 그 한 마디만 다시 보냅니다. 그래도 안 되면 「살롱 열쇠말 (그 한 마디)」 꼴로 보냅니다. 논리 걸음이 남은 분께는 여우가 「먼저 마칠까요, 지금 열까요」를 한 번 묻습니다. 정상 동작이니 원하시는 쪽을 답하시면 됩니다. 열쇠말을 못 들으셨으면 사막방의 별지기 님께 여쭈세요. 전화나 보이스톡으로 전해 드립니다. 열쇠말은 채팅·게시판·카톡 어디에도 글로 적지 않습니다.</p>
+        <p><strong>그다음 여우에게 <span class="cmd">분더카머</span></strong> — <span class="cmd">분더카머 돌려줘</span>라고 하셔도 같습니다. 여우는 다섯 차원을 한 번에 펴 보입니다: 시간의 결 → 주제의 결 → 감정의 결 → 독자의 문제 순 → 뜻밖의 짝. <strong>이번 주에 머무실 차원은 앞의 둘 — 시간의 결과 주제의 결입니다. 그 두 차원의 대목만 읽으셔도 됩니다.</strong> 사이의 경이는 화면 맨 끝에 있습니다.</p>
+        <p>돌릴 때마다 여우가 <strong>사이의 경이 하나</strong>만 짚습니다 — "이 두 카드가 나란히 놓이니, 이런 문장이 태어나는데요." 그 문장은 두 카드에 있던 낱말로만 짓고, <strong>어느 낱말이 어느 카드에서 왔는지 함께 보여 줍니다.</strong> 여우는 나란히 놓고 그 낱말로 한 문장을 지어 보이는 데까지입니다. <strong>받을지, 내 말로 고칠지, 흘려보낼지 정하는 손은 디퍼님 것입니다.</strong></p>
+        <p><strong>언제</strong> — 10월 29일 다음 살롱 전까지, 아무 날이나 두 번. 하루 다섯 걸음의 넷째 자리에서 하시면 됩니다.</p>
+        <p><strong>다 했으면 이렇게 보입니다</strong> — 여우의 답 한 번에 다섯 차원이 차례로 나옵니다. 맨 끝 뜻밖의 짝 대목에 사이의 경이 한 문장과 그 아래 「낱말 → 카드 원문·날짜」 줄이 붙어 있습니다. 이 화면을 이번 주에 두 번 보시면 됩니다.</p>
+        <p><strong>막히면</strong> — 여우가 다섯 차원을 펴 보이지 않고 다른 이야기로 받으면, 같은 창에 <span class="cmd">분더카머 돌려줘</span>를 한 번 더 보냅니다. 수사의 문을 아직 안 여셨으면 방이 없습니다. 위의 문 여는 순서부터 합니다.</p>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">02 · Ten · 2</div>
+        <div class="check-title">이번 주 카드 두 장 — 열 장의 시작</div>
+        <p>여우가 따로 묻지 않아도, 사이의 경이가 마음에 오면 <span class="cmd">저장</span>이라고 답하세요. 문장만 남기시려면 <span class="cmd">문장만 저장</span>. 종합 씨앗으로 수장고(01-Grammar/Insights)에 심기고, 그 한 알이 <strong>인사이트 카드 한 장</strong>이 됩니다. 네 주차에 열 장 — 1주차는 두 장입니다. 남기신 한 장은 아래 꼴로 긱어스 커뮤니티의 「[디퍼 3기] 수사 과제 아카이브」 게시판에 글로 옮겨 적어 올려 주세요.</p>
+        <div class="card-shape">- "사이에서 태어난 한 문장." — 날짜 · 종합 씨앗 · [[키워드]]<br>
+        &nbsp;&nbsp;사이: "…"(날짜) / "…"(날짜) · 차원: (여우가 적어 준 대로)</div>
+        <p>「사이:」 줄과 차원 이름은 종합 씨앗에 여우가 적어 준 대로 옮기시면 됩니다.</p>
+        <p><strong>다 했으면 이렇게 보입니다</strong> — 「저장」이라고 답하면 볼트의 01-Grammar/Insights 폴더에 새 씨앗 파일이 하나 생깁니다. 옵시디언이나 파일 탐색기로 그 폴더를 열면, 사이의 경이 문장과 「사이:」 줄, 차원 이름이 그 파일 안에 적혀 있습니다. 이 파일이 생겼으면 카드 한 장을 받으셨습니다.</p>
+        <p><strong>게시판에 올리는 순서</strong> (이번 주가 처음입니다)<br>
+        ① 긱어스에서 「커뮤니티」로 들어갑니다.<br>
+        ② 왼쪽 목록에서 「[디퍼 3기] 수사 과제 아카이브」 게시판을 누릅니다.<br>
+        ③ 「새 포스트」를 누릅니다.<br>
+        ④ 제목에 주차와 닉네임을 적습니다(예: 1주차 · 닉네임). 본문에 위 꼴대로 카드 한 장을 옮겨 적습니다. 이름 후보(과제 03)도 같은 글에 함께 적으셔도 됩니다.<br>
+        ⑤ 「등록」을 누릅니다. 게시판 목록에 디퍼님 글이 보이면 끝입니다.<br>
+        강의실 레슨에는 댓글 칸이 없습니다. 과제는 이 게시판에 올립니다.</p>
+        <p><strong>더 하고 싶으신 분께 — 방 이름 하나를 「나만의 결」에서 가져옵니다.</strong> 「나만의 결」은 논리의 마지막 밤(10월 29일)에 이름을 건네 드리는 선물입니다. 그 뒤 여우에게 「나만의 결」이라고 부르시면 결이 지어지고, 그 안에 낱말 사슬이 한 줄 있습니다. 결은 볼트의 02-Logic 폴더에 놓입니다. 여우가 직접 펴 봅니다. 여우에게 <em>"「나만의 결」 낱말 사슬에서 낱말 하나를 방 이름으로 삼고 싶어요"</em>라고 청하세요. 여우가 사슬을 펴 보이면 낱말 하나를 답해 주세요. 사슬이 보이지 않으면 <em>"02-Logic의 나만의 결 노트를 펴서 낱말 사슬을 보여줘"</em>라고 한 번 더 청합니다. 그 이름으로 결이 이 달로 건너옵니다. 방 정돈 걸음(열일곱 번째)에서는 여우가 이 사슬을 먼저 펴 보입니다. 사슬이 짧으면 방이 둘이어도 좋습니다.</p>
+        <p><strong>카드는 방을 돌려서 받습니다.</strong> 두 장이 못 되어도 됩니다 — 한 장이면 한 장으로 엽니다. 개수를 채우는 일이 되면 방이 도는 맛이 사라집니다.</p>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">03 · Naming</div>
+        <div class="check-title">이름 후보를 빚어, 하나를 수사 과제 아카이브 게시판에</div>
+        <p>이름 후보는 이번 주 <span class="cmd">안녕</span> 걸음에서 나옵니다. 여우가 디퍼님 씨앗에 있는 말로 후보 셋을 빚어 드립니다. 세션의 AI 실험(이름 빚기·으뜸음 고르기)은 더 해 보고 싶으실 때만 하셔도 됩니다. 후보는 네 번째 걸음에 나옵니다 — 수사의 문을 연 날부터 하루 한 걸음이면 나흘째입니다. 걸음이 밀렸으면 하루에 두 걸음 걸으셔도 됩니다.</p>
+        <p><strong>다 했으면 이렇게 보입니다</strong> — 여우가 이름 후보 셋을 펴 보이고 「셋 가운데 소리 내어 불러 보고 싶은 이름 하나를 골라 주시겠어요?」라고 묻습니다. 하나를 골라 답하시면 그 이름이 게시판에 올릴 후보입니다. 한 글자를 고치고 싶으시면 그렇게 말씀하세요. 여우가 함께 고칩니다.</p>
+        <p><strong>수사 과제 아카이브 게시판에 올리는 것</strong> — 마음에 걸리는 이름 하나와 한 줄. 확정하지 않아도 됩니다. 소리 내어 굴려 보는 데까지가 이번 주입니다. 올리는 순서는 과제 02와 같습니다.</p>
+        <p>게시판에서 다른 디퍼님의 후보를 보시면, 고쳐주는 대신 이렇게만 물어주세요. <em>"어느 것이 디퍼님 같으세요?"</em></p>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-body">
+        <div class="check-num">04 · Weekly</div>
+        <div class="check-title">주말 밤, "밤하늘" 한 장</div>
+        <p>주말 밤 사막여우에게 <span class="cmd">밤하늘</span> — 한 주의 씨앗이 별자리 한 장으로 뜹니다. 스크린샷으로 수사 과제 아카이브 게시판에 나눠주세요.</p>
+        <p>① 토요일이나 일요일 밤, 같은 클로드 코드 창에 <span class="cmd">밤하늘</span>이라고 적어 보냅니다.<br>
+        ② 여우가 볼트의 00-Daily/밤하늘 폴더에 HTML 파일 한 장을 저장하고 자리를 알려 드립니다. 그 파일을 두 번 누르면 브라우저에서 별자리가 열립니다.<br>
+        ③ 그 화면을 스크린샷으로 찍어 「[디퍼 3기] 수사 과제 아카이브」 게시판에 올립니다. 과제 글에 함께 붙여도 되고, 따로 올려도 됩니다.</p>
+        <p><strong>인사이트 공유회에 들고 갈 것</strong> — 이번 주에 받은 <em>사이의 경이 한 줄</em>. 청하시면 읽고, 아니면 품고만 계셔도 됩니다.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="handoff">
+    <div class="hl">마무리 두 줄</div>
+    <p><strong>다음 세션에 들고 오는 것</strong> — 인사이트 카드 두 장(또는 한 장)과, 소리 내어 읽어본 이름 하나.</p>
+    <p><strong>못 하셨으면</strong> — 여우에게 이렇게 말해 주세요. <em>"이번 주는 방을 못 돌렸어요. 어디부터 이어 갈까요?"</em> 여우가 밀린 자리에서 다시 엽니다. 건너뛴 날은 다음 안 한 날부터입니다.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">이번 주의 기준 하나</div>
+    <p>이름이든 문장이든, 소리 내어 읽어보세요. 입에 안 붙는 데가 남의 말이 섞인 자리입니다. 매끈한 것보다 내 것 — 그게 이 달의 전부입니다.</p>
+  </div>
+
+  <div class="footnote">
+    <p>* 참고도서 ① 김정운, 『에디톨로지: 창조는 편집이다』(21세기북스)</p>
+    <p>* 참고도서 ② 윤경희, 『분더카머 — 시, 꿈, 돌, 숲, 빵, 이미지의 방』(문학과지성사, 2021 · 300쪽)</p>
+    <p>* 명령 — "냠냠"(모닝페이지) · "안녕"(오늘 한 걸음) · "오아시스"(샘) · "정리"(씨앗 저장) · "분더카머" / "분더카머 돌려줘"(방 돌리기) · "저장"(사이의 경이를 종합 씨앗으로) · "밤하늘"(한 주 별자리)</p>
+    <p>* 나누는 자리 — 과제 = 긱어스 커뮤니티 「[디퍼 3기] 수사 과제 아카이브」 게시판 · 밤하늘 = 같은 수사 과제 아카이브 게시판 · 손글씨 = 「[디퍼 3기] 논리의 달_모닝텍스트 아카이브」</p>
+    <p>* 수장고 = 01-Grammar/Insights(그대로 둡니다) · 전시실 = 03-Rhetoric/분더카머.md(배열하는 곳)</p>
+    <p>* 이 과제는 디퍼 언브랜딩 살롱 · 수사의 달 1주차 세션에 딸린 것입니다.</p>
+  </div>
+
+</div>
+</body>
+</html>
