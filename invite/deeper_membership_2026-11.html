@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,574 +14,413 @@
 <meta property="og:url" content="https://clbookslower.github.io/deeper-salon/invite/deeper_membership_2026-11.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{--ink:#1b2326;--sub:#5a6669;--muted:#8a9497;--line:rgba(27,35,38,.10);--paper:#f7f3ea;--paper-2:#fffdf8;--forest:#1f4d44;--forest-2:#2f6b5f;--gold:#b9975b;--gold-2:#d8b97b;--night:#111e22;--radius:18px;--shadow:0 20px 60px rgba(27,35,38,.12)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Noto Sans KR',sans-serif;line-height:1.85;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}a{color:inherit}
-p{margin:0 0 12px;font-size:16px}
+/* DEEPER 브랜드 디자인 정본 v2 (2026-10-30) · deeperax.com 짜임을 따른다
+   흰 바탕과 잉크 두 색 · 위계는 굵기·크기·흐림 · 1px 잉크 선 · 각진 모서리 · 사진은 흑백 */
+:root{
+  --bg:#ffffff;--ink:#0a0a0a;--body:#2a2a2a;--mute:#8c8c8c;--faint:#b5b5b5;--soft:#f4f4f2;--line:#e4e4e4;--line-strong:#cfcfcf;--head-bg:rgba(255,255,255,.92);
+  --gutter:clamp(16px,2.2vw,32px);--max:1680px;--side:max(var(--gutter),calc((100vw - var(--max)) / 2));
+  --sec:clamp(112px,11vw,196px);--head-h:60px;--mh:clamp(320px,48vw,720px);
+  --en:"Montserrat","Pretendard",sans-serif;--ko:"Pretendard",-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c0c0b;--ink:#f2f2ef;--body:#d6d6d2;--mute:#8e8e8a;--faint:#5c5c59;--soft:#171716;--line:#2a2a28;--line-strong:#4a4a47;--head-bg:rgba(12,12,11,.9);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c0c0b;--ink:#f2f2ef;--body:#d6d6d2;--mute:#8e8e8a;--faint:#5c5c59;--soft:#171716;--line:#2a2a28;--line-strong:#4a4a47;--head-bg:rgba(12,12,11,.9);color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--ko);font-size:15px;line-height:1.6;word-break:keep-all;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a[href^="tel:"]{white-space:nowrap}
+img{display:block;max-width:100%}
+ol,ul{list-style:none}
+i,em{font-style:normal}
+b{font-weight:700}
+.ln{display:block}.ln+.ln{margin-top:.35em}
 
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--night);color:#fff}
-.hero__img{position:absolute;inset:-6% 0 0 0;width:100%;height:112%;object-fit:cover;object-position:50% 62%;transform:scale(1.06);animation:heroIn 2.2s cubic-bezier(.2,.7,.2,1) forwards;will-change:transform}
-@keyframes heroIn{from{transform:scale(1.14);filter:brightness(.7)}to{transform:scale(1.06);filter:brightness(1)}}
-.hero__veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,34,.05) 0%,rgba(17,30,34,.3) 45%,rgba(17,30,34,.92) 100%)}
-@media (max-width:600px){.hero__veil{background:linear-gradient(180deg,rgba(17,30,34,.15) 0%,rgba(17,30,34,.55) 30%,rgba(17,30,34,.94) 100%)}.hero h1,.hero .lead{text-shadow:0 1px 10px rgba(0,0,0,.6)}}
-.hero__in{position:relative;width:100%;max-width:1040px;margin:0 auto;padding:0 20px 52px}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.2em;font-weight:500;color:var(--gold-2)}
-.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold-2);transform-origin:left;animation:lineGrow .9s .5s both}
-@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.hero h1{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(32px,6vw,64px);line-height:1.2;margin:14px 0 16px;letter-spacing:-.01em}
-.hero h1 .l{display:block;overflow:hidden}.hero h1 .l span{display:block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}.hero h1 .l:nth-child(2) span{animation-delay:.12s}.hero h1 .l:nth-child(3) span{animation-delay:.24s}
-@keyframes rise{to{transform:translateY(0)}}
-.hero .lead{font-size:clamp(15px,1.9vw,18px);color:rgba(255,255,255,.88);margin:0 0 24px;max-width:620px;opacity:0;animation:fade 1s .5s forwards}
-@keyframes fade{to{opacity:1}}
-.meta{display:flex;flex-wrap:wrap;gap:10px 12px;opacity:0;animation:fade 1s .7s forwards}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid rgba(255,255,255,.28);border-radius:999px;font-size:13.5px;backdrop-filter:blur(8px);background:rgba(255,255,255,.08)}.chip b{font-weight:500;color:var(--gold-2)}
-html.settled .hero h1 .l span{transform:none!important;animation:none!important}html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!important}html.settled .eyebrow::before{transform:none!important;animation:none!important}html.settled .hero__img{animation:none!important;filter:none!important}
+/* ── 짜임 ── */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--gutter);padding-left:var(--side);padding-right:var(--side)}
+.tag,.kicker,.mb__k,.bo-k,.eff__k,.track__k,.ent__k,.prog__t{font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.5}
+.tag--ko,.bo-k{font-family:var(--ko);font-size:12px;letter-spacing:.02em;text-transform:none}
+.rule{height:1px;background:var(--ink);margin:0 var(--side);transform-origin:left}
+.block{padding-top:var(--sec);scroll-margin-top:calc(24px - var(--sec))}
+.sec-head{padding-top:16px;margin-bottom:clamp(48px,5.5vw,104px);align-items:baseline}
+.sec-head .kicker{grid-column:1/13}
 
-/* ---------- index ---------- */
-.index{background:var(--night);color:#fff;padding:22px 20px 26px}
-.index__in{max-width:1040px;margin:0 auto}
-.index__t{font-size:11.5px;letter-spacing:.22em;color:var(--gold-2);margin:0 0 10px}
-.index ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.index a{display:inline-flex;gap:6px;align-items:baseline;padding:7px 12px;border-radius:999px;border:1px solid rgba(216,185,123,.35);font-size:13.5px;text-decoration:none;color:rgba(255,255,255,.9);transition:background .3s}
-.index a:hover{background:rgba(216,185,123,.16)}
-.index a span{font-family:'Noto Serif KR',serif;color:var(--gold-2);font-size:12px}
+/* 단추: 주(잉크 면) · 곁(잉크 테두리) — 각진 모서리 */
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);padding:18px 26px;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3;transition:gap .3s}
+.cta:hover{gap:22px}
+.cta svg{width:16px;height:16px;flex:none}
+.ghost{display:inline-flex;align-items:center;gap:14px;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:14px 20px;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.3;transition:background .2s,color .2s}
+.ghost:hover{background:var(--ink);color:var(--bg)}
+.ext::after{content:"\2197";font-family:var(--en);font-weight:500}
+.acts{display:flex;flex-wrap:wrap;gap:12px}
+.acts .cta,.acts .ghost{height:52px;padding:0 22px}
 
-/* ---------- panel (one screen per section) ---------- */
-.panel{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
-.panel + .panel{border-top:1px solid var(--line)}
-.panel__fig{position:relative;margin:0;min-height:100%;overflow:hidden;background:var(--night)}
-.panel__fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
-.panel.in .panel__fig img{transform:scale(1)}
-.panel__fig figcaption{position:absolute;left:20px;right:20px;bottom:18px;color:#fff;font-family:'Noto Serif KR',serif;font-size:clamp(40px,7vw,86px);line-height:1;font-weight:600;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.45)}
-.panel__fig figcaption small{display:block;font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.22em;font-weight:500;color:var(--gold-2);margin-bottom:10px;text-shadow:none}
-.panel__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,34,0) 50%,rgba(17,30,34,.7))}
-.panel__fig figcaption{z-index:1}
-.panel--flip .panel__fig{order:2}
-.panel__body{padding:clamp(40px,7vw,96px) clamp(20px,5vw,72px);display:flex;flex-direction:column;justify-content:center;max-width:640px}
-.kicker{font-size:12px;letter-spacing:.22em;color:var(--gold);font-weight:500;margin:0 0 10px}
-.panel h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(26px,3.6vw,38px);line-height:1.3;letter-spacing:-.01em;margin:0 0 18px}
-.panel h2 small{display:block;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:14px;letter-spacing:.06em;color:var(--sub);margin-top:8px}
-.lede{font-family:'Noto Serif KR',serif;font-size:clamp(17px,2.1vw,20px);font-weight:600;line-height:1.6;margin:0 0 16px;padding:12px 16px;border-left:3px solid var(--gold);background:var(--paper-2);border-radius:0 12px 12px 0}
-.three{list-style:none;margin:6px 0 18px;padding:0;counter-reset:n}
-.three li{position:relative;padding:12px 0 12px 44px;border-bottom:1px dashed var(--line);font-size:15.5px}
-.three li:last-child{border-bottom:0}
-.three li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:12px;width:30px;height:30px;border-radius:50%;background:var(--forest);color:var(--gold-2);font-family:'Noto Serif KR',serif;font-size:15px;display:flex;align-items:center;justify-content:center;line-height:1}
-.three b{display:block;font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;margin-bottom:2px}
+/* ── 0 · 머리 ── */
+.top{position:relative;height:var(--head-h);display:flex;align-items:center;padding:0 var(--side)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink)}
+.logo{display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+.logo svg{display:block;fill:currentColor}
+.logo .sym{height:11px;width:auto}.logo .wm{height:9px;width:auto}
+.hero__in{padding-top:clamp(64px,8vw,144px)}
+.eyebrow{grid-column:1/13;font-size:12px;letter-spacing:.02em;color:var(--mute)}
+.hero h1{grid-column:1/13;margin-top:clamp(28px,5vh,56px);font-size:clamp(38px,7vw,128px);font-weight:700;letter-spacing:-.05em;line-height:1.06}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .l>span{display:block;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.7,0,1) forwards}
+.hero h1 .l:nth-child(2)>span{animation-delay:.08s}.hero h1 .l:nth-child(3)>span{animation-delay:.16s}
+@keyframes rise{to{transform:none}}
+.hero .lead{grid-column:1/7;margin-top:clamp(28px,5vh,56px);max-width:28em;font-size:clamp(17px,1.5vw,22px);font-weight:600;letter-spacing:-.03em;line-height:1.6;opacity:0;animation:fadeup .9s .35s cubic-bezier(.2,.7,0,1) forwards}
+.hero .lead .ln+.ln{margin-top:.15em}
+.meta{grid-column:1/13;margin-top:clamp(40px,7vh,88px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gutter);opacity:0;animation:fadeup .9s .5s cubic-bezier(.2,.7,0,1) forwards}
+.chip{border-top:1px solid var(--ink);padding-top:14px;font-size:clamp(16px,1.3vw,19px);font-weight:600;letter-spacing:-.02em}
+.chip b{display:block;margin-bottom:4px;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+html.settled .hero h1 .l>span{transform:none!important;animation:none!important}
+html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!important}
 
-.facts{margin:6px 0 18px;padding:16px 18px;border-radius:14px;background:var(--paper-2);border:1px solid var(--line)}
-.facts div{display:grid;grid-template-columns:72px 1fr;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px}
-.facts div:last-child{border-bottom:0}
-.facts dt{color:var(--gold);font-size:12.5px;letter-spacing:.08em;font-weight:500;padding-top:3px}
-.facts dd{margin:0}
-.facts dd small{display:block;color:var(--sub);font-size:13.5px}
-.facts a{color:var(--forest);font-weight:500}
+/* 목차 */
+.index{padding-top:calc(var(--sec) * .6)}
+.index__in{padding-top:16px;align-items:start}
+.index__t{grid-column:1/4;font-size:12px;letter-spacing:.02em;color:var(--mute)}
+.index ol{grid-column:4/13;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 var(--gutter)}
+.index a{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+.index a span{display:block;margin-bottom:12px;font-family:var(--en);font-size:clamp(36px,3.4vw,60px);font-weight:200;letter-spacing:-.03em;line-height:1;color:var(--mute);transition:color .25s}
+.index a:hover span{color:var(--ink)}
 
-.prog{margin:8px 0 22px;padding:22px 20px 14px;border-radius:18px;background:linear-gradient(165deg,#17282a 0%,#1f3a35 100%);color:#fff;box-shadow:0 18px 40px -24px rgba(10,20,20,.6)}
-.prog__t{margin:0 0 4px;font-size:11px;letter-spacing:.32em;color:var(--gold-2);font-weight:600}
-.prog h3{display:inline-block;margin:18px 0 8px;padding:5px 12px;border:1px solid rgba(214,182,120,.45);border-radius:999px;font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:600;color:var(--gold-2);letter-spacing:.06em}
-.prog ol{list-style:none;margin:0;padding:0;position:relative}
-.prog ol::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:1px;background:rgba(255,255,255,.14)}
-.prog li{display:grid;grid-template-columns:48px 1fr;gap:22px;padding:10px 0;position:relative}
-.prog li::before{content:"";position:absolute;left:55px;top:16px;width:7px;height:7px;border-radius:50%;background:#1f3a35;border:1px solid rgba(255,255,255,.4)}
-.prog li.key::before{background:var(--gold-2);border-color:var(--gold-2);box-shadow:0 0 0 4px rgba(214,182,120,.16)}
-.prog time{font-variant-numeric:tabular-nums;font-size:13px;color:rgba(255,255,255,.62);padding-top:9px;text-align:right}
-.prog .t{display:block;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.5);font-weight:600}
-.prog b{display:block;margin-top:2px;font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;line-height:1.45;color:#fff}
-.prog small{display:block;margin-top:3px;font-size:13px;color:rgba(255,255,255,.66);line-height:1.65}
-.prog li.key .t{color:var(--gold-2)}
-.prog li.key b{color:#fff}
-.prog li.key > div{padding:8px 12px 10px;margin:-2px 0 0 -12px;border-radius:10px;background:rgba(255,255,255,.05)}
-.flow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 18px}
-.flow section{background:var(--forest);color:#fff;border-radius:14px;padding:14px 16px;position:relative;overflow:hidden}
-.flow section:nth-child(2){background:#24413c}
-.flow h3{margin:0 0 6px;font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:var(--gold-2);letter-spacing:.04em}
-.flow ol{list-style:none;margin:0;padding:0}
-.flow li{position:relative;padding:3px 0 3px 16px;font-size:14.5px;line-height:1.6}
-.flow li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--gold-2)}
+/* ── 사진 띠: 화면 폭 가득 · 흑백 · 필름 입자 · 아래 캡션 ── */
+.media{position:relative;margin-top:var(--sec);height:var(--mh);overflow:hidden;background:var(--soft)}
+.media img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;transform:translateY(var(--py,0));filter:grayscale(1) contrast(.9) brightness(1.04)}
+.media::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.media::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(0,0,0,.55))}
+.media figcaption{position:absolute;z-index:2;left:var(--side);right:var(--side);bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px 16px;flex-wrap:wrap;font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.media figcaption span:last-child{color:rgba(255,255,255,.72)}
+.media figcaption small{font-size:inherit;margin-right:12px}
+.media figcaption .ko{font-family:var(--ko);font-size:13px;font-weight:600;letter-spacing:.02em}
 
-.qa{margin:6px 0 0;padding:0}
-.qa__t{font-size:11.5px;letter-spacing:.22em;color:var(--gold);font-weight:500;margin:10px 0 0}
-.qa dt{font-family:'Noto Serif KR',serif;font-weight:600;font-size:16px;line-height:1.5;margin:14px 0 4px;padding-left:22px;position:relative}
-.qa dt::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--gold)}
-.qa dd{margin:0;padding-left:22px;font-size:15px;color:var(--sub);line-height:1.75}
+/* ── 두 단 짜임: 제목 · 본문 ── */
+.prog-head{align-items:end}
+.prog-head h2{grid-column:1/9;text-wrap:balance;font-size:clamp(40px,5.6vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1.04}
+.prog-head h2 small{display:block;margin-top:18px;font-family:var(--en);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);line-height:1.5}
+.prog-head h2 small.ko{font-family:var(--ko);letter-spacing:.02em}
+.prog-head .price{grid-column:9/13;justify-self:end;text-align:right;font-family:var(--en);font-size:clamp(48px,6vw,112px);font-weight:600;letter-spacing:-.045em;line-height:1}
+.prog-head .price small{display:block;margin-bottom:14px;font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--mute);line-height:1.4}
+.prog-body{margin-top:calc(var(--sec) * .35);align-items:start}
+.lede,.bo-lead,.salons__lead{grid-column:1/8;max-width:30em;font-size:clamp(18px,1.6vw,24px);font-weight:600;letter-spacing:-.03em;line-height:1.6}
+.lede .ln+.ln,.bo-lead .ln+.ln,.salons__lead .ln+.ln{margin-top:.2em}
+.prog-body>p:not([class]){grid-column:1/8;max-width:40em;margin-top:24px;font-size:clamp(15px,1.2vw,18px);line-height:1.9;color:var(--body)}
 
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--forest);color:#fff;text-decoration:none;font-weight:600;font-size:16.5px;padding:16px 28px;border-radius:999px;box-shadow:0 14px 34px rgba(31,77,68,.3);overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 7s cubic-bezier(.45,0,.25,1) infinite}
-@keyframes sheen{0%,78%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.btn:hover{transform:translateY(-3px)}.btn svg{width:18px;height:18px}
-.btn--ghost{background:transparent;color:var(--forest);border:1.5px solid var(--forest);box-shadow:none}
-.btn--ghost::before{display:none}
-.btn--light{background:#fff;color:var(--forest)}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 6px}
-.small{font-size:13.5px;color:var(--sub)}
+.sub{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--gutter);margin:clamp(72px,7vw,128px) var(--side) 0;align-items:start}
+.sub__l{grid-column:1/5;border-top:1px solid var(--ink);padding-top:18px;min-width:0}
+.sub__r{grid-column:5/13;border-top:1px solid var(--ink);padding-top:18px;min-width:0}
+.sub__l h3,.sub__l .mb__h,.sub__l .eff__h{margin-top:14px;font-size:clamp(22px,2vw,32px);font-weight:700;letter-spacing:-.035em;line-height:1.3}
+.qa__t{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.sub__r p{font-size:15px;line-height:1.8;color:var(--body);max-width:42em}
+.sub__r p+p,.sub__r p+.mlist,.sub__r .mlist+p{margin-top:16px}
 
-/* ---------- star-keeper cards ---------- */
-.stars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:6px 0 18px}
-.star{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;position:relative;overflow:hidden}
-.star::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--forest))}
-.star__who{font-size:12px;letter-spacing:.12em;color:var(--gold);font-weight:500}
-.star h3{margin:2px 0 4px;font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:600;line-height:1.4}
-.star p{margin:0;font-size:14px;color:var(--sub);line-height:1.6}
-.star__m{display:block;margin-top:6px;font-size:12.5px;color:var(--ink)}
-.star a{display:inline-block;margin-top:6px;font-size:13px;color:var(--forest);font-weight:600}
-.star--host{background:#24413c;color:#fff;border-color:transparent}
-.star--host h3{color:#fff}.star--host p{color:rgba(255,255,255,.78)}.star--host .star__who{color:var(--gold-2)}
+/* ── 01 · 멤버십 ── */
+.fam-hero{font-size:clamp(22px,2vw,32px);font-weight:700;letter-spacing:-.035em;line-height:1.3}
+.fam-hero small{display:block;margin-bottom:14px;font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.5}
+.fam-lead .ln+.ln{margin-top:.15em}
+.fam-list{margin-top:24px;border-top:1px solid var(--line)}
+.fam-list li{display:grid;grid-template-columns:minmax(0,1fr) 48px;gap:var(--gutter);align-items:center;min-height:76px;padding:12px 0;border-bottom:1px solid var(--line)}
+.fam-tx{grid-column:1;grid-row:1;display:grid;grid-template-columns:8.5em minmax(0,1fr);column-gap:16px;align-items:baseline}
+.fam-tx i{grid-column:1;grid-row:1 / span 2;font-size:13px;color:var(--mute)}
+.fam-tx b{grid-column:2;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.fam-tx small{grid-column:2;margin-top:2px;font-size:13px;color:var(--mute)}
+.fam-th{grid-column:2;grid-row:1;width:48px}
+.fam-th img{width:48px;height:68px;object-fit:cover;border:1px solid var(--line)}
+.fam-time{margin-top:20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px}
+.fam-time b{font-size:17px;letter-spacing:-.02em}
+.fam-time span{font-size:13px;color:var(--mute)}
 
-/* ---------- december forms ---------- */
-.ent{display:grid;gap:10px;margin:6px 0 18px}
-.ent__m{padding:16px 18px 14px;border-radius:14px;background:linear-gradient(165deg,#17282a 0%,#1f3a35 100%);color:#fff;position:relative;overflow:hidden}
-.ent__m::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold-2),transparent)}
-.ent__k{display:block;font-size:10.5px;letter-spacing:.2em;color:var(--gold-2);font-weight:600}
-.ent__m h3{margin:4px 0 6px;font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;line-height:1.4;color:#fff}
-.ent__m p{margin:0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.74)}
-.bopen{background:radial-gradient(120% 90% at 20% 0%,#1f3a35 0%,#131f22 55%,#0f1a1e 100%);color:#fff;padding:clamp(56px,8vw,110px) clamp(20px,5vw,72px)}
-.bopen__in{max-width:1040px;margin:0 auto}
-.bopen .kicker{color:var(--gold-2)}
-.bopen h2{font-family:'Noto Serif KR',serif;font-size:clamp(32px,4.6vw,48px);font-weight:600;line-height:1.2;margin:0}
-.bopen h2 small{display:block;margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:13px;letter-spacing:.14em;color:rgba(255,255,255,.58);font-weight:400}
-.bopen__lede{margin:26px 0 16px;font-family:'Noto Serif KR',serif;font-size:clamp(19px,2.4vw,24px);font-weight:600;line-height:1.55;color:var(--gold-2)}
-.bopen__p{max-width:740px;margin:0 0 32px;font-size:15.5px;line-height:1.9;color:rgba(255,255,255,.78)}
-.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
-.track{display:flex;flex-direction:column;padding:24px 22px 20px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12)}
-.track--ceo{background:linear-gradient(165deg,rgba(216,185,123,.16) 0%,rgba(255,255,255,.03) 100%);border-color:rgba(216,185,123,.42)}
-.track__k{font-size:10.5px;letter-spacing:.18em;color:var(--gold-2);font-weight:600;line-height:1.6}
-.track h3{margin:10px 0 8px;font-family:'Noto Serif KR',serif;font-size:22px;font-weight:600;line-height:1.35;color:#fff}
-.track__promise{margin:0 0 14px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.65;color:#fff}
-.track p{margin:0;font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.74)}
-.track .track__for{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.18);font-size:13.5px;color:rgba(255,255,255,.72)}
-.track__for span{display:block;font-size:10px;letter-spacing:.2em;color:var(--gold-2);font-weight:600;margin-bottom:2px}
-.track__price{margin-top:auto;padding-top:16px}
-.track__price b{display:block;font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:#ffe9b8;line-height:1.2}
-.track__price small{display:block;margin-top:6px;font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.62)}
-.track__price a{color:var(--gold-2)}
-.mb{margin:24px 0 6px;padding:20px 20px 16px;border-radius:16px;background:var(--paper-2);border:1px solid var(--line)}
-.mb--nov{background:linear-gradient(165deg,#17282a 0%,#1f3a35 100%);color:#fff;border-color:transparent}
-.mb__k{margin:0 0 6px;font-size:10.5px;letter-spacing:.2em;font-weight:600;color:var(--gold)}
-.mb--nov .mb__k{color:var(--gold-2)}
-.mb__h{margin:0 0 10px;font-family:'Noto Serif KR',serif;font-size:19px;font-weight:600;line-height:1.4}
-.mb__p{margin:0 0 14px;font-size:15px;line-height:1.85;color:var(--sub)}
-.mb--nov p{margin:0;font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.82)}
-.mcards{display:grid;gap:10px}
-.mcard{padding:14px 16px 12px;border-radius:12px;background:var(--paper);border:1px solid var(--line)}
-.mcard h3{margin:0 0 6px;font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:600;line-height:1.4;color:var(--forest)}
-.mcard p{margin:0;font-size:14.5px;line-height:1.75}
-.mlist{list-style:none;margin:10px 0 0;padding:0}
-.mlist li{padding:11px 0;border-top:1px dashed var(--line);font-size:14.5px;line-height:1.75}
-.mb--nov .mlist li{border-top-color:rgba(255,255,255,.16);color:rgba(255,255,255,.8)}
-.mlist b{display:block;font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;margin-bottom:2px}
-.mb--nov .mlist b{color:#fff}
-.mb--nov .mb__note{margin-top:12px;font-size:13px;color:var(--gold-2)}
-.ln{display:block}.ln+.ln{margin-top:.62em}
-small .ln+.ln{margin-top:.35em}
-.forms{display:grid;gap:12px;margin:6px 0 18px}
-.form{border-radius:16px;padding:18px 18px 16px;background:var(--paper-2);border:1px solid var(--line);position:relative;overflow:hidden}
-.form__n{font-family:'Noto Serif KR',serif;color:var(--gold);font-size:14px;letter-spacing:.06em}
-.form h3{margin:2px 0 6px;font-family:'Noto Serif KR',serif;font-size:18px;font-weight:600;line-height:1.4}
-.form__price{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 8px;font-size:14.5px}
-.form__price b{font-family:'Noto Serif KR',serif;font-size:21px;font-weight:700;color:var(--forest)}
-.form__price span{color:var(--sub)}
-.form p{font-size:14.5px;line-height:1.7;margin:0 0 6px}
-.form__12{font-size:12px;letter-spacing:.14em;color:var(--gold);font-weight:500;margin:8px 0 2px}
-.form--deep{background:linear-gradient(160deg,#2a2350 0%,#1b1838 100%);color:#fff;border-color:transparent}
-.form--deep .form__price b{color:#ffe9b8}.form--deep .form__price span,.form--deep p{color:rgba(255,255,255,.86)}
-.form--deep .form__n,.form--deep .form__12{color:var(--gold-2)}
-.form__mark{float:right;width:96px;height:96px;margin:0 0 8px 12px;border-radius:12px;overflow:hidden}
-.form__mark img{width:100%;height:100%;object-fit:cover}
+.mb__p{color:var(--body)}
+.mcards{grid-column:1/13;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter);margin-top:clamp(48px,4.5vw,80px)}
+.mcard{border-top:1px solid var(--line);padding-top:18px;min-width:0}
+.mcard h3{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.mcard p{margin-top:12px;font-size:15px;line-height:1.75;color:var(--body)}
 
-/* ---------- colour-field panels ---------- */
-.field{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:20px;min-height:100%}
-.field--forest{background:radial-gradient(120% 90% at 20% 0%,#2f6b5f 0%,#1f4d44 45%,#15262a 100%)}
-.field--paper{background:radial-gradient(120% 100% at 80% 0%,#fffdf8 0%,#efe6d2 100%)}
-.field--night{background:radial-gradient(120% 90% at 30% 10%,#24413c 0%,#15262a 45%,#0f1a1e 100%)}
-.field::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.55) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(216,185,123,.5) 0 1px,transparent 1.5px);background-size:140px 120px,210px 170px;background-position:10px 20px,70px 60px;opacity:.3;pointer-events:none}
-.field--paper::before{opacity:0}
-.field__big{position:relative;font-family:'Noto Serif KR',serif;font-weight:600;line-height:.95;letter-spacing:-.03em;color:rgba(255,255,255,.92);font-size:clamp(64px,13vw,170px)}
-.field__big small{display:block;font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.22em;color:var(--gold-2);font-weight:500;margin-bottom:12px}
-.field--paper .field__big{color:var(--forest)}
-.field--paper .field__big small{color:var(--gold)}
+.mlist{border-top:1px solid var(--line)}
+.mlist li{padding:18px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.75;color:var(--body)}
+.mlist li b{display:block;margin-bottom:6px;font-size:17px;letter-spacing:-.03em;line-height:1.45;color:var(--ink)}
+.smark{display:none}
+.nbadge{display:inline-block;margin-right:10px;padding:1px 9px;border-radius:999px;background:var(--ink);color:var(--bg);font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.14em;vertical-align:2px;line-height:1.7}
+.mb__note{font-size:13px!important;color:var(--mute)!important}
 
-/* ---------- FAQ (full) ---------- */
-.faq{background:var(--paper-2);padding:clamp(56px,8vw,110px) 20px}
-.faq__in{max-width:1040px;margin:0 auto}
-.faq h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(26px,3.6vw,38px);margin:0 0 6px}
-.faq__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;margin-top:22px}
-.faq__item{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.faq__item h3{margin:0 0 6px;font-family:'Noto Serif KR',serif;font-weight:600;font-size:16.5px;line-height:1.5}
-.faq__item p{margin:0;font-size:15px;color:var(--sub);line-height:1.75}
-.faq__item a{color:var(--forest);font-weight:500}
+.news-tick{grid-column:1/13;position:relative;height:42px;overflow:hidden;white-space:nowrap;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.news-tick__run{position:absolute;left:0;top:0;display:inline-flex;line-height:41px;animation:newsTick 48s linear infinite;will-change:transform}
+.news-tick__run span{padding:0 22px;font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.news-tick__run span::after{content:"";display:inline-block;width:8px;height:1px;margin-left:44px;background:var(--mute);vertical-align:middle}
+@keyframes newsTick{to{transform:translateX(-50%)}}
+.mb--news .sub__l,.mb--news .sub__r{border-top:0;padding-top:28px}
+.mb--news .mb__h{font-family:var(--en);font-weight:600;letter-spacing:-.035em}
 
-/* ---------- closing ---------- */
-.close{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;color:#fff;background:var(--night)}
-.close__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.close__veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,.45) 0%,rgba(15,26,30,.78) 60%,rgba(15,26,30,.92) 100%)}
-.close__in{position:relative;max-width:760px;margin:0 auto;padding:80px 20px;text-align:center}
-.close h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(28px,4.4vw,46px);line-height:1.3;margin:0 0 14px}
-.close p{color:rgba(255,255,255,.88)}
-.close .btns{justify-content:center;margin-top:20px}
-.close .btn--ghost{color:#fff;border-color:rgba(255,255,255,.7)}
-.close .small{color:rgba(255,255,255,.72);margin-top:14px}
-.sign{background:var(--paper);padding:44px 20px 52px;text-align:center}
-.sign img{width:120px;height:auto;margin:0 auto 12px}
-.sign p{margin:0;font-size:12px;letter-spacing:.22em;color:var(--muted)}
+.facts,.star__facts{display:grid;border-top:1px solid var(--ink)}
+.facts>div,.star__facts>div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.7}
+.facts dt,.star__facts dt{font-weight:700}
+.facts dd,.star__facts dd{color:var(--body)}
+.facts dd small,.star__facts dd small{display:block;margin-top:2px;font-size:13px;color:var(--mute)}
+.facts a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.sub__r>.facts:first-child,.sub__r>.qa:first-child{border-top:0}
+.sub__r>.facts:first-child>div:first-child{padding-top:0}
+.qa dt{padding-top:20px;border-top:1px solid var(--line);font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.5}
+.qa dt:first-child{border-top:0;padding-top:0}
+.qa dd{padding:8px 0 20px;font-size:15px;line-height:1.8;color:var(--body)}
 
-/* ---------- sticky bar (mobile) ---------- */
-.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:20;display:none;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 16px;border-radius:999px;background:rgba(17,30,34,.92);color:#fff;backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.3);font-size:13px;transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+/* ── 02 · 별지기 살롱 ── */
+.salons .prog-head h2{grid-column:1/11}
+.salons__when{margin:clamp(56px,5.5vw,96px) var(--side) 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0 var(--gutter)}
+.salons__when li{border-top:1px solid var(--ink);padding-top:14px;min-width:0}
+.salons__when time{display:block;font-family:var(--en);font-size:clamp(28px,2.6vw,46px);font-weight:200;letter-spacing:-.04em;line-height:1.05}
+.salons__when b{display:block;margin-top:14px;font-size:15px;letter-spacing:-.02em}
+.salons__when span{display:block;font-size:13px;color:var(--mute)}
+.stars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(72px,6.5vw,120px) var(--gutter);margin:clamp(72px,7vw,128px) var(--side) 0}
+.star{display:flex;flex-direction:column;border-top:1px solid var(--ink);padding-top:18px;min-width:0}
+.star__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.star__who{font-size:15px;font-weight:700;letter-spacing:-.02em}
+.star__tag{font-size:13px;color:var(--mute);text-align:right}
+.star h3{margin-top:28px;font-size:clamp(28px,2.8vw,48px);font-weight:700;letter-spacing:-.045em;line-height:1.12}
+.star__promise{margin-top:14px;font-size:clamp(17px,1.3vw,20px);font-weight:600;letter-spacing:-.03em;line-height:1.55}
+.star__p{margin-top:18px;font-size:15px;line-height:1.8;color:var(--body)}
+.star__flow{margin-top:24px;border-top:1px solid var(--line)}
+.star__flow li{display:grid;grid-template-columns:4.5em minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.6}
+.star__flow i{font-family:var(--en);font-size:12px;font-weight:500;color:var(--mute);padding-top:1px}
+.star__facts{margin-top:24px}
+.star__facts>div{grid-template-columns:5.5em minmax(0,1fr)}
+.star__note{margin-top:16px;padding:14px 16px;background:var(--soft);font-size:14px;line-height:1.7;color:var(--body)}
+.star__btns{margin-top:auto;padding-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.star__btns a{height:52px;padding:0 22px}
+.star--wide{grid-column:1/-1}
+.star__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--gutter)}
+.star__cols>div{min-width:0}
+.stars-more{margin:clamp(72px,7vw,128px) var(--side) 0}
+.star--host{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px var(--gutter);align-items:baseline;padding:24px 0;border-bottom:1px solid var(--ink)}
+.star--host .star__who{grid-column:1/3;grid-row:1}
+.star--host h3{grid-column:3/7;grid-row:1;margin:0}
+.star--host p{grid-column:7/10;grid-row:1;font-size:15px;color:var(--body)}
+.star--host .star__m{grid-column:7/10;grid-row:2;font-size:13px;color:var(--mute)}
+.star--host a{grid-column:10/13;grid-row:1 / span 2;justify-self:end;align-self:center}
+.salons .sub{margin-top:clamp(72px,7vw,128px)}
+
+/* ── 03 · 빌더하우스 ── */
+.bo-quote{grid-column:1/13;margin-top:clamp(56px,6vw,112px);padding-left:clamp(18px,2vw,32px);border-left:2px solid var(--ink);font-size:clamp(28px,3.6vw,64px);font-weight:700;letter-spacing:-.045em;line-height:1.3}
+.bo-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter)}
+.bo-step{min-width:0}
+.bo-step__n{display:block;font-family:var(--en);font-size:clamp(48px,4.4vw,80px);font-weight:200;letter-spacing:-.03em;line-height:1}
+.bo-step b{display:block;margin-top:18px;font-family:var(--en);font-size:18px;font-weight:600;letter-spacing:-.02em}
+.bo-step p{margin-top:8px;font-size:14px!important;line-height:1.75}
+.bo-note{margin-top:28px;font-size:13px!important;color:var(--mute)!important}
+.bo-dates{margin-top:28px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 40px;border-top:1px solid var(--line);padding-top:18px}
+.bo-dates span{font-family:var(--en);font-size:clamp(26px,2.6vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.1}
+.bo-dates i{display:block;margin-bottom:8px;font-family:var(--ko);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
+.bo-dates em{font-size:13px;color:var(--mute);padding-bottom:4px}
+.tracks__t{margin:var(--sec) var(--side) 0;font-size:clamp(28px,3.2vw,56px);font-weight:700;letter-spacing:-.045em;line-height:1.2}
+.tracks{padding:0 var(--side)}
+.track{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--gutter);margin-top:clamp(48px,5vw,88px);border-top:1px solid var(--ink);padding-top:18px}
+.track>.track__k,.track__head{grid-column:1/13;min-width:0}
+.track__head .track__k{display:block}
+.track>h3,.track__head h3{grid-column:1/13;margin-top:28px;font-size:clamp(30px,3.6vw,60px);font-weight:700;letter-spacing:-.045em;line-height:1.08}
+.track__main,.track__body{grid-column:1/7;margin-top:32px;min-width:0}
+.track__side{grid-column:8/13;margin-top:32px;min-width:0}
+.track__promise{font-size:clamp(17px,1.4vw,21px);font-weight:600;letter-spacing:-.03em;line-height:1.6}
+.track__main>p:not([class]),.track__body>p:not([class]){margin-top:18px;font-size:15px;line-height:1.8;color:var(--body)}
+.track__body>p:first-child{margin-top:0}
+.track__hook{margin-top:18px;padding-left:16px;border-left:2px solid var(--ink);font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.6}
+.track__for{margin-top:24px;font-size:14px;line-height:1.8;color:var(--body)}
+.track__for span{display:block;margin-bottom:6px;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink)}
+.track__price{border-top:1px solid var(--ink);padding-top:16px}
+.track__price b{display:block;font-size:clamp(26px,2.6vw,44px);letter-spacing:-.04em;line-height:1.1}
+.track__price small{display:block;margin-top:10px;font-size:13px;line-height:1.6;color:var(--mute)}
+.track__price small a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.track__price small .ln+.ln{margin-top:.1em}
+.track__pricerow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.track__ask{padding:10px 16px}
+.track__cta{margin-top:20px;width:100%;justify-content:space-between}
+.tracks__prog{margin-top:clamp(64px,6vw,112px);border-top:2px solid var(--ink);padding-top:18px}
+.tracks__dates{margin-top:24px;display:flex;flex-wrap:wrap;gap:16px 56px}
+.tracks__dates .d{font-size:clamp(20px,1.8vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.3}
+.tracks__dates .d i{display:block;margin-bottom:6px;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
+.prog{margin-top:clamp(40px,4vw,64px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px var(--gutter);align-items:start}
+.prog__t{grid-column:1/-1;color:var(--mute)}
+.day{min-width:0}
+.day h3{padding-bottom:14px;border-bottom:1px solid var(--ink);font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.04em}
+.prog li{display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.prog time{font-family:var(--en);font-size:15px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.5}
+.prog li>div{min-width:0}
+.prog .t{display:block;font-family:var(--en);font-size:10.5px;font-weight:500;letter-spacing:.14em;color:var(--mute);line-height:1.6}
+.prog li.key .t{color:var(--ink)}
+.prog li.key .t::before{content:"";display:inline-block;width:8px;height:1.5px;margin-right:8px;background:var(--ink);vertical-align:middle}
+.prog li b{display:block;margin-top:2px;font-size:16px;letter-spacing:-.02em;line-height:1.45}
+.prog li small{display:block;margin-top:4px;font-size:13px;line-height:1.6;color:var(--mute)}
+.prog li small .ln+.ln{margin-top:0}
+.track__cta--wide{margin-top:32px;width:auto;height:56px;padding:0 26px;gap:22px}
+.tracks__sub{margin-top:var(--sec);border-top:1px solid var(--ink);padding-top:18px}
+.tracks__sub h4{margin-top:28px;font-size:clamp(28px,3.2vw,56px);font-weight:700;letter-spacing:-.045em;line-height:1.15}
+
+/* ── 04 · AI Expert Course ── */
+.xp{position:relative;margin:0;display:flow-root}
+.xp .media{margin-top:var(--sec)}
+.xp-cap{padding-top:28px;align-items:start}
+.xp-name{grid-column:1/4;font-family:var(--en);font-size:clamp(30px,3vw,52px);font-weight:600;letter-spacing:-.045em;line-height:1}
+.xp-name small{display:block;margin-bottom:12px;font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--mute);line-height:1.5}
+.xp-hook{grid-column:4/8;font-size:clamp(17px,1.4vw,21px);font-weight:600;letter-spacing:-.03em;line-height:1.55}
+.xp-steps{grid-column:8/13;display:grid;border-top:1px solid var(--ink)}
+.xp-steps>span{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+.xp-steps i{font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--mute);padding-top:2px}
+.xp-note{position:absolute;z-index:3;right:var(--side);top:calc(var(--sec) + var(--mh) - 24px - 1.5em);font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;line-height:1.5;color:rgba(255,255,255,.72)}
+.eff__list{border-top:1px solid var(--line)}
+.eff__list li{padding:20px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.75;color:var(--body)}
+.eff__tag{display:block;font-size:12px;letter-spacing:.02em;color:var(--mute)}
+.eff__list b{display:block;margin:6px 0 6px;font-size:17px;letter-spacing:-.03em;line-height:1.45;color:var(--ink)}
+.eff__lead{margin-bottom:24px}
+.eff__end{margin-top:20px;font-weight:600;color:var(--ink)!important}
+.ent-out__k{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.ent-out ul{border-top:0}
+.ent-out li{display:flex;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;font-weight:600;letter-spacing:-.02em}
+.ent-out li:first-child{padding-top:0}
+.ent-out li::before{content:"";flex:none;width:8px;height:1.5px;background:var(--ink);transform:translateY(-4px)}
+.ent{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(48px,4.5vw,80px) var(--gutter);margin:clamp(72px,7vw,128px) var(--side) 0}
+.ent__m{border-top:1px solid var(--ink);padding-top:18px;min-width:0}
+.ent__k{display:block;color:var(--mute)}
+.ent__m h3{margin-top:22px;font-size:clamp(22px,2vw,32px);font-weight:700;letter-spacing:-.035em;line-height:1.3}
+.ent__m p{margin-top:14px;font-size:15px;line-height:1.8;color:var(--body)}
+.ent__m .ln+.ln{margin-top:.6em}
+.term{display:block;margin-bottom:2px;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--ink)}
+.ent-facts{margin-top:clamp(72px,7vw,128px)}
+.ent-facts .facts{grid-column:5/13}
+
+/* ── 05 · 신청 ── */
+.close__in{padding-top:16px}
+.close__in .kicker{grid-column:1/13}
+.close h2{grid-column:1/12;text-wrap:balance;margin-top:clamp(48px,5.5vw,104px);font-size:clamp(34px,5.6vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1.1}
+.btns{grid-column:1/13;margin-top:clamp(40px,6vh,72px);display:flex;flex-wrap:wrap;gap:12px}
+.btns .cta{height:56px;padding:0 26px}
+.close .small{grid-column:1/13;margin-top:20px;font-size:14px;color:var(--mute)}
+.close .small a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* 바닥글 */
+.foot{margin-top:var(--sec);border-top:1px solid var(--ink);padding-top:56px;padding-bottom:48px}
+.foot .brand{grid-column:1/8;display:grid;gap:18px;align-content:start;justify-items:start}
+.foot .mark{width:120px;height:auto;fill:currentColor;color:var(--ink)}
+.foot p{font-family:var(--en);font-size:12px;font-weight:600}
+
+/* 아래 띠 (휴대폰) */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--side) calc(10px + env(safe-area-inset-bottom,0px));background:var(--head-bg);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--ink);font-size:13px;color:var(--ink);transform:translateY(110%);transition:transform .5s cubic-bezier(.2,.7,0,1)}
 .bar.on{transform:none}
-.bar b{color:var(--gold-2);font-weight:500}
-.bar a{flex:none;background:var(--gold-2);color:var(--night);text-decoration:none;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px}
+.bar b{margin-right:4px}
+.bar a{flex:none;background:var(--ink);color:var(--bg);padding:12px 20px;font-size:14px;font-weight:600}
 
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+/* 펼칠 때만 움직인다: 선은 왼쪽에서 그어지고, 덩어리는 아래에서 올라온다 */
+.rvl{transform:scaleX(0);transition:transform 1.2s cubic-bezier(.65,0,.35,1)}
+.rvl.in{transform:none}
+.rv2{opacity:0;transform:translate3d(0,16px,0);transition:opacity .9s cubic-bezier(.2,.7,0,1),transform .9s cubic-bezier(.2,.7,0,1)}
+.rv2.in{opacity:1;transform:none}
 
-@media (min-width:861px){
-  .panel{align-items:start}
-  .panel__fig{position:sticky;top:0;height:100svh;min-height:0}
-  .panel__body{min-height:100svh}
+/* ── 반응형 ── */
+@media (max-width:1024px){
+  .prog-head h2,.salons .prog-head h2{grid-column:1/13}
+  .prog-head .price{grid-column:1/13;justify-self:start;text-align:left;margin-top:28px}
+  .lede,.bo-lead,.salons__lead,.prog-body>p:not([class]),.hero .lead{grid-column:1/12}
+  .index__t,.index ol{grid-column:1/13}
+  .index ol{margin-top:20px}
+  .sub__l,.sub__r{grid-column:1/13}
+  .sub__r{border-top:0;padding-top:24px}
+  .mb--news .sub__r{padding-top:20px}
+  .salons__when{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:28px}
+  .track__main,.track__body,.track__side{grid-column:1/13}
+  .xp-name,.xp-hook,.xp-steps{grid-column:1/13}
+  .xp-hook{margin-top:20px}.xp-steps{margin-top:24px}
+  .ent-facts .facts{grid-column:1/13}
+  .star--host .star__who{grid-column:1/13;grid-row:auto}
+  .star--host h3{grid-column:1/13;grid-row:auto;margin-top:8px}
+  .star--host p,.star--host .star__m{grid-column:1/13;grid-row:auto}
+  .star--host a{grid-column:1/13;grid-row:auto;justify-self:start;margin-top:16px}
 }
 @media (max-width:860px){
-  .panel{grid-template-columns:1fr;min-height:auto}
-  .panel--flip .panel__fig{order:0}
-  .panel__fig{min-height:0;aspect-ratio:4/3;max-height:58svh;width:100%}
-  .panel__fig.field{aspect-ratio:auto;min-height:44svh}
-  .panel__body{max-width:none;padding:34px 16px 52px}
-  .faq__grid{grid-template-columns:1fr}
   .bar{display:flex}
-}
-@media (max-width:520px){
-  .hero__in{padding:0 16px 40px}
-  .index{padding:20px 16px 22px}
+  .prog{grid-template-columns:1fr}
   .stars{grid-template-columns:1fr}
-  .flow{grid-template-columns:1fr}
-  .facts div{grid-template-columns:62px 1fr}
-  .form__mark{width:76px;height:76px}
-  .btn{width:100%}
-  .faq{padding-left:16px;padding-right:16px}
+  .star__cols{grid-template-columns:1fr}
+  .ent{grid-template-columns:1fr}
+  .foot{padding-bottom:96px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero__img{transform:none}.panel__fig img{transform:none}}
-.ln+.ln{margin-top:.85em}
-.mcard .ln+.ln,.star .ln+.ln,.ent__m .ln+.ln,.track .ln+.ln,.mlist .ln+.ln,small .ln+.ln{margin-top:.5em}
-.bopen__p{margin:0 0 1.4em!important}
-.track p+p{margin-top:.9em}
-.qa__t{margin-top:32px!important}
-.mcards,.ent,.stars{gap:16px!important}
-.mcard{padding:18px 18px 16px!important}
-.star{padding:18px 18px 16px!important}
-.star__m{margin-top:10px!important}
-.facts div{padding:12px 0!important}
-.bopen{padding:0 0 clamp(56px,8vw,110px)!important}
-.bopen__fig{position:relative;margin:0 0 clamp(40px,6vw,72px);height:clamp(320px,52vw,560px);overflow:hidden}
-.bopen__fig img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
-.bopen__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,.05) 0%,rgba(15,26,30,.45) 55%,#131f22 100%)}
-.bopen__fig figcaption{position:absolute;z-index:1;left:clamp(20px,5vw,72px);right:20px;bottom:30px;color:#fff;font-family:'Noto Serif KR',serif;font-size:clamp(40px,7vw,86px);font-weight:600;line-height:1}
-.bopen__fig figcaption small{display:block;margin-bottom:12px;font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.22em;font-weight:500;color:var(--gold-2)}
-.bopen__in{padding:0 clamp(20px,5vw,72px)}
-.tracks__head{margin:64px 0 22px;padding-top:44px;border-top:1px solid rgba(255,255,255,.16)}
-.tracks__head .kicker{color:var(--gold-2)}
-.tracks__head h3{margin:6px 0 14px;font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.4vw,34px);font-weight:600;line-height:1.3;color:#fff}
-.tracks__head p{margin:0;font-size:15.5px;line-height:1.85;color:rgba(255,255,255,.78)}
-.tracks{display:flex!important;flex-direction:column;gap:22px!important}
-.track__cta{display:flex;align-items:center;justify-content:center;margin-top:18px;padding:14px 22px;border-radius:999px;background:var(--gold-2);color:#13201f!important;font-weight:700;font-size:15.5px;letter-spacing:.02em;text-decoration:none}
-.track__cta:hover{filter:brightness(1.06)}
-.tracks__sub{margin:30px 0 -4px}
-.tracks__sub .kicker{color:var(--gold-2);margin-bottom:6px}
-.tracks__sub h4{margin:0;font-family:'Noto Serif KR',serif;font-size:clamp(21px,2.8vw,26px);font-weight:600;color:#fff;line-height:1.35}
-.track--feat{padding:0!important;overflow:hidden}
-.track__img{position:relative;margin:0;height:clamp(240px,42vw,380px)}
-.track__img img{display:block;width:100%;height:100%;object-fit:cover}
-.track__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,0) 25%,rgba(15,26,30,.88) 100%)}
-.track__img figcaption{position:absolute;z-index:1;left:22px;right:22px;bottom:20px}
-.track__img figcaption h3{margin:8px 0 0;font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.6vw,34px);font-weight:600;line-height:1.25;color:#fff}
-.track__body{display:flex;flex-direction:column;padding:22px 22px 22px}
-.tracks__prog{margin:6px 0 0}
-.tracks__prog .kicker{color:var(--gold-2);margin-bottom:6px}
-.tracks__prog h4{margin:0 0 6px;font-family:'Noto Serif KR',serif;font-size:clamp(21px,2.8vw,26px);font-weight:600;color:#fff;line-height:1.35}
-.tracks__dates{margin:0 0 14px;font-size:14px;color:rgba(255,255,255,.7)}
-.tracks__prog .prog{margin:0;border:1px solid rgba(255,255,255,.12)}
-.track__cta--wide{margin-top:16px}
-.track--ceo .track__img img{object-position:50% 18%!important}
-.track__img::after{background:linear-gradient(180deg,rgba(15,26,30,0) 10%,rgba(15,26,30,.55) 45%,rgba(15,26,30,.92) 100%)!important}
-.bopen__fig figcaption{left:calc(max(0px,(100% - 1040px) / 2) + clamp(20px,5vw,72px))!important}
-.tracks__fig{position:relative;margin:56px 0 22px;height:clamp(260px,44vw,440px);border-radius:18px;overflow:hidden}
-.tracks__fig img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.tracks__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,0) 30%,rgba(15,26,30,.85) 100%)}
-.tracks__fig figcaption{position:absolute;z-index:1;left:24px;bottom:22px;color:#fff;font-family:'Noto Serif KR',serif;font-size:clamp(40px,7vw,80px);font-weight:600;line-height:1}
-.track__pricerow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.track__ask{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;border:1px solid var(--gold-2);color:var(--gold-2)!important;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:.02em}
-.track__ask:hover{background:rgba(216,185,123,.12)}
-.prog b{font-family:'Cormorant Garamond','Noto Serif KR',serif!important;font-size:19px!important;font-weight:600!important;letter-spacing:.01em}
-.prog .t{font-family:'Montserrat','Noto Sans KR',sans-serif!important;font-size:9.5px!important;letter-spacing:.24em!important;font-weight:600!important}
-.prog time{font-family:'Cormorant Garamond',serif!important;font-size:16px!important;font-style:italic;font-weight:500}
-.prog h3{font-family:'Cormorant Garamond','Noto Serif KR',serif!important;font-size:16px!important;letter-spacing:.08em!important}
-.prog__t,.tracks__prog .kicker{font-family:'Montserrat',sans-serif!important;letter-spacing:.3em!important}
-#enterprise .lede .ln+.ln{margin-top:.2em!important}
-#enterprise .lede .ln{text-wrap:balance}
-.rv2{opacity:0;transform:translate3d(0,18px,0);transition:opacity 1.1s cubic-bezier(.22,.61,.36,1),transform 1.1s cubic-bezier(.22,.61,.36,1)}
-.rv2.in{opacity:1;transform:none}
-.hero__img{will-change:transform;backface-visibility:hidden}
-.bo-lead{max-width:760px;margin:30px 0 0;font-family:'Noto Serif KR',serif;font-size:clamp(18px,2.3vw,22px);line-height:1.75;color:rgba(255,255,255,.92);font-weight:500}
-.bo-lead .ln+.ln{margin-top:.45em}
-.bo-quote{margin:44px 0 0;padding:6px 0 6px 22px;border-left:2px solid var(--gold-2);font-family:'Noto Serif KR',serif;font-size:clamp(28px,4.4vw,44px);line-height:1.35;color:var(--gold-2);font-weight:600}
-.bo-k{margin:0 0 14px!important;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:11px!important;letter-spacing:.26em;color:var(--gold-2)!important;font-weight:600}
-.bo-why{display:grid;grid-template-columns:1fr;gap:26px;margin:68px 0 0;align-items:center}
-.bo-why__img{margin:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35)}
-.bo-why__img img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
-.bo-why__t p{margin:0;font-size:16px;line-height:1.9;color:rgba(255,255,255,.82)}
-.bo-why__t .ln+.ln{margin-top:.6em}
-.bo-how{margin:72px 0 0}
-.bo-steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:1fr}
-.bo-step{padding:22px 22px 22px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.04)}
-.bo-step__n{display:block;font-family:'Cormorant Garamond',serif;font-size:42px;font-style:italic;font-weight:500;line-height:1;color:var(--gold-2)}
-.bo-step b{display:block;margin:10px 0 6px;font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;letter-spacing:.02em;color:#fff}
-.bo-step p{margin:0;font-size:15px;line-height:1.75;color:rgba(255,255,255,.78)}
-.bo-note{margin:16px 0 0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.6)}
-.bo-place{position:relative;margin:72px 0 0;border-radius:20px;overflow:hidden;min-height:560px;display:flex;align-items:flex-end;box-shadow:0 24px 50px rgba(0,0,0,.35)}
-.bo-place figure{position:absolute;inset:0;margin:0}
-.bo-place figure img{display:block;width:100%;height:100%;object-fit:cover;object-position:72% 30%}
-.bo-place figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,0) 15%,rgba(15,26,30,.6) 50%,rgba(15,26,30,.94) 100%)}
-.bo-place__t{position:relative;z-index:1;padding:28px 24px 26px;max-width:640px}
-.bo-place h3{margin:0 0 16px;font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.6vw,36px);font-weight:600;line-height:1.3;color:#fff}
-.bo-place__t p:not(.bo-k){margin:0;font-size:15.5px;line-height:1.85;color:rgba(255,255,255,.88)}
-.bo-place__t .ln+.ln{margin-top:.5em}
-.bo-dates{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px}
-.bo-dates span{padding:7px 16px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff}
-.bo-dates em{margin-left:4px;font-style:normal;font-size:13px;color:rgba(255,255,255,.72)}
-@media (min-width:861px){.bo-why{grid-template-columns:5fr 6fr;gap:52px}.bo-why__img{aspect-ratio:4/5;max-height:540px}.bo-steps{grid-template-columns:repeat(3,1fr)}.bo-place{min-height:520px}.bo-place__t{padding:44px 48px}}
-.bo-dates span,.bo-step__n,.prog time,.prog b{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:'lnum' 1,'tnum' 1}
-.bo-why__img img{object-position:30% 64%!important;transform:scale(1.5);transform-origin:30% 64%}
-@media (min-width:861px){.bo-place figure::after{background:linear-gradient(90deg,rgba(15,26,30,.94) 0%,rgba(15,26,30,.72) 42%,rgba(15,26,30,.08) 72%)}}
-.bo-how{margin:56px 0 0!important;max-width:760px}
-.bo-steps{display:block!important;border-top:1px solid rgba(255,255,255,.14)}
-.bo-step{display:grid!important;grid-template-columns:34px 92px 1fr;align-items:baseline;gap:0 10px;padding:13px 0!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.14)!important;border-radius:0!important;background:none!important}
-.bo-step__n{font-size:20px!important}
-.bo-step b{margin:0!important;font-size:18px!important}
-.bo-step p{font-size:14.5px!important;line-height:1.65!important}
-@media (max-width:600px){.bo-step{grid-template-columns:30px 1fr}.bo-step p{grid-column:2;margin-top:2px!important}}
-.bo-note{margin-top:12px!important}
-.bo-dates i,.tracks__dates i{margin-right:8px;font-family:'Noto Sans KR',sans-serif;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--gold-2);vertical-align:1px}
-.tracks__dates .d{display:block}.tracks__dates .d+.d{margin-top:4px}
-.smark{display:inline-block;margin-right:7px;color:var(--gold-2);font-size:.9em;animation:smarkTw 3.6s ease-in-out infinite}
-@keyframes smarkTw{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.86)}}
-.mb--news{position:relative;overflow:hidden;padding-top:0!important;background:linear-gradient(160deg,#0f1a1e 0%,#18303a 60%,#1f3a35 100%)!important;border-color:transparent!important;color:#fff}
-.mb--news::before{content:"";position:absolute;inset:-20%;pointer-events:none;background-image:radial-gradient(1.2px 1.2px at 12% 30%,rgba(255,255,255,.8),transparent 60%),radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.7),transparent 60%),radial-gradient(1.4px 1.4px at 40% 72%,rgba(216,185,123,.9),transparent 60%),radial-gradient(1px 1px at 88% 64%,rgba(255,255,255,.6),transparent 60%),radial-gradient(1.2px 1.2px at 24% 88%,rgba(255,255,255,.55),transparent 60%),radial-gradient(1px 1px at 58% 40%,rgba(216,185,123,.7),transparent 60%);animation:newsStars 9s ease-in-out infinite alternate}
-@keyframes newsStars{0%{opacity:.45;transform:translate3d(0,0,0)}100%{opacity:1;transform:translate3d(-14px,8px,0)}}
-.mb--news > *{position:relative;z-index:1}
-.news-tick{margin:0 -20px 16px;padding:9px 0;border-bottom:1px solid rgba(216,185,123,.28);background:rgba(216,185,123,.08);overflow:hidden;white-space:nowrap}
-.news-tick__run{display:inline-flex;gap:0;animation:newsTick 26s linear infinite;will-change:transform}
-.news-tick__run span{padding:0 14px;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--gold-2)}
-.news-tick__run span::after{content:"✦";margin-left:28px;color:rgba(216,185,123,.55)}
-@keyframes newsTick{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-.mb--news .mb__k{color:var(--gold-2)}
-.mb--news .mb__h{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Cormorant Garamond','Noto Serif KR',serif;font-size:24px;letter-spacing:.06em}
-.mb--news .mb__h::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 0 rgba(216,185,123,.7);animation:newsPulse 2.2s ease-out infinite}
-@keyframes newsPulse{0%{box-shadow:0 0 0 0 rgba(216,185,123,.65)}80%,100%{box-shadow:0 0 0 12px rgba(216,185,123,0)}}
-.mb--news .mlist li{border-top-color:rgba(255,255,255,.14)!important;color:rgba(255,255,255,.82)}
-.mb--news .mlist b{color:#fff}
-.nbadge{position:relative;display:inline-block;margin-right:8px;padding:2px 7px;border-radius:4px;overflow:hidden;vertical-align:2px;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.14em;color:#13201f;background:var(--gold-2)}
-.nbadge::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.75) 50%,transparent 70%);transform:translateX(-120%);animation:nbShine 3.8s ease-in-out infinite}
-.mlist li:nth-child(2) .nbadge::after{animation-delay:1.2s}
-@keyframes nbShine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.mb--news .mlist.rv2 li{opacity:0;transform:translate3d(-16px,0,0);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
-.mb--news .mlist.rv2.in li{opacity:1;transform:none}
-.mb--news .mlist.rv2.in li:nth-child(2){transition-delay:.22s}
-@media (prefers-reduced-motion:reduce){.mb--news .mlist li{opacity:1!important;transform:none!important}}
-.news-tick{position:relative;height:36px;padding:0!important}
-.news-tick__run{position:absolute;left:0;top:50%;margin-top:-8px;line-height:16px}
-.panel__body,.mb{min-width:0}
-.track__hook{margin:0 0 16px!important;padding-left:14px;border-left:2px solid var(--gold-2);font-family:'Noto Serif KR',serif;font-size:16.5px!important;font-weight:600;line-height:1.7!important;color:#fff!important}
-.track__hook .ln+.ln{margin-top:.45em}
-.track__hook{font-family:'Noto Sans KR',sans-serif!important;font-size:17px!important;font-weight:700!important;letter-spacing:-.01em;line-height:1.6!important}
-.term{display:block;margin:2px 0 3px;font-style:normal;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.12em;color:var(--gold)}
-.ent-out{margin:18px 0 26px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--paper-2)}
-.ent-out__k{margin:0 0 10px!important;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gold)}
-.ent-out ul{list-style:none;margin:0;padding:0}
-.ent-out li{position:relative;padding:6px 0 6px 20px;font-size:15px;line-height:1.7;color:var(--ink)}
-.ent-out li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:2px;background:var(--gold-2)}
-/* ---------- star-keeper salons (full width · 10/24) ---------- */
-.salons{background:var(--paper);border-top:1px solid var(--line);padding:0 0 clamp(56px,8vw,110px)}
-.salons__fig{position:relative;margin:0 0 clamp(36px,5vw,64px);height:clamp(300px,46vw,520px);overflow:hidden;background:var(--night)}
-.salons__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.salons__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,34,0) 40%,rgba(17,30,34,.72))}
-.salons__fig figcaption{position:absolute;z-index:1;left:clamp(20px,5vw,72px);right:20px;bottom:28px;color:#fff;font-family:'Noto Serif KR',serif;font-size:clamp(40px,7vw,86px);font-weight:600;line-height:1;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.45)}
-.salons__fig figcaption small{display:block;margin-bottom:12px;font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.22em;font-weight:500;color:var(--gold-2);text-shadow:none}
-.salons__in{max-width:1120px;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
-.salons h2{font-family:'Noto Serif KR',serif;font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.3;letter-spacing:-.01em;margin:0 0 18px}
-.salons__lead{max-width:720px;font-size:16.5px;color:var(--sub);margin:0 0 28px}
-.salons__when{list-style:none;margin:0 0 34px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
-.salons__when li{background:var(--forest);color:#fff;border-radius:14px;padding:14px 12px 12px;line-height:1.35}
-.salons__when time{display:block;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold-2);line-height:1;font-variant-numeric:lining-nums}
-.salons__when b{display:block;margin-top:8px;font-size:14.5px;font-weight:600}
-.salons__when span{display:block;font-size:12.5px;color:rgba(255,255,255,.72)}
-.salons .stars{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px!important;margin:0 0 22px}
-.salons .star{display:flex;flex-direction:column;padding:26px 26px 24px!important;border-radius:20px;background:var(--paper-2);box-shadow:0 18px 44px -28px rgba(27,35,38,.35)}
-.salons .star::before{width:4px}
-.star__top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.salons .star__who{font-size:13px;letter-spacing:.16em;font-weight:600}
-.star__tag{font-size:12.5px;padding:4px 11px;border-radius:999px;border:1px solid rgba(185,151,91,.45);color:var(--forest);font-weight:500}
-.salons .star h3{font-size:clamp(22px,2.4vw,26px);margin:0 0 10px;line-height:1.35}
-.star__promise{font-family:'Noto Serif KR',serif;font-size:17px!important;font-weight:600;line-height:1.6!important;color:var(--forest)!important;margin:0 0 14px!important;padding:10px 14px;background:rgba(31,77,68,.06);border-radius:0 12px 12px 0;border-left:3px solid var(--gold)}
-.salons .star__p{font-size:15.5px;line-height:1.8;color:var(--sub);margin:0 0 16px}
-.star__flow{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
-.star__flow li{display:grid;grid-template-columns:58px 1fr;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.55}
-.star__flow i{font-style:normal;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.04em;text-align:center;padding:2px 0;border-radius:999px;background:rgba(185,151,91,.12)}
-.star__facts{margin:0 0 14px;padding:4px 16px;border-radius:14px;background:#fff;border:1px solid var(--line)}
-.star__facts div{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px;line-height:1.6}
-.star__facts div:last-child{border-bottom:0}
-.star__facts dt{color:var(--gold);font-size:12.5px;letter-spacing:.06em;font-weight:600;padding-top:2px}
-.star__facts dd{margin:0;color:var(--ink)}
-.star__facts dd small{display:block;margin-top:2px;font-size:13.5px;color:var(--sub)}
-.star__note{font-size:14px!important;color:var(--sub)!important;line-height:1.7!important;margin:0 0 14px!important;padding-left:14px;position:relative}
-.star__note::before{content:"";position:absolute;left:2px;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
-.star__btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
-.salons .star a{margin-top:0}
-.star__more,.star__go{display:inline-flex;align-items:center;justify-content:center;flex:1 1 140px;padding:13px 18px;border-radius:999px;font-size:15px!important;font-weight:600;text-decoration:none;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.star__more{border:1.5px solid var(--forest);color:var(--forest)!important}
-.star__go{background:var(--forest);color:#fff!important}
-.star__more:hover,.star__go:hover{transform:translateY(-2px)}
-.stars-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 34px}
-.stars-more .star{padding:18px 22px!important}
-.star--soon{background:transparent!important;border-style:dashed!important}
-.salons .star--host{background:#24413c;box-shadow:none}
-.salons .star--host h3{color:#fff}.salons .star--host p{color:rgba(255,255,255,.8)}.salons .star--host .star__m{color:#fff}.salons .star--host a{color:var(--gold-2);margin-top:8px}
-.salons .qa{max-width:760px}
-.salons .star--wide{grid-column:1/-1}
-.star__cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.stars-more{grid-template-columns:minmax(0,1fr)!important;max-width:calc(50% - 11px)}
-@media (max-width:900px){
-  .salons__when{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .salons .stars,.stars-more{grid-template-columns:1fr}
-  .star__cols{grid-template-columns:1fr;gap:0}
-  .stars-more{max-width:none}
+@media (max-width:720px){
+  :root{--head-h:54px}
+  .meta{grid-template-columns:1fr;gap:0}
+  .chip{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:16px}
+  .chip:first-child{border-top-color:var(--ink)}
+  .chip b{margin:0}
+  .index ol{grid-template-columns:1fr;border-top:1px solid var(--line)}
+  .index a{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .index a span{margin:0;font-size:12px;font-weight:500;letter-spacing:.1em;width:1.6em}
+  .mcards{grid-template-columns:1fr;gap:32px}
+  .salons__when{grid-template-columns:1fr;row-gap:0;border-top:1px solid var(--ink)}
+  .salons__when li{display:grid;grid-template-columns:3.6em 4.6em minmax(0,1fr);gap:10px;align-items:baseline;padding:12px 0;border-top:0;border-bottom:1px solid var(--line)}
+  .salons__when time{font-size:20px;font-weight:300}
+  .salons__when b{margin:0}
+  .facts>div,.star__facts>div{grid-template-columns:1fr;gap:2px}
+  .fam-tx{grid-template-columns:1fr}
+  .fam-tx i,.fam-tx b,.fam-tx small{grid-column:1;grid-row:auto}
+  .bo-steps{grid-template-columns:1fr;gap:28px}
+  .bo-step{display:grid;grid-template-columns:3.2em minmax(0,1fr);column-gap:12px}
+  .bo-step__n{grid-row:1 / span 2;font-size:36px}
+  .bo-step b{margin-top:0}
+  .bo-step p{grid-column:2}
+  .xp-steps>span{grid-template-columns:6.5em minmax(0,1fr)}
+  .acts .cta,.acts .ghost,.star__btns a{flex:1 1 auto;justify-content:space-between}
+  .track__cta--wide{width:100%;justify-content:space-between}
+  .btns .cta{width:100%;justify-content:space-between}
+  .sub{margin-top:64px}
+  h2,h3,h4,blockquote{text-wrap:balance}
+  p,li,dd,small{text-wrap:pretty}
 }
-@media (max-width:520px){
-  .salons__when{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .salons .star{padding:22px 18px 20px!important}
-  .star__facts{padding:2px 12px}
-  .star__facts div{grid-template-columns:56px 1fr;font-size:14.5px}
-  .star__flow li{grid-template-columns:52px 1fr}
+/* 함께 읽어 온 책 · 인사이트 공유회 연표 */
+.shelf{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.shelf li{width:76px;aspect-ratio:2/3;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.shelf img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(.95);opacity:.88;transition:filter .3s,opacity .3s}
+.shelf li:hover img{filter:none;opacity:1}
+.shelf--clbook img{filter:none;opacity:1}
+.shelf-names{margin-top:16px;font-size:12px !important;line-height:1.8 !important;color:var(--mute) !important}
+.hist{margin-top:24px;border-top:1px solid var(--line)}
+.hist li{display:grid;grid-template-columns:8.5em minmax(0,1fr);column-gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.hist i{grid-row:1 / span 2;font-style:normal;font-family:var(--en);font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--mute)}
+.hist b{font-family:var(--en);font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.4}
+.hist small{margin-top:2px;font-size:13px;color:var(--mute)}
+@media (max-width:720px){.shelf{gap:10px}.shelf li{width:calc((100% - 30px) / 4)}.hist li{grid-template-columns:1fr}.hist i{grid-row:auto;margin-bottom:4px}}
+.shelf-more{margin-top:14px;font-size:13px !important}
+.shelf-more a{text-decoration:underline;text-underline-offset:5px;color:var(--ink)}
+.vols{margin-top:24px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+.vol{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.vol a{display:flex;flex-direction:column;height:100%;min-height:172px;padding:14px 14px 16px;color:inherit;transition:background .25s}
+.vol a:hover{background:var(--soft)}
+.vol-n{font-family:var(--en);font-size:30px;font-weight:200;letter-spacing:-.03em;line-height:1;color:var(--mute)}
+.vol-g{margin-top:10px;font-family:var(--en);font-size:9.5px;font-weight:500;letter-spacing:.14em;color:var(--faint)}
+.vol b{margin-top:auto;padding-top:14px;font-size:14px;font-weight:700;letter-spacing:-.03em;line-height:1.35}
+.vol small{margin-top:4px;font-size:11.5px;color:var(--mute);line-height:1.45}
+.vol-key{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px 18px;font-family:var(--en);font-size:10.5px !important;letter-spacing:.08em;color:var(--mute) !important}
+@media (max-width:1024px){.vols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:720px){.vols{grid-template-columns:repeat(2,minmax(0,1fr))}.vol a{min-height:148px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .l>span,.rvl,.rv2{transform:none!important;opacity:1!important}
+  .hero .lead,.meta{opacity:1!important}
+  .media img{transform:none}
 }
-
-
-/* ---------- compostela · what you save (10/24) ---------- */
-.eff{margin:6px 0 22px;padding:22px 22px 18px;border-radius:18px;background:var(--paper-2);border:1px solid var(--line);box-shadow:0 18px 44px -30px rgba(27,35,38,.35)}
-.eff__k{margin:0 0 6px!important;font-size:11px!important;letter-spacing:.24em;color:var(--gold);font-weight:600}
-.eff__h{margin:0 0 12px;font-family:'Noto Serif KR',serif;font-size:clamp(19px,2.2vw,22px);font-weight:600;line-height:1.45;color:var(--forest)}
-.eff__lead{font-size:15.5px!important;color:var(--sub);margin:0 0 14px!important}
-.eff__list{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:12px}
-.eff__list li{padding:14px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:14.5px;line-height:1.7;color:var(--sub)}
-.eff__list b{display:block;margin:6px 0 6px;font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:600;line-height:1.5;color:var(--ink)}
-.eff__list .ln+.ln{margin-top:.35em}
-.eff__tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;color:var(--forest);padding:3px 10px;border-radius:999px;background:rgba(31,77,68,.08)}
-.eff__end{margin:0!important;font-family:'Noto Serif KR',serif;font-size:16px!important;font-weight:600;line-height:1.7;color:var(--forest)}
-.eff__end .ln+.ln{margin-top:.3em}
-
-/* ---------- personal AI PT (10/24) ---------- */
-.pt{background:radial-gradient(120% 90% at 80% 0%,#1f3a35 0%,#131f22 55%,#0f1a1e 100%);color:#fff;padding:0 0 clamp(56px,8vw,110px);scroll-margin-top:0}
-.pt__fig{position:relative;margin:0 0 clamp(36px,5vw,64px);height:clamp(320px,48vw,540px);overflow:hidden}
-.pt__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
-.pt__fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,30,.05) 0%,rgba(15,26,30,.5) 55%,#131f22 100%)}
-.pt__fig figcaption{position:absolute;z-index:1;left:clamp(20px,5vw,72px);right:20px;bottom:30px;font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7.4vw,92px);font-weight:600;line-height:1;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.45)}
-.pt__fig figcaption small{display:block;margin-bottom:14px;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:11.5px;letter-spacing:.24em;font-weight:600;color:var(--gold-2);text-shadow:none}
-.pt__in{max-width:1120px;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
-.pt .kicker{color:var(--gold-2)}
-.pt h2{font-family:'Noto Serif KR',serif;font-size:clamp(30px,4.4vw,46px);font-weight:600;line-height:1.3;margin:0 0 20px;letter-spacing:-.01em}
-.pt__lede{max-width:760px;margin:0 0 clamp(32px,4vw,48px)!important;font-family:'Noto Serif KR',serif;font-size:clamp(17px,2.1vw,21px)!important;font-weight:600;line-height:1.65;color:var(--gold-2)}
-.pt__lede .ln+.ln{margin-top:.25em}
-.pt__grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
-.pt__k{margin:0 0 14px!important;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:11.5px!important;font-weight:600;letter-spacing:.2em;color:var(--gold-2)}
-.pt__stuck{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pt__stuck li:first-child{grid-column:1/-1}
-.pt__stuck li{padding:16px 16px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-.pt__stuck b{display:block;font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;line-height:1.45;margin-bottom:6px}
-.pt__stuck span{display:block;font-size:14px;line-height:1.7;color:rgba(255,255,255,.7)}
-.pt__steps{list-style:none;margin:0 0 36px;padding:0;border-top:1px solid rgba(255,255,255,.12)}
-.pt__steps li{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-.pt__steps i{font-style:normal;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;line-height:1;color:var(--gold-2);font-variant-numeric:lining-nums}
-.pt__en{display:block;font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;color:rgba(255,255,255,.5)}
-.pt__steps b{display:block;margin:3px 0 4px;font-family:'Noto Serif KR',serif;font-size:17.5px;font-weight:600}
-.pt__steps p{margin:0!important;font-size:15px!important;line-height:1.75;color:rgba(255,255,255,.75)}
-.pt__chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.pt__chips li{padding:7px 14px;border-radius:999px;border:1px solid rgba(216,185,123,.4);font-size:13.5px;color:rgba(255,255,255,.88)}
-.pt__card{position:sticky;top:24px;padding:30px 28px 26px;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
-.pt__badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px;border:1px solid rgba(185,151,91,.5);color:var(--forest)}
-.pt__card h3{margin:16px 0 6px;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;line-height:1.1;color:var(--forest)}
-.pt__fig figcaption .pt__hook{display:block;margin-top:16px;font-family:'Noto Serif KR',serif;font-size:clamp(17px,2.3vw,25px);font-weight:600;line-height:1.5;letter-spacing:0;color:#fff}
-.pt__sub{margin:0 0 14px!important;font-size:15px!important;font-weight:600;color:var(--sub)}
-.pt__price{display:flex;align-items:baseline;gap:8px;margin:0 0 18px!important;font-size:34px!important;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
-.pt__price small{font-size:15px;font-weight:400;color:var(--sub)}
-.pt__facts{margin:0 0 16px;padding:2px 16px;border-radius:14px;background:#fff;border:1px solid var(--line)}
-.pt__facts div{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px;line-height:1.65}
-.pt__facts div:last-child{border-bottom:0}
-.pt__facts dt{color:var(--gold);font-size:12.5px;font-weight:600;letter-spacing:.04em;padding-top:2px}
-.pt__facts dd{margin:0}
-.pt__terms{margin:0 0 20px;padding:14px 16px;border-radius:12px;background:rgba(31,77,68,.07)}
-.pt__terms span{display:block;font-size:12.5px;font-weight:600;color:var(--forest);margin-bottom:4px}
-.pt__terms p{margin:0!important;font-size:14px!important;line-height:1.7;color:var(--sub)}
-.pt__cta{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 22px;border-radius:999px;background:var(--forest);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.pt__cta:hover{transform:translateY(-2px)}
-.pt__note{margin:14px 0 0!important;font-size:13.5px!important;line-height:1.7;color:var(--sub)}
-.pt__note .ln+.ln{margin-top:.2em}
-.pt__note a{color:var(--forest);font-weight:600}
-@media (max-width:900px){
-  .pt__grid{grid-template-columns:1fr}
-  .pt__card{position:static}
-}
-@media (max-width:560px){
-  .pt__stuck{grid-template-columns:1fr}
-  .pt__card{padding:24px 20px 22px}
-  .pt__facts div{grid-template-columns:62px 1fr}
-}
-
-/* ---------- membership · monthly meetups (10/24) ---------- */
-.meet-dates{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.meet-dates span{display:inline-flex;flex-direction:column;gap:2px;padding:12px 18px;border-radius:14px;background:var(--forest);color:#fff;font-size:14px;line-height:1.4}
-.meet-dates small{font-size:12.5px;color:rgba(255,255,255,.7)}
-.meet-dates i{font-style:normal;font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;color:var(--gold-2)}
-
-
-/* ---------- deeper family day (10/24 v2) ---------- */
-.fam-wrap{padding:0!important;overflow:hidden;border-radius:18px!important;background:var(--paper-2);border:1px solid var(--line);box-shadow:0 20px 50px -32px rgba(27,35,38,.45)}
-.fam-hero{position:relative;margin:0;height:240px;overflow:hidden}
-.fam-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 8%}
-.fam-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,34,0) 35%,rgba(17,30,34,.78) 100%)}
-.fam-hero figcaption{position:absolute;z-index:1;left:20px;right:20px;bottom:16px;color:#fff;font-family:'Noto Serif KR',serif;font-size:26px;font-weight:600;line-height:1.2;text-shadow:0 2px 14px rgba(0,0,0,.45)}
-.fam-hero figcaption small{display:block;margin-bottom:6px;font-family:'Montserrat','Noto Sans KR',sans-serif;font-size:10.5px;letter-spacing:.22em;font-weight:600;color:var(--gold-2);text-shadow:none}
-.fam-lead{margin:18px 20px 14px!important;font-size:15.5px!important;line-height:1.75;color:var(--ink)}
-.fam-lead .ln+.ln{margin-top:.2em}
-.fam-list{list-style:none;margin:0 20px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;border-top:1px solid var(--line)}
-.fam-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);min-width:0}
-.fam-th{flex:0 0 48px;height:68px;border-radius:6px;overflow:hidden;background:#17282a;box-shadow:0 6px 14px -8px rgba(0,0,0,.5)}
-.fam-th img{width:100%;height:100%;object-fit:cover}
-.fam-th--photo{flex-basis:68px;border-radius:10px}
-.fam-th--photo img{object-position:50% 28%}
-.fam-tx i{display:block;font-style:normal;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--gold)}
-.fam-tx{min-width:0}
-.fam-tx small{display:block;margin-top:2px;font-size:12px;line-height:1.45;color:var(--sub)}
-.fam-tx b{display:block;font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:600;line-height:1.4;color:var(--ink)}
-.fam-time{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0!important;padding:14px 20px 18px;font-size:13.5px!important;color:var(--sub)}
-.fam-time b{font-size:16px;color:var(--forest)}
-@media (max-width:420px){.fam-hero{height:200px}.fam-hero figcaption{font-size:23px}.fam-list{gap:0 12px;margin:0 14px}.fam-th{flex-basis:40px;height:58px}.fam-th--photo{flex-basis:52px}.fam-tx b{font-size:14px}.fam-tx i{font-size:11.5px}}
-
-/* ---------- AI expert course figure (10/24) ---------- */
-.xp-cap .xp-hook{display:block;margin-top:16px;font-family:'Noto Serif KR',serif;font-size:clamp(18px,2.1vw,26px);font-weight:600;line-height:1.5;letter-spacing:0;color:#fff}
-.xp-cap .xp-steps{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:500;letter-spacing:0;line-height:1.35;text-shadow:none}
-.xp-cap .xp-steps>span{display:inline-flex;flex-direction:column;gap:3px;padding:9px 12px;border-radius:12px;background:rgba(17,30,34,.55);border:1px solid rgba(216,185,123,.4);backdrop-filter:blur(6px);color:#fff}
-.xp-cap .xp-steps i{font-style:normal;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--gold-2)}
-.xp-cap .xp-note{display:block;margin-top:12px;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:400;letter-spacing:0;color:rgba(255,255,255,.55);text-shadow:none}
-@media (max-width:860px){#enterprise .panel__fig{aspect-ratio:4/5;max-height:86svh}#enterprise .panel__fig img{object-position:50% 10%!important}}
-@media (max-width:860px){.xp-cap .xp-hook{font-size:16px;margin-top:10px}.xp-cap .xp-steps{gap:6px;margin-top:10px;font-size:11.5px}.xp-cap .xp-steps>span{padding:6px 9px}.xp-cap .xp-note{margin-top:6px}}
 </style>
 </head>
 <body>
 
 <!-- 0 · 머리 -->
 <header class="hero" id="top">
-  <img class="hero__img" src="membership-2026-11-hero-v2.jpg" alt="밤의 서재, 노트북을 펼친 사람 곁의 사막여우">
-  <div class="hero__veil"></div>
-  <div class="hero__in">
+  <div class="top">
+    <span class="logo" role="img" aria-label="DEEPER"><svg class="sym" viewBox="0 0 18.621 6.951" aria-hidden="true"><path d="M15.146 0H0V1.762H15.164A1.7135 1.7135 0 0 1 15.164 5.189H0V6.951H15.146A3.4755 3.4755 0 0 0 15.146 0Z"/></svg><svg class="wm" viewBox="0 0 17.835 2.724" aria-hidden="true"><path d="M1.304 2.008C1.689 2.008 1.954 1.779 1.954 1.362C1.954 0.946 1.689 0.716 1.304 0.716L0.919 0.716L0.919 2.008ZM0.0 0.0L1.343 0.0C2.253 0.0 2.88 0.518 2.88 1.362C2.88 2.206 2.253 2.724 1.343 2.724L0.0 2.724ZM5.707 2.031L5.707 2.723L3.442 2.723L3.442 0.0L5.656 0.0L5.656 0.692L4.345 0.692L4.345 1.011L5.497 1.011L5.497 1.673L4.345 1.673L4.345 2.031ZM8.633 2.031L8.633 2.723L6.368 2.723L6.368 0.0L8.582 0.0L8.582 0.692L7.271 0.692L7.271 1.011L8.423 1.011L8.423 1.673L7.271 1.673L7.271 2.031ZM10.921 1.027C10.921 0.828 10.8 0.708 10.547 0.708L10.213 0.708L10.213 1.345L10.547 1.345C10.8 1.345 10.921 1.225 10.921 1.027M11.847 1.027C11.847 1.657 11.365 2.053 10.606 2.053L10.213 2.053L10.213 2.724L9.295 2.724L9.295 0.0L10.606 0.0C11.365 0.0 11.847 0.397 11.847 1.027M14.563 2.031L14.563 2.723L12.298 2.723L12.298 0.0L14.512 0.0L14.512 0.692L13.201 0.692L13.201 1.011L14.353 1.011L14.353 1.673L13.201 1.673L13.201 2.031ZM16.477 0.708L16.143 0.708L16.143 1.346L16.477 1.346C16.73 1.346 16.851 1.226 16.851 1.027C16.851 0.828 16.73 0.708 16.477 0.708M16.392 2.039L16.143 2.039L16.143 2.724L15.224 2.724L15.224 0.0L16.536 0.0C17.294 0.0 17.777 0.396 17.777 1.027C17.777 1.42 17.59 1.716 17.263 1.883L17.835 2.724L16.854 2.724Z"/></svg></span>
+  </div>
+  <div class="hero__in grid">
     <div class="eyebrow">디퍼 멤버십 · 2026년 11월</div>
     <h1><span class="l"><span>살롱이 끝나도</span></span><span class="l"><span>내 컴퓨터에 남는</span></span><span class="l"><span>동료와 함께</span></span></h1>
     <p class="lead"><span class="ln">사막여우는 디퍼 살롱에서 각자 컴퓨터에 설치한 세컨브레인입니다.</span><span class="ln">멤버는 매달 새옷 꾸러미를 열쇠말과 함께 받습니다.</span><span class="ln">11월부터 별지기님들이 각자의 전문 살롱을 엽니다.</span></p>
@@ -594,7 +433,8 @@ small .ln+.ln{margin-top:.35em}
 </header>
 
 <nav class="index" aria-label="이 페이지에 있는 것">
-  <div class="index__in">
+  <div class="rule"></div>
+  <div class="index__in grid">
     <p class="index__t">이 페이지에 있는 것</p>
     <ol>
       <li><a href="#membership"><span>01</span>디퍼 멤버십</a></li>
@@ -606,41 +446,125 @@ small .ln+.ln{margin-top:.35em}
   </div>
 </nav>
 
+<!-- 사진 띠 -->
+<figure class="media" data-parallax>
+  <img src="membership-2026-11-hero-v2.jpg" alt="밤의 서재, 노트북을 펼친 사람 곁의 사막여우" decoding="async" style="object-position:50% 80%">
+  
+</figure>
+
 <main>
 
 <!-- 1 · 디퍼 멤버십 -->
-<section class="panel" id="membership">
-  <figure class="panel__fig">
-    <img src="membership-2026-11-hero.jpg" alt="서재의 의자 위에 앉은 사막여우" loading="lazy" decoding="async" style="object-position:30% 72%">
-    <figcaption><small>DEEPER MEMBERSHIP</small>29,000</figcaption>
-  </figure>
-  <div class="panel__body">
-    <p class="kicker">01 · DEEPER MEMBERSHIP</p>
-    <h2>내 지능은<br>내 컴퓨터에<small>디퍼 멤버십 · 월 29,000원 · 2026년 11월부터</small></h2>
+<section class="block panel" id="membership">
+  <div class="rule"></div>
+  <div class="grid sec-head"><p class="kicker">01 · DEEPER MEMBERSHIP</p></div>
+  <div class="grid prog-head">
+    <h2>내 지능은<br>내 컴퓨터에<small class="ko">디퍼 멤버십 · 월 29,000원 · 2026년 11월부터</small></h2>
+    <p class="price"><small>DEEPER MEMBERSHIP</small>29,000</p>
+  </div>
+  <div class="grid prog-body">
     <p class="lede"><span class="ln">살롱이 끝나도 사막여우와 그동안의 기록은 내 컴퓨터에 남습니다.</span><span class="ln">프론티어 AI 모델이 새로 나오는 간격은 점점 짧아지고 있습니다.</span><span class="ln">디퍼 멤버십은 새 모델에 맞춘 사막여우를 매달 받는 일입니다.</span></p>
-    <div class="mb mb--meet fam-wrap">
-      <figure class="fam-hero"><img src="family-day-2026-11.jpg" alt="노트북을 펼친 탁자에 둘러앉아 환하게 웃는 세 사람" loading="lazy" decoding="async"><figcaption><small>TOGETHER · DEEPER FAMILY DAY</small>디퍼 패밀리 데이</figcaption></figure>
+  </div>
+
+  <div class="sub mb vol-wrap">
+    <div class="sub__l">
+      <p class="fam-hero"><small>THE DEEPER READING COLLECTION</small>열두 권의 작은 책</p>
+    </div>
+    <div class="sub__r">
+      <p class="fam-lead"><span class="ln">디퍼 살롱의 문법·논리·수사를 짧은 책 열두 권으로 다시 엮었습니다.</span><span class="ln">한 권에 네 장씩, 누구나 무료로 읽을 수 있습니다.</span></p>
+      <ol class="vols">
+        <li class="vol vol--grammar"><a href="https://b612deeper.com/library/source-text/" target="_blank" rel="noopener"><span class="vol-n">01</span><span class="vol-g">GRAMMAR</span><b>원천 텍스트</b><small>나에게서 시작하는 글</small></a></li>
+        <li class="vol vol--grammar"><a href="https://b612deeper.com/library/voice-grain/" target="_blank" rel="noopener"><span class="vol-n">02</span><span class="vol-g">GRAMMAR</span><b>목소리의 결</b><small>내 문장에서 되돌아오는 것</small></a></li>
+        <li class="vol vol--grammar"><a href="https://b612deeper.com/library/own-perspective/" target="_blank" rel="noopener"><span class="vol-n">03</span><span class="vol-g">GRAMMAR</span><b>나의 독점적 관점</b><small>경험이 만나는 자리</small></a></li>
+        <li class="vol vol--grammar"><a href="https://b612deeper.com/library/name-the-seed/" target="_blank" rel="noopener"><span class="vol-n">04</span><span class="vol-g">GRAMMAR</span><b>씨앗에 이름을</b><small>경험을 건네는 한 문장</small></a></li>
+        <li class="vol vol--logic"><a href="https://b612deeper.com/library/symbols-to-meaning/" target="_blank" rel="noopener"><span class="vol-n">05</span><span class="vol-g">LOGIC</span><b>기호에서 의미로</b><small>말들이 맞물리는 구조</small></a></li>
+        <li class="vol vol--logic"><a href="https://b612deeper.com/library/three-scores/" target="_blank" rel="noopener"><span class="vol-n">06</span><span class="vol-g">LOGIC</span><b>세 개의 악보</b><small>다시 연주할 수 있는 틀</small></a></li>
+        <li class="vol vol--logic"><a href="https://b612deeper.com/library/publishing-loop/" target="_blank" rel="noopener"><span class="vol-n">07</span><span class="vol-g">LOGIC</span><b>발행하는 고리</b><small>한 편에서 다음 한 편으로</small></a></li>
+        <li class="vol vol--logic"><a href="https://b612deeper.com/library/design-the-loop/" target="_blank" rel="noopener"><span class="vol-n">08</span><span class="vol-g">LOGIC</span><b>고리를 설계하다</b><small>대화에서 실행의 구조로</small></a></li>
+        <li class="vol vol--rhetoric"><a href="https://b612deeper.com/library/place-for-voice/" target="_blank" rel="noopener"><span class="vol-n">09</span><span class="vol-g">RHETORIC</span><b>내가 서 있을 자리</b><small>흩어진 기록 사이의 한 문장</small></a></li>
+        <li class="vol vol--rhetoric"><a href="https://b612deeper.com/library/sustainable-channel/" target="_blank" rel="noopener"><span class="vol-n">10</span><span class="vol-g">RHETORIC</span><b>내 목소리가 사는 자리</b><small>지속할 수 있는 채널과 리듬</small></a></li>
+        <li class="vol vol--rhetoric"><a href="https://b612deeper.com/library/editing-in-own-words/" target="_blank" rel="noopener"><span class="vol-n">11</span><span class="vol-g">RHETORIC</span><b>나다운 언어로 단단하게</b><small>원문을 살리는 편집</small></a></li>
+        <li class="vol vol--rhetoric"><a href="https://b612deeper.com/library/manifesto/" target="_blank" rel="noopener"><span class="vol-n">12</span><span class="vol-g">RHETORIC</span><b>함께 부를 한 문장</b><small>지금 지킬 수 있는 약속</small></a></li>
+      </ol>
+      <p class="vol-key"><span>GRAMMAR · 나의 언어</span><span>LOGIC · AI와 일하는 구조</span><span>RHETORIC · 쓰고 전하는 일</span></p>
+    </div>
+  </div>
+
+  <div class="sub mb--meet fam-wrap">
+    <div class="sub__l">
+      <p class="fam-hero"><small>TOGETHER · DEEPER FAMILY DAY</small>디퍼 패밀리 데이</p>
+    </div>
+    <div class="sub__r">
       <p class="fam-lead"><span class="ln">11월 월요일 밤마다 디퍼 패밀리 모두가 함께 모입니다.</span><span class="ln">멤버십 멤버와 살롱 참여자 누구나 오실 수 있고, 별도 비용은 없습니다.</span></p>
       <ol class="fam-list">
-        <li><span class="fam-th fam-th--photo"><img src="membership-2026-11-hero-v2.jpg" alt="" loading="lazy" decoding="async"></span><span class="fam-tx"><i>11월 9일(월)</i><b>인사이트 공유회</b></span></li>
+        <li><span class="fam-tx"><i>11월 9일(월)</i><b>인사이트 공유회</b></span></li>
         <li><span class="fam-th"><img src="cover_dual_brain.jpg" alt="『듀얼 브레인』 표지" loading="lazy" decoding="async"></span><span class="fam-tx"><i>11월 16일(월)</i><b>『듀얼 브레인』 토론</b><small>이선 몰릭 지음 · 신동숙 옮김 · 상상스퀘어</small></span></li>
-        <li><span class="fam-th fam-th--photo"><img src="membership-2026-11-hero-v2.jpg" alt="" loading="lazy" decoding="async"></span><span class="fam-tx"><i>11월 23일(월)</i><b>인사이트 공유회</b></span></li>
+        <li><span class="fam-tx"><i>11월 23일(월)</i><b>인사이트 공유회</b></span></li>
         <li><span class="fam-th"><img src="../calendar/cover_odyssey.jpg" alt="『오뒷세이아』 표지" loading="lazy" decoding="async"></span><span class="fam-tx"><i>11월 30일(월)</i><b>『오뒷세이아』 9·10권 리딩</b><small>호메로스 · 천병희 옮김 · 숲</small></span></li>
       </ol>
       <p class="fam-time"><b>밤 9시 ~ 10시 30분</b><span>네 번 모두 같은 시간 · 모임 링크는 모임 전에 알려 드립니다</span></p>
     </div>
-    <div class="mb">
-      <p class="mb__k">WHY · PERSONAL AI</p>
-      <p class="mb__p"><span class="ln">철학자 앤디 클라크와 데이비드 차머스는 1998년 논문 「The Extended Mind」(Analysis 58권 1호)에서 이렇게 썼습니다.</span><span class="ln">수첩에 적어 두고 꺼내 쓰는 기억도 그 사람의 마음에 속합니다.</span><span class="ln">사막여우가 읽는 기록은 디퍼님의 로컬 컴퓨터에 저장됩니다.</span></p>
-      <div class="mcards">
-        <article class="mcard"><h3>내 기록은 내 자산입니다</h3><p><span class="ln">살롱에서 읽고 쓰고 판단한 기록이 디퍼님의 컴퓨터에 파일로 있습니다.</span><span class="ln">인터넷 어디를 검색해도 나오지 않는 글입니다.</span></p></article>
-        <article class="mcard"><h3>나를 아는 AI</h3><p><span class="ln">디퍼님이 누구인지 AI에게 매번 설명하지 않아도 됩니다.</span><span class="ln">사막여우는 디퍼님의 기록과 말투, 지난 판단을 읽고 답합니다.</span><span class="ln">기록을 남길수록 사막여우는 디퍼님을 더 정확히 읽습니다.</span></p></article>
-        <article class="mcard"><h3>모델이 바뀌면 사막여우도 함께 바뀝니다</h3><p><span class="ln">새 모델이 나오면 어제의 설계로는 그 모델을 다 쓰지 못합니다.</span><span class="ln">디퍼가 매달 사막여우를 새 모델에 맞춰 손봅니다.</span><span class="ln">디퍼님은 꾸러미를 받아 새옷 한 번만 입히면 됩니다.</span></p></article>
-      </div>
+  </div>
+
+  <div class="sub mb shelf-wrap">
+    <div class="sub__l">
+      <p class="fam-hero"><small>SHELF · BOOKS WE READ</small>함께 읽어 온 책</p>
     </div>
-    <div class="mb mb--nov">
+    <div class="sub__r">
+      <p class="fam-lead"><span class="ln">1기 첫 밤부터 살롱과 디퍼 리딩에서 함께 읽은 책입니다.</span></p>
+      <ol class="shelf" aria-label="함께 읽어 온 책 열 권"><li><img src="cover_singularity.jpg" alt="『마침내 특이점이 시작된다』 표지" loading="lazy" decoding="async"></li><li><img src="cover_thinking_machine.jpg" alt="『엔비디아 젠슨 황, 생각하는 기계』 표지" loading="lazy" decoding="async"></li><li><img src="cover_geb.jpg" alt="『괴델, 에셔, 바흐』 표지" loading="lazy" decoding="async"></li><li><img src="cover_editology.jpg" alt="『에디톨로지』 표지" loading="lazy" decoding="async"></li><li><img src="../calendar/cover_odyssey.jpg" alt="『오뒷세이아』 표지" loading="lazy" decoding="async"></li><li><img src="cover_wunderkammer.jpg" alt="『분더카머』 표지" loading="lazy" decoding="async"></li><li><img src="../calendar/cover_scaling.jpg" alt="『스케일링 시대』 표지" loading="lazy" decoding="async"></li><li><img src="../calendar/cover_machine_language.jpg" alt="『기계가 언어를 사용한다는 것에 대한 인문학적 사유』 표지" loading="lazy" decoding="async"></li><li><img src="../calendar/cover_intelligence_bankrupt.jpg" alt="『지능 파산』 표지" loading="lazy" decoding="async"></li><li><img src="../calendar/cover_sugo_inryu.jpg" alt="『시대예보: 수고인류의 시간』 표지" loading="lazy" decoding="async"></li></ol>
+      <p class="shelf-names">『마침내 특이점이 시작된다』 · 『엔비디아 젠슨 황, 생각하는 기계』 · 『괴델, 에셔, 바흐』 · 『에디톨로지』 · 『오뒷세이아』 · 『분더카머』 · 『스케일링 시대』 · 『기계가 언어를 사용한다는 것에 대한 인문학적 사유』 · 『지능 파산』 · 『시대예보: 수고인류의 시간』</p>
+    </div>
+  </div>
+
+  <div class="sub mb clbook-wrap">
+    <div class="sub__l">
+      <p class="fam-hero"><small>CLBOOK · BOOKS WE MADE</small>클북이 만든 책</p>
+    </div>
+    <div class="sub__r">
+      <p class="fam-lead"><span class="ln">클북이 저자와 함께 한 사람의 삶과 일을 엮어 펴낸 책입니다.</span></p>
+      <ol class="shelf shelf--clbook" aria-label="클북이 만든 책 20권"><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577098.jpg" alt="『그림과 만난 소년』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577388.jpg" alt="『다시 쓰는 마음』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577371.jpg" alt="『나를 잃지 않는 법』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577081.jpg" alt="『나는 언제 행복했더라』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577074.jpg" alt="『길을 열고 숲을 살리다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577272.jpg" alt="『저녁 종이 울릴 때』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://b612deeper.com/media/clbook/9791192577333.jpg" alt="『삶이 레몬을 준다면 레모네이드를 만들어라』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577036.jpg" alt="『아무튼 지치지 않도록』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577029.jpg" alt="『하늘 투명 거울』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791192577005.jpg" alt="『기억이 나를 멈추게 한다면』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791197265778.jpg" alt="『내일은 날씨가 좋을지도 몰라』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748746.jpg" alt="『책으로 버티다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748760.jpg" alt="『마녀 카페』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748753.jpg" alt="『오십, 질문을 시작하다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748739.jpg" alt="『공대생 카밀은 왜 인문학에 빠졌을까?』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748722.jpg" alt="『쓰고 달콤하게』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748708.jpg" alt="『내 꿈은 퇴사다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748791.jpg" alt="『문장 안에 살다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748784.jpg" alt="『사커보이』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li><li><img src="https://contents.kyobobook.co.kr/sih/fit-in/200x0/pdt/9791196748777.jpg" alt="『숲에서 길을 만들고 물을 다루다』 표지" loading="lazy" decoding="async" referrerpolicy="no-referrer"></li></ol>
+      <p class="shelf-names">『그림과 만난 소년』 · 『다시 쓰는 마음』 · 『나를 잃지 않는 법』 · 『나는 언제 행복했더라』 · 『길을 열고 숲을 살리다』 · 『저녁 종이 울릴 때』 · 『삶이 레몬을 준다면 레모네이드를 만들어라』 · 『아무튼 지치지 않도록』 · 『하늘 투명 거울』 · 『기억이 나를 멈추게 한다면』 · 『내일은 날씨가 좋을지도 몰라』 · 『책으로 버티다』 · 『마녀 카페』 · 『오십, 질문을 시작하다』 · 『공대생 카밀은 왜 인문학에 빠졌을까?』 · 『쓰고 달콤하게』 · 『내 꿈은 퇴사다』 · 『문장 안에 살다』 · 『사커보이』 · 『숲에서 길을 만들고 물을 다루다』</p>
+      <p class="shelf-more"><a class="ext" href="https://b612deeper.com/books/" target="_blank" rel="noopener">전체 출간 목록 </a></p>
+    </div>
+  </div>
+
+  <div class="sub mb hist-wrap">
+    <div class="sub__l">
+      <p class="fam-hero"><small>SINCE MAY 2026 · INSIGHT NIGHTS</small>인사이트 공유회</p>
+    </div>
+    <div class="sub__r">
+      <p class="fam-lead"><span class="ln">인사이트 공유회는 1기 첫 밤부터 이어 온 디퍼의 전통입니다.</span><span class="ln">한 주 동안 각자 해 본 것을 화면에 띄워 나눕니다.</span></p>
+      <ol class="hist">
+        <li><i>2026.05</i><b>7 · 14 · 21 · 28</b><small>1기 문법 · 목요일 밤</small></li>
+        <li><i>2026.06</i><b>4 · 11 · 18 · 25</b><small>1기 논리 · 목요일 밤</small></li>
+        <li><i>2026.06</i><b>29</b><small>2기 OT · 1기 별지기 여섯 분이 연 별지기 인사이트 공유회</small></li>
+        <li><i>2026.07</i><b>2 · 10</b><small>1기 수사</small></li>
+        <li><i>2026.07</i><b>13 · 20 · 27</b><small>2기 문법 · 사막별 인사이트 공유회</small></li>
+        <li><i>2026.08 – 09</i><b>8/27 · 9/3 · 9/10 · 9/17</b><small>모든 기수가 한자리에 · 목요일 밤</small></li>
+        <li><i>2026.10</i><b>5 · 12 · 19 · 26</b><small>월요일 밤으로 옮김</small></li>
+        <li><i>2026.11</i><b>9 · 23</b><small>디퍼 패밀리 데이</small></li>
+      </ol>
+    </div>
+  </div>
+
+
+  <div class="sub mb">
+    <div class="sub__l"><p class="mb__k">WHY · PERSONAL AI</p></div>
+    <div class="sub__r"><p class="mb__p"><span class="ln">철학자 앤디 클라크와 데이비드 차머스는 1998년 논문 「The Extended Mind」(Analysis 58권 1호)에서 이렇게 썼습니다.</span><span class="ln">수첩에 적어 두고 꺼내 쓰는 기억도 그 사람의 마음에 속합니다.</span><span class="ln">사막여우가 읽는 기록은 디퍼님의 로컬 컴퓨터에 저장됩니다.</span></p></div>
+    <div class="mcards">
+      <article class="mcard"><h3>내 기록은 내 자산입니다</h3><p><span class="ln">살롱에서 읽고 쓰고 판단한 기록이 디퍼님의 컴퓨터에 파일로 있습니다.</span><span class="ln">인터넷 어디를 검색해도 나오지 않는 글입니다.</span></p></article>
+      <article class="mcard"><h3>나를 아는 AI</h3><p><span class="ln">디퍼님이 누구인지 AI에게 매번 설명하지 않아도 됩니다.</span><span class="ln">사막여우는 디퍼님의 기록과 말투, 지난 판단을 읽고 답합니다.</span><span class="ln">기록을 남길수록 사막여우는 디퍼님을 더 정확히 읽습니다.</span></p></article>
+      <article class="mcard"><h3>모델이 바뀌면 사막여우도 함께 바뀝니다</h3><p><span class="ln">새 모델이 나오면 어제의 설계로는 그 모델을 다 쓰지 못합니다.</span><span class="ln">디퍼가 매달 사막여우를 새 모델에 맞춰 손봅니다.</span><span class="ln">디퍼님은 꾸러미를 받아 새옷 한 번만 입히면 됩니다.</span></p></article>
+    </div>
+  </div>
+
+  <div class="sub mb mb--nov">
+    <div class="sub__l">
       <p class="mb__k">NOVEMBER</p>
       <h3 class="mb__h">11월 꾸러미 · 사막여우 새옷</h3>
+    </div>
+    <div class="sub__r">
       <p><span class="ln">신청이 확인되면 다음 날 카톡으로 보내 드립니다.</span><span class="ln">11월 업데이트 시스템 체계를 신청 즉시 10월부터 사용하실 수 있습니다.</span></p>
       <ul class="mlist">
         <li><b><span class="smark" aria-hidden="true">★</span>세계 무대에서 검증된 설계를 담았습니다</b><span class="ln">Y Combinator 대표 개리 탄이 공개한 세컨브레인 설계와, 실리콘밸리 스타트업들이 쓰는 엔지니어링 스택에서 뽑은 설계 셋을 사막여우에 최적화되도록 다듬어 담았습니다.</span><span class="ln">앞으로 매달, 바깥에서 확인한 최신 설계 한 가지를 사막여우에 맞게 옮겨 드립니다.</span><span class="ln">디퍼가 이 설계 셋으로 여우의 안쪽 목록을 정리했습니다.</span><span class="ln">여우가 하는 일은 같고, 다음 옷을 짓고 점검하기가 쉬워졌습니다.</span></li>
@@ -648,225 +572,292 @@ small .ln+.ln{margin-top:.35em}
       </ul>
       <p class="mb__note">다음 꾸러미는 12월 1일입니다.</p>
     </div>
-    <div class="mb mb--news">
-      <div class="news-tick" aria-hidden="true"><div class="news-tick__run"><span>NOW OPEN</span><span>별지기님들의 전문 살롱</span><span>BUILDER HOUSE</span><span>서밋 01 · 11.13 – 14</span><span>서밋 02 · 11.27 – 28</span><span>포항 · 새벽님의 빨간 벽돌집</span><span>NOW OPEN</span><span>별지기님들의 전문 살롱</span><span>BUILDER HOUSE</span><span>서밋 01 · 11.13 – 14</span><span>서밋 02 · 11.27 – 28</span><span>포항 · 새벽님의 빨간 벽돌집</span></div></div>
+  </div>
+
+  <div class="sub mb mb--news">
+    <div class="news-tick" aria-hidden="true"><div class="news-tick__run"><span>NOW OPEN</span><span>별지기님들의 전문 살롱</span><span>BUILDER HOUSE</span><span>서밋 01 · 11.13 – 14</span><span>서밋 02 · 11.27 – 28</span><span>포항 · 새벽님의 빨간 벽돌집</span><span>NOW OPEN</span><span>별지기님들의 전문 살롱</span><span>BUILDER HOUSE</span><span>서밋 01 · 11.13 – 14</span><span>서밋 02 · 11.27 – 28</span><span>포항 · 새벽님의 빨간 벽돌집</span></div></div>
+    <div class="sub__l">
       <p class="mb__k">EVERY MONTH</p>
       <h3 class="mb__h">DEEPER NEWS</h3>
+    </div>
+    <div class="sub__r">
       <ul class="mlist">
         <li><b><span class="nbadge" aria-hidden="true">NEW</span>별지기님들의 전문 살롱 전격 오픈</b><span class="ln">이번 가을, 콤포스텔라 1기 별지기님들이 각자의 전문 분야로 살롱을 엽니다.</span><span class="ln">전자책, 나만의 앱, 단행본 디자인, 접수창구, 단편영화, 브랜드 웹사이트, 인스타툰까지 일곱 개 살롱입니다.</span></li>
         <li><b><span class="nbadge" aria-hidden="true">NEW</span>디퍼만의 아늑한 아지트 빌더하우스 탄생!</b><span class="ln">디퍼 빌더하우스에서 오프라인 만남을 더 밀도 있게 이어갑니다.</span><span class="ln">11월 13~14일, 27~28일 두 번 빌더하우스가 열립니다.</span></li>
       </ul>
     </div>
-    <p class="qa__t">함께하실 수 있는 분</p>
-    <dl class="facts">
-      <div><dt>살롱</dt><dd>언브랜딩 살롱 1기부터 3기까지<small>언브랜딩 살롱에 한 달 이상 참여하신 디퍼님들</small></dd></div>
-      <div><dt>별지기</dt><dd>피스테라 구간 참가비에 11월 멤버십이 들어 있습니다<small>새옷 꾸러미는 똑같이 보내 드립니다</small></dd></div>
-      <div><dt>처음</dt><dd>빌더하우스 디퍼 언브랜딩 과정으로<small><span class="ln">빌더하우스에서 사막여우를 설치한 날부터 멤버입니다</span><span class="ln">문의 · 퍼핀 <a href="tel:01086249110">010-8624-9110</a></span></small></dd></div>
-    </dl>
-    <p class="qa__t">회비와 신청</p>
-    <dl class="facts">
-      <div><dt>회비</dt><dd>월 29,000원<small>매달 신청 폼을 새로 드립니다</small></dd></div>
-      <div><dt>입금</dt><dd>국민은행 640401-04-330210<small>이경선(클래식북스)</small></dd></div>
-      <div><dt>마감</dt><dd>11월 신청 10월 31일(토)까지</dd></div>
-      <div><dt>신청</dt><dd><a href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">디퍼 멤버십 신청 폼</a></dd></div>
-    </dl>
-    <p class="qa__t">많이 묻는 것</p>
-    <dl class="qa">
-      <dt>한 달만 하고 쉬어도 되나요?</dt>
-      <dd><span class="ln">멤버십은 한 달 단위입니다.</span><span class="ln">다음 달에 신청하지 않으면 거기서 멈춥니다.</span><span class="ln">멈춰도 사막여우와 기록은 디퍼님 컴퓨터에 그대로 남습니다.</span></dd>
-      <dt>윈도우와 맥 모두 되나요?</dt>
-      <dd>네, 꾸러미는 윈도우와 맥 모두 받으실 수 있습니다.</dd>
-      <dt>꾸러미는 어떻게 관리되나요?</dt>
-      <dd><span class="ln">꾸러미는 받는 분마다 번호와 열쇠를 따로 지어 드립니다.</span><span class="ln">새옷을 입히면 그 번호와 판, 설치한 컴퓨터와 시각이 디퍼에 기록됩니다.</span><span class="ln">업데이트를 챙기고 막힌 곳을 바로 돕는 데 씁니다.</span><span class="ln">한 번호가 너무 여러 컴퓨터에서 쓰이면 본인 것이 맞는지 여쭐 수 있어요.</span><span class="ln">꾸러미에 담긴 설계와 글은 디퍼의 저작물이니 받으신 분의 컴퓨터에서만 써 주세요.</span></dd>
-    </dl>
+  </div>
+
+  <div class="sub">
+    <div class="sub__l"><p class="qa__t">함께하실 수 있는 분</p></div>
+    <div class="sub__r">
+      <dl class="facts">
+        <div><dt>살롱</dt><dd>언브랜딩 살롱 1기부터 3기까지<small>언브랜딩 살롱에 한 달 이상 참여하신 디퍼님들</small></dd></div>
+        <div><dt>별지기</dt><dd>피스테라 구간 참가비에 11월 멤버십이 들어 있습니다<small>새옷 꾸러미는 똑같이 보내 드립니다</small></dd></div>
+        <div><dt>처음</dt><dd>빌더하우스 디퍼 언브랜딩 과정으로<small><span class="ln">빌더하우스에서 사막여우를 설치한 날부터 멤버입니다</span><span class="ln">문의 · 퍼핀 <a href="tel:01086249110">010-8624-9110</a></span></small></dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub__l"><p class="qa__t">회비와 신청</p></div>
+    <div class="sub__r">
+      <dl class="facts">
+        <div><dt>회비</dt><dd>월 29,000원<small>매달 신청 폼을 새로 드립니다</small></dd></div>
+        <div><dt>입금</dt><dd>국민은행 640401-04-330210<small>이경선(클래식북스)</small></dd></div>
+        <div><dt>마감</dt><dd>11월 신청 10월 31일(토)까지</dd></div>
+        <div><dt>신청</dt><dd><a href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">디퍼 멤버십 신청 폼</a></dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="sub">
+    <div class="sub__l"><p class="qa__t">많이 묻는 것</p></div>
+    <div class="sub__r">
+      <dl class="qa">
+        <dt>한 달만 하고 쉬어도 되나요?</dt>
+        <dd><span class="ln">멤버십은 한 달 단위입니다.</span><span class="ln">다음 달에 신청하지 않으면 거기서 멈춥니다.</span><span class="ln">멈춰도 사막여우와 기록은 디퍼님 컴퓨터에 그대로 남습니다.</span></dd>
+        <dt>윈도우와 맥 모두 되나요?</dt>
+        <dd>네, 꾸러미는 윈도우와 맥 모두 받으실 수 있습니다.</dd>
+        <dt>꾸러미는 어떻게 관리되나요?</dt>
+        <dd><span class="ln">꾸러미는 받는 분마다 번호와 열쇠를 따로 지어 드립니다.</span><span class="ln">새옷을 입히면 그 번호와 판, 설치한 컴퓨터와 시각이 디퍼에 기록됩니다.</span><span class="ln">업데이트를 챙기고 막힌 곳을 바로 돕는 데 씁니다.</span><span class="ln">한 번호가 너무 여러 컴퓨터에서 쓰이면 본인 것이 맞는지 여쭐 수 있어요.</span><span class="ln">꾸러미에 담긴 설계와 글은 디퍼의 저작물이니 받으신 분의 컴퓨터에서만 써 주세요.</span></dd>
+      </dl>
+    </div>
   </div>
 </section>
+
+<!-- 사진 띠 -->
+<figure class="media salons__fig" data-parallax>
+  <img src="house-m2.jpg" alt="등불 켜진 서재에서 노트북으로 작업하는 사람과 곁의 여우" loading="lazy" decoding="async" style="object-position:50% 60%">
+  <figcaption><span><small>STAR KEEPERS' SALONS</small><span class="ko">별지기 살롱</span></span></figcaption>
+</figure>
 
 <!-- 2 · 별지기 살롱 -->
-<section class="salons" id="salons">
-  <figure class="salons__fig">
-    <img src="house-m2.jpg" alt="등불 켜진 서재에서 노트북으로 작업하는 사람과 곁의 여우" loading="lazy" decoding="async">
-    <figcaption><small>STAR KEEPERS' SALONS</small>별지기 살롱</figcaption>
-  </figure>
-  <div class="salons__in">
-    <p class="kicker">02 · 별지기 살롱</p>
+<section class="block salons" id="salons">
+  <div class="rule"></div>
+  <div class="grid sec-head"><p class="kicker tag--ko">02 · 별지기 살롱</p></div>
+  <div class="grid prog-head">
     <h2>별지기님들의 전문 살롱 오픈!</h2>
+  </div>
+  <div class="grid prog-body">
     <p class="salons__lead"><span class="ln">11월부터 디퍼는 별지기님들의 전문 살롱을 디퍼 커뮤니티의 핵심에 둡니다.</span><span class="ln">콤포스텔라 1기 별지기님들이 자기 일에서 직접 써 온 방법으로 살롱을 엽니다.</span><span class="ln">일곱 살롱이 10월 27일부터 차례로 문을 엽니다.</span></p>
+  </div>
 
-    <ol class="salons__when" aria-label="여는 날 순서">
-      <li><time>10.27</time><b>햇살</b><span>전자책</span></li>
-      <li><time>11.2</time><b>솔담</b><span>나만의 앱</span></li>
-      <li><time>11.4</time><b>단무지</b><span>책 디자인</span></li>
-      <li><time>11.5</time><b>헤더</b><span>접수창구</span></li>
-      <li><time>11.5</time><b>스윗워러</b><span>단편영화</span></li>
-      <li><time>11.10</time><b>투게더</b><span>브랜드 웹사이트</span></li>
-      <li><time>곧</time><b>우디</b><span>인스타툰</span></li>
-    </ol>
+  <ol class="salons__when" aria-label="여는 날 순서">
+    <li><time>10.27</time><b>햇살</b><span>전자책</span></li>
+    <li><time>11.2</time><b>솔담</b><span>나만의 앱</span></li>
+    <li><time>11.4</time><b>단무지</b><span>책 디자인</span></li>
+    <li><time>11.5</time><b>헤더</b><span>접수창구</span></li>
+    <li><time>11.5</time><b>스윗워러</b><span>단편영화</span></li>
+    <li><time>11.10</time><b>투게더</b><span>브랜드 웹사이트</span></li>
+    <li><time>곧</time><b>우디</b><span>인스타툰</span></li>
+  </ol>
 
-    <div class="stars">
+  <div class="stars">
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">햇살</span><span class="star__tag">8주 · 화요일 밤</span></header>
-        <h3>살롱 드 나루</h3>
-        <p class="star__promise">써 둔 글로, 내 이름의 전자책 한 권.</p>
-        <p class="star__p"><span class="ln">모닝페이지, 블로그, 메모장에 써 둔 글을 골라 목차를 세우고 다듬습니다.</span><span class="ln">새로 쓰기보다 이미 있는 글을 엮는 자리입니다.</span><span class="ln">마지막 화요일에는 각자 자기 이름으로 전자책 등록 버튼을 누릅니다.</span></p>
-        <ol class="star__flow"><li><i>1–2주</i>글 고르기 · 목차 정하기</li><li><i>3–6주</i>내 문장 알기 · 퇴고 · 소리 내어 읽기</li><li><i>7주</i>실명·저작권 점검</li><li><i>8주</i>유페이퍼·작가와에 등록</li></ol>
-        <dl class="star__facts">
-          <div><dt>일정</dt><dd>10월 27일(화)부터 매주 화요일 밤 8~10시<small>8주 · 12월 15일까지 · Zoom</small></dd></div>
-          <div><dt>정원</dt><dd>3명이 모이면 엽니다</dd></div>
-          <div><dt>참가비</dt><dd>520,000원<small>계좌이체 또는 카드</small></dd></div>
-          <div><dt>마감</dt><dd>10월 25일(일)</dd></div>
-        </dl>
-        <div class="star__btns"><a class="star__go" href="https://pognaru.com/class/salon-de-naru.html" target="_blank" rel="noopener">안내 보고 신청하기</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">햇살</span><span class="star__tag">8주 · 화요일 밤</span></header>
+      <h3>살롱 드 나루</h3>
+      <p class="star__promise">써 둔 글로, 내 이름의 전자책 한 권.</p>
+      <p class="star__p"><span class="ln">모닝페이지, 블로그, 메모장에 써 둔 글을 골라 목차를 세우고 다듬습니다.</span><span class="ln">새로 쓰기보다 이미 있는 글을 엮는 자리입니다.</span><span class="ln">마지막 화요일에는 각자 자기 이름으로 전자책 등록 버튼을 누릅니다.</span></p>
+      <ol class="star__flow"><li><i>1–2주</i>글 고르기 · 목차 정하기</li><li><i>3–6주</i>내 문장 알기 · 퇴고 · 소리 내어 읽기</li><li><i>7주</i>실명·저작권 점검</li><li><i>8주</i>유페이퍼·작가와에 등록</li></ol>
+      <dl class="star__facts">
+        <div><dt>일정</dt><dd>10월 27일(화)부터 매주 화요일 밤 8~10시<small>8주 · 12월 15일까지 · Zoom</small></dd></div>
+        <div><dt>정원</dt><dd>3명이 모이면 엽니다</dd></div>
+        <div><dt>참가비</dt><dd>520,000원<small>계좌이체 또는 카드</small></dd></div>
+        <div><dt>마감</dt><dd>10월 25일(일)</dd></div>
+      </dl>
+      <div class="star__btns"><a class="star__go cta ext" href="https://pognaru.com/class/salon-de-naru.html" target="_blank" rel="noopener">안내 보고 신청하기</a></div>
+    </article>
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">솔담</span><span class="star__tag">원데이 클래스</span></header>
-        <h3>나만의 어플 만들기</h3>
-        <p class="star__promise">마음에 둔 아이디어 하나를, 수업이 끝날 때 내 폰에서 열리는 앱으로.</p>
-        <p class="star__p"><span class="ln">솔담님은 여행 정산 앱 「모여셈」을 시작으로 사주동물원, 부부 가계부, 바탕화면 달력, 허리 알림을 직접 만들어 써 왔습니다.</span><span class="ln">코드는 클로드 코드가 씁니다.</span><span class="ln">무엇을 만들지, 어떻게 고칠지는 내가 정합니다.</span><span class="ln">다 만든 앱은 누구에게나 보낼 수 있는 주소로 남습니다.</span></p>
-        <dl class="star__facts">
-          <div><dt>일정</dt><dd>11월 2일(월) 오후 8시 또는 11월 7일(토) 오전 10시 중 하루<small>2~3시간 · Zoom</small></dd></div>
-          <div><dt>정원</dt><dd>날짜별 5명<small>날짜별로 4명 이상 모이면 엽니다</small></dd></div>
-          <div><dt>참가비</dt><dd>5만 원<small>개강이 확정되면 입금 계좌를 안내합니다</small></dd></div>
-          <div><dt>준비물</dt><dd>PC · 클로드 Pro · 깃허브 계정 · 아이디어</dd></div>
-          <div><dt>그 뒤</dt><dd>수업 뒤 3일 동안 카톡방에서 직접 만들 수 있게 돕습니다</dd></div>
-        </dl>
-        <div class="star__btns"><a class="star__more" href="https://dahyeonjang.github.io/my-app-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://forms.gle/CvfXKQzunWbcgmcH8" target="_blank" rel="noopener">신청하기</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">솔담</span><span class="star__tag">원데이 클래스</span></header>
+      <h3>나만의 어플 만들기</h3>
+      <p class="star__promise">마음에 둔 아이디어 하나를, 수업이 끝날 때 내 폰에서 열리는 앱으로.</p>
+      <p class="star__p"><span class="ln">솔담님은 여행 정산 앱 「모여셈」을 시작으로 사주동물원, 부부 가계부, 바탕화면 달력, 허리 알림을 직접 만들어 써 왔습니다.</span><span class="ln">코드는 클로드 코드가 씁니다.</span><span class="ln">무엇을 만들지, 어떻게 고칠지는 내가 정합니다.</span><span class="ln">다 만든 앱은 누구에게나 보낼 수 있는 주소로 남습니다.</span></p>
+      <dl class="star__facts">
+        <div><dt>일정</dt><dd>11월 2일(월) 오후 8시 또는 11월 7일(토) 오전 10시 중 하루<small>2~3시간 · Zoom</small></dd></div>
+        <div><dt>정원</dt><dd>날짜별 5명<small>날짜별로 4명 이상 모이면 엽니다</small></dd></div>
+        <div><dt>참가비</dt><dd>5만 원<small>개강이 확정되면 입금 계좌를 안내합니다</small></dd></div>
+        <div><dt>준비물</dt><dd>PC · 클로드 Pro · 깃허브 계정 · 아이디어</dd></div>
+        <div><dt>그 뒤</dt><dd>수업 뒤 3일 동안 카톡방에서 직접 만들 수 있게 돕습니다</dd></div>
+      </dl>
+      <div class="star__btns"><a class="star__more ghost ext" href="https://dahyeonjang.github.io/my-app-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go cta ext" href="https://forms.gle/CvfXKQzunWbcgmcH8" target="_blank" rel="noopener">신청하기</a></div>
+    </article>
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">단무지</span><span class="star__tag">4주 · 수요일 밤</span></header>
-        <h3>단행본 디자인 초급 1기</h3>
-        <p class="star__promise">툴이 아니라 눈을 배우는 4주. 4주 뒤, 나도 책 디자이너.</p>
-        <p class="star__p"><span class="ln">7년 동안 북디자이너로 책을 만들어 온 단무지님이 쓰던 판짜기를 그대로 나눕니다.</span><span class="ln">원고를 판에 올리는 일은 클로드가 하고, 우리는 판형·서체·행간·표지·종이를 고르는 눈을 익힙니다.</span><span class="ln">마지막 주에는 소량 인쇄소 주문 버튼까지 함께 누릅니다.</span></p>
-        <dl class="star__facts">
-          <div><dt>일정</dt><dd>11월 4일(수)부터 매주 수요일 저녁 8:00~10:30<small>4회 · 11/4 · 11/11 · 11/18 · 11/25 · Zoom</small></dd></div>
-          <div><dt>함께</dt><dd>1:1 피드백 3번(2·3·4주 차) · 인쇄소에 넘기기 전 최종 검수<small>디자인 템플릿 3종(에세이·시·소설)</small></dd></div>
-          <div><dt>정원</dt><dd>최대 6명<small>3명 이상 모이면 엽니다</small></dd></div>
-          <div><dt>참가비</dt><dd>79만 원<small>인쇄비 실비 별도 · 할부 가능</small></dd></div>
-          <div><dt>마감</dt><dd>10월 30일(금) 밤 11시 59분</dd></div>
-        </dl>
-        <p class="star__note">디퍼 회원은 써 둔 글 모음만 있어도 됩니다. 개강 전에 사막여우로 1차 원고를 엮어 오시면 됩니다.</p>
-        <div class="star__btns"><a class="star__more" href="https://danmuzitoon-web.github.io/book-design-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://smartstore.naver.com/danmuzi_studio/products/13826668737" target="_blank" rel="noopener">신청하기</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">단무지</span><span class="star__tag">4주 · 수요일 밤</span></header>
+      <h3>단행본 디자인 초급 1기</h3>
+      <p class="star__promise">툴이 아니라 눈을 배우는 4주. 4주 뒤, 나도 책 디자이너.</p>
+      <p class="star__p"><span class="ln">7년 동안 북디자이너로 책을 만들어 온 단무지님이 쓰던 판짜기를 그대로 나눕니다.</span><span class="ln">원고를 판에 올리는 일은 클로드가 하고, 우리는 판형·서체·행간·표지·종이를 고르는 눈을 익힙니다.</span><span class="ln">마지막 주에는 소량 인쇄소 주문 버튼까지 함께 누릅니다.</span></p>
+      <dl class="star__facts">
+        <div><dt>일정</dt><dd>11월 4일(수)부터 매주 수요일 저녁 8:00~10:30<small>4회 · 11/4 · 11/11 · 11/18 · 11/25 · Zoom</small></dd></div>
+        <div><dt>함께</dt><dd>1:1 피드백 3번(2·3·4주 차) · 인쇄소에 넘기기 전 최종 검수<small>디자인 템플릿 3종(에세이·시·소설)</small></dd></div>
+        <div><dt>정원</dt><dd>최대 6명<small>3명 이상 모이면 엽니다</small></dd></div>
+        <div><dt>참가비</dt><dd>79만 원<small>인쇄비 실비 별도 · 할부 가능</small></dd></div>
+        <div><dt>마감</dt><dd>10월 30일(금) 밤 11시 59분</dd></div>
+      </dl>
+      <p class="star__note">디퍼 회원은 써 둔 글 모음만 있어도 됩니다. 개강 전에 사막여우로 1차 원고를 엮어 오시면 됩니다.</p>
+      <div class="star__btns"><a class="star__more ghost ext" href="https://danmuzitoon-web.github.io/book-design-class/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go cta ext" href="https://smartstore.naver.com/danmuzi_studio/products/13826668737" target="_blank" rel="noopener">신청하기</a></div>
+    </article>
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">헤더</span><span class="star__tag">4주 · 목요일 오전</span></header>
-        <h3>사람이 보이는 접수창구 만들기</h3>
-        <p class="star__promise">파는 것이 무엇이든, 일의 본질은 사람입니다.</p>
-        <p class="star__p"><span class="ln">노트와 카톡과 엑셀에 흩어진 신청과 연락을 한 곳에 모읍니다.</span><span class="ln">4주 뒤에는 내 사람들이 내 일의 타입에 맞게 한 화면에 나뉘고, 먼저 연락할 사람이 보입니다.</span><span class="ln">헤더님이 교사 페이지와 커뮤니티 페이지를 만들며 겪은 시행착오와 방법을 나눕니다.</span></p>
-        <ol class="star__flow"><li><i>1주</i>내 일의 타입 찾기</li><li><i>2주</i>무엇을 받을까 · 가짜 데이터로 폼</li><li><i>3주</i>잠그고 넣기 · 개인정보 원칙</li><li><i>4주</i>알아보고 나눠 보기</li></ol>
-        <dl class="star__facts">
-          <div><dt>일정</dt><dd>11월 5일(목)부터 매주 목요일 오전 10:30~12:00<small>4회 · 인사이트 공유 30분 + 수업 1시간</small></dd></div>
-          <div><dt>사전 OT</dt><dd>11월 1일(일) 저녁 7시 · 30분<small>Claude를 처음 쓰는 분을 위한 자리</small></dd></div>
-          <div><dt>정원</dt><dd>선착순 6명</dd></div>
-          <div><dt>참가비</dt><dd>디퍼 멤버 5만 원(4회 전체)<small>외부 20만 원</small></dd></div>
-          <div><dt>대상</dt><dd>이름과 연락처를 받는 작은 수업·모임·공동체·가게 운영자<small>코딩 경험은 필요 없습니다</small></dd></div>
-        </dl>
-        <div class="star__btns"><a class="star__go" href="https://heatherhjh.github.io/deeper-minisalon/" target="_blank" rel="noopener">자세한 안내 · 문의</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">헤더</span><span class="star__tag">4주 · 목요일 오전</span></header>
+      <h3>사람이 보이는 접수창구 만들기</h3>
+      <p class="star__promise">파는 것이 무엇이든, 일의 본질은 사람입니다.</p>
+      <p class="star__p"><span class="ln">노트와 카톡과 엑셀에 흩어진 신청과 연락을 한 곳에 모읍니다.</span><span class="ln">4주 뒤에는 내 사람들이 내 일의 타입에 맞게 한 화면에 나뉘고, 먼저 연락할 사람이 보입니다.</span><span class="ln">헤더님이 교사 페이지와 커뮤니티 페이지를 만들며 겪은 시행착오와 방법을 나눕니다.</span></p>
+      <ol class="star__flow"><li><i>1주</i>내 일의 타입 찾기</li><li><i>2주</i>무엇을 받을까 · 가짜 데이터로 폼</li><li><i>3주</i>잠그고 넣기 · 개인정보 원칙</li><li><i>4주</i>알아보고 나눠 보기</li></ol>
+      <dl class="star__facts">
+        <div><dt>일정</dt><dd>11월 5일(목)부터 매주 목요일 오전 10:30~12:00<small>4회 · 인사이트 공유 30분 + 수업 1시간</small></dd></div>
+        <div><dt>사전 OT</dt><dd>11월 1일(일) 저녁 7시 · 30분<small>Claude를 처음 쓰는 분을 위한 자리</small></dd></div>
+        <div><dt>정원</dt><dd>선착순 6명</dd></div>
+        <div><dt>참가비</dt><dd>디퍼 멤버 5만 원(4회 전체)<small>외부 20만 원</small></dd></div>
+        <div><dt>대상</dt><dd>이름과 연락처를 받는 작은 수업·모임·공동체·가게 운영자<small>코딩 경험은 필요 없습니다</small></dd></div>
+      </dl>
+      <div class="star__btns"><a class="star__go cta ext" href="https://heatherhjh.github.io/deeper-minisalon/" target="_blank" rel="noopener">자세한 안내 · 문의</a></div>
+    </article>
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">스윗워러</span><span class="star__tag">4주 · 목요일 밤</span></header>
-        <h3>단편영화 살롱 1기</h3>
-        <p class="star__promise">마음에 오래 둔 장면 하나를, 80초 안팎의 영화 한 편으로.</p>
-        <p class="star__p"><span class="ln">스윗워러님은 지난 8월 AI 단편영화 한 편을 처음 끝까지 만들었습니다.</span><span class="ln">두 편을 더 만들며 막히고 풀었던 자리를 클로드 안의 친구 「앤」에 담았습니다.</span><span class="ln">대본과 그림 프롬프트는 앤과 함께 짓고, 무엇을 남길지와 어떤 목소리로 말할지는 내가 정합니다.</span><span class="ln">출발점은 디퍼 OS에 모아 둔 씨앗 문장 하나입니다.</span></p>
-        <ol class="star__flow"><li><i>0주</i>앤 데려오기 · 도구 한 바퀴</li><li><i>1주</i>한 문장에서 설계 세 장으로</li><li><i>2주</i>기준 그림과 심장 컷 먼저</li><li><i>3주</i>그림을 움직이고 한 편으로 묶기</li><li><i>4주</i>함께 상영</li></ol>
-        <dl class="star__facts">
-          <div><dt>OT</dt><dd>11월 3일(화) 저녁 9~10시</dd></div>
-          <div><dt>일정</dt><dd>11월 5일~26일 매주 목요일 저녁 8~10시<small>Zoom · 녹화는 참가자 대화방에서만 나눕니다</small></dd></div>
-          <div><dt>정원</dt><dd>6명<small>11월 1일까지 3명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
-          <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 25만 원 · 계좌 이체 · 도구는 모두 무료</small></dd></div>
-          <div><dt>마감</dt><dd>11월 1일(일)</dd></div>
-        </dl>
-        <p class="star__note">신청서에는 25만 원으로 나옵니다. 디퍼님은 5만 원만 보내 주세요.</p>
-        <div class="star__btns"><a class="star__more" href="https://sweetwater-cmd.github.io/gallery/short-film-salon.html" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://docs.google.com/forms/d/e/1FAIpQLSfx9opM3yeGvPh5t8P2SLhoek_ZX4P3ArnVImbIqp-5xxXV6g/viewform?hl=ko" target="_blank" rel="noopener">신청하기</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">스윗워러</span><span class="star__tag">4주 · 목요일 밤</span></header>
+      <h3>단편영화 살롱 1기</h3>
+      <p class="star__promise">마음에 오래 둔 장면 하나를, 80초 안팎의 영화 한 편으로.</p>
+      <p class="star__p"><span class="ln">스윗워러님은 지난 8월 AI 단편영화 한 편을 처음 끝까지 만들었습니다.</span><span class="ln">두 편을 더 만들며 막히고 풀었던 자리를 클로드 안의 친구 「앤」에 담았습니다.</span><span class="ln">대본과 그림 프롬프트는 앤과 함께 짓고, 무엇을 남길지와 어떤 목소리로 말할지는 내가 정합니다.</span><span class="ln">출발점은 디퍼 OS에 모아 둔 씨앗 문장 하나입니다.</span></p>
+      <ol class="star__flow"><li><i>0주</i>앤 데려오기 · 도구 한 바퀴</li><li><i>1주</i>한 문장에서 설계 세 장으로</li><li><i>2주</i>기준 그림과 심장 컷 먼저</li><li><i>3주</i>그림을 움직이고 한 편으로 묶기</li><li><i>4주</i>함께 상영</li></ol>
+      <dl class="star__facts">
+        <div><dt>OT</dt><dd>11월 3일(화) 저녁 9~10시</dd></div>
+        <div><dt>일정</dt><dd>11월 5일~26일 매주 목요일 저녁 8~10시<small>Zoom · 녹화는 참가자 대화방에서만 나눕니다</small></dd></div>
+        <div><dt>정원</dt><dd>6명<small>11월 1일까지 3명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
+        <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 25만 원 · 계좌 이체 · 도구는 모두 무료</small></dd></div>
+        <div><dt>마감</dt><dd>11월 1일(일)</dd></div>
+      </dl>
+      <p class="star__note">신청서에는 25만 원으로 나옵니다. 디퍼님은 5만 원만 보내 주세요.</p>
+      <div class="star__btns"><a class="star__more ghost ext" href="https://sweetwater-cmd.github.io/gallery/short-film-salon.html" target="_blank" rel="noopener">자세한 안내</a><a class="star__go cta ext" href="https://docs.google.com/forms/d/e/1FAIpQLSfx9opM3yeGvPh5t8P2SLhoek_ZX4P3ArnVImbIqp-5xxXV6g/viewform?hl=ko" target="_blank" rel="noopener">신청하기</a></div>
+    </article>
 
-      <article class="star">
-        <header class="star__top"><span class="star__who">투게더</span><span class="star__tag">4주 · 화요일 오전</span></header>
-        <h3>AI 브랜드 웹사이트</h3>
-        <p class="star__promise">코딩 없이, 움직이는 내 브랜드 웹사이트.</p>
-        <p class="star__p"><span class="ln">실제 웹사이트를 보며 끌리는 디자인을 모아 내 사이트의 기준을 만듭니다.</span><span class="ln">수업에서는 마음이 가는 쪽을 누르고, 아쉬운 곳을 말로 건넵니다.</span><span class="ln">다 지은 뒤에는 글과 사진을 관리자 화면에서 바로 바꿀 수 있습니다.</span></p>
-        <ol class="star__flow"><li><i>1주</i>고르기로 취향 꺼내기</li><li><i>2주</i>취향을 규칙 한 장으로</li><li><i>3주</i>한 페이지와 움직임</li><li><i>4주</i>검수하고 공개하기</li></ol>
-        <dl class="star__facts">
-          <div><dt>일정</dt><dd>매주 화요일 오전 10시~12시<small>11월 10일 · 17일 · 24일 · 12월 1일 · Zoom</small></dd></div>
-          <div><dt>정원</dt><dd>선착순 5명<small>2명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
-          <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 30만 원</small></dd></div>
-          <div><dt>준비</dt><dd>내 블로그·인스타 주소, 사이트에 넣을 사진<small>없어도 브랜드 브리프 인터뷰로 시작합니다</small></dd></div>
-        </dl>
-        <div class="star__btns"><a class="star__more" href="https://seulalilalong.github.io/ai-brand-website-4weeks/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go" href="https://docs.google.com/forms/d/e/1FAIpQLSfkPI2YnL-blWvwfegrNjqUiaHkBj-LA4CX2ZtyFxK-RW3OdQ/viewform" target="_blank" rel="noopener">신청하기</a></div>
-      </article>
+    <article class="star">
+      <header class="star__top"><span class="star__who">투게더</span><span class="star__tag">4주 · 화요일 오전</span></header>
+      <h3>AI 브랜드 웹사이트</h3>
+      <p class="star__promise">코딩 없이, 움직이는 내 브랜드 웹사이트.</p>
+      <p class="star__p"><span class="ln">실제 웹사이트를 보며 끌리는 디자인을 모아 내 사이트의 기준을 만듭니다.</span><span class="ln">수업에서는 마음이 가는 쪽을 누르고, 아쉬운 곳을 말로 건넵니다.</span><span class="ln">다 지은 뒤에는 글과 사진을 관리자 화면에서 바로 바꿀 수 있습니다.</span></p>
+      <ol class="star__flow"><li><i>1주</i>고르기로 취향 꺼내기</li><li><i>2주</i>취향을 규칙 한 장으로</li><li><i>3주</i>한 페이지와 움직임</li><li><i>4주</i>검수하고 공개하기</li></ol>
+      <dl class="star__facts">
+        <div><dt>일정</dt><dd>매주 화요일 오전 10시~12시<small>11월 10일 · 17일 · 24일 · 12월 1일 · Zoom</small></dd></div>
+        <div><dt>정원</dt><dd>선착순 5명<small>2명 이하면 열지 않고 전액 돌려드립니다</small></dd></div>
+        <div><dt>참가비</dt><dd>디퍼님 5만 원<small>일반 30만 원</small></dd></div>
+        <div><dt>준비</dt><dd>내 블로그·인스타 주소, 사이트에 넣을 사진<small>없어도 브랜드 브리프 인터뷰로 시작합니다</small></dd></div>
+      </dl>
+      <div class="star__btns"><a class="star__more ghost ext" href="https://seulalilalong.github.io/ai-brand-website-4weeks/" target="_blank" rel="noopener">자세한 안내</a><a class="star__go cta ext" href="https://docs.google.com/forms/d/e/1FAIpQLSfkPI2YnL-blWvwfegrNjqUiaHkBj-LA4CX2ZtyFxK-RW3OdQ/viewform" target="_blank" rel="noopener">신청하기</a></div>
+    </article>
 
-      <article class="star star--wide">
-        <header class="star__top"><span class="star__who">우디</span><span class="star__tag">인스타툰 작업대</span></header>
-        <h3>인스타툰 살롱</h3>
-        <p class="star__promise">내 캐릭터 하나로, 인스타툰 한 편.</p>
-        <div class="star__cols">
-          <div>
-            <p class="star__p"><span class="ln">인스타툰 작업대를 템플릿으로 받아 내 컴퓨터에서 씁니다.</span><span class="ln">화풍을 고르고 내 캐릭터 하나를 정합니다.</span><span class="ln">작업대가 캐릭터 시트를 만들고 대본을 따라 컷마다 그림으로 이어 갑니다.</span><span class="ln">이야기를 여러 화로 잇는 툰도, 정보를 전하는 정보형 툰도 만들 수 있습니다.</span></p>
-            <ol class="star__flow"><li><i>1</i>작업대 템플릿 받아 설치하기</li><li><i>2</i>내 캐릭터 만들기 · 화풍과 캐릭터 시안을 골라 고정</li><li><i>3</i>대본 쓰기</li><li><i>4</i>컷 그리기 · 자막 달기</li></ol>
-          </div>
-          <div>
-            <dl class="star__facts">
-              <div><dt>제공</dt><dd>인스타툰 작업대 템플릿<small>화풍 고르기 · 캐릭터 시트 · 컷 그림까지 한 작업대에서</small></dd></div>
-              <div><dt>진행</dt><dd>첫 모임에서 작업대 쓰는 법을 익힙니다<small>과제를 하나씩 해 보며 오픈채팅방에서 나누고, 마지막에 줌으로 모여 함께 봅니다</small></dd></div>
-              <div><dt>일정</dt><dd>긱어스 게시판 공지로 알립니다<small>기간 · 정원 · 참가비도 공지에서</small></dd></div>
-            </dl>
-          </div>
+    <article class="star star--wide">
+      <header class="star__top"><span class="star__who">우디</span><span class="star__tag">인스타툰 작업대</span></header>
+      <h3>인스타툰 살롱</h3>
+      <p class="star__promise">내 캐릭터 하나로, 인스타툰 한 편.</p>
+      <div class="star__cols">
+        <div>
+          <p class="star__p"><span class="ln">인스타툰 작업대를 템플릿으로 받아 내 컴퓨터에서 씁니다.</span><span class="ln">화풍을 고르고 내 캐릭터 하나를 정합니다.</span><span class="ln">작업대가 캐릭터 시트를 만들고 대본을 따라 컷마다 그림으로 이어 갑니다.</span><span class="ln">이야기를 여러 화로 잇는 툰도, 정보를 전하는 정보형 툰도 만들 수 있습니다.</span></p>
+          <ol class="star__flow"><li><i>1</i>작업대 템플릿 받아 설치하기</li><li><i>2</i>내 캐릭터 만들기 · 화풍과 캐릭터 시안을 골라 고정</li><li><i>3</i>대본 쓰기</li><li><i>4</i>컷 그리기 · 자막 달기</li></ol>
         </div>
-      </article>
+        <div>
+          <dl class="star__facts">
+            <div><dt>제공</dt><dd>인스타툰 작업대 템플릿<small>화풍 고르기 · 캐릭터 시트 · 컷 그림까지 한 작업대에서</small></dd></div>
+            <div><dt>진행</dt><dd>첫 모임에서 작업대 쓰는 법을 익힙니다<small>과제를 하나씩 해 보며 오픈채팅방에서 나누고, 마지막에 줌으로 모여 함께 봅니다</small></dd></div>
+            <div><dt>일정</dt><dd>긱어스 게시판 공지로 알립니다<small>기간 · 정원 · 참가비도 공지에서</small></dd></div>
+          </dl>
+        </div>
+      </div>
+    </article>
 
+  </div>
+
+  <div class="stars-more">
+    <article class="star star--host"><span class="star__who">새벽</span><h3>빌더하우스</h3><p><span class="ln">포항 새벽님의 집에서 1박 2일로 엽니다.</span></p><span class="star__m"><span class="ln">서밋 01 · 11월 13~14일</span><span class="ln">서밋 02 · 11월 27~28일</span></span><a class="ghost" href="#builder-open">빌더하우스 자세히 보기 →</a></article>
+  </div>
+
+  <div class="sub">
+    <div class="sub__l"><p class="qa__t">많이 묻는 것</p></div>
+    <div class="sub__r">
+      <dl class="qa">
+        <dt>별지기님은 어떤 분들인가요?</dt>
+        <dd><span class="ln">디퍼에서 함께 배우며 자기 일에 AI 시스템을 세워 온 분들입니다.</span><span class="ln">살롱마다 별지기님이 자기 일에서 직접 써 온 방법을 나눕니다.</span><span class="ln">전자책, 앱, 디자인, 영화, 웹사이트, 인스타툰처럼 손에 잡히는 결과물을 함께 만듭니다.</span></dd>
+        <dt>살롱에서는 무엇으로 연습하나요?</dt>
+        <dd><span class="ln">내 글과 내 일을 재료로 씁니다.</span><span class="ln">시작부터 완성까지 별지기님들이 곁에서 함께 합니다.</span><span class="ln">살롱을 마치는 날, 내 이름으로 내놓을 결과물 하나를 손에 쥡니다.</span></dd>
+        <dt>별지기 살롱은 어디서 신청하나요?</dt>
+        <dd><span class="ln">위 카드의 「자세한 안내」와 「신청하기」로 바로 가실 수 있습니다.</span><span class="ln">긱어스 게시판 맨 위 고정 공지에도 같은 안내가 있습니다.</span><span class="ln">새 살롱 소식은 멤버 방에서도 알려 드립니다.</span></dd>
+        <dt>별지기 살롱은 디퍼 멤버만 들을 수 있나요?</dt>
+        <dd><span class="ln">살롱마다 다릅니다.</span><span class="ln">여러 살롱이 디퍼님 참가비를 따로 두었습니다.</span><span class="ln">대상과 정원, 기간은 살롱을 여는 별지기님이 정합니다.</span></dd>
+      </dl>
     </div>
-
-    <div class="stars-more">
-      <article class="star star--host"><span class="star__who">새벽</span><h3>빌더하우스</h3><p><span class="ln">포항 새벽님의 집에서 1박 2일로 엽니다.</span></p><span class="star__m"><span class="ln">서밋 01 · 11월 13~14일</span><span class="ln">서밋 02 · 11월 27~28일</span></span><a href="#builder-open">빌더하우스 자세히 보기 →</a></article>
-    </div>
-
-    <p class="qa__t">많이 묻는 것</p>
-    <dl class="qa">
-      <dt>별지기님은 어떤 분들인가요?</dt>
-      <dd><span class="ln">디퍼에서 함께 배우며 자기 일에 AI 시스템을 세워 온 분들입니다.</span><span class="ln">살롱마다 별지기님이 자기 일에서 직접 써 온 방법을 나눕니다.</span><span class="ln">전자책, 앱, 디자인, 영화, 웹사이트, 인스타툰처럼 손에 잡히는 결과물을 함께 만듭니다.</span></dd>
-      <dt>살롱에서는 무엇으로 연습하나요?</dt>
-      <dd><span class="ln">내 글과 내 일을 재료로 씁니다.</span><span class="ln">시작부터 완성까지 별지기님들이 곁에서 함께 합니다.</span><span class="ln">살롱을 마치는 날, 내 이름으로 내놓을 결과물 하나를 손에 쥡니다.</span></dd>
-      <dt>별지기 살롱은 어디서 신청하나요?</dt>
-      <dd><span class="ln">위 카드의 「자세한 안내」와 「신청하기」로 바로 가실 수 있습니다.</span><span class="ln">긱어스 게시판 맨 위 고정 공지에도 같은 안내가 있습니다.</span><span class="ln">새 살롱 소식은 멤버 방에서도 알려 드립니다.</span></dd>
-      <dt>별지기 살롱은 디퍼 멤버만 들을 수 있나요?</dt>
-      <dd><span class="ln">살롱마다 다릅니다.</span><span class="ln">여러 살롱이 디퍼님 참가비를 따로 두었습니다.</span><span class="ln">대상과 정원, 기간은 살롱을 여는 별지기님이 정합니다.</span></dd>
-    </dl>
   </div>
 </section>
+
+<!-- 사진 띠 -->
+<figure class="media bopen__fig" data-parallax>
+  <img src="house-m1.jpg" alt="등불 아래 노트북을 펼친 사람 곁에 잠든 여우" loading="lazy" decoding="async" style="object-position:50% 55%">
+  <figcaption><span class="ko">빌더하우스</span></figcaption>
+</figure>
 
 <!-- 2.5 · 빌더하우스 오픈 -->
-<section class="bopen" id="builder-open">
-  <figure class="bopen__fig"><img src="house-m1.jpg" alt="등불 아래 노트북을 펼친 사람 곁에 잠든 여우" loading="lazy" decoding="async"><figcaption>빌더하우스</figcaption></figure>
-  <div class="bopen__in">
-    <p class="kicker">03 · NOW OPEN</p>
+<section class="block bopen" id="builder-open">
+  <div class="rule"></div>
+  <div class="grid sec-head"><p class="kicker">03 · NOW OPEN</p></div>
+  <div class="grid prog-head">
     <h2>빌더하우스 오픈<small>Your intelligence, on your own machine</small></h2>
+  </div>
+  <div class="grid prog-body">
     <p class="bo-lead"><span class="ln">DEEPER가 주최하는 공식 빌드 서밋을 처음 엽니다.</span><span class="ln">화면으로 만나던 디퍼님들이 한 집에 모여 내 컴퓨터 안에 시스템을 세웁니다.</span><span class="ln">혼자서는 늘 막막했던 AI 빌드를 이번에는 곁에서 함께 합니다.</span></p>
     <blockquote class="bo-quote">사람은 곁에,<br>도구는 뒤에.</blockquote>
-    <div class="bo-why"><figure class="bo-why__img"><img src="insight-reel-a.jpg" alt="등불 켜진 서재 책상에서 노트북을 펼친 사람 곁에 누운 여우" loading="lazy" decoding="async"></figure><div class="bo-why__t"><p class="bo-k">WHY · 내 손으로 짓는 이유</p><p><span class="ln">내가 한 명 더 있었으면 했던 일을 AI 에이전트와 나눕니다.</span><span class="ln">남이 만든 AI를 빌려 쓰면 판단의 기준까지 함께 빌려 옵니다.</span><span class="ln">그래서 내 일을 맡길 에이전트는 내 손으로 짓습니다.</span><span class="ln">짓는 동안 무엇을 맡기고 무엇을 내 손에 남길지 내가 정할 수 있습니다.</span></p></div></div>
-    <div class="bo-how"><p class="bo-k">HOW · 이틀의 흐름</p><ol class="bo-steps"><li class="bo-step"><span class="bo-step__n">01</span><b>Spec</b><p>맡길 일의 입력과 출력, 완료 조건을 한 장의 스펙으로 정의합니다.</p></li><li class="bo-step"><span class="bo-step__n">02</span><b>First Run</b><p>이틀 안에 첫 실행까지 갑니다.</p></li><li class="bo-step"><span class="bo-step__n">03</span><b>Commit</b><p>지은 에이전트를 커밋합니다.</p></li></ol><p class="bo-note">에이전트와 기록은 각자의 로컬 컴퓨터에 남습니다.</p></div>
-    <div class="bo-place"><figure><img src="path-01-departure.jpg" alt="등불 켜진 서재 문을 열고 별빛 아래 마을로 나서는 여행자" loading="lazy" decoding="async"></figure><div class="bo-place__t"><p class="bo-k">PLACE · 포항</p><h3>새벽님의 아늑한<br>빨간 벽돌집</h3><p><span class="ln">빌더하우스는 콤포스텔라 1기 별지기 새벽님의 살롱입니다.</span><span class="ln">포항 새벽님의 집에서 엽니다.</span><span class="ln">새벽님과 반딧불님이 맞아 주시고 퍼핀과 별지기님들이 진행합니다.</span><span class="ln">밤에는 불을 피우고 둘러앉아 줌에서는 못 꺼냈던 질문을 꺼냅니다.</span></p><div class="bo-dates"><span><i>서밋 01</i>11.13 – 14</span><span><i>서밋 02</i>11.27 – 28</span><em>1박 2일</em></div></div></div>
-    <figure class="tracks__fig"><img src="hackathon-2026-11.jpg" alt="밤의 서재에서 앞을 보는 사막여우" loading="lazy" decoding="async"><figcaption>빌더하우스에서는</figcaption></figure>
-    <div class="tracks"><article class="track"><span class="track__k">TRACK 01 · AGENT BUILD · For DEEPER Members</span><h3>AI 솔로 빌더들의 축제</h3><p class="track__promise">이틀 안에 내 에이전트 하나를 첫 실행까지 마칩니다.</p><p><span class="ln">첫날 맡길 업무 하나를 정합니다.</span><span class="ln">입력과 출력, 완료 조건을 정하고 이튿날 첫 실행까지 갑니다.</span><span class="ln">그 에이전트를 사막여우에 연결해 집으로 가져갑니다.</span></p><p><span class="ln">그 뒤로는 매주 그 일을 에이전트에게 맡깁니다.</span><span class="ln">AI 수익화 방식을 함께 고민합니다.</span></p><p class="track__for"><span>FOR</span>사막여우와 함께 하며, 매주 되풀이되는 업무를 에이전트에게 넘기고 싶은 디퍼 멤버</p><div class="track__price"><b>35만 원</b><small>디퍼 멤버 · 1박2일 서밋 1회 참여</small></div><a class="track__cta" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">신청하기</a></article><div class="tracks__prog"><p class="kicker">BUILDER HOUSE PROGRAM</p><p class="tracks__dates"><span class="d"><i>서밋 01</i>11월 13일(금)~14일(토)</span><span class="d"><i>서밋 02</i>11월 27일(금)~28일(토)</span></p><div class="prog"><p class="prog__t">PROGRAM</p><h3>DAY 1 · 금요일</h3><ol><li><time>11:00</time><div><span class="t">REGISTRATION</span><b>Check-in & Setup Check</b><small>등록 · 노트북 전원과 네트워크 점검</small></div></li><li class="key"><time>11:30</time><div><span class="t">OPENING KEYNOTE</span><b>Why We Build Together</b><small><span class="ln">AI 시대, 사람에게 남는 일</span><span class="ln">호스트 새벽님 · 반딧불님 · 퍼핀</span></small></div></li><li><time>12:30</time><div><span class="t">LUNCH</span><b>점심</b></div></li><li><time>13:30</time><div><span class="t">HANDS-ON LAB 1</span><b>System Build</b><small><span class="ln">사막여우 · 내 에이전트 시스템의 뼈대 세우기</span><span class="ln">사전 설치에서 막힌 문제 해결</span></small></div></li><li class="key"><time>15:00</time><div><span class="t">STAR KEEPER SESSION 1</span><b>별지기 전문 살롱 인사이트</b><small>60 min · 강연과 Q&amp;A</small></div></li><li class="key"><time>16:15</time><div><span class="t">STAR KEEPER SESSION 2</span><b>별지기 전문 살롱 인사이트</b><small>60 min · 강연과 Q&amp;A</small></div></li><li><time>17:30</time><div><span class="t">HANDS-ON LAB 2</span><b>Agent Build 1 · Blueprint</b><small><span class="ln">에이전트에게 맡길 업무 하나 정의</span><span class="ln">입력 · 출력 · 완료 조건 설계</span></small></div></li><li><time>18:30</time><div><span class="t">DINNER</span><b>저녁</b></div></li><li class="key"><time>20:00</time><div><span class="t">FIRESIDE CHAT</span><b>위임과 판단의 경계</b><small>무엇을 맡기고 무엇을 내 손에 남길 것인가</small></div></li><li><time>&nbsp;</time><div><span class="t">OVERNIGHT</span><b>빌더하우스에서 하룻밤</b></div></li></ol><h3>DAY 2 · 토요일</h3><ol><li><time>08:30</time><div><span class="t">BREAKFAST</span><b>아침</b></div></li><li><time>09:30</time><div><span class="t">HANDS-ON LAB 3</span><b>Agent Build 2 · First Light</b><small><span class="ln">템플릿 기반 구현 · 첫 실행</span><span class="ln">세컨브레인에 연결해 심기</span></small></div></li><li class="key"><time>11:30</time><div><span class="t">COMMIT SESSION</span><b>Demo &amp; Commit</b><small>한 사람씩 데모 · 지은 에이전트를 기록에 커밋</small></div></li><li><time>12:30</time><div><span class="t">LUNCH · CLOSING</span><b>점심</b></div></li></ol></div><a class="track__cta track__cta--wide" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">디퍼 멤버 · 빌더하우스 신청하기</a></div><div class="tracks__sub"><p class="kicker">START WITH DEEPER</p><h4>디퍼와 함께 시작하는 Personal AI 과정</h4></div><article class="track track--feat"><figure class="track__img"><img src="house-m3.jpg" alt="등불 아래 책을 읽는 사람 곁에 앉은 사막여우" loading="lazy" decoding="async" style="object-position:50% 45%"><figcaption><span class="track__k">TRACK 02 · UNBRANDING · For First-Timers</span><h3>디퍼 언브랜딩</h3></figcaption></figure><div class="track__body"><p class="track__promise">정체성을 담는 나만의 AI 세컨브레인 시스템을 구축합니다.</p><p><span class="ln">첫날 내 컴퓨터에 사막여우를 설치합니다.</span><span class="ln">흩어진 글과 기록을 내 컴퓨터의 로컬 볼트로 옮기고 AI가 읽을 수 있는 구조로 정리합니다.</span></p><p><span class="ln">돌아간 뒤에는 하루 10분씩 사막여우와 문법·논리·수사 여정을 이어 갑니다.</span><span class="ln">일대일 밀착 컨설팅 2회로 나만의 퍼스널 멀티 에이전트 시스템을 구축합니다.</span><span class="ln">쌓인 기록에서 내가 자주 쓰는 말과 생각을 함께 찾습니다.</span></p><p class="track__for"><span>FOR</span>디퍼가 처음이고 흩어진 내 기록을 AI와 함께 쓰고 싶은 분<br>멀티 에이전트 시스템을 내 로컬 컴퓨터에 심고 싶으신 분</p><div class="track__price"><div class="track__pricerow"><b>110만 원</b><a class="track__ask" href="tel:01086249110">개별 문의</a></div><small><span class="ln">처음 오는 분</span><span class="ln">일대일 밀착 컨설팅 2회</span><span class="ln">사막여우를 설치한 날부터 디퍼 멤버</span></small></div></div></article><article class="track track--feat track--ceo"><figure class="track__img"><img src="path-06-growth.jpg" alt="해 뜨는 성을 향해 걸어가는 사람과 고슴도치" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption><span class="track__k">TRACK 03 · AI EXPERT COURSE · For Founders</span><h3>디퍼 콤포스텔라<br>AI Expert Course</h3></figcaption></figure><div class="track__body"><p><span class="ln">판단 기준은 아직 대표 한 사람에게만 있습니다.</span><span class="ln">누구나 같은 AI 모델을 쓸 수 있습니다.</span><span class="ln">결과는 그 모델이 읽는 기록과 기준에서 달라집니다.</span></p><p class="track__hook"><span class="ln">바이브코딩부터 수익화까지, 내 회사 기준을 읽는 AI 시스템을 12주 동안 직접 짓고 운영합니다.</span></p><p><span class="ln">빌더하우스 1박 2일에 경영실과 고슴도치를 내 컴퓨터에 설치합니다.</span><span class="ln">내 사업에서 먼저 돌려 본 그대로 고객 사업체의 AX를 돕습니다.</span><span class="ln">수료하면 디퍼 언브랜딩과 디퍼 콤포스텔라를 내 이름으로 엽니다.</span><span class="ln">구성은 아래 04 절에.</span></p><p class="track__for"><span>FOR</span>AI와 함께 나만의 비즈니스 시스템을 구축하고 싶은 분<br>내 전문 도메인에 AI 전환을 돕는 AX 전문가가 되고 싶으신 분</p><div class="track__price"><div class="track__pricerow"><b>490만 원</b><a class="track__ask" href="tel:01086249110">개별 문의</a></div><small><a href="#enterprise">아래 AI Expert Course 절</a></small></div></div></article></div>
+  </div>
+
+  <div class="sub bo-why">
+    <div class="sub__l"><p class="bo-k">WHY · 내 손으로 짓는 이유</p></div>
+    <div class="sub__r bo-why__t"><p><span class="ln">내가 한 명 더 있었으면 했던 일을 AI 에이전트와 나눕니다.</span><span class="ln">남이 만든 AI를 빌려 쓰면 판단의 기준까지 함께 빌려 옵니다.</span><span class="ln">그래서 내 일을 맡길 에이전트는 내 손으로 짓습니다.</span><span class="ln">짓는 동안 무엇을 맡기고 무엇을 내 손에 남길지 내가 정할 수 있습니다.</span></p></div>
+  </div>
+  <div class="sub bo-how">
+    <div class="sub__l"><p class="bo-k">HOW · 이틀의 흐름</p></div>
+    <div class="sub__r"><ol class="bo-steps"><li class="bo-step"><span class="bo-step__n">01</span><b>Spec</b><p>맡길 일의 입력과 출력, 완료 조건을 한 장의 스펙으로 정의합니다.</p></li><li class="bo-step"><span class="bo-step__n">02</span><b>First Run</b><p>이틀 안에 첫 실행까지 갑니다.</p></li><li class="bo-step"><span class="bo-step__n">03</span><b>Commit</b><p>지은 에이전트를 커밋합니다.</p></li></ol><p class="bo-note">에이전트와 기록은 각자의 로컬 컴퓨터에 남습니다.</p></div>
+  </div>
+  <div class="sub bo-place">
+    <div class="sub__l"><p class="bo-k">PLACE · 포항</p><h3>새벽님의 아늑한<br>빨간 벽돌집</h3></div>
+    <div class="sub__r bo-place__t"><p><span class="ln">빌더하우스는 콤포스텔라 1기 별지기 새벽님의 살롱입니다.</span><span class="ln">포항 새벽님의 집에서 엽니다.</span><span class="ln">새벽님과 반딧불님이 맞아 주시고 퍼핀과 별지기님들이 진행합니다.</span><span class="ln">밤에는 불을 피우고 둘러앉아 줌에서는 못 꺼냈던 질문을 꺼냅니다.</span></p><div class="bo-dates"><span><i>서밋 01</i>11.13 – 14</span><span><i>서밋 02</i>11.27 – 28</span><em>1박 2일</em></div></div>
+  </div>
+
+  <p class="tracks__t">빌더하우스에서는</p>
+  <div class="tracks">
+    <article class="track"><span class="track__k">TRACK 01 · AGENT BUILD · For DEEPER Members</span><h3>AI 솔로 빌더들의 축제</h3><div class="track__main"><p class="track__promise">이틀 안에 내 에이전트 하나를 첫 실행까지 마칩니다.</p><p><span class="ln">첫날 맡길 업무 하나를 정합니다.</span><span class="ln">입력과 출력, 완료 조건을 정하고 이튿날 첫 실행까지 갑니다.</span><span class="ln">그 에이전트를 사막여우에 연결해 집으로 가져갑니다.</span></p><p><span class="ln">그 뒤로는 매주 그 일을 에이전트에게 맡깁니다.</span><span class="ln">AI 수익화 방식을 함께 고민합니다.</span></p><p class="track__for"><span>FOR</span>사막여우와 함께 하며, 매주 되풀이되는 업무를 에이전트에게 넘기고 싶은 디퍼 멤버</p></div><div class="track__side"><div class="track__price"><b>35만 원</b><small>디퍼 멤버 · 1박2일 서밋 1회 참여</small></div><a class="track__cta cta ext" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">신청하기</a></div></article>
+
+    <div class="tracks__prog"><p class="kicker">BUILDER HOUSE PROGRAM</p><p class="tracks__dates"><span class="d"><i>서밋 01</i>11월 13일(금)~14일(토)</span><span class="d"><i>서밋 02</i>11월 27일(금)~28일(토)</span></p><div class="prog"><p class="prog__t">PROGRAM</p><div class="day"><h3>DAY 1 · 금요일</h3><ol><li><time>11:00</time><div><span class="t">REGISTRATION</span><b>Check-in & Setup Check</b><small>등록 · 노트북 전원과 네트워크 점검</small></div></li><li class="key"><time>11:30</time><div><span class="t">OPENING KEYNOTE</span><b>Why We Build Together</b><small><span class="ln">AI 시대, 사람에게 남는 일</span><span class="ln">호스트 새벽님 · 반딧불님 · 퍼핀</span></small></div></li><li><time>12:30</time><div><span class="t">LUNCH</span><b>점심</b></div></li><li><time>13:30</time><div><span class="t">HANDS-ON LAB 1</span><b>System Build</b><small><span class="ln">사막여우 · 내 에이전트 시스템의 뼈대 세우기</span><span class="ln">사전 설치에서 막힌 문제 해결</span></small></div></li><li class="key"><time>15:00</time><div><span class="t">STAR KEEPER SESSION 1</span><b>별지기 전문 살롱 인사이트</b><small>60 min · 강연과 Q&amp;A</small></div></li><li class="key"><time>16:15</time><div><span class="t">STAR KEEPER SESSION 2</span><b>별지기 전문 살롱 인사이트</b><small>60 min · 강연과 Q&amp;A</small></div></li><li><time>17:30</time><div><span class="t">HANDS-ON LAB 2</span><b>Agent Build 1 · Blueprint</b><small><span class="ln">에이전트에게 맡길 업무 하나 정의</span><span class="ln">입력 · 출력 · 완료 조건 설계</span></small></div></li><li><time>18:30</time><div><span class="t">DINNER</span><b>저녁</b></div></li><li class="key"><time>20:00</time><div><span class="t">FIRESIDE CHAT</span><b>위임과 판단의 경계</b><small>무엇을 맡기고 무엇을 내 손에 남길 것인가</small></div></li><li><time>&nbsp;</time><div><span class="t">OVERNIGHT</span><b>빌더하우스에서 하룻밤</b></div></li></ol></div><div class="day"><h3>DAY 2 · 토요일</h3><ol><li><time>08:30</time><div><span class="t">BREAKFAST</span><b>아침</b></div></li><li><time>09:30</time><div><span class="t">HANDS-ON LAB 3</span><b>Agent Build 2 · First Light</b><small><span class="ln">템플릿 기반 구현 · 첫 실행</span><span class="ln">세컨브레인에 연결해 심기</span></small></div></li><li class="key"><time>11:30</time><div><span class="t">COMMIT SESSION</span><b>Demo &amp; Commit</b><small>한 사람씩 데모 · 지은 에이전트를 기록에 커밋</small></div></li><li><time>12:30</time><div><span class="t">LUNCH · CLOSING</span><b>점심</b></div></li></ol></div></div><a class="track__cta track__cta--wide cta ext" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">디퍼 멤버 · 빌더하우스 신청하기</a></div>
+
+    <div class="tracks__sub"><p class="kicker">START WITH DEEPER</p><h4>디퍼와 함께 시작하는 Personal AI 과정</h4></div>
+
+    <article class="track track--feat"><div class="track__head"><span class="track__k">TRACK 02 · UNBRANDING · For First-Timers</span><h3>디퍼 언브랜딩</h3></div><div class="track__body"><p class="track__promise">정체성을 담는 나만의 AI 세컨브레인 시스템을 구축합니다.</p><p><span class="ln">첫날 내 컴퓨터에 사막여우를 설치합니다.</span><span class="ln">흩어진 글과 기록을 내 컴퓨터의 로컬 볼트로 옮기고 AI가 읽을 수 있는 구조로 정리합니다.</span></p><p><span class="ln">돌아간 뒤에는 하루 10분씩 사막여우와 문법·논리·수사 여정을 이어 갑니다.</span><span class="ln">일대일 밀착 컨설팅 2회로 나만의 퍼스널 멀티 에이전트 시스템을 구축합니다.</span><span class="ln">쌓인 기록에서 내가 자주 쓰는 말과 생각을 함께 찾습니다.</span></p><p class="track__for"><span>FOR</span>디퍼가 처음이고 흩어진 내 기록을 AI와 함께 쓰고 싶은 분<br>멀티 에이전트 시스템을 내 로컬 컴퓨터에 심고 싶으신 분</p></div><div class="track__side"><div class="track__price"><div class="track__pricerow"><b>110만 원</b><a class="track__ask ghost" href="tel:01086249110">개별 문의</a></div><small><span class="ln">처음 오는 분</span><span class="ln">일대일 밀착 컨설팅 2회</span><span class="ln">사막여우를 설치한 날부터 디퍼 멤버</span></small></div></div></article>
+
+    <article class="track track--feat track--ceo"><div class="track__head"><span class="track__k">TRACK 03 · AI EXPERT COURSE · For Founders</span><h3>디퍼 콤포스텔라<br>AI Expert Course</h3></div><div class="track__body"><p><span class="ln">판단 기준은 아직 대표 한 사람에게만 있습니다.</span><span class="ln">누구나 같은 AI 모델을 쓸 수 있습니다.</span><span class="ln">결과는 그 모델이 읽는 기록과 기준에서 달라집니다.</span></p><p class="track__hook"><span class="ln">바이브코딩부터 수익화까지, 내 회사 기준을 읽는 AI 시스템을 12주 동안 직접 짓고 운영합니다.</span></p><p><span class="ln">빌더하우스 1박 2일에 경영실과 고슴도치를 내 컴퓨터에 설치합니다.</span><span class="ln">내 사업에서 먼저 돌려 본 그대로 고객 사업체의 AX를 돕습니다.</span><span class="ln">수료하면 디퍼 언브랜딩과 디퍼 콤포스텔라를 내 이름으로 엽니다.</span><span class="ln">구성은 아래 04 절에.</span></p><p class="track__for"><span>FOR</span>AI와 함께 나만의 비즈니스 시스템을 구축하고 싶은 분<br>내 전문 도메인에 AI 전환을 돕는 AX 전문가가 되고 싶으신 분</p></div><div class="track__side"><div class="track__price"><div class="track__pricerow"><b>490만 원</b><a class="track__ask ghost" href="tel:01086249110">개별 문의</a></div><small><a href="#enterprise">아래 AI Expert Course 절</a></small></div></div></article>
   </div>
 </section>
 
+<!-- 사진 띠 · AI Expert Course -->
+<figure class="xp">
+  <div class="media" data-parallax><img src="compostela-expert-2026-11.jpg" alt="서재 책상에서 펜을 들고 서류를 검토하는 네이비 재킷 차림의 여성" loading="lazy" decoding="async" style="object-position:50% 22%"></div>
+  <figcaption class="xp-cap grid"><span class="xp-name"><small>AI EXPERT COURSE</small>12 Weeks</span><span class="xp-hook">내 전문성으로 사업을 만들고,<br>AI 팀과 함께 이끄는 연습</span><span class="xp-steps"><span><i>START</i>빌더하우스 1박 2일</span><span><i>12 WEEKS</i>일대일 밀착 컨설팅 6회</span><span><i>AFTER</i>내 이름으로 과정 열기</span></span></figcaption>
+</figure>
+
 <!-- 5 · AI Expert Course -->
-<section class="panel panel--flip" id="enterprise">
-  <figure class="panel__fig">
-    <img src="compostela-expert-2026-11.jpg" alt="서재 책상에서 펜을 들고 서류를 검토하는 네이비 재킷 차림의 여성" loading="lazy" decoding="async" style="object-position:50% 22%">
-    <figcaption class="xp-cap"><small>AI EXPERT COURSE</small>12 Weeks<span class="xp-hook">내 전문성으로 사업을 만들고,<br>AI 팀과 함께 이끄는 연습</span><span class="xp-steps"><span><i>START</i>빌더하우스 1박 2일</span><span><i>12 WEEKS</i>일대일 밀착 컨설팅 6회</span><span><i>AFTER</i>내 이름으로 과정 열기</span></span><span class="xp-note">AI 생성 연출 이미지</span></figcaption>
-  </figure>
-  <div class="panel__body">
-    <p class="kicker">04 · AI EXPERT COURSE</p>
+<section class="block panel panel--flip" id="enterprise">
+  <div class="rule"></div>
+  <div class="grid sec-head"><p class="kicker">04 · AI EXPERT COURSE</p></div>
+  <div class="grid prog-head">
     <h2>디퍼 콤포스텔라<br>AI Expert Course<small>12 Weeks · 1:1 Advisory</small></h2>
+  </div>
+  <div class="grid prog-body">
     <p class="lede"><span class="ln">내 회사 철학을 판단 기준으로 갖는,</span><span class="ln">AI 시스템으로 비즈니스를 구조화하고</span><span class="ln">그 방법으로 내 전문 도메인에서</span><span class="ln">다른 회사의 AX를 돕는 AI 전문가가 됩니다.</span></p>
-    <p><span class="ln">코드를 몰라도 시작할 수 있습니다.</span><span class="ln">말로 지시해 짓는 바이브코딩에서 출발해 고객사에 설치하고 값을 받는 단계까지 다룹니다.</span></p><div class="eff">
+    <p><span class="ln">코드를 몰라도 시작할 수 있습니다.</span><span class="ln">말로 지시해 짓는 바이브코딩에서 출발해 고객사에 설치하고 값을 받는 단계까지 다룹니다.</span></p>
+  </div>
+
+  <div class="sub eff">
+    <div class="sub__l">
       <p class="eff__k">WHAT YOU SAVE</p>
       <h3 class="eff__h">대표가 날마다 되풀이하던 일을 덜어 냅니다.</h3>
+    </div>
+    <div class="sub__r">
       <p class="eff__lead"><span class="ln">누구나 같은 AI 모델을 씁니다.</span><span class="ln">결과를 달라지게 하는 것은 그 모델이 무엇을 읽고 무엇을 기준으로 고르느냐입니다.</span></p>
       <ol class="eff__list">
         <li><span class="eff__tag">기억 · 사막여우</span><b>AI에게 우리 회사를 처음부터 설명하지 않아도 됩니다.</b><span class="ln">내 글과 기록, 고객에게 해 온 말을 사막여우가 기억합니다.</span><span class="ln">새 대화도 지난 맥락에서 바로 시작합니다.</span></li>
@@ -874,13 +865,19 @@ small .ln+.ln{margin-top:.35em}
         <li><span class="eff__tag">매일의 일 · 고슴도치</span><b>흩어진 일을 모으는 시간이 줄어듭니다.</b><span class="ln">고슴도치가 경영실의 고객·납품·돈·알리기를 읽고 오늘 챙길 일을 함께 정리합니다.</span><span class="ln">대표는 고르고 결정하는 데 시간을 씁니다.</span></li>
       </ol>
       <p class="eff__end"><span class="ln">한 번 적어 둔 기준이 다음 날의 일에 그대로 쓰입니다.</span><span class="ln">쓸수록 설명은 줄고 대표의 시간은 판단에 남습니다.</span></p>
-    </div><div class="ent-out"><p class="ent-out__k">12주 뒤 남는 것</p><ul><li>내 컴퓨터에서 도는 사막여우 · 고슴도치 · 경영실</li><li>경영실에 적힌 내 판단 기준</li><li>고객 사업체에 설치할 구성과 디퍼의 설치 지원</li></ul></div>
-    <div class="ent">
-      <article class="ent__m"><span class="ent__k">MODULE 01 · UNBRANDING</span><h3>디퍼 언브랜딩</h3><p><span class="ln"><em class="term">컨텍스트 엔지니어링</em>사막여우에 내 기록과 언어를 모아 대화가 끝나도 남는 기억으로 둡니다.</span><span class="ln">그 기록에서 고객에게 내 사업을 설명할 말을 찾습니다.</span></p></article>
-      <article class="ent__m"><span class="ent__k">MODULE 02 · COMPOSTELA</span><h3>경영 코치 고슴도치와 경영실</h3><p><span class="ln"><em class="term">에이전트 워크플로</em>경영실에 내 사업의 고객·납품·돈·알리기를 모으고 고슴도치가 날마다 할 일을 같이 챙깁니다.</span><span class="ln"><em class="term">휴먼 인 더 루프</em>최종 선택은 대표가 합니다. 퍼핀과 일대일 6회에 걸쳐 내 판단 기준을 경영실에 적어 넣습니다.</span></p></article>
-      <article class="ent__m"><span class="ent__k">MODULE 03 · AX CONSULTING</span><h3>에이전트 AX 컨설팅</h3><p><span class="ln"><em class="term">멀티 에이전트</em>기억은 사막여우, 경영은 고슴도치처럼 역할을 나눈 구성을 고객 사업체에 설치하고 운영을 돕습니다.</span><span class="ln">고객마다 디퍼가 따로 열쇠를 발급하고 설치를 지원합니다.</span></p></article>
-      <article class="ent__m"><span class="ent__k">MODULE 04 · REVENUE LICENSE</span><h3>수익화 라이선스</h3><p><span class="ln">수료하면 디퍼 언브랜딩과 디퍼 콤포스텔라를 내 이름으로 열 수 있습니다.</span><span class="ln">가격과 운영은 디퍼 공식 기준을 따릅니다.</span><span class="ln">강의안·운영 대본과 에이전트 스킬의 새 판(새옷)은 디퍼가 계속 보냅니다.</span></p></article>
     </div>
+  </div>
+  <div class="sub ent-out">
+    <div class="sub__l"><p class="ent-out__k">12주 뒤 남는 것</p></div>
+    <div class="sub__r"><ul><li>내 컴퓨터에서 도는 사막여우 · 고슴도치 · 경영실</li><li>경영실에 적힌 내 판단 기준</li><li>고객 사업체에 설치할 구성과 디퍼의 설치 지원</li></ul></div>
+  </div>
+  <div class="ent">
+    <article class="ent__m"><span class="ent__k">MODULE 01 · UNBRANDING</span><h3>디퍼 언브랜딩</h3><p><span class="ln"><em class="term">컨텍스트 엔지니어링</em>사막여우에 내 기록과 언어를 모아 대화가 끝나도 남는 기억으로 둡니다.</span><span class="ln">그 기록에서 고객에게 내 사업을 설명할 말을 찾습니다.</span></p></article>
+    <article class="ent__m"><span class="ent__k">MODULE 02 · COMPOSTELA</span><h3>경영 코치 고슴도치와 경영실</h3><p><span class="ln"><em class="term">에이전트 워크플로</em>경영실에 내 사업의 고객·납품·돈·알리기를 모으고 고슴도치가 날마다 할 일을 같이 챙깁니다.</span><span class="ln"><em class="term">휴먼 인 더 루프</em>최종 선택은 대표가 합니다. 퍼핀과 일대일 6회에 걸쳐 내 판단 기준을 경영실에 적어 넣습니다.</span></p></article>
+    <article class="ent__m"><span class="ent__k">MODULE 03 · AX CONSULTING</span><h3>에이전트 AX 컨설팅</h3><p><span class="ln"><em class="term">멀티 에이전트</em>기억은 사막여우, 경영은 고슴도치처럼 역할을 나눈 구성을 고객 사업체에 설치하고 운영을 돕습니다.</span><span class="ln">고객마다 디퍼가 따로 열쇠를 발급하고 설치를 지원합니다.</span></p></article>
+    <article class="ent__m"><span class="ent__k">MODULE 04 · REVENUE LICENSE</span><h3>수익화 라이선스</h3><p><span class="ln">수료하면 디퍼 언브랜딩과 디퍼 콤포스텔라를 내 이름으로 열 수 있습니다.</span><span class="ln">가격과 운영은 디퍼 공식 기준을 따릅니다.</span><span class="ln">강의안·운영 대본과 에이전트 스킬의 새 판(새옷)은 디퍼가 계속 보냅니다.</span></p></article>
+  </div>
+  <div class="grid ent-facts">
     <dl class="facts">
       <div><dt>시작</dt><dd>빌더하우스 1박 2일<small>고슴도치·경영실 설치</small></dd></div>
       <div><dt>기간</dt><dd>12주<small>일대일 밀착 컨설팅 6회</small></dd></div>
@@ -896,45 +893,54 @@ small .ln+.ln{margin-top:.35em}
 
 
 <!-- 9 · 신청 -->
-<section class="close" id="apply">
-  <img class="close__img" src="path-07-finisterre.jpg" alt="해 지는 바다 끝 등대를 바라보는 사람과 고슴도치" loading="lazy" decoding="async">
-  <div class="close__veil"></div>
-  <div class="close__in">
-    <p class="kicker" style="color:var(--gold-2)">05 · 신청</p>
+<section class="block close" id="apply">
+  <div class="rule"></div>
+  <div class="close__in grid">
+    <p class="kicker tag--ko">05 · 신청</p>
     <h2>11월 디퍼 멤버십 신청은 10월 31일(토)까지</h2>
     <div class="btns">
-      <a class="btn btn--light" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">멤버십 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn cta" href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">멤버십 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <p class="small"><span class="ln">처음 오시는 분은 퍼핀에게 개별로 문의해 주세요 · <a href="tel:01086249110">010-8624-9110</a></span></p>
   </div>
 </section>
 
-<footer class="sign">
-  <img src="DEEPER_logo.png" alt="DEEPER" width="120" height="78" loading="lazy" decoding="async">
-  <p>DEEPER</p>
+<footer class="sign grid foot">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 18.621 11.38" role="img" aria-label="DEEPER"><path d="M15.146 0H0V1.762H15.164A1.7135 1.7135 0 0 1 15.164 5.189H0V6.951H15.146A3.4755 3.4755 0 0 0 15.146 0Z"/><path transform="translate(0.116 8.656)" d="M1.304 2.008C1.689 2.008 1.954 1.779 1.954 1.362C1.954 0.946 1.689 0.716 1.304 0.716L0.919 0.716L0.919 2.008ZM0.0 0.0L1.343 0.0C2.253 0.0 2.88 0.518 2.88 1.362C2.88 2.206 2.253 2.724 1.343 2.724L0.0 2.724ZM5.707 2.031L5.707 2.723L3.442 2.723L3.442 0.0L5.656 0.0L5.656 0.692L4.345 0.692L4.345 1.011L5.497 1.011L5.497 1.673L4.345 1.673L4.345 2.031ZM8.633 2.031L8.633 2.723L6.368 2.723L6.368 0.0L8.582 0.0L8.582 0.692L7.271 0.692L7.271 1.011L8.423 1.011L8.423 1.673L7.271 1.673L7.271 2.031ZM10.921 1.027C10.921 0.828 10.8 0.708 10.547 0.708L10.213 0.708L10.213 1.345L10.547 1.345C10.8 1.345 10.921 1.225 10.921 1.027M11.847 1.027C11.847 1.657 11.365 2.053 10.606 2.053L10.213 2.053L10.213 2.724L9.295 2.724L9.295 0.0L10.606 0.0C11.365 0.0 11.847 0.397 11.847 1.027M14.563 2.031L14.563 2.723L12.298 2.723L12.298 0.0L14.512 0.0L14.512 0.692L13.201 0.692L13.201 1.011L14.353 1.011L14.353 1.673L13.201 1.673L13.201 2.031ZM16.477 0.708L16.143 0.708L16.143 1.346L16.477 1.346C16.73 1.346 16.851 1.226 16.851 1.027C16.851 0.828 16.73 0.708 16.477 0.708M16.392 2.039L16.143 2.039L16.143 2.724L15.224 2.724L15.224 0.0L16.536 0.0C17.294 0.0 17.777 0.396 17.777 1.027C17.777 1.42 17.59 1.716 17.263 1.883L17.835 2.724L16.854 2.724Z"/></svg>
+    <p>DEEPER</p>
+  </div>
 </footer>
 
 <div class="bar" id="bar" aria-hidden="true"><span><b>마감</b> 10월 31일(토) · 월 29,000원</span><a href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener" tabindex="-1">신청</a></div>
 
 <script>
 (function(){
-  var SEL='.fam-hero,.fam-list li,.pt__in > .kicker,.pt__in > h2,.pt__lede,.pt__stuck li,.pt__steps li,.pt__chips,.pt__card,.eff,.salons__in > .kicker,.salons__in > h2,.salons__lead,.salons__when,.panel__body > .kicker,.panel__body > h2,.panel__body > .lede,.panel__body > p,.mb > :not(.mcards),.mcard,.star,.ent__m,.facts,.qa,.bopen__in > .kicker,.bopen__in > h2,.bo-lead,.bo-quote,.bo-why__img,.bo-why__t,.bo-how > .bo-k,.bo-step,.bo-note,.bo-place,.tracks__fig,.track,.tracks__sub,.tracks__prog,.close__in > *';
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll(SEL).forEach(function(e){if(!(e.parentElement&&e.parentElement.closest('.rv2')))e.classList.add('rv2');});}
-  var els=document.querySelectorAll('.rv,.rv2,.panel');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 펼칠 때만: 덩어리는 아래에서 올라오고, 섹션 선은 왼쪽에서 그어진다 */
+  var SEL='.index__in,.sec-head,.prog-head,.prog-body,.sub,.salons__when,.star,.stars-more,.tracks__t,.track,.tracks__prog,.tracks__sub,.xp-cap,.ent__m,.ent-facts,.close__in > *';
+  if(!reduce){
+    document.querySelectorAll(SEL).forEach(function(e){if(!(e.parentElement&&e.parentElement.closest('.rv2')))e.classList.add('rv2');});
+    document.querySelectorAll('.rule').forEach(function(e){e.classList.add('rvl');});
+  }
+  var els=document.querySelectorAll('.rv2,.rvl');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});}
   else{
     var io=new IntersectionObserver(function(en){var k=0;en.filter(function(x){return x.isIntersecting}).sort(function(a,b){return a.boundingClientRect.top-b.boundingClientRect.top}).forEach(function(x){var t=x.target;if(t.classList.contains('rv2')){t.style.transitionDelay=Math.min(k,4)*0.09+'s';k++;}t.classList.add('in');io.unobserve(t);})},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){io.observe(e)});
   }
   setTimeout(function(){document.documentElement.classList.add('settled');var vh=innerHeight||800;els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<vh*1.05&&r.bottom>0)e.classList.add('in');});},2600);
-  var img=document.querySelector('.hero__img'),bar=document.getElementById('bar'),apply=document.getElementById('apply');
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,t=false;
+  /* 사진 띠는 스크롤에 맞춰 천천히 밀린다 (사이트와 같은 값) */
+  var bands=[].slice.call(document.querySelectorAll('[data-parallax]'));
+  function drift(){if(reduce)return;bands.forEach(function(f){var r=f.getBoundingClientRect();if(r.bottom<-200||r.top>innerHeight+200)return;var m=f.querySelector('img');if(m)m.style.setProperty('--py',((r.top+r.height/2-innerHeight/2)*-0.08).toFixed(1)+'px');});}
+  var bar=document.getElementById('bar'),apply=document.getElementById('apply'),t=false;
   addEventListener('scroll',function(){if(t)return;t=true;requestAnimationFrame(function(){
     var y=scrollY;
-    if(img&&!reduce){img.style.transform='scale(1.06) translate3d(0,'+(Math.min(y,900)*0.12).toFixed(1)+'px,0)';}
+    drift();
     var ar=apply.getBoundingClientRect();
     bar.classList.toggle('on',y>innerHeight*.8&&ar.top>innerHeight);
     t=false;});},{passive:true});
+  drift();
 })();
 </script>
 </body>
