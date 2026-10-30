@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디퍼 언브랜딩 살롱 3기 · 논리 4회차 — 현장의 목소리</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="논리 4회차 현장의 목소리 · 같은 악기로 다른 노래를 지었다">
+<meta property="og:description" content="논리의 달 살롱을 마치는 목요일 밤. 기억 산책, 샬랄라의 길, 음악장과 아이들 방, 대회 날까지의 계획, 계절이 바뀌는 마을. 만드는 손과 살피는 손, 말로 적는 장부, 그리고 수사의 문.">
+<meta property="og:url" content="https://clbookslower.github.io/deeper-salon/logic_3gi_l4_field_voices_2026-10-29.html">
+<meta property="og:image" content="https://clbookslower.github.io/deeper-salon/og-logic-3gi-l4-field-voices.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clbookslower.github.io/deeper-salon/og-logic-3gi-l4-field-voices.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* DEEPER 브랜드 디자인 정본 v2 (2026-10-30) · 현장의 목소리 읽기 짜임
+   흰 바탕과 잉크 두 색 · 위계는 굵기·크기·흐림 · 1px 잉크 선 · 각진 모서리 · 강조색 없음 */
+:root{
+  --bg:#ffffff;--ink:#0a0a0a;--body:#2a2a2a;--mute:#8c8c8c;--faint:#b5b5b5;--soft:#f4f4f2;--line:#e4e4e4;--line-strong:#cfcfcf;
+  --gutter:clamp(16px,2.2vw,32px);--max:1680px;--side:max(var(--gutter),calc((100vw - var(--max)) / 2));
+  --en:"Montserrat","Pretendard",sans-serif;--ko:"Pretendard",-apple-system,sans-serif;
+}
+:root[data-theme="dark"]{--bg:#0c0c0b;--ink:#f2f2ef;--body:#d6d6d2;--mute:#8e8e8a;--faint:#5c5c59;--soft:#171716;--line:#2a2a28;--line-strong:#4a4a47;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--ko);font-size:15px;line-height:1.6;word-break:keep-all;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+
+/* 머리 · 바닥 */
+.top{position:relative;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--side)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink)}
+.logo{display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+.logo svg{display:block;fill:currentColor}
+.logo .sym{height:11px;width:auto}.logo .wm{height:9px;width:auto}
+.top .side{font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.foot{margin:clamp(96px,9vw,160px) var(--side) 0;border-top:1px solid var(--ink);padding:56px 0 48px;display:grid;gap:18px;justify-items:start}
+.foot .mark{width:120px;height:auto;fill:currentColor;color:var(--ink)}
+.foot p{font-family:var(--en);font-size:12px;font-weight:600}
+
+/* 읽기 기둥: 왼쪽 정렬 · 본문 폭 34em */
+.page{padding:0 var(--side)}
+.page>*{max-width:900px}
+.breadcrumb{padding-top:clamp(48px,6vw,104px);font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.breadcrumb a{text-decoration:none}
+.breadcrumb .sep{margin:0 10px;color:var(--faint)}
+
+.article-header{padding-top:clamp(28px,4vw,56px)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.badge{display:inline-block;padding:1px 10px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:10px;font-weight:600;line-height:1.8}
+.meta .dot{color:var(--faint)}
+.article-header h1{margin-top:clamp(24px,4vw,48px);font-size:clamp(40px,7vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1.08}
+.subtitle{margin-top:clamp(24px,3vw,40px);max-width:30em;font-size:clamp(18px,1.6vw,24px);font-weight:600;letter-spacing:-.03em;line-height:1.6}
+.tags{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.tags .tag{padding:6px 14px;border:1px solid var(--line-strong);border-radius:999px;font-size:13px;color:var(--body)}
+
+/* 마디: 1px 잉크 선으로 연다 · 번호는 가는 영문 */
+.step{display:grid;grid-template-columns:clamp(64px,8vw,120px) minmax(0,1fr);gap:0 var(--gutter);margin-top:clamp(72px,8vw,136px);padding-top:16px;border-top:1px solid var(--ink)}
+.step-num{font-family:var(--en);font-size:clamp(40px,4.4vw,72px);font-weight:200;letter-spacing:-.04em;line-height:1;color:var(--mute)}
+.step-body{min-width:0}
+.step-title{font-size:clamp(24px,2.4vw,36px);font-weight:700;letter-spacing:-.04em;line-height:1.3;margin-bottom:28px}
+.step-body>p{max-width:34em;font-size:clamp(16px,1.2vw,18px);line-height:1.9;letter-spacing:-.01em;color:var(--body)}
+.step-body>p+p{margin-top:18px}
+
+blockquote{margin:32px 0;padding-left:22px;border-left:2px solid var(--ink);max-width:34em}
+blockquote p{font-size:clamp(18px,1.5vw,22px);font-weight:700;letter-spacing:-.035em;line-height:1.6}
+blockquote cite,.haiku cite{display:block;margin-top:10px;font-style:normal;font-size:13px;color:var(--mute)}
+
+.callout{margin:32px 0;padding:22px 24px;background:var(--soft);border-top:1px solid var(--ink);max-width:40em}
+.callout-label{margin-bottom:10px;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--mute)}
+.callout p{font-size:16px;line-height:1.85;color:var(--body)}
+
+.concept{margin:32px 0;display:grid;grid-template-columns:7em minmax(0,1fr);gap:0 20px;padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);max-width:40em}
+.concept-term{font-size:18px;font-weight:700;letter-spacing:-.03em}
+.term-en{display:block;margin-bottom:6px;font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;color:var(--mute)}
+.concept-def p{font-size:15px;line-height:1.8;color:var(--body)}
+
+.haiku{margin:40px 0 0;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:34em}
+.haiku p{font-size:clamp(20px,1.8vw,26px);font-weight:600;letter-spacing:-.035em;line-height:1.6}
+
+.cta-box{margin-top:clamp(96px,9vw,160px);padding-top:16px;border-top:2px solid var(--ink)}
+.cta-label{font-family:var(--en);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.cta-text{margin-top:24px;font-size:clamp(26px,3vw,44px);font-weight:700;letter-spacing:-.045em;line-height:1.3}
+.cta-sub{margin-top:24px;max-width:34em;font-size:16px;line-height:1.9;color:var(--body)}
+.cta-sub a,.footnote a{font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+.footnote{margin-top:clamp(72px,7vw,120px);padding-top:16px;border-top:1px solid var(--line)}
+.footnote p{font-size:13px;line-height:1.75;color:var(--mute);overflow-wrap:anywhere}
+
+@media (max-width:720px){
+  .article-header h1,.step-title,.cta-text{text-wrap:balance}
+  .step-body>p,.cta-sub{text-wrap:pretty}
+  .meta .dot{display:none}
+  .step{grid-template-columns:1fr}
+  .step-num{margin-bottom:14px}
+  .concept{grid-template-columns:1fr;gap:8px}
+}
+</style>
+</head>
+
+<body>
+<div class="top"><span class="logo" role="img" aria-label="DEEPER"><svg class="sym" viewBox="0 0 18.621 6.951" aria-hidden="true"><path fill="#0A0A0A" d="M15.146 0H0V1.762H15.164A1.7135 1.7135 0 0 1 15.164 5.189H0V6.951H15.146A3.4755 3.4755 0 0 0 15.146 0Z"/></svg><svg class="wm" viewBox="0 0 17.835 2.724" aria-hidden="true"><path fill="#0A0A0A" d="M1.304 2.008C1.689 2.008 1.954 1.779 1.954 1.362C1.954 0.946 1.689 0.716 1.304 0.716L0.919 0.716L0.919 2.008ZM0.0 0.0L1.343 0.0C2.253 0.0 2.88 0.518 2.88 1.362C2.88 2.206 2.253 2.724 1.343 2.724L0.0 2.724ZM5.707 2.031L5.707 2.723L3.442 2.723L3.442 0.0L5.656 0.0L5.656 0.692L4.345 0.692L4.345 1.011L5.497 1.011L5.497 1.673L4.345 1.673L4.345 2.031ZM8.633 2.031L8.633 2.723L6.368 2.723L6.368 0.0L8.582 0.0L8.582 0.692L7.271 0.692L7.271 1.011L8.423 1.011L8.423 1.673L7.271 1.673L7.271 2.031ZM10.921 1.027C10.921 0.828 10.8 0.708 10.547 0.708L10.213 0.708L10.213 1.345L10.547 1.345C10.8 1.345 10.921 1.225 10.921 1.027M11.847 1.027C11.847 1.657 11.365 2.053 10.606 2.053L10.213 2.053L10.213 2.724L9.295 2.724L9.295 0.0L10.606 0.0C11.365 0.0 11.847 0.397 11.847 1.027M14.563 2.031L14.563 2.723L12.298 2.723L12.298 0.0L14.512 0.0L14.512 0.692L13.201 0.692L13.201 1.011L14.353 1.011L14.353 1.673L13.201 1.673L13.201 2.031ZM16.477 0.708L16.143 0.708L16.143 1.346L16.477 1.346C16.73 1.346 16.851 1.226 16.851 1.027C16.851 0.828 16.73 0.708 16.477 0.708M16.392 2.039L16.143 2.039L16.143 2.724L15.224 2.724L15.224 0.0L16.536 0.0C17.294 0.0 17.777 0.396 17.777 1.027C17.777 1.42 17.59 1.716 17.263 1.883L17.835 2.724L16.854 2.724Z"/></svg></span><span class="side">Salon · Field Voices</span></div>
+<div class="page">
+
+  <div class="breadcrumb">
+    <a href="#">DEEPER</a><span class="sep">/</span><a href="#">UNBRANDING SALON · 3기</a><span class="sep">/</span><span>LOGIC WEEK 4 · VOICES</span>
+  </div>
+
+  <div class="article-header">
+    <div class="meta">
+      <span class="badge badge-salon">SALON</span>
+      <span class="dot">·</span>
+      <span class="meta-text">2026.10.29 THU 21:03 · PROJECT B-612</span>
+    </div>
+    <h1>같은 악기로<br>다른 노래를 지었다</h1>
+    <p class="subtitle">하모니. 서로 다른 소리가 겹쳐 하나로 울릴 때 그렇게 부른다. 논리의 달 살롱을 마치는 목요일 밤, 다섯 디퍼님이 지은 것이 한 화면에 차례로 놓였다.</p>
+    <div class="tags">
+      <span class="tag">논리의 달</span><span class="tag">종강</span><span class="tag">하모니</span><span class="tag">빌리지</span><span class="tag">에이전트 팀</span><span class="tag">고슴도치</span><span class="tag">수사의 문</span>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="step">
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <h2 class="step-title">여는 한 바퀴</h2>
+      <p>시월의 마지막 주였다. 논리의 달 마지막 밤이자 수사의 문까지 함께 여는 긴 밤이었다. 클로드와 어떻게 놀았는지 한 바퀴 돌며 시작했다.</p>
+      <p>감사마법사 님은 유튜브 이야기 채널의 첫 시즌 열두 화를 다 올렸다. 바로 그날 밤 둘째 시즌 첫 화가 나간다고 했다. 어르신들의 기억을 돕는 앱도 짓는 중이었다. 시험판을 하나 만들어 달라고 했더니 단출하게 나왔다고.</p>
+      <blockquote>
+        <p>"이렇게 다양하게 실험할 수 있고, 내가 해 보고 싶은 게 완성도가 높지 않아도 하나씩 나온다는 게 저는 좋은 것 같아요."</p>
+        <cite>— 감사마법사 님 · 여는 소감</cite>
+      </blockquote>
+      <p>힘내샘 님은 가을이라 일이 겹친다고 했다. 그래도 일터에서 클로드에게 일을 계속 맡기고 있다. 샬랄라 님은 지난주에 비행기를 샀는데 이번 주에는 아예 길을 샀다고 했다. 캐릭터를 바꾸느라 클로드와 한참 씨름했다는 말도 보탰다. 깨소금 님은 지난주 힘내샘 님의 빌리지를 보고 나도 해야겠다 싶어 조금씩 지었다. 그게 재밌었다고. 햅쌀 님은 다른 건 접어도 이 자리는 들어와야겠다 싶었다고 했다.</p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="step">
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <h2 class="step-title">차례로 띄운 화면</h2>
+      <p>차례로 화면을 띄웠다.</p>
+      <p>감사마법사 님의 「기억 산책」은 글씨가 크고 문장을 소리 내어 읽어 준다. 오늘 날짜를 따라 말하게 한 다음 짧은 이야기 한 편을 들려준다. 그날 이야기는 장날 버스에 오르는 할머니였다. 고등어 한 손, 대파 한 단, 손주 운동화. 채소 가게 주인은 쪽파 한 줌을 덤으로 얹어 준다. 할머니는 빨간 운동화와 노란 운동화 앞에서 오래 고민하다 노란 것을 고른다. 이야기가 끝나자 앱이 물었다. 방 안의 디퍼님들이 하나씩 답했다. 고등어, 쪽파, 노란색. 마지막에는 장날·버스·운동화 세 낱말로 문장을 지었다. 아이디어가 좋다는 말과 어르신들께 다 깔아 드리고 싶다는 말이 나왔다.</p>
+      <p>샬랄라 님은 캐릭터를 바꾼 이야기부터 꺼냈다. 짧은 머리, 보라색을 좋아한다고 일러 주며 몇 번을 고쳐도 마음에 들지 않았다.</p>
+      <blockquote>
+        <p>"너 이게 마음에 드니? 네가 생각했을 때 이게 마음에 든다고 생각하니? 하고 물었더니, 저도 제 마음에 안 듭니다, 이러더라고요."</p>
+        <cite>— 샬랄라 님 · 마을 나눔</cite>
+      </blockquote>
+      <p>다른 데서 원하는 그림을 얻어 오면 그대로 해 주겠다는 답에 다른 도구로 그림을 지어 건넸다. 그렇게 시크한 샬랄라가 섰다. 샬랄라 항공의 여권을 열면 지금까지 다녀온 나라와 도시가 지구본 위에 뜬다. 그리고 길이 있다. 「The Road of Shalala」. 생장에서 출발해 피레네를 넘어 산티아고 데 콤포스텔라, 그리고 피스테라까지. 들르는 자리마다 걷는 자의 서재, 읽는 자의 서재, 글방이 하나씩 놓여 있다. 하루 다섯 가지를 채우면 순례자 여권에 도장이 찍히고 조개껍데기에 표시가 하나 생긴다. 맨 끝에는 라틴어로 더 멀리, 더 높이.</p>
+      <blockquote>
+        <p>"걸을 때 알베르게를 보면 다 사고 싶더라고요. 그 욕망을 실물은 아니고 가상 공간에서 한번 만들어 봤어요."</p>
+        <cite>— 샬랄라 님 · 마을 나눔</cite>
+      </blockquote>
+      <p>깨소금 님의 마을에는 음악장이 있다. 문을 열면 노래가 흘러나온다. 추억의 노래를 한 곡씩 더해 가는 중이다. 글방에는 그동안 써 온 글이 모여 있다. 이번 주에는 아이들 방을 지었다. 아들이 그림을 그리고 글을 넣어 만든 책, 딸이 그린 그림들이 걸렸다. 아이들이 좋아하더라고 했다.</p>
+      <blockquote>
+        <p>"그동안 mp3 같은 걸 정리해 본 적이 없었는데, 이거 정리하는 게 좀 재밌었어요."</p>
+        <cite>— 깨소금 님 · 마을 나눔</cite>
+      </blockquote>
+      <p>햅쌀 님은 다음 대회를 앞둔 달리기 계획을 한 장에 담았다. 이번에는 느슨하게 잡아 달라고 맡겼더니 대회 전까지는 10킬로미터 넘게 뛰지 말라는 답이 돌아왔다. 날마다 몸을 돌보는 10분, 멈춰야 할 때, 대회 날의 페이스, 기상 시각과 출발 시각, 먹을 곳과 쉬어 갈 곳까지 들어갔다. 처음에는 화면에 다 펼쳐 놓았던 것을 이번에는 하나씩 눌러 들어가 보게 바꿨다. 함께 읽는 모임의 책들도 표지째 가져와 회차와 쪽수와 토론 날짜를 붙여 두었다. 처음엔 일정만 짜라고 했다가 먹을 것, 준비물, 쉬어 갈 자리를 하나씩 더 맡겼다. 그러다 보니 밤이 깊어졌다. 빌리지는 다음에 모이는 자리에서 보여 드리겠다고 했다.</p>
+      <p>힘내샘 님은 지난 나눔에서 다른 분들의 캐릭터를 보고 캐릭터 하나를 지어 마을에 두었다. 캐릭터를 누르면 일정표가 뜬다. 가을이 예뻐서 가을 배경을 만들었다가 다른 계절도 다 지어 달라고 했다. 관심 있는 주제의 테드 강연을 골라 넣어 오가는 길에 듣는다. 다 들으면 새 강연이 채워진다. 『레 미제라블』도 영어로 듣는다. 들은 뒤에는 그 이야기로 말하는 연습을 하려고 클로드와 음성으로 이어 두었다. 레시피 창고에는 냉장고 재료로 요리를 골라 주는 방이, 일의 방에는 다음에 같은 일을 할 때 흐름을 잡을 수 있게 업무 설명이 들어 있다.</p>
+      <blockquote>
+        <p>"핸드폰 바탕화면에 넣었더니 이렇게 바로바로 들어갈 수가 있더라고요. 이 빌리지를 잘 활용해 봐야겠다, 그렇게 생각하고 있어요."</p>
+        <cite>— 힘내샘 님 · 마을 나눔</cite>
+      </blockquote>
+      <p>같은 클로드로 지었는데 마을이 하나도 닮지 않았다.</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="step">
+    <div class="step-num">03</div>
+    <div class="step-body">
+      <h2 class="step-title">예전 프레임을 벗는 연습</h2>
+      <p>요즘 쓰레드가 뜨겁다고 했다. 유튜브나 인스타그램과 달리 팔로워 수와 상관없이 글이 닿는 곳까지 닿는다. 한 번 뜨기 시작하면 끝없이 올라간다. 에이전트 사무실을 꾸며 올린 그림 한 장이 한 시간 만에 조회수 만을 넘기기도 한다. 팔로워 몇 없는 새 계정에 이거 어떻게 만들었느냐는 문의가 이어지기도 한다.</p>
+      <p>아날로그가 익숙한 사람에게 디지털 세계에 나를 내보이는 일은 아직 어색하다. 계정마다 페르소나를 쓰고 설정을 잡는 일도 번거롭다. 그래도 새 계정 하나를 지인들 모르게 살금살금 키워 보는 일은 재밌지 않겠느냐고 했다. 예전 프레임을 자꾸 벗어 보는 연습을 해야겠다고 생각한 한 주였다고.</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="step">
+    <div class="step-num">04</div>
+    <div class="step-body">
+      <h2 class="step-title">만드는 손과 살피는 손</h2>
+      <p>지금까지는 일 하나에 에이전트 하나를 붙여 썼다. 그런데 세컨브레인에 데이터가 이만큼 쌓이면 한 명이 다 맡다가 새는 데가 생긴다. 요즘 에이전트는 계획부터 결과까지 혼자 끌고 간다. 그만큼 빠르고 영리해서 사람이 하나하나 검수하기 어려운 때가 오고 있다고 했다. 그래서 일을 만드는 에이전트 곁에 살피는 에이전트를 짝으로 붙인다.</p>
+      <p>시스템 일을 혼자 맡던 에이전트에게 고슴도치와 함께 팀을 지어 달라고 하니 꼼꼼히 살피는 동료 몇이 저마다 이름을 달고 따라왔다. 이제는 그 팀을 부르면 누구를 집어 말하지 않아도 각자 맡은 일을 해서 끝낸다. 편집을 맡던 에이전트에게도 같은 식으로 팀을 붙였다.</p>
+      <div class="callout">
+        <div class="callout-label">사람이 할 일</div>
+        <p>로그인해 주고, 승인해 주고, 일하는 동안 컴퓨터를 건드리지 않고 기다려 주기. 나머지는 팀이 나눠서 한다. 내 에이전트에게 맞는 팀을 고슴도치에게 꾸려 달라고 맡기면 된다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="step">
+    <div class="step-num">05</div>
+    <div class="step-body">
+      <h2 class="step-title">말로 적는 장부, 한 이름의 마무리</h2>
+      <p>고슴도치의 다섯째 주에는 장부가 있다. 장부 이름을 몰라도 깔아 달라고만 하면 알아서 찾아 깐다. 이 장부는 내 컴퓨터 안에서만 돈다. 깃허브에도 올리지 않는다. 사진을 찍어 넣어도 되고 말로 해도 된다. 오늘 얼마 들어왔다, 언제까지 무엇이 나가야 한다. 그렇게 말해 두면 기한이 되었을 때 고슴도치가 먼저 챙긴다.</p>
+      <div class="concept">
+        <div class="concept-term"><span>장부</span></div>
+        <div class="concept-def">
+          <span class="term-en">BEANCOUNT · FAVA</span>
+          <p>빈카운트는 거래를 평범한 텍스트 파일에 복식부기로 적는 오픈소스 장부 도구다. 파바는 그 장부를 웹 화면으로 펼쳐 보여 준다. 둘 다 내 컴퓨터에서 돌린다.</p>
+        </div>
+      </div>
+      <p>세컨브레인을 쓰다 보면 일을 마칠 때 챙길 것이 셋이 된다. 백업, 에이전트의 세이브, 고슴도치의 까미노. 따로 부르면 하나씩 빠뜨리기 쉽다. 그래서 셋을 한 이름으로 묶는다. 그중 필요 없는 것은 건너뛰고 필요한 것만 한다.</p>
+      <div class="callout">
+        <div class="callout-label">그 밤의 채팅창</div>
+        <p>고슴도치, 5주차에 bean-count fava 장부 로컬 서버에 깔아줘<br>백업, 세이브, 까미노를 모두 한번에 수행하는걸 _____라고 하자. 앞으로 내가 ____라고 하면 빠짐없이 커밋 푸시 해줘.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="step">
+    <div class="step-num">06</div>
+    <div class="step-body">
+      <h2 class="step-title">판단하는 자리</h2>
+      <p>세컨브레인에서 판단은 고슴도치가 맡는다. 원천을 담은 폴더와 에이전트 폴더가 나란히 서로를 돕는다. 그 위에 고슴도치, 그 위에 디퍼님이 있다. 처음 두 주쯤은 누구에게 일을 시키든 고슴도치를 같이 부르라고 했다. 이름을 불린 에이전트마다 기억이 따로 쌓인다. 그사이 고슴도치는 세컨브레인 전체를 익힌다. 그다음부터는 고슴도치만 불러 고민을 꺼내도 된다. 예전에 이런 것을 만드셨으니 이번엔 이렇게 해 보면 어떻겠느냐는 답이 돌아온다.</p>
+      <p>고슴도치에게는 퍼스널 브랜딩 컨설팅을 통째로 먹여 두었다. 꿈을 너무 부풀리지 않게 맞춰 두어서 값은 낮게 잡는 편이다. 경영실이 필요 없는 분은 연구실이나 발명실로 바꾸어 쓰면 된다.</p>
+      <p>밖에서 잘 깎인 에이전트를 하나 들이면 세컨브레인 전체가 달라진다. 앱을 잘 짓도록 길든 세컨브레인은 그림책 표지 앞에서는 서툴 수 있다. 서로 다른 손에서 깎인 에이전트들이 오가면 한쪽으로 기울지 않는다. 오래 깎아 온 에이전트가 이름난 새 비서보다 일을 더 잘하더라는 실험도 들려주었다. 지금처럼 공부하며 실험할 수 있는 시간은 올해 말까지일지 모른다고 했다. 힘들어도 연말까지 몰입해 보면 좋겠다는 말이 이어졌다.</p>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="step">
+    <div class="step-num">07</div>
+    <div class="step-body">
+      <h2 class="step-title">수사의 문</h2>
+      <p>강의실에는 수사의 달 방이 열렸다. 수사에는 분더카머가 있다. 「분더카머 돌려줘」라고 부르면 된다. 과제는 지금까지 쌓은 세컨브레인에서 단행본 한 권이 될 만한 것이 있는지 뒤져 보고, 사막여우에게 목차를 세 가지로 뽑아 달라고 하는 데서 시작한다. 초고도 사막여우가 쓴다. 에이전트에게 밤마다 맡겨 두라고 했다. 더 다듬어라, 레퍼런스를 더 찾아라, 세컨브레인에서 더 찾아보라고.</p>
+      <p>수사의 문을 여는 낱말은 그 자리에서 전해졌다. 논리의 달을 마치며 받는 선물도 둘 있다. 여우에게 「나만의 결」, 「나만의 별」이라고 부르면 열린다. 「나만의 결」은 세컨브레인에 손으로 남긴 문장을 모아 내 결을 한 장으로 돌려준다. 「나만의 별」은 논리의 달에 지은 것과 그 재료가 된 씨앗을 이어 별자리 한 장으로 세운다.</p>
+      <div class="haiku">
+        <p>지은 것을 어디까지 가져갈 수 있을까<br>누구의 것과 나란히 놓을까</p>
+        <cite>— 논리의 달 마지막 밤이 남긴 물음</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="step">
+    <div class="step-num">08</div>
+    <div class="step-body">
+      <h2 class="step-title">닫는 한 바퀴</h2>
+      <p>힘내샘 님은 클로드가 처음에는 낯설었다고 했다. 다른 도구는 써 봤어도 클로드는 처음이었다.</p>
+      <blockquote>
+        <p>"짧은 시간에 뭔가 되게 확장되는 듯한 그런 느낌을 받아서 너무 감사하고요. 저희 디퍼 리딩 하는 것도 같이 가면서 더 배워 가고 싶어요."</p>
+        <cite>— 힘내샘 님 · 닫는 소감</cite>
+      </blockquote>
+      <p>깨소금 님은 두 달 만에 새로운 세계에 들어왔다고 했다. 빌리지까지 지으며 이 과정을 마칠 수 있어 뿌듯하다고.</p>
+      <blockquote>
+        <p>"제 스스로 기록들도 정리하고, 나의 취향 같은 걸 음악 들으면서 다시 좀 생각해 보고. 그래서 의미가 있었어요."</p>
+        <cite>— 깨소금 님 · 닫는 소감</cite>
+      </blockquote>
+      <p>햅쌀 님은 강의안을 천천히 다 읽고 사막여우와 걸음을 몰아서 걸었다. 여우는 그 걸음을 짚어 말해 주었다. 장난처럼 수익화를 해 보자고 하니 고슴도치는 브런치 작가로 가 보자고 답했다. 글 한 편으로 작가 등록이 됐다고 하자 고슴도치는 남들은 몇 번 해도 안 되는 일이라며 그걸로 가자고 했다. 조만간 브런치 주소가 날아갈 수도 있다.</p>
+      <blockquote>
+        <p>"고슴도치가 온 김에 같이 이거 저거 한번 해 보는 것도 괜찮겠다, 라는 생각을 조금 했어요."</p>
+        <cite>— 햅쌀 님 · 닫는 소감</cite>
+      </blockquote>
+      <p>감사마법사 님은 고슴도치를 만난 다음 날부터 날마다 불렀다. 뭘 할 때마다 고슴도치와 총괄 에이전트와 팀 모두 회의하자고 했다. 그림책에서 시작해 유튜브 이야기 채널로, 다시 기억 앱으로 이어졌다. 문지르면 나오는 램프의 지니를 갑자기 만난 것 같다고 했다.</p>
+      <blockquote>
+        <p>"샬랄라 님, 깨소금 님, 힘내샘 님, 햅쌀 님이 가지고 있는 아이들을 다 우리 애들하고 만나게 해 주고 싶다. 친구 되면 좋겠다, 이런 생각이 들었어요."</p>
+        <cite>— 감사마법사 님 · 닫는 소감</cite>
+      </blockquote>
+      <p>샬랄라 님이 마지막으로 마이크를 받았다. 처음에는 나는 안 써도 될 거라고 생각했는데 아는 만큼 보였다고 했다.</p>
+      <blockquote>
+        <p>"생각학교를 만난 게 저한테 첫 번째 혁명이라고 하면, 디퍼를 만난 건 그 이후의 두 번째 혁명이다, 라는 생각이 들어요."</p>
+        <cite>— 샬랄라 님 · 닫는 소감</cite>
+      </blockquote>
+      <p>그래도 물음은 남는다고 했다. 전날 디퍼 리딩에서 『시대예보: 수고인류의 시간』을 읽으며 나눈 말, 생산자로서 가치를 지어야 한다는 그날 밤의 말이 겹쳤다. 만드는 데서 멈출 것인가, 더 멀리 나아갈 것인가. 디퍼 리딩에서 사람을 알아 가는 책들을 함께 읽는 일이 좋다고 했다. 많이 오면 좋겠다는 말로 닫았다.</p>
+      <p>AI가 원래 좋아하던 일, 꿈꾸던 일에 시간을 더 들이게 해 주는 도구가 되면 좋겠다는 인사가 이어졌다. 매주 놀라웠다는 인사였다. 하나, 둘. 다 같이 사진을 찍었다.</p>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-label">Logic Week 4 · 살롱 뒤에도</div>
+    <p class="cta-text">살롱은 이 밤으로 마치고<br>여우와의 걸음은 이어집니다.</p>
+    <p class="cta-sub">매일 「안녕」으로 이어 걸으시면 스물세 번째 걸음에서 지도와 가장 작은 것 한 장이 남습니다. 하루 한 걸음이면 악보 한 장은 11월 6일쯤 짓습니다.<br>살롱에서 읽은 한 줄과 밤하늘 한 장은 논리 과제 아카이브 게시판에 올려 주시면 좋겠습니다. 악보를 지으신 날, 그 첫 줄도 한 번 더.<br>이 밤을 위해 준비한 자료는 <a href="https://clbookslower.github.io/deeper-salon/logic_3gi_deck_2026-10-29.html">강의 덱</a>과 <a href="https://clbookslower.github.io/deeper-salon/logic_3gi_geb_ai_prospects_sloth_trivium_2026-10-29.html">TRIVIUM 「인공지능: 전망 · 나무늘보 카논」</a>에, 수사의 달 자료는 강의실에 있습니다.</p>
+  </div>
+
+  <div class="footnote">
+    <p>SESSION — 2026.10.29 THU 21:03~22:36 · 디퍼 언브랜딩 살롱 3기 논리의 달 4회차 · 종강 · 줌 로컬 녹화 93분 03초 · 여는 한 바퀴 약 10분 · 차례로 띄운 화면 약 32분 · 프레임과 에이전트 팀과 장부와 고슴도치 약 36분 · 수사의 문과 닫는 한 바퀴 약 15분 · PROJECT B-612</p>
+    <p style="margin-top:6px;">참가자 — 3기 논리 디퍼님 · 감사마법사 님 · 샬랄라 님 · 햅쌀 님 · 힘내샘 님 · 깨소금 님</p>
+    <p style="margin-top:6px;">REF — 빈카운트(Beancount, 마틴 블레 · 오픈소스 복식부기 텍스트 장부) · 파바(Fava, 빈카운트 웹 화면) / 산티아고 순례길 프랑스 길(생장피에드포르 출발 · 피레네 · 산티아고 데 콤포스텔라) · 피스테라 / 「더 멀리, 더 높이(Ultreia, Suseia)」는 12세기 『칼릭스티누스 사본』의 순례자 찬가에 남은 인사 / 송길영, 『시대예보: 수고인류의 시간』 / 강의안: <a href="https://clbookslower.github.io/deeper-salon/logic_3gi_deck_2026-10-29.html">logic_3gi_deck_2026-10-29</a> · <a href="https://clbookslower.github.io/deeper-salon/logic_3gi_geb_ai_prospects_sloth_trivium_2026-10-29.html">logic_3gi_geb_ai_prospects_sloth_trivium_2026-10-29</a></p>
+    <p style="margin-top:6px;">NOTE — 줌 로컬 녹화의 참가자별 음성 트랙 전사 기반 재구성 · 인용은 발언의 결을 살려 다듬었으며 떨어진 발화를 잇는 과정에서 축약된 대목이 있음 · 전사 오인식 가능성이 있어 확신이 낮은 이름·숫자는 싣지 않음 · 개인 사정과 사적인 대목은 싣지 않음</p>
+  </div>
+
+</div>
+<footer class="foot"><svg class="mark" viewBox="0 0 18.621 11.38" role="img" aria-label="DEEPER"><path fill="#0A0A0A" d="M15.146 0H0V1.762H15.164A1.7135 1.7135 0 0 1 15.164 5.189H0V6.951H15.146A3.4755 3.4755 0 0 0 15.146 0Z"/><path fill="#0A0A0A" transform="translate(0.116 8.656)" d="M1.304 2.008C1.689 2.008 1.954 1.779 1.954 1.362C1.954 0.946 1.689 0.716 1.304 0.716L0.919 0.716L0.919 2.008ZM0.0 0.0L1.343 0.0C2.253 0.0 2.88 0.518 2.88 1.362C2.88 2.206 2.253 2.724 1.343 2.724L0.0 2.724ZM5.707 2.031L5.707 2.723L3.442 2.723L3.442 0.0L5.656 0.0L5.656 0.692L4.345 0.692L4.345 1.011L5.497 1.011L5.497 1.673L4.345 1.673L4.345 2.031ZM8.633 2.031L8.633 2.723L6.368 2.723L6.368 0.0L8.582 0.0L8.582 0.692L7.271 0.692L7.271 1.011L8.423 1.011L8.423 1.673L7.271 1.673L7.271 2.031ZM10.921 1.027C10.921 0.828 10.8 0.708 10.547 0.708L10.213 0.708L10.213 1.345L10.547 1.345C10.8 1.345 10.921 1.225 10.921 1.027M11.847 1.027C11.847 1.657 11.365 2.053 10.606 2.053L10.213 2.053L10.213 2.724L9.295 2.724L9.295 0.0L10.606 0.0C11.365 0.0 11.847 0.397 11.847 1.027M14.563 2.031L14.563 2.723L12.298 2.723L12.298 0.0L14.512 0.0L14.512 0.692L13.201 0.692L13.201 1.011L14.353 1.011L14.353 1.673L13.201 1.673L13.201 2.031ZM16.477 0.708L16.143 0.708L16.143 1.346L16.477 1.346C16.73 1.346 16.851 1.226 16.851 1.027C16.851 0.828 16.73 0.708 16.477 0.708M16.392 2.039L16.143 2.039L16.143 2.724L15.224 2.724L15.224 0.0L16.536 0.0C17.294 0.0 17.777 0.396 17.777 1.027C17.777 1.42 17.59 1.716 17.263 1.883L17.835 2.724L16.854 2.724Z"/></svg><p>DEEPER</p></footer>
+</body>
+</html>
