@@ -404,6 +404,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
 .vol-key{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px 18px;font-family:var(--en);font-size:10.5px !important;letter-spacing:.08em;color:var(--mute) !important}
 @media (max-width:1024px){.vols{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:720px){.vols{grid-template-columns:repeat(2,minmax(0,1fr))}.vol a{min-height:148px}}
+#reading-collection,#family-day,#books-we-read,#clbook,#insight-nights{scroll-margin-top:24px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -466,7 +467,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     <p class="lede"><span class="ln">살롱이 끝나도 사막여우와 그동안의 기록은 내 컴퓨터에 남습니다.</span><span class="ln">프론티어 AI 모델이 새로 나오는 간격은 점점 짧아지고 있습니다.</span><span class="ln">디퍼 멤버십은 새 모델에 맞춘 사막여우를 매달 받는 일입니다.</span></p>
   </div>
 
-  <div class="sub mb vol-wrap">
+  <div class="sub mb vol-wrap" id="reading-collection">
     <div class="sub__l">
       <p class="fam-hero"><small>THE DEEPER READING COLLECTION</small>열두 권의 작은 책</p>
     </div>
@@ -490,7 +491,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     </div>
   </div>
 
-  <div class="sub mb--meet fam-wrap">
+  <div class="sub mb--meet fam-wrap" id="family-day">
     <div class="sub__l">
       <p class="fam-hero"><small>TOGETHER · DEEPER FAMILY DAY</small>디퍼 패밀리 데이</p>
     </div>
@@ -506,7 +507,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     </div>
   </div>
 
-  <div class="sub mb shelf-wrap">
+  <div class="sub mb shelf-wrap" id="books-we-read">
     <div class="sub__l">
       <p class="fam-hero"><small>SHELF · BOOKS WE READ</small>함께 읽어 온 책</p>
     </div>
@@ -517,7 +518,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     </div>
   </div>
 
-  <div class="sub mb clbook-wrap">
+  <div class="sub mb clbook-wrap" id="clbook">
     <div class="sub__l">
       <p class="fam-hero"><small>CLBOOK · BOOKS WE MADE</small>클북이 만든 책</p>
     </div>
@@ -529,7 +530,7 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     </div>
   </div>
 
-  <div class="sub mb hist-wrap">
+  <div class="sub mb hist-wrap" id="insight-nights">
     <div class="sub__l">
       <p class="fam-hero"><small>SINCE MAY 2026 · INSIGHT NIGHTS</small>인사이트 공유회</p>
     </div>
@@ -603,7 +604,6 @@ html.settled .hero .lead,html.settled .meta{opacity:1!important;animation:none!i
     <div class="sub__r">
       <dl class="facts">
         <div><dt>회비</dt><dd>월 29,000원<small>매달 신청 폼을 새로 드립니다</small></dd></div>
-        <div><dt>입금</dt><dd>국민은행 640401-04-330210<small>이경선(클래식북스)</small></dd></div>
         <div><dt>마감</dt><dd>11월 신청 10월 31일(토)까지</dd></div>
         <div><dt>신청</dt><dd><a href="https://forms.gle/HGUBqrXBrteAhLX66" target="_blank" rel="noopener">디퍼 멤버십 신청 폼</a></dd></div>
       </dl>
