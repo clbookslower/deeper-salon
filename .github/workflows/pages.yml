@@ -18,10 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/configure-pages@v5
+      # 20MiB 미만 영상은 묶음에서 빼고 jsDelivr 주소로 바꾼다 (배포 묶음 560MB -> 약 230MB)
+      - run: python3 .github/scripts/build_site.py _site
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
