@@ -120,6 +120,10 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .dash-h b{font:700 15px var(--ko);letter-spacing:0;color:var(--ink)}
 @media(max-width:820px){.dash,.dash.six{grid-template-columns:1fr 1fr}}
 .archwrap{overflow-x:auto;margin-top:10px}
+.flow .pop{opacity:1}
+.slide.active .flow .pop{animation:pop .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes pop{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.flow .m{fill:var(--mute)}
 .arch{display:block;width:100%;min-width:860px;height:auto}
 .arch text{font-family:var(--ko);fill:#f2f2ef}
 .arch .en{font-family:var(--en);letter-spacing:.14em;font-weight:600;fill:#8e8e8a;font-size:12px}
