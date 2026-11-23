@@ -98,7 +98,10 @@ h1 .f{color:var(--faint)}
 .stepc p{font-size:15px;line-height:1.55;color:var(--body);letter-spacing:-.02em}
 .stepc.ink{background:var(--ink);color:#fff}.stepc.ink p{color:#d6d6d2}
 .on .stepc{opacity:1}
-#s5 .scene,#s7 .scene{transform:rotateX(10deg) rotateY(-22deg)}
+#s5 .scene{transform:rotateX(10deg) rotateY(-22deg)}
+#s7 .scene{transform:rotateX(6deg) rotateY(-12deg)}
+#s7 .stepc{width:520px;left:-260px;min-height:112px}
+#s7 .stepc b{font-size:21px}#s7 .stepc p{font-size:17px}
 
 /* 디퍼피 */
 #s6 .scene{transform:rotateX(14deg) rotateY(-24deg)}
@@ -422,7 +425,7 @@ const STEPS={
      ['2','열두 과 짜기','「내 분야를 열두 과로 짜 줘. 과마다 내가 손으로 바꾸는 것 하나, 그래서 달라지는 것 하나, 깨지는 오해 하나를 넣어 줘」'],
      ['3','한 과 먼저','「1과만 끝까지 지어 줘. 나머지 과는 내가 1과를 본 뒤에 같은 짜임으로 짓자」'],
      ['4','화면으로 검수','「과마다 화면 다섯 컷을 찍어서 보여 줘」']],
- s7:[['01','팀을 한 폴더에','내 에이전트 정의 파일을 작업 폴더의 .claude/agents에'],
+ s7:[['01','팀을 한 폴더에','에이전트 파일(.md)을 작업 폴더의 .claude/agents에 둡니다'],
      ['02','디퍼피에 그 폴더를','디퍼피 우클릭 → 작업 폴더 바꾸기 → 그 폴더'],
      ['03','도구 잇기','claude.ai → 설정 → 커넥터에서 메일 · 드라이브 · 캘린더 → 디퍼피 우클릭 → 연결 도구 다시 살피기'],
      ['04','말로 맡기기','「콘텐츠담당에게 이번 주 팁 초안 맡겨 줘」 → 맞는 에이전트를 불러 결과를 받아 옵니다']]};
@@ -432,7 +435,7 @@ document.querySelectorAll('[data-steps]').forEach(sc=>{
     c.innerHTML=`<span class="n">${n}</span><b>${b}</b><p>${p}</p>`;
     c.style.top=(-250+i*128)+'px';
     c.style.transform=`translate3d(${-80+i*40}px,40px,${-i*60}px)`;
-    c.dataset.to=sc.dataset.steps==='s7'?`translate3d(${-40+i*30}px,0,${i*30}px) rotateY(${-18+i*12}deg) rotateX(${6-i*4}deg)`:`translate3d(${-60+i*50}px,0,${i*40}px)`;
+    c.dataset.to=`translate3d(${-60+i*50}px,0,${i*40}px)`;
     c.style.transitionDelay=(.3+i*.25)+'s';sc.appendChild(c)});
 });
 
