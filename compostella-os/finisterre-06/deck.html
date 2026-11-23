@@ -108,6 +108,28 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .ways b em{font:600 12px var(--en);letter-spacing:.18em;color:var(--mute);font-style:normal;margin-left:8px}
 .ways span{display:inline-block;border:1px solid var(--line-strong);padding:3px 10px;margin:0 6px 6px 0;font:500 14px var(--ko);color:var(--body)}
 @media(max-width:820px){.gems,.ways{grid-template-columns:1fr 1fr}}
+.dash{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.dash.six{grid-template-columns:repeat(6,1fr)}
+.dash>div{border:1px solid var(--line-strong);padding:10px 12px 12px;min-height:84px}
+.dash.six>div{border-color:var(--ink)}
+.dash b{display:block;font:700 15px/1.35 var(--ko);margin-bottom:6px}
+.dash i{display:inline-block;font:600 11px var(--ko);font-style:normal;padding:2px 8px;border:1px solid var(--line-strong);color:var(--body)}
+.dash i.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dash i.stop{color:var(--faint)}
+.dash-h{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;border-top:1px solid var(--ink);padding-top:10px;font:600 12px var(--en);letter-spacing:.18em;color:var(--mute)}
+.dash-h b{font:700 15px var(--ko);letter-spacing:0;color:var(--ink)}
+@media(max-width:820px){.dash,.dash.six{grid-template-columns:1fr 1fr}}
+.archwrap{overflow-x:auto;margin-top:10px}
+.arch{display:block;width:100%;min-width:860px;height:auto}
+.arch text{font-family:var(--ko);fill:#f2f2ef}
+.arch .en{font-family:var(--en);letter-spacing:.14em;font-weight:600;fill:#8e8e8a;font-size:12px}
+.arch .ln{stroke:#f2f2ef;fill:none}
+.slide.active .arch .ly{animation:lyin .9s cubic-bezier(.2,.7,0,1) both;animation-delay:calc(var(--d,0s) * .4)}
+@keyframes lyin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.slide.active .arch .draw{stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 1.4s cubic-bezier(.65,0,.35,1) forwards;animation-delay:calc(var(--d,0s) * .4)}
+.arch .node,.arch .spin{animation:none}
+.arch .flow-dot{fill:#f2f2ef}
+
 
 </style>
 </head>
@@ -179,20 +201,6 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 </div></section>
 
 <section class="slide"><div class="content">
-<p class="ey">Your Ways · 1</p>
-<h2 class="title">갈래 제안<br><span class="second">네 분</span></h2>
-<div class="ways"><div><b>스윗워러<em>초록 지붕 집 루틴</em></b><span>무료 · 루틴 한 장 연재</span><span>모임 · 30일 루틴 챌린지</span><span>작은 유료 · 그림 생성 클래스</span></div><div><b>새벽<em>모임 공지 앱 · 새벽의 서재</em></b><span>곁에서 세팅 · 모임 공지 앱</span><span>모임 · 빌더하우스</span><span>무료 · 학습지 한 장</span></div><div><b>햇살<em>살롱 드 나루</em></b><span>곁에서 세팅 · 가족·지인을 첫 고객으로</span><span>모임 · 정기 살롱 구독</span><span>무료 · 나루의 질문 한 장</span></div><div><b>헤더<em>학원을 위한 구상</em></b><span>기업 · 학원 AX 세팅</span><span>작은 유료 · 학원 시간표 서비스</span><span>무료 · 원장님 2분 팁</span></div></div>
-<p class="small">마사의 제안 · 고르는 건 별지기님 · 근거는 10/19 세션록과 2구간 신청서</p>
-</div></section>
-
-<section class="slide"><div class="content">
-<p class="ey">Your Ways · 2</p>
-<h2 class="title">갈래 제안<br><span class="second">다른 네 분</span></h2>
-<div class="ways"><div><b>솔담<em>숏폼 붕어빵 · 「소문」</em></b><span>무료 · 숏폼 팁 연재</span><span>깊은 과정 · 숏폼 강의</span><span>기업 · 소상공인 마케팅 에이전트</span></div><div><b>단무지<em>웹사이트 변천사</em></b><span>곁에서 세팅 · 1인 사업 웹사이트</span><span>기업 · 디자인 AX</span><span>무료 · 피그마 → 웹 2분 팁</span></div><div><b>투게더<em>북카페 경영실</em></b><span>책 · 북카페 경영실 전자책</span><span>모임 · 온라인 북클럽</span><span>무료 · 경영실 일지</span></div><div><b>우디<em>생신 영상 · 인스타툰 작업대</em></b><span>작은 유료 · 생신 애니메이션 영상 주문</span><span>무료 · 너구리 정보툰 연재</span><span>기업 · 브랜드 캐릭터 툰</span></div></div>
-<p class="small">마사의 제안 · 고르는 건 별지기님 · 근거는 10/19 세션록과 2구간 신청서</p>
-</div></section>
-
-<section class="slide"><div class="content">
 <p class="ey">One Long, Many Short</p>
 <h2 class="title">긴 것 하나,<br><span class="second">짧은 조각 여럿</span></h2>
 <svg class="vis" viewBox="0 0 1000 260" role="img" aria-label="긴 것 하나를 짧은 것 여럿으로, 끝은 모두 뉴스레터로">
@@ -245,6 +253,15 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 </div></section>
 
 <section class="slide"><div class="content">
+<p class="ey">Deeper Agency · Pick More</p>
+<h2 class="title">필요할 때마다<br><span class="second">한 명씩 꺼내 쓰기</span></h2>
+<div class="prompt">python tools/add_role.py find 고객
+python tools/add_role.py add customer-service --to "내 작업 폴더" --name 고객응대 --dry-run
+python tools/add_role.py add customer-service --to "내 작업 폴더" --name 고객응대</div>
+<p class="small">찾기 → 자리만 보기 → 넣기 · 파이썬이 없으면 Code 탭에서 「디퍼에이전시의 add_role로 고객응대를 내 작업 폴더에 넣어 줘」 · 잠긴 분야(규정 · 인사 · 공공 · 공급망 · 의료 홍보)는 넣지 않습니다</p>
+</div></section>
+
+<section class="slide"><div class="content">
 <p class="ey">The Market</p>
 <h2 class="title">작은 회사일수록<br><span class="second">AI 쓰는 곳이 드뭅니다</span></h2>
 <div class="figs">
@@ -256,6 +273,85 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 </div></section>
 
 <section class="slide"><div class="content">
+<p class="ey">Case · One Company's Board</p>
+<h2 class="title">한 회사의 업무 열 가지,<br><span class="second">자동화 여섯</span></h2>
+<div class="dash-h"><span>WORK · 10</span><b>업무</b></div>
+<div class="dash"><div><b>주문·매출 현황 파악</b><i class="on">진행 중</i></div><div><b>세금계산서 발행</b><i class="on">진행 중</i></div><div><b>대금 이체</b><i class="on">진행 중</i></div><div><b>카톡 견적 문의 응대</b><i class="on">진행 중</i></div><div><b>옵셋 견적 내기</b><i class="on">진행 중</i></div><div><b>디지털 견적 내기</b><i class="on">진행 중</i></div><div><b>출판사 목록 정비</b><i class="">대기</i></div><div><b>견적 도구 판매 준비</b><i class="">대기</i></div><div><b>자동화 준비 자료 모으기</b><i class="">대기</i></div><div><b>새 거래처 영업</b><i class="stop">멈춤</i></div></div>
+<div class="dash-h"><span>AUTOMATION · 6</span><b>자동화</b></div>
+<div class="dash six"><div><b>말로 묻는 주문·매출</b><i class="on">준비 중</i></div><div><b>카톡 견적 문구 만들기</b><i class="on">준비 중</i></div><div><b>옵셋 견적 계산</b><i class="">협의 중</i></div><div><b>세금계산서 발행 준비</b><i class="">협의 중</i></div><div><b>영업 연락 관리</b><i class="">협의 중</i></div><div><b>사용 인원 제한</b><i class="">협의 중</i></div></div>
+<p class="small">한 제작 회사와 첫 미팅 뒤 「나의 서고관」으로 세운 업무 대시보드 · 회사 이름은 가렸습니다</p>
+</div></section>
+
+<section class="slide dark"><div class="content">
+<p class="ey">Blueprint · Second Brain</p>
+<h2 class="title">세컨브레인 설계도</h2>
+<div class="archwrap">  <svg class="arch" viewBox="36 14 1530 810" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="세컨브레인 설계도. 아래부터 모델, 하네스, 사막여우 기억의 층, 고슴도치 판단의 층, 에이전트 팀, 맨 위에 사람">
+<!-- 바깥 관문 -->
+<g class="ly" style="--d:3s"><line x1="250" y1="96" x2="1350" y2="96" class="ln" stroke-opacity=".45" stroke-dasharray="6 8"/>
+<text x="1350" y="88" text-anchor="end" font-size="13" fill-opacity=".6">관문 — 바깥으로 나가는 일은 결재 뒤에</text></g>
+<g class="ly" style="--d:4s">
+<circle cx="262" cy="44" r="9" fill="#f2f2ef"/><circle cx="262" cy="44" r="16" class="ln node" stroke-opacity=".6"/>
+<text x="292" y="40" font-size="20" font-weight="800">사람이 이끈다</text>
+<text x="292" y="62" class="en" font-size="10">HUMAN IN THE LEAD · 방향을 정하고, 판단기준을 쓰고, 결재한다</text>
+</g>
+<path d="M800 280 C 800 235, 340 235, 340 190" pathLength="1000" class="ln draw" stroke-opacity=".35" stroke-dasharray="1000" style="--d:2.6s"/><path d="M800 280 C 800 235, 570 235, 570 190" pathLength="1000" class="ln draw" stroke-opacity=".35" stroke-dasharray="1000" style="--d:2.7s"/><path d="M800 280 C 800 235, 800 235, 800 190" pathLength="1000" class="ln draw" stroke-opacity=".35" stroke-dasharray="1000" style="--d:2.8000000000000003s"/><path d="M800 280 C 800 235, 1030 235, 1030 190" pathLength="1000" class="ln draw" stroke-opacity=".35" stroke-dasharray="1000" style="--d:2.9000000000000004s"/><path d="M800 280 C 800 235, 1260 235, 1260 190" pathLength="1000" class="ln draw" stroke-opacity=".35" stroke-dasharray="1000" style="--d:3.0s"/>
+<g class="ly" style="--d:2.2s"><rect x="250" y="130" width="180" height="58" class="ln" stroke-opacity=".9"/><text x="340" y="160" text-anchor="middle" font-size="20" font-weight="700">제작</text><text x="340" y="178" text-anchor="middle" class="en" font-size="9">BUILDER</text></g><g class="ly" style="--d:2.3200000000000003s"><rect x="480" y="130" width="180" height="58" class="ln" stroke-opacity=".9"/><text x="570" y="160" text-anchor="middle" font-size="20" font-weight="700">검수</text><text x="570" y="178" text-anchor="middle" class="en" font-size="9">REVIEWER</text></g><g class="ly" style="--d:2.4400000000000004s"><rect x="710" y="130" width="180" height="58" class="ln" stroke-opacity=".9"/><text x="800" y="160" text-anchor="middle" font-size="20" font-weight="700">정비</text><text x="800" y="178" text-anchor="middle" class="en" font-size="9">KEEPER</text></g><g class="ly" style="--d:2.56s"><rect x="940" y="130" width="180" height="58" class="ln" stroke-opacity=".9"/><text x="1030" y="160" text-anchor="middle" font-size="20" font-weight="700">편집</text><text x="1030" y="178" text-anchor="middle" class="en" font-size="9">EDITOR</text></g><g class="ly" style="--d:2.68s"><rect x="1170" y="130" width="180" height="58" class="ln" stroke-opacity=".9"/><text x="1260" y="160" text-anchor="middle" font-size="20" font-weight="700">발신</text><text x="1260" y="178" text-anchor="middle" class="en" font-size="9">VOICE</text></g>
+<g class="ly" style="--d:2.7s"><text x="250" y="118" font-size="14" fill-opacity=".85"><tspan font-weight="700">에이전트 팀</tspan>  ·  역할마다 자기 기억(일지)을 쓴다  ·  위임봉투로 받고, 같은 표로 돌려준다</text></g>
+<g opacity=".95"><rect x="-11" y="-7.5" width="22" height="15" fill="#0c0c0b" stroke="#f2f2ef"/><polyline points="-11,-7.5 0,1.5 11,-7.5" fill="none" stroke="#f2f2ef"/><animateMotion dur="3.2s" begin="3.2s" repeatCount="indefinite" path="M800 280 C 800 235, 340 235, 340 190" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></g><g opacity=".95"><rect x="-11" y="-7.5" width="22" height="15" fill="#0c0c0b" stroke="#f2f2ef"/><polyline points="-11,-7.5 0,1.5 11,-7.5" fill="none" stroke="#f2f2ef"/><animateMotion dur="3.2s" begin="3.75s" repeatCount="indefinite" path="M800 280 C 800 235, 570 235, 570 190" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></g><g opacity=".95"><rect x="-11" y="-7.5" width="22" height="15" fill="#0c0c0b" stroke="#f2f2ef"/><polyline points="-11,-7.5 0,1.5 11,-7.5" fill="none" stroke="#f2f2ef"/><animateMotion dur="3.2s" begin="4.300000000000001s" repeatCount="indefinite" path="M800 280 C 800 235, 800 235, 800 190" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></g><g opacity=".95"><rect x="-11" y="-7.5" width="22" height="15" fill="#0c0c0b" stroke="#f2f2ef"/><polyline points="-11,-7.5 0,1.5 11,-7.5" fill="none" stroke="#f2f2ef"/><animateMotion dur="3.2s" begin="4.8500000000000005s" repeatCount="indefinite" path="M800 280 C 800 235, 1030 235, 1030 190" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></g><g opacity=".95"><rect x="-11" y="-7.5" width="22" height="15" fill="#0c0c0b" stroke="#f2f2ef"/><polyline points="-11,-7.5 0,1.5 11,-7.5" fill="none" stroke="#f2f2ef"/><animateMotion dur="3.2s" begin="5.4s" repeatCount="indefinite" path="M800 280 C 800 235, 1260 235, 1260 190" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear"/></g>
+<!-- 학습고리 -->
+<g class="ly" style="--d:3.4s">
+<circle cx="130" cy="235" r="80" class="ln" stroke-opacity=".25"/>
+<g class="spin"><path d="M130 155 A80 80 0 0 1 210 235" class="ln" stroke-width="2"/><polygon points="210,235 202,222 218,222" fill="#f2f2ef"/></g>
+<text x="130" y="232" text-anchor="middle" font-size="19" font-weight="700">학습고리</text>
+<text x="130" y="252" text-anchor="middle" class="en" font-size="9">LEARNING LOOP</text>
+<text x="130" y="340" text-anchor="middle" font-size="13" fill-opacity=".75">1× 기억 · 2× 라이브러리</text>
+<text x="130" y="360" text-anchor="middle" font-size="13" fill-opacity=".75">3× 역할 정의 개정</text>
+<line x1="210" y1="200" x2="250" y2="165" class="ln" stroke-opacity=".3"/><line x1="200" y1="280" x2="250" y2="320" class="ln" stroke-opacity=".3"/>
+</g>
+<!-- 고슴도치 프로세스 층 -->
+<g class="ly" style="--d:1.6s">
+<rect x="250" y="280" width="1100" height="120" fill="#f2f2ef"/>
+<text x="290" y="334" font-size="36" font-weight="800" style="fill:#0c0c0b">고슴도치<tspan dx="16" font-size="20" font-weight="600" style="fill:#5c5c59">판단의 층</tspan></text>
+<text x="292" y="368" class="en" font-size="11" style="fill:#5c5c59">PROCESS LAYER · ON TOP OF EVERY JUDGMENT</text>
+<text x="1310" y="332" text-anchor="end" font-size="19" font-weight="700" style="fill:#0c0c0b">판단기준 · 의미의 축 · 전략 루프</text>
+<text x="1310" y="364" text-anchor="end" font-size="15" style="fill:#5c5c59">지표로 열고, 평가로 닫는다 · 만든 사람 ≠ 검수한 사람</text>
+</g>
+<line x1="420" y1="400" x2="420" y2="450" class="ln draw" pathLength="1000" stroke-opacity=".5" style="--d:1.9s"/><circle r="3.5" class="flow-dot"><animateMotion dur="1.8s" begin="2.0s" repeatCount="indefinite" path="M420 450 L420 400"/></circle><circle r="3.5" class="flow-dot" opacity=".5"><animateMotion dur="1.8s" begin="2.9s" repeatCount="indefinite" path="M434 400 L434 450"/></circle><line x1="700" y1="400" x2="700" y2="450" class="ln draw" pathLength="1000" stroke-opacity=".5" style="--d:1.9s"/><circle r="3.5" class="flow-dot"><animateMotion dur="1.8s" begin="2.4s" repeatCount="indefinite" path="M700 450 L700 400"/></circle><circle r="3.5" class="flow-dot" opacity=".5"><animateMotion dur="1.8s" begin="3.3s" repeatCount="indefinite" path="M714 400 L714 450"/></circle><line x1="980" y1="400" x2="980" y2="450" class="ln draw" pathLength="1000" stroke-opacity=".5" style="--d:1.9s"/><circle r="3.5" class="flow-dot"><animateMotion dur="1.8s" begin="2.8s" repeatCount="indefinite" path="M980 450 L980 400"/></circle><circle r="3.5" class="flow-dot" opacity=".5"><animateMotion dur="1.8s" begin="3.7s" repeatCount="indefinite" path="M994 400 L994 450"/></circle><line x1="520" y1="620" x2="520" y2="662" class="ln draw" pathLength="1000" stroke-opacity=".35" style="--d:1s"/><circle r="3" class="flow-dot" opacity=".7"><animateMotion dur="2.2s" begin="1.4s" repeatCount="indefinite" path="M520 662 L520 620"/></circle><line x1="900" y1="620" x2="900" y2="662" class="ln draw" pathLength="1000" stroke-opacity=".35" style="--d:1s"/><circle r="3" class="flow-dot" opacity=".7"><animateMotion dur="2.2s" begin="1.9s" repeatCount="indefinite" path="M900 662 L900 620"/></circle><line x1="1250" y1="620" x2="1250" y2="662" class="ln draw" pathLength="1000" stroke-opacity=".35" style="--d:1s"/><circle r="3" class="flow-dot" opacity=".7"><animateMotion dur="2.2s" begin="2.4s" repeatCount="indefinite" path="M1250 662 L1250 620"/></circle>
+<g class="ly" style="--d:2.2s"><text x="1010" y="421" font-size="13" fill-opacity=".85"><tspan font-weight="700">맥락</tspan>  ·  필요한 노드만 불러 읽고, 판단을 다시 적는다</text>
+<text x="1010" y="440" class="en" font-size="9">CONTEXT · LOAD ON DEMAND</text></g>
+<!-- 사막여우 세컨브레인 -->
+<g class="ly" style="--d:.9s">
+<rect x="250" y="450" width="1100" height="170" class="ln" stroke-opacity=".9"/>
+<text x="290" y="496" font-size="30" font-weight="800">사막여우<tspan dx="14" font-size="17" font-weight="600" fill-opacity=".6">기억의 층</tspan></text>
+<text x="292" y="522" class="en" font-size="11">SECOND BRAIN · ONTOLOGY</text>
+<text x="292" y="566" font-size="14" fill-opacity=".8">원천 → 씨앗 → 의미의 축</text>
+<text x="292" y="590" font-size="14" fill-opacity=".8">노드 하나 = 파일 하나 · 역링크</text>
+</g>
+<line x1="660" y1="500" x2="760" y2="480" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.2s"/><line x1="760" y1="480" x2="860" y2="520" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.25s"/><line x1="860" y1="520" x2="960" y2="490" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.3s"/><line x1="960" y1="490" x2="1060" y2="540" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.35s"/><line x1="660" y1="500" x2="720" y2="580" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.4s"/><line x1="720" y1="580" x2="830" y2="600" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.45s"/><line x1="830" y1="600" x2="860" y2="520" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.5s"/><line x1="830" y1="600" x2="950" y2="585" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.55s"/><line x1="950" y1="585" x2="960" y2="490" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.6s"/><line x1="950" y1="585" x2="1070" y2="600" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.65s"/><line x1="1070" y1="600" x2="1060" y2="540" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.7s"/><line x1="760" y1="480" x2="830" y2="600" class="ln draw" pathLength="1000" stroke-opacity=".4" style="--d:1.75s"/><circle cx="660" cy="500" r="6" fill="#f2f2ef" class="node" style="--d:0.0s"/><circle cx="760" cy="480" r="6" fill="#f2f2ef" class="node" style="--d:0.3s"/><circle cx="860" cy="520" r="6" fill="#f2f2ef" class="node" style="--d:0.6s"/><circle cx="960" cy="490" r="6" fill="#f2f2ef" class="node" style="--d:0.8999999999999999s"/><circle cx="1060" cy="540" r="6" fill="#f2f2ef" class="node" style="--d:1.2s"/><circle cx="720" cy="580" r="6" fill="#f2f2ef" class="node" style="--d:1.5s"/><circle cx="830" cy="600" r="6" fill="#f2f2ef" class="node" style="--d:1.7999999999999998s"/><circle cx="950" cy="585" r="6" fill="#f2f2ef" class="node" style="--d:2.1s"/><circle cx="1070" cy="600" r="6" fill="#f2f2ef" class="node" style="--d:2.4s"/>
+<!-- 하네스 -->
+<g class="ly" style="--d:.5s">
+<rect x="250" y="662" width="1100" height="64" class="ln" stroke-opacity=".7"/>
+<text x="290" y="701" font-size="19" font-weight="700">하네스</text>
+<text x="380" y="701" font-size="15" fill-opacity=".75">Claude Code · 훅 · 관문 · 서브에이전트 · 스킬 · CLAUDE.md 기억</text>
+<text x="1310" y="700" text-anchor="end" class="en">HARNESS</text>
+</g>
+<!-- 모델 -->
+<g class="ly" style="--d:.2s">
+<rect x="250" y="746" width="1100" height="64" class="ln" stroke-opacity=".4"/>
+<text x="290" y="785" font-size="19" font-weight="700" fill-opacity=".8">모델</text>
+<text x="380" y="785" font-size="15" fill-opacity=".6">빌려 쓴다 — 모델이 바뀌어도 기록·기준·팀은 남는다</text>
+<text x="1310" y="784" text-anchor="end" class="en">RENTED MODEL</text>
+</g>
+<g class="ly" style="--d:3.8s"><text x="1380" y="158" class="en" style="fill:#f2f2ef">RHETORIC</text><text x="1380" y="178" font-size="13" fill-opacity=".6">수사 · 말</text>
+<text x="1380" y="336" class="en" style="fill:#f2f2ef">LOGIC</text><text x="1380" y="356" font-size="13" fill-opacity=".6">논리 · 판단</text>
+<text x="1380" y="528" class="en" style="fill:#f2f2ef">GRAMMAR</text><text x="1380" y="548" font-size="13" fill-opacity=".6">문법 · 기억</text>
+<line x1="1372" y1="140" x2="1372" y2="620" class="ln" stroke-opacity=".25"/></g>
+</svg>
+</div>
+<p class="small">아래부터 모델 · 하네스 · 사막여우(기억) · 고슴도치(판단) · 에이전트 팀 · 사람</p>
+</div></section>
+
+<section class="slide"><div class="content">
 <p class="ey">To a Company</p>
 <h2 class="title">기업으로 가는 입구는<br><span class="second">잘 듣는 30분</span></h2>
 <div class="cast three">
@@ -264,6 +360,17 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 <div class="card"><span class="name">03 · After</span><span class="role">석 달 뒤의 하루</span><p>「석 달 뒤 잘 됐다면, 담당자의 하루는 어떻게 달라져 있을까요?」</p></div>
 </div>
 <p class="small">첫 통화에서 쓰는 질문 셋 · 표본을 보기 전에는 숫자를 약속하지 않습니다</p>
+</div></section>
+
+<section class="slide"><div class="content">
+<p class="ey">Gift · My Library</p>
+<h2 class="title">선물 둘,<br><span class="second">나의 서고관</span></h2>
+<ul class="checks">
+<li><em>01</em><div>zip 풀기<small>카톡으로 받은 「나의서고관_선물」을 볼트 밖, 바탕화면에 풉니다(윈도우 · 맥 판 따로)</small></div></li>
+<li><em>02</em><div>시작 프롬프트 붙여 넣기<small>안의 「시작_프롬프트」를 Code 탭에 그대로 · 「서고관 만들어줘」</small></div></li>
+<li><em>03</em><div>하나씩 답하기<small>무엇을 화면에 띄울지 고슴도치가 하나씩 묻습니다 · 민감자료는 코드가 먼저 뺍니다</small></div></li>
+</ul>
+<p class="apply">흩어진 자료가 별 지도 한 장으로. 다음은 그 위에 내 업무 대시보드.</p>
 </div></section>
 
 <section class="slide"><div class="content">
