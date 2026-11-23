@@ -479,8 +479,9 @@ document.querySelectorAll('[data-spiral]').forEach(sc=>{
 
 
 // 시연 장: 과 탭 → 영상·라이브 링크 바꾸기
-(()=>{const V=['insight_2026-11-23_media/l5.mp4','insight_2026-11-23_media/l6.mp4','insight_2026-11-23_media/l7.mp4'],H=['#7','#8','#9'];
- const vid=document.getElementById('demovid'),live=document.getElementById('livebtn');
+(()=>{const vid=document.getElementById('demovid'),live=document.getElementById('livebtn');
+ // 공개 사이트는 배포 때 영상 주소를 jsDelivr로 바꾼다 — 첫 영상 주소에서 앞부분을 따 와 셋 모두 같은 곳을 본다
+ const base=vid.getAttribute('src').replace(/l5\.mp4$/,'');const V=['l5','l6','l7'].map(n=>base+n+'.mp4'),H=['#7','#8','#9'];
  document.querySelectorAll('#s3d .lessontabs button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();
    document.querySelectorAll('#s3d .lessontabs button').forEach(x=>x.classList.toggle('act',x===b));
    const i=+b.dataset.v;vid.src=V[i];vid.currentTime=0;vid.play().catch(()=>{});live.href='http://localhost:5174/'+H[i]}));
